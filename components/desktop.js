@@ -381,7 +381,12 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                 //event.preventDefault();
                 //event.stopPropagation();
                 
-             });            
+             }); 
+             
+            _element.find('.addButton').on("mousedown touchstart", function(event) {
+	        	var module = require('pages/new-rental');
+	        	module();
+	        });
 
             // Remove all my notifications when the element is destroyed
             _element.on('removed', function() {
@@ -505,6 +510,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
             item.find('.deleteItem').on("mousedown touchstart", function(event) {
             	removeSelectedRental();
 	        });
+	        
 
             positionItem(item, col, row);
             enableMouseActions(item);
@@ -517,7 +523,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		function bringItemToTop(item) {
     		var parent = item.parent();
 
-			// Detach and attach again so it will be om top        		 
+			// Detach and attach again so it will be on top        		 
     		item.detach();
     		parent.append(item);
 			
@@ -539,12 +545,18 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		function showEditModeWaterMark() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'url(images/watermark-edit-mode.png)'});
+			
+			_element.find('.addButton').append('<img class="icon" src=images/icons/add.png>');
+
 		}
 		
 
 		function hideEditModeWaterMark() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'none'});
+			
+			_element.find('.addButton').text('');
+
 		}
 
 		

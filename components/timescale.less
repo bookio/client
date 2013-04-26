@@ -1,0 +1,88 @@
+@import "../bookio.less";
+
+
+.time-scale {
+    position: relative;
+    display: table;
+    width:100%;
+}
+
+.time-scale:hover {
+	cursor: default;
+}
+
+
+.time-scale .left-margin {
+    display: table-cell;
+    width:16px;
+}
+.time-scale .right-margin {
+    display: table-cell;
+    width:16px;
+}
+
+
+.time-scale .cells {
+    display: table;
+    table-layout: fixed;    
+	width:100%;
+    height:100%;
+}
+
+.time-scale .cell {
+    display: table-cell;
+    //height:50%;
+}
+
+
+.time-scale .cell .content {
+    display: table;
+    height:100%;
+    width:100%;
+}
+
+.time-scale .date {
+	text-align: right;
+	display:table-cell;
+	font-size: x-large;
+	font-size: 150%;
+	vertical-align: middle;
+	padding-right: 2px;
+	color: @grayColor;
+	width:50%;
+}
+
+.time-scale .other {
+	width:50%;
+	text-align: left;
+	display:table-cell;
+	vertical-align: middle;
+	padding-left: 2px;
+	font-size:70%;
+	line-height: 1em;
+	
+}
+
+.time-scale .weekday {
+	color:@grayColor;
+}
+
+.time-scale .holiday {
+	color:@alertColor;
+}
+
+.time-scale .month {
+	color:@x-lightGrayColor;
+}
+
+.time-scale .cell {
+	border-left: 1px solid @xxx-lightGrayColor;
+}
+
+.time-scale .cell:first-child {
+	border-left: 1px solid @xxx-lightGrayColor;
+}
+.time-scale .cell:last-child {
+	border-right: 1px solid @xxx-lightGrayColor;
+}
+

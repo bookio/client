@@ -1,0 +1,28 @@
+@import "../bookio.less";
+
+
+.image-picker {
+
+    max-width: 400px;
+    max-height: 400px;
+    overflow: auto;
+    padding: 1em;
+	
+    table > tbody > tr > td {
+        padding:4px;
+    }
+    
+    table > tbody > tr > td > img {
+       
+        border: 1px solid transparent;
+        
+	    &.selected:hover,
+		&:hover {
+		    border: 1px solid @hoverBackgroundColor;
+		    cursor:pointer;
+		}
+	    &.selected {
+		    border: 1px solid @x-lightGrayColor;
+	    }
+    }
+}

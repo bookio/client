@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="utf-8"/>
+	</head>
+	
+	<body>
+	
+	<div class="container span9">
+	
+	
+	  	<ul class="nav nav-pills">
+			<li class="active"><a href="#settings-tab-company-data" data-toggle="tab">Uppgifter om ditt företag</a></li>
+			<li><a href="#settings-tab-mandatory-customer-info" data-toggle="tab">Kunduppgifter</a></li>
+			<li><a href="#settings-booking-group" data-toggle="tab">Bokningsgrupper</a></li>
+			<li><a href="#settings-users" data-toggle="tab">Användare</a></li>
+		</ul>
+		
+		
+		<div class="tab-content">
+		
+		
+			<!-- TAB COMPANY DATA	-->
+		
+			<div class="tab-pane active" id="settings-tab-company-data">	
+		 	      	 <div class="well">
+				<form class="form-horizontal">
+				
+				  <div class="control-group">
+				    <label class="control-label" for="inputCompanyName">Företagsnamn</label>
+				    <div class="controls">
+				      <input type="text" id="inputCompanyName" placeholder="" class="span6">
+				    </div>
+				  </div>
+				  
+				  <div class="control-group">
+				    <label class="control-label" for="inputPhone">Telefon</label>
+				    <div class="controls">
+				      <input type="text" id="inputPhone" placeholder="" class="span6">
+				    </div>
+				  </div>
+				  
+				  <div class="control-group">
+				    <label class="control-label" for="inputEmail">E-post</label>
+				    <div class="controls">
+				      <input type="text" id="inputEmail" placeholder="" class="span6">
+				    </div>
+				  </div>
+		
+				  <div class="control-group">
+				    <label class="control-label" for="inputHomePage">Hemsida</label>
+				    <div class="controls">
+				      <input type="text" id="inputHomePage" placeholder="" class="span6">
+				    </div>
+				  </div>
+		
+				  <div class="control-group">
+				    <label class="control-label" for="inputAddress">Adress</label>
+				    <div class="controls">
+				      <textarea rows="4" type="text" id="inputAddress" placeholder="" class="span6"></textarea>
+				    </div>
+				  </div>
+				</div>
+				</form>
+				
+			  <div class="text-center">
+				    <button id="settings-save-company-data-button" class="btn btn-large btn-primary">Spara</button>
+			  </div>
+				
+			</div> <!-- tab-pane -->
+			
+			
+			<!-- TAB MANDATORY CUSTOMER INFO	-->
+			
+		    <div class="tab-pane" id="settings-tab-mandatory-customer-info">
+		    
+		    	<div class="well">
+		    
+					<form>
+					
+						<legend>Vid bokning måste kund ange</legend>
+					
+				    	<label class="checkbox">
+				        	<input type="checkbox" id="settings-mandatory-phone"> Telefon
+				        </label>
+					  
+				    	<label class="checkbox">
+				        	<input type="checkbox" id="settings-mandatory-email"> E-post
+				        </label>
+					  
+				    	<label class="checkbox">
+				        	<input type="checkbox" id="settings-mandatory-address"> Adress
+				        </label>
+	
+				    </form>
+			    
+		    	</div>
+		    	
+		    	<div class="text-center">
+					<button class="btn btn-large btn-primary">Spara</button>
+				</div>
+
+		    </div> <!-- tab-pane -->
+
+
+			<!-- TAB BOOKING GROUP	-->
+			
+		    <div class="tab-pane" id="settings-booking-group">
+		    
+		    	<div class="well">
+					<select class="span8" size="5">
+					  <option>Hotellrum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Boka våra bekväma hotellrum, frukost ingår.</option>
+					  <option>Bilar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vi har allt från små elbilar till Hummer-limousin</option>
+					  <option>Massage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Denna vecka 15% rabatt på all nackmassage</option>
+					  <option>Tennis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gerdahallens 8 banor ger dig tillfälle till motion i anrika lokaler.</option>
+					</select>
+										
+					<div class="controls controls-row buttons">
+						<button class="btn btn-success">Ny</button>
+						<button class="btn btn-danger">Radera</button>
+					</div>
+					
+		    	</div> <!-- well -->
+		    	
+		        <div class="row-fluid">
+	        
+			        <div class="span6">
+			        	<legend>Bokning via sökväg</legend>
+			        	<div class="control-group alert alert-info">
+			        	<input type="text" class="input-xlarge" id="settings-inputInfo" value="http://bookio.com?jhjhgkjh87687df" disabled>
+			        	<span class="help-inline">Kopiera denna länk och använd på hemsida, sms eller i e-post. Kunden klickar sen på länken och kommer till bokningen.</span>
+			        	</div>
+			        </div>
+			        
+			        <div class="span6">
+			        	<legend>Bokning via QR-kod</legend>
+			        	<div class="control-group alert alert-info">
+						<img src="images/sample-qr.png" height="40" width="40" class="img-polaroid">
+						<span class="help-inline">QR-koden kan du använda i tryckt material, annonser eller på en 'sticker'. Kunden riktar sin mobil mot koden (med en QR-läsare) och länkas automatiskt till sidan för bokning.</span>
+			        	</div>
+			        </div>
+			        
+			    </div>
+		    	
+		    </div> <!-- tab-pane -->
+
+
+			<!-- TAB USERS	-->
+			
+		    <div class="tab-pane fade" id="settings-users">
+		    
+		    	<form>
+		    	
+		    		<div class="well">
+
+						<select class="span8" size="8">
+						  <option>Joakim Bengtson</option>
+						  <option>Magnus Egelberg</option>
+						  <option>Justin Bieber</option>
+						  <option>Östen Ås</option>
+						</select>
+						
+						<div class="controls controls-row buttons">
+							<button class="btn btn-success">Ny</button>
+							<button class="btn btn-danger">Radera</button>
+						</div>
+						
+					</div> <!-- well -->
+
+		    	</form>
+
+		    </div> <!-- tab-pane -->
+
+			
+		</div>
+				      		      	    
+	</div>
+    
+	</body>
+
+</html>

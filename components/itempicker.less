@@ -1,0 +1,83 @@
+@import "../bookio.less";
+
+
+
+.item-picker {
+
+    display:table;
+    table-layout: fixed;
+    border-spacing: 1px; 
+    padding: 0px 4px 0px 4px;
+	
+	.item-picker-row {
+	    display:table-row;
+	}
+
+    	
+	.item-picker-cell {
+	    display: table-cell;
+	    vertical-align: middle;
+	    text-align: left;
+	    padding: 0px 4px 0px 4px;
+	    white-space: nowrap;
+
+	    &.selected:hover,
+		&:hover {
+		    cursor:pointer;
+		    color: @hoverTextColor;
+		    .vertical-gradient(@hoverBackgroundColor, darken(@hoverBackgroundColor, 5%));
+		    .border-radius(1px);
+		}
+
+		&.heads-up:hover {
+		    color: @hoverTextColor;
+		}
+		
+		&.center {
+		    text-align: center;
+		}
+		
+		&.left {
+		    text-align: left;
+		}
+		
+		&.right {
+		    text-align: right;
+		}
+		
+		&.heads-up {
+		    color: @alertColor;
+		}
+		
+		&.bold {
+		    font-weight: bold;
+		}
+		
+		&.disabled {
+		    color: @disabledColor;
+		}
+		
+		&.selected {
+		    border: 1px solid fadeout(@disabledColor, 90%);
+		    background: fadeout(@disabledColor, 90%);
+		}
+		
+		&.small {
+		    font-size:small;
+		}	
+		
+		&.x-small {
+		    font-size:x-small;
+		}	
+		
+		&.disabled:hover {
+		  color: @disabledColor;
+		  background-color: transparent;
+		  background-image: none;
+		  cursor:default;
+		}
+	
+
+	}
+	
+}

@@ -1,6 +1,6 @@
 
 
-define(['jquery', 'less!components/modal', 'components/popover'], function($) {
+define(['jquery', 'less!components/modal'], function($) {
 
 	Modal = function(options) {
 
@@ -26,12 +26,9 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 					'<div class="modal-header">'+
 						'<button type="button" class="close" aria-hidden="true">&times;</button>'+
 					'</div>'+
-				'<div class="modal-body "></div>';
-				
-				'<div class="modal-footer">'+
-					'<button type="button" class="btn ok-button">OK</button>'+
-					'<button type="button" class="btn cancel-button">Cancel</button>'+
+					'<div class="modal-body">'+
 				'</div>';
+				
 			
 			_modal = $(bodyTemplate).appendTo($('body'));
 			
@@ -48,7 +45,7 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 				$(_options.content).appendTo(body);
 			}
 				
-			_modal.find('.close').click(function(){
+			_modal.find('.close').on('click', function(){
 				_options.onClose();
 			});		
 
@@ -65,15 +62,17 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 			// Make some late modifications the position when we have the size
 			_modal.css({left: Math.floor((windowWidth - modalWidth) / 2), top:Math.floor((windowHeight - modalHeight) / 3)});
 
-			_modal.modal({show:false});
+			_modal.modal({show:false, backdrop:'static', keyboard:true});
 		};
 		
 		function show() {
-		  _modal.modal('show');
+		    if (_modal)
+        		_modal.modal('show');
 		}
 		
 		function close() {
-		  _modal.modal('hide');
+		    if (_modal)
+        		_modal.modal('hide');
 		}
 		
 		init();

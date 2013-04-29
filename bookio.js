@@ -1,15 +1,4 @@
 
-
-// MEG!
-//@codekit-prepend "scripts/gopher.js"
-// 2
-// MEG 4
-// 5
-// 6
-// 7
-// 8
-// 9
-
 define(['jquery', 'scripts/gopher'], function($) {
 
 

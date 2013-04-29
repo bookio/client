@@ -352,7 +352,15 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		
 		}
 		
+		function enableEscKey() {
 		
+            $(document).on('keyup.desktop', function(event) {
+                if (event.keyCode == 27)
+                	console.log('ESC');
+            });
+	            
+	    };
+				
 		function init() {
 				
 			var template = 
@@ -391,7 +399,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
             // Remove all my notifications when the element is destroyed
             _element.on('removed', function() {
                 Notifications.off('.desktop');
-            })
+                $(document).off('.desktop');
+            });
 
 			var spinner = new Spinner({
     			container:_element,
@@ -421,6 +430,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     			
 			});
 			
+			enableEscKey();
+	        				
 		};
 		
 		function positionItem(item, col, row, speed) {
@@ -533,6 +544,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		Model.Reservations.remove(reservation);
 
 		}
+		
 		function editReservation(reservation) {
 
 			var module = require('pages/new-reservation');

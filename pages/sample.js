@@ -151,31 +151,6 @@
         	        	type: 'separator'
     	        	});
     	        	
-   /* 	        	menu.add({
-        	        	type: 'menuitem',
-        	        	icon: 'images/icons/add.png',
-        	        	click: function() {
-        		        	var module = require('pages/new-rental');
-            	        	module();
-        	        	}
-    	        	});
-    	        	
-    	        	menu.add({
-        	        	type: 'separator'
-    	        	});
-    	        	
-    	        	menu.add({
-        	        	type: 'menuitem',
-        	        	icon: 'images/icons/trash.png',
-        	        	click: function() {
-            	        	_desktop.removeSelectedRental();
-        	        	}
-    	        	});
-
-    	        	menu.add({
-        	        	type: 'separator'
-    	        	});
-*/    	        	
     	        	menu.add({
         	        	type: 'menuitem',
         	        	icon: !_desktop.editMode() ? 'images/icons/edit-desktop.png' : 'images/icons/edit-desktop-off.png',
@@ -214,7 +189,7 @@
 	        	_timeScale.endDate(date.addDays(14)); 
 	        	
 	        	sliderChanged();
-	        	
+	        		        	
 		    };
 		    
         	function scroll(delta) {
@@ -229,6 +204,7 @@
 	    	$('body').append(_html);
           
 	    	init();
+	    	
 
 	    }
 	    

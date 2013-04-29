@@ -273,6 +273,7 @@
 	        }        
 	        
 	        function enableEnterKey() {
+	        
 	            _elements.html.on('keydown', function(event) {
 	                //if (event.keyCode == 13)
 	                  //  _elements.okButton.trigger('click');

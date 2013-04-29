@@ -54,7 +54,7 @@
             _desktop.endDate(selectionEndDate);
 
             
-            NotifyUpdate(selectionStartDate, selectionEndDate)
+            NotifyUpdate(selectionStartDate, selectionEndDate);
             
             triggerEvent();
 		}
@@ -75,7 +75,7 @@
             _timeScale.startDate(rangeStartDate);
             _timeScale.endDate(rangeEndDate);
             
-            NotifyUpdate(selectionStartDate, selectionEndDate)
+            NotifyUpdate(selectionStartDate, selectionEndDate);
 
             triggerEvent();
 		}
@@ -96,7 +96,7 @@
             _timeScale.startDate(rangeStartDate);
             _timeScale.endDate(rangeEndDate);
             
-            NotifyUpdate(selectionStartDate, selectionEndDate)
+            NotifyUpdate(selectionStartDate, selectionEndDate);
 
             triggerEvent();
 		} 

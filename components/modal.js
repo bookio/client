@@ -33,11 +33,12 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 					'<button type="button" class="btn cancel-button">Cancel</button>'+
 				'</div>';
 			
-			var modal  = $(bodyTemplate).appendTo($('body'));
-			var header = modal.find('.modal-header');
-			var body   = modal.find('.modal-body');
+			_modal = $(bodyTemplate).appendTo($('body'));
 			
-			modal.css({margin: '0px', width:'auto', height:'auto'});
+			var header = _modal.find('.modal-header');
+			var body   = _modal.find('.modal-body');
+			
+			_modal.css({margin: '0px', width:'auto', height:'auto'});
 			
 			if (_options.title) {
 				$('<label></label>').text(_options.title).appendTo(header);
@@ -47,23 +48,24 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 				$(_options.content).appendTo(body);
 			}
 				
-			modal.find('.close').click(function(){
+			_modal.find('.close').click(function(){
 				_options.onClose();
 			});		
 
-			modal.find('hidden').click(function(){
-				modal.remove();
+			_modal.on('hidden', function(){
+				_modal.remove();
+				_modal = null;
 			});		
 
         	var windowWidth = $(window).innerWidth();
         	var windowHeight = $(window).innerHeight();
-        	var modalWidth = modal.outerWidth();
-        	var modalHeight = modal.outerHeight();
+        	var modalWidth = _modal.outerWidth();
+        	var modalHeight = _modal.outerHeight();
 			
 			// Make some late modifications the position when we have the size
-			modal.css({left: Math.floor((windowWidth - modalWidth) / 2), top:Math.floor((windowHeight - modalHeight) / 3)});
+			_modal.css({left: Math.floor((windowWidth - modalWidth) / 2), top:Math.floor((windowHeight - modalHeight) / 3)});
 
-			_modal = modal;
+			_modal.modal({show:false});
 		};
 		
 		function show() {
@@ -72,7 +74,6 @@ define(['jquery', 'less!components/modal', 'components/popover'], function($) {
 		
 		function close() {
 		  _modal.modal('hide');
-		  _modal = null;
 		}
 		
 		init();

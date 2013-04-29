@@ -30,6 +30,8 @@ define(['jquery', 'scripts/gopher'], function($) {
 		
 	};
 	
+	a = 3;// JBN
+	
 	Application = Module;
 	
 	// Return the module

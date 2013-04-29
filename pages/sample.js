@@ -178,7 +178,7 @@
 */    	        	
     	        	menu.add({
         	        	type: 'menuitem',
-        	        	icon: !_desktop.editMode() ? 'images/icons/edit-desktop.png' : 'images/icons/edit-desktop.png',
+        	        	icon: !_desktop.editMode() ? 'images/icons/edit-desktop.png' : 'images/icons/edit-desktop-off.png',
         	        	click: function() {
             	           _desktop.editMode(!_desktop.editMode());	
         	        	},

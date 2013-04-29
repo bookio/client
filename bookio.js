@@ -1,4 +1,3 @@
-// MEG was here
 
 define(['jquery', 'scripts/gopher'], function($) {
 
@@ -29,8 +28,6 @@ define(['jquery', 'scripts/gopher'], function($) {
 		init();
 		
 	};
-	
-	a = 3;// JBN
 	
 	Application = Module;
 	

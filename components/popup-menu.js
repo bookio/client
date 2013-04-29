@@ -39,8 +39,13 @@ define(['jquery',  'less!components/popup-menu', '../scripts/tools', './popover'
             var context = item.context;
             var icon    = item.icon;
             
-            var element = $('<li class="menuitem"><div class="text"></div></li>');
+            var element = $('<li class="menuitem"></li>');
 
+            if (isString(text)) {
+                var div = $('<div class="text"></div>').appendTo(element);
+                div.text(text);
+            }
+            
             if (isString(icon)) {
                 var div = $('<div class="icon"><img/></div>').appendTo(element);
                 var img = div.find('img');

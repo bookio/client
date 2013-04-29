@@ -11,28 +11,22 @@
     ul {
         list-style-type: none;
         list-style: none;
-        //padding:0.5em;
         margin:0px;
     }
     
     li {
-        //border:1px solid red;
     }
 
 	// type:menuitem
     li.menuitem {
-	    //padding-left: 0.5em;
-	    //padding-right: 0.5em;
 	    vertical-align: middle;
-	    //display: table;
 	    width:100%;
 	}
 
-    li:not(.disabled).menuitem div.icon:hover {
+    li.menuitem:not(.disabled):hover {
 	    cursor:pointer;
 	    color: @hoverTextColor;
 	    .vertical-gradient(@hoverBackgroundColor, darken(@hoverBackgroundColor, 5%));
-	    //.vertical-gradient(@xx-lightGrayColor, @x-lightGrayColor);
 	    .border-radius(1px);
 	}
 
@@ -46,20 +40,21 @@
 	}
 	
 	li.menuitem div.text {
-    	display:table-cell;
+	
 	    vertical-align: middle;
         padding-left:0.5em;
         padding-right:0.5em;
+        left:0.5em;
+        right:0.5em;
+        
 	}
 	
     li.menuitem div.icon {
 	    vertical-align: middle;
-        //display:table-cell;
         padding-left:0.5em;
         padding-right:0.5em;
         padding-top:1em;
         padding-bottom:1em;
-        //opacity: 0.1;
         text-align: center;
 	}
 

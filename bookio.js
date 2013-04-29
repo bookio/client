@@ -7,7 +7,6 @@ define(['jquery', 'scripts/gopher'], function($) {
 		var _root = null;
 	    	
 		function init() {
-			//_root = $('bödy');
 			_root = $('body');
 		}
 		

@@ -355,8 +355,10 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		function enableEscKey() {
 		
             $(document).on('keyup.desktop', function(event) {
-                if (event.keyCode == 27)
-                	console.log('ESC');
+            	
+                if (event.keyCode == 27) {
+                	self.editMode(false);
+                }
             });
 	            
 	    };
@@ -365,7 +367,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 				
 			var template = 
 				'<div class="desktop">'+
-					'<div class="addButton"></div><div class="watermark">'+
+					'<div class="addButton"></div><div class="closeButton"></div><div class="watermark">'+
 					'</div>'+
 				'</div>';
 			
@@ -395,6 +397,12 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 	        	var module = require('pages/new-rental');
 	        	module();
 	        });
+	        
+	        
+            _element.find('.closeButton').on("mousedown touchstart", function(event) {
+                self.editMode(false);
+	        });
+
 
             // Remove all my notifications when the element is destroyed
             _element.on('removed', function() {
@@ -554,20 +562,29 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		});
 		}
 		
-		function showEditModeWaterMark() {
+		function SetupEditMode() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'url(images/watermark-edit-mode.png)'});
 			
 			_element.find('.addButton').append('<img class="icon" src=images/icons/add.png>');
+			bringItemToTop(_element.find('.addButton'));
+			
+			_element.find('.closeButton').append('<img class="icon" src=images/icons/close.png>');
+			bringItemToTop(_element.find('.closeButton'));
 
 		}
 		
 
-		function hideEditModeWaterMark() {
+		function CloseEditMode() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'none'});
 			
+			// Remove buttons from desktop
 			_element.find('.addButton').text('');
+			_element.find('.closeButton').text('');
+
+			// Remove delete icon on items
+            _element.find('.deleteItem').text('');
 
 		}
 
@@ -657,10 +674,11 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                     _element.find('.deleteItem').text('');
                 }
                 
-                item.find('.title').addClass('selected');  
+                item.find('.title').addClass('selected');
+                // Show delete icon if selected  
             	item.find('.deleteItem').append('<img class="icon" src=images/icons/icon-delete.png>');
                 
-                $(document).on(isTouch() ? 'touchmove.desktop' : 'mousemove.desktop', function(event){
+                $(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
 
 					event.preventDefault();
 					event.stopPropagation();
@@ -683,7 +701,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                     
                 });
                 
-                $(document).on(isTouch() ? 'touchend.desktop' : 'mouseup.desktop', function(event){
+                $(document).on(isTouch() ? 'touchend.desktop-dragdrop' : 'mouseup.desktop-dragdrop', function(event){
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -701,8 +719,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                     var row = Math.round((y - _options.iconSpacing) / (_options.iconSize + _options.iconSpacing));
                     var col = Math.round((x - _options.iconSpacing) / (_options.iconSize + _options.iconSpacing));
 
-
-                    $(document).off(".desktop");
+                    $(document).off(".desktop-dragdrop");
                     
                     if (moved) {
                     
@@ -726,12 +743,9 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		        
 		    // Show user if he is in edit mode
 		    if (value)
-		    	showEditModeWaterMark();	    
-		    else {
-		    	hideEditModeWaterMark();
-		    	// Remove delete icon
-                _element.find('.deleteItem').text('');
-		    }
+		    	SetupEditMode();	    
+		    else
+		    	CloseEditMode();
 		    
 		    _editMode = value ? true : false;
 		    

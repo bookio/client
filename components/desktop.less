@@ -8,6 +8,13 @@
 
 }
 
+.desktop.editMode {
+
+	outline: 2px solid @bookioGreen;
+	outline-offset: -2px;
+		
+}
+
 .desktop .watermark {
 	position: absolute;
     top:0px;left:0px;right:0px;bottom:0px;
@@ -27,13 +34,11 @@
     .drop-shadow(1px, 1px, 4px, 1px, hsla(0, 0, 0, 20%));
     .vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
     .border-radius(10px);
-    
 }
-
 
 .desktop .addButton {
 	position: absolute;
-    top:2px;left:auto;right:51px;bottom:2px;
+    top:4px;left:auto;right:53px;bottom:auto;
 	cursor: pointer;
 	opacity:0.8;
 	
@@ -46,7 +51,7 @@
 
 .desktop .closeButton {
 	position: absolute;
-    top:2px;left:auto;right:2px;bottom:auto;
+    top:4px;left:auto;right:4px;bottom:auto;
 	cursor: pointer;
 	opacity:0.8;
 	
@@ -104,4 +109,8 @@
 
 .desktop .item:hover {
     cursor: pointer;
+<<<<<<< HEAD
  }
+=======
+}
+>>>>>>> added frame in edit mode

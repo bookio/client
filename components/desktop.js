@@ -562,6 +562,10 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		});
 		}
 		
+		function BounceAddButton() {			
+			_element.find('.icon').transition({ top: 305 }, 1000, 'easeInSine');
+		}
+		
 		function SetupEditMode() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'url(images/watermark-edit-mode.png)'});
@@ -571,6 +575,10 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 			
 			_element.find('.closeButton').append('<img class="icon" src=images/icons/close.png>');
 			bringItemToTop(_element.find('.closeButton'));
+			
+			_element.addClass('editMode');
+			
+			BounceAddButton();
 
 		}
 		
@@ -585,6 +593,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 
 			// Remove delete icon on items
             _element.find('.deleteItem').text('');
+            
+            _element.removeClass('editMode');
 
 		}
 

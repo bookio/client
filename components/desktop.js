@@ -1,5 +1,4 @@
 
-
 define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner', 'components/itempicker', 'components/popup-menu', 'components/notify', 'pages/new-rental'], function($) {
 
     
@@ -167,7 +166,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		
 		function newReservation(rental) {
 			var module = require('pages/new-reservation');
-		
+
 			var reservation = {};
 			reservation.begin_at = startDate();
 			reservation.end_at = endDate();

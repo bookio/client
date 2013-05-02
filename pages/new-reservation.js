@@ -16,16 +16,16 @@
 		var Modal = require('components/modal');
 		var Notify = require('components/notify');
 		
-	    var _elements = {};
-	    var _popupMenu = null;
-	    var _timer = null;
-	    var _modal = null;
-	    var _rental = {};
-	    var _customer = {};
-	    var _reservation = {};
-	    
 	    function doModal(options) {
 	
+    	    var _elements = {};
+    	    var _popupMenu = null;
+    	    var _timer = null;
+    	    var _modal = null;
+    	    var _rental = {};
+    	    var _customer = {};
+    	    var _reservation = {};
+    	    
 			function search() {
                 var query = _elements.contact.val().trim();
     

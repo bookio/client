@@ -17,7 +17,6 @@
 		var Modal = require('components/modal');
 		var Gopher = require('scripts/gopher');
 		var Notify = require('components/notify');
-		
 	
 	    function doModal(options) {
 	

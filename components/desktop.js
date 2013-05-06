@@ -562,7 +562,9 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		}
 		
 		function BounceAddButton() {			
-			_element.find('.icon').transition({ top: 305 }, 1000, 'easeInSine');
+			_element.find('.icon').transition({ scale: 2 }, 400);
+			_element.find('.icon').transition({ scale: 1 }, 400);
+			
 		}
 		
 		function SetupEditMode() {
@@ -586,6 +588,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'none'});
 			
+			// Fade out buttons
+			_element.find('.icon').transition({ opacity: 0 }, 4000);
 			// Remove buttons from desktop
 			_element.find('.addButton').text('');
 			_element.find('.closeButton').text('');

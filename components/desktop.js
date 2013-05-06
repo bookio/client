@@ -561,9 +561,10 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		});
 		}
 		
-		function BounceAddButton() {			
-			_element.find('.icon').transition({ scale: 2 }, 400);
-			_element.find('.icon').transition({ scale: 1 }, 400);
+		function BounceAddButton() {	
+			_element.find('.icon').transition({ scale: 4 }, 3000);
+
+			_element.find('.icon').transition({ left: -1000}, 3000);
 			
 		}
 		

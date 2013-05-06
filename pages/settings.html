@@ -6,7 +6,7 @@
 	
 	<body>
 	
-	<div class="container span9">
+	<div class="container span9 settings">
 	
 	
 	  	<ul class="nav nav-pills">
@@ -29,43 +29,40 @@
 				  <div class="control-group">
 				    <label class="control-label" for="inputCompanyName">Företagsnamn</label>
 				    <div class="controls">
-				      <input type="text" id="inputCompanyName" placeholder="" class="span6">
+				      <input type="text" id="inputCompanyName" placeholder="" class="name span6">
 				    </div>
 				  </div>
 				  
 				  <div class="control-group">
 				    <label class="control-label" for="inputPhone">Telefon</label>
 				    <div class="controls">
-				      <input type="text" id="inputPhone" placeholder="" class="span6">
+				      <input type="text" id="inputPhone" placeholder="" class="phone span6">
 				    </div>
 				  </div>
 				  
 				  <div class="control-group">
 				    <label class="control-label" for="inputEmail">E-post</label>
 				    <div class="controls">
-				      <input type="text" id="inputEmail" placeholder="" class="span6">
+				      <input type="text" id="inputEmail" placeholder="" class="email span6">
 				    </div>
 				  </div>
 		
 				  <div class="control-group">
 				    <label class="control-label" for="inputHomePage">Hemsida</label>
 				    <div class="controls">
-				      <input type="text" id="inputHomePage" placeholder="" class="span6">
+				      <input type="text" id="inputHomePage" placeholder="" class="webpage span6">
 				    </div>
 				  </div>
 		
 				  <div class="control-group">
 				    <label class="control-label" for="inputAddress">Adress</label>
 				    <div class="controls">
-				      <textarea rows="4" type="text" id="inputAddress" placeholder="" class="span6"></textarea>
+				      <textarea rows="4" type="text" id="inputAddress" placeholder="" class="address span6"></textarea>
 				    </div>
 				  </div>
 				</div>
 				</form>
 				
-			  <div class="text-center">
-				    <button id="settings-save-company-data-button" class="btn btn-large btn-primary">Spara</button>
-			  </div>
 				
 			</div> <!-- tab-pane -->
 			
@@ -96,9 +93,6 @@
 			    
 		    	</div>
 		    	
-		    	<div class="text-center">
-					<button class="btn btn-large btn-primary">Spara</button>
-				</div>
 
 		    </div> <!-- tab-pane -->
 
@@ -149,7 +143,6 @@
 			
 		    <div class="tab-pane fade" id="settings-users">
 		    
-		    	<form>
 		    	
 		    		<div class="well">
 
@@ -160,17 +153,45 @@
 						  <option>Östen Ås</option>
 						</select>
 						
+						<div class="well user-data" style="display:none">
+
+                            <div class="row-fluid">
+                            
+                    	        <div class="span6">
+                    	        	<label>Namn
+                    	        	<input type="text" class="when span12" value="" placeholder="" title="" disabled/>
+                    	        	</label>
+                    	        </div>
+                    	        
+                    	        <div class="span6">
+                    	        	<label>E-post
+                    	        	<input type="text" class="price span12" value="" placeholder="Kostnad" title=""/>
+                    	        	</label>
+                    	        </div>
+                    
+                            </div>
+        
+        				    <label class="control-label">Namn
+            				    <div class="controls">
+            				      <input type="text" placeholder="" class="span2">
+            				    </div>
+        				    </label>
+						  
+						</div>
+						
 						<div class="controls controls-row buttons">
 							<button class="btn btn-success">Ny</button>
-							<button class="btn btn-danger">Radera</button>
+							<button class="btn btn-danger foo">RaderaX</button>
 						</div>
 						
 					</div> <!-- well -->
 
-		    	</form>
-
+		    	
 		    </div> <!-- tab-pane -->
 
+	    	<div class="text-center">
+				<button class="btn btn-large btn-primary ok-button">Spara</button>
+			</div>
 			
 		</div>
 				      		      	    

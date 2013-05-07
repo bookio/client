@@ -561,10 +561,13 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     		});
 		}
 		
-		function BounceAddButton() {	
-			_element.find('.icon').transition({ scale: 4 }, 3000);
+		function BounceButtons() {	
+					
+			_element.find('.closeButton').transition({ scale: 2 }, 300);
+			_element.find('.closeButton').transition({ scale: 1 }, 400);
 
-			_element.find('.icon').transition({ left: -1000}, 3000);
+			_element.find('.addButton').transition({ scale: 2 }, 300);
+			_element.find('.addButton').transition({ scale: 1 }, 400);
 			
 		}
 		
@@ -580,7 +583,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 			
 			_element.addClass('editMode');
 			
-			BounceAddButton();
+			BounceButtons();
 
 		}
 		

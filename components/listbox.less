@@ -1,0 +1,98 @@
+@import "../bookio.less";
+
+
+.listbox {
+
+	outline: 2px solid @xx-lightGrayColor;
+	outline-offset: -2px;
+	height:100%;
+	width:100%;
+	background: white;
+	overflow: scroll;
+	
+
+    //.drop-shadow(1px, 1px, 4px, 1px, hsla(0, 0, 0, 20%));
+    //.vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
+    //.border-radius(8px);
+
+	table {
+        padding: 4px;
+        width:100%;
+		//table-layout: fixed;
+		border-collapse:separate;
+		//border-spacing: 0.2em;
+		line-height: 95%;
+	}
+	
+    th, tr, td {
+    	padding: 0.3em;
+    }	
+    
+    tr {
+	    
+    }
+    thead  {
+        
+    }
+    
+    tbody {
+
+        tr:hover {
+            background: rgba(0,0,235,0.9);
+            color: white;  
+        }
+    }
+
+
+
+	.dayX {
+        text-align: right;
+        color: @darkGrayColor;
+        border: 1px solid transparent;
+		
+		&.holiday {
+		    color: @alertColor;
+		}
+		
+		&.bold {
+		    font-weight: bold;
+		}
+		
+		&.grayed {
+		    color: fadeout(@darkGrayColor, 85%);
+		}
+		
+		&.disabled {
+		    color: fadeout(@darkGrayColor, 85%);
+		}
+		
+		&.selected {
+		    border: 1px solid fadeout(@disabledColor, 80%);
+		    background: fadeout(@disabledColor, 80%);
+			//.inner-shadow(0px, 0px, 2px, 2px, fadeout(white, 70%));	
+		}
+		
+		&.grayed.holiday {
+		    color: fadeout(mix(@darkGrayColor, @alertColor), 85%);
+		}
+		
+	    &:not(.grayed):hover {
+			cursor:pointer;
+			color: @hoverTextColor;
+			.vertical-gradient(@hoverBackgroundColor, darken(@hoverBackgroundColor, 5%));
+			.border-radius(1px);
+
+	    }    	
+	    
+	    &.grayed:hover {
+			cursor:pointer;
+			color: @hoverTextColor;
+			.vertical-gradient(@xx-lightGrayColor, darken(@xx-lightGrayColor, 5%));
+			.border-radius(1px);
+
+	    }    	
+	}
+
+	
+	
+}

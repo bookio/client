@@ -6,7 +6,8 @@
 		'jquery', 
 		'text!./settings.html', 
 		'less!./settings', 
-		'components/modal'
+		'components/modal',
+		'components/listbox'
 	];
 
 	define(modules, function($, html) {
@@ -17,7 +18,8 @@
     	    var _modal = null;
     	    var _gopher = new Gopher();
     	    var _info = null;
-
+    	    var _users = null;
+    	    
 			var _defaults = {
 			};
 	
@@ -86,7 +88,10 @@
     	    	    _elements.email = _elements.html.find('.email');
     	    	    _elements.address = _elements.html.find('.address');
     	    	    _elements.webpage = _elements.html.find('.webpage');
+    	    	    _elements.users = _elements.html.find('.users');
         
+    	    	    _users = new ListBox({container:_elements.users});
+    	    	    
     	    	    _elements.html.find('.foo').on('click', function(){
         	    	    var foo = _elements.html.find('.user-data');
         	    	     

@@ -72,6 +72,15 @@
                 _info.address = _elements.address.val();
                 _info.webpage = _elements.webpage.val();
             }
+            
+            function loadUsers() {
+    			var request = _gopher.request('GET', 'users');
+    			
+    			request.done(function(users) {
+    			    _users.reset();
+        			_users.add(users);
+    			});
+            }
 	        
 	        function init() {
 	            
@@ -90,7 +99,7 @@
     	    	    _elements.webpage = _elements.html.find('.webpage');
     	    	    _elements.users = _elements.html.find('.users');
         
-    	    	    _users = new ListBox({container:_elements.users});
+    	    	    _users = new ListBox({container:_elements.users, columns: ['name', 'email', 'created_at']});
     	    	    
     	    	    _elements.html.find('.foo').on('click', function(){
         	    	    var foo = _elements.html.find('.user-data');
@@ -100,6 +109,8 @@
             	    	  else
             	    	    foo.slideDown('fast');
     	    	    });
+    	    	    
+    	    	    loadUsers();
     	    	    fill();
     	    	    
     	            _modal = new Modal({

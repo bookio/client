@@ -4,16 +4,18 @@
 define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, template) {
 
 	
-	ListBox = function(params) {
+	ListBox = function(settings) {
 	
 		// To avoid confusion (or NOT)
 		var self = this;
 
 		var _defaults = {
-			container: null
+			container: null,
+			selection: 'single',
+			columns: ['name', 'email']
 		};
 
-		var _params = $.extend({}, _defaults, params);
+		var _settings = $.extend({}, _defaults, settings);
 		var _elements = {};
         var _html = null;
         		
@@ -24,25 +26,44 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 		
 	    
 	    function enableListeners() {
+	    
 			
 		}
+
+        function addOne(item) {
+            var tr = $('<tr class="tablerow"></tr>');
+
+            $.each(_settings.columns, function(index, name) {
+                var td = $('<td class="cell"></td>');
+                td.text(item[name]);
+                td.appendTo(tr);                
+            });
+
+            tr.appendTo(_elements.tbody);
+            
+            tr.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
+                _elements.tbody.find('tr').removeClass('selected');
+                $(this).addClass('selected');
+            });
+            
+        }
+        
+        function addMany(items) {
+            $.each(items, function(index, item) {
+                addOne(item);
+            });
+        }
 		
         function init() {
             _html = $(template);
 
-            if (_params.container)
-                _html.appendTo(_params.container);
+            if (_settings.container)
+                _html.appendTo(_settings.container);
             
             _elements.thead = _html.find('thead');    
             _elements.tbody = _html.find('tbody');    
 
-            self.reset();
-            self.add(['Magnus Egelberg', 'magnus@bookio.com']);
-            self.add(['Joakim Bengtson', 'joakim@bookio.com']);
-            self.add(['Anders Petterson', 'joakim@bookio.com']);
-            self.add(['Lisa Nilsson', 'joakim@bookio.com']);
-            self.add(['Per Hultén', 'joakim@bookio.com']);
-            self.add(['Annika Bunke', 'joakim@bookio.com']);
+
             enableListeners();
             updateDOM();
         };
@@ -57,16 +78,13 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             _elements.tbody.empty();
             
         }
-        self.add = function(data) {
-            var tr = $('<tr class="tablerow"></tr>');
-
-            $.each(data, function(index, item) {
-                var td = $('<td class="cell"></td>');
-                td.text(item);
-                td.appendTo(tr);                
-            });
-
-            tr.appendTo(_elements.tbody);
+        
+        self.add = function(item) {
+        
+            if (isArray(item))
+                addMany(item);
+            else
+                addOne(item);
             
         }
                 

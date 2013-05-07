@@ -8,7 +8,7 @@
 	height:100%;
 	width:100%;
 	background: white;
-	overflow: scroll;
+	overflow-y: auto;
 	
 
     //.drop-shadow(1px, 1px, 4px, 1px, hsla(0, 0, 0, 20%));
@@ -37,13 +37,17 @@
     
     tbody {
 
-        tr:hover {
-            background: rgba(0,0,235,0.9);
+        tr.selected {
+            background: @bookioDarkerBlue;
+            color: white;  
+        }
+        Xtr:hover {
+            background: @bookioDarkerBlue; //rgba(0,0,235,0.9);
             color: white;  
         }
     }
 
-
+    
 
 	.dayX {
         text-align: right;

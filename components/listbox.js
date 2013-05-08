@@ -4,13 +4,12 @@
 define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, template) {
 
 	
-	ListBox = function(settings) {
+	var ListBox = function(element, settings) {
 	
 		// To avoid confusion (or NOT)
-		var self = this;
+		var plugin = this;
 
 		var _defaults = {
-			container: null,
 			selection: 'single',
 			columns: ['name', 'email']
 		};
@@ -18,16 +17,14 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 		var _settings = $.extend({}, _defaults, settings);
 		var _elements = {};
         var _html = null;
+        var _container = element;
         		
 		
 		function updateDOM() {
-			
 		}
 		
 	    
 	    function enableListeners() {
-	    
-			
 		}
 
         function addOne(item) {
@@ -41,11 +38,10 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 
             tr.appendTo(_elements.tbody);
             
-            tr.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
+            tr.on('touchstart mousedown', function(event) {
                 _elements.tbody.find('tr').removeClass('selected');
                 $(this).addClass('selected');
             });
-            
         }
         
         function addMany(items) {
@@ -56,44 +52,57 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 		
         function init() {
             _html = $(template);
-
-            if (_settings.container)
-                _html.appendTo(_settings.container);
+            _html.appendTo(_container);
             
             _elements.thead = _html.find('thead');    
             _elements.tbody = _html.find('tbody');    
-
 
             enableListeners();
             updateDOM();
         };
         
         
-        self.html = function() {
+        plugin.html = function() {
             return _html;
         }
         
-        self.reset = function() {
+        plugin.reset = function() {
             _elements.thead.empty();
             _elements.tbody.empty();
             
         }
         
-        self.add = function(item) {
-        
+        plugin.add = function(item) {
             if (isArray(item))
                 addMany(item);
             else
                 addOne(item);
-            
         }
                 
         init();
     };
-	
-	return ListBox;
-	
+
+
+
+    $.fn.listbox = function(params) {
+
+        var args = arguments;
+        
+        return this.each(function () {
+            var $this = $(this);
+            var data = $this.data('listbox');
+            
+            if (!data)
+                $this.data('listbox', (data = new ListBox($this, params)));
+
+            if (typeof params == 'string') {
+                return data[params].apply(this, Array.prototype.slice.call(args, 1));
+            }
+        });
+    }
 
 });
+
+
 
   

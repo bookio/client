@@ -18,7 +18,6 @@
     	    var _modal = null;
     	    var _gopher = new Gopher();
     	    var _info = null;
-    	    var _users = null;
     	    
 			var _defaults = {
 			};
@@ -77,8 +76,17 @@
     			var request = _gopher.request('GET', 'users');
     			
     			request.done(function(users) {
-    			    _users.reset();
-        			_users.add(users);
+    			    _elements.users.listbox('reset');
+    			    _elements.users.listbox('add', users);
+    			});
+            }
+
+            function loadCategories() {
+    			var request = _gopher.request('GET', 'categories');
+    			
+    			request.done(function(categories) {
+    			    _elements.categories.listbox('reset');
+    			    _elements.categories.listbox('add', categories);
     			});
             }
 	        
@@ -98,8 +106,10 @@
     	    	    _elements.address = _elements.html.find('.address');
     	    	    _elements.webpage = _elements.html.find('.webpage');
     	    	    _elements.users = _elements.html.find('.users');
-        
-    	    	    _users = new ListBox({container:_elements.users, columns: ['name', 'email', 'created_at']});
+    	    	    _elements.categories = _elements.html.find('.categories');
+    
+    	    	    _elements.users.listbox({columns: ['name', 'email']});
+    	    	    _elements.categories.listbox({columns: ['name', 'description']});
     	    	    
     	    	    _elements.html.find('.foo').on('click', function(){
         	    	    var foo = _elements.html.find('.user-data');
@@ -111,6 +121,7 @@
     	    	    });
     	    	    
     	    	    loadUsers();
+    	    	    loadCategories();
     	    	    fill();
     	    	    
     	            _modal = new Modal({

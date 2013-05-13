@@ -59,12 +59,12 @@
     	        
                 function showImagePicker() {
                     
-                    var images = [];
+                    /*var images = [];
                     
                     
                     for (var index = 0; index < _icons.length; index++) {
                         images.push(pathForImage(_icons[index].image));
-                    }
+                    }*/
                     
                     var click = function(index) {
                         picker.hide();
@@ -73,7 +73,7 @@
                     };
                     
                     var picker = new ImagePicker({
-                        images:images,
+                        icons:_icons,
                         click:click
                     }); 
                     
@@ -178,7 +178,6 @@
 		}
 		
 		return doModal;
-		
 	
 	});
 

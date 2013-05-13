@@ -362,9 +362,9 @@
 		                title: _reservation.id ? 'Bokning' : 'Ny bokning',
 		                content:_elements.html
 		            });            
-		
-		            _modal.show();
+
 		            _elements.contact.focus();
+		            _modal.show();
 		
 		            if (_customer)
 			            updateContactFromCustomer(_customer);
@@ -372,14 +372,14 @@
 		            enableButtonClicks();
 		            enableEnterKey();
 		            enableTypeahead();	
-		            updateDOM();				
+		            updateDOM();	
+			
 				});
 
 			}				        
 
 			
 			init();
-	        
 	        
 	
 	

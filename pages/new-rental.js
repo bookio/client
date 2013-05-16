@@ -68,9 +68,10 @@
                     var picker = new ImagePicker({
                         icons: _icons,
                         click: click,
+                        position: _elements.icon
                     }); 
                     
-                    picker.show(_elements.icon);
+                    picker.show();
                     
                 }           	        
                 _elements.selectSymbolButton.click(showImagePicker);

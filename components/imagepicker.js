@@ -23,20 +23,18 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
         var _html = null;
         var _container = null;
         var _popover = null;
-        var _position = null;
         		
 		
 		function buildDOM() {
 			
-            var template = $('<div><div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary active" data-filter="*">Allt</button><button type="button" class="btn btn-primary" data-filter=".Transport">Transport</button><button type="button" class="btn btn-primary" data-filter=".Boende">Boende</button><button type="button" class="btn btn-primary" data-filter=".Verktyg">Verktyg</button><button type="button" class="btn btn-primary" data-filter=".Aktivitet">Aktivitet</button><button type="button" class="btn btn-primary" data-filter=".Resurs">Resurs</button></div><div id="container"></div></div>').appendTo(_html);
+            var template = $('<div><div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary active" data-filter="*">Allt</button><button type="button" class="btn btn-primary" data-filter=".Transport">Transport</button><button type="button" class="btn btn-primary" data-filter=".Boende">Boende</button><button type="button" class="btn btn-primary" data-filter=".Verktyg">Verktyg</button><button type="button" class="btn btn-primary" data-filter=".Aktivitet">Aktivitet</button><button type="button" class="btn btn-primary" data-filter=".Resurs">Resurs</button><button type="button" class="btn btn-primary" data-filter=".Sport">Sport</button></div><div id="container"></div></div>').appendTo(_html);
             
             _container = template.find('#container');
             
+            // Fill container with symbols
             for (var i = 0; i < _options.icons.length; i++) {
 	        	var div = $('<div class="symbol ' + _options.icons[i].tags + '"></div>').appendTo(_container);
 
-        		// Add icon to div
-        		
                 var image = sprintf('images/symbols/%s',_options.icons[i].image);
     			var img = $('<img/>').attr('src', image).appendTo(div);
     			
@@ -68,41 +66,30 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
             $filterButtons.click(function() {
             	var selector = $(this).attr('data-filter');
             	_container.isotope({ filter: selector });   
-            	console.log("Filterbutton clicked");     	
 			});
                         			            
-            _container.isotope({
-	            itemSelector : '.symbol',
-	            layoutMode: 'fitRows',
-	            filter: '*'
-	        });
-	        
 	        _popover = new Popover({
-                content: self.html(),
-                position: _position
+                content: _html,
+                position: _options.position
             });
-
-	                    
+            
+	           	                    
         };
         
-        
-        self.show = function() {
-            
-            self.hide();
-            
-            _popover = new Popover({
-                position: _position,
-                content: self.html()
-            });
-            
+        self.show = function() {       
+                 
             _popover.show();            
+            _container.isotope({ filter: '*' });   // Redraw, or else the symbols are displayed in a single column.... :/
+
         }
         
         self.hide = function() {
                 	
             if (_popover != null)
                 _popover.hide();
-                
+            
+            _container.isotope('destroy');
+            
             _popover = null;
         }
         

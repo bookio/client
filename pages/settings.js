@@ -98,6 +98,11 @@
                     _info = info ? info : {};
 
     	            _elements.html = $(html);
+
+    	            _modal = new Modal({
+    	                title: 'Inställningar',
+    	                content:_elements.html
+    	            });      
     	           
     	            _elements.saveButton = _elements.html.find('.ok-button');
     	    	    _elements.name = _elements.html.find('.name');
@@ -108,8 +113,6 @@
     	    	    _elements.users = _elements.html.find('.users');
     	    	    _elements.categories = _elements.html.find('.categories');
     
-    	    	    _elements.users.listbox({columns: ['name', 'email']});
-    	    	    _elements.categories.listbox({columns: ['name', 'description']});
     	    	    
     	    	    _elements.html.find('.foo').on('click', function(){
         	    	    var foo = _elements.html.find('.user-data');
@@ -120,15 +123,14 @@
             	    	    foo.slideDown('fast');
     	    	    });
     	    	    
+    	    	    
+    	            
+    	    	    _elements.users.listbox({columns: ['name', 'email']});
+    	    	    _elements.categories.listbox({columns: ['name', 'description']});
+
     	    	    loadUsers();
     	    	    loadCategories();
     	    	    fill();
-    	    	    
-    	            _modal = new Modal({
-    	                title: 'Inställningar',
-    	                content:_elements.html
-    	            });      
-    	            
     	
     	            _modal.show();
     	      	    _elements.name.focus();

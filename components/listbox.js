@@ -6,7 +6,6 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 	
 	var ListBox = function(element, settings) {
 	
-		// To avoid confusion (or NOT)
 		var plugin = this;
 
 		var _defaults = {
@@ -50,12 +49,33 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             });
         }
 		
+		function adjustHeader() {
+		}
+
         function init() {
             _html = $(template);
             _html.appendTo(_container);
             
-            _elements.thead = _html.find('thead');    
-            _elements.tbody = _html.find('tbody');    
+            _elements.list = _html.find('.list');
+            _elements.footer = _html.find('.footer');
+            _elements.header = _html.find('.header');
+            _elements.thead = _elements.list.find('thead');    
+            _elements.tbody = _elements.list.find('tbody');    
+
+
+            /*
+            var x = _html.innerHeight();
+            var y = _elements.footer.outerHeight(true);
+            console.log("%f %f", x, y);
+            _elements.list.css({height:x - y});
+            */
+            
+            
+            $.each(_settings.columns, function(index, item) {
+                $('<div></div>').appendTo(_elements.header).text(item);
+            });
+            
+            console.log(_elements.header.outerHeight());
 
             enableListeners();
             updateDOM();
@@ -67,16 +87,15 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
         }
         
         plugin.reset = function() {
-            _elements.thead.empty();
             _elements.tbody.empty();
             
         }
         
-        plugin.add = function(item) {
-            if (isArray(item))
-                addMany(item);
+        plugin.add = function(param) {
+            if (isArray(param))
+                addMany(param);
             else
-                addOne(item);
+                addOne(param);
         }
                 
         init();

@@ -102,41 +102,9 @@ requirejs.config({
 
         Path.listen();
         
-        gotoWhatever();
+        //gotoWhatever();
+        gotoLogin();
         
-        if (myApp.gopher.username() == 'magnus@egelberg.seX') {
-            
-            var request1 = myApp.gopher.request('GET', 'icons');
-            var request2 = myApp.gopher.request('GET', 'customers');
-            
-            request1.done(function(){
-                debugger;
-                console.log("got 1");    
-            });
-            
-            request1.done(function(){
-                debugger;
-                console.log("got 1 again");    
-                
-            });
-            
-            $.when(request1).done(function(){
-                debugger;
-                console.log("got both");
-            });
-            
-            
-            /*
-            call.then(function(a, b){
-                debugger;
-            });
-            
-            call.fail(function(){
-                debugger;
-            });
-            
-            */
-        }
                 
     });
 

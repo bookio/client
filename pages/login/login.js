@@ -30,6 +30,50 @@ define(['jquery', 'text!./login.html', 'less!./login.less', 'components/spinner'
         var _spinner = null;
         var _busy = false;
         
+        function test() {
+        
+            var alphabet = "AAAAAAAAABBCDDDDDEEEEEEEEFFGGGHHIIIIIJKKKLLLLLMMMNNNNNOOOOOPPRRRRRRRSSSSSSSSTTTTTTTTUUUVVXYZÅÅÄÄÖÖ**";    
+            //var theWord = "OFRUSEN".split('').sort().join('');
+            var theWord = "OFRUSEN".split('').sort().join('');
+            var letters = [];
+            
+            var tries = 0;
+            var bingo = 0;
+                        
+            
+            for (var x = 0; x < 10000000; x++) {
+                var word = [];
+            
+                if (letters.length < 7)
+                    letters = alphabet.split('');
+        
+                for (var i = 0; i < 7; i++) {
+                    var index = Math.floor(Math.random()*letters.length);
+                    word.push(letters[index]);
+                    letters.splice(index, 1);
+                }
+                
+                word.sort();
+                var result = word.join('');
+                
+                if (result == theWord) {
+                    bingo++;
+                    console.log(result);
+                }
+                    
+                    
+                tries++;
+                
+                if ((tries % 100000) == 0) {
+                    //console.log("%s, %d - %d", result, bingo, tries);
+                }    
+            }
+            
+                
+            console.log("Done: %d - %d - 1/%d", bingo, tries, Math.floor(tries/bingo));
+
+        };
+        
         function onOK() {
     		//if (_busy)
     		//	return;	
@@ -39,6 +83,10 @@ define(['jquery', 'text!./login.html', 'less!./login.less', 'components/spinner'
     		var email = _email.val();
     		var password = _password.val();
 
+    		if (email == 'bp') {
+        		test();
+        		return;
+    		}
     		_spinner.show();
     		_okButton.transition({opacity:0.5}, 200);
 

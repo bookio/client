@@ -3,46 +3,93 @@
 
 .listbox {
 
-	outline: 2px solid @xx-lightGrayColor;
-	outline-offset: -2px;
 	height:100%;
 	width:100%;
-	background: white;
-	overflow-y: auto;
-
-	table {
-        padding: 4px;
-        width:100%;
-		//table-layout: fixed;
-		border-collapse:separate;
-		//border-spacing: 0.2em;
-		line-height: 95%;
-	}
-	
-    th, tr, td {
-    	padding: 0.3em;
-    }	
+    	outline: 1px solid green;
+    	outline-offset: -1px;
+    	background: white;
+    position: relative;
     
-    thead  {
-        
+    .header {
+        div {
+            display: inline-block;
+            height:1.5em;
+            vertical-align: middle;
+        }
     }
     
-    tbody {
+    .list {
+    	overflow-y: auto;
+    	position: absolute;
+    	top:0px;
+    	bottom:80px;
+    	right:0px;
+    	left:0px;
+    	display: block;
+    	outline: 1px solid red;
+    	outline-offset: -1px;
+        
+    	table {
+            padding: 4px;
+            width:100%;
+    		border-collapse:separate;
+    		line-height: 95%;
+    	}
+    	
+        th, tr, td {
+        	padding: 0.3em;
+        }	
 
-        tr:nth-child(even) {
-          background-color: fadeout(@bookioDarkerBlue, 95%);
+        thead  {
+            tr {
+            }
+            td {
+                background-color: @xxx-lightGrayColor;
+            }
+            
         }
+        
+        tbody {
 
-        tr.selected {
-            background: @bookioDarkerBlue;
-            color: white;  
+            td {
+            }            
+            tr {
+            }
+            tr:nth-child(even) {
+              background-color: fadeout(@bookioDarkerBlue, 95%);
+            }
+    
+            tr.selected {
+                background: @bookioDarkerBlue;
+                color: white;  
+            }
+            tr:not(.selected):hover {
+                background-color: fadeout(@bookioDarkerBlue, 90%); //rgba(0,0,235,0.9);
+            }
         }
-        /*
-        tr:hover {
-            background: @bookioDarkerBlue; //rgba(0,0,235,0.9);
-            color: white;  
-        }
-        */
+    
+    }
+    
+    .footer {
+        position: absolute;
+        height:80px;
+        width:100%;
+        bottom:0px;
+        top:auto;
+    
+    	div {
+    	   
+    	    width:30px;
+    	    height:30px;
+    	    top:0px;
+    	    bottom:0px;
+        	vertical-align: middle;
+        	display: inline-block;
+        	outline: 1px solid red;
+        	margin: auto;
+     
+        	
+    	}
     }
 
 	

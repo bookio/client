@@ -23,7 +23,6 @@ define(['jquery',  'text!./datepicker.html', 'less!./datepicker', './popover'], 
         var _popover = null;
         		
 		function dateChanged() {
-			console.log(_date);
 
 			if (isFunction(_options.dateChanged))
 				_options.dateChanged(self);
@@ -279,11 +278,6 @@ define(['jquery',  'text!./datepicker.html', 'less!./datepicker', './popover'], 
 	       
 	        _date = value;
 		    _firstDayOfCalendar = getFirstDayOfCalendar(_date);
-		    
-		    console.log('-');
-		    console.log(_date);
-		    console.log(_firstDayOfCalendar);
-		    console.log('-');
 		    
 		    _date.clearTime();
 	        _firstDayOfCalendar.clearTime();

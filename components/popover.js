@@ -146,22 +146,22 @@ define(['jquery', 'less!./popover'], function($) {
         this.hidePopovers = hidePopovers;
         this.fadeOutPopovers = fadeOutPopovers;
 	};
-		
 
-   function hidePopovers() {
+
+    function hidePopovers() {
        return;
-	    $('body').off('.popover');
-       $('body').find('.popover').hide().remove();
-   }
-
-   function fadeOutPopovers() {
-
-	    $('body').off('.popover');
-
-       $('body').find('.popover').fadeOut(200, function() {
-           $(this).remove();    
-       });
-   }
+        $('body').off('.popover');
+        $('body').find('.popover').hide().remove();
+    }
+    
+    function fadeOutPopovers() {
+    
+        $('body').off('.popover');
+    
+        $('body').find('.popover').fadeOut(200, function() {
+            $(this).remove();    
+        });
+    }
 
 
 
@@ -169,7 +169,7 @@ define(['jquery', 'less!./popover'], function($) {
 		hidePopovers();
 	});
 
-   $.fn.popoverEx = function(params) {
+    $.fn.popoverEx = function(params) {
 
        var args = arguments;
 

@@ -3,13 +3,13 @@
 
 .listbox {
 
-	height:100%;
-	width:100%;
-    	outline: 1px solid green;
-    	outline-offset: -1px;
-    	background: white;
+    height:100%;
+    width:100%;
     position: relative;
     
+    divX, imgX {
+        outline: 1px solid red;
+    }
     .header {
         div {
             display: inline-block;
@@ -19,26 +19,25 @@
     }
     
     .list {
-    	overflow-y: auto;
-    	position: absolute;
-    	top:0px;
-    	bottom:80px;
-    	right:0px;
-    	left:0px;
-    	display: block;
-    	outline: 1px solid red;
-    	outline-offset: -1px;
-        
-    	table {
+        background: white;
+        overflow-y: auto;
+        position: absolute;
+        top:0px;
+        bottom:30px;
+        right:0px;
+        left:0px;
+        display: block;
+        outline: 1px solid @xxx-lightGrayColor;
+        table {
             padding: 4px;
             width:100%;
-    		border-collapse:separate;
-    		line-height: 95%;
-    	}
-    	
+            border-collapse:separate;
+            line-height: 95%;
+        }
+        
         th, tr, td {
-        	padding: 0.3em;
-        }	
+            padding: 0.3em;
+        }   
 
         thead  {
             tr {
@@ -72,26 +71,30 @@
     
     .footer {
         position: absolute;
-        height:80px;
+        height:30px;
         width:100%;
         bottom:0px;
         top:auto;
-    
-    	div {
-    	   
-    	    width:30px;
-    	    height:30px;
-    	    top:0px;
-    	    bottom:0px;
-        	vertical-align: middle;
-        	display: inline-block;
-        	outline: 1px solid red;
-        	margin: auto;
-     
-        	
-    	}
+        display: table;
+        
+        div {
+            display: inline-block;
+            height:100%;
+            width:30px;
+            line-height: 26px;
+            text-align: center;
+            vertical-align: middle;            
+
+            img {
+                height:20px;
+                width:20px;
+            }              
+        }
+
+
+
     }
 
-	
-	
+    
+    
 }

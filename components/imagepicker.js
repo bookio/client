@@ -79,7 +79,7 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
 	        
 	        _popover = new Popover({
                 content: self.html(),
-                position: _position;
+                position: _position
             });
 
 	                    
@@ -90,14 +90,11 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
             
             self.hide();
             
-<<<<<<< HEAD
             _popover = new Popover({
-                position:position,
+                position: _position,
                 content: self.html()
             });
             
-=======
->>>>>>> rollback to old popover
             _popover.show();            
         }
         

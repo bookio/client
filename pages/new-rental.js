@@ -58,14 +58,7 @@
 	        function enableIconSelector() {
     	        
                 function showImagePicker() {
-                    
-                    /*var images = [];
-                    
-                    
-                    for (var index = 0; index < _icons.length; index++) {
-                        images.push(pathForImage(_icons[index].image));
-                    }*/
-                    
+                                        
                     var click = function(index) {
                         picker.hide();
                         _elements.icon.attr('src', pathForImage(_icons[index].image));
@@ -73,8 +66,8 @@
                     };
                     
                     var picker = new ImagePicker({
-                        icons:_icons,
-                        click:click
+                        icons: _icons,
+                        click: click,
                     }); 
                     
                     picker.show(_elements.icon);

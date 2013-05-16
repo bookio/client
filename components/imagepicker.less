@@ -56,26 +56,16 @@
 	/**** End Isotope ****/
 
 
-    max-width: 500px;
-    max-height: 400px;
+	#container {
+	  border: 1px solid @bookioLighterBlue;
+	}
+	
+	.symbol{
+	  padding: 10px; // Make some space around symbols
+	}
+
+	height: 480px;
     overflow: auto;
     padding: 1em;
 	
-    table > tbody > tr > td {
-        padding:4px;
-    }
-    
-    table > tbody > tr > td > img {
-       
-        border: 1px solid transparent;
-        
-	    &.selected:hover,
-		&:hover {
-		    border: 1px solid @hoverBackgroundColor;
-		    cursor:pointer;
-		}
-	    &.selected {
-		    border: 1px solid @x-lightGrayColor;
-	    }
-    }
 }

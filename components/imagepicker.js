@@ -11,10 +11,11 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
 
 		
 		var _defaults = {
-			container: null,
 			selection: null,
 			click: function(index) {},
-			images: []
+			position: null,
+			images: [],
+			icons: []
 		};
 
 		var _options = $.extend({}, _defaults, options);
@@ -22,16 +23,17 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
         var _html = null;
         var _container = null;
         var _popover = null;
+        var _position = null;
         		
 		
 		function buildDOM() {
 			
-            var template = $('<div><div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary active">Allt</button><button type="button" class="btn btn-primary">Transport</button><button type="button" class="btn btn-primary">Boende</button><button type="button" class="btn btn-primary">Verktyg</button><button type="button" class="btn btn-primary">Aktivitet</button><button type="button" class="btn btn-primary">Resurs</button></div><legend></legend><div id="container" class="clearfix"></div></div>').appendTo(_html);
+            var template = $('<div><div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary active" data-filter="*">Allt</button><button type="button" class="btn btn-primary" data-filter=".Transport">Transport</button><button type="button" class="btn btn-primary" data-filter=".Boende">Boende</button><button type="button" class="btn btn-primary" data-filter=".Verktyg">Verktyg</button><button type="button" class="btn btn-primary" data-filter=".Aktivitet">Aktivitet</button><button type="button" class="btn btn-primary" data-filter=".Resurs">Resurs</button></div><div id="container"></div></div>').appendTo(_html);
             
-            var container = template.find('#container');
+            _container = template.find('#container');
             
             for (var i = 0; i < _options.icons.length; i++) {
-	        	var div = $('<div class="symbol ' + _options.icons[i].tags + '"></div>').appendTo(container);
+	        	var div = $('<div class="symbol ' + _options.icons[i].tags + '"></div>').appendTo(_container);
 
         		// Add icon to div
         		
@@ -52,89 +54,55 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
     			});
 
             }
-			
-/*            var columns = Math.floor(Math.sqrt(_options.images.length)) + 1;
-            var rows    = Math.floor(_options.images.length / columns) + 1;
-            var index   = 0;
-
-            columns = Math.min(10, columns);
-                        
-            for (var y = 0; y < rows; y++) {
-                
-                var tr = $('<tr></tr>').appendTo(table);
-                
-                for (var x = 0; x < columns; x++, index++) {
-                    if (index >= _options.images.length)
-                        break;
-                    
-                    var image = _options.images[index];
-                                        
-                    var td = $('<td></td>').appendTo(tr);
-        			var img = $('<img/>').attr('src', image).appendTo(td);
- 
-        			if (_options.selection && _options.selection == index) {
-            			img.addClass('selected');
-        			}
-        			
-        			img.on('tap', index, function(event){
-        			     _html.find('img').removeClass('selected');
-        			     $(this).addClass('selected');
-
-        			     if (isFunction(_options.click)) {
-            			     _options.click(event.data);
-        			     }
-        			});
-                }
-            }*/
-            			
+			            			
 		}
 		
-    	
 	    
         function init() {
             _html = $(template);
-            
-            if (_options.container)
-                _html.appendTo(_options.container);
                 
             buildDOM();
             
-            $filterButtons = $('#btn-group button');
+            var $filterButtons = _html.find('.btn-group button');
             
-            $filterButtons.click(function(){
-/*			var filters = [];
-			    $checkboxes.filter(':checked').each(function(){
-			      filters.push( this.value );
-			    });
-			    // ['.red', '.blue'] -> '.red, .blue'
-			    filters = filters.join(', ');
-			    $container.isotope({ filter: filters });*/
-			    console.log('radiobutton');
-			  });
-            
-            _container = $('#container');
+            $filterButtons.click(function() {
+            	var selector = $(this).attr('data-filter');
+            	_container.isotope({ filter: selector });   
+            	console.log("Filterbutton clicked");     	
+			});
+                        			            
             _container.isotope({
-	            itemSelector : '.symbol'
+	            itemSelector : '.symbol',
+	            layoutMode: 'fitRows',
+	            filter: '*'
 	        });
 	        
-	        
-            
+	        _popover = new Popover({
+                content: self.html(),
+                position: _position;
+            });
+
+	                    
         };
         
         
-        self.show = function(position) {
+        self.show = function() {
             
             self.hide();
             
+<<<<<<< HEAD
             _popover = new Popover({
                 position:position,
                 content: self.html()
             });
             
+=======
+>>>>>>> rollback to old popover
             _popover.show();            
         }
         
         self.hide = function() {
+                	
             if (_popover != null)
                 _popover.hide();
                 
@@ -144,13 +112,11 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
         self.html = function() {
             return _html;
         }
-        
                 
         init();
     };
 	
 	return ImagePicker;
-	
 
 });
 

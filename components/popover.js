@@ -3,6 +3,7 @@ define(['jquery', 'less!./popover'], function($) {
 	
 	Popover = function(options) {
 	
+<<<<<<< HEAD
 	    var self = this;
 	    var _popover = null;
 	    var _options = null;
@@ -140,6 +141,22 @@ define(['jquery', 'less!./popover'], function($) {
 	    function hide() {
         	fadeOutPopovers();
 	    }
+=======
+		var defaults = {
+    		placement:'auto',
+    		title:null,
+    		content:'<p>Popover</p>',
+    		offset:5
+		};
+		
+		this.options = $.extend({}, defaults, options);
+	}
+	
+	
+    Module.prototype.show = function(position) {
+
+	    var self = this;
+>>>>>>> rollback to old popover
 	    
 
 	    init();

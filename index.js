@@ -102,8 +102,7 @@ requirejs.config({
 
         Path.listen();
         
-        //gotoWhatever();
-        gotoLogin();
+        gotoWhatever();
         
                 
     });

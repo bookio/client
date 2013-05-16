@@ -177,9 +177,10 @@ define(['jquery',  'less!components/popup-menu', '../scripts/tools', './popover'
             options.offset = 0;
             options.placement = _options.placement;
             options.title = _options.title;
+            options.position = position;
             
             _popover = new Popover(options);
-            _popover.show(position);
+            _popover.show();
     	};
     	
     	this.hide = function() {

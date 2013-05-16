@@ -253,10 +253,11 @@ define(['jquery',  'text!./datepicker.html', 'less!./datepicker', './popover'], 
             self.hide();
             
             _popover = new Popover({
+                position:position,
                 content: self.html()
             });
             
-            _popover.show(position);            
+            _popover.show();            
         }
         
         self.hide = function() {

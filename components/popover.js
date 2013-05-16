@@ -5,9 +5,11 @@ define(['jquery', 'less!./popover'], function($) {
 	
 	    var self = this;
 	    var _popover = null;
-
+	    var _options = null;
+	    
 	    function init() {
     		var defaults = {
+    		    position: null,
         		placement:'auto',
         		title:null,
         		content:'<p>Popover</p>',
@@ -33,6 +35,7 @@ define(['jquery', 'less!./popover'], function($) {
             var popover = $(template).appendTo($('body'));
             var content = popover.find('.popover-content');
             var arrow = popover.find('.arrow');
+            var position = _options.position;
             
             popover.css({width:'auto', maxWidth:'none', zIndex:'1100'});
             content.css({padding:'2px'});
@@ -41,10 +44,10 @@ define(['jquery', 'less!./popover'], function($) {
             popover.data(self);
     
     		// Add title if any
-            if (this.options.title)
-                $('<h3 class="popover-title"></h3>').text(this.options.title).insertBefore(content);
+            if (_options.title)
+                $('<h3 class="popover-title"></h3>').text(_options.title).insertBefore(content);
             
-            content.html(this.options.content);
+            content.html(_options.content);
             
             if (position.x && position.y) {
                 x = position.x;
@@ -56,7 +59,7 @@ define(['jquery', 'less!./popover'], function($) {
                 	var windowHeight = $(window).innerHeight();
                 	var popoverWidth = popover.outerWidth();
                 	var popoverHeight = popover.outerHeight();
-                	var offset = this.options.offset;
+                	var offset = _options.offset;
                 	
                 	var fitLeft = position.offset().left - offset - popoverWidth > 0;
                 	var fitRight = position.offset().left + position.outerWidth() + popoverWidth + offset < windowWidth;
@@ -93,7 +96,7 @@ define(['jquery', 'less!./popover'], function($) {
     
             ////////////////
             
-            var left = 0, top = 0, offset = this.options.offset;
+            var left = 0, top = 0, offset = _options.offset;
             
             if (placement == 'left') {
                 left = x - popover.innerWidth() - offset;
@@ -118,7 +121,10 @@ define(['jquery', 'less!./popover'], function($) {
                 event.stopPropagation();
                 event.preventDefault();
             });
-            
+                    
+        	$('body').on('touchstart.popover mousedown.popover', function(event) {
+            	fadeOutPopovers();
+        	});
     
     		popover.css({left:left, top:top});
     		popover.addClass(placement);
@@ -126,7 +132,7 @@ define(['jquery', 'less!./popover'], function($) {
     	    _popover = popover;
 	    }
 	    
-	    function show(position) {
+	    function show() {
     		_popover.fadeIn(100);
     	    
 	    }
@@ -161,9 +167,6 @@ define(['jquery', 'less!./popover'], function($) {
     }
     
     
-	$('body').on('touchstart.popover mousedown.popover', function(event) {
-    	fadeOutPopovers();
-	});
 
 	$(window).on('blur resize', function() {
 		hidePopovers();

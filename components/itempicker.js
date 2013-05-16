@@ -88,9 +88,10 @@ define(['jquery',  'less!components/itempicker', '../scripts/tools', './popover'
             options.offset = 0;
             options.placement = _options.placement;
             options.title = _options.title;
+            options.position = position;
             
             _popover = new Popover(options);
-            _popover.show(position);
+            _popover.show();
     	};
     	
     	function hide() {

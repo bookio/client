@@ -27,7 +27,18 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
 		
 		function buildDOM() {
 			
-            var template = $('<div><div class="btn-group" data-toggle="buttons-radio"><button type="button" class="btn btn-primary active" data-filter="*">Allt</button><button type="button" class="btn btn-primary" data-filter=".Transport">Transport</button><button type="button" class="btn btn-primary" data-filter=".Boende">Boende</button><button type="button" class="btn btn-primary" data-filter=".Verktyg">Verktyg</button><button type="button" class="btn btn-primary" data-filter=".Aktivitet">Aktivitet</button><button type="button" class="btn btn-primary" data-filter=".Resurs">Resurs</button><button type="button" class="btn btn-primary" data-filter=".Sport">Sport</button></div><div id="container"></div></div>').appendTo(_html);
+            var template = $('<div>' + 
+            					'<div class="btn-group" data-toggle="buttons-radio">' + 
+	            					'<button type="button" class="btn btn-primary active" data-filter="*">Allt</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Transport">Transport</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Boende">Boende</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Verktyg">Verktyg</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Aktivitet">Aktivitet</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Resurs">Resurs</button>' +
+	            					'<button type="button" class="btn btn-primary" data-filter=".Sport">Sport</button>' +
+            					'</div>' + 
+            					'<div id="container"></div>' + 
+            				 '</div>').appendTo(_html);
             
             _container = template.find('#container');
             
@@ -54,7 +65,6 @@ define(['jquery',  'text!./imagepicker.html', 'less!./imagepicker', './popover',
             }
 			            			
 		}
-		
 	    
         function init() {
             _html = $(template);

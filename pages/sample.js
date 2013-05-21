@@ -13,7 +13,8 @@
 		'components/timescale',
 		'components/timeslider',
 		'pages/new-rental',
-		'pages/settings'
+		'pages/settings',
+		'pages/categories'
 	];
 
 	define(includes, function($, html) {
@@ -128,6 +129,11 @@
     	        	
     	        	event.preventDefault();
     	        	event.stopPropagation();
+
+    	        	//require('pages/categories')();
+    	        	//return;
+    	        	var DateRangePicker = require('components/daterangepicker');
+
 	        	
     	        	var menu = new PopupMenu({
         	        	

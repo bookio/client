@@ -128,7 +128,7 @@ define(['./sprintf', '../lib/jquery.cookie.js'], function() {
         this.username = username;
         this.isValid = isValid;
         
-        sid('jc22cczytxhq4h1ko4a2j7nm6d17zxan');
+        //sid('jc22cczytxhq4h1ko4a2j7nm6d17zxan');
         
     };
 

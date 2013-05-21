@@ -17,7 +17,7 @@ define(['jquery', 'scripts/tools', 'scripts/gopher', 'scripts/notifications'], f
         
         Model.Icons.fetch = function() {
         
-            var request = gopher.request('GET', 'icons');
+            var request = gopher.request('GET', 'icons/folder/symbols');
             
             return request;
         }

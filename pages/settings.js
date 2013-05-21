@@ -89,6 +89,12 @@
     			    _elements.categories.listbox('add', categories);
     			});
             }
+            
+            function prepareAppearanceTab() {
+	        	var name = $('.desktop').css('background-image');
+	        	var patt = /\"|\'|\)/g;
+				alert(name.split('/').pop().replace(patt,''));
+            }
 	        
 	        function init() {
 	            
@@ -123,7 +129,6 @@
             	    	    foo.slideDown('fast');
     	    	    });
     	    	    
-    	    	    
     	            
     	    	    _elements.users.listbox({columns: ['name', 'email']});
     	    	    _elements.categories.listbox({columns: ['name', 'description']});
@@ -131,6 +136,8 @@
     	    	    loadUsers();
     	    	    loadCategories();
     	    	    fill();
+    	    	    
+    	    	    prepareAppearanceTab();
     	
     	            _modal.show();
     	      	    _elements.name.focus();
@@ -139,7 +146,6 @@
     	            enableClickSaveCompanyData();
         		});
     
-	            
 	        }	  
 	        
 	        init();
@@ -147,7 +153,6 @@
 		}
 		
 		return doModal;
-		
 	
 	});
 

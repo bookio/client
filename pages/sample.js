@@ -130,8 +130,8 @@
     	        	event.preventDefault();
     	        	event.stopPropagation();
 
-    	        	require('pages/categories')();
-    	        	return;
+    	        	//require('pages/categories')();
+    	        	//return;
     	        	var DateRangePicker = require('components/daterangepicker');
 
 	        	

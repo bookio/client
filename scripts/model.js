@@ -206,6 +206,62 @@ define(['jquery', 'scripts/tools', 'scripts/gopher', 'scripts/notifications'], f
     })();    
 
 
+    ////////////////////////////////////////////////////////////////////////////
+
+    (function() {
+        
+        Model.Categories = {};	
+        
+        Model.Categories.fetch = function(id) {
+        
+        	var url = isNumeric(id) ? sprintf('categories/%d', id) : 'categories';
+        	
+            return gopher.request('GET', url);
+        }
+        
+        Model.Categories.add = function(category) {
+
+			var request = gopher.request('POST', 'categories', category);
+			
+			request.done(function(category) {
+				Notifications.trigger('category-added', category);				
+			});
+			
+			return request;
+        };
+
+        Model.Categories.update = function(category) {
+
+			var request = gopher.request('PUT', sprintf('categories/%d', category.id), category);
+			
+			request.done(function(category) {
+				Notifications.trigger('category-updated', category);				
+			});
+			
+			return request;
+        };
+        
+        Model.Categories.save = function(category) {
+            return category.id ? Model.Categories.update(category) : Model.Categories.add(category);
+        }
+            
+
+        Model.Categories.remove = function(category) {
+			
+			var request = gopher.request('DELETE', sprintf('categories/%d', category.id), null);
+			
+			request.done(function() {
+				Notifications.trigger('category-removed', category);
+			}); 
+			
+			return request;
+        }
+        
+
+
+    })();    
+
+
 });
 
 

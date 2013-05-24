@@ -4,8 +4,8 @@
 
 	var modules = [
 		'jquery', 
-		'text!./settings.html', 
-		'less!./settings', 
+		'text!pages/settings.html', 
+		'less!pages/settings', 
 		'components/modal',
 		'components/listbox'
 	];
@@ -18,6 +18,7 @@
     	    var _modal = null;
     	    var _gopher = new Gopher();
     	    var _info = null;
+    	    var _patterns = null;
     	    
 			var _defaults = {
 			};
@@ -89,16 +90,11 @@
     			    _elements.categories.listbox('add', categories);
     			});
             }
-            
-            function prepareAppearanceTab() {
-	        	var name = $('.desktop').css('background-image');
-	        	var patt = /\"|\'|\)/g;
-				alert(name.split('/').pop().replace(patt,''));
-            }
-	        
+            	        
 	        function init() {
+	        	var request;
 	            
-    			var request = _gopher.request('GET', 'settings/app/contact');
+    			request = _gopher.request('GET', 'settings/app/contact');
     			
     			request.done(function(info) {
                     _info = info ? info : {};
@@ -137,15 +133,48 @@
     	    	    loadCategories();
     	    	    fill();
     	    	    
-    	    	    prepareAppearanceTab();
-    	
+	         		// Get patterns for Appearance-tab
+	        		request = Model.Patterns.fetch();
+	                
+	                request.done(function(patterns){
+	        	        _patterns = patterns;
+	        	        var fullPath = $('.desktop').css('background-image');
+						var patt = /\"|\'|\)/g;
+					    var activePatternName = fullPath.split('/').pop().replace(patt,'');
+	
+	        	        for (var index = 0; index < _patterns.length; index++) {
+	            	        
+			        	    var image = sprintf('images/patterns/%s',_patterns[index].image);
+			    			var img = $('<img class="img-pattern"/>').attr('src', image).appendTo('.pattern-well');
+			    			//console.log("Lägger in mönstret " + image);
+	
+			    			
+			    			if (activePatternName == _patterns[index].image) {
+			    				img.addClass('img-active');
+								$('.pattern-sample').css('background-image', 'url(' + image + ')');
+								//console.log("->Sätter aktuell bild " + image);
+							}
+	
+			    			img.on('tap', index, function(event){
+			    			     _elements.html.find('.img-pattern').removeClass('img-active');
+			    			     $(this).addClass('img-active');
+			    			     
+			    			     $('.pattern-sample').css('background-image', 'url(' + $(this).attr('src') + ')');
+			    			});
+	            	        
+	        	        }
+	        	                            
+	                });    	        
+
     	            _modal.show();
     	      	    _elements.name.focus();
     
     	      	    enableEscKey();
     	            enableClickSaveCompanyData();
         		});
-    
+        		
+        		
+
 	        }	  
 	        
 	        init();

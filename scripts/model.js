@@ -7,7 +7,22 @@ define(['jquery', 'scripts/tools', 'scripts/gopher', 'scripts/notifications'], f
     Model = {};
     
     var gopher = new Gopher();
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    Model.Patterns = {};	
     
+    (function() {
+        
+        Model.Patterns.fetch = function() {
+        
+            var request = gopher.request('GET', 'icons/folder/patterns');
+            
+            return request;
+        }
+
+
+    })();    
 
     ////////////////////////////////////////////////////////////////////////////
 

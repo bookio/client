@@ -1,9 +1,8 @@
 @import "../bookio.less";
 
 .input-xlarge {
-	// Hides stop-cursor over text field and shows text instead (we want the user to copy the text, stop-sign = scary)
+	// Hides stop-cursor over text field with paths and shows text instead (we want the user to copy the text, stop-sign = scary)
 	cursor: text !important;
-
 }
 
 .settings {
@@ -51,7 +50,8 @@
 	height: 100px;
 	border: 1px solid @bookioLighterBlue;
 	padding: 5px;
-	background-image: url(../images/patterns/greyfloral.png);
+	
+	margin: 0 auto;
 	text-align: center;
 }
 
@@ -66,6 +66,7 @@
     .vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
     .border-radius(10px);
 }
+
 
 .pattern-selector .item .title {
 	font-size: 10.5px;
@@ -85,3 +86,11 @@
 }
 
 // ----------------------------------------------------------------------------------
+
+.pattern-selector .item.centered
+{
+	position: relative;
+	display: inline-block;  // Modify item to be centered in preview div
+}
+
+

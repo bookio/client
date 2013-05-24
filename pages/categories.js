@@ -2,6 +2,8 @@
 
 (function() {
 
+
+
 	var dependencies = [
 		'jquery', 
 		'text!./categories.html', 

@@ -20,6 +20,7 @@
     	    var _gopher = new Gopher();
     	    var _info = null;
     	    var _patterns = null;
+    	    var _activePatternName;
     	    
 			var _defaults = {
 			};
@@ -39,6 +40,18 @@
 			function enableClickSaveCompanyData() {
     	      
     	        _elements.saveButton.click(function() {
+    	        	
+    	        	var choosenPatternPath = _elements.html.find('.img-active').attr('src');
+    				var patt = /\"|\'|\)/g;
+	    	        var choosenPatternName = choosenPatternPath.split('/').pop().replace(patt,'');
+	        	
+    	        	if (choosenPatternName != _activePatternName) {
+	    	        	$('.desktop').css('background-image', 'url(' + choosenPatternPath + ')');
+	    	        	
+	    	        	// Should be set here when _settings is global
+	    	        	// _settings.background = choosenPatternName;
+    	        	}
+    	        
                     chill();
                             	        
         	        var request = _gopher.request('PUT', 'settings/app/contact', _info);
@@ -234,19 +247,19 @@
 	                
 	                request.done(function(patterns) {
 	        	        _patterns = patterns;
-	        	        var fullPath = $('.desktop').css('background-image');
+	        	        
+	        	        var activePatternPath = $('.desktop').css('background-image');
 						var patt = /\"|\'|\)/g;
-					    var activePatternName = fullPath.split('/').pop().replace(patt,'');
-	
+					    _activePatternName = activePatternPath.split('/').pop().replace(patt,'');
+					    
+					    // Show all patterns below preview DIV
 	        	        for (var index = 0; index < _patterns.length; index++) {
-	            	        
-			        	    var image = sprintf('images/patterns/%s',_patterns[index].image);
-			    			var img = $('<img class="img-pattern"/>').attr('src', image).appendTo('.pattern-well');
+			        	    var samplePatternPath = 'images/patterns/' + _patterns[index].image;
+			    			var img = $('<img class="img-pattern"/>').attr('src', samplePatternPath).appendTo('.pattern-well');
 	
-			    			
-			    			if (activePatternName == _patterns[index].image) {
+			    			if (_activePatternName == _patterns[index].image) {
 			    				img.addClass('img-active');
-								$('.pattern-sample').css('background-image', 'url(' + image + ')');
+								$('.pattern-sample').css('background-image', 'url(' + samplePatternPath + ')');
 							}
 	
 			    			img.on(isTouch() ? 'touchstart' : 'mousedown', function(event){
@@ -263,7 +276,7 @@
 			    			
 	        	        }
 	        	        
-        	        	// Avoid img:s to be dragged
+        	        	// Avoid img in preview DIV to be dragged
 					    $('.not-draggable').on(isTouch() ? 'touchstart' : 'mousedown', function(event) {		
 			                event.stopPropagation();
 							event.preventDefault();
@@ -279,8 +292,6 @@
     	            
         		});
         		
-        		
-
 	        }	  
 	        
 	        init();

@@ -37,7 +37,8 @@ define(['jquery', 'less!components/notify'], function($) {
             _element.appendTo($('body'));
         }
    
-        var line1 = _element.find('.message1'); 
+        var line1 = _element.find('.message1');
+        message1 = message1.toLowerCase();
         line1.text(message1);
 
         var line2 = _element.find('.message2');

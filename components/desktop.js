@@ -35,6 +35,13 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
             _setNeedsLayout = false;    		
     		
 		};
+		
+		
+		Notifications.on('background-changed.desktop', function(background) {
+    		_settings.background = background;
+    		saveSettings();
+		});
+
 
 		Notifications.on('updateUI.desktop', function() {
     		updateUI();
@@ -211,7 +218,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 
 		    var defaults = {
     		    positions: {},
-    		    orderAutomatically: false
+    		    orderAutomatically: false,
+    		    background: 'snow.png'
 		    };
 			
 			_settings = {};
@@ -430,7 +438,9 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 			settings.done(gotSettings);
 			icons.done(gotIcons);
 			
-			$.when(rentals, reservations, customers, settings, icons).then(function(){
+			$.when(rentals, reservations, customers, settings, icons).then(function() {
+				$('.desktop').css('background-image', 'url(' + 'images/patterns/' + _settings.background + ')');
+
     			spinner.hide();
                 placeRentals();
                 updateRentalAvailability();			

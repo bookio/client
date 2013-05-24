@@ -33,6 +33,7 @@ requirejs.config({
 	modules.push('lib/jquery.mobile-events');
 	modules.push('lib/jquery.caret');
 	modules.push('lib/jquery.hookup');
+	modules.push('lib/jquery.scrollintoview');
 	modules.push('lib/path');
 	modules.push('scripts/gopher');
 	modules.push('scripts/date');

@@ -101,22 +101,37 @@
 	        
 	        function initCategories() {
 
-    	        var listbox = null;
+	    	    var listbox = _elements.categories.listbox({
+    	    	    columns: [
+    	    	        {name:'name', display:'Namn', width:'20%'},
+    	    	        {name:'description', display:'Beskrivning'}
+    	    	    ],
+    	    	    add: add,
+    	    	    remove: remove,
+    	    	    click: click,
+    	    	    dblclick: dblclick
+    	        }).listbox('api');
+
 
         		Notifications.on('category-added.settings', function(category) {
                     listbox.add(category);
+                    listbox.index(listbox.count() - 1);
         		});
 
-	    	    _elements.categories.listbox({
-    	    	    columns: ['name', 'description'],
-    	    	    add: add,
-    	    	    remove: remove,
-    	    	    click: click
-    	        });
+        		Notifications.on('category-updated.settings', function(category) {
 
-                // Get the listbox object    	        
-    	        var listbox = _elements.categories.listbox();
-    	        
+            		var count = listbox.count();
+            		
+            		for (var i = 0; i < count; i++) {
+                		var item = listbox.item(i);
+                		
+                		if (item.id == category.id) {
+                    		listbox.item(i, item);
+                		}
+            		}
+
+        		});
+
     	        function add() {
         	        require('pages/categories')();
     	        }
@@ -134,11 +149,16 @@
         	         }
     	        }
     	        
-    	        function click() {
-        	        console.log("--> %d", listbox.index());
+    	        function dblclick() {
+        	        require('pages/categories')({
+            	        category: listbox.item(listbox.index())
+        	        });
     	        }
 
-    			var request = _gopher.request('GET', 'categories');
+    	        function click() {
+    	        }
+
+    			var request = Model.Categories.fetch();
     			
     			request.done(function(categories) {
     			    listbox.reset();
@@ -189,7 +209,12 @@
     	    	    });
     	    	    
     	            
-    	    	    _elements.users.listbox({columns: ['name', 'email']});
+    	    	    _elements.users.listbox({
+        	    	    columns: [
+        	    	        {name:'name', display:'Namn', width:'20%'},
+        	    	        {name:'email', display:'E-post'}
+        	    	    ]
+    	    	    });
     	    	    initCategories();
     	    	    loadUsers();
 

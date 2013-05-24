@@ -10,10 +10,11 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 
 		var _settings = {
 			selection: 'single',
-			columns: ['name', 'email'],
+			columns: [{name:'name', width:'20%'}],
 			add: null,
 			remove: null,
-			click: null
+			click: null,
+			dblclick: null
 		};
 
 		var _elements = {};
@@ -27,12 +28,12 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 	    
 	    function enableListeners() {
 	    
-	       _elements.add.on('mouseup touchend', function(event) {
+	       _elements.add.on('tap', function(event) {
     	       if (isFunction(_settings.add))
     	           _settings.add.call(plugin);
 	       });
 	       
-	       _elements.remove.on('mouseup touchend', function(event) {
+	       _elements.remove.on('tap', function(event) {
     	       if (isFunction(_settings.remove))
     	           _settings.remove.call(plugin);
     	       
@@ -42,10 +43,14 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
         function addOne(item) {
             var tr = $('<tr class="tablerow"></tr>');
 
-            $.each(_settings.columns, function(index, name) {
+            $.each(_settings.columns, function(index, column) {
                 var td = $('<td class="tablecell"></td>');
-                td.text(item[name]);
-                td.appendTo(tr);                
+                td.text(item[column.name]);
+    
+                if (column.width)
+                    td.css({width:column.width});
+
+                td.appendTo(tr);     
             });
 
             tr.appendTo(_elements.tbody);
@@ -54,12 +59,19 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             tr.data(item);
             
             // Listen to clicks
-            tr.on('touchstart mousedown', function(event) {
+            tr.on('tap', function(event) {
                 _elements.tbody.find('tr').removeClass('selected');
-                $(this).addClass('selected');
+                $(this).addClass('selected').scrollintoview();
                 
                 if (isFunction(_settings.click))
                     _settings.click.call(plugin);
+                    
+            });
+            
+            // Listen to clicks
+            tr.on('doubletap', function(event) {
+                if (isFunction(_settings.click))
+                    _settings.dblclick.call(plugin);
                     
             });
         }
@@ -89,15 +101,70 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
         }
 
         plugin.index = function() {
-            return _elements.tbody.find('tr.selected').index();
+            if (arguments.length == 0)  
+                return _elements.tbody.find('tr.selected').index();
+            
+            if (arguments.length == 1) {
+                var index = arguments[0]; 
+                var rows = _elements.tbody.find('tr');
+
+                rows.removeClass('selected');
+                rows.eq(index).addClass('selected').scrollintoview();
+            }
+
+        }
+        
+        plugin.selection = function() {
+            if (arguments.length == 0) {
+                var array = [];
+                
+                _elements.tbody.find('tr.selected').each(function(index) {
+                    array.push($(this).index());
+                });
+                
+                return array;
+                
+            }
+            
+            if (arguments.length == 1) {
+                var selection = arguments[0];
+                var rows = _elements.tbody.find('tr'); 
+
+                // Clear selection                
+                rows.removeClass('selected');
+                
+                // Select one by one
+                selection.each(function(index, item) {
+                    rows.eq(item).addClass('selected');
+                });
+            }
         }
 
-        plugin.item = function(index) {
-            return _elements.tbody.find('tr').eq(index).data();
+
+        plugin.item = function() {
+            if (arguments.length == 1) {
+                var index = arguments[0];
+                return _elements.tbody.find('tr').eq(index).data();
+            }
+            if (arguments.length == 2) {
+                var index = arguments[0];
+                var item = arguments[1];
+                var tr = _elements.tbody.find('tr').eq(index);
+
+                tr.data(item); 
+                
+                tr.find('td').each(function(index) {
+                    $(this).text(item[_settings.columns[index].name]);
+                });
+            }
         }
 
         plugin.api = function() {
             return plugin;
+        }
+
+        plugin.count = function() {
+            return _elements.tbody.find('tr').length;
         }
         
         plugin.add = function(param) {
@@ -106,9 +173,23 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             else
                 addOne(param);
         }
-        
+    
         plugin.remove = function(index) {
+
+            var selindex = _elements.tbody.find('tr.selected').index();
+
             _elements.tbody.find('tr').eq(index).remove();
+            
+            if (selindex >= 0) {
+                var rows = _elements.tbody.find('tr');
+                
+                if (selindex >= rows.length)
+                    selindex = rows.length - 1;
+                
+                rows.removeClass('selected');
+                rows.eq(selindex).addClass('selected').scrollintoview();
+                    
+            }
         }
                 
         init();

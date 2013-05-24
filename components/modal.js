@@ -63,7 +63,7 @@ define(['jquery', 'less!components/modal'], function($) {
 			// Make some late modifications the position when we have the size
 			_modal.css({left: Math.floor((windowWidth - modalWidth) / 2), top:Math.floor((windowHeight - modalHeight) / 3)});
 
-			_modal.modal({show:false, backdrop:'static', keyboard:true});
+			_modal.modal({show:false, backdrop:false, keyboard:true});
 		};
 		
 		function show() {
@@ -139,7 +139,7 @@ define(['jquery', 'less!components/modal'], function($) {
 			
 			// Make some late modifications the position when we have the size
 			_modal.css({left: Math.floor((windowWidth - modalWidth) / 2), top:Math.floor((windowHeight - modalHeight) / 3)});
-			_modal.modal({show:false, backdrop:'static', keyboard:true});
+			_modal.modal({show:false, backdrop:false, keyboard:true});
 		};
 		
 		function show() {

@@ -8,38 +8,59 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
 	
 		var plugin = this;
 
-		var _defaults = {
+		var _settings = {
 			selection: 'single',
-			columns: ['name', 'email']
+			columns: ['name', 'email'],
+			add: null,
+			remove: null,
+			click: null
 		};
 
-		var _settings = $.extend({}, _defaults, settings);
 		var _elements = {};
         var _html = null;
         var _container = element;
         		
+		$.extend(_settings, settings);
 		
 		function updateDOM() {
 		}
-		
 	    
 	    function enableListeners() {
+	    
+	       _elements.add.on('mouseup touchend', function(event) {
+    	       if (isFunction(_settings.add))
+    	           _settings.add.call(plugin);
+	       });
+	       
+	       _elements.remove.on('mouseup touchend', function(event) {
+    	       if (isFunction(_settings.remove))
+    	           _settings.remove.call(plugin);
+    	       
+	       });
 		}
 
         function addOne(item) {
             var tr = $('<tr class="tablerow"></tr>');
 
             $.each(_settings.columns, function(index, name) {
-                var td = $('<td class="cell"></td>');
+                var td = $('<td class="tablecell"></td>');
                 td.text(item[name]);
                 td.appendTo(tr);                
             });
 
             tr.appendTo(_elements.tbody);
+
+            // Attach the item to the row
+            tr.data(item);
             
+            // Listen to clicks
             tr.on('touchstart mousedown', function(event) {
                 _elements.tbody.find('tr').removeClass('selected');
                 $(this).addClass('selected');
+                
+                if (isFunction(_settings.click))
+                    _settings.click.call(plugin);
+                    
             });
         }
         
@@ -49,34 +70,11 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             });
         }
 		
-		function adjustHeader() {
-		}
-
         function init() {
             _html = $(template);
             _html.appendTo(_container);
+            _html.hookup('data-id', _elements);
             
-            _elements.list = _html.find('.list');
-            _elements.footer = _html.find('.footer');
-            _elements.header = _html.find('.header');
-            _elements.thead = _elements.list.find('thead');    
-            _elements.tbody = _elements.list.find('tbody');    
-
-
-            /*
-            var x = _html.innerHeight();
-            var y = _elements.footer.outerHeight(true);
-            console.log("%f %f", x, y);
-            _elements.list.css({height:x - y});
-            */
-            
-            
-            $.each(_settings.columns, function(index, item) {
-                $('<div></div>').appendTo(_elements.header).text(item);
-            });
-            
-            console.log(_elements.header.outerHeight());
-
             enableListeners();
             updateDOM();
         };
@@ -88,7 +86,18 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
         
         plugin.reset = function() {
             _elements.tbody.empty();
-            
+        }
+
+        plugin.index = function() {
+            return _elements.tbody.find('tr.selected').index();
+        }
+
+        plugin.item = function(index) {
+            return _elements.tbody.find('tr').eq(index).data();
+        }
+
+        plugin.api = function() {
+            return plugin;
         }
         
         plugin.add = function(param) {
@@ -97,17 +106,23 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
             else
                 addOne(param);
         }
+        
+        plugin.remove = function(index) {
+            _elements.tbody.find('tr').eq(index).remove();
+        }
                 
         init();
     };
 
-
-
     $.fn.listbox = function(params) {
 
-        var args = arguments;
-        
-        return this.each(function () {
+        var retval, args = arguments;
+
+        if (arguments.length == 0) {
+            return this.length > 0 ? $(this[0]).data('listbox') : undefined;
+        }
+            
+        this.each(function () {
             var $this = $(this);
             var data = $this.data('listbox');
             
@@ -115,9 +130,14 @@ define(['jquery',  'text!./listbox.html', 'less!./listbox'], function($, templat
                 $this.data('listbox', (data = new ListBox($this, params)));
 
             if (typeof params == 'string') {
-                return data[params].apply(this, Array.prototype.slice.call(args, 1));
+                retval = data[params].apply(this, Array.prototype.slice.call(args, 1));
+                
+                if (retval != undefined)
+                    return false;
             }
         });
+        
+        return retval != undefined ? retval : this;
     }
 
 });

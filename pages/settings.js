@@ -7,7 +7,8 @@
 		'text!pages/settings.html', 
 		'less!pages/settings', 
 		'components/modal',
-		'components/listbox'
+		'components/listbox',
+		'pages/categories'
 	];
 
 	define(modules, function($, html) {
@@ -82,6 +83,7 @@
     			});
             }
 
+<<<<<<< HEAD
             function loadCategories() {
     			var request = _gopher.request('GET', 'categories');
     			
@@ -91,6 +93,62 @@
     			});
             }
             	        
+=======
+            
+            function prepareAppearanceTab() {
+	        	var name = $('.desktop').css('background-image');
+	        	var patt = /\"|\'|\)/g;
+            }
+	        
+	        function initCategories() {
+
+    	        var listbox = null;
+
+        		Notifications.on('category-added.settings', function(category) {
+                    listbox.add(category);
+        		});
+
+	    	    _elements.categories.listbox({
+    	    	    columns: ['name', 'description'],
+    	    	    add: add,
+    	    	    remove: remove,
+    	    	    click: click
+    	        });
+
+                // Get the listbox object    	        
+    	        var listbox = _elements.categories.listbox();
+    	        
+    	        function add() {
+        	        require('pages/categories')();
+    	        }
+    	        
+    	        function remove() {
+        	         var index = listbox.index();
+        	         
+        	         if (index >= 0) {
+            	         var item = listbox.item(index);
+            	         
+            	         Model.Categories.remove(item).done(function() {
+                	         listbox.remove(index);
+            	         });
+            	         
+        	         }
+    	        }
+    	        
+    	        function click() {
+        	        console.log("--> %d", listbox.index());
+    	        }
+
+    			var request = _gopher.request('GET', 'categories');
+    			
+    			request.done(function(categories) {
+    			    listbox.reset();
+    			    listbox.add(categories);
+    			});
+    	        
+	        }
+	        
+>>>>>>> -
 	        function init() {
 	        	var request;
 	            
@@ -105,6 +163,12 @@
     	                title: 'Inställningar',
     	                content:_elements.html
     	            });      
+
+                    // Remove all my notifications when the element is destroyed
+                    _elements.html.on('removed', function() {
+                        console.log('Removed notifications on settings');
+                        Notifications.off('.settings');
+                    });
     	           
     	            _elements.saveButton = _elements.html.find('.ok-button');
     	    	    _elements.name = _elements.html.find('.name');
@@ -127,10 +191,9 @@
     	    	    
     	            
     	    	    _elements.users.listbox({columns: ['name', 'email']});
-    	    	    _elements.categories.listbox({columns: ['name', 'description']});
-
+    	    	    initCategories();
     	    	    loadUsers();
-    	    	    loadCategories();
+
     	    	    fill();
     	    	    
      	    	    _elements.html.find('.foo').on('click', function(){

@@ -140,7 +140,6 @@
     	        	});
     	        	
     	        	function callback(context) {
-        	        	alert(context)
     	        	}
     	        	
     	        	menu.add({

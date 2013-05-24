@@ -159,17 +159,7 @@ define(['jquery', 'less!components/modal'], function($) {
 		this.hide = close;
 	}
 
-	// Small plugin to hook up elements that use the 'data-id' attribute
-    $.fn.hookup = function(attribute, elements) {
 
-        return this.each(function () {
-
-            $(this).find('[' + attribute + ']').each(function() {
-	            elements[$(this).attr(attribute)] = $(this);
-            });
-
-        });
-    }	
 
     $.fn.modalex = function(params) {
 

@@ -1,15 +1,13 @@
 @import "../bookio.less";
 
 
-.listbox {
+div[data-id="listbox"] {
 
     height:100%;
     width:100%;
     position: relative;
     
-    divX, imgX {
-        outline: 1px solid red;
-    }
+
     .header {
         div {
             display: inline-block;
@@ -18,77 +16,85 @@
         }
     }
     
-    .list {
+    div[data-id="list"] {
         background: white;
         overflow-y: auto;
         position: absolute;
         top:0px;
-        bottom:30px;
+        bottom:25px;
         right:0px;
         left:0px;
         display: block;
-        outline: 1px solid @xxx-lightGrayColor;
+        border: 1px solid @xx-lightGrayColor;
+
         table {
             padding: 4px;
             width:100%;
             border-collapse:separate;
             line-height: 95%;
-        }
-        
-        th, tr, td {
-            padding: 0.3em;
-        }   
 
-        thead  {
-            tr {
-            }
-            td {
-                background-color: @xxx-lightGrayColor;
+            th, tr, td {
+                padding: 0.3em;
+            }   
+    
+            thead  {
+                tr {
+                }
+                td {
+                    background-color: @xxx-lightGrayColor;
+                }
+                
             }
             
+            tbody {
+    
+                td {
+                    height:1.2em;
+                }
+                     
+                tr {
+                }
+                
+                tr:nth-child(even) {
+                  background-color: fadeout(@bookioDarkerBlue, 95%);
+                }
+        
+                tr.selected {
+                    background: @bookioDarkerBlue;
+                    color: white;  
+                }
+                tr:not(.selected):hover {
+                    background-color: fadeout(@bookioDarkerBlue, 90%); //rgba(0,0,235,0.9);
+                }
+            }
         }
         
-        tbody {
-
-            td {
-            }            
-            tr {
-            }
-            tr:nth-child(even) {
-              background-color: fadeout(@bookioDarkerBlue, 95%);
-            }
-    
-            tr.selected {
-                background: @bookioDarkerBlue;
-                color: white;  
-            }
-            tr:not(.selected):hover {
-                background-color: fadeout(@bookioDarkerBlue, 90%); //rgba(0,0,235,0.9);
-            }
-        }
-    
     }
     
-    .footer {
+    div[data-id="footer"] {
         position: absolute;
-        height:30px;
+        height:25px;
         width:100%;
         bottom:0px;
         top:auto;
         display: table;
+        border: 1px solid @xx-lightGrayColor;
+        //border-top: none;
+        .vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
+
+        div:hover {
+            .vertical-gradient(darken(@xxxx-lightGrayColor, 5%), darken(@xxx-lightGrayColor, 5%));
+            cursor: pointer;
+        }
         
         div {
+            border-right: 1px solid @xx-lightGrayColor;
             display: inline-block;
             height:100%;
-            width:30px;
-            line-height: 26px;
+            width:25px;
+            line-height: 25px;
             text-align: center;
             vertical-align: middle;            
-
-            img {
-                height:20px;
-                width:20px;
-            }              
         }
 
 

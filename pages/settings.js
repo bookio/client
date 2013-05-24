@@ -48,8 +48,7 @@
     	        	if (choosenPatternName != _activePatternName) {
 	    	        	$('.desktop').css('background-image', 'url(' + choosenPatternPath + ')');
 	    	        	
-	    	        	// Should be set here when _settings is global
-	    	        	// _settings.background = choosenPatternName;
+	    	        	Notifications.trigger('background-changed.desktop', choosenPatternName);
     	        	}
     	        
                     chill();

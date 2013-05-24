@@ -83,7 +83,7 @@
     			});
             }
 
-<<<<<<< HEAD
+
             function loadCategories() {
     			var request = _gopher.request('GET', 'categories');
     			
@@ -93,7 +93,6 @@
     			});
             }
             	        
-=======
             
             function prepareAppearanceTab() {
 	        	var name = $('.desktop').css('background-image');
@@ -148,7 +147,7 @@
     	        
 	        }
 	        
->>>>>>> -
+
 	        function init() {
 	        	var request;
 	            

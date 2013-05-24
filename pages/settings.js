@@ -133,10 +133,19 @@
     	    	    loadCategories();
     	    	    fill();
     	    	    
+     	    	    _elements.html.find('.foo').on('click', function(){
+        	    	    var foo = _elements.html.find('.user-data');
+        	    	     
+        	    	    if (foo.is(":visible"))   
+            	    	    foo.slideUp('fast');
+            	    	  else
+            	    	    foo.slideDown('fast');
+    	    	    });
+    	    	    
 	         		// Get patterns for Appearance-tab
 	        		request = Model.Patterns.fetch();
 	                
-	                request.done(function(patterns){
+	                request.done(function(patterns) {
 	        	        _patterns = patterns;
 	        	        var fullPath = $('.desktop').css('background-image');
 						var patt = /\"|\'|\)/g;
@@ -146,23 +155,32 @@
 	            	        
 			        	    var image = sprintf('images/patterns/%s',_patterns[index].image);
 			    			var img = $('<img class="img-pattern"/>').attr('src', image).appendTo('.pattern-well');
-			    			//console.log("Lägger in mönstret " + image);
 	
 			    			
 			    			if (activePatternName == _patterns[index].image) {
 			    				img.addClass('img-active');
 								$('.pattern-sample').css('background-image', 'url(' + image + ')');
-								//console.log("->Sätter aktuell bild " + image);
 							}
 	
-			    			img.on('tap', index, function(event){
+			    			img.on(isTouch() ? 'touchstart' : 'mousedown', function(event){
 			    			     _elements.html.find('.img-pattern').removeClass('img-active');
 			    			     $(this).addClass('img-active');
 			    			     
+			    			     // Preview the choosen pattern
 			    			     $('.pattern-sample').css('background-image', 'url(' + $(this).attr('src') + ')');
+			    			     
+			    			     event.stopPropagation();
+								 event.preventDefault();
+								 
 			    			});
-	            	        
+			    			
 	        	        }
+	        	        
+        	        	// Avoid img:s to be dragged
+					    $('.not-draggable').on(isTouch() ? 'touchstart' : 'mousedown', function(event) {		
+			                event.stopPropagation();
+							event.preventDefault();
+						});
 	        	                            
 	                });    	        
 
@@ -171,6 +189,7 @@
     
     	      	    enableEscKey();
     	            enableClickSaveCompanyData();
+    	            
         		});
         		
         		

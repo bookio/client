@@ -13,6 +13,7 @@ define(['jquery',  'less!components/timescale', 'scripts/tools'], function($) {
 		var _options = $.extend({}, options, _defaults);
 		var _startDate = new Date();
 		var _endDate = _startDate.addDays(14);
+
 		var _element = null;
 		var _setNeedsLayout = false;
 		
@@ -72,14 +73,14 @@ define(['jquery',  'less!components/timescale', 'scripts/tools'], function($) {
         	buildDOM();
     	}
     	
-    	function clearDOM() {
+/*    	function clearDOM() {
         	
     	};
     	
     	
     	function updateDOM() {
             return;
-            var cells = _element.find('.cells');
+           /* var cells = _element.find('.cells');
 
             var calendar = _startDate.clone();
 
@@ -102,7 +103,7 @@ define(['jquery',  'less!components/timescale', 'scripts/tools'], function($) {
 		    	calendar = calendar.addDays(1);
             });
     	}
-    	
+    	*/
     	function buildDOM() {
 	    	var calendar = _startDate.clone();
 
@@ -143,7 +144,7 @@ define(['jquery',  'less!components/timescale', 'scripts/tools'], function($) {
     	
         init();
         buildDOM();
-        updateDOM();        
+        //updateDOM();        
         
         this.scroll = scroll;
     };

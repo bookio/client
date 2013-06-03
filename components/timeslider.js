@@ -9,17 +9,17 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 
 		var _defaults = {
 			appendTo: $('body'),
-			ticks:14,
 			scroll: null,
 			lengthChanged: null,
 			positionChanged: null,
-			rangeChanged: null
+			rangeChanged: null,
+			sliderDblClicked: null
 		};
 		
 		var _options = $.extend({}, _defaults, options);
 		var _elements = {};
-		var _position = 2;
-		var _length = 5;
+		var _position = 0;  // Start at position Now
+		var _length = 1;  // Default width is one 'time slot'
 		var _range = 14;
 		var _scrollTimer = null;
 		var _setNeedsLayout = false;
@@ -86,6 +86,14 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
             gripperCss.height = gripperCss.width;
             gripperCss.top = (_elements.slider.innerHeight() - gripperCss.height) / 2;
             gripperCss.right = gripperCss.top;
+            
+            // Double-click resets slider to starting position (Now on the time scale)
+            _elements.slider.on('doubletap', function(event) {
+            
+            	if (isFunction(_options.sliderDblClicked))
+	                _options.sliderDblClicked();
+
+            });
 
             _elements.root.on('removed', function(){
                 
@@ -110,23 +118,21 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
             
     	};
 
-        function valueChanged() {
+/*        function valueChanged() {
            // Notify.show('Position: ' + _position + ', length: ' + _length);
             
-        }    	
+        }    	*/
     	
 	    function startScrolling(delta) {
 	       function scroll() {
 	           if (isFunction(_options.scroll))
     	           _options.scroll(delta);
-	           valueChanged();
+	           //valueChanged();
             }
     	    if (_scrollTimer == null) {
         	    _scrollTimer = setInterval(scroll, 80);
     	    }
 	    }
-	    
-	    
 	    
 	    
 	    function stopScrolling() {
@@ -136,9 +142,9 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
     	    
     	    _scrollTimer = null;
 	    }
-    	
-    	
-    	function positionSlider(animationSpeed) {
+	    
+/*	    
+	    function positionSlider(animationSpeed) {
     	    var slider = _elements.slider;
     	    var parent = slider.parent();
 			var factor = parent.innerWidth() / _range;
@@ -146,6 +152,24 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 			var css = {};
 			css.left = Math.round(_position * factor);
 			css.width = Math.round(_length * factor);
+			
+			if (animationSpeed != undefined && animationSpeed)
+                slider.transition(css, animationSpeed, 'easeInOutBack');
+            else
+                slider.css(css);
+        }
+*/
+    	
+    	
+    	function positionSlider(animationSpeed) {
+    	    var slider = _elements.slider;
+    	    var parent = slider.parent();
+    	    _range = Math.floor(parent.innerWidth() / 80);
+			var blockSize = Math.max(Math.floor(parent.innerWidth() / _range), 80);
+
+			var css = {};
+			css.left = Math.round(_position * blockSize);
+			css.width = Math.round(_length * blockSize);
 			
 			if (animationSpeed != undefined && animationSpeed)
                 slider.transition(css, animationSpeed, 'easeInOutBack'/*'ease-in-out'*/);
@@ -228,12 +252,14 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 				    }
 				    
 
-				    var length = 0; 
-				    length = Math.floor((width / (slider.parent().innerWidth())) * _range + 0.5);
+				    var length;
+				    var parentWidth = slider.parent().innerWidth();
+				     
+				    length = Math.floor((width / parentWidth) * _range + 0.5);
 				    length = Math.max(length, 1);
 				    
-				    var position = 0; 
-				    position = Math.floor(((left - 0) / (slider.parent().innerWidth())) * _range + 0.5);
+				    var position; 
+				    position = Math.floor((left / parentWidth) * _range + 0.5);
 				    position = Math.min(position, _range - length);
 				    position = Math.max(position, 0);
 				    
@@ -253,7 +279,7 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 					    
 				    }
 				    
-                    valueChanged();
+                    //valueChanged();
 
                 });
                 

@@ -28,6 +28,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		var _settings = {};
 		var _icons = {};
 
+
 		function updateUI() {
     		if (_setNeedsLayout)
                 updateRentalAvailability();

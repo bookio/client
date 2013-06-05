@@ -397,8 +397,8 @@ define(['less!./desktop', 'pages/rental-edit', 'pages/reservation-edit'], functi
              }); 
              
             _element.find('.addButton').on("mousedown touchstart", function(event) {
-	        	var module = require('pages/new-rental');
-	        	module();
+
+        		$.mobile.changePage('../pages/rental-edit.html');
 	        });
 	        
 	        
@@ -439,6 +439,11 @@ define(['less!./desktop', 'pages/rental-edit', 'pages/reservation-edit'], functi
                 updateRentalAvailability();			
     			
 			});
+			
+			_element.on('updatelayout', function() {
+    			debugger;
+    			placeRentals();
+			})
 			
 			enableEscKey();
 	        				

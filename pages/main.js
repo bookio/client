@@ -107,7 +107,13 @@
 
 	        	_desktop = new Desktop(_elements.desktop, {});
 	        	_desktop.editMode(false);
-	        	
+
+
+	        	_elements.editmode.on('tap', function() {
+    	        	_desktop.editMode(!_desktop.editMode());
+    	        	_elements.popupmenu.popup('close');
+	        	});	        	
+
 	        	_timeScale = new TimeScale(_elements.scale, {});
 	        	
                 _timeSlider = new TimeSlider(_elements.slider, {

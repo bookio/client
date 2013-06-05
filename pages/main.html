@@ -40,21 +40,21 @@
     </div>
 
 
-	<div data-role="popup" id="popupMenu" data-theme="a">
-		<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">
+	<div data-hook="popupmenu" data-role="popup" id="popupMenu" data-theme="a">
+		<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
 
 			<!--
 			<li data-role="divider" data-theme="a">What to do</li>
 			-->
-			<li>
+			<li data-icon="false">
 				<a data-hook="menuitem-settings" href="settings.html">
 				</a>
 			</li>
-			<li>
-				<a data-hook="menuitem-editmode" href="options.html">
+			<li data-icon="false">
+				<a data-hook="editmode" href="#">
 				</a>
 			</li>
-			<li>
+			<li data-icon="false">
 				<a data-hook="menuitem-logout" href="login.html">
 				</a>
 			</li>

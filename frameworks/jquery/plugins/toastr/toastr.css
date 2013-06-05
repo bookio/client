@@ -1,0 +1,116 @@
+﻿.toast-title {
+    font-weight: bold;
+}
+
+.toast-message {
+}
+
+.toast-message a,
+.toast-message label {
+    color: #FFF;
+}
+
+        .toast-message a:hover {
+            color: #CCC;
+            text-decoration: none;
+        }
+
+.toast-top-left {
+    top: 12px;
+    left: 12px;
+}
+
+.toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+}
+
+.toast-bottom-left {
+    left: 12px;
+    bottom: 12px;
+}
+
+#toast-container {
+    position: fixed;
+    z-index: 9999;
+}
+
+#toast-container > div {
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    -moz-box-shadow: 0 0 6px #999999;
+    -webkit-box-shadow: 0 0 6px #999999;
+    -o-box-shadow: 0 0 6px #999999;
+    box-shadow: 0 0 6px #999999;
+    Xcolor: #FFFFFF;
+    margin: 0 0 6px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1.0;
+    opacity: 1.0;
+    padding: 15px 15px 15px 50px;
+}
+
+.toast {
+}
+
+.toast-success {
+    color: #508b51;
+    background-color: #dff0d8;
+}
+
+.toast-error {
+    background-color: #BD362F;
+    color: #b94a48;
+    background-color: #f2dede;
+}
+
+.toast-info {
+    color: #3a87ad;
+    background-color: #d9edf7;
+}
+
+.toast-warning {
+    color: #c09853;
+    background-color: #fcf8e3;
+}
+
+.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+#toast-container > :hover {
+    -moz-box-shadow: 0 0 8px #999999;
+    -webkit-box-shadow: 0 0 8px #999999;
+    -o-box-shadow: 0 0 8px #999999;
+    box-shadow: 0 0 8px #999999;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    cursor: pointer;
+}
+
+#toast-container > .toast-info {
+    background-image: url(info.png);
+    background-position-x: 8px;
+}
+
+#toast-container > .toast-error {
+    background-image: url(error.png);
+    background-position-x: 8px;
+}
+
+#toast-container > .toast-success {
+    background-image: url(success.png);
+    background-position-x: 8px;
+}
+
+#toast-container > .toast-warning {
+    background-image: url(warning.png);
+    background-position-x: 8px;
+}

@@ -1,0 +1,31 @@
+@import "../bookio.less";
+
+
+.custom.modal {
+	
+	.modal-body
+	{
+	    .border-radius(0px 0px 6px 6px);
+	    background-image: url(../images/patterns/snow.png);
+	    max-height: 768px;
+	}
+	
+	.modal-header label {
+		color:@x-darkGrayColor;
+		font-weight: bold;
+		font-size: 120%;
+		margin-top:0.2em;
+	}
+	
+	.modal-header  {
+		height:1.5em;
+		padding:0.5em 1em 1em 1em;
+		//border: 1.5px solid @grayColor;
+		
+		border-bottom: 1px solid @xx-lightGrayColor;
+		border-top: 1.5px solid @xxxx-lightGrayColor;
+		.vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
+		.border-radius(6px 6px 0px 0px);
+	}
+	
+}

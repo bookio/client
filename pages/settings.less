@@ -1,0 +1,96 @@
+@import "../bookio.less";
+
+.input-xlarge {
+	// Hides stop-cursor over text field with paths and shows text instead (we want the user to copy the text, stop-sign = scary)
+	cursor: text !important;
+}
+
+.settings {
+    .users {
+        padding:0.5em;
+        height:12em;
+    }
+    .categories {
+        padding:0.5em;
+        height:12em;
+    }
+}
+
+.buttons {
+        
+    button {
+        width:8em;
+    }
+    
+}
+
+.img-pattern {
+	cursor: pointer;
+	width: 60px;
+	height: 60px;
+	border: 2px solid white;
+	
+}
+
+.img-active {
+	border: 2px solid @bookioBlue;
+}
+
+
+.pattern-selector {
+	
+}
+
+.pattern-well {
+	height: 100px;
+}
+
+.pattern-selector .pattern-sample {
+	position: relative;
+	height: 100px;
+	border: 1px solid @bookioLighterBlue;
+	padding: 5px;
+	
+	margin: 0 auto;
+	text-align: center;
+}
+
+// OBS: Copied from Desktop.less -- must be re-copied if icons on desktop change appearance!!!!
+
+.pattern-selector .item {
+
+    position:absolute;
+	border: 2px solid white;
+
+    .drop-shadow(1px, 1px, 4px, 1px, hsla(0, 0, 0, 20%));
+    .vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
+    .border-radius(10px);
+}
+
+
+.pattern-selector .item .title {
+	font-size: 10.5px;
+    border: 1px solid transparent;
+	position: absolute;
+	text-align: center;
+	padding: 0.2em 0.9em;
+	line-height: 120%;
+	color: @darkGrayColor;
+	vertical-align: middle;	
+	.border-radius(0.9em);
+}
+
+.pattern-selector .item .title.selected {    
+    color: white;
+    background-color: @bookioBlue;
+}
+
+// ----------------------------------------------------------------------------------
+
+.pattern-selector .item.centered
+{
+	position: relative;
+	display: inline-block;  // Modify item to be centered in preview div
+}
+
+

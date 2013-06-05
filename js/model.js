@@ -1,6 +1,6 @@
 
 
-define(['js/tools', 'js/gopher', 'js/notifications'], function() {
+define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 
     Model = {};
     

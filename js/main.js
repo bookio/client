@@ -32,6 +32,7 @@ requirejs.config({
 (function() {
 
     var modules = [
+        'js/sprintf',
         'js/gopher',
         'js/model',
         'js/date',

@@ -47,6 +47,7 @@ define(['less!./timeslider'], function() {
             return _length = value;
         }
         
+		this.positionSlider = positionSlider;
 		
         function init() {
           
@@ -98,9 +99,6 @@ define(['less!./timeslider'], function() {
                 $(document).off('.timeslider'); 
             });
             
-            _elements.root.on( 'updatelayout', function() {
-                positionSlider();
-            });
 
             Notifications.on('updateUI.timeslider', function(){
 

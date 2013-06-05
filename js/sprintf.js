@@ -49,10 +49,10 @@ Changelog:
 **/
 
 
-define([], function() {
+//define([], function() {
 
 	
-	function sprintf() {
+	sprintf = function() {
 	
 		function str_repeat(i, m) {
 			for (var o = []; m > 0; o[--m] = i);
@@ -101,5 +101,5 @@ define([], function() {
 	}
 	
 	console.log('sprintf.js loaded...');
-});
+//});
 	

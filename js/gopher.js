@@ -54,7 +54,9 @@ define(['./sprintf', './base64', './tools'], function() {
     	});
 
         request.fail(function(xhr) {
+            debugger;
             console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
+            console.log(data);
         });
         
         return request;

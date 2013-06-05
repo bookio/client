@@ -1,6 +1,6 @@
 
 
-define(['less!./desktop', 'pages/rental-edit'], function() {
+define(['less!./desktop', 'pages/rental-edit', 'pages/reservation-edit'], function() {
 
     
 	Desktop = function(container, options) {
@@ -170,16 +170,14 @@ define(['less!./desktop', 'pages/rental-edit'], function() {
 		
 		
 		function newReservation(rental) {
-			var module = require('pages/new-reservation');
 
 			var reservation = {};
 			reservation.begin_at = startDate();
 			reservation.end_at = endDate();
 			reservation.rental_id = rental.id;
+
+			$.mobile.changePage('../pages/reservation-edit.html', {pageData:{reservation:reservation}});
 			
-    		module({
-        		reservation:reservation
-    		});
 		};
 		
 
@@ -559,11 +557,7 @@ define(['less!./desktop', 'pages/rental-edit'], function() {
 		
 		function editReservation(reservation) {
 
-			var module = require('pages/new-reservation');
-		
-    		module({
-        		reservation: reservation
-    		});
+    		$.mobile.changePage('../pages/reservation-edit.html', {pageData:{reservation:reservation}})
 		}
 		
 		function BounceButtons() {	

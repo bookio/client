@@ -1,7 +1,7 @@
 
 
 
-define(['jquery',  'text!./datepicker.html', 'less!./datepicker', './popover'], function($, template) {
+define(['text!./datepicker.html', 'less!./datepicker'], function(template) {
 
 	
 	DatePicker = function(options) {

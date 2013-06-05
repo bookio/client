@@ -1,5 +1,5 @@
 
-define(['jquery',  'less!components/timescale', 'scripts/tools'], function($) {
+define(['less!components/timescale'], function() {
 
 	
 	TimeScale = function(container, options) {

@@ -1,4 +1,4 @@
-define(['jquery', 'less!./popover'], function($) {
+define(['less!./popover'], function() {
 
 	
 	Popover = function(options) {

@@ -4,7 +4,7 @@
 
 */
 
-define(['jquery', 'less!./daterangepicker', '../scripts/tools', './itempicker', './datepicker'], function($) {
+define(['less!./daterangepicker', './datepicker'], function() {
 
 	
 	DateRangePicker = function(container, options) {

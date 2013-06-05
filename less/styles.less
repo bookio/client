@@ -1,0 +1,95 @@
+@import "mixins.less";
+@import "themes.less";
+@import "variables.less";
+
+
+
+* {
+	-webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+body {
+	.user-select(none);
+	cursor: default;
+}
+
+
+
+
+label.ui-input-text {
+
+	padding-left: 1em;
+	padding-right: 1em;
+		
+}
+
+
+div.ui-input-text {
+	.border-radius(1.2em);
+	padding-left: 1em;
+	padding-right: 1em;
+	background: rgba(255, 255, 255, 0.4);
+		
+}
+
+input[type=text].ui-input-text {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+textarea.ui-input-text {
+	.border-radius(1.2em);
+	padding-left: 1em;
+	padding-right: 1em;
+	background: rgba(255, 255, 255, 0.4);
+}
+
+.ui-header {
+    .vertical-gradient(lighten(black, 50%), black);
+	
+}
+
+
+[data-role="page"] {
+    background-image: url(../images/backgrounds/snow.png);
+    background-image: url(../images/backgrounds/white-leather.png);
+
+
+	[data-role="content"] {
+
+	    max-width: 800px;
+	    margin-left: auto;
+	    margin-right:auto;
+
+	    [data-role="listview"] li p {
+		    white-space: normal;
+	    }
+	
+	    [data-role=button-row] {
+		    text-align: center;
+		    
+		    [data-role="button"]  {
+				.border-radius(1.2em);
+		    }
+		    
+	    }
+	}    
+}
+
+
+#categories {
+
+    
+    [data-id="spinner"] {
+        text-align: center;
+        width:40px;
+        height:40px;
+        display: inline-block;
+    }
+    
+}
+
+
+
+

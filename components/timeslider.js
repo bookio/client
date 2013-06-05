@@ -1,7 +1,5 @@
-define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
+define(['less!./timeslider'], function() {
 
-	
-	var Notify = require('components/notify');
 	
 	TimeSlider = function(container, options) {
 	
@@ -22,7 +20,7 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 		var _length = 5;
 		var _range = 14;
 		var _scrollTimer = null;
-		var _setNeedsLayout = false;
+		var _setNeedsLayout = true;
 		var _busy = false;
 		
 		this.position = function(value) {
@@ -78,14 +76,17 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
             _elements.slider = _elements.root.find('.slider');
             _elements.gripper = _elements.root.find('.gripper');
             
+
             // Prevent IE bug and set height
-            _elements.slider.css({top:0, height:_elements.slider.parent().innerHeight()});
+            //_elements.slider.css({top:0, height:_elements.slider.parent().innerHeight()});
             
             var gripperCss = {};
             gripperCss.width = Math.floor(_elements.slider.innerHeight() * 0.60);
             gripperCss.height = gripperCss.width;
             gripperCss.top = (_elements.slider.innerHeight() - gripperCss.height) / 2;
             gripperCss.right = gripperCss.top;
+
+            _elements.gripper.css(gripperCss);
 
             _elements.root.on('removed', function(){
                 
@@ -97,6 +98,10 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
                 $(document).off('.timeslider'); 
             });
             
+            _elements.root.on( 'updatelayout', function() {
+                positionSlider();
+            });
+
             Notifications.on('updateUI.timeslider', function(){
 
             	if (_setNeedsLayout && !_busy)
@@ -106,12 +111,10 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
 
             });
 
-            _elements.gripper.css(gripperCss);
             
     	};
 
         function valueChanged() {
-           // Notify.show('Position: ' + _position + ', length: ' + _length);
             
         }    	
     	
@@ -266,7 +269,6 @@ define(['jquery', 'less!./timeslider', 'components/notify'], function($) {
                     dragging = false;
                     _busy = false;
                     
-                    Notify.hide();
 
                 });
             });

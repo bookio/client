@@ -1,4 +1,4 @@
-define(['jquery', 'less!components/notify'], function($) {
+define(['less!components/notify'], function() {
 
 	var _element = null;
     var _counter = 0;	
@@ -60,6 +60,8 @@ define(['jquery', 'less!components/notify'], function($) {
     module.hide = hide;
     module.show = show;
     	
+    Notify = module;
+    
     return module;
 
 });

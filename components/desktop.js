@@ -1,10 +1,8 @@
 
-define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner', 'components/itempicker', 'components/popup-menu', 'components/notify', 'pages/new-rental'], function($) {
+
+define(['less!./desktop', 'pages/rental-edit'], function() {
 
     
-	var Spinner = require('components/spinner');
-	var Notify = require('components/notify');
-
 	Desktop = function(container, options) {
 
 		var self = this;
@@ -422,9 +420,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
     			size:40
 			});
 
-			spinner.show();
-						
-			var gopher = new Gopher();
+			var gopher = Gopher;
 			
 			var rentals = Model.Rentals.fetch(); //gopher.request('GET', 'rentals');
 			var reservations = Model.Reservations.fetch(); //gopher.request('GET', 'reservations');
@@ -439,9 +435,8 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 			icons.done(gotIcons);
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
-				$('.desktop').css('background-image', 'url(' + 'images/patterns/' + _settings.background + ')');
-
-    			spinner.hide();
+				$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
+				
                 placeRentals();
                 updateRentalAvailability();			
     			
@@ -492,7 +487,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                     item.data(rental);
                     
                     title.text(rental.name);
-                    image.attr('src', 'images/symbols/' + _icons[rental.icon_id].image);
+                    image.attr('src', '../images/symbols/' + _icons[rental.icon_id].image);
 
             		title.css({top:item.outerHeight() + 2});
             		title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
@@ -509,7 +504,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 				'</div>'
 
             var item = $(template);
-            var image = item.find('img').attr('src', 'images/symbols/' + _icons[rental.icon_id].image);
+            var image = item.find('img').attr('src', '../images/symbols/' + _icons[rental.icon_id].image);
 
             _element.append(item);
             
@@ -583,12 +578,12 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		
 		function SetupEditMode() {
 			var watermarkDiv = _element.find('.watermark'); 
-			watermarkDiv.css({backgroundImage:'url(images/watermark-edit-mode.png)'});
+			watermarkDiv.css({backgroundImage:'url(../images/watermark-edit-mode.png)'});
 			
-			_element.find('.addButton').append('<img class="icon" src=images/icons/add.png>');
+			_element.find('.addButton').append('<img class="icon" src=../images/icons/add.png>');
 			bringItemToTop(_element.find('.addButton'));
 			
-			_element.find('.closeButton').append('<img class="icon" src=images/icons/close.png>');
+			_element.find('.closeButton').append('<img class="icon" src=../images/icons/close.png>');
 			bringItemToTop(_element.find('.closeButton'));
 			
 			_element.addClass('editMode');
@@ -666,14 +661,15 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
 		function enableDragDrop(item) {
 		
             item.on('doubletap', function(event) {
+
         		var rental = item.data();
         		var reservation = getReservationForRental(rental);
 
-    			var module = require('pages/new-rental');
-    		
-        		module({
-            		rental:rental
-        		});
+        		var pageData = {};
+        		pageData.rental = rental;
+        		
+        		$.mobile.changePage('../pages/rental-edit.html', {pageData: pageData});
+
             });
 
             item.on(isTouch() ? 'touchstart' : 'mousedown', function(event){
@@ -703,7 +699,7 @@ define(['jquery', 'less!./desktop', 'pages/new-reservation', 'components/spinner
                 
                 item.find('.title').addClass('selected');
                 // Show delete icon if selected  
-            	item.find('.deleteItem').append('<img class="icon" src=images/icons/icon-delete.png>');
+            	item.find('.deleteItem').append('<img class="icon" src=../images/icons/icon-delete.png>');
                 
                 $(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
 

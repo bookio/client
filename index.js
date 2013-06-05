@@ -1,4 +1,3 @@
-/* JBN */
 
 requirejs.config({
     paths: {

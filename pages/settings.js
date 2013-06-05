@@ -48,8 +48,8 @@
     	        	if (choosenPatternName != _activePatternName) {
 	    	        	$('.desktop').css('background-image', 'url(' + choosenPatternPath + ')');
 	    	        	
-	    	        	// Should be set here when _settings is global
-	    	        	// _settings.background = choosenPatternName;
+	    	        	// Notify desktop to change background with the new pattern
+	    	        	Notifications.trigger('background-changed.desktop', choosenPatternName);
     	        	}
     	        
                     chill();
@@ -71,6 +71,12 @@
 
 	    	    if (_info.email)
 	    	        _elements.email.val(_info.email);
+	    	        
+	    	    if (_info.twitter_name)
+	    	    	_elements.twitter_name.val(_info.twitter_name);
+
+	    	    if (_info.facebook_page)
+	    	    	_elements.facebook_page.val(_info.facebook_page);
 
 	    	    if (_info.address)
 	    	        _elements.address.val(_info.address);
@@ -83,6 +89,8 @@
                 _info.name = _elements.name.val();
                 _info.phone = _elements.phone.val();
                 _info.email = _elements.email.val();
+                _info.twitter_name = _elements.twitter_name.val();
+                _info.facebook_page = _elements.facebook_page.val();
                 _info.address = _elements.address.val();
                 _info.webpage = _elements.webpage.val();
             }
@@ -206,6 +214,8 @@
     	    	    _elements.name = _elements.html.find('.name');
     	    	    _elements.phone = _elements.html.find('.phone');
     	    	    _elements.email = _elements.html.find('.email');
+    	    	    _elements.twitter_name = _elements.html.find('.twitter-name');
+    	    	    _elements.facebook_page = _elements.html.find('.facebook-page');
     	    	    _elements.address = _elements.html.find('.address');
     	    	    _elements.webpage = _elements.html.find('.webpage');
     	    	    _elements.users = _elements.html.find('.users');

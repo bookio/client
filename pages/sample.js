@@ -1,6 +1,3 @@
-
-
-
 (function() {
 
 	var includes = [
@@ -30,9 +27,12 @@
 		var _timeScale = null;
 		var _timeSlider = null;
 		var _picker = null;
+		var _resizeTimer;
+
 		
 		function NotifyUpdate(startDate, endDate) {
 			if ((startDate.getFullYear() == endDate.addDays(-1).getFullYear()) && (startDate.getMonth() == endDate.addDays(-1).getMonth()) && (startDate.getDate() == endDate.addDays(-1).getDate())) {
+				// If interval is on the same day, don´t show fromdate - todate
 				Notify.show(startDate.getFriendlyDate(), startDate.getYear());
 			}
 			else {
@@ -40,9 +40,33 @@
 			}
 		}
 		
+		
 		function triggerEvent() {
             Notifications.trigger('updateUI');
 		}
+		
+		
+		function redrawForResize() {
+			//console.log(_timeSlider.range());
+			_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.range()));
+			sliderChanged();
+		}
+		
+		
+		function setSliderInStartPosition() {
+        	//_timeSlider.range(14);
+        	_timeSlider.position(0);  // Set Now as start position
+        	_timeSlider.length(1); // Fill only one 'time slot'
+        	
+        	var date = new Date();
+        	date.clearTime();
+        	
+        	_timeScale.startDate(date); 
+        	_timeScale.endDate(date.addDays(_timeSlider.range()));
+        	
+        	sliderChanged();
+		}
+		
 		
 		function sliderChanged() {
 		    var selectionStartDate = _timeScale.startDate().addDays(_timeSlider.position());
@@ -105,6 +129,10 @@
 
 		function Module() {
 
+			$(window).resize(function () {
+			    clearTimeout(_resizeTimer);
+			    _resizeTimer = setTimeout(redrawForResize, 150);
+			});
 					    
 		    function init() {
 	        	_desktop = new Desktop(_html.find(".desktop-container"), {});
@@ -118,7 +146,8 @@
                 _timeSlider = new TimeSlider(_html.find(".slider-container"), {
                     scroll:scroll,
                     positionChanged: sliderChanged,
-                    lengthChanged: sliderChanged
+                    lengthChanged: sliderChanged,
+                    sliderDblClicked: setSliderInStartPosition
                 });
 
 	        	function signOut() {
@@ -130,18 +159,13 @@
     	        	event.preventDefault();
     	        	event.stopPropagation();
 
-    	        	//require('pages/categories')();
-    	        	//return;
     	        	var DateRangePicker = require('components/daterangepicker');
 
 	        	
     	        	var menu = new PopupMenu({
         	        	
     	        	});
-    	        	
-    	        	function callback(context) {
-    	        	}
-    	        	
+    	        	    	        	
     	        	menu.add({
         	        	type: 'menuitem',
         	        	icon: 'images/icons/gears.png',
@@ -180,25 +204,13 @@
     	        	menu.show($(this));
     	        	
     	        	
-	        	});			   
-	        	
-	        	_timeSlider.range(14);
-	        	_timeSlider.position(3);
-	        	_timeSlider.length(3);
-	        	
-	        	var date = new Date();
-	        	date.clearTime();
-
-	        	
-	        	_timeScale.startDate(date); 
-	        	_timeScale.endDate(date.addDays(14)); 
-	        	
-	        	sliderChanged();
+	        	});		
+	        		   
+	        	setSliderInStartPosition();
 	        		        	
 		    };
 		    
         	function scroll(delta) {
-
 	        	_timeScale.scroll(delta);
 	        	sliderChanged();
         	}

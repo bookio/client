@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+<div id="switch-page" data-role="page" data-dom-cache="true">
+    
+    <div data-role="header">
+    	<h1>Flugsvampens Stugby</h1>
+    </div>
+
+    <div data-role="content">
+        <div data-role="button-row">
+            <img src="../images/app-icon.png"/>
+        </div>
+
+        <h4 data-hook="debug">
+        	Detta är en debug-version av appen. Klicka på någon av nedatående länkar för att testa.
+        </h4>
+        
+        <h2 data-hook="title">
+            Vart vill du gå?
+        </h2>
+        
+        <ul data-hook="listview" data-role="listview" data-inset="true">
+	        <li>
+	        	<a href="main.html">
+		        	<h2>
+						Huvudsidan	        		
+		        	</h2>
+		        	<p>
+		        		Huvudsidan är där all bokning sker.
+		        	</p>
+	        	</a>
+	        </li>
+	        <li>
+	        	<a href="login.html">
+		        	<h2>
+						Logga ut	        		
+		        	</h2>
+		        	<p>
+		        		Detta innebär att du måste ange e-postadress och lösenord för att komma hit igen.
+		        	</p>
+	        	</a>
+	        </li>
+	        <li>
+	        	<a href="settings.html">
+		        	<h2>
+						Inställningar
+		        	</h2>
+		        	<p>
+		        		Finjustera utseende, lägg till och ta bort användare ock bokningsgrupper
+		        	</p>
+	        	</a>
+	        </li>
+	        <li>
+	        	<a href="rentals/list.html">
+		        	<h2>
+						Hyresobjekt	        		
+		        	</h2>
+		        	<p>
+		        		Här kan du lägga upp (och ta bort) bokningsbara objekt.
+		        	</p>
+	        	</a>
+	        </li>
+	        <li>
+	        	<a href="mobile/select-category.html">
+		        	<h2>
+						"Mobil-appen"
+		        	</h2>
+		        	<p>
+		        		Det är detta som är tänkt att vara mobil-appen där kunder kan göra sina egna bokningar.
+		        	</p>
+	        	</a>
+	        </li>
+	        <li>
+	        	<a href="missing.html">
+		        	<h2>
+						"Missing page"
+		        	</h2>
+		        	<p>
+		        		Hmm. Jo, jag vet. Hit ska man ju aldrig komma...
+		        	</p>
+	        	</a>
+	        </li>
+        </ul>        
+        
+
+		<div>
+			<h4>
+				P.S. Ditt sessions-id är <span data-hook="sid"></span>
+			</h4>
+			<p data-hook="sid-comment">
+				...men säg inget till ALA ;) 
+			<p>
+		</div>        
+        
+    </div>
+
+</div>
+
+</body></html>

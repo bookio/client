@@ -1,0 +1,101 @@
+@import "../less/mixins.less";
+@import "../less/variables.less";
+
+html, body {
+    height : 100%;
+}
+
+@scaleHeight: 30px;
+@sliderHeight: 25px;
+@pickerHeight: 40px;
+@footerHeight: 34px;
+@margin: 10px;
+@space:2px;
+
+#main-page {
+    
+    height : 100%;
+/*
+    .ui-header {
+    	height : 40px;
+    }
+
+    .ui-content {
+	    position : absolute;
+	    top      : 40px;
+	    right    : 0;
+	    bottom   : 0px;
+	    left     : 0;
+	    max-width: none;
+	  }
+*/
+	.ui-footer {
+	    position : absolute;
+	    bottom   : 0;
+	    left     : 0;
+	    right:0px;
+	    height   : @footerHeight;
+	    padding: 4px;
+	    text-align: center;
+	}
+
+	[data-role="popup"] {
+	
+		li a {
+			background-repeat: no-repeat;
+			background-position: center center;
+			height:50px;
+			
+		}
+		
+		[data-hook="menuitem-settings"] {
+			background-image: url(../images/icons/gears.png);
+		}
+	
+		[data-hook="menuitem-editmode"] {
+			background-image: url(../images/icons/edit-desktop.png);
+		}
+	
+		[data-hook="menuitem-logout"] {
+			background-image: url(../images/icons/onoff.png);
+		}
+		
+	}
+
+	[data-hook=desktop] {
+		position:absolute;
+	    left:@margin;
+	    right:@margin;
+	    top:@margin;
+	    bottom:@footerHeight+@pickerHeight+@sliderHeight+@scaleHeight+2*@margin+3*@space;
+	    border: 1px solid @xx-lightGrayColor;
+	}
+
+	[data-hook=scale] {
+		position:absolute;
+	    left:@margin;
+	    right:@margin;
+	    top:auto;
+	    height:@scaleHeight;
+	    bottom:@footerHeight+@sliderHeight+@pickerHeight+2*@margin+2*@space;
+	}
+
+	[data-hook=slider] {
+		position:absolute;
+	    left:@margin;
+	    right:@margin;
+	    top:auto;
+	    height:@sliderHeight;
+	    bottom:@pickerHeight+@footerHeight+2*@margin+1*@space;
+	}
+
+	[data-hook=picker] {
+		position:absolute;
+	    left:@margin;
+	    right:@margin;
+	    top:auto;
+	    height:@pickerHeight;
+	    bottom:@footerHeight+2*@margin;
+	}
+
+}

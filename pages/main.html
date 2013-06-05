@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+	
+	<div id="main-page" data-role="page" data-dom-cache="true">
+	    
+    
+    <div data-role="content">
+
+        <div data-hook="desktop">
+        </div>
+
+        <div data-hook="scale">
+        </div>
+        
+        <div data-hook="slider">
+        </div>
+
+        <div data-hook="picker">
+
+<!--
+    	    <div data-role="button-row">
+            	<a data-hook="Xback" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
+    	    </div>
+-->
+        </div>
+
+    </div>
+
+    
+    <div data-role="footer">
+
+        <a href="#popupMenu" data-rel="popup" data-icon='gear' data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" aria-haspopup="true" aria-owns="#popupMenu">
+        	<span>
+        		<span>Menu</span>
+        	</span>
+        </a>
+
+
+    </div>
+
+
+	<div data-role="popup" id="popupMenu" data-theme="a">
+		<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">
+
+			<!--
+			<li data-role="divider" data-theme="a">What to do</li>
+			-->
+			<li>
+				<a data-hook="menuitem-settings" href="settings.html">
+				</a>
+			</li>
+			<li>
+				<a data-hook="menuitem-editmode" href="options.html">
+				</a>
+			</li>
+			<li>
+				<a data-hook="menuitem-logout" href="login.html">
+				</a>
+			</li>
+		</ul>
+	</div>
+
+
+</body>
+</html>

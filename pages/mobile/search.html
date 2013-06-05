@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<div data-role="page" id="mobile-search">
+
+    <div data-role="header">
+        <a href='#' data-hook="back" data-icon='arrow-l'>Tillbaka</a>
+    	<h1>Flugsvampens Stugby</h1>
+    </div>
+
+	<div data-role="content">
+
+        <div data-role="button-row">
+            <img src="../../images/app-icon.png"/>
+        </div>
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <h1 data-hook="name"></h1>
+                <p data-hook="description"></p>
+            </li>
+        </ul>        
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <h3>Ange datum du vill hyra</h3>
+                <p></p>
+
+        <div class="ui-grid-a">
+        	<div class="ui-block-a">
+                <input data-hook="start_date" type="text" value="" placeholder="Från datum" title="">
+        	</div>
+        	<div class="ui-block-b">
+                <input data-hook="end_date" type="text" value="" placeholder="Till datum" title="">
+            	
+        	</div>
+        </div><!-- /grid-a -->
+
+
+            </li>
+        </ul>        
+
+
+        <p/>
+        <p/>
+
+            
+
+
+		<div data-role="button-row">
+        	<a href='#' data-hook="book" data-role="button" data-inline="true" data-icon="search" data-iconpos="right">Sök ledig hytta</a>
+		</div>
+	</div><!-- /content -->
+
+</div>
+
+
+</body></html>

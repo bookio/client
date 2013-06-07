@@ -3,7 +3,6 @@
 (function() {
 
 	var dependencies = [
-		'less!./rental-edit'
 	];
 
 	define(dependencies, function(html) {
@@ -13,27 +12,26 @@
             
             var _page = page;
             var _elements = {};
-            var _rental = {};
+            var _user = {};
             
             function fill() {
-                _elements.name.val(_rental.name);
-                _elements.description.val(_rental.description);
+                _elements.name.val(_user.name);
+                _elements.email.val(_user.email);
             }
             
             function chill() {
-                _rental.name = _elements.name.val();
-                _rental.description = _elements.description.val();
-                _rental.icon_id = 39;
+                _user.name = _elements.name.val();
+                _user.email = _elements.email.val();
             }
             
 	        function init() {
     	        _page.hookup(_elements);
     	        
-    	       if ($.mobile.pageData && $.mobile.pageData.rental) {
-        	       _rental = $.mobile.pageData.rental;
+    	       if ($.mobile.pageData && $.mobile.pageData.user) {
+        	       _user = $.mobile.pageData.user;
     	       }
 
-    	       if (!_rental.id)
+    	       if (!_user.id)
     	       	   _elements.remove.addClass('hidden');
     	       	   
     	       fill();
@@ -45,18 +43,13 @@
 
 	           _elements.remove.on('tap', function(event) {
 	           	
-		           var request = Model.Rentals.remove(_rental);
-		           
-		           request.done(function() {
-			           $.mobile.popPage();
-		           });
 	           });
 
 	           _elements.save.on('tap', function(event) {
 	           	
     	           chill();
 		           
-		           var request = Model.Rentals.save(_rental);
+		           var request = Model.Users.save(_user);
 		           
 		           request.done(function() {
 			           $.mobile.popPage();
@@ -68,7 +61,7 @@
 	        init();
 		}
 
-    	$(document).delegate("#rental-edit-page", "pageinit", function(event) {
+    	$(document).delegate("#user-page", "pageinit", function(event) {
         	new Module($(event.currentTarget));
         });
 		

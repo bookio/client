@@ -4,11 +4,10 @@
 
 <body>
 
-<div id="rental-edit-page" data-role="page">
+<div id="category-page" data-role="page">
     
     <div data-role="header">
-        <a href='#' data-hook="back" data-icon='arrow-l' data-theme="b">Back</a>
-    	<h1>Nytt objekt</h1>
+    	<h1>Uthyrningsgrupp</h1>
     </div>
 
     <div data-role="content">
@@ -16,21 +15,12 @@
             <img src="../images/app-icon.png"/>
         </div>
         
-        <ul data-hook="listview" data-role="listview" data-inset="true">
-        </ul>        
-
         
         <label for="name">Namn</label>
         <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
             
         <label for="description">Beskrivning</label>
         <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
-
-    	<label for="depth" id="title-booking-depth">Bokningsdjup</label>
-    	<input id="depth" type="text" value="1" placeholder="Antal som kan boka samtidigt" title=""/>
-
-    	<label for="category" id="title-booking-group">Bokas under namnet</label>
-    	<input id="category" type="text" value="" placeholder="Synligt namn vid bokning" title=""/>
         
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>

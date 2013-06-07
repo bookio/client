@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-	   'less!./reservation-edit',
+	   'less!./reservation',
 	   'js/parser'
 	];
 
@@ -314,7 +314,7 @@
 	        init();
 		}
 
-    	$(document).delegate("#reservation-edit", "pageinit", function(event) {
+    	$(document).delegate("#reservation-page", "pageinit", function(event) {
         	new Module($(this));
         });
 

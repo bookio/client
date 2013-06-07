@@ -48,6 +48,7 @@ requirejs.config({
     require(modules, function() {
 		
 		var pages = [];
+		var transitions = {};
 		
 		$(document).bind("pagebeforechange", function(event, data) {
 		    $.mobile.pageData = (data && data.options && data.options.pageData) ? data.options.pageData : null;
@@ -70,14 +71,28 @@ requirejs.config({
         });
 
 		$(document).on("pagebeforeshow", function(event, params) {
-		    pages.push(event.currentTarget.baseURI);
-			console.log("document.pagebeforeshow");
+
+    		var found = false;
+    		
+    		$.each(pages, function(index, page){
+        		if (page == event.currentTarget.baseURI)
+        		    found = true;
+    		});
+    		
+    		if (!found) {
+    		    pages.push(event.currentTarget.baseURI);
+    			console.log("pagebeforeshow: page '%s' pushed", event.currentTarget.baseURI);
+        		
+    		}
 		});
+		
 		$.mobile.pushPage = function(page, options) {
 		
+    		var u = $.mobile.path.parseUrl(page );
+
 		    var pageoptions = {
 		        changeHash:false,
-		        transition:'fade',
+		        transition:'slide',
 		        showLoadMsg:false
 		    };
 		
@@ -93,7 +108,7 @@ requirejs.config({
 	            
 	            if (pages.length > 0) {
 	                console.log("Trying to load page '%s'", pages[pages.length-1]);
-	                $.mobile.changePage(pages[pages.length-1]);
+	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
 	            }
 	        }
         } 

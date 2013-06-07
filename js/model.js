@@ -275,6 +275,61 @@ define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 
     })();    
 
+    ////////////////////////////////////////////////////////////////////////////
+
+    (function() {
+        
+        Model.Users = {};	
+        
+        Model.Users.fetch = function(id) {
+        
+        	var url = isNumeric(id) ? sprintf('users/%d', id) : 'users';
+        	
+            return gopher.request('GET', url);
+        }
+        
+        Model.Users.add = function(user) {
+
+			var request = gopher.request('POST', 'users', user);
+			
+			request.done(function(user) {
+				Notifications.trigger('user-added', user);				
+			});
+			
+			return request;
+        };
+
+        Model.Users.update = function(user) {
+
+			var request = gopher.request('PUT', sprintf('users/%d', user.id), user);
+			
+			request.done(function(user) {
+				Notifications.trigger('user-updated', user);				
+			});
+			
+			return request;
+        };
+        
+        Model.Users.save = function(user) {
+            return user.id ? Model.Users.update(user) : Model.Users.add(user);
+        }
+            
+
+        Model.Users.remove = function(user) {
+			
+			var request = gopher.request('DELETE', sprintf('users/%d', user.id), null);
+			
+			request.done(function() {
+				Notifications.trigger('user-removed', user);
+			}); 
+			
+			return request;
+        }
+        
+
+
+    })();    
+
 	console.log('model.js loaded...');
 
 

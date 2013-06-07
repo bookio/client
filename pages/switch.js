@@ -35,6 +35,10 @@
 	        	if (Gopher.authorization.length > 0) {
 		        	_elements.sid.text(sprintf("%s", Gopher.authorization));
 	        	}
+
+	           _elements.back.on('tap', function(event){
+		           $.mobile.popPage();
+	           });
 	        }	  
 
 	        init();

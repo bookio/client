@@ -3,9 +3,14 @@
 (function() {
 
 	var dependencies = [
+	   './users',
+	   './categories',
+	   './contact',
+	   './missing'
 	];
 
 	define(dependencies, function() {
+		
 		
 	    function Module(page) {
             

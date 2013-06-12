@@ -17,20 +17,38 @@
         </div>
         
         <ul data-hook="listview" data-role="listview" data-inset="true">
+
+            <li>        
+            <label for="name">Namn</label>
+            <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
+            </li>
+            
+            <li>
+            <label for="description">Beskrivning</label>
+            <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
+            </li>
+            
+            <li>
+        	<label for="depth" id="title-booking-depth">Bokningsdjup</label>
+        	<input id="depth" type="text" value="1" placeholder="Antal som kan boka samtidigt" title=""/>
+            </li>
+            
+            <li>
+        	<label for="category" id="title-booking-group">Bokas under namnet</label>
+        	<input id="category" type="text" value="" placeholder="Synligt namn vid bokning" title=""/>
+            </li>
+            
+            <li>
+                <div data-hook="icon.container">
+                    <img data-hook="icon.image" src="../images/symbols/0000.png">
+                    <br/>
+                    <a data-hook="icon.button" data-mini="true" data-role="button" data-inline="true" data-theme="c">Byt ikon</a>
+                </div>
+            </li>
+
         </ul>        
 
-        
-        <label for="name">Namn</label>
-        <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
-            
-        <label for="description">Beskrivning</label>
-        <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
 
-    	<label for="depth" id="title-booking-depth">Bokningsdjup</label>
-    	<input id="depth" type="text" value="1" placeholder="Antal som kan boka samtidigt" title=""/>
-
-    	<label for="category" id="title-booking-group">Bokas under namnet</label>
-    	<input id="category" type="text" value="" placeholder="Synligt namn vid bokning" title=""/>
         
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
@@ -38,6 +56,10 @@
         	<a data-hook="remove" data-role="button" data-inline="true" data-theme="r">Tag bort</a>
 	    </div>
     </div>
+
+	<div data-hook="popup" data-role="popup">
+	</div>
+
 
 </div>
 

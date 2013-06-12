@@ -21,7 +21,7 @@
                     <label>Vem</label>
                     <textarea data-hook="contact" type="text" value="" placeholder="" title=""></textarea>
             	    <div data-role="button-row">
-                    	<a data-hook="selectcustomer" href="#popup" data-rel="popup" data-role="button" data-inline="true" data-theme="a" class="ui-disabled">Välj kund</a>
+                    	<a data-hook="selectcustomer" href="#" data-role="button" data-inline="true" data-theme="c" class="ui-disabled">Välj kund</a>
             	    </div>
             </li>
             <li data-hook="kalle" class="hidden">
@@ -33,6 +33,10 @@
             <li>
                 <label>När</label>
                 <input data-hook="when" type="text" value="" placeholder="" title="" disabled>
+                <div data-role="button-row">
+                	<a data-hook="datepickerbutton" href="#" data-role="button" data-inline="true" data-theme="c">Från</a>
+                	<a data-hook="enddate" href="#" data-role="button" data-inline="true" data-theme="c">Till</a>
+                </div>
             </li>
             <li>
                 <label>Pris</label>
@@ -75,14 +79,11 @@
 
 
 	<div data-hook="popup" data-role="popup" id="popup" data-theme="a">
-		<ul data-role="listview" data-inset="true" data-theme="c">
-
-			<li data-icon="false">
-				<a>A
-				</a>
-			</li>
-		</ul>
 	</div>
+
+
+
+
 </div>
 
 

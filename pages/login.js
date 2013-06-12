@@ -15,19 +15,18 @@
             
             var _page = page;
             var _elements = {};
-            
-	        function login() {
 
-	    		var email = _elements.email.val();
-	    		var password = _elements.password.val();
+	        function loginWith(email, password) {
 
-	    		_elements.button.transition({opacity:0.5}, 200);
+    	        var buttons = _page.find('.login-button');
+    	         
+	    		buttons.transition({opacity:0.5}, 200);
 	    		
 	    		var request = Gopher.login(email, password);
 
 				request.fail(function(){
-	                _elements.button.transition({opacity:1.0}, 100);
-	            	_elements.button.transition({x:-5}, 75).transition({x:10}, 75).transition({x:0}, 75);
+	                buttons.transition({opacity:1.0}, 100);
+	            	buttons.transition({x:-5}, 75).transition({x:10}, 75).transition({x:0}, 75);
 					
 				});	    		
 
@@ -39,6 +38,16 @@
 	
 	            
 	        }        
+            
+	        function login() {
+
+	    		var email = _elements.email.val();
+	    		var password = _elements.password.val();
+
+	    		loginWith(email, password);
+	    		
+	        }        
+
 	        function init() {
 	        	
 	        	// Logout
@@ -55,6 +64,10 @@
             
 	            _elements.button.on('tap', function() {
 					login();
+				});	        	
+				
+	            _elements.meg.on('tap', function() {
+					loginWith("magnus@egelberg.se", "potatismos");
 				});	        	
 	        }	  
 

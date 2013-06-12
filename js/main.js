@@ -49,6 +49,7 @@ requirejs.config({
 		
 		var pages = [];
 		var transitions = {};
+
 		
 		$(document).bind("pagebeforechange", function(event, data) {
 		    $.mobile.pageData = (data && data.options && data.options.pageData) ? data.options.pageData : null;
@@ -93,13 +94,20 @@ requirejs.config({
 		    var pageoptions = {
 		        changeHash:false,
 		        transition:'slide',
-		        showLoadMsg:false
+		        showLoadMsg:true
 		    };
 		
 		    $.extend(pageoptions, options);
 		
 		    $.mobile.changePage(page, pageoptions);
 		} 
+
+		$.mobile.gotoPage = function(page, options) {
+		
+            pages = [];
+            $.mobile.pushPage(page, options);
+		} 
+
 
         $.mobile.popPage = function() {
 
@@ -115,10 +123,10 @@ requirejs.config({
   
 
         if (Gopher.authorization.length == 0)
-	        $.mobile.pushPage('pages/login.html', {showLoadMsg:false, changeHash:false, transition:'fade'});
+	        $.mobile.pushPage('pages/login.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
         else {
-    	    console.log('Session ID:%s', Gopher.authorization);
-    	    $.mobile.pushPage('pages/main.html', {showLoadMsg:false, changeHash:false, transition:'fade'});
+    	    console.log('Session ID: %s', Gopher.authorization);
+    	    $.mobile.pushPage('pages/main.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
         }
     
     });

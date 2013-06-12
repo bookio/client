@@ -17,11 +17,13 @@
             function fill() {
                 _elements.name.val(_user.name);
                 _elements.email.val(_user.email);
+                _elements.password.val(_user.password);
             }
             
             function chill() {
                 _user.name = _elements.name.val();
                 _user.email = _elements.email.val();
+                _user.password = _elements.password.val();
             }
             
 	        function init() {
@@ -42,6 +44,11 @@
 
 
 	           _elements.remove.on('tap', function(event) {
+		           var request = Model.Users.remove(_user);
+		           
+		           request.done(function() {
+			           $.mobile.popPage();
+		           });
 	           	
 	           });
 

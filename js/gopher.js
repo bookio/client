@@ -1,9 +1,10 @@
 
-define(['./sprintf', './base64', './tools'], function() {
+define(['./sprintf', './base64', './tools', 'components/notify'], function() {
 
     
     Gopher = {};
 
+    //$.cookie('sid', 'jc22cczytxhq4h1ko4a2j7nm6d17zxan');
     
     Gopher.baseURL = 'http://bookio.herokuapp.com';
     //Gopher.baseURL = 'http://localhost:3000';
@@ -54,7 +55,18 @@ define(['./sprintf', './base64', './tools'], function() {
     	});
 
         request.fail(function(xhr) {
-            debugger;
+
+            try {
+                json = JSON.parse(xhr.responseText);
+                
+                if (json.error) {
+                    Notify.show(json.error);
+                }
+            }
+            catch (error) {
+                console.log("*************** %s **************", error.message);
+            }
+            
             console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
             console.log(data);
         });

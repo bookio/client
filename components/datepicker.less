@@ -14,7 +14,8 @@
 		table-layout: fixed;
 		border-collapse:separate;
 		border-spacing: 0.2em;
-		line-height: 95%;
+		//line-height: 150%;
+		//font-size: 135%;
 	}
 	
     th, tr, td {
@@ -22,8 +23,13 @@
     }	
     
     tr {
-	    
+        height:2em;	    
     }
+    
+    td {
+        width:2em;	    
+    }
+
     thead  {
         
     }
@@ -78,11 +84,11 @@
 		}
 		
 		&.grayed {
-		    color: fadeout(@darkGrayColor, 85%);
+		    color: fadeout(@darkGrayColor, 30%);
 		}
 		
 		&.disabled {
-		    color: fadeout(@darkGrayColor, 85%);
+		    color: fadeout(@darkGrayColor, 50%);
 		}
 		
 		&.selected {
@@ -98,6 +104,7 @@
 	    &:not(.grayed):hover {
 			cursor:pointer;
 			color: @hoverTextColor;
+			text-shadow: none;
 			.vertical-gradient(@hoverBackgroundColor, darken(@hoverBackgroundColor, 5%));
 			.border-radius(1px);
 
@@ -106,6 +113,7 @@
 	    &.grayed:hover {
 			cursor:pointer;
 			color: @hoverTextColor;
+			text-shadow: none;
 			.vertical-gradient(@xx-lightGrayColor, darken(@xx-lightGrayColor, 5%));
 			.border-radius(1px);
 

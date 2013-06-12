@@ -16,25 +16,37 @@
         <div data-hook="slider">
         </div>
 
-        <div data-hook="picker">
-
-<!--
-    	    <div data-role="button-row">
-            	<a data-hook="Xback" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
-    	    </div>
--->
-        </div>
 
     </div>
 
     
     <div data-role="footer">
 
-        <a href="#popupMenu" data-rel="popup" data-icon='gear' data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="a" aria-haspopup="true" aria-owns="#popupMenu">
-        	<span>
-        		<span>Menu</span>
-        	</span>
-        </a>
+
+                <a data-hook="startdate.button" data-role="button" data-inline="true" data-theme="c">
+                    <div>
+                        <span data-hook="startdate.weekday" class="weekday">Tis</span>
+                        <span data-hook="startdate.day" class="day">8 Juni</span>
+                        <span data-hook="startdate.year" class="year">2013</span>
+                    </div>
+                </a>
+        
+                <a data-hook="enddate.button" data-role="button" data-inline="true" data-theme="c">
+                    <div>
+                        <span data-hook="enddate.weekday" class="weekday">Ons</span>
+                        <span data-hook="enddate.day" class="day">9 Juni</span>
+                        <span data-hook="enddate.year" class="year">2013</span>
+                    </div>
+                </a>
+
+                <span style="margin:0 1em"></span>            
+                
+                <a data-hook="popupmenubutton" href="#popupMenu" data-transition="pop" data-rel="popup" data-icon='gear' data-role="button" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" aria-haspopup="true" aria-owns="#popupMenu">
+                    Meny
+                </a>
+            
+
+
 
 
     </div>

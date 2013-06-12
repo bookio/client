@@ -246,7 +246,7 @@ define(['text!./datepicker.html', 'less!./datepicker'], function(template) {
 	        _firstDayOfCalendar = getFirstDayOfCalendar(date);	        	
 	        updateDOM();
         }
-        
+        /*
         self.show = function(position) {
             
             self.hide();
@@ -265,7 +265,7 @@ define(['text!./datepicker.html', 'less!./datepicker'], function(template) {
                 
             _popover = null;
         }
-        
+        */
         self.html = function() {
             return _html;
         }

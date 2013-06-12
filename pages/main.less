@@ -7,36 +7,55 @@ html, body {
 
 @scaleHeight: 30px;
 @sliderHeight: 25px;
-@pickerHeight: 40px;
-@footerHeight: 34px;
+@footerHeight: 38px;
 @margin: 10px;
 @space:2px;
 
 #main-page {
     
     height : 100%;
-/*
-    .ui-header {
-    	height : 40px;
-    }
 
-    .ui-content {
-	    position : absolute;
-	    top      : 40px;
-	    right    : 0;
-	    bottom   : 0px;
-	    left     : 0;
-	    max-width: none;
-	  }
-*/
-	.ui-footer {
-	    position : absolute;
-	    bottom   : 0;
-	    left     : 0;
+
+	[data-role=footer] {
+	    position:absolute;
+	    bottom:0px;
+	    left:0px;
 	    right:0px;
-	    height   : @footerHeight;
-	    padding: 4px;
-	    text-align: center;
+	    height:@footerHeight;
+	    padding:4px;
+	    text-align:center;
+	    background-image: none;
+	    background-color: transparent;// fadeout(black, 90%);
+	    border:none;
+
+	    [data-role=button] {
+    	    height:30px;
+
+	    }
+	    [data-hook="startdate.button"], [data-hook="enddate.button"] {
+	    
+    	    width:8em;
+
+            .year {
+            	color: @xx-lightGrayColor;
+            }
+            
+            .day {
+            	color: @x-darkGrayColor; 
+            }
+            
+            .year, .day {
+            	text-shadow: 1px 1px 1px white;
+            	cursor: pointer;
+            }
+            
+            .weekday {
+            	text-shadow: 1px 1px 1px white;
+            	cursor: default;
+            	color: @xx-lightGrayColor;
+            	font-size: 80%;
+            }
+	    }
 	}
 
 	[data-role="popup"] {
@@ -67,7 +86,7 @@ html, body {
 	    left:@margin;
 	    right:@margin;
 	    top:@margin;
-	    bottom:@footerHeight+@pickerHeight+@sliderHeight+@scaleHeight+2*@margin+3*@space;
+	    bottom:@footerHeight+@sliderHeight+@scaleHeight+1*@margin+3*@space;
 	    border: 1px solid @xx-lightGrayColor;
 	}
 
@@ -77,7 +96,7 @@ html, body {
 	    right:@margin;
 	    top:auto;
 	    height:@scaleHeight;
-	    bottom:@footerHeight+@sliderHeight+@pickerHeight+2*@margin+2*@space;
+	    bottom:@footerHeight+@sliderHeight+1*@margin+2*@space;
 	}
 
 	[data-hook=slider] {
@@ -86,16 +105,24 @@ html, body {
 	    right:@margin;
 	    top:auto;
 	    height:@sliderHeight;
-	    bottom:@pickerHeight+@footerHeight+2*@margin+1*@space;
+	    bottom:@footerHeight+1*@margin+1*@space;
 	}
-
-	[data-hook=picker] {
-		position:absolute;
-	    left:@margin;
-	    right:@margin;
-	    top:auto;
-	    height:@pickerHeight;
-	    bottom:@footerHeight+2*@margin;
+	
+	[data-role=footer] {
+    	[data-hook=year] {
+        	color: @xxx-lightGrayColor;
+    	}
+    	[data-hook=month] {
+        	color: @xx-lightGrayColor;
+    	}
+    	[data-hook=day] {
+        	color: @xxx-lightGrayColor;
+    	}
+    	
+    	[data-hook=popupmenubutton] {
+        	//float:right;
+        	//margin-right: 8px;
+    	}
 	}
 
 }

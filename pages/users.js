@@ -70,6 +70,10 @@
 		           $.mobile.popPage();
 	           });
 	           
+	           _elements.add.on('tap', function(event){
+		           $.mobile.pushPage('user.html', {pageData:{}});
+	           });
+	           
 	           load();
 	        }	  
 

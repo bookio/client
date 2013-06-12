@@ -3,13 +3,14 @@
 
 
 .notify {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+
     .border-radius(20px);
     background-color: @bookioBlue;
     display:none;
-    color:white;
+    color:black;
     opacity: 0.5;
     position: fixed;
-    border:3px solid white;
     max-width: 13em;
     min-width: 13em;
     margin:0 auto;
@@ -17,6 +18,9 @@
     font-size: large;
     z-index: 99999999;
     text-align: center;
+    border-color: black; //@xxx-darkGrayColor;
+    border-width: 3px;
+    border: 3px solid black;
     
     .year {
         opacity: 0.3;

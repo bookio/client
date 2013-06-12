@@ -4,7 +4,8 @@
 
 	var dependencies = [
 	   'less!./reservation',
-	   'js/parser'
+	   'js/parser',
+	   'components/datepicker'
 	];
 
 	define(dependencies, function() {
@@ -19,6 +20,7 @@
     	    var _customer = {};
     	    var _reservation = {};
     	    var _customers = [];
+            var _datepicker = null;
             
 			function search() {
                 var query = _elements.contact.val().trim();
@@ -136,9 +138,9 @@
 
 	        function enableButtonActions() {
 	
-    	       _elements.contact.on('keyup', function(event) {
-
-        	       console.log(sprintf("key: %d", event.keyCode));
+                _elements.contact.on('keyup', function(event) {
+                
+                   console.log(sprintf("key: %d", event.keyCode));
                    event.preventDefault();
                    event.stopPropagation();
                                         
@@ -149,29 +151,63 @@
                     
                    _timer = setTimeout(search, 500);
                     
-               });
+                });
 
-	           _elements.back.on('tap', function(event) {
-		           $.mobile.popPage();
-	           });
+                _elements.back.on('tap', function(event) {
+                   $.mobile.popPage();
+                });
 
-	           _elements.selectcustomer.on('tap', function(event) {
+
+                _elements.datepickerbutton.on('tap', function(){
+                    		       
+    	            function dateChanged() {
+			           _elements.popup.popup('close');	
+			           
+		            }
+		       		
+		            var datepicker = new DatePicker({dateChanged:dateChanged});
+		      
+		            var options = {
+				        dismissible : true,
+				        theme : "c",
+				        overlyaTheme : "a",
+				        transition : "pop",
+				        positionTo: _elements.datepickerbutton
+		            };
+
+                    _elements.popup.empty();
+                    _elements.popup.append(datepicker.html());
+                    _elements.popup.trigger('create');
+                    _elements.popup.popup(options);
+                    _elements.popup.popup('open');
+                    return;
+
+		            var popup = $("<div/>").popup(options);
+		           				    
+				    popup.on("popupafterclose", function() {
+				        $(this).remove();
+				    });
+
+				    popup.append(datepicker.html());
+				
+                    popup.popup("open").trigger("create");
+                });
+	           
+                _elements.selectcustomer.on('tap', function(event) {
 
     	           event.preventDefault();
     	           event.stopPropagation();
-    	           
+
+
     	           if (_customers.length == 0)
     	               return;
     	               
-    	           var listview = _elements.popup.find('ul');
-    	           
-    	           listview.empty();
-    	           
+    	           var listview = $('<ul data-role="listview" data-inset="true" data-theme="c"></ul>');
 
                     $.each(_customers, function(index, customer) {
 
                         var li = $('<li data-icon="false"></li>');
-                        var a = $('<a></a>');
+                        var a = $('<a href="#"></a>');
                         var p = $('<p></p>')
                         var h3 = $('<h3></h3>')
 
@@ -192,13 +228,25 @@
                         a.append(h3);    
                         a.append(p);
                         li.append(a);
-                        listview.append(li);
 
+                        listview.append(li);
                     });
                     
-    	           listview.listview('refresh');
-		           _elements.popup.popup();
-	           });
+		            var options = {
+				        dismissible : true,
+				        theme : "c",
+				        overlyaTheme : "a",
+				        transition : "pop",
+				        positionTo: _elements.selectcustomer
+		            };
+
+    				
+                    _elements.popup.empty();
+                    _elements.popup.append(listview);
+                    _elements.popup.trigger('create');
+                    _elements.popup.popup(options);
+                    _elements.popup.popup('open');
+                });
 	
 	            _elements.save.on("tap", function(){
 	            	
@@ -283,6 +331,7 @@
 				
 				$.when.apply(this, requests).then(function() {
 
+					_datepicker = new DatePicker({container:_elements.datepickerpopup});
 
 		            // Make IE hide the focus
 		            //_elements.html.find('.hidefocus').attr('hideFocus', 'true').css('outline', 'none');

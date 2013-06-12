@@ -49,12 +49,22 @@ define(['less!./timeslider'], function() {
         
 		this.positionSlider = positionSlider;
 		
+		this.positionGripper = function() {
+            var gripperCss = {};
+            gripperCss.width = Math.floor(_elements.slider.innerHeight() * 0.60);
+            gripperCss.height = gripperCss.width;
+            gripperCss.top = (_elements.slider.innerHeight() - gripperCss.height) / 2;
+            gripperCss.right = gripperCss.top;
+
+            _elements.gripper.css(gripperCss);
+		}
+
         function init() {
           
             var template = 
                 '<div class="time-slider">'+
                     '<div class="left scroll">'+
-                        '<i class="icon-chevron-left"/>'+
+                        '<div class="ui-icon ui-icon-arrow-l"/>'+
                     '</div>'+
                     
                     '<div class="slider-container">'+
@@ -65,7 +75,7 @@ define(['less!./timeslider'], function() {
                     '</div>'+
                     
                     '<div class="right scroll">'+
-                        '<i class="icon-chevron-right"/>'+
+                        '<div class="ui-icon ui-icon-arrow-r"/>'+
                     '</div>'+
                 '</div>';
             

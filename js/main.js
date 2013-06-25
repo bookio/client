@@ -48,7 +48,7 @@ requirejs.config({
     require(modules, function() {
 		
 		var pages = [];
-		var transitions = {};
+		var pageOptions = {};
 
 		
 		$(document).bind("pagebeforechange", function(event, data) {
@@ -71,6 +71,11 @@ requirejs.config({
 			console.log("page.pagebeforeshow");
         });
 
+		$(document).on("pagebeforechange", function(event, params) {
+		
+    		//pageOptions[params.absUrl] = params.options;
+		});
+		
 		$(document).on("pagebeforeshow", function(event, params) {
 
     		var found = false;
@@ -83,29 +88,26 @@ requirejs.config({
     		if (!found) {
     		    pages.push(event.currentTarget.baseURI);
     			console.log("pagebeforeshow: page '%s' pushed", event.currentTarget.baseURI);
-        		
     		}
 		});
 		
-		$.mobile.pushPage = function(page, options) {
+		$.mobile.pushPage = function(page, pageData) {
 		
-    		var u = $.mobile.path.parseUrl(page );
-
-		    var pageoptions = {
+		    var options = {
 		        changeHash:false,
-		        transition:'slide',
-		        showLoadMsg:true
+		        transition:'fade',
+		        showLoadMsg:false,
+		        pageData:pageData
 		    };
 		
-		    $.extend(pageoptions, options);
-		
-		    $.mobile.changePage(page, pageoptions);
+	
+		    $.mobile.changePage(page, options);
 		} 
 
-		$.mobile.gotoPage = function(page, options) {
+		$.mobile.gotoPage = function(page, pageData) {
 		
             pages = [];
-            $.mobile.pushPage(page, options);
+            $.mobile.pushPage(page, pageData);
 		} 
 
 
@@ -114,9 +116,14 @@ requirejs.config({
 	        if (pages.length > 0) {
 	            pages.pop();
 	            
-	            if (pages.length > 0) {
-	                console.log("Trying to load page '%s'", pages[pages.length-1]);
-	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
+                if (pages.length > 0) {
+                    var url = pages[pages.length-1];
+
+                    var options = {}; //pageOptions[url];
+
+	                options.reverse = true;
+	                console.log("Trying to load page '%s'", url);
+                    $.mobile.changePage(url, options);
 	            }
 	        }
         } 

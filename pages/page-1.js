@@ -32,7 +32,7 @@
                 li.find('a').on('tap', function(event) {
 
 
-                    $.mobile.pushPage("page-2.html", {pageData:category});
+                    $.mobile.pushPage("page-2.html", category);
                     
                     event.preventDefault();
                     event.stopPropagation();

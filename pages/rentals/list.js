@@ -35,7 +35,7 @@
                     var parameters = {};
                     parameters.item = item;
                     
-                    $.mobile.pushPage("./add.html", {pageData:parameters});
+                    $.mobile.pushPage("./add.html", parameters);
 
                     event.preventDefault();
                     event.stopPropagation();

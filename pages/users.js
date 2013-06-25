@@ -32,7 +32,7 @@
                 
                 li.find('a').on('tap', function(event) {
 
-                    $.mobile.pushPage("user.html", {pageData:{user:item}});
+                    $.mobile.pushPage("user.html", {user:item});
                     
                     event.preventDefault();
                     event.stopPropagation();
@@ -71,7 +71,7 @@
 	           });
 	           
 	           _elements.add.on('tap', function(event){
-		           $.mobile.pushPage('user.html', {pageData:{}});
+		           $.mobile.pushPage('user.html');
 	           });
 	           
 	           load();

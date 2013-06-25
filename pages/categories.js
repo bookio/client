@@ -32,7 +32,7 @@
                 
                 row.find('a').on('tap', function(event) {
 
-                    $.mobile.pushPage("category.html", {pageData:{category:item}});
+                    $.mobile.pushPage("category.html", {category:item});
                     
                     event.preventDefault();
                     event.stopPropagation();

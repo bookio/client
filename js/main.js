@@ -71,9 +71,6 @@ requirejs.config({
 	            console.log("Pushing page '%s' ", params.absUrl);
 	            
 	            pages.push(params);
-        
-                //params.toPage.data('transition', params.options.transition);
-    		    params.toPage.data('foo', (params && params.options && params.options.pageData) ? params.options.pageData : null);
     		}
     		else
                 $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;

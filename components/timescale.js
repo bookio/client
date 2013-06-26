@@ -72,36 +72,6 @@ define(['less!components/timescale'], function() {
         	buildDOM();
     	}
     	
-    	function clearDOM() {
-        	
-    	};
-    	
-    	
-    	function updateDOM() {
-            return;
-            var cells = _element.find('.cells');
-
-            var calendar = _startDate.clone();
-
-            cells.find('.cell').each(function(index, item){
-
-                var cell    = $(item);
-	    		var date    = cell.find('.date');
-	    		var weekday = cell.find('.weekday');
-	    		var month   = cell.find('.month');
-	    		
-	    		if (calendar.getDay() == 0)
-	    			date.addClass("holiday");
-                else
-	    			date.removeClass("holiday")
-		    	
-		    	date.text(calendar.getDate());
-		    	month.text(calendar.getShortMonthName());
-		    	weekday.text(calendar.getShortDayName());
-		    	
-		    	calendar = calendar.addDays(1);
-            });
-    	}
     	
     	function buildDOM() {
 	    	var calendar = _startDate.clone();
@@ -143,7 +113,6 @@ define(['less!components/timescale'], function() {
     	
         init();
         buildDOM();
-        updateDOM();        
         
         this.scroll = scroll;
     };

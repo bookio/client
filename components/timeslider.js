@@ -11,7 +11,8 @@ define(['less!./timeslider'], function() {
 			scroll: null,
 			lengthChanged: null,
 			positionChanged: null,
-			rangeChanged: null
+			rangeChanged: null,
+			sliderDblClicked: null
 		};
 		
 		var _options = $.extend({}, _defaults, options);
@@ -98,6 +99,14 @@ define(['less!./timeslider'], function() {
             gripperCss.right = gripperCss.top;
 
             _elements.gripper.css(gripperCss);
+            
+            // Double-click resets slider to starting position (move to 'Now' on the time scale)
+            _elements.slider.on('doubletap', function(event) {
+            
+            	if (isFunction(_options.sliderDblClicked))
+	                _options.sliderDblClicked();
+
+            });
 
             _elements.root.on('removed', function(){
                 
@@ -125,6 +134,7 @@ define(['less!./timeslider'], function() {
         function valueChanged() {
             
         }    	
+
     	
 	    function startScrolling(delta) {
 	       function scroll() {
@@ -136,9 +146,7 @@ define(['less!./timeslider'], function() {
         	    _scrollTimer = setInterval(scroll, 80);
     	    }
 	    }
-	    
-	    
-	    
+
 	    
 	    function stopScrolling() {
     	    if (_scrollTimer != null) {
@@ -147,9 +155,27 @@ define(['less!./timeslider'], function() {
     	    
     	    _scrollTimer = null;
 	    }
+	    
+	    
+		function positionSlider(animationSpeed) {
+    	    var slider = _elements.slider;
+    	    var parent = slider.parent();
+    	    _range = Math.floor(parent.innerWidth() / 80);
+    	    console.log("Range:" + _range);
+			var blockSize = Math.max(Math.floor(parent.innerWidth() / _range), 80);
+
+			var css = {};
+			css.left = Math.round(_position * blockSize);
+			css.width = Math.round(_length * blockSize);
+			
+			if (animationSpeed != undefined && animationSpeed)
+                slider.transition(css, animationSpeed, 'easeInOutBack'/*'ease-in-out'*/);
+            else
+                slider.css(css);
+        }
     	
     	
-    	function positionSlider(animationSpeed) {
+/*    	function positionSlider(animationSpeed) {
     	    var slider = _elements.slider;
     	    var parent = slider.parent();
 			var factor = parent.innerWidth() / _range;
@@ -159,10 +185,10 @@ define(['less!./timeslider'], function() {
 			css.width = Math.round(_length * factor);
 			
 			if (animationSpeed != undefined && animationSpeed)
-                slider.transition(css, animationSpeed, 'easeInOutBack'/*'ease-in-out'*/);
+                slider.transition(css, animationSpeed, 'easeInOutBack');
             else
                 slider.css(css);
-        }
+        }*/
     	
     	
     	function enableScrolling() {

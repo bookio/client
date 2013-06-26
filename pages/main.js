@@ -14,6 +14,7 @@
 
 	define(dependencies, function() {
 		
+		var _resizeTimer;
 		
 	    function Module(page) {
             
@@ -26,6 +27,13 @@
 
     		var _startDate = new Date();
     		var _endDate = new Date();
+    		
+    		
+    		$(window).resize(function () {
+			    clearTimeout(_resizeTimer);
+			    _resizeTimer = setTimeout(redrawForResize, 150);
+			});
+
 		
     		function NotifyUpdate(startDate, endDate) {
     			if ((startDate.getFullYear() == endDate.addDays(-1).getFullYear()) && (startDate.getMonth() == endDate.addDays(-1).getMonth()) && (startDate.getDate() == endDate.addDays(-1).getDate())) {
@@ -50,20 +58,40 @@
     			
     		}
     		
+    		
     		function triggerEvent() {
                 Notifications.trigger('updateUI');
     		}
     		
+    		
+    		function redrawForResize() {
+				_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.range()));
+				sliderChanged();
+			}
+    		
+    		
+    		function setSliderInStartPosition() {
+	        	_timeSlider.position(0);  // Set Now as start position
+				_timeSlider.length(1); // Fill only one 'time slot'
+        	
+				var date = new Date();
+				date.clearTime();
+        	
+				_timeScale.startDate(date); 
+				_timeScale.endDate(date.addDays(_timeSlider.range()));
+        	console.log("setSliderInStartPosition: " + _timeSlider.range());
+				sliderChanged();
+			}
+
+    		
     		function sliderChanged() {
     		    var selectionStartDate = _timeScale.startDate().addDays(_timeSlider.position());
                 var selectionEndDate = selectionStartDate.addDays(_timeSlider.length());
-    
-                //_picker.startDate(selectionStartDate);
-                //_picker.endDate(selectionEndDate.addDays(-1));
-                
+                    
                 _desktop.startDate(selectionStartDate);
                 _desktop.endDate(selectionEndDate);
     
+				_timeSlider.positionGripper();
                 
                 NotifyUpdate(selectionStartDate, selectionEndDate);
                 
@@ -163,13 +191,9 @@
                 _timeSlider = new TimeSlider(_elements.slider, {
                     scroll:scroll,
                     positionChanged: sliderChanged,
-                    lengthChanged: sliderChanged
+                    lengthChanged: sliderChanged,
+                    sliderDblClicked: setSliderInStartPosition
                 });
-
-	        	_timeSlider.range(14);
-	        	_timeSlider.position(3);
-	        	_timeSlider.length(3);
-	        	_timeSlider.positionSlider();
 
 	        	_elements.startdate.button.on('tap', function(event) {
 
@@ -182,6 +206,7 @@
     	        	});
                         	       
 	        	});
+	        	
 	        	_elements.enddate.button.on('tap', function(event) {
 
     	        	event.preventDefault();
@@ -193,12 +218,6 @@
     	        	});
                         	       
 	        	});
-	        	/*
-	        	_picker = new DateRangePicker(_elements.picker, {
-    	        	startDateChanged: startDateChanged,
-    	        	endDateChanged: endDateChanged
-	        	});
-	        	*/
 	        		        	
 	        	sliderChanged();
 	        	triggerEvent();
@@ -209,8 +228,7 @@
 	        init();
 
         	_page.on("pageshow", function(event) {
-            	_timeSlider.positionSlider();
-            	_timeSlider.positionGripper();
+        		setSliderInStartPosition();
             });
 
  

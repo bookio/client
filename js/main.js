@@ -73,9 +73,11 @@ requirejs.config({
 	            pages.push(params);
         
                 //params.toPage.data('transition', params.options.transition);
-    		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
     		    params.toPage.data('foo', (params && params.options && params.options.pageData) ? params.options.pageData : null);
     		}
+    		else
+                $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
+
 		});
 
 		

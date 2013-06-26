@@ -62,7 +62,7 @@ requirejs.config({
 
 
 		$(document).on("pagebeforecreate", function(event, params) {
-			console.log("pagebeforecreate");
+			console.log("pagebeforecreate ", params);
 		});
 
 
@@ -80,7 +80,7 @@ requirejs.config({
 
 		$(document).on("pagebeforeshow", function(event, params) {
 
-    		console.log("pagebeforeshow");
+    		console.log("pagebeforeshow", params);
     		    
     		var found = false;
     		
@@ -93,6 +93,7 @@ requirejs.config({
     		});
     		
     		if (!found) {
+	            console.log("Pushing page '%s'", event.currentTarget.baseURI);
     		    pages.push(event.currentTarget.baseURI); //pageOptions[event.currentTarget.baseURI]);
     		}
 		});
@@ -130,8 +131,9 @@ requirejs.config({
 
 	            if (pages.length > 0) {
 	                console.log("Trying to load page '%s'", pages[pages.length-1]);
+	                popping = true;
 	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
-
+	                popping = false;
 	            }
 	        }
         } 

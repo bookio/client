@@ -48,12 +48,11 @@ requirejs.config({
     require(modules, function() {
 		
 		var pages = [];
+		var pageOptions = {};
+		var popping = false;
 		var transitions = {};
 
 		
-		$(document).bind("pagebeforechange", function(event, data) {
-		    $.mobile.pageData = (data && data.options && data.options.pageData) ? data.options.pageData : null;
-		}); 
 		
 		$(document).on("pagebeforeload", function(event, params) {
 			console.log("pagebeforeload: %s", params.absUrl);
@@ -65,41 +64,56 @@ requirejs.config({
 		$(document).on("pagebeforecreate", function(event, params) {
 			console.log("pagebeforecreate");
 		});
-    	
-    	$(document).delegate("[data-role=page]", "pagebeforeshow", function(event) {
 
-			console.log("page.pagebeforeshow");
-        });
+
+		$(document).on("pagebeforechange", function(event, params) {
+		
+
+    		console.log("pagebeforechange %s", params.absUrl);
+    		//console.log(params);
+
+		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
+		    return;
+		    
+		});
+
 
 		$(document).on("pagebeforeshow", function(event, params) {
 
+    		console.log("pagebeforeshow");
+    		    
     		var found = false;
     		
+    		if (popping)
+                return;
+                
     		$.each(pages, function(index, page){
-        		if (page == event.currentTarget.baseURI)
+        		if (page.absUrl == event.currentTarget.baseURI)
         		    found = true;
     		});
     		
     		if (!found) {
-    		    pages.push(event.currentTarget.baseURI);
-    			console.log("pagebeforeshow: page '%s' pushed", event.currentTarget.baseURI);
-        		
+    		    pages.push(event.currentTarget.baseURI); //pageOptions[event.currentTarget.baseURI]);
     		}
 		});
+
+
 		
 		$.mobile.pushPage = function(page, options) {
-		
-    		var u = $.mobile.path.parseUrl(page );
 
-		    var pageoptions = {
+		
+		    var defaults = {
 		        changeHash:false,
-		        transition:'slide',
-		        showLoadMsg:true
+
+		        transition:'fade',
+		        showLoadMsg:false
 		    };
+		    
+		    var opts = $.extend({}, defaults, options);
+
 		
-		    $.extend(pageoptions, options);
-		
-		    $.mobile.changePage(page, pageoptions);
+		    $.mobile.changePage(page, opts);
+
 		} 
 
 		$.mobile.gotoPage = function(page, options) {
@@ -113,20 +127,22 @@ requirejs.config({
 
 	        if (pages.length > 0) {
 	            pages.pop();
-	            
+
 	            if (pages.length > 0) {
 	                console.log("Trying to load page '%s'", pages[pages.length-1]);
 	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
+
 	            }
 	        }
         } 
   
+        window.history.back = $.mobile.popPage;
 
         if (Gopher.authorization.length == 0)
-	        $.mobile.pushPage('pages/login.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
+	        $.mobile.gotoPage('pages/login.html');
         else {
     	    console.log('Session ID: %s', Gopher.authorization);
-    	    $.mobile.pushPage('pages/main.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
+    	    $.mobile.gotoPage('pages/main.html');
         }
     
     });

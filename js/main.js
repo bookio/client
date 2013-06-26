@@ -29,6 +29,7 @@ requirejs.config({
 });
 
 
+
 (function() {
 
     var modules = [
@@ -43,7 +44,6 @@ requirejs.config({
         'pages/switch'
     ];
 
-		
 
     require(modules, function() {
 		

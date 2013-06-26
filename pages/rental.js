@@ -16,23 +16,37 @@
             var _elements = {};
             var _rental = {};
             var _icons = [];
+            var _iconsByID = {};
+            var _icon = null;
             
             function fill() {
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
+                
+                if (_icon)
+                    _elements.icon.image.attr('src', sprintf('../images/symbols/%s', _iconsByID[_icon.id].image));
             }
             
             function chill() {
                 _rental.name = _elements.name.val();
                 _rental.description = _elements.description.val();
-                _rental.icon_id = 39;
+                
+                if (_icon) {
+                    _rental.icon_id = _icon.id;
+                }
+
             }
+            
             
 	        function init() {
     	        _page.hookup(_elements);
     	        
     	       if ($.mobile.pageData && $.mobile.pageData.rental) {
         	       _rental = $.mobile.pageData.rental;
+
+        	       if (_rental.icon_id) {
+            	       _icon = _iconsByID[_rental.icon_id];
+        	       }
     	       }
 
     	       if (!_rental.id)
@@ -77,11 +91,12 @@
 
 
                    var click = function(index) {
-                        alert(index);
+
                         _elements.popup.popup('close');
-                        //picker.hide();
-                        //_elements.icon.attr('src', pathForImage(_icons[index].image));
-                        //_rental.icon_id = _icons[index].id;
+
+                        _icon = _icons[index];
+                        _elements.icon.image.attr('src', sprintf('../images/symbols/%s', _iconsByID[_icon.id].image));
+                        
                     };
                     
                     var picker = new ImagePicker({
@@ -110,12 +125,10 @@
                 request.done(function(icons){
         	        _icons = icons;
         	        
-        	        /*
-        	        for (var index = 0; index < _icons.length; index++) {
-            	        var icon = _icons[index];
-            	        _iconHash[icon.id] = icon;
-        	        }
-        	        */
+        	        $.each(icons, function(index, icon) {
+            	        _iconsByID[icon.id] = icon;
+        	        });
+
         	        init();
                     
                 });    	        

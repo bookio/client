@@ -49,10 +49,10 @@ requirejs.config({
 		
 		var pages = [];
 		var pageOptions = {};
+		var popping = false;
 
 		
 		$(document).bind("pagebeforechange", function(event, data) {
-		    $.mobile.pageData = (data && data.options && data.options.pageData) ? data.options.pageData : null;
 		}); 
 		
 		$(document).on("pagebeforeload", function(event, params) {
@@ -65,42 +65,69 @@ requirejs.config({
 		$(document).on("pagebeforecreate", function(event, params) {
 			console.log("pagebeforecreate");
 		});
-    	
-    	$(document).delegate("[data-role=page]", "pagebeforeshow", function(event) {
-
-			console.log("page.pagebeforeshow");
-        });
 
 		$(document).on("pagebeforechange", function(event, params) {
 		
-    		//pageOptions[params.absUrl] = params.options;
-		});
-		
-		$(document).on("pagebeforeshow", function(event, params) {
+
+    		console.log("pagebeforechange %s", params.absUrl);
+    		//console.log(params);
+
+		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
+
+		    pageOptions[params.absUrl] = params;
+		    
+		    return;
+		    
+            if (params.options.role && params.options.role == "popup")
+                return;
+
+    		if (popping)
+    		    return;
 
     		var found = false;
     		
     		$.each(pages, function(index, page){
-        		if (page == event.currentTarget.baseURI)
+        		if (page == params.absUrl)
         		    found = true;
     		});
     		
     		if (!found) {
-    		    pages.push(event.currentTarget.baseURI);
-    			console.log("pagebeforeshow: page '%s' pushed", event.currentTarget.baseURI);
+    		    pages.push(params);
+    		    //pageOptions[params.absUrl] = params.options;
+    		}
+    		  
+		});
+
+		$(document).on("pagebeforeshow", function(event, params) {
+
+    		    
+    		var found = false;
+    		if (popping)
+                return;
+    		$.each(pages, function(index, page){
+        		if (page.absUrl == event.currentTarget.baseURI)
+        		    found = true;
+    		});
+    		
+    		if (!found) {
+    		    pages.push(pageOptions[event.currentTarget.baseURI]);
     		}
 		});
-		
+
 		$.mobile.pushPage = function(page, pageData) {
 		
 		    var options = {
 		        changeHash:false,
 		        transition:'fade',
-		        showLoadMsg:false,
-		        pageData:pageData
+		        showLoadMsg:false
 		    };
+		    
+		    if (pageData)
+		        options.pageData = pageData;
+		    
+		    if (pages.length > 1)
+		        options.transition = 'slide';
 		
-	
 		    $.mobile.changePage(page, options);
 		} 
 
@@ -114,26 +141,33 @@ requirejs.config({
         $.mobile.popPage = function() {
 
 	        if (pages.length > 0) {
+                var thisPage = pages[pages.length-1];
+                
 	            pages.pop();
 	            
                 if (pages.length > 0) {
-                    var url = pages[pages.length-1];
+                    var nextPage = pages[pages.length-1];
 
                     var options = {}; //pageOptions[url];
-
+                    
 	                options.reverse = true;
-	                console.log("Trying to load page '%s'", url);
-                    $.mobile.changePage(url, options);
+	                options.transition = thisPage.options.transition;
+	                options.popping = true;
+	                
+	                popping = true;
+                    $.mobile.changePage(nextPage.absUrl, options);
+	                popping = false;
 	            }
 	        }
         } 
   
+        window.history.back = $.mobile.popPage;
 
         if (Gopher.authorization.length == 0)
-	        $.mobile.pushPage('pages/login.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
+	        $.mobile.gotoPage('pages/login.html');
         else {
     	    console.log('Session ID: %s', Gopher.authorization);
-    	    $.mobile.pushPage('pages/main.html', {showLoadMsg:true, changeHash:false, transition:'fade'});
+    	    $.mobile.gotoPage('pages/main.html');
         }
     
     });

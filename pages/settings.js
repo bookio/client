@@ -22,7 +22,8 @@
 	           _page.hookup(_elements);
 
 	           _elements.back.on('tap', function(event){
-		           $.mobile.popPage();
+		          event.preventDefault();
+		          $.mobile.popPage();
 	           });
 	        }	  
 

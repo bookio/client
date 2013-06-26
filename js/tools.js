@@ -43,6 +43,10 @@ define(['js/sprintf'], function() {
         return (/iPhone|iPod|iPad|Android|BlackBerry/).test(navigator.userAgent);
     };
 
+    isObject = function(obj) {
+        return obj != null && typeof obj === 'object'        
+    }
+    
 	console.log('tools.js loaded...');
 
 });

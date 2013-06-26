@@ -48,16 +48,10 @@ requirejs.config({
     require(modules, function() {
 		
 		var pages = [];
-		var pageOptions = {};
-		var popping = false;
-		var transitions = {};
-
 		
 		
 		$(document).on("pagebeforeload", function(event, params) {
-			console.log("pagebeforeload: %s", params.absUrl);
-		    //pages.push(params.dataUrl);
-		    
+			console.log("pagebeforeload", params);
 		});
 
 
@@ -69,35 +63,20 @@ requirejs.config({
 		$(document).on("pagebeforechange", function(event, params) {
 		
 
-    		console.log("pagebeforechange %s", params.absUrl);
-    		//console.log(params);
-
-		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
-		    return;
-		    
-		});
-
-
-		$(document).on("pagebeforeshow", function(event, params) {
-
-    		console.log("pagebeforeshow", params);
+    		if (params.options.reverse)
+    		    return;
     		    
-    		var found = false;
-    		
-    		if (popping)
-                return;
-                
-    		$.each(pages, function(index, page){
-        		if (page.absUrl == event.currentTarget.baseURI)
-        		    found = true;
-    		});
-    		
-    		if (!found) {
-	            console.log("Pushing page '%s'", event.currentTarget.baseURI);
-    		    pages.push(event.currentTarget.baseURI); //pageOptions[event.currentTarget.baseURI]);
+    		if (isObject(params.toPage)) {
+        		console.log("pagebeforechange ", params);
+	            console.log("Pushing page '%s' ", params.absUrl);
+	            
+	            pages.push(params);
+        
+                //params.toPage.data('transition', params.options.transition);
+    		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
+    		    params.toPage.data('foo', (params && params.options && params.options.pageData) ? params.options.pageData : null);
     		}
 		});
-
 
 		
 		$.mobile.pushPage = function(page, options) {
@@ -127,13 +106,21 @@ requirejs.config({
         $.mobile.popPage = function() {
 
 	        if (pages.length > 0) {
-	            pages.pop();
+    	        var thisPage = pages.pop();
 
 	            if (pages.length > 0) {
-	                console.log("Trying to load page '%s'", pages[pages.length-1]);
-	                popping = true;
-	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
-	                popping = false;
+	                var nextPage = pages[pages.length-1];
+	                
+	                console.log("popping from %s to %s", thisPage.absUrl, nextPage.absUrl);
+
+	                var options = {};
+	                options.changeHash = false;
+	                options.showLoadMsg = false;
+	                options.transition = thisPage.options.transition;
+	                options.reverse = true;
+	                options.popping = true;
+	                
+	                $.mobile.changePage(nextPage.absUrl, options);
 	            }
 	        }
         } 

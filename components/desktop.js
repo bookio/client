@@ -176,7 +176,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			reservation.end_at = endDate();
 			reservation.rental_id = rental.id;
 
-			$.mobile.pushPage('../pages/reservation.html', {reservation:reservation});
+			$.mobile.changePage('../pages/reservation.html', {pageData:{reservation:reservation}});
 			
 		};
 		
@@ -398,7 +398,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
              
             _element.find('.addButton').on("mousedown touchstart", function(event) {
 
-        		$.mobile.pushPage('../pages/rental.html');
+        		$.mobile.changePage('../pages/rental.html');
 	        });
 	        
 	        
@@ -560,9 +560,9 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
 		}
 		
-
 		function editReservation(reservation) {
-    		$.mobile.pushPage('../pages/reservation.html', {reservation:reservation});
+
+    		$.mobile.changePage('../pages/reservation.html', {pageData:{reservation:reservation}})
 		}
 		
 		function BounceButtons() {	
@@ -664,7 +664,10 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
         		var rental = item.data();
         		var reservation = getReservationForRental(rental);
 
-        		$.mobile.pushPage('../pages/rental.html', {rental: rental});
+        		var pageData = {};
+        		pageData.rental = rental;
+        		
+        		$.mobile.changePage('../pages/rental.html', {pageData: pageData});
 
             });
 

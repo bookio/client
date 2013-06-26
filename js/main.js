@@ -50,6 +50,7 @@ requirejs.config({
 		var pages = [];
 		var pageOptions = {};
 		var popping = false;
+		var transitions = {};
 
 		
 		
@@ -64,6 +65,7 @@ requirejs.config({
 			console.log("pagebeforecreate");
 		});
 
+
 		$(document).on("pagebeforechange", function(event, params) {
 		
 
@@ -72,29 +74,9 @@ requirejs.config({
 
 		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
 		    return;
-		    pageOptions[params.absUrl] = params;
 		    
-		    return;
-		    
-            if (params.options.role && params.options.role == "popup")
-                return;
-
-    		if (popping)
-    		    return;
-
-    		var found = false;
-    		
-    		$.each(pages, function(index, page){
-        		if (page == params.absUrl)
-        		    found = true;
-    		});
-    		
-    		if (!found) {
-    		    pages.push(params);
-    		    //pageOptions[params.absUrl] = params.options;
-    		}
-    		  
 		});
+
 
 		$(document).on("pagebeforeshow", function(event, params) {
 
@@ -115,48 +97,41 @@ requirejs.config({
     		}
 		});
 
-		$.mobile.pushPage = function(page, pageData) {
+
 		
-		    var options = {
+		$.mobile.pushPage = function(page, options) {
+
+		
+		    var defaults = {
 		        changeHash:false,
+
 		        transition:'fade',
 		        showLoadMsg:false
 		    };
 		    
-		    if (pageData)
-		        options.pageData = pageData;
-		    
-		    if (pages.length > 1)
-		        options.transition = 'fade';
+		    var opts = $.extend({}, defaults, options);
+
 		
-		    $.mobile.changePage(page, options);
+		    $.mobile.changePage(page, opts);
+
 		} 
 
-		$.mobile.gotoPage = function(page, pageData) {
+		$.mobile.gotoPage = function(page, options) {
 		
             pages = [];
-            $.mobile.pushPage(page, pageData);
+            $.mobile.pushPage(page, options);
 		} 
 
 
         $.mobile.popPage = function() {
 
 	        if (pages.length > 0) {
-                var thisPage = pages[pages.length-1];
-                
 	            pages.pop();
-	            
-                if (pages.length > 0) {
-                    var nextPage = pages[pages.length-1];
 
-                    var options = {}; //pageOptions[url];
-                    
-	                options.reverse = true;
-	                options.transition = 'slide'; //thisPage.options.transition;
-	                
-	                popping = true;
-                    $.mobile.changePage(nextPage, options);
-	                popping = false;
+	            if (pages.length > 0) {
+	                console.log("Trying to load page '%s'", pages[pages.length-1]);
+	                $.mobile.changePage(pages[pages.length-1], {reverse:true});
+
 	            }
 	        }
         } 

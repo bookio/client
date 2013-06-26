@@ -73,7 +73,7 @@ requirejs.config({
     		//console.log(params);
 
 		    $.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
-
+		    return;
 		    pageOptions[params.absUrl] = params;
 		    
 		    return;
@@ -102,15 +102,17 @@ requirejs.config({
 
     		    
     		var found = false;
+    		
     		if (popping)
                 return;
+                
     		$.each(pages, function(index, page){
         		if (page.absUrl == event.currentTarget.baseURI)
         		    found = true;
     		});
     		
     		if (!found) {
-    		    pages.push(pageOptions[event.currentTarget.baseURI]);
+    		    pages.push(event.currentTarget.baseURI); //pageOptions[event.currentTarget.baseURI]);
     		}
 		});
 
@@ -126,7 +128,7 @@ requirejs.config({
 		        options.pageData = pageData;
 		    
 		    if (pages.length > 1)
-		        options.transition = 'slide';
+		        options.transition = 'fade';
 		
 		    $.mobile.changePage(page, options);
 		} 
@@ -151,11 +153,10 @@ requirejs.config({
                     var options = {}; //pageOptions[url];
                     
 	                options.reverse = true;
-	                options.transition = thisPage.options.transition;
-	                options.popping = true;
+	                options.transition = 'slide'; //thisPage.options.transition;
 	                
 	                popping = true;
-                    $.mobile.changePage(nextPage.absUrl, options);
+                    $.mobile.changePage(nextPage, options);
 	                popping = false;
 	            }
 	        }

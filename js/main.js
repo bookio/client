@@ -52,8 +52,6 @@ requirejs.config({
 		var popping = false;
 
 		
-		$(document).bind("pagebeforechange", function(event, data) {
-		}); 
 		
 		$(document).on("pagebeforeload", function(event, params) {
 			console.log("pagebeforeload: %s", params.absUrl);
@@ -100,6 +98,7 @@ requirejs.config({
 
 		$(document).on("pagebeforeshow", function(event, params) {
 
+    		console.log("pagebeforeshow");
     		    
     		var found = false;
     		

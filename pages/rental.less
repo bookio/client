@@ -1,19 +1,36 @@
 @import "../less/variables.less";
+@import "../less/mixins.less";
 
 #rental-page {
 	
 	[data-hook="description"] {
-		height:10em;
+		height:5em;
 	}
 	
+	[data-role="button"] {
+    	.border-radius(1.2em);
+	}
+
 	[data-role="content"] {
+    	
 		label {
 			color: @lightGrayColor;
 		}
 		
 		[data-hook="icon.container"] {
-    		text-align: center;
+    		span {
+        		//text-align: left;
+    		}
+    		
 		}		
+
+		[data-hook="category.container"] {
+    		[data-hook="category.button"] {
+        		span {
+            		text-align: left;
+        		}
+    		}		
+		}
 		
 	}
 	
@@ -22,4 +39,10 @@
 			min-width: 8em;
 		}
 	}
+	
+    [data-hook=popup] {
+        [data-role=listview] {
+            min-width:300px;
+        }
+    }	
 }

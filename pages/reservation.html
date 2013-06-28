@@ -13,50 +13,81 @@
             <img src="../images/app-icon.png"/>
         </div>
 
-        <ul data-id="listview" data-role="listview" data-inset="true">
+        <ul data-id="listview" data-role="listview" data-inset="true" data-divider-theme="c">
             <li>
-                    <label>Vem</label>
+                <label>
+                    Vem
+                </label>
                     <textarea data-hook="contact" type="text" value="" placeholder="" title=""></textarea>
             	    <div data-role="button-row">
                     	<a data-hook="selectcustomer" href="#" data-role="button" data-inline="true" data-theme="c" class="ui-disabled">Välj kund</a>
             	    </div>
             </li>
-            <li data-hook="kalle" class="hidden">
-                <a href="#">
-                    <p>Välj en befintlig kund</p>
-                </a>
+
+            <li>
+                <label>
+                    När
+                </label>
+
+                <div class="ui-grid-a">
+                	<div class="ui-block-a">
+                        <a data-hook="startdate.button" data-role="button" data-theme="c" class="ui-disabled">
+                            <span data-hook="startdate.text">Från</span>
+                            <span data-hook="startdate.date"></span>
+                        </a>
+                	</div>
+                	<div class="ui-block-b">
+                        <a data-hook="enddate.button" data-role="button" data-theme="c" class="ui-disabled">
+                            <span data-hook="enddate.text">Till</span>
+                            <span data-hook="enddate.date"></span>
+                        </a>
+                	</div>
+                </div>
+
             </li>
 
             <li>
-                <label>När</label>
-                <input data-hook="when" type="text" value="" placeholder="" title="" disabled>
-                <div data-role="button-row">
-                	<a data-hook="datepickerbutton" href="#" data-role="button" data-inline="true" data-theme="c">Från</a>
-                	<a data-hook="enddate" href="#" data-role="button" data-inline="true" data-theme="c">Till</a>
-                </div>
-            </li>
-            <li>
-                <label>Pris</label>
+                <label>
+                    Pris
+                </label>
                 <input data-hook="price" type="text" value="" placeholder="" title="">
             </li>
+
+
             <li>
-                <label>Status</label>
-                <div data-role="fieldcontain">
-                 	<fieldset data-role="controlgroup">
-                		<label>Har ankommit
-                    		<input data-hook="arrived" type="checkbox" class="custom" />
-                		</label>
-                		<label>Betald
-                    		<input data-hook="payed" type="checkbox" class="custom" />
-                		</label>
-                		<label>Lämnat
-                    		<input data-hook="delivered" type="checkbox" class="custom" />
-                		</label>
-                		<label>Överförd
-                    		<input data-hook="transferred" type="checkbox" class="custom" />
-                		</label>
-                    </fieldset>
-                </div>
+                <label>
+                    Status
+                </label>
+
+                <div class="ui-grid-a">
+                	<div class="ui-block-a">
+                        <div data-role="fieldcontain">
+                        	<fieldset data-role="controlgroup">
+                        		<label>Har ankommit
+                            		<input data-hook="arrived" type="checkbox" class="custom"/>
+                        		</label>
+                        		<label>Betald
+                            		<input data-hook="payed" type="checkbox" class="custom" />
+                        		</label>
+                            </fieldset>
+                        </div>
+                    	
+                	</div>
+                	<div class="ui-block-b">
+                        <div data-role="fieldcontain">
+                        	<fieldset data-role="controlgroup">
+                        		<label>Lämnat
+                            		<input data-hook="delivered" type="checkbox" class="custom" />
+                        		</label>
+                        		<label>Överförd
+                            		<input data-hook="transferred" type="checkbox" class="custom" />
+                        		</label>
+                            </fieldset>
+                        </div>
+                    	
+                	</div>
+                </div> 
+
             </li>
         </ul>        
         

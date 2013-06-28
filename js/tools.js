@@ -44,7 +44,7 @@ define(['js/sprintf'], function() {
     };
 
     isObject = function(obj) {
-        return obj != null && typeof obj === 'object'        
+        return obj != null && typeof obj === 'object';       
     }
     
 	console.log('tools.js loaded...');

@@ -117,7 +117,6 @@ requirejs.config({
 	                options.showLoadMsg = false;
 	                options.transition = thisPage.options.transition;
 	                options.reverse = true;
-	                options.popping = true;
 	                
 	                $.mobile.changePage(nextPage.absUrl, options);
 	            }

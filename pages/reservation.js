@@ -20,7 +20,7 @@
     	    var _customer = {};
     	    var _reservation = {};
     	    var _customers = [];
-            var _datepicker = null;
+
             
 			function search() {
                 var query = _elements.contact.val().trim();
@@ -121,8 +121,10 @@
 
     	        var beginAt = new Date(_reservation.begin_at);
     	        var endAt = new Date(_reservation.end_at);
-	            
-	            _elements.when.val(sprintf('%s - %s', beginAt.yyyymmdd(), endAt.yyyymmdd()));;
+    	        
+	            _elements.startdate.date.text(beginAt.yyyymmdd());
+	            _elements.enddate.date.text(endAt.yyyymmdd());
+
 	            _elements.price.val(_reservation.price);
 	            _elements.arrived.attr('checked', _reservation.arrived ? true : undefined);
 	            _elements.transferred.attr('checked', _reservation.transferred ? true : undefined);
@@ -158,9 +160,14 @@
                 });
 
 
-                _elements.datepickerbutton.on('tap', function(){
+                _elements.startdate.button.on('tap', function(){
                     		       
+                    var self = $(this);
+                    
     	            function dateChanged() {
+    	               var date = datepicker.date();
+    	               _reservation.begin_at = date;
+			           _elements.startdate.date.text(date.yyyymmdd());
 			           _elements.popup.popup('close');	
 			           
 		            }
@@ -172,7 +179,7 @@
 				        theme : "c",
 				        overlyaTheme : "a",
 				        transition : "pop",
-				        positionTo: _elements.datepickerbutton
+				        positionTo: $(this)
 		            };
 
                     _elements.popup.empty();
@@ -180,17 +187,36 @@
                     _elements.popup.trigger('create');
                     _elements.popup.popup(options);
                     _elements.popup.popup('open');
-                    return;
+                });
 
-		            var popup = $("<div/>").popup(options);
-		           				    
-				    popup.on("popupafterclose", function() {
-				        $(this).remove();
-				    });
+                _elements.enddate.button.on('tap', function(){
+                    		       
+                    var self = $(this);
+                    
+    	            function dateChanged() {
+    	               var date = datepicker.date();
+    	               _reservation.end_at = date;
 
-				    popup.append(datepicker.html());
-				
-                    popup.popup("open").trigger("create");
+			           _elements.enddate.date.text(date.yyyymmdd());
+			           _elements.popup.popup('close');	
+			           
+		            }
+		       		
+		            var datepicker = new DatePicker({dateChanged:dateChanged});
+		      
+		            var options = {
+				        dismissible : true,
+				        theme : "c",
+				        overlyaTheme : "a",
+				        transition : "pop",
+				        positionTo: $(this)
+		            };
+
+                    _elements.popup.empty();
+                    _elements.popup.append(datepicker.html());
+                    _elements.popup.trigger('create');
+                    _elements.popup.popup(options);
+                    _elements.popup.popup('open');
                 });
 	           
                 _elements.selectcustomer.on('tap', function(event) {
@@ -331,10 +357,10 @@
 				
 				$.when.apply(this, requests).then(function() {
 
-					_datepicker = new DatePicker({container:_elements.datepickerpopup});
-
 		            // Make IE hide the focus
 		            //_elements.html.find('.hidefocus').attr('hideFocus', 'true').css('outline', 'none');
+		            _elements.startdate.button.addClass('ui-disabled');
+		            _elements.enddate.button.addClass('ui-disabled');
 		
 		            _elements.contact.on('change', function(event) {
 		                var text = _elements.contact.val();

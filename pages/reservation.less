@@ -1,18 +1,52 @@
+@import "../less/variables.less";
+@import "../less/mixins.less";
 
 #reservation-page {
 
     [data-hook="contact"] {
         height: 8em;
     }
-    
+
+    [data-role="button"]  {
+		.border-radius(1.2em);
+    }    
+
 	[data-role="button-row"] {
 		[data-role="button"] {
 			min-width: 8em;
 		}
 	}    
+	
+	[data-role="list-divider"] {
+    	opacity: 0.8;
+	}
+	li {
+    	background-color: rgba(238, 238, 238, 0.5);
+	}
     
     .ui-controlgroup-controls {
         width:100%;
+    }
+    
+    .ui-checkbox {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+    }
+    
+    [data-hook="startdate.button"] {
+        //width: 12em;    
+
+        [data-hook="startdate.text"] {
+            color: @x-lightGrayColor
+        }
+    }
+
+    [data-hook="enddate.button"] {
+        //width: 12em;    
+
+        [data-hook="enddate.text"] {
+            color: @x-lightGrayColor
+        }
     }
     
     [data-hook=popup] {

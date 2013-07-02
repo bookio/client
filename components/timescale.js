@@ -12,9 +12,9 @@ define(['less!components/timescale'], function() {
 		
 		var _options = $.extend({}, options, _defaults);
 		var _startDate = new Date();
-		var _endDate = _startDate.addDays(14);
+		var _endDate = _startDate.addDays(_options.noOfSlots);
 		var _element = null;
-		var _setNeedsLayout = false;
+		var _setNeedsLayout = true;
 		
 		_startDate.clearTime();
 		_endDate.clearTime();
@@ -34,6 +34,7 @@ define(['less!components/timescale'], function() {
         		return _endDate;
         		
             _endDate = value;
+            console.log("enddate sätts till " + _endDate.getDate());
             _setNeedsLayout = true;
 		}
 		
@@ -75,7 +76,7 @@ define(['less!components/timescale'], function() {
     	
     	function buildDOM() {
 	    	var calendar = _startDate.clone();
-
+console.log("Building DOM with startdate: " + calendar.getDate() + " endDate: " + _endDate.getDate());
 			var template =
 	 	        '<div class="cell">'+
             		'<div class="content">'+
@@ -112,7 +113,8 @@ define(['less!components/timescale'], function() {
     	
     	
         init();
-        buildDOM();
+        console.log("_enddate " + _endDate);
+        //buildDOM();
         
         this.scroll = scroll;
     };

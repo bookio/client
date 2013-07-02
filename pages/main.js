@@ -13,9 +13,7 @@
 	];
 
 	define(dependencies, function() {
-		
-		var _resizeTimer;
-		
+				
 	    function Module(page) {
             
             var _page = page;
@@ -29,9 +27,9 @@
     		var _endDate = new Date();
     		
     		
-    		$(window).resize(function () {
-			    clearTimeout(_resizeTimer);
-			    _resizeTimer = setTimeout(redrawForResize, 150);
+    		$(window).smartresize(function () {
+    		console.log("smartresize");
+			    redrawForResize();
 			});
 
 		
@@ -71,15 +69,18 @@
     		
     		
     		function setSliderInStartPosition() {
-	        	_timeSlider.position(0);  // Set Now as start position
+    		
+    		    _timeSlider.position(0);  // Set Now as start position
 				_timeSlider.length(1); // Fill only one 'time slot'
         	
 				var date = new Date();
 				date.clearTime();
         	
 				_timeScale.startDate(date); 
+	console.log("enddate sätts från setsliderinstartposition");
+
 				_timeScale.endDate(date.addDays(_timeSlider.range()));
-        	console.log("setSliderInStartPosition: " + _timeSlider.range());
+				
 				sliderChanged();
 			}
 
@@ -123,7 +124,7 @@
     		    var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
                 var selectionStartDate = selectionEndDate.addDays(-1 * _timeSlider.length());
                 
-                var rangeStartDate = selectionStartDate.addDays(-1*_timeSlider.position());
+                var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.position());
                 var rangeEndDate = rangeStartDate.addDays(_timeSlider.range()); 
     
                 //_picker.startDate(selectionStartDate);
@@ -186,7 +187,6 @@
     	        	_elements.popupmenu.popup('close');
 	        	});	        	
 
-	        	_timeScale = new TimeScale(_elements.scale, {});
 	        	
                 _timeSlider = new TimeSlider(_elements.slider, {
                     scroll:scroll,
@@ -194,6 +194,8 @@
                     lengthChanged: sliderChanged,
                     sliderDblClicked: setSliderInStartPosition
                 });
+                
+	        	_timeScale = new TimeScale(_elements.scale, {});
 
 	        	_elements.startdate.button.on('tap', function(event) {
 
@@ -218,9 +220,9 @@
     	        	});
                         	       
 	        	});
-	        		        	
-	        	sliderChanged();
-	        	triggerEvent();
+	        		      	        	  	
+	        	//sliderChanged();
+	        	//triggerEvent();
 
 	        	_page.trigger('updatelayout');
 	        }	  
@@ -228,7 +230,9 @@
 	        init();
 
         	_page.on("pageshow", function(event) {
-        		setSliderInStartPosition();
+console.log("pageshow");
+				_timeSlider.positionSlider();
+				redrawForResize();
             });
 
  

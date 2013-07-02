@@ -17,8 +17,8 @@ define(['less!./timeslider'], function() {
 		
 		var _options = $.extend({}, _defaults, options);
 		var _elements = {};
-		var _position = 2;
-		var _length = 5;
+		var _position = 0;  // Start at position 'Now'
+		var _length = 1;  // Default width is one 'time slot'
 		var _range = 14;
 		var _scrollTimer = null;
 		var _setNeedsLayout = true;
@@ -37,6 +37,7 @@ define(['less!./timeslider'], function() {
     		    return _range;
     		    
     		_setNeedsLayout = true;
+    		console.log("range sätts till " + value);
             return _range = value;
 		}
 		
@@ -122,18 +123,14 @@ define(['less!./timeslider'], function() {
             Notifications.on('updateUI.timeslider', function(){
 
             	if (_setNeedsLayout && !_busy)
-    		        positionSlider();
+    		        positionSlider(300);
         
         		_setNeedsLayout = false;
 
             });
 
             
-    	};
-
-        function valueChanged() {
-            
-        }    	
+    	};   	
 
     	
 	    function startScrolling(delta) {
@@ -160,9 +157,11 @@ define(['less!./timeslider'], function() {
 		function positionSlider(animationSpeed) {
     	    var slider = _elements.slider;
     	    var parent = slider.parent();
-    	    _range = Math.floor(parent.innerWidth() / 80);
-    	    console.log("Range:" + _range);
-			var blockSize = Math.max(Math.floor(parent.innerWidth() / _range), 80);
+    	    var noOfSlots = parent.innerWidth() / 80;
+    	    _range = Math.floor(noOfSlots);
+  console.log("positionSlider: range sätts till " + _range);
+			//var blockSize = Math.max(Math.floor(parent.innerWidth() / _range), 80);
+			var blockSize = Math.max(parent.innerWidth() / _range, 80);
 
 			var css = {};
 			css.left = Math.round(_position * blockSize);
@@ -173,22 +172,6 @@ define(['less!./timeslider'], function() {
             else
                 slider.css(css);
         }
-    	
-    	
-/*    	function positionSlider(animationSpeed) {
-    	    var slider = _elements.slider;
-    	    var parent = slider.parent();
-			var factor = parent.innerWidth() / _range;
-
-			var css = {};
-			css.left = Math.round(_position * factor);
-			css.width = Math.round(_length * factor);
-			
-			if (animationSpeed != undefined && animationSpeed)
-                slider.transition(css, animationSpeed, 'easeInOutBack');
-            else
-                slider.css(css);
-        }*/
     	
     	
     	function enableScrolling() {
@@ -213,8 +196,10 @@ define(['less!./timeslider'], function() {
         	
     	};
         
-        $(window).on("resize.timeslider", function(event) {
-        	positionSlider();
+        $(window).on("smartresize.timeslider", function(event) {
+        console.log("smartresize.timeslider");
+        	positionSlider(300);
+        	_options.positionChanged();
         });
         
 		function enableDragDrop() {
@@ -265,12 +250,14 @@ define(['less!./timeslider'], function() {
 				    }
 				    
 
-				    var length = 0; 
-				    length = Math.floor((width / (slider.parent().innerWidth())) * _range + 0.5);
+				    var length;
+				    var parentWidth = slider.parent().innerWidth();
+				     
+				    length = Math.floor((width / parentWidth) * _range + 0.5);
 				    length = Math.max(length, 1);
 				    
-				    var position = 0; 
-				    position = Math.floor(((left - 0) / (slider.parent().innerWidth())) * _range + 0.5);
+				    var position; 
+				    position = Math.floor((left / parentWidth) * _range + 0.5);
 				    position = Math.min(position, _range - length);
 				    position = Math.max(position, 0);
 				    
@@ -290,8 +277,6 @@ define(['less!./timeslider'], function() {
 					    
 				    }
 				    
-                    valueChanged();
-
                 });
                 
                 $(document).on("mouseup.timeslider touchend.timeslider", function(event){
@@ -314,8 +299,6 @@ define(['less!./timeslider'], function() {
         init();
         enableDragDrop();
         enableScrolling();
-        positionSlider();
-        
     };
 	
 	return TimeSlider;

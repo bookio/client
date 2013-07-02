@@ -28,7 +28,6 @@
     		
     		
     		$(window).smartresize(function () {
-    		console.log("smartresize");
 			    redrawForResize();
 			});
 
@@ -63,6 +62,10 @@
     		
     		
     		function redrawForResize() {
+
+        		var range = Math.floor(_timeSlider.element().innerWidth() / 80);
+        		
+        		_timeSlider.range(range);
 				_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.range()));
 				sliderChanged();
 			}
@@ -195,12 +198,12 @@
                     sliderDblClicked: setSliderInStartPosition
                 });
                 
+                _timeSlider.range(10);
 	        	_timeScale = new TimeScale(_elements.scale, {});
 
 	        	_elements.startdate.button.on('tap', function(event) {
 
     	        	event.preventDefault();
-    	        	//event.stopPropagation();
     	        	
     	        	pickdate($(this), function(date){
         	        	_startDate = date;
@@ -212,7 +215,6 @@
 	        	_elements.enddate.button.on('tap', function(event) {
 
     	        	event.preventDefault();
-    	        	//event.stopPropagation();
 
     	        	pickdate($(this), function(date){
         	        	_endDate = date;
@@ -230,8 +232,8 @@
 	        init();
 
         	_page.on("pageshow", function(event) {
-console.log("pageshow");
-				_timeSlider.positionSlider();
+            	console.log("pageshow");
+				//_timeSlider.positionSlider();
 				redrawForResize();
             });
 

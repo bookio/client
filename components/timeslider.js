@@ -60,6 +60,10 @@ define(['less!./timeslider'], function() {
 
             _elements.gripper.css(gripperCss);
 		}
+		
+		this.element = function() {
+    		return _elements.root;    		
+		};
 
         function init() {
           
@@ -122,7 +126,7 @@ define(['less!./timeslider'], function() {
 
             Notifications.on('updateUI.timeslider', function(){
 
-            	if (_setNeedsLayout && !_busy)
+            	if (!_busy)
     		        positionSlider(300);
         
         		_setNeedsLayout = false;
@@ -157,16 +161,15 @@ define(['less!./timeslider'], function() {
 		function positionSlider(animationSpeed) {
     	    var slider = _elements.slider;
     	    var parent = slider.parent();
-    	    var noOfSlots = parent.innerWidth() / 80;
-    	    _range = Math.floor(noOfSlots);
-  console.log("positionSlider: range sätts till " + _range);
-			//var blockSize = Math.max(Math.floor(parent.innerWidth() / _range), 80);
-			var blockSize = Math.max(parent.innerWidth() / _range, 80);
 
-			var css = {};
-			css.left = Math.round(_position * blockSize);
-			css.width = Math.round(_length * blockSize);
+    	    console.log("Positioning slider, parent size: " + parent.innerWidth()); 
+
+			var blockSize = parent.innerWidth() / _range;
 			
+			var css = {};
+			css.left = _position * blockSize;
+			css.width = _length * blockSize;
+
 			if (animationSpeed != undefined && animationSpeed)
                 slider.transition(css, animationSpeed, 'easeInOutBack'/*'ease-in-out'*/);
             else
@@ -195,12 +198,19 @@ define(['less!./timeslider'], function() {
             });
         	
     	};
-        
+
+        /*        
         $(window).on("smartresize.timeslider", function(event) {
-        console.log("smartresize.timeslider");
+
+    	    var parent = _elements.slider.parent();
+    	    _range = Math.floor(parent.innerWidth() / 80);
+
+            console.log("range sätts till " + _range);
+
         	positionSlider(300);
         	_options.positionChanged();
         });
+        */
         
 		function enableDragDrop() {
 		

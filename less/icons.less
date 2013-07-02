@@ -1,0 +1,37 @@
+@import "mixins.less";
+
+.ui-checkbox .ui-icon {
+    .border-radius(0px);
+}
+
+.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+	background-color: transparent;
+	opacity: 0.7;
+}
+
+.icon-position(@x, @y) {
+    background-image: url(../images/icons/icons.png);
+	-moz-background-size: 180px 180px;
+	-o-background-size: 180px 180px;
+	-webkit-background-size: 180px 180px;
+	background-size: 180px 180px;
+	background-position: -1*@x*18px -1*@y*18px;
+}
+
+
+.ui-icon-plus {
+    .icon-position(4, 0);
+}
+
+.ui-icon-checkbox-on {
+    .icon-position(0, 0);
+}
+
+.ui-icon-checkbox-off {
+    .icon-position(1, 0);
+
+}
+
+.ui-icon-arrow-r {
+    .icon-position(3, 0);
+}

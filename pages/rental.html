@@ -6,7 +6,7 @@
 
 <div id="rental-page" data-role="page">
 
-    <div data-role="content">
+    <div data-role="content" data-hook="content">
         <div data-role="button-row">
             <img src="../images/app-icon.png"/>
         </div>
@@ -15,17 +15,17 @@
 
             <li>        
             <label>Namn</label>
-            <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
+            <input data-hook="name" type="text" value="" placeholder="Namn" title="">
             </li>
             
             <li>
             <label>Beskrivning</label>
-            <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
+            <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
             </li>
             
             <li>
         	<label>Bokningsdjup</label>
-        	<input id="depth" type="text" value="1" placeholder="Antal som kan boka samtidigt" title=""/>
+        	<input data-hook="depth" type="text" value="" placeholder="Antal som kan boka samtidigt" title=""/>
             </li>
             
             <li>
@@ -34,7 +34,7 @@
                         Bokas under namnet
                     </label>
                     <a data-hook="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
-                        <span data-hook="category.text">Hus</span>
+                        <span data-hook="category.text">&nbsp</span>
                     </a>
                 </div>
             </li>

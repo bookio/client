@@ -125,10 +125,10 @@ requirejs.config({
   
         window.history.back = $.mobile.popPage;
 
-        if (Gopher.authorization.length == 0)
+        if (Gopher.sessionID() == '')
 	        $.mobile.gotoPage('pages/login.html');
         else {
-    	    console.log('Session ID: %s', Gopher.authorization);
+    	    console.log('Session ID: %s', Gopher.sessionID());
     	    $.mobile.gotoPage('pages/main.html');
         }
     

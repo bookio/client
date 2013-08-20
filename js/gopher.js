@@ -8,12 +8,29 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
     
     Gopher.baseURL = 'http://bookio.herokuapp.com';
     //Gopher.baseURL = 'http://localhost:3000';
-    Gopher.authorization = isString($.cookie('sid')) ? $.cookie('sid') : '';
 
-    Gopher.login = function(email, password) {
+
+    Gopher.sessionID = function(value) {
+    
+        if (isString(value))
+            $.cookie('sid', value);
+        
+        return isString($.cookie('sid')) ? $.cookie('sid') : '';
+        
+    }
+
+    Gopher.username = function(value) {
+    
+        if (isString(value))
+            $.cookie('username', value);
+        
+        return isString($.cookie('username')) ? $.cookie('username') : '';
+    }
+
+    Gopher.login = function(user, password) {
     		
     	var beforeSend = function(xhr) {
-    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(email + ':' + password));
+    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(user + ':' + password));
     		xhr.setRequestHeader("Content-Type", "application/json");
     		xhr.setRequestHeader("Accept", "application/json");
     	}
@@ -27,7 +44,9 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
     	});
 
         request.done(function(data) {
-        	$.cookie('sid', data.sid);
+        	Gopher.sessionID(data.sid);
+        	Gopher.username(user);
+        	
         	console.log('Session ID:%s', data.sid);
         });
 
@@ -41,7 +60,7 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
     Gopher.request = function(method, url, data) {
     		
     	var beforeSend = function(xhr) {
-    		xhr.setRequestHeader("Authorization", Gopher.authorization);
+    		xhr.setRequestHeader("Authorization", Gopher.sessionID());
     		xhr.setRequestHeader("Content-Type", "application/json");
     		xhr.setRequestHeader("Accept", "application/json");
     	}
@@ -57,11 +76,14 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         request.fail(function(xhr) {
 
             try {
-                json = JSON.parse(xhr.responseText);
+                var json = JSON.parse(xhr.responseText);
                 
                 if (json.error) {
                     Notify.show(json.error);
                 }
+                else
+                    Notify.show(xhr.responseText);
+                
             }
             catch (error) {
                 console.log("*************** %s **************", error.message);

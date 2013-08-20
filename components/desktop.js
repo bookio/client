@@ -132,7 +132,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
     		
     		$.each(items, function(i, element){
                 var item = $(element);
-                var rental = item.data();
+                var rental = item.data('rental');
                 
                 if (isRentalAvailable(rental))
                     item.removeClass("disabled");
@@ -282,7 +282,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
     		
     		$.each(elements, function(i, element){
                 var item = $(element).parent();
-                var rental = item.data();
+                var rental = item.data('rental');
                 
                 Model.Rentals.remove(rental);
     		});    		
@@ -386,7 +386,6 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
 */    
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
-            	console.log('event - %s', event.type);
                 _element.find('.title').removeClass('selected');
                 
                 // Remove delete icon
@@ -412,11 +411,6 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                 Notifications.off('.desktop');
                 $(document).off('.desktop');
             });
-
-			var spinner = new Spinner({
-    			container:_element,
-    			size:40
-			});
 
 			var gopher = Gopher;
 			
@@ -453,7 +447,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
             var maxCols = computeMaxCols();
             var maxRows = computeMaxRows();
-            var rental  = item.data();
+            var rental  = item.data('rental');
             
             row = Math.max(row, 0);
             row = Math.min(row, maxRows);
@@ -483,14 +477,16 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             
                 var item = $(this);
 
-                if (rental.id == item.data().id) {
+                if (rental.id == item.data('rental').id) {
                     var title = item.find('.title');
                     var image = item.find('img');
                     
-                    item.data(rental);
-                    
-                    title.text(rental.name);
                     image.attr('src', '../images/symbols/' + _icons[rental.icon_id].image);
+                    title.text(rental.name);
+
+                    item.data('rental', rental);
+                    item.css({width:_options.iconSize+10, height:_options.iconSize+10});
+                    
 
             		title.css({top:item.outerHeight() + 2});
             		title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
@@ -512,7 +508,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             _element.append(item);
             
             item.css({width:_options.iconSize+10, height:_options.iconSize+10});
-            item.data(rental);
+            item.data('rental', rental);
 
             image.css({width:_options.iconSize, height:_options.iconSize});
             
@@ -628,7 +624,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             item.on('doubletap', function(event) {
                 console.log("event - %s", event.type);
 
-        		var rental = item.data();
+        		var rental = item.data('rental');
         		var reservation = getReservationForRental(rental);
         		
     		    if (reservation == null) {
@@ -661,7 +657,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		
             item.on('doubletap', function(event) {
 
-        		var rental = item.data();
+        		var rental = item.data('rental');
         		var reservation = getReservationForRental(rental);
 
         		var pageData = {};

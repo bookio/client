@@ -32,8 +32,8 @@
 		        	});
 	        	}
 	        	
-	        	if (Gopher.authorization.length > 0) {
-		        	_elements.sid.text(sprintf("%s", Gopher.authorization));
+	        	if (Gopher.sessionID() != '') {
+		        	_elements.sid.text(sprintf("%s", Gopher.sessionID()));
 	        	}
 
 	           _elements.back.on('tap', function(event){

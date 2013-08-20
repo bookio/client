@@ -17,38 +17,46 @@
             var _rental = {};
             var _icons = [];
             var _iconsByID = {};
-            var _icon = null;
             var _categories = [];
             var _categoriesByID = {};
+            
+            _page.hookup(_elements);
             
             function fill() {
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
+                _elements.depth.val(_rental.depth);
+
+                if (_rental.category_id) {
+                    var category = _categoriesByID[_rental.category_id];
+                    
+                    if (category)
+                        _elements.category.text.text(category.name);
+                }
                 
-                if (_icon)
-                    _elements.icon.image.attr('src', sprintf('../images/symbols/%s', _iconsByID[_icon.id].image));
+                if (_rental.icon_id) {
+                    var icon = _iconsByID[_rental.icon_id];
+                    
+                    if (icon)
+                        _elements.icon.image.attr('src', sprintf('../images/symbols/%s', icon.image));
+                }
             }
             
             function chill() {
                 _rental.name = _elements.name.val();
                 _rental.description = _elements.description.val();
+                _rental.depth = _elements.depth.val();
                 
-                if (_icon) {
-                    _rental.icon_id = _icon.id;
-                }
 
             }
             
             
 	        function init() {
-    	        _page.hookup(_elements);
     	        
+    	       //_elements.content.transition({opacity:1}, 1000);
+    	       
     	       if ($.mobile.pageData && $.mobile.pageData.rental) {
-        	       _rental = $.mobile.pageData.rental;
-
-        	       if (_rental.icon_id) {
-            	       _icon = _iconsByID[_rental.icon_id];
-        	       }
+        	       $.extend(_rental, $.mobile.pageData.rental);
     	       }
 
     	       if (!_rental.id)
@@ -72,11 +80,14 @@
 
 	           _elements.save.on('tap', function(event) {
 	           	
+	           	   $('body').spin('large');
+	           	   
     	           chill();
 		           
 		           var request = Model.Rentals.save(_rental);
 		           
 		           request.done(function() {
+    	           	   $('body').spin(false);
 			           $.mobile.popPage();
 		           });
 	           });
@@ -107,6 +118,8 @@
                         
                             var category = $(this).data('category');
 
+                            _rental.category_id = category.id;
+                            
                             _elements.category.text.text(category.name);
                             _elements.popup.popup('close');
                         });
@@ -146,8 +159,8 @@
 
                         _elements.popup.popup('close');
 
-                        _icon = _icons[index];
-                        _elements.icon.image.attr('src', sprintf('../images/symbols/%s', _iconsByID[_icon.id].image));
+                        _rental.icon_id = _icons[index].id;
+                        _elements.icon.image.attr('src', sprintf('../images/symbols/%s', _iconsByID[_rental.icon_id].image));
                         
                     };
                     
@@ -171,6 +184,9 @@
 	        }	  
 
 	        if (true) {
+	        
+                $('body').spin("large");
+
                 var icons = Model.Icons.fetch();
                 var categories = Model.Categories.fetch();
                 
@@ -192,8 +208,11 @@
                     
                 });
                 
+
                 $.when(icons, categories).then(function() {
         	        init();
+        	        
+        	        $('body').spin(false);
         	        
                 });
                 

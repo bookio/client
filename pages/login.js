@@ -31,8 +31,6 @@
 				});	    		
 
 	    		request.done(function(data) {
-	    			$.cookie('email', email);
-
 		        	$.mobile.pushPage('main.html');
 	    		});
 	
@@ -51,11 +49,10 @@
 	        function init() {
 	        	
 	        	// Logout
-	        	$.cookie('sid', '');
+	        	Gopher.sessionID('');
 	        	
 	        	_page.hookup(_elements);
-
-	        	_elements.email.val($.cookie('email'));
+	        	_elements.email.val(Gopher.username());
 
 	            _page.on('keydown', function(event) {
 	                if (event.keyCode == 13)
@@ -66,9 +63,6 @@
 					login();
 				});	        	
 				
-	            _elements.meg.on('tap', function() {
-					loginWith("magnus@egelberg.se", "potatismos");
-				});	        	
 	        }	  
 
 	        init();

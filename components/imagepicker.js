@@ -28,7 +28,7 @@ define(['text!./imagepicker.html', 'less!./imagepicker'], function(template) {
 		function buildDOM() {
 			
             var template = $('<div>' + 
-            					'<div data-role="controlgroup" data-mini="true" data-type="horizontal">' + 
+            					'<div data-role="controlgroup"  data-type="horizontal">' + 
 	            					'<button type="button" data-filter="*">Allt</button>' +
 	            					'<button type="button" data-filter=".Transport">Transport</button>' +
 	            					'<button type="button" data-filter=".Boende">Boende</button>' +

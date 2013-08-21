@@ -8,9 +8,9 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		var self = this;
 		
 		var _defaults = {
-    		iconMargin:0,
-    		iconSpacing:0,
-    		iconSize:100
+    		iconMargin:20,
+    		iconSpacing:40,
+    		iconSize:40
 		};
 		
 		var _options = $.extend({}, _defaults, options);
@@ -388,6 +388,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
                 _element.find('.title').removeClass('selected');
                 
+                // Remove delete icon
+                _element.find('.deleteItem').text('');
                 //event.preventDefault();
                 //event.stopPropagation();
                 
@@ -483,11 +485,11 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                     title.text(rental.name);
 
                     item.data('rental', rental);
-                    //item.css({width:_options.iconSize+10, height:_options.iconSize+10});
+                    item.css({width:_options.iconSize+10, height:_options.iconSize+10});
                     
 
-            		//title.css({top:item.outerHeight() + 2});
-            		//title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
+            		title.css({top:item.outerHeight() + 2});
+            		title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
                     
                 }
             });
@@ -497,7 +499,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			var template = 				
 				'<div class="item">'+
 				    '<div class="deleteItem"></div>'+
-					'<div class="icon"><img/></div>'+
+					'<div><img/></div>'+
 					'<div class="title"></div>'+
 				'</div>'
 
@@ -506,10 +508,10 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
             _element.append(item);
             
-            //item.css({width:_options.iconSize+10, height:_options.iconSize+10});
+            item.css({width:_options.iconSize+10, height:_options.iconSize+10});
             item.data('rental', rental);
 
-            //image.css({width:_options.iconSize, height:_options.iconSize});
+            image.css({width:_options.iconSize, height:_options.iconSize});
             
             if (rental.name) {
                 var title = item.find('.title');
@@ -517,8 +519,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                 title.text(rental.name);
         		//title.css({maxWidth:_options.iconSize});
                 
-        		//title.css({top:item.outerHeight() + 2});
-        		//title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
+        		title.css({top:item.outerHeight() + 2});
+        		title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
                 
                 // Ignore mousedown on the title
                 title.on("mousedown touchstart", function(event){
@@ -528,6 +530,9 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             }
             
             
+            item.find('.deleteItem').on("mousedown touchstart", function(event) {
+            	removeSelectedRental();
+	        });
 	        
 
             positionItem(item, col, row);
@@ -594,6 +599,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			_element.find('.addButton').text('');
 			_element.find('.closeButton').text('');
 
+			// Remove delete icon on items
+            _element.find('.deleteItem').text('');
             
             _element.removeClass('editMode');
 
@@ -682,9 +689,13 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                 if (!event.shiftKey) {
                     _element.find('.title.selected').removeClass('selected');
                     
+                    // Remove delete icon
+                    _element.find('.deleteItem').text('');
                 }
                 
                 item.find('.title').addClass('selected');
+                // Show delete icon if selected  
+            	item.find('.deleteItem').append('<img class="icon" src=../images/icons/icon-delete.png>');
                 
                 $(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
 

@@ -29,13 +29,13 @@ define(['text!./imagepicker.html', 'less!./imagepicker'], function(template) {
 			
             var template = $('<div>' + 
             					'<div data-role="controlgroup"  data-type="horizontal">' + 
-	            					'<button type="button" data-filter="*">Allt</button>' +
-	            					'<button type="button" data-filter=".Transport">Transport</button>' +
-	            					'<button type="button" data-filter=".Boende">Boende</button>' +
-	            					'<button type="button" data-filter=".Verktyg">Verktyg</button>' +
-	            					'<button type="button" data-filter=".Aktivitet">Aktivitet</button>' +
-	            					'<button type="button" data-filter=".Resurs">Resurs</button>' +
-	            					'<button type="button" data-filter=".Sport">Sport</button>' +
+	            					'<button type="button" data-filter="*" data-theme="a">Allt</button>' +
+	            					'<button type="button" data-filter=".Transport" data-theme="b">Transport</button>' +
+	            					'<button type="button" data-filter=".Boende" data-theme="b">Boende</button>' +
+	            					'<button type="button" data-filter=".Verktyg" data-theme="b">Verktyg</button>' +
+	            					'<button type="button" data-filter=".Aktivitet" data-theme="b">Aktivitet</button>' +
+	            					'<button type="button" data-filter=".Resurs" data-theme="b">Resurs</button>' +
+	            					'<button type="button" data-filter=".Sport" data-theme="b">Sport</button>' +
             					'</div>' + 
             					'<div id="supercontainer">' +
             					   '<div id="container"></div>' + 

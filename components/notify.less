@@ -2,7 +2,7 @@
 @import "../less/variables.less";
 
 
-.notify {
+[data-hook="notify"] {
 	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
 
     .border-radius(20px);
@@ -22,7 +22,10 @@
     text-align: center;
     text-shadow: none;
      
-    .message2 {
+    [data-hook="message-1"] {
+    }
+
+    [data-hook="message-2"] {
         opacity: 0.5;
     }
 }

@@ -21,7 +21,7 @@ define(['less!components/notify'], function() {
 	}
 	
 
-	function show(message1, message2) {
+	function show() {
 
         if (_timer != null) {
             clearTimeout(_timer);
@@ -29,21 +29,23 @@ define(['less!components/notify'], function() {
         }    
 
         var template = 
-            '<div class="notify">'+
-            '<div class="message1">message1 goes here</div><div class="message2">message2 goes here</div>'
-            +'</div>';
+            '<div data-hook="notify"></div>';
+            
         if (_element == null) {
             _element = $(template);
             _element.appendTo($('body'));
         }
-   
-        var line1 = _element.find('.message1');
-        message1 = message1.toLowerCase();
-        line1.text(message1);
-
-        var line2 = _element.find('.message2');
-        line2.text(message2);
+        else
+            _element.empty();
         
+        $.each(arguments, function(i, item) {
+            var div = $('<div></div>');
+
+            div.text(item);
+            div.attr('data-hook', sprintf('message-%d', i + 1));
+            div.appendTo(_element);
+        });
+
         _element.css({
             left:($(window).innerWidth() - _element.innerWidth()) / 2,
             top:($(window).innerHeight() - _element.innerHeight()) / 3

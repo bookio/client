@@ -225,7 +225,7 @@ define(['text!./datepicker.html', 'less!./datepicker'], function(template) {
 		
         function init() {
             _html = $(template);
-            _date = _options.date;
+            _date = _options.date.clone();
 	        _firstDayOfCalendar = getFirstDayOfCalendar(_date);
 
             if (_options.container)

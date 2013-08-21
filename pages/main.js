@@ -33,12 +33,19 @@
 
 		
     		function NotifyUpdate(startDate, endDate) {
-    			if ((startDate.getFullYear() == endDate.addDays(-1).getFullYear()) && (startDate.getMonth() == endDate.addDays(-1).getMonth()) && (startDate.getDate() == endDate.addDays(-1).getDate())) {
-    				Notify.show(startDate.getFriendlyDate(), startDate.getYear());
-    			}
-    			else {
-    				Notify.show(startDate.getFriendlyDate() + ' - ' + endDate.addDays(-1).getFriendlyDate(), startDate.getYear());
-    			}
+    		
+    		
+        		if (_page.is(':visible')) {
+            		if (_startDate.getTime() != startDate.getTime() || _endDate.getTime() != endDate.getTime()) {
+            			if ((startDate.getFullYear() == endDate.addDays(-1).getFullYear()) && (startDate.getMonth() == endDate.addDays(-1).getMonth()) && (startDate.getDate() == endDate.addDays(-1).getDate())) {
+            				Notify.show(startDate.getFriendlyDate(), startDate.getYear());
+            			}
+            			else {
+            				Notify.show(startDate.getFriendlyDate() + ' - ' + endDate.addDays(-1).getFriendlyDate(), startDate.getYear());
+            			}
+                		
+            		}
+        		}
     			
     			
         		_elements.startdate.year.text(sprintf("%04d", startDate.getFullYear()));
@@ -80,8 +87,6 @@
 				date.clearTime();
         	
 				_timeScale.startDate(date); 
-	console.log("enddate sätts från setsliderinstartposition");
-
 				_timeScale.endDate(date.addDays(_timeSlider.range()));
 				
 				sliderChanged();
@@ -151,13 +156,13 @@
         	}		
                 
                 
-            function pickdate(button, callback) {
+            function pickdate(button, date, callback) {
 	            function dateChanged() {
 		           popup.popup('close');	
 		           callback(datepicker.date());
 	            }
 	       		
-	            var datepicker = new DatePicker({dateChanged:dateChanged});
+	            var datepicker = new DatePicker({dateChanged:dateChanged, date:date});
 	      
 	            var options = {
 			        dismissible : true,
@@ -205,7 +210,7 @@
 
     	        	event.preventDefault();
     	        	
-    	        	pickdate($(this), function(date){
+    	        	pickdate($(this), _startDate, function(date){
         	        	_startDate = date;
         	        	startDateChanged();
     	        	});
@@ -216,7 +221,7 @@
 
     	        	event.preventDefault();
 
-    	        	pickdate($(this), function(date){
+    	        	pickdate($(this), _endDate, function(date){
         	        	_endDate = date;
         	        	endDateChanged();
     	        	});
@@ -232,8 +237,7 @@
 	        init();
 
         	_page.on("pageshow", function(event) {
-            	console.log("pageshow");
-				//_timeSlider.positionSlider();
+
 				redrawForResize();
             });
 

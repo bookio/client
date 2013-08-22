@@ -448,10 +448,10 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             var rental  = item.data('rental');
             
             row = Math.max(row, 0);
-            row = Math.min(row, maxRows);
+            row = Math.min(row, maxRows - 1);
 
             col = Math.max(col, 0);
-            col = Math.min(col, maxCols);
+            col = Math.min(col, maxCols - 1);
             
             var x = _options.iconMargin + (col * (_options.iconSize + _options.iconSpacing));
             var y = _options.iconMargin + (row * (_options.iconSize + _options.iconSpacing));
@@ -588,8 +588,6 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'none'});
 			
-			// Fade out buttons
-			_element.find('.icon').transition({ opacity: 0 }, 4000);
 			// Remove buttons from desktop
 			_element.find('.addButton').text('');
 			_element.find('.closeButton').text('');

@@ -9,7 +9,8 @@
 		'../components/notify',
 		'../components/timescale',
 		'../components/daterangepicker',
-		'./settings'
+		'./settings',
+		'./test'
 	];
 
 	define(dependencies, function() {

@@ -663,18 +663,25 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
             item.on(isTouch() ? 'touchstart' : 'mousedown', function(event){
 
-				var parent = item.parent();
-				
+                event.stopPropagation();
+				event.preventDefault();
+
 				var pageX = event.originalEvent.pageX;
 				var pageY = event.originalEvent.pageY;
+
+				var parent = item.parent();
+				var icon = item.find('.icon');
+				var title = item.find('.title');
+
+				if (!icon.hitTest(pageX, pageY))
+				    return;
+				
 				
 				var offsetX = pageX - parent.offset().left - item.position().left;
 				var offsetY = pageY - parent.offset().top - item.position().top;
 				
 				bringItemToTop(item);    				
 
-                event.stopPropagation();
-				event.preventDefault();
 
                 var dragging = true;
                 var moved = false;
@@ -684,7 +691,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                     
                 }
                 
-                item.find('.title').addClass('selected');
+                title.addClass('selected');
                 
                 $(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
 

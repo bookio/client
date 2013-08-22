@@ -6,6 +6,7 @@
 	   './users',
 	   './categories',
 	   './contact',
+	   './rules',
 	   './missing'
 	];
 

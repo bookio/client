@@ -14,20 +14,31 @@
         <ul data-hook="listview" data-role="listview" data-inset="true">
 
             <li>        
-            <label>Namn</label>
-            <input data-hook="name" type="text" value="" placeholder="Namn" title="">
+	            <label>Namn</label>
+	            <input data-hook="name" type="text" value="" placeholder="Namn" title="">
             </li>
             
             <li>
-            <label>Beskrivning</label>
-            <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
+	            <label>Beskrivning</label>
+	            <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
             </li>
             
             <li>
-        	<label>Bokningsdjup</label>
-        	<input data-hook="depth" type="text" value="" placeholder="Antal som kan boka samtidigt" title=""/>
-            </li>
-            
+	            <div class="ui-grid-a">
+	            	<div class="ui-block-a">
+			        	<label>Bokningsdjup</label>
+			        	<input data-hook="depth" type="text" value="" placeholder="Antal som kan boka samtidigt" title=""/>
+	            	</div>
+	            	<div class="ui-block-b">
+						<label style="display:block">Tillgänglig för bokning</label>
+						<select name="settings-rental-available" data-role="slider">
+							<option value="off">Nej</option>
+							<option value="on" selected>Ja</option>
+						</select>
+	            	</div>
+	            </div> 
+            </li>            
+
             <li>
                 <div data-hook="category.container">
                     <label>
@@ -56,9 +67,9 @@
 
         
 	    <div data-role="button-row">
-        	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
+        	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
         	<a data-hook="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-        	<a data-hook="remove" data-role="button" data-inline="true" data-theme="r">Tag bort</a>
+        	<a data-hook="remove" data-role="button" data-inline="true" data-theme="r">Ta bort</a>
 	    </div>
     </div>
 

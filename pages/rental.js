@@ -26,6 +26,7 @@
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
                 _elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '');
+                _elements.available.val(_rental.available).slider("refresh");
 
                 if (_rental.category_id) {
                     var category = _categoriesByID[_rental.category_id];
@@ -51,6 +52,9 @@
                 _rental.name = _elements.name.val();
                 _rental.description = _elements.description.val();
                 _rental.depth = _elements.depth.val();
+                _rental.available = _elements.available.val();
+                if (!_rental.icon_id)
+                	_rental.icon_id = 8;
                 
                 if (!_rental.depth)
                     _rental.depth = 1;
@@ -91,16 +95,6 @@
                     
                     if (!_rental.name) {
                         Notify.show('Ange ett namn.');
-                        return;
-                    }
-
-                    if (!_rental.depth) {
-                        Notify.show('Ange ett bokningsdjup.');
-                        return;
-                    }
-
-                    if (!_rental.category_id) {
-                        Notify.show('Välj en bokningsnamn.');
                         return;
                     }
 

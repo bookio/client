@@ -16,10 +16,9 @@
             var _info = {};
             
             function fill() {
-_elements.demandPhone.slider({ highlight: true });
-	    	    //_elements.demandPhone.val(_info.demandPhone);
-				_elements.demandEmail.val(_info.demandEmail);
-	    	    _elements.demandAddress.val(_info.demandAddress);
+	    	    _elements.demandPhone.val(_info.demandPhone).slider("refresh");
+				_elements.demandEmail.val(_info.demandEmail).slider("refresh");
+	    	    _elements.demandAddress.val(_info.demandAddress).slider("refresh");
 
             }	        
             
@@ -41,6 +40,7 @@ _elements.demandPhone.slider({ highlight: true });
                     fill();
                                     
                     _elements.back.on('tap', function(event) {
+                    
                         chill();
                 
                         var request = Gopher.request('PUT', 'settings/app/contact', _info);

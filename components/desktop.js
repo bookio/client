@@ -496,8 +496,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		function addRentalToScene(rental, col, row) {
 			var template = 				
 				'<div class="item">'+
-				    '<div class="deleteItem"></div>'+
 					'<div class="icon"><img/></div>'+
+					'<br>'+
 					'<div class="title"></div>'+
 				'</div>'
 

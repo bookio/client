@@ -27,6 +27,36 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         return isString($.cookie('username')) ? $.cookie('username') : '';
     }
 
+    Gopher.signin = function(user, password) {
+    		
+    	var beforeSend = function(xhr) {
+    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(user + ':' + password));
+    		xhr.setRequestHeader("Content-Type", "application/json");
+    		xhr.setRequestHeader("Accept", "application/json");
+    	}
+    	
+    	var request = $.ajax({
+        	type: 'GET',
+        	url: Gopher.baseURL + '/signin',
+        	data: null,
+        	dataType: 'json',
+        	beforeSend: beforeSend
+    	});
+
+        request.done(function(data) {
+        	Gopher.sessionID(data.sid);
+        	Gopher.username(user);
+        	
+        	console.log('Session ID:%s', data.sid);
+        });
+
+        request.fail(function(xhr) {
+            console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
+        });
+        
+        return request;
+    }
+
     Gopher.login = function(user, password) {
     		
     	var beforeSend = function(xhr) {

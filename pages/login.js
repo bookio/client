@@ -18,15 +18,13 @@
 
 	        function loginWith(email, password) {
 
-    	        var buttons = _page.find('.login-button');
-    	         
-	    		buttons.transition({opacity:0.5}, 200);
+	    		_elements.button.transition({opacity:0.5}, 200);
 	    		
 	    		var request = Gopher.login(email, password);
 
 				request.fail(function(){
-	                buttons.transition({opacity:1.0}, 100);
-	            	buttons.transition({x:-5}, 75).transition({x:10}, 75).transition({x:0}, 75);
+	                elements.button.transition({opacity:1.0}, 100);
+	            	elements.button.transition({x:-5}, 75).transition({x:10}, 75).transition({x:0}, 75);
 					
 				});	    		
 
@@ -66,7 +64,6 @@
 	        }	  
 
 	        init();
-	        console.log(html);
 		}
 
     	$(document).delegate("#login", "pageinit", function(event) {

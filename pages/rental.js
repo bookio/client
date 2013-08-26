@@ -53,6 +53,10 @@
                 _rental.description = _elements.description.val();
                 _rental.depth = _elements.depth.val();
                 _rental.available = _elements.available.val();
+                
+                if (!_rental.category_id)
+                    _rental.category_id = null;
+                    
                 if (!_rental.icon_id)
                 	_rental.icon_id = 8;
                 

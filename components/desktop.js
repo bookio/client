@@ -424,7 +424,10 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			settings.done(gotSettings);
 			icons.done(gotIcons);
 			
+			$('body').spin("large");
+			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
+    			$('body').spin(false);
 				$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
 				
                 placeRentals();
@@ -447,11 +450,11 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             var maxRows = computeMaxRows();
             var rental  = item.data('rental');
             
-            row = Math.max(row, 0);
             row = Math.min(row, maxRows - 1);
+            row = Math.max(row, 0);
 
-            col = Math.max(col, 0);
             col = Math.min(col, maxCols - 1);
+            col = Math.max(col, 0);
             
             var x = _options.iconMargin + (col * (_options.iconSize + _options.iconSpacing));
             var y = _options.iconMargin + (row * (_options.iconSize + _options.iconSpacing));
@@ -502,7 +505,12 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 				'</div>'
 
             var item = $(template);
-            var image = item.find('img').attr('src', '../images/symbols/' + _icons[rental.icon_id].image);
+            var image = item.find('img');
+            
+            if (rental.icon_id)
+                image.attr('src', '../images/symbols/' + _icons[rental.icon_id].image);
+            else
+                image.attr('src', '../images/symbols/0000.png');
 
             _element.append(item);
             

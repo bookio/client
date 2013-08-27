@@ -25,6 +25,9 @@
 	    	    if (_info.email)
 	    	        _elements.email.val(_info.email);
 
+	    	    if (_info.twitterAccount)
+	    	        _elements.twitterAccount.val(_info.twitterAccount);
+
 	    	    if (_info.address)
 	    	        _elements.address.val(_info.address);
 
@@ -36,6 +39,7 @@
                 _info.name = _elements.name.val();
                 _info.phone = _elements.phone.val();
                 _info.email = _elements.email.val();
+                _info.twitterAccount = _elements.twitterAccount.val();
                 _info.address = _elements.address.val();
                 _info.webpage = _elements.webpage.val();
             }

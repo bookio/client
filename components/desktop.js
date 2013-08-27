@@ -430,9 +430,13 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
     			$('body').spin(false);
 				$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
 				
-                placeRentals();
-                updateRentalAvailability();			
-    			
+				if (_rentals.length == 0)
+					// No objects created, enter edit mode 
+                	self.editMode(true);
+				else { 
+                	placeRentals();
+					updateRentalAvailability();			
+    			}
 			});
 			
 			_element.on('updatelayout', function() {

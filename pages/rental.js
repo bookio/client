@@ -26,7 +26,7 @@
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
                 _elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '');
-                _elements.available.val(_rental.available).slider("refresh");
+                _elements.available.val((_rental.available == 1) ? 'on' : 'off').slider("refresh");
 
                 if (_rental.category_id) {
                     var category = _categoriesByID[_rental.category_id];
@@ -52,12 +52,13 @@
                 _rental.name = _elements.name.val();
                 _rental.description = _elements.description.val();
                 _rental.depth = _elements.depth.val();
-                _rental.available = _elements.available.val();
+                _rental.available = (_elements.available.val() == 'on') ? 1 : 0;
                 
                 if (!_rental.category_id)
                     _rental.category_id = null;
                     
                 if (!_rental.icon_id)
+                	// Set to generic 'cube' if no icon chosen
                 	_rental.icon_id = 8;
                 
                 if (!_rental.depth)

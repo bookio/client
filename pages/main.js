@@ -193,10 +193,24 @@
 
 	        	_elements.editmode.on('tap', function() {
     	        	_desktop.editMode(!_desktop.editMode());
-    	        	_elements.popupmenu.popup('close');
+    	        	_elements.popup.content.popup('close');
 	        	});	        	
 
-	        	
+
+                _elements.popup.menu.on('tap', function() {
+
+		            var options = {
+				        dismissible : true,
+				        theme : "c",
+				        overlyaTheme : "a",
+				        transition : "pop",
+				        positionTo: $(this)
+		            };
+
+                    _elements.popup.content.popup(options);
+                    _elements.popup.content.popup('open');
+                });	
+                        	
                 _timeSlider = new TimeSlider(_elements.slider, {
                     scroll:scroll,
                     positionChanged: sliderChanged,

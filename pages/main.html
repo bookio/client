@@ -5,22 +5,20 @@
 	<div id="main-page" data-role="page" data-dom-cache="true">
 	    
     
-    <div data-role="content">
-
-        <div data-hook="desktop">
+        <div data-role="content">
+    
+            <div data-hook="desktop">
+            </div>
+    
+            <div data-hook="scale">
+            </div>
+            
+            <div data-hook="slider">
+            </div>
         </div>
-
-        <div data-hook="scale">
-        </div>
-        
-        <div data-hook="slider">
-        </div>
-
-
-    </div>
 
     
-    <div data-role="footer">
+        <div data-role="footer">
 
                 <a data-hook="startdate.button" data-role="button" data-inline="true" data-theme="c">
                     <div>
@@ -38,30 +36,31 @@
                     </div>
                 </a>
 
-                <a href="#popupMenu" data-transition="pop" data-rel="popup" data-role="none"><div data-hook="iconMenu"></div></a>   
+                <a href="#" data-hook="popup.menu" data-role="none"><div data-hook="popup.icon"></div></a>   
 
-    </div>
+        </div>
 
+    	<div data-hook="popup.content" data-role="popup" data-theme="a">
+    		<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
+    
+    			<!--
+    			<li data-role="divider" data-theme="a">What to do</li>
+    			-->
+    			<li data-icon="false">
+    				<a data-hook="menuitem-settings" href="settings.html">
+    				</a>
+    			</li>
+    			<li data-icon="false">
+    				<a data-hook="editmode" href="#">
+    				</a>
+    			</li>
+    			<li data-icon="false">
+    				<a data-hook="menuitem-logout" href="login.html">
+    				</a>
+    			</li>
+    		</ul>
+    	</div>
 
-	<div data-hook="popupmenu" data-role="popup" id="popupMenu" data-theme="a">
-		<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
-
-			<!--
-			<li data-role="divider" data-theme="a">What to do</li>
-			-->
-			<li data-icon="false">
-				<a data-hook="menuitem-settings" href="settings.html">
-				</a>
-			</li>
-			<li data-icon="false">
-				<a data-hook="editmode" href="#">
-				</a>
-			</li>
-			<li data-icon="false">
-				<a data-hook="menuitem-logout" href="login.html">
-				</a>
-			</li>
-		</ul>
 	</div>
 
 

@@ -2,7 +2,7 @@
 <html>
 	<body>
 	
-		<div id="login" data-role="page">
+		<div id="login-page" data-role="page">
 		
 		    <div data-role="content">
 		        <div data-hook="logo">
@@ -14,7 +14,7 @@
 			    <input data-hook="password" type="password" name="password" class="password rounded hidefocus" value="" placeholder="Lösenord"/>
 
 			    <div data-role="button-row">
-		        	<a data-hook="button" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
+		        	<a data-hook="login" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
 			        	Login
 		        	</a>
 			    </div>
@@ -29,6 +29,26 @@
 			    </div>
 
 		    </div>
+		    
+		    
+        	<div data-hook="popup.content" data-role="popup" data-theme="a">
+        		<ul data-hook="popup.listview" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
+
+        
+        			<li data-hook="popup.title" data-role="divider" data-theme="a">
+                    </li>
+
+        			<li data-icon="false">
+        			     <h2 data-hook="popup.message">
+        			     </h2>
+        			</li>
+        			<li data-icon="false">
+        			     <button data-hook="popup.signup">A</button>
+        			     <button data-hook="popup.cancel" data-theme="r">B</button>
+        			</li>
+        		</ul>
+        	</div>
+		    
 		
 		</div>
 		

@@ -1,7 +1,7 @@
 @import "../less/mixins.less";
 @import "../less/variables.less";
 
-#login-page {
+#signup-page {
     
 	.ui-input-text {
 		.border-radius(100px);
@@ -20,15 +20,6 @@
         text-align: center;
     }
 
-    [data-hook="popup.content"] {
-        max-width: 400px;
-        
-        [data-hook="popup.message"] {
-            white-space: normal;
-            font-weight: normal;
-            
-        }
-    }
     [data-hook="dancer"] {
         text-align: center;
         opacity: 0.5;
@@ -43,6 +34,14 @@
 			width: 100px;
 			height:100px;
 		}
+    }
+
+    [data-hook="buttons"] {
+        text-align: center;
+
+    	[data-role=button] {
+	    	.border-radius(100px);
+    	}
     }
 
 	

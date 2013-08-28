@@ -2,76 +2,80 @@
 
 (function() {
 
-	var dependencies = [
-		'less!./signup.less',
-		'pages/main'
-	];
+    var dependencies = [
+        'less!./signup.less',
+        'pages/main'
+    ];
 
-	define(dependencies, function(html) {
-		
-		
-	    function Module(page) {
+    define(dependencies, function() {
+        
+        
+        function Module(page) {
             
             var _page = page;
             var _elements = {};
 
-	        function loginWith(email, password) {
-
-	    		_elements.button.transition({opacity:0.5}, 200);
-	    		
-	    		var request = Gopher.login(email, password);
-
-				request.fail(function(){
-	                elements.button.transition({opacity:1.0}, 100);
-	            	elements.button.transition({x:-5}, 75).transition({x:10}, 75).transition({x:0}, 75);
-					
-				});	    		
-
-	    		request.done(function(data) {
-		        	$.mobile.gotoPage('main.html');
-	    		});
-	
-	            
-	        }        
             
-	        function login() {
+            function signup() {
 
-	    		var email = _elements.email.val();
-	    		var password = _elements.password.val();
+                var email = _elements.email.val();
 
-	    		loginWith(email, password);
-	    		
-	        }        
+                var request = Gopher.signup(email, '');
 
-	        function init() {
-	        	
-	        	// Logout
-	        	Gopher.sessionID('');
-	        	
-	        	_page.hookup(_elements);
-	        	_elements.email.val(Gopher.username());
+                request.fail(function(){
+                    
+                });             
 
-	            _page.on('keydown', function(event) {
-	                if (event.keyCode == 13)
-	                    login();
-	            });
+                request.done(function(data) {
+                    $.mobile.gotoPage('main.html');
+                });
+                
+            }        
+
+            function enableDisable() {
+                var email = _elements.email.val();
+
+                _elements.signup.toggleClass('ui-disabled', email);
+            }
             
-	            _elements.button.on('tap', function() {
-					login();
-				});	        	
-				
-	        }	  
+            function init() {
+                
+                // Logout
+                Gopher.sessionID('');
+                
+                _page.hookup(_elements);
 
-	        init();
-		}
+                _page.on('keydown', function(event) {
+                
+                    if (event.keyCode == 13)
+                        signup();
+                });
 
-    	$(document).delegate("#login", "pageinit", function(event) {
-        	new Module($(event.currentTarget));
+                _elements.back.on('tap', function(event){
+                    $.mobile.popPage();
+                });   
+
+                _elements.email.on('input', function() {
+                    enableDisable();
+                });
+                _elements.signup.on('tap', function() {
+                    signup();
+                });        
+                
+                enableDisable();     
+                
+            }     
+
+            init();
+        }
+
+        $(document).delegate("#signup-page", "pageinit", function(event) {
+            new Module($(event.currentTarget));
         });
-		
-	
-	});
+        
+    
+    });
 
-	
+    
 })();
 

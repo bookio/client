@@ -27,7 +27,7 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         return isString($.cookie('username')) ? $.cookie('username') : '';
     }
 
-    Gopher.signin = function(user, password) {
+    Gopher.signup = function(user, password) {
     		
     	var beforeSend = function(xhr) {
     		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(user + ':' + password));
@@ -37,7 +37,7 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
     	
     	var request = $.ajax({
         	type: 'GET',
-        	url: Gopher.baseURL + '/signin',
+        	url: Gopher.baseURL + '/signup',
         	data: null,
         	dataType: 'json',
         	beforeSend: beforeSend

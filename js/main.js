@@ -37,6 +37,8 @@ requirejs.config({
         'js/gopher',
         'js/model',
         'js/date',
+        'js/sha1',
+        'js/cloudinary',
         'pages/page-1',
         'pages/rentals/list',
         'pages/login',

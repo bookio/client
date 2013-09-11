@@ -32,7 +32,7 @@
                 
                 li.find('a').on('tap', function(event) {
 
-                    $.mobile.pushPage("user.html", {pageData:{user:item}});
+                    $.mobile.pushPage("user.html", {pageData:{user:item}, transition:'slide'});
                     
                     event.preventDefault();
                     event.stopPropagation();

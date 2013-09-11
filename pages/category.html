@@ -11,12 +11,29 @@
             <img src="../images/app-icon.png"/>
         </div>
         
+        <ul data-hook="listview" data-role="listview" data-inset="true">
+	        <li>
+                <label for="name">Namn</label>
+                <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
+	        </li>
         
-        <label for="name">Namn</label>
-        <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
+                
+            <li>   
+                <label for="description">Beskrivning</label>
+                <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
+            </li>
+
+            <li>
+                <div data-hook="dropzone.container">
+                    <div data-hook="dropzone.border">
+                        <img data-hook="dropzone.image" src="../images/app-icon.png">
+                    </div>
+                    <p data-hook="dropzone.text">Klicka här eller drag och släpp din bild här.</p>
+                </div>
+            </li>
+        
+        </ul>        
             
-        <label for="description">Beskrivning</label>
-        <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
         
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
@@ -24,6 +41,8 @@
         	<a data-hook="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
 	    </div>
     </div>
+
+    <input type="file" data-role="none" data-hook="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
 
 </div>
 

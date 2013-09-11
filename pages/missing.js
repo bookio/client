@@ -19,6 +19,7 @@
 	           _elements.back.on('tap', function(event){
 		           $.mobile.popPage();
 	           });
+	           
 	        }	  
 
 	        init();

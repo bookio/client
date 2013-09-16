@@ -48,7 +48,7 @@
                 var item = row.data('item');
                 row.find('h2').text(item.name);
                 row.find('p').text(item.description);
-                row.find('img').attr('src', item.image ? Cloudinary.imageURL(item.image, {width:100, height:100, crop:'fill'}) : '../images/app-icon.png');
+                row.find('img').attr('src', item.image ? Cloudinary.imageURL(item.image, {width:100, height:100, crop:'fit'}) : '../images/app-icon.png');
             }
 
             function refreshListView() {

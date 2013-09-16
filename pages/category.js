@@ -21,7 +21,7 @@
                 _elements.description.val(_category.description);
                 
                 if (_category.image)
-                    _elements.dropzone.image.attr('src', Cloudinary.imageURL(_category.image, {crop:'fill', width:100, height:100}));
+                    _elements.dropzone.image.attr('src', Cloudinary.imageURL(_category.image, {crop:'fit', width:100, height:100}));
             }
             
             function chill() {
@@ -39,7 +39,7 @@
 
                 request.done(function(filename) {
                     _category.image = filename;
-                    _elements.dropzone.image.attr('src', Cloudinary.imageURL(filename, {crop:'fill', width:100, height:100}));
+                    _elements.dropzone.image.attr('src', Cloudinary.imageURL(filename, {crop:'fit', width:100, height:100}));
                 });
 
                 request.always(function() {

@@ -16,9 +16,9 @@
             var _info = {};
             
             function fill() {
-	    	    _elements.demandPhone.val(_info.demandPhone).slider("refresh");
-				_elements.demandEmail.val(_info.demandEmail).slider("refresh");
-	    	    _elements.demandAddress.val(_info.demandAddress).slider("refresh");
+	    	    _elements.demandPhone.val((_elements.demandPhone == 0 || _elements.demandPhone == undefined) ? 'off' : 'on').slider("refresh");
+				_elements.demandEmail.val((_elements.demandEmail == 0 || _elements.demandEmail == undefined) ? 'off' : 'on').slider("refresh");
+	    	    _elements.demandAddress.val((_elements.demandAddress == 0 || _elements.demandAddress == undefined) ? 'off' : 'on').slider("refresh");
 
             }	        
             

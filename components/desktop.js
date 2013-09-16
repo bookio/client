@@ -25,6 +25,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		var _rentals = {};
 		var _settings = {};
 		var _icons = {};
+		
+		var _timerForIntroBlob;
 
 		function updateUI() {
     		if (_setNeedsLayout)
@@ -215,7 +217,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		    var defaults = {
     		    positions: {},
     		    orderAutomatically: false,
-    		    background: 'snow.png'
+    		    background: 'white-leather.png'
 		    };
 			
 			_settings = {};
@@ -365,12 +367,38 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             });
 	            
 	    };
+	    
+	    function clearIntroBlob() {
+            // Clear intro blob
+            var theDiv = _element.find('.introText'); 
+			theDiv.css({backgroundImage:'none'});
+            
+            theDiv = _element.find('.introArrow'); 
+			theDiv.css({backgroundImage:'none'});
+			
+			theDiv = _element.find('.introBike');
+			theDiv.css({backgroundImage:'none'});
+
+			theDiv = _element.find('.introMan');
+			theDiv.css({backgroundImage:'none'});
+
+			theDiv = _element.find('.introSquash');
+			theDiv.css({backgroundImage:'none'});
+
+			theDiv = _element.find('.introHouse');
+			theDiv.css({backgroundImage:'none'});
+			
+			theDiv = _element.find('.introCar');
+			theDiv.css({backgroundImage:'none'});
+		    
+		    clearTimeout(_timerForIntroBlob);
+	    }
 				
 		function init() {
 				
 			var template = 
 				'<div class="desktop">'+
-					'<div class="addButton"></div><div class="closeButton"></div><div class="watermark">'+
+					'<div class="introText"></div><div class="introArrow"></div><div class="introHouse"></div><div class="introMan"></div><div class="introSquash"></div><div class="introBike"></div><div class="introCar"></div><div class="addButton"></div><div class="closeButton"></div><div class="watermark">'+
 					'</div>'+
 				'</div>';
 			
@@ -388,16 +416,15 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
                 _element.find('.title').removeClass('selected');
                 
-                //event.preventDefault();
-                //event.stopPropagation();
-                
+                clearIntroBlob();
+			                
              }); 
              
             _element.find('.addButton').on("mousedown touchstart", function(event) {
 
         		$.mobile.changePage('../pages/rental.html');
 	        });
-	        
+	         
 	        
             _element.find('.closeButton').on("mousedown touchstart", function(event) {
                 self.editMode(false);
@@ -430,9 +457,11 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
     			$('body').spin(false);
 				$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
 				
-				if (_rentals.length == 0)
-					// No objects created, enter edit mode 
+				if (Object.keys(_rentals).length == 0) {
+					// No objects created, enter edit mode so user can add objects
                 	self.editMode(true);
+                	ShowIntroBlob();
+                }
 				else { 
                 	placeRentals();
 					updateRentalAvailability();			
@@ -568,7 +597,40 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
     		$.mobile.changePage('../pages/reservation.html', {pageData:{reservation:reservation}})
 		}
-		
+				
+		function ShowIntroBlob() {
+			var introTextDiv = _element.find('.introText'); 
+			var introArrowDiv = _element.find('.introArrow');
+			var introHouseDiv =  _element.find('.introHouse');
+			var introManDiv =  _element.find('.introMan');
+			var introSquashDiv =  _element.find('.introSquash');
+			var introBikeDiv = _element.find('.introBike'); 
+			var introCarDiv =  _element.find('.introCar');
+
+			introTextDiv.css({backgroundImage:'url(../images/intro-text.png)'});
+			introArrowDiv.css({backgroundImage:'url(../images/intro-arrow.png)'});
+			
+			introHouseDiv.css({backgroundImage:'url(../images/intro-object-house.png)'});
+			introManDiv.css({backgroundImage:'url(../images/intro-object-man.png)'});
+			introSquashDiv.css({backgroundImage:'url(../images/intro-object-squash.png)'});
+			introBikeDiv.css({backgroundImage:'url(../images/intro-object-bike.png)'});
+			introCarDiv.css({backgroundImage:'url(../images/intro-object-car.png)'});
+
+			_timerForIntroBlob = setInterval(function() {
+				introHouseDiv.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:500}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
+				introManDiv.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:600}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
+				introSquashDiv.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:700}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
+				introBikeDiv.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:800}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});			
+				introCarDiv.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:900}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
+
+				introArrowDiv.transition({ x:'+=3', y:'-=4', duration:200, delay:1000}).transition({ x: '-=3', y:'+=4', duration:200});
+				introArrowDiv.transition({ x:'+=3', y:'-=4', duration:200, delay:0}).transition({ x: '-=3', y:'+=4', duration:200});
+				introArrowDiv.transition({ x:'+=3', y:'-=4', duration:200, delay:0}).transition({ x: '-=3', y:'+=4', duration:200});
+
+		  	}, 3000);
+		  	
+		}
+
 		function BounceButtons() {	
 					
 			_element.find('.closeButton').transition({ scale: 2 }, 300);
@@ -603,7 +665,8 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 			// Remove buttons from desktop
 			_element.find('.addButton').text('');
 			_element.find('.closeButton').text('');
-
+			
+			clearIntroBlob();
             
             _element.removeClass('editMode');
 
@@ -702,6 +765,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
                 }
                 
                 title.addClass('selected');
+                
                 
                 $(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
 

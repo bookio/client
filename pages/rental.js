@@ -26,7 +26,7 @@
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
                 _elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '');
-                _elements.available.val((_rental.available == 1) ? 'on' : 'off').slider("refresh");
+                _elements.available.val((_rental.available == 1 || _rental.available == undefined) ? 'on' : 'off').slider("refresh");
 
                 if (_rental.category_id) {
                     var category = _categoriesByID[_rental.category_id];
@@ -144,7 +144,7 @@
                         elements.text.text(category.name);
                         elements.link.data('category', category);
 
-                        elements.link.on('tap', function(event) {
+                        elements.link.on('tap', function(event) { 
                         
                             var category = $(this).data('category');
 

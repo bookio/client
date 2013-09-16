@@ -19,6 +19,7 @@
             function fill() {
                 _elements.name.val(_category.name);
                 _elements.description.val(_category.description);
+                _elements.available.val((_category.available == 1 || _category.available == undefined) ? 'on' : 'off').slider("refresh");
                 
                 if (_category.image)
                     _elements.dropzone.image.attr('src', Cloudinary.imageURL(_category.image, {crop:'fit', width:100, height:100}));
@@ -27,6 +28,7 @@
             function chill() {
                 _category.name = _elements.name.val();
                 _category.description = _elements.description.val();
+                _category.available = (_elements.available.val() == 'on') ? 1 : 0;
             }
             
                   

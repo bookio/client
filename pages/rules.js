@@ -16,16 +16,16 @@
             var _info = {};
             
             function fill() {
-	    	    _elements.demandPhone.val((_elements.demandPhone == 0 || _elements.demandPhone == undefined) ? 'off' : 'on').slider("refresh");
-				_elements.demandEmail.val((_elements.demandEmail == 0 || _elements.demandEmail == undefined) ? 'off' : 'on').slider("refresh");
-	    	    _elements.demandAddress.val((_elements.demandAddress == 0 || _elements.demandAddress == undefined) ? 'off' : 'on').slider("refresh");
-
+	    	    /*_elements.demandPhone.val((_info.demandPhone == 0 || _info.demandPhone == undefined) ? 'off' : 'on').slider("refresh");
+				_elements.demandEmail.val((_info.demandEmail == 0 || _info.demandEmail == undefined) ? 'off' : 'on').slider("refresh");
+	    	    _elements.demandAddress.val((_info.demandAddress == 0 || _info.demandAddress == undefined) ? 'off' : 'on').slider("refresh");
+*/
             }	        
             
             function chill() {
-                _info.demandPhone = _elements.demandPhone.val();
+  /*              _info.demandPhone = _elements.demandPhone.val();
                 _info.demandEmail = _elements.demandEmail.val();
-                _info.demandAddress = _elements.demandAddress.val();
+                _info.demandAddress = _elements.demandAddress.val();*/
             }
             
             

@@ -3,7 +3,8 @@
 (function() {
 
 	var dependencies = [
-	   'pages/category'
+	   'pages/category',
+	   'less!./categories.less'
 	];
 
 	define(dependencies, function() {
@@ -19,6 +20,7 @@
                 var template = 
                     '<li>'+
                         '<a href="">'+
+                            '<img class="ui-li-thumb">'+
                             '<h2></h2>'+
                             '<p></p>'+
                         '</a>'+
@@ -46,6 +48,7 @@
                 var item = row.data('item');
                 row.find('h2').text(item.name);
                 row.find('p').text(item.description);
+                row.find('img').attr('src', item.image ? Cloudinary.imageURL(item.image, {width:100, height:100, crop:'fill'}) : '../images/app-icon.png');
             }
 
             function refreshListView() {

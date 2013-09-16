@@ -14,12 +14,26 @@
         max-width: 300px;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
     
     [data-hook="logo"] {
         text-align: center;
     }
 
+    [data-hook="message"] {
+        text-align: center;
+    }
+
+    [data-hook="popup.content"] {
+        max-width: 400px;
+        
+        [data-hook="popup.message"] {
+            white-space: normal;
+            font-weight: normal;
+            
+        }
+    }
     [data-hook="dancer"] {
         text-align: center;
         opacity: 0.5;
@@ -34,14 +48,6 @@
 			width: 100px;
 			height:100px;
 		}
-    }
-
-    [data-hook="buttons"] {
-        text-align: center;
-
-    	[data-role=button] {
-	    	.border-radius(100px);
-    	}
     }
 
 	

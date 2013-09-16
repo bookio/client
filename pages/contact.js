@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'less!./contact.less',
+		'less!./contact.less'
 	];
 
 	define(dependencies, function(html) {
@@ -55,7 +55,7 @@
                 
                     fill();
                 
-                    _elements.back.on('tap', function(event){
+                    _elements.back.on('tap', function(event) {
                         $.mobile.popPage();
                     });
                     

@@ -1,5 +1,41 @@
+@import "../less/variables.less"
+@import "../less/mixins.less"
 
 #category-page {
+
+
+    [data-role="content"] {
+
+        [data-hook="dropzone.container"] {
+            text-align: center;
+
+            [data-hook="dropzone.image"] {
+                vertical-align: middle;
+                //border: 3px solid white;
+                width:80px;
+                height:80px;
+                .border-radius(8px);
+            }
+
+            [data-hook="dropzone.text"] {
+                font-size: 100%;
+                padding-top: 1em;            
+            }
+            
+            [data-hook="dropzone.border"] {
+                .border-radius(12px);
+                
+                border: 4px dashed @x-lightGrayColor;
+                height:100px;
+                width:100px;           
+                display: inline-block; 
+                line-height: 100px;
+                vertical-align: middle;   
+            }
+        }
+
+    }
+
     
     [data-hook="description"] {
         height: 8em;

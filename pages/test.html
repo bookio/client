@@ -11,71 +11,23 @@
         <div data-role="button-row">
             <img src="../images/app-icon.png"/>
         </div>
-        
-        <ul data-hook="listview" data-role="listview" data-inset="true">
-
-            <li>        
-            <label>Namn</label>
-            <input data-hook="name" type="text" value="" placeholder="Namn" title="">
-            </li>
-            
-            <li>
-            <label>Beskrivning</label>
-            <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
-            </li>
-            
-            <li>
-            
-            <div class="ui-grid-a">
-            	<div class="ui-block-a">
-                	<span>Bokningsdjup</span>
-                	<input data-hook="depth" type="text" value="" placeholder="Antal som kan boka samtidigt" title=""/>
-                	
-            	</div>
-            	<div class="ui-block-b">
-                    <span style="display:block">Antal</span>
-                    <select name="flip-1" id="flip-1" data-role="slider">
-                    	<option value="off">O</option>
-                    	<option value="on">I</option>
-                    </select>
-            	</div>	   
-            </div>
-                       
-        	
-            </li>
-            
-            <li>
-                <div data-hook="category.container">
-                    <label>
-                        Bokas under namnet
-                    </label>
-                    <a data-hook="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
-                        <span data-hook="category.text">&nbsp</span>
-                    </a>
-                </div>
-            </li>
-            
-            <li>
-                <div data-hook="icon.container">
-                    <label>
-                        Symbol
-                    </label>
-                    <a data-hook="icon.button" data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
-                        <img data-hook="icon.image">
-                    </a>
-                </div>
-            </li>
 
 
-        </ul>        
+        <div data-hook="dropzone.container">
+            <p data-hook="dropzone.text">Klicka här eller drag och släpp din bild här.</p>
+            <img data-hook="dropzone.image">
+        </div>
 
+        <br/>
+        <br/>
 
-        
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
+        	<a data-hook="upload" data-role="button" data-inline="true" data-theme="a">Spara</a>
 	    </div>
     </div>
 
+    <input type="file" data-role="none" data-hook="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
 
 </div>
 

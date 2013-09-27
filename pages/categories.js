@@ -2,15 +2,15 @@
 
 (function() {
 
-	var dependencies = [
-	   'pages/category',
-	   'less!./categories.less'
-	];
+    var dependencies = [
+       'pages/category',
+       'less!./categories.less'
+    ];
 
-	define(dependencies, function() {
-		
-		
-	    function Module(page) {
+    define(dependencies, function() {
+        
+        
+        function Module(page) {
             
             var _page = page;
             var _elements = {};
@@ -88,55 +88,89 @@
                     });
                });
 
-	           _elements.back.on('tap', function(event){
-		           $.mobile.popPage();
-	           });
+               _elements.back.on('tap', function(event){
+                   $.mobile.popPage();
+               });
+               
+               _elements.add.on('tap', function(event) {
+                   window.prompt ("Copy to clipboard: Ctrl+C, Enter", 'sdfsdgf');
+                   $.mobile.pushPage('category.html', {transition:'slide'});
+               });
 
-    	       _page.on('remove', function() { 
-                    Notifications.off('.categories');        	        
-    	       });
+               _page.on('remove', function() { 
+                    Notifications.off('.categories');                   
+               });
             }
             
             
             
-            function load() {
-    	       var request = Model.Categories.fetch();
-    	        
-    	       request.done(function(categories) {
+            function loadCategories() {
+               var request = Model.Categories.fetch();
+                
+               request.done(function(categories) {
 
-        	       _elements.listview.empty();
+                   _elements.listview.empty();
 
-        	       $.each(categories, function(index, category) {
-            	       addItem(category);
-        	       });
-        	        
-        	       _elements.listview.listview('refresh');
+                   $.each(categories, function(index, category) {
+                       addItem(category);
+                   });
+                    
+                   _elements.listview.listview('refresh');
 
-    	       });
-    	        
+               });
+                
                 
             }
+
+            function getGuestURL() {
+                var request = Gopher.request('GET', 'users/guest');
+                
+                request.done(function(user) {
+                   
+                    var longURL = sprintf("%s?user=%s", window.location.href, user.username);
+
+                    _elements.url.text(longURL);
+
+                    /*
+                    var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);
+
+                    var request = $.ajax({
+                        url: url,
+                        type: 'GET',
+                        dataType: 'html',
+                        crossDomain: true
+                    });
+                    
+                    request.done(function(tinyURL) {
+                        _elements.url.text(tinyURL);
+                    });
+                    
+                    request.fail(function(result) {
+                    });
+                    */
+
+               });
+            }
             
-            
-	        function init() {
+            function init() {
 
-	           _page.hookup(_elements);
+               _page.hookup(_elements);
+               
+               enableListeners();
+               loadCategories();
+               getGuestURL();
+            }     
 
-	           
-	           enableListeners();
-	           load();
-	        }	  
+            init();
+        }
 
-	        init();
-		}
-
-    	$(document).delegate("#categories-page", "pageinit", function(event) {
-        	new Module($(this));
+        $(document).delegate("#categories-page", "pageinit", function(event) {
+            new Module($(this));
         });
 
-		
-	
-	});
+        
+    
+    });
 
-	
+    
 })();

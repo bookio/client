@@ -7,30 +7,46 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
     //$.cookie('sid', 'jc22cczytxhq4h1ko4a2j7nm6d17zxan');
     
     Gopher.baseURL = 'http://bookio.herokuapp.com';
-    //Gopher.baseURL = 'http://localhost:3000';
-
-
-    Gopher.sessionID = function(value) {
+    Gopher.baseURL = 'http://localhost:3000';
     
-        if (isString(value))
-            $.cookie('sid', value);
-        
-        return isString($.cookie('sid')) ? $.cookie('sid') : '';
-        
-    }
+    Gopher.user = null;
+    Gopher.client = null;
+    Gopher.sessionID = isString($.cookie('sid')) ? $.cookie('sid') : '';
 
-    Gopher.username = function(value) {
+    var loginComplete = function(data) {
+    	Gopher.client = data.client;
+    	Gopher.user = data.user;
+    	Gopher.sessionID = data.sid;
+
+    	if (!Gopher.user.guest) {
+            $.cookie('sid', Gopher.sessionID);
+    	}
+    	
+    	console.log('Session ID:%s', data.sid);
+    }
     
-        if (isString(value))
-            $.cookie('username', value);
-        
-        return isString($.cookie('username')) ? $.cookie('username') : '';
-    }
+    
+    var requestFailed = function(xhr) {
 
-    Gopher.signup = function(user, password) {
+        var message = '#ERROR#';
+        
+        try {
+            var json = JSON.parse(xhr.responseText);
+            message = json && json.error ? json.error : xhr.responseText;
+        }
+        
+        catch (error) {
+            message = error.message;
+        }
+        
+        console.log(sprintf('Request failed. %s', message));
+        Notify.show(message);
+    }
+    
+    Gopher.signup = function(username, password) {
     		
     	var beforeSend = function(xhr) {
-    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(user + ':' + password));
+    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(username + ':' + (password ? password : '')));
     		xhr.setRequestHeader("Content-Type", "application/json");
     		xhr.setRequestHeader("Accept", "application/json");
     	}
@@ -43,24 +59,25 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         	beforeSend: beforeSend
     	});
 
-        request.done(function(data) {
-        	Gopher.sessionID(data.sid);
-        	Gopher.username(user);
-        	
-        	console.log('Session ID:%s', data.sid);
-        });
-
-        request.fail(function(xhr) {
-            console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
-        });
+        request.done(loginComplete);
+        request.fail(requestFailed);
         
         return request;
     }
+    
+    
+    Gopher.logout = function() {
+        Gopher.sessionID = '';
+        Gopher.user = null;
+        Gopher.client = null;
+        
+        $.cookie('sid', '');
+    }
+    
+    Gopher.login = function(username, password) {
 
-    Gopher.login = function(user, password) {
-    		
     	var beforeSend = function(xhr) {
-    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(user + ':' + password));
+    		xhr.setRequestHeader("Authorization", "Basic " + Base64.encode(username + ':' + (password ? password : '')));
     		xhr.setRequestHeader("Content-Type", "application/json");
     		xhr.setRequestHeader("Accept", "application/json");
     	}
@@ -73,24 +90,26 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         	beforeSend: beforeSend
     	});
 
-        request.done(function(data) {
-        	Gopher.sessionID(data.sid);
-        	Gopher.username(user);
-        	
-        	console.log('Session ID:%s', data.sid);
-        });
-
-        request.fail(function(xhr) {
-            console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
-        });
+        request.done(loginComplete);
+        request.fail(requestFailed);
         
         return request;
     }
+
+
+    Gopher.verify = function() {
+        var request = Gopher.request('GET', 'verify');
+        request.done(loginComplete);
+        request.fail(requestFailed);
+
+        return request;
+    }
+    
     
     Gopher.request = function(method, url, data) {
     		
     	var beforeSend = function(xhr) {
-    		xhr.setRequestHeader("Authorization", Gopher.sessionID());
+    		xhr.setRequestHeader("Authorization", Gopher.sessionID);
     		xhr.setRequestHeader("Content-Type", "application/json");
     		xhr.setRequestHeader("Accept", "application/json");
     	}
@@ -103,25 +122,7 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         	beforeSend: beforeSend
     	});
 
-        request.fail(function(xhr) {
-
-            try {
-                var json = JSON.parse(xhr.responseText);
-                
-                if (json.error) {
-                    Notify.show(json.error);
-                }
-                else
-                    Notify.show(xhr.responseText);
-                
-            }
-            catch (error) {
-                console.log("*************** %s **************", error.message);
-            }
-            
-            console.log(sprintf('Request failed. %s - %d', xhr.statusText, xhr.status));
-            console.log(data);
-        });
+        request.fail(requestFailed);
         
         return request;
     }

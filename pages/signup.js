@@ -41,7 +41,7 @@
             function init() {
                 
                 // Logout
-                Gopher.sessionID('');
+                Gopher.logout();
                 
                 _page.hookup(_elements);
 

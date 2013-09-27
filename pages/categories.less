@@ -3,26 +3,31 @@
 
 #categories-page {
 
-        ul {
-            color: red !important;
-            
-            
-            li {
-                min-height: 90px;
+    [data-hook="url"] {
+        .user-select(text);
+    }
 
-                p {
-                    display: inline;
-                }
-                img {
-                    display: inline;
-                    .border-radius(8px);
-                    margin: 5px;
-                    max-width:80px;
-                    max-height:80px;
-                }  
+    ul {
+        color: red !important;
+        
+        
+        li {
+            min-height: 90px;
 
-            } 
-        }    
+            p {
+                display: inline;
+            }
+            
+            img {
+                display: inline;
+                .border-radius(8px);
+                margin: 5px;
+                max-width:80px;
+                max-height:80px;
+            }  
+
+        } 
+    }    
         
   
 }

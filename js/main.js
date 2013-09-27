@@ -43,7 +43,7 @@ requirejs.config({
         'pages/rentals/list',
         'pages/login',
         'pages/main',
-        'pages/switch'
+        'pages/mobile/select-category'
     ];
 
 
@@ -124,15 +124,43 @@ requirejs.config({
 	            }
 	        }
         } 
-  
+        
+        $.urlParam = function(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+            var results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }        
+          
         window.history.back = $.mobile.popPage;
 
-        if (Gopher.sessionID() == '')
-	        $.mobile.gotoPage('pages/login.html');
-        else {
-    	    console.log('Session ID: %s', Gopher.sessionID());
-    	    $.mobile.gotoPage('pages/main.html');
+        if ($.urlParam('user')) {
+            var user = $.urlParam('user');
+            var request = Gopher.login(user);
+            
+            request.fail(function(){
+                debugger;
+            });
+            
+            request.done(function(data) {
+    	        $.mobile.gotoPage('pages/mobile/select-category.html');
+            });
         }
+
+        else if (Gopher.sessionID != '') {
+            var request = Gopher.verify();
+
+            request.fail(function(){
+    	        $.mobile.gotoPage('pages/login.html');
+            });
+
+            request.done(function(data) {
+        	    $.mobile.gotoPage('pages/main.html');
+            });
+            
+        }
+        else
+	        $.mobile.gotoPage('pages/login.html');
     
     });
   

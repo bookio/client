@@ -32,8 +32,8 @@
 		        	});
 	        	}
 	        	
-	        	if (Gopher.sessionID() != '') {
-		        	_elements.sid.text(sprintf("%s", Gopher.sessionID()));
+	        	if (Gopher.sessionID != '') {
+		        	_elements.sid.text(sprintf("%s", Gopher.sessionID));
 	        	}
 
 	           _elements.back.on('tap', function(event){

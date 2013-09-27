@@ -35,7 +35,6 @@
             function displayImage(file) {
                 
                 _elements.dropzone.container.spin('large');
-                _elements.dropzone.text.addClass('invisible');
 
                 var request = Cloudinary.uploadImage(file);
 

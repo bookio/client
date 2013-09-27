@@ -24,7 +24,7 @@
             </li>
             
             <li>
-				<label style="display:block">Öppen för bokning</label>
+				<label class="ui-input-text" for="available" style="display:block">Öppen för bokning</label>
 				<select name="available" data-hook="available" data-role="slider">
 					<option value="off" selected>Nej</option>
 					<option value="on">Ja</option>
@@ -32,11 +32,11 @@
             </li>
 
             <li>
+            	<label class="ui-input-text">Bild som ska visas</label>
                 <div data-hook="dropzone.container">
                     <div data-hook="dropzone.border">
-                        <img data-hook="dropzone.image" src="../images/app-icon.png">
+                        <img data-hook="dropzone.image" src="../images/icon-drag-drop.png">
                     </div>
-                    <p data-hook="dropzone.text">Klicka eller dra och släpp din bild i rutan.</p>
                 </div>
             </li>
         

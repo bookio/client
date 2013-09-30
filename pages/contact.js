@@ -16,6 +16,7 @@
             var _info = {};
             
             function fill() {
+		    	
 	    	    if (_info.name)
 	    	        _elements.name.val(_info.name);
 
@@ -28,11 +29,15 @@
 	    	    if (_info.twitterAccount)
 	    	        _elements.twitterAccount.val(_info.twitterAccount);
 
+	    	    if (_info.fbAccount)
+	    	        _elements.fbAccount.val(_info.fbAccount);
+
 	    	    if (_info.address)
 	    	        _elements.address.val(_info.address);
 
 	    	    if (_info.webpage)
 	    	        _elements.webpage.val(_info.webpage);
+				
             }	        
             
             function chill() {
@@ -40,6 +45,7 @@
                 _info.phone = _elements.phone.val();
                 _info.email = _elements.email.val();
                 _info.twitterAccount = _elements.twitterAccount.val();
+                _info.fbAccount = _elements.fbAccount.val();
                 _info.address = _elements.address.val();
                 _info.webpage = _elements.webpage.val();
             }
@@ -51,8 +57,8 @@
                 var request = Gopher.request('GET', 'settings/app/contact');
                 
                 request.done(function(info) {
-                    _info = info;
-                
+                    _info = info ? info : {};
+					
                     fill();
                 
                     _elements.back.on('tap', function(event) {

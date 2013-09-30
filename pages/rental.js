@@ -25,7 +25,7 @@
             function fill() {
                 _elements.name.val(_rental.name);
                 _elements.description.val(_rental.description);
-                _elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '');
+                _elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '1');
                 _elements.available.val((_rental.available == 1 || _rental.available == undefined) ? 'on' : 'off').slider("refresh");
 
                 if (_rental.category_id) {

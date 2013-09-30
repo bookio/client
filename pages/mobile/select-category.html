@@ -4,26 +4,25 @@
 
 <body>
 
-<div id="mobile-select-category-page" data-role="page" data-dom-cache="true">
+<div id="mobile-select-category-page" data-role="page" data-dom-cache="true" class="">
     
+
     <div data-role="header">
-    	<h1>Flugsvampens Stugby</h1>
+    	<h1 data-hook="title"></h1>
     </div>
 
-    <div data-role="content">
+    <div data-hook="content" data-role="content" class="invisible">
         <div data-role="button-row">
             <img src="../../images/app-icon.png"/>
         </div>
         
-        <h2 data-id="title">
+        <h2>
             Vad vill du boka?
         </h2>
         
-        <ul data-id="listview" data-role="listview" data-inset="true">
+        <ul data-hook="listview" data-role="listview" data-inset="true">
         </ul>        
         
-        <div data-id="spinner">
-        </div>
         
     </div>
 

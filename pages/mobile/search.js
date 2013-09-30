@@ -1,42 +1,41 @@
+(function () {
 
+    var dependencies = [
+        'less!./search'
+    ];
 
-(function() {
+    define(dependencies, function () {
 
-	var dependencies = [
-	   'less!./search'
-	];
+        function Module(page) {
 
-	define(dependencies, function() {
-		
-	    function Module(page) {
-            
             var _page = page;
             var _elements = {};
-            
-	        function init() {
 
-    	        var params = $.mobile.pageData;
-    	        
-	           _page.hookup(_elements);
-	           
-	           _elements.name.text(params.name);
-	           _elements.description.text(params.description);
-	           
-	           _elements.back.on('tap', function(event){
-		           $.mobile.popPage();
-	           });
-	        }	  
+            function init() {
 
-	        init();
-		}
+                var params = $.mobile.pageData;
 
-    	$(document).delegate("#mobile-search", "pageinit", function(event) {
-        	new Module($(this));
+                _page.hookup(_elements);
+
+                _elements.title.text(Gopher.client.name);
+                _elements.name.text(params.name);
+                _elements.description.text(params.description);
+
+                _elements.back.on('tap', function (event) {
+                    $.mobile.popPage();
+                });
+            }
+
+            init();
+        }
+
+        $(document).delegate("#mobile-search", "pageinit", function (event) {
+            new Module($(this));
         });
 
-		
-	
-	});
 
-	
+
+    });
+
+
 })();

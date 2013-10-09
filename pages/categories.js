@@ -14,6 +14,7 @@
             
             var _page = page;
             var _elements = {};
+            var _emptylist = true;
             
             
             function addItem(item) {
@@ -93,7 +94,6 @@
                });
                
                _elements.add.on('tap', function(event) {
-                   window.prompt ("Copy to clipboard: Ctrl+C, Enter", 'sdfsdgf');
                    $.mobile.pushPage('category.html', {transition:'slide'});
                });
 
@@ -113,12 +113,14 @@
 
                    $.each(categories, function(index, category) {
                        addItem(category);
+                       _emptylist = false;
                    });
-                    
+                   
                    _elements.listview.listview('refresh');
-
+				   
                });
                 
+               return request;
                 
             }
 
@@ -129,7 +131,7 @@
                    
                     var longURL = sprintf("%s?user=%s", window.location.href, user.username);
 
-                    _elements.url.text(longURL);
+                    _elements.url.val(longURL);
 
                     /*
                     var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);
@@ -150,15 +152,23 @@
                     */
 
                });
+               
+               return request;
             }
             
             function init() {
-
-               _page.hookup(_elements);
+				
+               	_page.hookup(_elements);
                
-               enableListeners();
-               loadCategories();
-               getGuestURL();
+			   	enableListeners();
+               
+			   	var isDoneCategories = loadCategories();
+			   	var isDoneSetURL = getGuestURL();
+			   	$.when(isDoneCategories, isDoneSetURL).then(function(){
+	           		if (_emptylist)
+	                	//_elements.url.val(_elements.url.attr('placeholder'));
+						_elements.url.val("");
+				});
             }     
 
             init();

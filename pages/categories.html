@@ -12,6 +12,14 @@
         </div>
 
         <h2 data-hook="title">
+            Dina kunder bokar med denna sökväg
+        </h2>  
+        <input data-hook="url" type="text" onClick="this.select();" placeholder="Du måste ha minst en bokningsgrupp (klicka på 'Lägg till' nedan)" readonly>
+	    <label class="helptext">Klicka på sökvägen ovan och tryck sen tangenterna 'cmd + C' för att kopiera.</label>
+
+		<hr>
+
+        <h2 data-hook="title">
             Bokningsgrupper
         </h2>
         
@@ -19,14 +27,7 @@
 	        <li>
 	        </li>
         </ul>      
-        
-        <label>
-            Dina kunder kan boka dessa grupper med följande URL
-        </label>  
-        <br>
-        <label data-hook="url">
-        </label>  
-        
+                
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
         	<a data-hook="add" data-role="button" data-icon="plus" data-inline="true" data-theme="g">Lägg till</a>

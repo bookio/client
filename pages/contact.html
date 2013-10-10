@@ -10,7 +10,7 @@
         </div>
         
         
-        <label>Företag</label>
+        <label>Företagsnamn</label>
         <input data-hook="name" type="text" value="" placeholder="" title="">
 
         <label>E-post</label>
@@ -31,11 +31,25 @@
             
         <label>Adress</label>
         <textarea data-hook="address" type="text" value="" placeholder="" title=""></textarea>
+
+        <ul data-hook="listview" data-role="listview" data-inset="true">
+
+		<li>
+    	<label class="ui-input-text">Logotyp</label>
+        <div data-hook="dropzone.container">
+            <div data-hook="dropzone.border">
+                <img data-hook="dropzone.image" src="../images/icon-drag-drop.png">
+            </div>
+        </div>
+		</li>
+        </ul>
         
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
         	<a data-hook="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-	    </div>
+	    </div>	    
+	    
+	    
     </div>
 
 </div>

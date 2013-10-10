@@ -31,10 +31,10 @@
 
                 <div class="ui-grid-a">
                 	<div class="ui-block-a">
-                        <input data-hook="start_date" type="text" value="" placeholder="Från datum" title="">
+        			     <button data-hook="startDate" data-theme="b"></button>
                 	</div>
                 	<div class="ui-block-b">
-                        <input data-hook="end_date" type="text" value="" placeholder="Till datum" title="">
+        			     <button data-hook="endDate" data-theme="b"></button>
                 	</div>
                 </div>
 
@@ -45,8 +45,16 @@
         <p/>
 
 		<div data-role="button-row">
-        	<a href='#' data-hook="book" data-role="button" data-inline="true" data-icon="search" data-iconpos="right">Sök</a>
+        	<a href='#' data-hook="search" data-role="button" data-inline="true" data-icon="search" data-iconpos="right">Sök</a>
 		</div>
+
+		<div data-hook="searchResult">
+		  <label>
+    		  Tyvärr finns inget ledigt den perioden...
+ 		  </label>
+		</div>
+
+
 	</div><!-- /content -->
 
 </div>

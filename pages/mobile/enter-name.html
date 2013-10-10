@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<div data-role="page" id="mobile-enter-name">
+
+    <div data-role="header">
+        <a href='#' data-hook="back" data-icon='arrow-l'>Tillbaka</a>
+    	<h1 data-hook="title"></h1>
+    </div>
+
+	<div data-role="content">
+
+        <div data-role="button-row">
+            <img src="../../images/app-icon.png"/>
+        </div>
+  
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <h1 data-hook="category.name"></h1>
+                <p data-hook="category.description"></p>
+            </li>
+            <li>
+                <h1 data-hook="rental.name"></h1>
+                <p data-hook="rental.description"></p>
+            </li>
+        </ul>        
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <label>Ange din e-postadress</label>
+                <input data-hook="customer.email" type="text" value="" placeholder="" title="">
+                <label>Namn</label>
+                <input data-hook="customer.name" type="text" value="" placeholder="" title="">
+            </li>
+        </ul>        
+
+        <p/>
+        <p/>
+
+		<div data-role="button-row">
+        	<a href='#' data-hook="submit" data-role="button" data-inline="true" data-icon="search" data-iconpos="right">Boka</a>
+		</div>
+
+
+	</div><!-- /content -->
+
+</div>
+
+
+</body></html>

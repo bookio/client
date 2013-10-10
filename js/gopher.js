@@ -126,6 +126,7 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
         
         return request;
     }
+    
 
 	console.log('gopher.js loaded...');
 

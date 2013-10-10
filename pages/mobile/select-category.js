@@ -32,7 +32,7 @@
 
                 elements.link.on('tap', function (event) {
                     $.mobile.pushPage("search.html", {
-                        pageData: category,
+                        pageData: {category: category},
                         transition: 'slide'
                     });
 

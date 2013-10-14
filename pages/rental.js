@@ -80,7 +80,7 @@
                    
                fill();
 
-               _elements.back.on('tap', function(event){
+               _elements.back.on('tap', function(event) {
                    $.mobile.popPage();
                });
 
@@ -122,58 +122,25 @@
                     });
                });
                
-                _elements.category.button.on('tap', function(event) {
 
-                    var listview = $('<ul data-role="listview" data-inset="true" data-theme="c"></ul>');
+	
+			   html = "";
+			   _elements.category.listview.html("");
 
-                    $.each(_categories, function(index, category) {
-
-                        var template = 
-                            '<div>'+
-                                '<li data-hook="item" data-icon="false">'+
-                                    '<a data-hook="link" href="#">'+
-                                        '<h3 data-hook="text">'+
-                                        '</h3>'+
-                                    '</a'+
-                                '</li>'+
-                            '</div>';
-                            
-                        var elements = {};
-                        $(template).hookup(elements);
-                        
-                        elements.text.text(category.name);
-                        elements.link.data('category', category);
-
-                        elements.link.on('tap', function(event) { 
-                        
-                            var category = $(this).data('category');
-
-                            _rental.category_id = category.id;
-                            
-                            _elements.category.text.text(category.name);
-                            _elements.popup.popup('close');
-                        });
-                                            
-                        listview.append(elements.item);
-                    });
-                    
-                    var options = {
-                        dismissible : true,
-                        theme : "c",
-                        overlyaTheme : "a",
-                        transition : "pop",
-                        positionTo: _elements.category.button
-                    };
-
-                    
-                    _elements.popup.empty();
-                    _elements.popup.append(listview);
-                    _elements.popup.trigger('create');
-                    _elements.popup.popup(options);
-                    _elements.popup.popup('open');
-                   
+                $.each(_categories, function(index, category) {
+					html += "<li class='ui-screen-hidden'><a href='#'>" + category.name + "</a></li>";
+					_elements.category.listview.html(html);
+					_elements.category.listview.listview("refresh");
                });
-               
+			   
+			   
+			   _elements.category.listview.on('tap', 'li', function () {
+			       event.preventDefault();
+			       $("div.ui-input-search").find("input").val(function(i, currentValue) {
+					   	return _elements.category.listview.find('a').html();
+					   }).trigger('keyup');
+			    });
+
                _elements.icon.button.on('tap', function(event) {
 
                     var options = {

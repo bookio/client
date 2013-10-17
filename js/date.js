@@ -7,7 +7,7 @@
 */
 
 
-define(['js/sprintf.js'], function() {
+define(['js/sprintf'], function() {
 
     
 	// Replace the getYear() with getFullYear()

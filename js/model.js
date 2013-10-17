@@ -1,5 +1,4 @@
 
-
 define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 
     Model = {};
@@ -325,6 +324,37 @@ define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 			
 			return request;
         }
+
+    })();    
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    (function() {
+        
+        Model.Client = {};	
+        
+        Model.Client.fetch = function() {
+        
+            var request = gopher.request('GET', sprintf('clients/%d', gopher.client.id));
+
+			request.done(function(client) {
+    			gopher.client = client;
+			});
+			
+			return request;
+        }
+        
+        Model.Client.save = function(client) {
+
+			var request = gopher.request('PUT', sprintf('clients/%d', gopher.client.id), client);
+			
+			request.done(function(client) {
+    			gopher.client = client;
+				Notifications.trigger('client-updated', client);				
+			});
+			
+			return request;
+        };
         
 
 

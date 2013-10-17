@@ -25,6 +25,7 @@ requirejs.config({
 
 
 
+
 (function () {
 
     var modules = [
@@ -119,6 +120,7 @@ requirejs.config({
             }
         }
 
+
         $.urlParam = function (name) {
             name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -139,7 +141,8 @@ requirejs.config({
             request.done(function (data) {
                 $.mobile.gotoPage('pages/mobile/select-category.html');
             });
-        } else if (Gopher.sessionID != '') {
+        }
+        else if (Gopher.sessionID != '') {
             var request = Gopher.verify();
 
             request.fail(function () {

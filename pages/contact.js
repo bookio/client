@@ -13,51 +13,51 @@
             
             var _page = page;
             var _elements = {};
-            var _info = {};
+            var _client = {};
             
             function fill() {
 		    	
-	    	    if (_info.name)
-	    	        _elements.name.val(_info.name);
+	    	    if (_client.name)
+	    	        _elements.name.val(_client.name);
 
-	    	    if (_info.phone)
-	    	        _elements.phone.val(_info.phone);
+	    	    if (_client.phone)
+	    	        _elements.phone.val(_client.phone);
 
-	    	    if (_info.email)
-	    	        _elements.email.val(_info.email);
+	    	    if (_client.email)
+	    	        _elements.email.val(_client.email);
 
-	    	    if (_info.twitterAccount)
-	    	        _elements.twitterAccount.val(_info.twitterAccount);
+	    	    if (_client.twitter)
+	    	        _elements.twitter.val(_client.twitter);
 
-	    	    if (_info.fbAccount)
-	    	        _elements.fbAccount.val(_info.fbAccount);
+	    	    if (_client.facebook)
+	    	        _elements.facebook.val(_client.facebook);
 
-	    	    if (_info.address)
-	    	        _elements.address.val(_info.address);
+	    	    if (_client.address)
+	    	        _elements.address.val(_client.address);
 
-	    	    if (_info.webpage)
-	    	        _elements.webpage.val(_info.webpage);
+	    	    if (_client.www)
+	    	        _elements.www.val(_client.www);
 				
             }	        
             
             function chill() {
-                _info.name = _elements.name.val();
-                _info.phone = _elements.phone.val();
-                _info.email = _elements.email.val();
-                _info.twitterAccount = _elements.twitterAccount.val();
-                _info.fbAccount = _elements.fbAccount.val();
-                _info.address = _elements.address.val();
-                _info.webpage = _elements.webpage.val();
+                _client.name = _elements.name.val();
+                _client.phone = _elements.phone.val();
+                _client.email = _elements.email.val();
+                _client.twitter = _elements.twitter.val();
+                _client.facebook = _elements.facebook.val();
+                _client.address = _elements.address.val();
+                _client.www = _elements.www.val();
             }
             
             
             function init() {
                 _page.hookup(_elements);
                 
-                var request = Gopher.request('GET', 'settings/app/contact');
+                var request = Model.Client.fetch();
                 
-                request.done(function(info) {
-                    _info = info ? info : {};
+                request.done(function(client) {
+                    _client = client ? client : {};
 					
                     fill();
                 
@@ -68,7 +68,7 @@
                     _elements.save.on('tap', function(event) {
                         chill();
                 
-                        var request = Gopher.request('PUT', 'settings/app/contact', _info);
+                        var request = Model.Client.save(_client);
                 
                         request.done(function(){
                             $.mobile.popPage();

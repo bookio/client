@@ -217,7 +217,7 @@ define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
 		    var defaults = {
     		    positions: {},
     		    orderAutomatically: false,
-    		    background: 'white-leather.png'
+    		    background: 'linen.png'
 		    };
 			
 			_settings = {};

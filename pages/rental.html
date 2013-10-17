@@ -41,15 +41,19 @@
             </li>            
 
             <li>
-                <div data-hook="category.container">
+            	<div data-hook="category.container">
                     <label>
-                        Bokas under namnet
+                        Bokningsgrupp
                     </label>
-                    <a data-hook="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
+                    <ul data-hook="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="Bokas under namnet..." data-theme="c">	                    
+                    </ul>
+                    
+                   <!-- <a data-hook="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
                         <span data-hook="category.text">&nbsp</span>
-                    </a>
+                    </a>-->
+                    
                     <label class="helptext">Exempel 'Squash', 'Klippning', 'Bil (liten)'</label>
-                </div>
+				</div>
             </li>
             
             <li>
@@ -75,9 +79,9 @@
 	    </div>
     </div>
 
-	<div data-hook="popup" data-role="popup">
+<!--	<div data-hook="popup" data-role="popup">
 	</div>
-
+-->
 
 </div>
 

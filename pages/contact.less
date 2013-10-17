@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 @import "../less/variables.less";
+=======
+@import "../less/variables.less"
+@import "../less/mixins.less"
+>>>>>>> ab6a2e732f07756c9ad8032d2e53faa07a2d636c
 
 #contact-page {
 
@@ -7,9 +12,38 @@
 	}
 	
 	[data-role="content"] {
+	
 		label {
 			color: @lightGrayColor;
 		}
+		
+        [data-hook="dropzone.container"] {
+            text-align: center;
+
+            [data-hook="dropzone.image"] {
+                vertical-align: middle;
+                //border: 3px solid white;
+                max-width:80px;
+                max-height:80px;
+                .border-radius(8px);
+
+            }
+
+            [data-hook="dropzone.border"] {
+                .border-radius(12px);
+                
+                border: 4px dashed @x-lightGrayColor;
+                height:100px;
+                width:100px;           
+                display: inline-block; 
+                line-height: 100px;
+                vertical-align: middle;   
+                cursor: pointer;
+
+            }
+        }
+
+
 	}
 	
 	[data-role="button-row"] {

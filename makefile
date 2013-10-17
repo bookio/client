@@ -40,7 +40,7 @@ css: $(CSS_FILES)
 site: $(SITE_PATH) $(SITE_FILES)
 	$(ECHO) Done.
 
-publish: $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
+public: $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 	$(RSYNC) $(SITE_PATH)/* $(SSH_USER)@$(SSH_HOST):$(SSH_PATH) 
 
 $(SITE_PATH):

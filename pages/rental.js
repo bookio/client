@@ -32,7 +32,9 @@
                     var category = _categoriesByID[_rental.category_id];
                     
                     if (category)
-                        _elements.category.text.text(category.name);
+                    	$("div.ui-input-search").find("input").val(category.name);
+                    else
+                    	_rental.category_id = null;	
                 }
                 
                 if (_rental.icon_id) {
@@ -54,9 +56,8 @@
                 _rental.depth = _elements.depth.val();
                 _rental.available = (_elements.available.val() == 'on') ? 1 : 0;
                 
-                if (!_rental.category_id)
-                    _rental.category_id = null;
-                    
+                var categoryName = $("div.ui-input-search").find("input").val();
+                            	               
                 if (!_rental.icon_id)
                 	// Set to generic 'cube' if no icon chosen
                 	_rental.icon_id = 8;
@@ -108,36 +109,75 @@
                         return;
                     }
 
-                                                           
                     $('body').spin('large');
-                       
-                    var request = Model.Rentals.save(_rental);
+
+
+					var requestCategory;
+					var requestRentals;
+					var categoryName = $("div.ui-input-search").find("input").val().toLowerCase();
+                    var existingCategory = false;
+                                                                               
                     
-                    request.always(function() {
-                        $('body').spin(false);
-                    });
+                    // Check if category exists, if not we should create a new one
+                    if (categoryName.length > 0) {
+	                    _elements.category.listview.find("li").each(function() {
+	                    	if (categoryName == $(this).text().toLowerCase()) {
+	                    		_rental.category_id = $(this).find('a').attr("id");
+	                    		existingCategory = true;
+	                    		return false;
+	                    	}
+	                    });
+					}
+					else {
+						// Avoid saving 'empty string'
+						_rental.category_id = null;
+						existingCategory = true; 
+					}
+					
+						
+                    if (existingCategory) {
+                    	requestRentals = Model.Rentals.save(_rental);
                     
-                    request.done(function() {
-                        $.mobile.popPage();
-                    });
+	                    requestRentals.always(function() {
+	                        $('body').spin(false);
+	                    });
+	                    
+	                    requestRentals.done(function() {
+	                        $.mobile.popPage();
+	                    });
+					}
+					else {
+                    	var category = {};
+                    	
+                    	category.name = $.camelCase(categoryName);
+
+                    	requestCategory = Model.Categories.save(category);
+						
+						requestCategory.done(function(category) {
+							_rental.category_id = category.id;
+							requestRentals = Model.Rentals.save(_rental);
+							
+		                    requestRentals.always(function() {
+		                        $('body').spin(false);
+		                    });
+		                    
+		                    requestRentals.done(function() {
+		                        $.mobile.popPage();
+		                    });
+						});						
+						
+					}
+                                        						
                });
                
-
-	
-			   html = "";
-			   _elements.category.listview.html("");
-
-                $.each(_categories, function(index, category) {
-					html += "<li class='ui-screen-hidden'><a href='#'>" + category.name + "</a></li>";
-					_elements.category.listview.html(html);
-					_elements.category.listview.listview("refresh");
-               });
-			   
 			   
 			   _elements.category.listview.on('tap', 'li', function () {
-			       event.preventDefault();
+				   event.preventDefault();
+				   _rental.category_id = $(this).find('a').attr("id");
+				   var that = this;
+				   
 			       $("div.ui-input-search").find("input").val(function(i, currentValue) {
-					   	return _elements.category.listview.find('a').html();
+					   		return $(that).find('a').html();
 					   }).trigger('keyup');
 			    });
 
@@ -196,11 +236,20 @@
                     
                 });
                 
+               var html = "";
+			   _elements.category.listview.html("");
+              
                 categories.done(function(categories) {
                     _categories = categories;
                     
                     $.each(categories, function(index, category) {
                         _categoriesByID[category.id] = category;
+                        					
+                        // Build listview drop down with 'categories'
+                        html += "<li class='ui-screen-hidden' data-icon='false'><a id='" + category.id + "' href='#'>" + category.name + "</a></li>";
+						_elements.category.listview.html(html);
+						_elements.category.listview.listview("refresh");
+						
                     });
                     
                 });

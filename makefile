@@ -12,7 +12,7 @@
 
 SSH_HOST = ssh.binero.se
 SSH_USER = 163702_ssh
-SSH_PATH = bookio.com/public_html/booker
+SSH_PATH = bookio.com/public_html/meg
 
 #####################
 
@@ -59,10 +59,10 @@ www: $(MAKE_FILES)
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)
 
-#$(SITE_PATH)/%.js: %.js
-#	$(ECHO) Compressing '$@'...
-#	$(MKDIR) -p $(SITE_PATH)/$(<D)
-#	$(COMPRESS) $^ -o $@ 
+$(SITE_PATH)/%.js: %.js
+	$(ECHO) Compressing '$@'...
+	$(MKDIR) -p $(SITE_PATH)/$(<D)
+	$(COMPRESS) $^ -o $@ 
 
 $(SITE_PATH)/%:%
 	$(ECHO) Copying '$@'...

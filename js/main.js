@@ -29,6 +29,21 @@ requirejs.config({
 (function () {
 
     var modules = [
+    	'css!../less/styles',
+    	'css!../less/icons',
+    	
+	    'lib/jquery/plugins/jquery.hookup',
+	    'lib/jquery/plugins/jquery.spin',
+	    'lib/jquery/plugins/jquery.cookie',
+	    'lib/jquery/plugins/jquery.transit',
+	    'lib/jquery/plugins/jquery.special-events',
+	    'lib/jquery/plugins/jquery.mobile-events',
+	    'lib/jquery/plugins/jquery.isotope',
+	    'lib/jquery/plugins/jquery.debounce',
+	    'lib/jquery/plugins/jquery.hittest',
+	    //'lib/less/less.js',
+
+
         'js/sprintf',
         'js/gopher',
         'js/model',
@@ -46,16 +61,6 @@ requirejs.config({
     require(modules, function () {
 
         var pages = [];
-
-
-        $(document).on("pagebeforeload", function (event, params) {
-            console.log("pagebeforeload", params);
-        });
-
-
-        $(document).on("pagebeforecreate", function (event, params) {
-            console.log("pagebeforecreate ", params);
-        });
 
 
         $(document).on("pagebeforechange", function (event, params) {

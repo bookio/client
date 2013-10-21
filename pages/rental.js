@@ -149,8 +149,8 @@
 					else {
                     	var category = {};
                     	
-                    	category.name = $.camelCase(categoryName);
-
+                    	category.name = categoryName;
+						
                     	requestCategory = Model.Categories.save(category);
 						
 						requestCategory.done(function(category) {

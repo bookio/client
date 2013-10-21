@@ -4,7 +4,7 @@
 
 */
 
-define(['less!./daterangepicker', './datepicker'], function() {
+define(['css!./daterangepicker', './datepicker'], function() {
 
 
     DateRangePicker = function(container, options) {

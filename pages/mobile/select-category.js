@@ -2,7 +2,7 @@
 
     var dependencies = [
         './search',
-        'less!./select-category'
+        'css!./select-category'
     ];
 
     define(dependencies, function (html) {

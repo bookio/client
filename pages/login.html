@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<body>
-	
-		<div id="login-page" data-role="page">
-		
-		    <div data-role="content">
-		        <div data-hook="logo">
-		            <img src="../images/logos/bookio-large.png"/>
-		        </div>
-			    <br/>
-			    <br/>
-			    <input data-hook="login.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress"/>
-			    <input data-hook="login.password" type="password" name="password" class="password rounded hidefocus" value="" placeholder="Lösenord"/>
 
-			    <div data-role="button-row">
-		        	<a data-hook="login.button" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
+<body>
+    <div id="login-page" data-role="page">
+
+        <div data-role="content">
+            <div data-hook="logo">
+                <img src="../images/logos/bookio-large.png" />
+            </div>
+            <br/>
+            <br/>
+            <input data-hook="login.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress" />
+            <input data-hook="login.password" type="password" name="password" class="password rounded hidefocus" value="" placeholder="Lösenord" />
+
+            <div data-role="button-row">
+                <a data-hook="login.button" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
 			        	Login
 		        	</a>
-			    </div>
-			    
-			    <br>
-			    <p>
-    			     Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!
-			    </p>
+            </div>
 
-			    <input data-hook="signup.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress"/>
-			    <div data-role="button-row">
-		        	<a data-hook="signup.button" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
+            <br>
+            <p>
+                Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!
+            </p>
+
+            <input data-hook="signup.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress" />
+            <div data-role="button-row">
+                <a data-hook="signup.button" data-role="button" data-icon="arrow-r" data-inline="true" data-iconpos="right">
 			        	Prova på!
 		        	</a>
-			    </div>
-			    
-			    <br/>
-			    <br/>
+            </div>
 
-		    </div>
-		    
-		    
-        	<div data-hook="popup.content" data-role="popup" data-theme="a">
-        		<ul data-hook="popup.listview" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
+            <br/>
+            <br/>
 
-        
-        			<li data-hook="popup.title" data-role="divider" data-theme="a">
-                    </li>
+        </div>
 
-        			<li data-icon="false">
-        			     <h2 data-hook="popup.message">
+
+        <div data-hook="popup.content" data-role="popup" data-theme="a">
+            <ul data-hook="popup.listview" data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
+
+
+                <li data-hook="popup.title" data-role="divider" data-theme="a">
+                </li>
+
+                <li data-icon="false">
+                    <h2 data-hook="popup.message">
         			     </h2>
-        			</li>
-        			<li data-icon="false">
-        			     <button data-hook="popup.signup">A</button>
-        			     <button data-hook="popup.cancel" data-theme="r">B</button>
-        			</li>
-        		</ul>
-        	</div>
-		    
-		
-		</div>
-		
-	</body>
+                </li>
+                <li data-icon="false">
+                    <button data-hook="popup.signup">A</button>
+                    <button data-hook="popup.cancel" data-theme="r">B</button>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</body>
+
 </html>

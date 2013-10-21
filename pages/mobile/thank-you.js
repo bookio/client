@@ -1,7 +1,7 @@
 (function () {
 
     var dependencies = [
-        'less!./thank-you',
+        'css!./thank-you',
         './select-category'
     ];
 

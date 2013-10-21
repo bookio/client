@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'less!./main.less',
+		'css!./main',
 		'../components/desktop',
 		'../components/timeslider',
 		'../components/notify',

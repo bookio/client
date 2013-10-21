@@ -1,4 +1,4 @@
-define(['text!./datepicker.html', 'less!./datepicker'], function(template) {
+define(['text!./datepicker.html', 'css!./datepicker'], function(template) {
 
 
     DatePicker = function(options) {

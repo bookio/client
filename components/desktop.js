@@ -1,6 +1,6 @@
 
 
-define(['less!./desktop', 'pages/rental', 'pages/reservation'], function() {
+define(['css!./desktop', 'pages/rental', 'pages/reservation'], function() {
 
     
 	Desktop = function(container, options) {

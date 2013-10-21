@@ -1,7 +1,7 @@
 (function () {
 
     var dependencies = [
-        'less!./search',
+        'css!./search',
         './enter-name'
     ];
 

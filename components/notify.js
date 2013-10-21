@@ -1,4 +1,4 @@
-define(['less!components/notify'], function() {
+define(['css!./notify'], function() {
 
 	var _element = null;
     var _counter = 0;	

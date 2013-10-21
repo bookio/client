@@ -3,7 +3,7 @@
 (function() {
 
     var dependencies = [
-        'less!./rental',
+        'css!./rental',
         'components/imagepicker'
     ];
 

@@ -3,7 +3,7 @@
 (function() {
 
     var dependencies = [
-        'less!./test.less'
+        'css!./test'
     ];
 
 

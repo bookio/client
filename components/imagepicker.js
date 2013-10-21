@@ -1,7 +1,7 @@
 
 
 
-define(['text!./imagepicker.html', 'less!./imagepicker'], function(template) {
+define(['text!./imagepicker.html', 'css!./imagepicker'], function(template) {
 
 	
 	ImagePicker = function(options) {

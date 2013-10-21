@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-	   'less!./reservation',
+	   'css!./reservation',
 	   'js/parser',
 	   'components/datepicker'
 	];

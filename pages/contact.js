@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'less!./contact.less'
+		'css!./contact'
 	];
 
 	define(dependencies, function(html) {

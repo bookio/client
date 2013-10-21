@@ -1,4 +1,4 @@
-define(['less!./timeslider'], function() {
+define(['css!./timeslider'], function() {
 
 	
 	TimeSlider = function(container, options) {

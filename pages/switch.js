@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'less!./switch.less',
+		'css!./switch',
 		'./main',
 		'./rentals/list',
 		'./login',

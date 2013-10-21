@@ -4,7 +4,7 @@
 
     var dependencies = [
        'pages/category',
-       'less!./categories.less'
+       'css!./categories'
     ];
 
     define(dependencies, function() {

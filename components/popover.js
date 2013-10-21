@@ -1,4 +1,4 @@
-define(['less!./popover'], function() {
+define(['css!./popover'], function() {
 
 	
 	Popover = function(options) {

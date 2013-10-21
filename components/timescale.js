@@ -1,4 +1,4 @@
-define(['less!components/timescale'], function() {
+define(['css!components/timescale'], function() {
 
 
     TimeScale = function(container, options) {
@@ -33,7 +33,6 @@ define(['less!components/timescale'], function() {
                 return _endDate;
 
             _endDate = value;
-            console.log("enddate sätts till " + _endDate.getDate());
             _setNeedsLayout = true;
         }
 
@@ -75,16 +74,16 @@ define(['less!components/timescale'], function() {
 
         function buildDOM() {
             var calendar = _startDate.clone();
-            console.log("Building DOM with startdate: " + calendar.getDate() + " endDate: " + _endDate.getDate());
+
             var template =
                 '<div class="cell">' +
-                '<div class="content">' +
-                '<div class="date"></div>' +
-                '<div class="other">' +
-                '<div class="weekday"></div>' +
-                '<div class="month"></div>' +
-                '</div>' +
-                '</div>' +
+	                '<div class="content">' +
+	                	'<div class="date"></div>' +
+                		'<div class="other">' +
+                			'<div class="weekday"></div>' +
+                			'<div class="month"></div>' +
+                		'</div>' +
+	                '</div>' +
                 '</div>';
 
             var cells = _element.find('.cells');
@@ -100,20 +99,19 @@ define(['less!components/timescale'], function() {
                 if (calendar.getDay() == 0)
                     date.addClass("holiday");
                 else
-                    date.removeClass("holiday")
+                    date.removeClass("holiday");
 
-                    date.text(calendar.getDate());
+                date.text(calendar.getDate());
                 month.text(calendar.getShortMonthName());
                 weekday.text(calendar.getShortDayName());
 
                 calendar = calendar.addDays(1);
+                console.log("%s", calendar.toString());
             }
         }
 
 
         init();
-        console.log("_enddate " + _endDate);
-        //buildDOM();
 
         this.scroll = scroll;
     };

@@ -57,7 +57,6 @@ requirejs.config({
         'pages/mobile/select-category'
     ];
 
-
     require(modules, function () {
 
         var pages = [];
@@ -135,6 +134,8 @@ requirejs.config({
 
         window.history.back = $.mobile.popPage;
 
+        console.log('main.js executing...');
+
         if ($.urlParam('user')) {
             var user = $.urlParam('user');
             var request = Gopher.login(user);
@@ -163,5 +164,6 @@ requirejs.config({
 
     });
 
+    console.log('main.js loaded...');
 
 })();

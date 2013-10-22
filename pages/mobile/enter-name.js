@@ -109,8 +109,8 @@
                 _elements.category.name.text(_params.category.name);
                 _elements.category.description.text(_params.category.description);
 
-                _elements.rental.name.text(_params.rental.name);
-                _elements.rental.description.text(_params.rental.description);
+                //_elements.rental.name.text(_params.rental.name);
+                //_elements.rental.description.text(_params.rental.description);
 
 
                 enableEventsHandlers();

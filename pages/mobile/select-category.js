@@ -64,6 +64,7 @@
                             additem(category);
                         });
 
+
                         _elements.listview.listview('refresh');
                         _elements.content.removeClass("invisible");
                         _elements.content.addClass("fade in");

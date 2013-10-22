@@ -13,7 +13,7 @@
 
 	<div data-role="content">
         
-        <h2 data-hook="title"></h2>
+        <!--<h2 data-hook="title"></h2>-->
 
         <ul data-role="listview" data-inset="true">
             <li>
@@ -24,15 +24,15 @@
 
         <ul data-role="listview" data-inset="true">
             <li>
-                <h3>Ange datum du vill hyra</h3>
+                <h3>Ange datum du vill boka</h3>
                 <p></p>
 
                 <div class="ui-grid-a">
                 	<div class="ui-block-a">
-        			     <button data-hook="startDate" data-mini="true" data-theme="b"></button>
+        			     <button data-hook="startDate" data-mini="true" data-theme="a"></button>
                 	</div>
                 	<div class="ui-block-b">
-        			     <button data-hook="endDate" data-mini="true" data-theme="b"></button>
+        			     <button data-hook="endDate" data-mini="true" data-theme="a"></button>
                 	</div>
                 </div>
 
@@ -43,12 +43,12 @@
         <p/>
 
 		<div data-role="button-row">
-        	<a href='#' data-hook="search" data-role="button" data-icon="search" data-iconpos="right">Sök</a>
+        	<a href='#' data-hook="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="b">Sök</a>
 		</div>
 
 		<div data-hook="searchResult">
 		  <label>
-    		  Inget ledigt den perioden. Prova med annat datum.
+    		  Fullbokat. Prova med annat datum.
  		  </label>
 		</div>
 

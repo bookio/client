@@ -43,10 +43,10 @@
             }
 
             function updateButtonTexts() {
-                _elements.startDate.text(_params.startDate == null ? 'Från datum' : _params.startDate.yyyymmdd());
+                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
                 _elements.startDate.button('refresh');
 
-                _elements.endDate.text(_params.endDate == null ? 'Till datum' : _params.endDate.yyyymmdd());
+                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
                 _elements.endDate.button('refresh');
 
             }
@@ -113,6 +113,7 @@
                         }
                         else {
                             _elements.searchResult.fadeIn();
+							$(window).scrollTop(300); // Make sure message of failed search is visible
                         }
                         console.log(rentals);
                     });
@@ -131,7 +132,7 @@
 
                 _page.hookup(_elements);
 
-                _elements.title.text(Gopher.client.name);
+                //_elements.title.text(Gopher.client.name);
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
 

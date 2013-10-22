@@ -14,35 +14,7 @@ requirejs.config({
     'shim': {
     	'jquery-mobile' : {
 	    	deps: ['jquery', 'js/config-jquery-mobile']
-    	},
-    	
-		'lib/jquery/plugins/jquery.cookie': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.transit': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.hookup': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.debounce': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.spin': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.mobile-events': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.isotope': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.special-events': {
-            deps: ['jquery']
-		},
-		'lib/jquery/plugins/jquery.hittest': {
-            deps: ['jquery']
-		}
+    	}
     },
 
 

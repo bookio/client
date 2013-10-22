@@ -11,16 +11,8 @@
 		'css!../less/styles',
 		'css!../less/icons',
 
-		'lib/jquery/plugins/jquery.hookup',
-		'lib/jquery/plugins/jquery.spin',
-		'lib/jquery/plugins/jquery.cookie',
-		'lib/jquery/plugins/jquery.transit',
-		'lib/jquery/plugins/jquery.special-events',
-		'lib/jquery/plugins/jquery.mobile-events',
-		'lib/jquery/plugins/jquery.isotope',
-		'lib/jquery/plugins/jquery.debounce',
-		'lib/jquery/plugins/jquery.hittest',
-
+		'lib/jquery/plugins/jquery.plugins',
+		
 		'js/sprintf',
 		'js/gopher',
 		'js/model',

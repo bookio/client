@@ -7,6 +7,7 @@
 		'jquery',
 		'jquery-mobile',
 
+		'css!jquery-mobile-css',
 		'css!../less/styles',
 		'css!../less/icons',
 
@@ -27,7 +28,6 @@
 		'js/sha1',
 		'js/cloudinary',
 		
-		'pages/page-1',
 		'pages/rentals/list',
 		'pages/login',
 		'pages/main',

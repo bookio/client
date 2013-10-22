@@ -106,7 +106,6 @@ define(['css!components/timescale'], function() {
                 weekday.text(calendar.getShortDayName());
 
                 calendar = calendar.addDays(1);
-                console.log("%s", calendar.toString());
             }
         }
 

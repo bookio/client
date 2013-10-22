@@ -1,4 +1,4 @@
-define(['./sprintf', './base64', './tools', 'components/notify'], function() {
+define(['jquery', './sprintf', './base64', './tools', 'components/notify'], function($) {
 
 
 	Gopher = {};

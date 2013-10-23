@@ -1,6 +1,7 @@
 
 requirejs.config({
 	paths: {
+		'baseUrl': '.',
 		'pages': '../pages',
 		'js': '../js',
 		'scripts': '../js',

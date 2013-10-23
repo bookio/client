@@ -1,9 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'css!./login',
-		'pages/main',
-		'pages/signup'
+		'jquery',
+		'css!./login'
 	];
 
 	define(dependencies, function() {
@@ -14,6 +13,12 @@
 			var _page = page;
 			var _elements = {};
 
+			function main() {
+				require(['main'], function(){
+					$.mobile.gotoPage('main.html');
+				});
+			}
+			
 			function login(email, password) {
 
 				var email = _elements.login.email.val();
@@ -42,7 +47,7 @@
 
 					request.done(function(data) {
 						$.cookie('username', data.user.username);
-						$.mobile.gotoPage('main.html');
+						main();
 					});
 
 				}
@@ -75,7 +80,7 @@
 					});
 
 					request.done(function(data) {
-						$.mobile.gotoPage('main.html');
+						main();
 					});
 				}
 			}

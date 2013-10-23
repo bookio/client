@@ -1,7 +1,6 @@
 (function () {
 
     var dependencies = [
-        './search',
         'css!./select-category'
     ];
 
@@ -31,13 +30,17 @@
                 elements.description.text(category.description);
 
                 elements.link.on('tap', function (event) {
-                    $.mobile.pushPage("search.html", {
-                        pageData: {category: category},
-                        transition: 'slide'
-                    });
-
                     event.preventDefault();
                     event.stopPropagation();
+
+                	require(['search'], function(){
+	                    $.mobile.pushPage("search.html", {
+	                        pageData: {category: category},
+	                        transition: 'slide'
+	                    });
+	                	
+                	});
+
                 });
 
                 _elements.listview.append(li);

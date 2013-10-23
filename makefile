@@ -38,6 +38,27 @@ CSS_FILES = $(patsubst %.less,%.css,$(LESS_FILES))
 SITE_FILES = $(addprefix $(SITE_PATH)/,$(CSS_FILES)) $(addprefix $(SITE_PATH)/,$(ALL_FILES)) 
 MAKE_FILES = $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 
+FRAMEWORK_FILES = \
+    	lib/jquery/plugins/jquery.cookie.js \
+    	lib/jquery/plugins/jquery.debounce.js \
+    	lib/jquery/plugins/jquery.hittest.js \
+    	lib/jquery/plugins/jquery.hookup.js \
+    	lib/jquery/plugins/jquery.isotope.js \
+    	lib/jquery/plugins/jquery.mobile-events.js \
+    	lib/jquery/plugins/jquery.special-events.js \
+    	lib/jquery/plugins/jquery.spin.js \
+    	lib/jquery/plugins/jquery.transit.js \
+		js/tools.js \
+		js/sprintf.js \
+		js/gopher.js \
+		js/model.js \
+		js/date.js \
+		js/sha1.js \
+		js/cloudinary.js \
+		js/notifications.js \
+		js/config-jquery-mobile.js \
+		js/base64.js
+
 all:
 	echo $(SITE_FILES)
 
@@ -55,6 +76,9 @@ safari: $(MAKE_FILES)
 
 www: $(MAKE_FILES)
 	$(RSYNC) $(SITE_PATH)/* $(SSH_USER)@$(SSH_HOST):$(SSH_PATH) 
+
+js/framework.js: $(FRAMEWORK_FILES)
+	cat $^ > js/framework.js
 
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)

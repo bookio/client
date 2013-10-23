@@ -3,14 +3,15 @@
 (function() {
 
 	var dependencies = [
-		'css!./main',
-		'../components/desktop',
-		'../components/timeslider',
-		'../components/notify',
-		'../components/timescale',
-		'../components/daterangepicker',
+		'css!pages/main',
+		'components/desktop',
+		'components/timeslider',
+		'components/notify',
+		'components/timescale',
+		'components/daterangepicker',
 		'./settings',
 		'./test'
+		
 	];
 
 	define(dependencies, function() {
@@ -194,6 +195,13 @@
 	        	_elements.editmode.on('tap', function() {
     	        	_desktop.editMode(!_desktop.editMode());
     	        	_elements.popup.content.popup('close');
+	        	});	        	
+
+	        	_elements.logout.on('tap', function() {
+	        		require(['../pages/login'], function(){
+						console.log('dfgfgsdfgsdfgsdfg');
+						$.mobile.gotoPage('login.html', {transition:'fade'});		        		
+	        		});
 	        	});	        	
 
 

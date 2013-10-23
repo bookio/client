@@ -2,13 +2,8 @@
 
 define(['jquery'], function($) {
 
-	//var $;
-	console.log('-----------------------------');
-	
     $(document).bind("mobileinit", function(){
     
-		console.log('------INIT-----------------------');
-
     	//$.mobile.ajaxEnabled = false;
     	//$.mobile.linkBindingEnabled = false;
     	//$.mobile.hashListeningEnabled = false;

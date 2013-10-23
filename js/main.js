@@ -8,39 +8,39 @@
 		'jquery-mobile',
 
 		'css!jquery-mobile-css',
-		'css!../less/styles',
-		'css!../less/icons',
-
-		'lib/jquery/plugins/jquery.plugins',
+		'css!less/less/styles',
+		//'js/framework'
 		
+    	'lib/jquery/plugins/jquery.cookie',
+    	'lib/jquery/plugins/jquery.debounce',
+    	'lib/jquery/plugins/jquery.hittest',
+    	'lib/jquery/plugins/jquery.hookup',
+    	'lib/jquery/plugins/jquery.isotope',
+    	'lib/jquery/plugins/jquery.mobile-events',
+    	'lib/jquery/plugins/jquery.special-events',
+    	'lib/jquery/plugins/jquery.spin',
+    	'lib/jquery/plugins/jquery.transit',
+
+		'js/tools',
 		'js/sprintf',
 		'js/gopher',
 		'js/model',
 		'js/date',
 		'js/sha1',
-		'js/cloudinary',
+		'js/cloudinary'
 		
-		'pages/rentals/list',
-		'pages/login',
-		'pages/main',
-		'pages/mobile/select-category'
 	];
 
-	define(modules, function($) {
+	require(modules, function($) {
 
 		var pages = [];
 
 
 		$(document).on("pagebeforechange", function(event, params) {
-
-
 			if (params.options.reverse)
 				return;
 
 			if (isObject(params.toPage)) {
-				console.log("pagebeforechange ", params);
-				console.log("Pushing page '%s' ", params.absUrl);
-
 				pages.push(params);
 			}
 			else
@@ -103,7 +103,27 @@
 		window.history.back = $.mobile.popPage;
 
 		console.log('main.js executing...');
-
+		
+		function login() {
+			require(['pages/login'], function () {
+				$.mobile.gotoPage('pages/login.html');
+			});	
+		}
+		
+		function main() {
+			require(['pages/main'], function() {
+				$.mobile.gotoPage('pages/main.html');
+			});	
+			
+		}
+		
+		function mobile() {
+			require(['pages/mobile/select-category'], function() {
+				$.mobile.gotoPage('pages/mobile/select-category.html');
+			});	
+			
+		}
+		
 		if ($.urlParam('user')) {
 			var user = $.urlParam('user');
 			var request = Gopher.login(user);
@@ -113,23 +133,23 @@
 			});
 
 			request.done(function(data) {
-				$.mobile.gotoPage('pages/mobile/select-category.html');
+				mobile();
 			});
 		}
 		else if (Gopher.sessionID != '') {
 			var request = Gopher.verify();
 
 			request.fail(function() {
-				$.mobile.gotoPage('pages/login.html');
+				login();
 			});
 
 			request.done(function(data) {
-				$.mobile.gotoPage('pages/main.html');
+				main();
 			});
 
 		}
 		else
-			$.mobile.gotoPage('pages/login.html');
+			login();
 
 	});
 

@@ -1,4 +1,4 @@
-define(['jquery', './sprintf', './base64', './tools', 'components/notify'], function($) {
+define(['jquery', 'js/sprintf', 'js/base64', 'js/tools', 'components/notify', 'lib/jquery/plugins/jquery.cookie'], function($) {
 
 
 	Gopher = {};

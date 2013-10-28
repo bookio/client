@@ -1,11 +1,9 @@
 
-(function() {
 
-	//var $;
+//define(['jquery'], function($) {
 
     $(document).bind("mobileinit", function(){
     
-
     	//$.mobile.ajaxEnabled = false;
     	//$.mobile.linkBindingEnabled = false;
     	//$.mobile.hashListeningEnabled = false;
@@ -16,6 +14,6 @@
 
     });
 
-})();
 
+//});
 

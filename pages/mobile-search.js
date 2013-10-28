@@ -1,8 +1,7 @@
 (function () {
 
     var dependencies = [
-        'css!./search',
-        './enter-name'
+        '../components/datepicker'
     ];
 
     define(dependencies, function () {
@@ -103,7 +102,7 @@
                             // Take the first one
                             _params.rental = rentals[0];
                             
-                            $.mobile.pushPage("enter-name.html", {
+                            $.mobile.pushPage("mobile-enter-name", {
                                 pageData: _params,
                                 transition: 'slide'
                             });

@@ -1,7 +1,6 @@
 
-
-define([], function() {
-
+(function() {
+	
     
     Parser = {};
     
@@ -74,6 +73,7 @@ define([], function() {
     }
     	    
     return Parser;
-});
+
+})();
 
 

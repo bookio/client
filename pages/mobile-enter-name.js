@@ -1,8 +1,6 @@
 (function () {
 
     var dependencies = [
-        'css!./enter-name',
-        './thank-you'
     ];
 
     define(dependencies, function () {
@@ -69,7 +67,7 @@
                             var request = Model.Reservations.save(reservation);
                             request.done(function (reservation) {
 
-                                $.mobile.gotoPage('thank-you.html', {
+                                $.mobile.gotoPage('mobile-thank-you', {
                                     pageData: _params,
                                     transition: 'slide'
                                 });

@@ -3,14 +3,11 @@
 (function() {
 
 	var dependencies = [
-		'css!./main',
 		'../components/desktop',
 		'../components/timeslider',
 		'../components/notify',
 		'../components/timescale',
-		'../components/daterangepicker',
-		'./settings',
-		'./test'
+		'../components/daterangepicker'
 	];
 
 	define(dependencies, function() {
@@ -194,6 +191,13 @@
 	        	_elements.editmode.on('tap', function() {
     	        	_desktop.editMode(!_desktop.editMode());
     	        	_elements.popup.content.popup('close');
+	        	});	        	
+
+	        	_elements.logout.on('tap', function() {
+					$.mobile.pushPage('login', {transition:'fade'});		        		
+	        	});	        	
+	        	_elements.settings.on('tap', function() {
+					$.mobile.pushPage('settings', {transition:'fade'});		        		
 	        	});	        	
 
 

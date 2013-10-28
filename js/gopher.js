@@ -1,6 +1,7 @@
-define(['./sprintf', './base64', './tools', 'components/notify'], function() {
 
 
+(function() {
+	
 	Gopher = {};
 
 	//$.cookie('sid', 'jc22cczytxhq4h1ko4a2j7nm6d17zxan');
@@ -39,7 +40,9 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
 		}
 
 		console.log(sprintf('Request failed. %s', message));
-		Notify.show(message);
+		
+		if (Notify)
+			Notify.show(message);
 	}
 
 	Gopher.signup = function(username, password) {
@@ -129,4 +132,6 @@ define(['./sprintf', './base64', './tools', 'components/notify'], function() {
 
 	console.log('gopher.js loaded...');
 
-});
+})();
+
+

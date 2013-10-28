@@ -1,5 +1,5 @@
 
-define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
+//define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 
     Model = {};
     
@@ -363,6 +363,6 @@ define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 	console.log('model.js loaded...');
 
 
-});
+//});
 
 

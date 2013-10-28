@@ -3,8 +3,6 @@
 (function() {
 
     var dependencies = [
-        'css!./signup',
-        'pages/main'
     ];
 
     define(dependencies, function() {
@@ -27,7 +25,7 @@
                 });             
 
                 request.done(function(data) {
-                    $.mobile.gotoPage('main.html');
+                    $.mobile.gotoPage('main');
                 });
                 
             }        

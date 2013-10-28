@@ -1,8 +1,6 @@
 (function () {
 
     var dependencies = [
-        './search',
-        'css!./select-category'
     ];
 
     define(dependencies, function (html) {
@@ -40,13 +38,13 @@
                 elements.description.text(category.description);
 
                 elements.link.on('tap', function (event) {
-                    $.mobile.pushPage("search.html", {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    $.mobile.pushPage('mobile-search', {
                         pageData: {category: category},
                         transition: 'slide'
                     });
-
-                    event.preventDefault();
-                    event.stopPropagation();
                 });
 
                 _elements.listview.append(li);

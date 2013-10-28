@@ -14,13 +14,22 @@
             var _elements = {};
 
             function additem(category) {
-                var template =
+/*                var template =
                     '<li>' +
                     '<a data-hook="link" href="">' +
                     '<h2 data-hook="name"></h2>' +
                     '<p data-hook="description"></p>' +
                     '</a>' +
-                    '</li>';
+                    '<a href="#"><h3>Boka</h3></a></li>';
+*/
+                var template =
+                    '<li>' +
+                    '<a href="">' +
+                    '<h2 data-hook="name"></h2>' +
+                    '<p data-hook="description"></p>' +
+                    '</a>' +
+                    '<a data-hook="link" href=""></a></li>';
+
 
                 var li = $(template);
 

@@ -1,6 +1,7 @@
 (function () {
 
     var dependencies = [
+    	'css!./mobile-thank-you'
     ];
 
     define(dependencies, function () {
@@ -21,7 +22,8 @@
                 _elements.submit.on('tap', function (event) {
 
                     $.mobile.gotoPage('mobile-select-category', {
-                        transition: 'fade'
+                        transition: 'fade',
+                        require: 'mobile-select-category'
                     });
 
                 });

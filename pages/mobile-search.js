@@ -1,6 +1,7 @@
 (function () {
 
     var dependencies = [
+    	'css!./mobile-search',
         '../components/datepicker'
     ];
 
@@ -102,9 +103,10 @@
                             // Take the first one
                             _params.rental = rentals[0];
                             
-                            $.mobile.pushPage("mobile-enter-name", {
+                            $.mobile.pushPage('mobile-enter-name.html', {
                                 pageData: _params,
-                                transition: 'slide'
+                                transition: 'slide',
+                                require: 'mobile-enter-name.html'
                             });
 
                             event.preventDefault();

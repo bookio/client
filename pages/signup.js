@@ -25,7 +25,9 @@
                 });             
 
                 request.done(function(data) {
-                    $.mobile.gotoPage('main');
+                    $.mobile.gotoPage('./main.html', {
+	                    require: './main'
+                    });
                 });
                 
             }        

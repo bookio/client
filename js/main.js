@@ -1,94 +1,94 @@
-
 requirejs.config({
 	baseUrl: '.',
-	
+
 	paths: {
 		'jquery': 'lib/jquery/jquery-1.10.2',
 		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2',
 		'jquery-mobile-css': 'lib/jquery-mobile/jquery.mobile-1.3.2'
 	},
 
-    'shim': {
-    	'jquery-mobile' : {
-	    	deps: ['jquery', 'js/config-jquery-mobile']
-    	},
-    	
-    	'js/core' : {
-	    	deps: ['jquery']
-    	},
+	'shim': {
+		'jquery-mobile': {
+			deps: ['jquery', 'js/config-jquery-mobile']
+		},
 
-    	
-    	'js/tools': {
-	    	deps: ['js/sprintf']
-    	},
+		'js/core': {
+			deps: ['jquery']
+		},
 
-    	'js/model': {
-	    	deps: ['js/gopher', 'js/notifications']
-    	},
-    	
-    	'js/gopher' : {
-	    	deps: ['jquery', 'js/tools', 'js/base64', 'lib/jquery/plugins/jquery.cookie']
-    	},
-    	
-    	'js/config-jquery-mobile': {
-	    	deps: ['jquery']
-    	},
-    	
-    	'lib/jquery/plugins/jquery.cookie': {
-	    	deps: ['jquery']
-    	},
 
-    	'lib/jquery/plugins/jquery.debounce': {
-	    	deps: ['jquery']
-    	},
+		'js/tools': {
+			deps: ['js/sprintf']
+		},
 
-    	'lib/jquery/plugins/jquery.hittest': {
-	    	deps: ['jquery']
-    	},
+		'js/model': {
+			deps: ['js/gopher', 'js/notifications']
+		},
 
-    	'lib/jquery/plugins/jquery.hookup': {
-	    	deps: ['jquery']
-    	},
+		'js/gopher': {
+			deps: ['jquery', 'js/tools', 'js/base64', 'lib/jquery/plugins/jquery.cookie']
+		},
 
-    	'lib/jquery/plugins/jquery.isotope': {
-	    	deps: ['jquery']
-    	},
+		'js/config-jquery-mobile': {
+			deps: ['jquery']
+		},
 
-    	'lib/jquery/plugins/jquery.mobile-events': {
-	    	deps: ['jquery']
-    	},
+		'lib/jquery/plugins/jquery.cookie': {
+			deps: ['jquery']
+		},
 
-    	'lib/jquery/plugins/jquery.special-events': {
-	    	deps: ['jquery']
-    	},
+		'lib/jquery/plugins/jquery.debounce': {
+			deps: ['jquery']
+		},
 
-    	'lib/jquery/plugins/jquery.spin': {
-	    	deps: ['jquery']
-    	},
-    	
-    	'lib/jquery/plugins/jquery.transit': {
-	    	deps: ['jquery']
-    	}
-    },
+		'lib/jquery/plugins/jquery.hittest': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.hookup': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.isotope': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.mobile-events': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.special-events': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.spin': {
+			deps: ['jquery']
+		},
+
+		'lib/jquery/plugins/jquery.transit': {
+			deps: ['jquery']
+		}
+	},
 
 
 	packages: [{
-		name: 'css',
-		location: './lib/require-css',
-		main: 'css'
-	},
-/*
+			name: 'css',
+			location: './lib/require-css',
+			main: 'css'
+		},
+		/*
 	{
 		name: 'less',
 		location: './lib/require-less',
 		main: 'less'
 	}, 
 */
-	{
-		name: 'text',
-		location: './lib/require-text',
-		main: 'text'
-	}],
+		{
+			name: 'text',
+			location: './lib/require-text',
+			main: 'text'
+		}
+	],
 
 	waitSeconds: 30
 });
@@ -105,26 +105,26 @@ requirejs.config({
 		// page local path will be changed by jQuery Mobile
 		'text!index.html'
 	];
-	
+
 	if (true) {
 		var files = [
 			'js/core'
 		];
-		
+
 		modules.push.apply(modules, files)
 	}
 	else {
 		var files = [
-	    	'lib/jquery/plugins/jquery.cookie',
-	    	'lib/jquery/plugins/jquery.debounce',
-	    	'lib/jquery/plugins/jquery.hittest',
-	    	'lib/jquery/plugins/jquery.hookup',
-	    	'lib/jquery/plugins/jquery.isotope',
-	    	'lib/jquery/plugins/jquery.mobile-events',
-	    	'lib/jquery/plugins/jquery.special-events',
-	    	'lib/jquery/plugins/jquery.spin',
-	    	'lib/jquery/plugins/jquery.transit',
-	
+			'lib/jquery/plugins/jquery.cookie',
+			'lib/jquery/plugins/jquery.debounce',
+			'lib/jquery/plugins/jquery.hittest',
+			'lib/jquery/plugins/jquery.hookup',
+			'lib/jquery/plugins/jquery.isotope',
+			'lib/jquery/plugins/jquery.mobile-events',
+			'lib/jquery/plugins/jquery.special-events',
+			'lib/jquery/plugins/jquery.spin',
+			'lib/jquery/plugins/jquery.transit',
+
 			'js/base64',
 			'js/sha1',
 			'js/sprintf',
@@ -136,7 +136,7 @@ requirejs.config({
 			'js/cloudinary'
 		];
 		modules.push.apply(modules, files)
-		
+
 	}
 
 	require(modules, function() {
@@ -148,21 +148,6 @@ requirejs.config({
 			if (params.options.reverse)
 				return;
 
-/*
-			if (isString(params.toPage)) {
-				var page = params.toPage;
-
-				if (page.substr(page.length - 5) == '.html')
-					page = page.substr(0, page.length - 5);
-					
-				var css = sprintf('css!%s.css', page);
-				var html = sprintf('%s.html', page)
-				require([css, page], function() {
-					console.log('Code loaded - %s', page);
-				});
-				
-			}
-*/
 			if (isObject(params.toPage)) {
 				pages.push(params);
 			}
@@ -174,12 +159,6 @@ requirejs.config({
 
 		$.mobile.pushPage = function(page, options) {
 
-			if (page.substr(page.length - 5) == '.html')
-				page = page.substr(0, page.length - 5);
-				
-			var css = sprintf('css!%s.css', page);
-			var html = sprintf('%s.html', page)
-
 			var defaults = {
 				changeHash: false,
 				transition: 'fade',
@@ -187,11 +166,15 @@ requirejs.config({
 			};
 
 			options = $.extend({}, defaults, options);
-			console.log('Requiering %s', page);
-			debugger;
-			require([css, page], function() {
-				$.mobile.changePage(html, options);
-			});					
+
+			if (options.require) {
+				require(isString(options.require) ? [options.require] : options.require, function() {
+					$.mobile.changePage(page, options);
+				});
+			}
+			else
+				$.mobile.changePage(page, options);
+
 		}
 
 		$.mobile.gotoPage = function(page, options) {
@@ -235,24 +218,25 @@ requirejs.config({
 		window.history.back = $.mobile.popPage;
 
 		console.log('main.js executing...');
-		
+
 		function login() {
-			require(['pages/login'], function () {
-				$.mobile.gotoPage('pages/login');
-			});	
+			$.mobile.gotoPage('./pages/login.html', {
+				require: ['./pages/login']
+			});
 		}
-		
+
 		function main() {
-			require(['pages/main'], function() {
-				$.mobile.gotoPage('pages/main');
-			});	
-			
+			$.mobile.gotoPage('./pages/main.html', {
+				require: ['./pages/main']
+			});
 		}
-		
+
 		function mobile() {
-			$.mobile.gotoPage('pages/mobile-select-category.html');
+			$.mobile.gotoPage('./pages/mobile-select-category.html', {
+				require: './pages/mobile-select-category'
+			});
 		}
-		
+
 		if ($.urlParam('user')) {
 			var user = $.urlParam('user');
 			var request = Gopher.login(user);

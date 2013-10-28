@@ -3,7 +3,7 @@
 (function() {
 
     var dependencies = [
-       'css!pages/category'
+       'css!./category'
     ];
 
     define(dependencies, function(html) {

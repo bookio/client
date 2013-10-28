@@ -1,6 +1,7 @@
 (function () {
 
     var dependencies = [
+    	'css!mobile-enter-name',
     ];
 
     define(dependencies, function () {

@@ -1,6 +1,7 @@
 (function() {
 
 	var dependencies = [
+		'css!./login'
 	];
 
 	define(dependencies, function() {
@@ -12,7 +13,9 @@
 			var _elements = {};
 
 			function main() {
-				$.mobile.gotoPage('main');
+				$.mobile.gotoPage('./main.html', {
+					require: './main'
+				});
 			}
 			
 			function login(email, password) {

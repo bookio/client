@@ -1,6 +1,7 @@
 (function () {
 
     var dependencies = [
+    	'css!./mobile-select-category'
     ];
 
     define(dependencies, function (html) {
@@ -32,9 +33,10 @@
                     event.preventDefault();
                     event.stopPropagation();
 
-                    $.mobile.pushPage('mobile-search', {
+                    $.mobile.pushPage('mobile-search.html', {
                         pageData: {category: category},
-                        transition: 'slide'
+                        transition: 'slide',
+                        require: 'mobile-search'
                     });
                 });
 

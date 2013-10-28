@@ -3,15 +3,11 @@
 (function() {
 
 	var dependencies = [
-		'css!pages/main',
-		'components/desktop',
-		'components/timeslider',
-		'components/notify',
-		'components/timescale',
-		'components/daterangepicker',
-		'./settings',
-		'./test'
-		
+		'../components/desktop',
+		'../components/timeslider',
+		'../components/notify',
+		'../components/timescale',
+		'../components/daterangepicker'
 	];
 
 	define(dependencies, function() {
@@ -198,10 +194,10 @@
 	        	});	        	
 
 	        	_elements.logout.on('tap', function() {
-	        		require(['../pages/login'], function(){
-						console.log('dfgfgsdfgsdfgsdfg');
-						$.mobile.gotoPage('login.html', {transition:'fade'});		        		
-	        		});
+					$.mobile.pushPage('login', {transition:'fade'});		        		
+	        	});	        	
+	        	_elements.settings.on('tap', function() {
+					$.mobile.pushPage('settings', {transition:'fade'});		        		
 	        	});	        	
 
 

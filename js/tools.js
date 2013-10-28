@@ -1,6 +1,6 @@
 
 
-define(['js/sprintf'], function() {
+//define(['js/sprintf'], function() {
 
 	
 	hsla = function(h, s, l, a)
@@ -49,4 +49,4 @@ define(['js/sprintf'], function() {
     
 	console.log('tools.js loaded...');
 
-});
+//});

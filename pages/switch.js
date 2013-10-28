@@ -8,7 +8,7 @@
 		'./rentals/list',
 		'./login',
 		'./page-1',
-		'./mobile/select-category',
+		'./mobile-select-category',
 		'./missing'
 	];
 
@@ -26,7 +26,7 @@
 	        	if (_elements.logout) {
 		        	_elements.logout.on('tap', function(event) {
 			        	$.cookie('sid') = '';
-			        	$.mobile.pushPage('login.html');
+			        	$.mobile.pushPage('login');
 			        	event.preventDefault();
 			        	event.stopPropagation();
 		        	});

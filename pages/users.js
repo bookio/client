@@ -3,7 +3,7 @@
 (function() {
 
 	var dependencies = [
-	   'pages/user'
+	   './user'
 	];
 
 	define(dependencies, function() {
@@ -32,7 +32,7 @@
                 
                 li.find('a').on('tap', function(event) {
 
-                    $.mobile.pushPage("user.html", {pageData:{user:item}, transition:'slide'});
+                    $.mobile.pushPage("user", {pageData:{user:item}, transition:'slide'});
                     
                     event.preventDefault();
                     event.stopPropagation();

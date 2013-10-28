@@ -1,4 +1,4 @@
-define(['css!components/timescale'], function() {
+define(['css!./timescale'], function() {
 
 
     TimeScale = function(container, options) {

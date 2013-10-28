@@ -49,8 +49,8 @@ Changelog:
 **/
 
 
-define([], function() {
 
+(function() {
 	
 	sprintf = function() {
 	
@@ -101,5 +101,5 @@ define([], function() {
 	}
 	
 	console.log('sprintf.js loaded...');
-});
+})();
 	

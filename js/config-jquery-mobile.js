@@ -1,6 +1,6 @@
 
 
-define(['jquery'], function($) {
+//define(['jquery'], function($) {
 
     $(document).bind("mobileinit", function(){
     
@@ -15,5 +15,5 @@ define(['jquery'], function($) {
     });
 
 
-});
+//});
 

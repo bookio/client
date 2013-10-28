@@ -4,7 +4,7 @@
 
     var dependencies = [
         'css!./rental',
-        'components/imagepicker'
+        '../components/imagepicker'
     ];
 
     define(dependencies, function(html) {

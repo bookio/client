@@ -1,8 +1,6 @@
 (function() {
 
 	var dependencies = [
-		'jquery',
-		'css!./login'
 	];
 
 	define(dependencies, function() {
@@ -14,9 +12,7 @@
 			var _elements = {};
 
 			function main() {
-				require(['main'], function(){
-					$.mobile.gotoPage('main.html');
-				});
+				$.mobile.gotoPage('main');
 			}
 			
 			function login(email, password) {

@@ -1,6 +1,6 @@
 
 
-define(['jquery', 'js/sprintf'], function($) {
+//define(['jquery', 'js/sprintf'], function($) {
 
 	Notifications = {};
 	
@@ -22,4 +22,4 @@ define(['jquery', 'js/sprintf'], function($) {
 	}
 
 	console.log('notifications.js loaded...');
-});
+//});

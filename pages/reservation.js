@@ -4,8 +4,8 @@
 
 	var dependencies = [
 	   'css!./reservation',
-	   'js/parser',
-	   'components/datepicker'
+	   '../js/parser',
+	   '../components/datepicker'
 	];
 
 	define(dependencies, function() {

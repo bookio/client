@@ -1,7 +1,6 @@
 (function () {
 
     var dependencies = [
-        'css!./select-category'
     ];
 
     define(dependencies, function (html) {
@@ -33,14 +32,10 @@
                     event.preventDefault();
                     event.stopPropagation();
 
-                	require(['search'], function(){
-	                    $.mobile.pushPage("search.html", {
-	                        pageData: {category: category},
-	                        transition: 'slide'
-	                    });
-	                	
-                	});
-
+                    $.mobile.pushPage('mobile-search', {
+                        pageData: {category: category},
+                        transition: 'slide'
+                    });
                 });
 
                 _elements.listview.append(li);

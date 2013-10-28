@@ -1,6 +1,6 @@
 
 
-define(['js/sprintf', 'js/sha1', 'js/base64'], function() {
+//define(['js/sprintf', 'js/sha1', 'js/base64'], function() {
 
 
     var _apiKey = '463759738497327';
@@ -128,4 +128,4 @@ define(['js/sprintf', 'js/sha1', 'js/base64'], function() {
     }
 
 
-});
+//});

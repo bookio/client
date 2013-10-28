@@ -1,12 +1,6 @@
-/*
 
-@codekit-prepend "sprintf.js";
-
-*/
-
-
-define(['js/sprintf'], function() {
-
+(function(){
+	
 
 	// Replace the getYear() with getFullYear()
 	Date.prototype.getYear = function() {
@@ -126,4 +120,4 @@ define(['js/sprintf'], function() {
 
 	console.log('date.js loaded...');
 
-});
+})();

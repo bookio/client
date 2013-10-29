@@ -63,6 +63,9 @@
 
                 _elements.startDate.on('tap', function (event) {
 
+	                event.stopPropagation();
+	                event.preventDefault();
+
                     function dateChanged(date) {
                         _params.startDate = date;
 
@@ -75,6 +78,9 @@
 
                 _elements.endDate.on('tap', function (event) {
 
+	                event.stopPropagation();
+	                event.preventDefault();
+	                
                     function dateChanged(date) {
                         _params.endDate = date;
 
@@ -106,7 +112,7 @@
                             $.mobile.pushPage('mobile-enter-name.html', {
                                 pageData: _params,
                                 transition: 'slide',
-                                require: 'mobile-enter-name.html'
+                                require: 'mobile-enter-name'
                             });
 
                             event.preventDefault();
@@ -133,7 +139,14 @@
 
                 _page.hookup(_elements);
 
-                //_elements.title.text(Gopher.client.name);
+				if (Gopher.client.logo) {
+					_elements.logo.attr('src', Cloudinary.imageURL(Gopher.client.logo, {
+						crop: 'fit',
+						width: 100,
+						height: 100
+					}));
+				}
+
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
 

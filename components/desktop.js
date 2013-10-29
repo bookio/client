@@ -455,7 +455,7 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
     			$('body').spin(false);
-				$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
+				//$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
 				
 				if (Object.keys(_rentals).length == 0) {
 					// No objects created, enter edit mode so user can add objects

@@ -4,25 +4,31 @@
 
 <body>
 
-<div id="mobile-select-category-page" data-role="page" data-dom-cache="true" class="">
-    
+    <div id="mobile-select-category-page" data-role="page" data-dom-cache="true" class="">
 
-    <div data-role="header">
-    	<h1 data-hook="title"></h1>
+
+        <div data-role="header">
+            <h1 data-hook="title"></h1>
+        </div>
+
+        <div data-hook="content" data-role="content" class="invisible">
+
+	        <div data-role="button-row">
+	            <img data-hook="logo" src="../images/app-icon.png"/>
+	        </div>
+
+            <h2>
+            	Vad vill du boka?
+            </h2>
+
+            <ul data-hook="listview" data-role="listview" data-inset="true">
+            </ul>
+
+
+        </div>
+
     </div>
 
-    <div data-hook="content" data-role="content" class="invisible">
-        
-        <h2>
-            Vad vill du boka?
-        </h2>
-        
-        <ul data-hook="listview" data-role="listview" data-inset="true">
-        </ul>        
-        
-        
-    </div>
+</body>
 
-</div>
-
-</body></html>
+</html>

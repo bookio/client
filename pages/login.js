@@ -13,8 +13,8 @@
 			var _elements = {};
 
 			function main() {
-				$.mobile.gotoPage('./main.html', {
-					require: './main'
+				$.mobile.gotoPage('../pages/main.html', {
+					require: '../pages/main'
 				});
 			}
 			
@@ -30,10 +30,7 @@
 
 					var request = Gopher.login(email, password);
 
-					request.always(function() {
-						_elements.login.button.transition({
-							opacity: 1.0
-						}, 100);
+					request.fail(function() {
 						_elements.login.button.transition({
 							x: -5
 						}, 75).transition({
@@ -41,7 +38,12 @@
 						}, 75).transition({
 							x: 0
 						}, 75);
+					});
 
+					request.always(function() {
+						_elements.login.button.transition({
+							opacity: 1.0
+						}, 100);
 					});
 
 					request.done(function(data) {
@@ -64,10 +66,7 @@
 
 					var request = Gopher.signup(email, '');
 
-					request.always(function() {
-						_elements.signup.button.transition({
-							opacity: 1.0
-						}, 100);
+					request.fail(function() {
 						_elements.signup.button.transition({
 							x: -5
 						}, 75).transition({
@@ -76,6 +75,12 @@
 							x: 0
 						}, 75);
 
+					});
+
+					request.always(function() {
+						_elements.signup.button.transition({
+							opacity: 1.0
+						}, 100);
 					});
 
 					request.done(function(data) {

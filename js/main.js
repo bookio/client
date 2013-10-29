@@ -76,13 +76,6 @@ requirejs.config({
 			location: './lib/require-css',
 			main: 'css'
 		},
-		/*
-	{
-		name: 'less',
-		location: './lib/require-less',
-		main: 'less'
-	}, 
-*/
 		{
 			name: 'text',
 			location: './lib/require-text',

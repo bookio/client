@@ -1,7 +1,7 @@
 (function () {
 
     var dependencies = [
-    	'css!mobile-enter-name',
+    	'css!./mobile-enter-name',
     ];
 
     define(dependencies, function () {
@@ -68,9 +68,10 @@
                             var request = Model.Reservations.save(reservation);
                             request.done(function (reservation) {
 
-                                $.mobile.gotoPage('mobile-thank-you', {
+                                $.mobile.gotoPage('mobile-thank-you.html', {
                                     pageData: _params,
-                                    transition: 'slide'
+                                    transition: 'slide',
+                                    require: 'mobile-thank-you'
                                 });
 
                             });
@@ -104,6 +105,14 @@
 
                 _page.hookup(_elements);
 
+				if (Gopher.client.logo) {
+					_elements.logo.attr('src', Cloudinary.imageURL(Gopher.client.logo, {
+						crop: 'fit',
+						width: 100,
+						height: 100
+					}));
+				}
+				
                 _elements.title.text(Gopher.client.name);
                 _elements.category.name.text(_params.category.name);
                 _elements.category.description.text(_params.category.description);

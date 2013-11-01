@@ -12,15 +12,20 @@
             <img src="../images/app-icon.png"/>
         </div>
         
-        
-        <label for="name">Namn</label>
-        <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
-            
-        <label for="email">E-post</label>
-        <input data-hook="email" id="email" type="text" value="" placeholder="E-post" title="">
-
-        <label for="password">Lösenord</label>
-        <input data-hook="password" id="password" type="text" value="" placeholder="Lösenord" title="">
+        <ul data-role="listview" data-inset="true">
+        	<li>
+		        <label>Namn</label>
+		        <input data-hook="name" type="text" value="" placeholder="Namn" title="">
+        	</li>
+        	<li>
+		        <label>E-post</label>
+		        <input data-hook="email" type="text" value="" placeholder="E-post" title="">
+        	</li>
+        	<li>
+		        <label>Lösenord</label>
+		        <input data-hook="password" type="text" value="" placeholder="Lösenord" title="">
+        	</li>
+        </ul>
         
 	    <div data-role="button-row">
         	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>

@@ -8,34 +8,50 @@
         <div data-role="button-row">
             <img src="../images/app-icon.png"/>
         </div>
+
+        <ul data-role="listview" data-inset="true">
+        	<li>
+		        <label>Företagsnamn</label>
+		        <input data-hook="name" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>E-post</label>
+		        <input data-hook="email" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>Telefon</label>
+		        <input data-hook="phone" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>Hemsida</label>
+		        <input data-hook="www" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>Facebook</label>
+		        <input data-hook="facebook" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>Twitter-konto</label>
+		        <input data-hook="twitter" type="text" value="" placeholder="" title="">
+        	</li>
+        	<li>
+		        <label>Adress</label>
+		        <textarea data-hook="address" type="text" value="" placeholder="" title=""></textarea>
+        	</li>
+        </ul>
         
-        
-        <label>Företagsnamn</label>
-        <input data-hook="name" type="text" value="" placeholder="" title="">
 
-        <label>E-post</label>
-        <input data-hook="email" type="text" value="" placeholder="" title="">
 
-        <label>Telefon</label>
-        <input data-hook="phone" type="text" value="" placeholder="" title="">
 
-        <label>Hemsida</label>
-        <input data-hook="www" type="text" value="" placeholder="" title="">
 
-        <label>Facebook</label>
-        <input data-hook="facebook" type="text" value="" placeholder="" title="">
 
-        <label>Twitter-konto</label>
-        <input data-hook="twitter" type="text" value="" placeholder="" title="">
 
             
-        <label>Adress</label>
-        <textarea data-hook="address" type="text" value="" placeholder="" title=""></textarea>
 
         <ul data-hook="listview" data-role="listview" data-inset="true">
 
 		<li>
-    	<label class="ui-input-text">Logotyp</label>
+    	<label>Logotyp</label>
         <div data-hook="dropzone.container">
             <div data-hook="dropzone.border">
                 <img data-hook="dropzone.image" src="../images/icon-drag-drop.png">

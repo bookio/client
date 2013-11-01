@@ -239,45 +239,13 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
     		
 		}
 
-		function loadCustomers(callback) {
-						
-			_customers = {};
-			
-			Model.Customers.fetch(function(customers) {
-    		
-    		    gotCustomers(customers);	
-
-    			
-    			if (isFunction(callback)) {
-        			callback();
-    			}
-			});
-    		
-		}
 
 
 		function gotIcons(icons) {
 			_icons = icons;
 		}
 
-		function loadIcons(callback) {
-			var gopher = new Gopher();
-						
-			_icons = {};
-			
-			gopher.get('icons/all', function(response) {
-    			
-    			if (response.data != null) {
-        			gotIcons(response.data);
-    			}
-    			
-    			if (isFunction(callback)) {
-        			callback();
-        			
-    			}
-			});
-    		
-		}
+
 		
 		function removeSelectedRental() {
     		var elements = _element.find('.title.selected');
@@ -300,19 +268,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			});
 		}
 
-		function loadRentals(callback) {
-			var gopher = new Gopher();
-						
-			Model.Rentals.fetch(function(rentals) {
-                gotRentals(rentals);    			
-
-    			
-    			if (isFunction(callback))
-        			callback();
-			});
-    		
-		}
-		
 		function gotReservations(reservations) {
             _reservations = {};    		
         	
@@ -327,35 +282,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 
 		}
 		
-		function loadReservations(callback) {
-        	
-        	 _reservations = {};
-                   
-            Model.Reservations.fetch(function(reservations) {
-
-                gotReservations(reservations);
-                                
-    			if (isFunction(callback))
-        			callback();
-                
-            });
-		}		
-		
-		function loadStuff(array, completed) {
-
-    		var counter = 0;
-    		
-    		$.each(array, function(index, func) {
-
-				func(function() {
-                    if (++counter >= array.length) {
-                        completed();            		
-                    }
-					
-				});	    		
-    		});
-    		
-		}
 		
 		function enableEscKey() {
 		
@@ -404,15 +330,7 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			
 			_element = $(template).appendTo(container);
 
-/*
-            _element.on('touchstart touchend touchmove', function(event) {
-                event.preventDefault();
-            
-                if (event.type == 'touchstart')
-                    _element.find('.title').removeClass('selected');
-            });            
 
-*/    
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
                 _element.find('.title').removeClass('selected');
                 
@@ -439,9 +357,9 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 
 			var gopher = Gopher;
 			
-			var rentals = Model.Rentals.fetch(); //gopher.request('GET', 'rentals');
-			var reservations = Model.Reservations.fetch(); //gopher.request('GET', 'reservations');
-			var customers = Model.Customers.fetch(); //gopher.request('GET', 'customers');
+			var rentals = Model.Rentals.fetch(); 
+			var reservations = Model.Reservations.fetch(); 
+			var customers = Model.Customers.fetch(); 
 			var settings = Model.Settings.fetch('desktop', 'layout');
 			var icons = gopher.request('GET', 'icons/all');
 			
@@ -455,7 +373,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
     			$('body').spin(false);
-				//$('.desktop').css('background-image', 'url(' + '../images/patterns/' + _settings.background + ')');
 				
 				if (Object.keys(_rentals).length == 0) {
 					// No objects created, enter edit mode so user can add objects

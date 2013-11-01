@@ -114,7 +114,7 @@
 
 					var requestCategory;
 					var requestRentals;
-					var categoryName = $("div.ui-input-search").find("input").val().toLowerCase();
+					var categoryName = $("div.ui-input-search").find("input").val();
                     var existingCategory = false;
                                                                                
                     

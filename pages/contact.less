@@ -4,15 +4,8 @@
 
 #contact-page {
 
-	[data-hook="address"] {
-		height:10em;
-	}
 	
 	[data-role="content"] {
-		label {
-			color: @lightGrayColor;
-		}
-		
         [data-hook="dropzone.container"] {
             text-align: center;
 
@@ -24,6 +17,10 @@
                 .border-radius(8px);
 
             }
+
+			[data-hook="address"] {
+				height:10em;
+			}
 
             [data-hook="dropzone.border"] {
                 .border-radius(12px);

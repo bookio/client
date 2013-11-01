@@ -3,8 +3,7 @@ requirejs.config({
 
 	paths: {
 		'jquery': 'lib/jquery/jquery-1.10.2',
-		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2',
-		'jquery-mobile-css': 'lib/jquery-mobile/jquery.mobile-1.3.2'
+		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2'
 	},
 
 	'shim': {
@@ -99,7 +98,7 @@ requirejs.config({
 		'text!index.html'
 	];
 
-	if (true) {
+	if (false) {
 		var files = [
 			'js/core'
 		];
@@ -136,6 +135,20 @@ requirejs.config({
 
 		var pages = [];
 
+
+		$(document).on("pageload", function() {
+			var logo = $('body').find('[src="../images/app-icon.png"]');
+			
+			if (logo && logo.length > 0) {
+				if (Gopher.client.logo) {
+					logo.attr('src', Cloudinary.imageURL(Gopher.client.logo, {
+						crop: 'fit',
+						width: 100,
+						height: 100
+					}));
+				}				
+			}
+		});
 
 		$(document).on("pagebeforechange", function(event, params) {
 			if (params.options.reverse)

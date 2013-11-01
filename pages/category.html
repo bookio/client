@@ -13,26 +13,26 @@
         
         <ul data-hook="listview" data-role="listview" data-inset="true">
 	        <li>
-                <label for="name">Namn</label>
-                <input data-hook="name" id="name" type="text" value="" placeholder="Namn" title="">
+                <label>Namn</label>
+                <input data-hook="name" type="text" value="" placeholder="Namn" title="">
 	        </li>
         
                 
             <li>   
-                <label for="description">Beskrivning</label>
-                <textarea data-hook="description" id="description" type="text" value="" placeholder="" title=""></textarea>
+                <label>Beskrivning</label>
+                <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
             </li>
             
             <li>
-				<label class="ui-input-text" for="available" style="display:block">Öppen för bokning</label>
-				<select name="available" data-hook="available" data-role="slider">
+				<label style="display:block">Öppen för bokning</label>
+				<select data-hook="available" data-role="slider">
 					<option value="off" selected>Nej</option>
 					<option value="on">Ja</option>
 				</select>
             </li>
 
             <li>
-            	<label class="ui-input-text">Bild som ska visas</label>
+            	<label>Bild som ska visas</label>
                 <div data-hook="dropzone.container">
                     <div data-hook="dropzone.border">
                         <img data-hook="dropzone.image" src="../images/icon-drag-drop.png">

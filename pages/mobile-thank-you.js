@@ -36,15 +36,6 @@
                 _params = $.mobile.pageData;
 
                 _page.hookup(_elements);
-
-				if (Gopher.client.logo) {
-					_elements.logo.attr('src', Cloudinary.imageURL(Gopher.client.logo, {
-						crop: 'fit',
-						width: 100,
-						height: 100
-					}));
-				}
-
                 _elements.title.text(Gopher.client.name);
 
                 enableEventsHandlers();

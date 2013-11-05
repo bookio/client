@@ -98,7 +98,7 @@ requirejs.config({
 		'text!index.html'
 	];
 
-	if (false) {
+	if (true) {
 		var files = [
 			'js/core'
 		];

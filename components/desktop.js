@@ -8,7 +8,7 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 		var self = this;
 		
 		var _defaults = {
-    		iconMargin:0,
+    		iconMargin:10,
     		iconSpacing:0,
     		iconSize:100
 		};
@@ -25,6 +25,8 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 		var _rentals = {};
 		var _settings = {};
 		var _icons = {};
+		var _desktopSize = {};
+		var _page = options.page;
 		
 		var _timerForIntroBlob;
 
@@ -48,8 +50,27 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 		});
 
 		Notifications.on('rental-added.desktop', function(rental) {
-    		console.log("rental added");
-            addRentalToScene(rental, 0, 0);
+			
+			var cols   = computeMaxCols();
+			var rows   = computeMaxRows();
+			var cells  = cols * rows;
+			var row    = 0;
+			var col    = 0;
+			
+			for (var i = 0; i < cells; i++) {
+				var y = Math.floor(i / cols);
+				var x = i % rows;
+					
+				if (isPositionAvailable(x, y)) {
+					col = x;
+					row = y;
+					break;
+				}
+			}
+			
+			// Everything is full, add on top others
+			addRentalToScene(rental, col, row);
+			saveSettings();
 		});
 
 		Notifications.on('rental-updated.desktop', function(rental) {
@@ -66,7 +87,8 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
     		
     		$.when(rentals, reservations).then(function(){
                 placeRentals();
-                updateRentalAvailability();			
+                updateRentalAvailability();
+                saveSettings();
     		});
 
 		});
@@ -163,11 +185,11 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 		}
 
 		function computeMaxCols() {
-    		return Math.floor((_element.innerWidth() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+    		return Math.floor((_desktopSize.width - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 
 		function computeMaxRows() {
-            return Math.floor((_element.innerHeight() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+            return Math.floor((_desktopSize.height - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 		
 		
@@ -226,6 +248,17 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 
 
 		function saveSettings() {
+
+			// Regenerate positions		
+			_settings.positions = {};
+
+            _element.find('.item').each(function() {
+	            var position = $(this).data('position');
+	        	var rental = $(this).data('rental')
+	        	
+	        	_settings.positions[rental.id] = position;  
+            });
+            		
 			Model.Settings.save('desktop', 'layout', _settings);
 		}
 
@@ -319,6 +352,14 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 		    
 		    clearTimeout(_timerForIntroBlob);
 	    }
+	    
+	    function rememberDesktopSize() {
+	    	if (_element.innerWidth() > 0 && _element.innerHeight() > 0) {
+		        _desktopSize.width = _element.innerWidth();
+		        _desktopSize.height = _element.innerHeight();
+	    	}
+		    
+	    }
 				
 		function init() {
 				
@@ -330,7 +371,14 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			
 			_element = $(template).appendTo(container);
 
-
+			
+			/*
+			setInterval(function(){
+				console.log('Width: %f', _element.innerWidth()); 	
+			}, 500);
+			*/
+			
+			
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
                 _element.find('.title').removeClass('selected');
                 
@@ -348,11 +396,15 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
                 self.editMode(false);
 	        });
 
+	        _page.on('pageshow', rememberDesktopSize);
+	        _page.on('pagebeforehide', rememberDesktopSize);
+	        $(window).on('resize.desktop', rememberDesktopSize);
 
             // Remove all my notifications when the element is destroyed
             _element.on('removed', function() {
                 Notifications.off('.desktop');
                 $(document).off('.desktop');
+                $(window).off('.desktop');
             });
 
 			var gopher = Gopher;
@@ -373,6 +425,8 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
     			$('body').spin(false);
+    			
+				rememberDesktopSize();
 				
 				if (Object.keys(_rentals).length == 0) {
 					// No objects created, enter edit mode so user can add objects
@@ -410,16 +464,29 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
             var y = _options.iconMargin + (row * (_options.iconSize + _options.iconSpacing));
 
             // Store the position
-            _settings.positions[rental.id] = {
-                x:col,
-                y:row
-            }
+            item.data('position', {x:col, y:row});
             
             if (isNumeric(speed))
                 item.transition({left:x, top:y}, speed, 'ease-in-out');
             else
                 item.css({left:x, top:y});
     		
+		}
+
+		function isPositionAvailable(col, row) {
+
+			var available = true;
+			
+            _element.find('.item').each(function() {
+	            var position = $(this).data('position');
+	            
+	            if (position.x == col && position.y == row) {
+		            available = false;
+		            return false;
+	            }
+            });
+			
+			return available;
 		}
 		
 		function updateRental(rental) {
@@ -436,12 +503,8 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
                     title.text(rental.name);
 
                     item.data('rental', rental);
-                    //item.css({width:_options.iconSize+10, height:_options.iconSize+10});
                     
-
-            		//title.css({top:item.outerHeight() + 2});
-            		//title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
-                    
+                    return false;
                 }
             });
 		}
@@ -473,10 +536,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
                 var title = item.find('.title');
 
                 title.text(rental.name);
-        		//title.css({maxWidth:_options.iconSize});
-                
-        		//title.css({top:item.outerHeight() + 2});
-        		//title.css({left:title.parent().innerWidth() / 2 - title.outerWidth() / 2});
                 
                 // Ignore mousedown on the title
                 title.on("mousedown touchstart", function(event){
@@ -485,9 +544,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
                 });
             }
             
-            
-	        
-
             positionItem(item, col, row);
             enableMouseActions(item);
 
@@ -606,7 +662,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
         function enableClicks(item) {
         
             item.on('doubletap', function(event) {
-                console.log("event - %s", event.type);
 
         		var rental = item.data('rental');
         		var reservation = getReservationForRental(rental);
@@ -621,7 +676,6 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
             });
 
             item.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
-                console.log("event - %s", event.type);
 
                 if (!event.shiftKey) {
                     _element.find('.title.selected').removeClass('selected');

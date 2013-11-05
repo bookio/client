@@ -186,7 +186,7 @@
 			function init() {
 				_page.hookup(_elements);
 
-				_desktop = new Desktop(_elements.desktop, {});
+				_desktop = new Desktop(_elements.desktop, {page:_page});
 				_desktop.editMode(false);
 
 

@@ -17,11 +17,14 @@
   display: inline;
 }
 #mobile-select-category-page [data-hook="content"] ul li img {
-  display: inline;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  margin: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 10px;
   max-width: 80px;
   max-height: 80px;
 }

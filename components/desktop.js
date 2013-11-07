@@ -200,7 +200,10 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			reservation.end_at = endDate();
 			reservation.rental_id = rental.id;
 
-			$.mobile.changePage('../pages/reservation.html', {pageData:{reservation:reservation}});
+			$.mobile.changePage('../pages/reservation.html', {
+				//role:'popup', 
+				pageData:{reservation:reservation}
+			});
 			
 		};
 		

@@ -4,6 +4,7 @@
 @import "mixins.less";
 @import "themes.less";
 @import "variables.less";
+@import "icons.less";
 
 
 * {
@@ -16,6 +17,15 @@ body {
 	cursor: default;
 }
 
+
+
+.absolute {
+    position:absolute;
+}
+
+.relative {
+    position:relative;
+}
 
 .hidden {
     display: none !important;
@@ -42,14 +52,6 @@ label.helptext {
 		
 }
 
-.Xui-content {
-    padding: 0 !important; 
-    position : absolute !important; 
-    top : 40px !important;  
-    right : 0 !important; 
-    bottom : 40px !important;  
-    left : 0 !important;     
-}
 
 // Make margins tighter to avoid ellipsis in headers/titles
 .ui-header .ui-title {

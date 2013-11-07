@@ -1,0 +1,42 @@
+@import "../less/mixins.less";
+@import "../less/variables.less";
+
+[data-role="msgbox"] {
+
+
+	padding: 0.5em;
+	
+
+	[data-hook="content"] {
+	
+		display: table-row;
+		
+		[data-hook="icon"] {
+			display: table-cell;
+			vertical-align: middle;
+
+		}	
+
+		[data-hook="message"] {
+			white-space: normal;
+			color: @lightGrayColor;
+			max-width: 300px;
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0.5em;
+			
+		}	
+	}
+	
+    [data-hook="buttons"] {
+	    text-align: center;
+
+	    [data-role="button"]  {
+			.border-radius(1.2em);
+			min-width: 8em;
+	    }
+    }		
+
+}
+
+

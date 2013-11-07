@@ -1,0 +1,27 @@
+[data-role="msgbox"] {
+  padding: 0.5em;
+}
+[data-role="msgbox"] [data-hook="content"] {
+  display: table-row;
+}
+[data-role="msgbox"] [data-hook="content"] [data-hook="icon"] {
+  display: table-cell;
+  vertical-align: middle;
+}
+[data-role="msgbox"] [data-hook="content"] [data-hook="message"] {
+  white-space: normal;
+  color: #9a9a9a;
+  max-width: 300px;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0.5em;
+}
+[data-role="msgbox"] [data-hook="buttons"] {
+  text-align: center;
+}
+[data-role="msgbox"] [data-hook="buttons"] [data-role="button"] {
+  -webkit-border-radius: 1.2em;
+  -moz-border-radius: 1.2em;
+  border-radius: 1.2em;
+  min-width: 8em;
+}

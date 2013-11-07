@@ -92,6 +92,7 @@ requirejs.config({
 		'css!./less/styles',
 		'jquery',
 		'jquery-mobile',
+		'components/msgbox',
 
 		// Make it load the text plugin now since the 
 		// page local path will be changed by jQuery Mobile

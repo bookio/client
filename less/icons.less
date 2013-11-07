@@ -1,39 +1,33 @@
 @import "mixins.less";
-/*
-.ui-checkbox .ui-icon {
-    .border-radius(0px);
+
+
+.icon(@x, @y, @dx, @dy) {
+	background-image: url(../images/icons/icons.png);
+	background-repeat: no-repeat;
+	background-position:-1 * @x -1 * @y;
+	width:@dx;
+	height:@dy;
+	
 }
 
-.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
-	background-color: transparent;
-	opacity: 0.7;
+.icon-warning {
+	.icon(0px, 32px, 48px, 48px);
 }
 
-.icon-position(@x, @y) {
-    background-image: url(../images/icons/icons.png);
-	-moz-background-size: 180px 180px;
-	-o-background-size: 180px 180px;
-	-webkit-background-size: 180px 180px;
-	background-size: 180px 180px;
-	background-position: -1*@x*18px -1*@y*18px;
+.icon-tools {
+	.icon(0px, 0px, 48px, 48px);
+}
+
+.icon-gears {
+	.icon(48px, 0px, 48px, 48px);
+}
+
+.icon-gear {
+	.icon(9 * 16px, 0px, 32px, 32px);
 }
 
 
-.ui-icon-plus {
-    .icon-position(4, 0);
+.icon-onoff {
+	.icon(96px, 0px, 48px, 48px);
 }
 
-.ui-icon-checkbox-on {
-    .icon-position(0, 0);
-}
-
-.ui-icon-checkbox-off {
-    .icon-position(1, 0);
-
-}
-
-.ui-icon-arrow-r {
-    .icon-position(3, 0);
-}
-
-*/

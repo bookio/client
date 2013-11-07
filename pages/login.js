@@ -57,6 +57,8 @@
 			}
 
 			function signup() {
+				MsgBox.show();
+				return;
 				var email = _elements.signup.email.val();
 
 				if (email != '') {
@@ -121,7 +123,7 @@
 					enableDisable();
 				});
 
-				enableDisable();
+				//enableDisable();
 
 			}
 

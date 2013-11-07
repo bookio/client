@@ -159,46 +159,92 @@
                    $.mobile.popPage();
                 });
 
+/*
+MsgBox.show({
+	type: 'warning',
+	title: 'En text',
+	message: 'Vill du verkligen radera?',
+	buttons: ['Ja', 'Nej', 'Avbryt'],
+	select: function(button){}
+});
+*/
+
+                function popupHTML(html, options) {
+
+
+    				var popup = $('<div data-role="popup"></div>');
+
+    				function close(event) {
+
+	    				if (options.afterclose && isFunction(options.afterclose)) {
+		    				options.afterclose.apply(undefined, arguments)
+	    				}
+
+	    				$(event.target).remove();
+    				}
+
+		            var defaults = {
+				        afterclose: close
+		            };
+
+		            popup.append(html);
+		            popup.appendTo($.mobile.activePage);
+                    popup.trigger('create');
+                    popup.popup($.extend({}, options, defaults));
+                    popup.popup('open');
+                    
+                    return popup;
+                }
 
                 _elements.startdate.button.on('tap', function(){
                     		       
                     var self = $(this);
+                    var popup;
                     
     	            function dateChanged() {
     	               var date = datepicker.date();
     	               _reservation.begin_at = date;
 			           _elements.startdate.date.text(date.yyyymmdd());
-			           _elements.popup.popup('close');	
+			           popup.popup('close');	
 			           
 		            }
 		       		
 		            var datepicker = new DatePicker({dateChanged:dateChanged});
 		      
 		            var options = {
-				        dismissible : true,
-				        theme : "c",
-				        overlyaTheme : "a",
 				        transition : "pop",
 				        positionTo: $(this)
 		            };
 
-                    _elements.popup.empty();
-                    _elements.popup.append(datepicker.html());
-                    _elements.popup.trigger('create');
-                    _elements.popup.popup(options);
-                    _elements.popup.popup('open');
+		            require(['text!./test.html'], function(text){
+		            //debugger;
+		            	popup = popupHTML(text, options);
+		            	
+		            	//popup.appendTo($.mobile.activePage);
+	                    //popup.trigger('create');
+	                    //popup.popup(options);
+	                    //popup.popup('open');
+			            
+		            });
+                    //_elements.popup.empty();
+                    //_elements.popup.append(datepicker.html());
+                    //_elements.popup.trigger('create');
+                    //_elements.popup.popup(options);
+                    //_elements.popup.popup('open');
                 });
 
                 _elements.enddate.button.on('tap', function(){
                     		       
                     var self = $(this);
                     
+                    var popup;
+                    
     	            function dateChanged() {
     	               var date = datepicker.date();
     	               _reservation.end_at = date;
 
 			           _elements.enddate.date.text(date.yyyymmdd());
-			           _elements.popup.popup('close');	
+			           popup.popup('close');	
 			           
 		            }
 		       		
@@ -206,17 +252,12 @@
 		      
 		            var options = {
 				        dismissible : true,
-				        theme : "c",
-				        overlyaTheme : "a",
-				        transition : "pop",
-				        positionTo: $(this)
+				        positionTo: $(this),
+				        transition: 'pop'
 		            };
 
-                    _elements.popup.empty();
-                    _elements.popup.append(datepicker.html());
-                    _elements.popup.trigger('create');
-                    _elements.popup.popup(options);
-                    _elements.popup.popup('open');
+		            popup = popupHTML(datepicker.html(), options);
+
                 });
 	           
                 _elements.selectcustomer.on('tap', function(event) {
@@ -228,6 +269,7 @@
     	           if (_customers.length == 0)
     	               return;
     	               
+    	           var popup;
     	           var listview = $('<ul data-role="listview" data-inset="true" data-theme="c"></ul>');
 
                     $.each(_customers, function(index, customer) {
@@ -248,7 +290,7 @@
                             _customer = customer;
                             updateContactFromCustomer(customer);
 
-                            _elements.popup.popup('close');
+                            popup.popup('close');
                         });
                                             
                         a.append(h3);    
@@ -266,12 +308,13 @@
 				        positionTo: _elements.selectcustomer
 		            };
 
-    				
-                    _elements.popup.empty();
-                    _elements.popup.append(listview);
-                    _elements.popup.trigger('create');
-                    _elements.popup.popup(options);
-                    _elements.popup.popup('open');
+    				popup = $('<div data-hook="MYPOPUP" data-role="popup" data-theme="a"></div>');
+
+    				popup.appendTo($.mobile.activePage);
+                    popup.append(listview);
+                    popup.trigger('create');
+                    popup.popup(options);
+                    popup.popup('open');
                 });
 	
 	            _elements.save.on("tap", function(){
@@ -359,8 +402,8 @@
 
 		            // Make IE hide the focus
 		            //_elements.html.find('.hidefocus').attr('hideFocus', 'true').css('outline', 'none');
-		            _elements.startdate.button.addClass('ui-disabled');
-		            _elements.enddate.button.addClass('ui-disabled');
+		            //_elements.startdate.button.addClass('ui-disabled');
+		            //_elements.enddate.button.addClass('ui-disabled');
 		
 		            _elements.contact.on('change', function(event) {
 		                var text = _elements.contact.val();

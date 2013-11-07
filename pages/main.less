@@ -59,17 +59,18 @@ html, body {
 	    
 	    [data-hook="popup.icon"] {
 	    	cursor: pointer;
-			opacity: 0.60;
-			background-image: url(../images/icons/gear.png);
-			background-position: center center;
-			background-repeat: no-repeat;
+			opacity: 0.40;
 			width: 80px;
-			height: 30px;
+			height: 32px;
 			display: inline-block;
 			vertical-align: middle;
-						
+			text-align: center;		
+			div {
+				display: inline-block;
+				
+			}
 			&:hover {
-				opacity: 1.0;
+				opacity: 0.60;
 			}
 		}
 
@@ -78,24 +79,15 @@ html, body {
 	[data-role="popup"] {
 	
 		li a {
-			background-repeat: no-repeat;
-			background-position: center center;
 			height:50px;
-			
+			text-align: center;
+
+			div {
+				display: inline-block;
+				
+			}			
 		}
-		
-		[data-hook="settings"] {
-			background-image: url(../images/icons/gears.png);
-		}
-	
-		[data-hook="editmode"] {
-			background-image: url(../images/icons/edit-desktop.png);
-		}
-	
-		[data-hook="logout"] {
-			background-image: url(../images/icons/onoff.png);
-		}
-		
+
 	}
 
 	[data-hook=desktop] {

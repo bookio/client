@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html>
-
-
-<body>
-
-<div id="test-page" data-role="page">
     
-
-    <div data-role="content" data-hook="content">
-        <div data-role="button-row">
-            <img src="../images/app-icon.png"/>
-        </div>
-
-
-        <div data-hook="dropzone.container">
-            <p data-hook="dropzone.text">Klicka här eller drag och släpp din bild här.</p>
-            <img data-hook="dropzone.image">
-        </div>
-
-        <br/>
-        <br/>
-
-	    <div data-role="button-row">
-        	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
-        	<a data-hook="upload" data-role="button" data-inline="true" data-theme="a">Spara</a>
-	    </div>
+<div data-role="content">
+    <div data-role="button-row">
+        <img src="../images/app-icon.png"/>
     </div>
 
-    <input type="file" data-role="none" data-hook="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
+
+    <div data-hook="dropzone.container">
+        <p data-hook="dropzone.text">Klicka här eller drag och släpp din bild här.</p>
+        <img data-hook="dropzone.image">
+    </div>
+
+    <br/>
+    <br/>
+
+    <div data-role="button-row">
+    	<a data-hook="back" data-role="button" data-inline="true" data-theme="a">Tillbaka</a>
+    	<a data-hook="upload" data-role="button" data-inline="true" data-theme="a">Spara</a>
+    </div>
+
 
 </div>
-
-</body></html>

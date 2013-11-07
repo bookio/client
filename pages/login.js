@@ -57,7 +57,15 @@
 			}
 
 			function signup() {
-				MsgBox.show();
+				MsgBox.show({
+					message: 'Är du säker på att du vill logga in?',
+					icon: 'error',
+					title: 'Felmeddelande',
+					buttons: ["OK", "Avbryt"],
+					select: function(button) {
+						alert(button);
+					}
+				});
 				return;
 				var email = _elements.signup.email.val();
 

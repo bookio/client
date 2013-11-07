@@ -121,7 +121,7 @@
                     // Check if category exists, if not we should create a new one
                     if (categoryName.length > 0) {
 	                    _elements.category.listview.find("li").each(function() {
-	                    	if (categoryName == $(this).text().toLowerCase()) {
+	                    	if (categoryName.toLowerCase() == $(this).text().toLowerCase()) {
 	                    		_rental.category_id = $(this).find('a').attr("id");
 	                    		existingCategory = true;
 	                    		return false;

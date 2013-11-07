@@ -368,8 +368,16 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 				
 			var template = 
 				'<div class="desktop">'+
-					'<div class="introText"></div><div class="introArrow"></div><div class="introHouse"></div><div class="introMan"></div><div class="introSquash"></div><div class="introBike"></div><div class="introCar"></div><div class="addButton"></div><div class="closeButton"></div><div class="watermark">'+
-					'</div>'+
+					'<div class="watermark"></div>'+
+					'<div class="introText"></div>'+
+					'<div class="introArrow"></div>'+
+					'<div class="introHouse"></div>'+
+					'<div class="introMan"></div>'+
+					'<div class="introSquash"></div>'+
+					'<div class="introBike"></div>'+
+					'<div class="introCar"></div>'+
+					'<div class="addButton"></div>'+
+					'<div class="closeButton"></div>'+
 				'</div>';
 			
 			_element = $(template).appendTo(container);
@@ -621,11 +629,9 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			var watermarkDiv = _element.find('.watermark'); 
 			watermarkDiv.css({backgroundImage:'url(../images/watermark-edit-mode.png)'});
 			
-			_element.find('.addButton').append('<img class="icon" src=../images/icons/add.png>');
-			bringItemToTop(_element.find('.addButton'));
-			
-			_element.find('.closeButton').append('<img class="icon" src=../images/icons/close.png>');
-			bringItemToTop(_element.find('.closeButton'));
+			_element.find('.addButton').addClass("icon-add");
+			_element.find('.closeButton').addClass("icon-close");
+
 			
 			_element.addClass('editMode');
 			
@@ -639,9 +645,8 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
 			watermarkDiv.css({backgroundImage:'none'});
 			
 			// Remove buttons from desktop
-			_element.find('.addButton').text('');
-			_element.find('.closeButton').text('');
-			
+			_element.find('.addButton').removeClass("icon-add");
+			_element.find('.closeButton').removeClass("icon-close");
 			clearIntroBlob();
             
             _element.removeClass('editMode');

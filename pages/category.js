@@ -67,24 +67,36 @@
 
                 _elements.remove.on('tap', function(event) {
                 
-                    var request = Model.Categories.remove(_category);
-                   
-                    request.done(function() {
-                        if (_category.image) {
-                            request = Cloudinary.deleteImage(_category.image);
-                        
-                            request.done(function() {
-                                console.log('Image deleted');
-                            });
-                            request.fail(function() {
-                                console.log('Image NOT deleted!!');
-                            });
-                            
-                        }
-                        
+                	function remove() {
+	                	var request = Model.Categories.remove(_category);
 
-                       $.mobile.popPage();
-                    });
+	                    request.done(function() {
+	                        if (_category.image) {
+	                            request = Cloudinary.deleteImage(_category.image);
+	                        
+	                            request.done(function() {
+	                                console.log('Image deleted');
+	                            });
+	                            request.fail(function() {
+	                                console.log('Image NOT deleted!!');
+	                            });
+	                            
+	                        }
+	                        
+	
+	                       $.mobile.popPage();
+	                    });
+	                	
+                	}
+                	
+                	MsgBox.show({
+	                	message: 'Är du säker på att du vill ta bort denna kategori?',
+	                	icon: 'warning',
+	                	buttons: [
+	                		{text: 'Ja', select: remove},
+	                		{text: 'Nej'}
+	                	]
+                	});
                 });
 
                 _elements.save.on('tap', function(event) {

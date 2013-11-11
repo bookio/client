@@ -39,8 +39,8 @@ define(['text!./msgbox.html', 'css!./msgbox'], function(html) {
 				    element.on('tap', function() {
 					    popup.popup('close');	
 					    
-					    if (isFunction(msgBoxOptions.buttons[i].select)) {
-				    		msgBoxOptions.buttons[i].select();
+					    if (isFunction(button.select)) {
+				    		button.select();
 					    }				    	
 				    });
 

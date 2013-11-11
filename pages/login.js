@@ -57,6 +57,7 @@
 			}
 
 			function signup() {
+				/*
 				MsgBox.show({
 					message: 'Är du säker på att du vill logga in?',
 					icon: 'error',
@@ -67,6 +68,7 @@
 					}
 				});
 				return;
+				*/
 				var email = _elements.signup.email.val();
 
 				if (email != '') {

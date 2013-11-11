@@ -27,7 +27,7 @@
                 var li = $(template);
 
 
-                li.find('h2').text(item.name);
+                li.find('h2').text(item.name ? item.name : item.username);
                 li.find('p').text(item.email);
                 
                 li.find('a').on('tap', function(event) {
@@ -75,7 +75,11 @@
 	           });
 	           
 	           _elements.add.on('tap', function(event){
-		           $.mobile.pushPage('user.html', {pageData:{}});
+                    $.mobile.pushPage('user.html', {
+                    	pageData:{}, 
+                    	transition:'slide',
+                    	require: 'user'
+                    });
 	           });
 	           
 	           load();

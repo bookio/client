@@ -4,10 +4,31 @@
 
 #contact-page {
 
-	
 	[data-role="content"] {
+
+        .ui-grid-b {
+			.ui-block-a {
+				padding-right: 5px;
+			}
+			.ui-block-b {
+				padding-right: 5px;
+				padding-left: 5px;
+			}
+			.ui-block-c {
+				padding-left: 5px;
+			}
+	        
+        }
+
+		[data-hook="address"] {
+			height:6em;
+		}
+
+
+
         [data-hook="dropzone.container"] {
             text-align: center;
+
 
             [data-hook="dropzone.image"] {
                 vertical-align: middle;
@@ -17,10 +38,6 @@
                 .border-radius(8px);
 
             }
-
-			[data-hook="address"] {
-				height:10em;
-			}
 
             [data-hook="dropzone.border"] {
                 .border-radius(12px);

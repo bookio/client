@@ -224,7 +224,7 @@ define(['css!./desktop', '../pages/rental', '../pages/reservation'], function() 
         		var rental = _rentals[rental_id];
         		var position = _settings.positions[rental_id];
 
-        		if (!position || !position.x || !position.y) {
+        		if (!isObject(position)) {
         		    position = {};
         		    position.y = Math.floor(index / maxCols);
         		    position.x = index % maxCols;

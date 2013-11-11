@@ -10,10 +10,27 @@
 		function Module(page) {
 
 			var _page = page;
+			var _categories = {};
 			var _elements = {};
-			var _emptylist = true;
+
+			function addEmpty() {
+				var template =
+					'<li>' +
+					'<img class="ui-li-thumb">' +
+					'<h2></h2>' +
+					'<p></p>' +
+					'</li>';
+
+				var row = $(template);
+
+				row.data('item', item);
+
+				updateRow(row);
 
 
+				_elements.listview.append(row);
+				
+			}
 			function addItem(item) {
 				var template =
 					'<li>' +
@@ -44,7 +61,7 @@
 					event.stopPropagation();
 				});
 
-				_page.find('ul').append(row);
+				_elements.listview.append(row);
 
 			}
 
@@ -119,11 +136,11 @@
 
 				request.done(function(categories) {
 
+					_categories = categories;
 					_elements.listview.empty();
 
 					$.each(categories, function(index, category) {
 						addItem(category);
-						_emptylist = false;
 					});
 
 					_elements.listview.listview('refresh');
@@ -175,9 +192,13 @@
 				var isDoneCategories = loadCategories();
 				var isDoneSetURL = getGuestURL();
 				$.when(isDoneCategories, isDoneSetURL).then(function() {
-					if (_emptylist)
-					//_elements.url.val(_elements.url.attr('placeholder'));
+					if (_categories.length == 0)
 						_elements.url.val("");
+					else
+						_elements.subtitle.addClass('hidden');
+					
+						
+						
 				});
 			}
 

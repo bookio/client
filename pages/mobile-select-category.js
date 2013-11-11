@@ -12,6 +12,7 @@
 			var _page = page;
 			var _elements = {};
 
+
 			function additem(category) {
 				var template =
 					'<li>' +

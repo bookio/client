@@ -23,10 +23,9 @@
 
 				var row = $(template);
 
-				row.data('item', item);
-
-				updateRow(row);
-
+				row.find('h2').text('Bokningsgrupper saknas'); 
+				row.find('p').text('Klicka på "Lägg till" nedan'); 
+				row.find('img').attr('src', '../images/app-icon.png');
 
 				_elements.listview.append(row);
 				
@@ -137,11 +136,14 @@
 				request.done(function(categories) {
 
 					_categories = categories;
-					_elements.listview.empty();
 
-					$.each(categories, function(index, category) {
-						addItem(category);
-					});
+					if (categories.length > 0) {
+						_elements.listview.empty();
+
+						$.each(categories, function(index, category) {
+							addItem(category);
+						});
+					}
 
 					_elements.listview.listview('refresh');
 

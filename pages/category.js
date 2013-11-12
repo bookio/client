@@ -93,7 +93,7 @@
 	                	message: 'Är du säker på att du vill ta bort denna kategori?',
 	                	icon: 'warning',
 	                	buttons: [
-	                		{text: 'Ja', select: remove},
+	                		{text: 'Ja', click: remove},
 	                		{text: 'Nej'}
 	                	]
                 	});

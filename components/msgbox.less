@@ -15,14 +15,27 @@
 				vertical-align: middle;
 			}	
 	
-			[data-hook="message"] {
+			[data-hook="text"] {
 	
 				white-space: normal;
-				color: @darkGrayColor;
+				color: black; //@darkGrayColor;
 				max-width: 300px;
 				display: table-cell;
 				vertical-align: middle;
 				padding: 0.5em;
+				//font-size:16px;
+
+				[data-hook="title"] {
+					//font-size:20px !important;
+					font-weight: bold !important;
+					color: @xxx-darkGrayColor !important;
+				}
+				
+				[data-hook="message"] {
+					//font-size:18px !important;
+					color: @darkGrayColor !important;
+				}
+				
 			}	
 		}
 		

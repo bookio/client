@@ -159,15 +159,7 @@
                    $.mobile.popPage();
                 });
 
-/*
-MsgBox.show({
-	type: 'warning',
-	title: 'En text',
-	message: 'Vill du verkligen radera?',
-	buttons: ['Ja', 'Nej', 'Avbryt'],
-	select: function(button){}
-});
-*/
+
 
                 function popupHTML(html, options) {
 

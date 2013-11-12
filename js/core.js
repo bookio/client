@@ -3234,8 +3234,13 @@ sha1 = function(msg) {
 
 		console.log(sprintf('Request failed. %s', message));
 		
-		if (Notify)
-			Notify.show(message);
+		require(['../components/msgbox'], function() {
+			MsgBox.show({
+				icon:'error',
+				message:message
+			});
+			
+		});
 	}
 
 	Gopher.signup = function(username, password) {

@@ -94,10 +94,6 @@
 	    	        $.mobile.pushPage('./add.html');
     	        });
     	        
-	           //_elements.main.on('tap', function(event) {
-		       //    $.mobile.pushPage('../main.html', {transition:'fade'});
-	           //});
-	           
     	       _page.on('remove', function() { 
         	        alert('removed!');
                     Notifications.off('.rentals');        	        

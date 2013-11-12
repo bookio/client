@@ -16,7 +16,6 @@
 			function addEmpty() {
 				var template =
 					'<li>' +
-					'<img class="ui-li-thumb">' +
 					'<h2></h2>' +
 					'<p></p>' +
 					'</li>';
@@ -25,7 +24,6 @@
 
 				row.find('h2').text('Bokningsgrupper saknas'); 
 				row.find('p').text('Klicka på "Lägg till" nedan'); 
-				row.find('img').attr('src', '../images/app-icon.png');
 
 				_elements.listview.append(row);
 				
@@ -194,11 +192,10 @@
 				var isDoneCategories = loadCategories();
 				var isDoneSetURL = getGuestURL();
 				$.when(isDoneCategories, isDoneSetURL).then(function() {
-					if (_categories.length == 0)
+					if (_categories.length == 0)  {
 						_elements.url.val("");
-					else
-						_elements.subtitle.addClass('hidden');
-					
+						addEmpty();						
+					}
 						
 						
 				});

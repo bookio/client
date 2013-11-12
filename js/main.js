@@ -99,7 +99,7 @@ requirejs.config({
 		'text!index.html'
 	];
 
-	if (true) {
+	if (false) {
 		var files = [
 			'js/core'
 		];
@@ -227,14 +227,14 @@ requirejs.config({
 		console.log('main.js executing...');
 
 		function login() {
-			$.mobile.gotoPage('./pages/login.html', {
-				require: ['./pages/login']
+			$.mobile.gotoPage('../pages/login.html', {
+				require: ['../pages/login']
 			});
 		}
 
 		function main() {
-			$.mobile.gotoPage('./pages/main.html', {
-				require: ['./pages/main']
+			$.mobile.gotoPage('../pages/main.html', {
+				require: ['../pages/main']
 			});
 		}
 

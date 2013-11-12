@@ -233,8 +233,8 @@ requirejs.config({
 		}
 
 		function main() {
-			$.mobile.gotoPage('../pages/main.html', {
-				require: ['../pages/main']
+			$.mobile.gotoPage('./pages/main.html', {
+				require: ['./pages/main']
 			});
 		}
 

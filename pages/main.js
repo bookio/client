@@ -184,7 +184,7 @@
 
 
 			function init() {
-				_page.hookup(_elements);
+				_page.hookup(_elements, 'data-id');
 
 				_desktop = new Desktop(_elements.desktop, {page:_page});
 				_desktop.editMode(false);
@@ -275,27 +275,10 @@
 
 
 		}
-		$('#main-page').on("pageload", function() {
-			debugger;
-			//console.log(
-		});
 		
-		$(document).delegate("#main-page", "pageload", function(event) {
-			debugger;
-			//new Module($(event.currentTarget));
-		});
-			
-		$(document).on( "pagebeforeload", "#main-page", function( event ) {
-			debugger;
-		});
-
 		$(document).on( "pageinit", "#main-page", function(event) {
 			new Module($(event.currentTarget));
 			//debugger;
-		});
-
-		$(document).on( "pagebeforeload", "#main-page", function( event ) {
-			debugger;
 		});
 
 

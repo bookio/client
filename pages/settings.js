@@ -20,7 +20,7 @@
             
 	        function init() {
 
-	           _page.hookup(_elements);
+	           _page.hookup(_elements, 'data-id');
 
 	           _elements.back.on('tap', function(event){
 		          event.preventDefault();

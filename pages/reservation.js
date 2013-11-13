@@ -300,7 +300,7 @@
 				        positionTo: _elements.selectcustomer
 		            };
 
-    				popup = $('<div data-hook="MYPOPUP" data-role="popup" data-theme="a"></div>');
+    				popup = $('<div data-id="MYPOPUP" data-role="popup" data-theme="a"></div>');
 
     				popup.appendTo($.mobile.activePage);
                     popup.append(listview);
@@ -355,7 +355,7 @@
             
 	        function init() {
 
-	           _page.hookup(_elements);
+	           _page.hookup(_elements, 'data-id');
 
 
 				_reservation = $.mobile.pageData.reservation;

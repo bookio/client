@@ -30,7 +30,7 @@
             
             
             function init() {
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
                 
                 var request = Gopher.request('GET', 'settings/app/contact');
                 

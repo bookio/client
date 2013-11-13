@@ -103,7 +103,7 @@
                 _params = $.mobile.pageData;
                 _params.customer = _params.customer ? _params.customer : null;
 
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
 
                 _elements.title.text(Gopher.client.name);
                 _elements.category.name.text(_params.category.name);

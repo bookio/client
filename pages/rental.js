@@ -20,7 +20,7 @@
             var _categories = [];
             var _categoriesByID = {};
             
-            _page.hookup(_elements);
+            _page.hookup(_elements, 'data-id');
             
             function fill() {
                 _elements.name.val(_rental.name);

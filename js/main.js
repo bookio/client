@@ -199,13 +199,8 @@ requirejs.config({
 		}
 
 		$.mobile.gotoPage = function(page, options) {
-
 			pages = [];
-
-			if (arguments.length == 1 && !isString(page))
-				$.mobile.pushModule(arguments[0]);
-			else
-				$.mobile.pushPage(page, options);
+			$.mobile.pushPage(page, options);
 		}
 
 

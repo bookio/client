@@ -43,7 +43,7 @@
                 // Logout
                 Gopher.logout();
                 
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
 
                 _page.on('keydown', function(event) {
                 

@@ -21,7 +21,7 @@
             var _elements = {};
             
 	        function init() {
-	        	_page.hookup(_elements);
+	        	_page.hookup(_elements, 'data-id');
 
 	        	if (_elements.logout) {
 		        	_elements.logout.on('tap', function(event) {

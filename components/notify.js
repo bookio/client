@@ -29,7 +29,7 @@ define(['css!./notify'], function() {
         }    
 
         var template = 
-            '<div data-hook="notify"></div>';
+            '<div data-id="notify"></div>';
             
         if (_element == null) {
             _element = $(template);
@@ -42,7 +42,7 @@ define(['css!./notify'], function() {
             var div = $('<div></div>');
 
             div.text(item);
-            div.attr('data-hook', sprintf('message-%d', i + 1));
+            div.attr('data-id', sprintf('message-%d', i + 1));
             div.appendTo(_element);
         });
 

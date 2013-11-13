@@ -39,8 +39,7 @@ define(['text!./msgbox.html', 'css!./msgbox'], function(html) {
 		
 		$.extend(msgBoxOptions, options);  	
 
-//        popup.append(html);
-	    popup.hookup(elements);
+	    popup.hookup(elements, 'data-id');
 
 	    if (msgBoxOptions) {
 
@@ -49,11 +48,11 @@ define(['text!./msgbox.html', 'css!./msgbox'], function(html) {
 	    	}
 
 		    if (isString(msgBoxOptions.title)) {
-		    	elements.text.append(sprintf('<p data-hook="title">%s</p>', msgBoxOptions.title));
+		    	elements.text.append(sprintf('<p data-id="title">%s</p>', msgBoxOptions.title));
 		    }
 
 		    if (isString(msgBoxOptions.message)) {
-		    	elements.text.append(sprintf('<p data-hook="message">%s</p>', msgBoxOptions.message));
+		    	elements.text.append(sprintf('<p data-id="message">%s</p>', msgBoxOptions.message));
 		    }
 		    
 		    if (msgBoxOptions.buttons) {

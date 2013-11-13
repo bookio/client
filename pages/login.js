@@ -114,7 +114,7 @@
 				// Logout
 				Gopher.logout();
 
-				_page.hookup(_elements);
+				_page.hookup(_elements, 'data-id');
 				_elements.login.email.val(username);
 
 				_elements.login.button.on('tap', function() {

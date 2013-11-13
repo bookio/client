@@ -6,7 +6,7 @@ requirejs.config({
 		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2'
 	},
 
-	'shim': {
+	shim: {
 		'jquery-mobile': {
 			deps: ['jquery', 'js/config-jquery-mobile']
 		},
@@ -89,10 +89,8 @@ requirejs.config({
 (function() {
 
 	var modules = [
-		'css!./less/styles',
-		'jquery',
 		'jquery-mobile',
-		'components/msgbox',
+		'css!./less/styles',
 
 		// Make it load the text plugin now since the 
 		// page local path will be changed by jQuery Mobile
@@ -137,6 +135,22 @@ requirejs.config({
 		var pages = [];
 
 
+
+    
+    
+    	/*
+        $(window).bind("hashchange", function () {
+            var url = window.location.href,
+                hash = $.mobile.path.parseUrl(url).hash;
+            console.log(hash);
+            if (hash == "#login") {
+	            login();
+            }
+
+        });
+//        .trigger("hashchange");
+	*/
+	
 		$(document).on("pageload", function() {
 			var logo = $('body').find('[src="../images/app-icon.png"]');
 			
@@ -224,55 +238,12 @@ requirejs.config({
 
 		window.history.back = $.mobile.popPage;
 
-		console.log('main.js executing...');
-
-		function login() {
-			$.mobile.gotoPage('../pages/login.html', {
-				require: ['../pages/login']
-			});
-		}
-
-		function main() {
-			$.mobile.gotoPage('./pages/main.html', {
-				require: ['./pages/main']
-			});
-		}
-
-		function mobile() {
-			$.mobile.gotoPage('./pages/mobile-select-category.html', {
-				require: './pages/mobile-select-category'
-			});
-		}
-
-		if ($.urlParam('user')) {
-			var user = $.urlParam('user');
-			var request = Gopher.login(user);
-
-			request.fail(function() {
-				debugger;
-			});
-
-			request.done(function(data) {
-				mobile();
-			});
-		}
-		else if (Gopher.sessionID != '') {
-			var request = Gopher.verify();
-
-			request.fail(function() {
-				login();
-			});
-
-			request.done(function(data) {
-				main();
-			});
-
-		}
-		else
-			login();
+		$.mobile.gotoPage("pages/startup.html", {
+			require: 'pages/startup'
+		});
+		
 
 	});
 
-	console.log('main.js loaded...');
 
 })();

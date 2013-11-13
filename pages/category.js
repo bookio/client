@@ -50,7 +50,7 @@
             }            
             
             function init() {
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
                 
                if ($.mobile.pageData && $.mobile.pageData.category) {
                    $.extend(_category, $.mobile.pageData.category);

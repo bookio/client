@@ -114,8 +114,8 @@
 			elements = arguments[0];	
 		}
 		else if (arguments.length == 2) {
-			attribute = arguments[0];	
-			elements = arguments[1];	
+			elements = arguments[0];	
+			attribute = arguments[1];	
 		}
 		
 		if (elements == undefined) {

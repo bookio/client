@@ -2,7 +2,7 @@
 #mobile-search [data-role="content"] div.ui-block-b {
   padding: 10px;
 }
-#mobile-search [data-hook="searchResult"] {
+#mobile-search [data-id="searchResult"] {
   display: none;
   text-align: center;
   margin-top: 1em;

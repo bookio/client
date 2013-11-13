@@ -27,7 +27,7 @@
                 var options = {
                     dismissible: true,
                     theme: "c",
-                    overlyaTheme: "c",
+                    overlayTheme: "c",
                     transition: "pop",
                     positionTo: button
                 };
@@ -52,7 +52,7 @@
             }
 
             function enableDisable() {
-                _elements.search.toggleClass('ui-disabled', _params.startDate == null || _params.endDate == null || _params.startDate >= _params.endDate);
+                _elements.search.toggleClass('ui-disabled', _params.startDate == null || _params.endDate == null || _params.startDate > _params.endDate);
             }
 
             function enableEventsHandlers() {
@@ -69,6 +69,9 @@
                     function dateChanged(date) {
                         _params.startDate = date;
 
+                        if (_params.endDate == null || _params.endDate <= _params.startDate)
+                        	_params.endDate = _params.startDate.addDays(1);
+                        	
                         updateButtonTexts();
                         enableDisable();
                     }
@@ -83,6 +86,9 @@
 	                
                     function dateChanged(date) {
                         _params.endDate = date;
+
+                        if (_params.startDate == null || _params.startDate >= _params.endDate)
+                        	_params.startDate = _params.endDate.addDays(-1);
 
                         updateButtonTexts();
                         enableDisable();
@@ -137,7 +143,7 @@
                 _params.startDate = _params.startDate ? _params.startDate : null;
                 _params.endDate = _params.endDate ? _params.endDate : null;
 
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);

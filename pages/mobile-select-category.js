@@ -16,17 +16,17 @@
 			function additem(category) {
 				var template =
 					'<li>' +
-					'<a data-hook="link" href="">' +
-					'<img data-hook="image" class="ui-li-thumb">' +
-					'<h2 data-hook="name"></h2>' +
-					'<p data-hook="description"></p>' +
+					'<a data-id="link" href="">' +
+					'<img data-id="image" class="ui-li-thumb">' +
+					'<h2 data-id="name"></h2>' +
+					'<p data-id="description"></p>' +
 					'</a>' +
 					'</li>';
 
 				var li = $(template);
 
 				var elements = {};
-				li.hookup(elements);
+				li.hookup(elements, 'data-id');
 
 				elements.name.text(category.name);
 				elements.description.text(category.description);
@@ -56,7 +56,7 @@
 
 
 			function init() {
-				_page.hookup(_elements);
+				_page.hookup(_elements, 'data-id');
 
 				_elements.title.text(Gopher.client.name);
 

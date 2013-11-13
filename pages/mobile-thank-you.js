@@ -35,7 +35,7 @@
 
                 _params = $.mobile.pageData;
 
-                _page.hookup(_elements);
+                _page.hookup(_elements, 'data-id');
                 _elements.title.text(Gopher.client.name);
 
                 enableEventsHandlers();

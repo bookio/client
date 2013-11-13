@@ -1,13 +1,13 @@
-#mobile-select-category-page [data-hook="content"] ul {
+#mobile-select-category-page [data-id="content"] ul {
   color: red !important;
 }
-#mobile-select-category-page [data-hook="content"] ul li {
+#mobile-select-category-page [data-id="content"] ul li {
   min-height: 90px;
 }
-#mobile-select-category-page [data-hook="content"] ul li p {
+#mobile-select-category-page [data-id="content"] ul li p {
   display: inline;
 }
-#mobile-select-category-page [data-hook="content"] ul li img {
+#mobile-select-category-page [data-id="content"] ul li img {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;

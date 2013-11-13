@@ -7,20 +7,20 @@
 <div data-role="page" id="mobile-search">
 
     <div data-role="header">
-        <a href='#' data-hook="back" data-icon='arrow-l' data-theme="b">Bakåt</a>
+        <a href='#' data-id="back" data-icon='arrow-l' data-theme="b">Bakåt</a>
     	<h1>Boka</h1>
     </div>
 
 	<div data-role="content">
         
         <div data-role="button-row">
-            <img data-hook="logo" src="../images/app-icon.png"/>
+            <img data-id="logo" src="../images/app-icon.png"/>
         </div>
 
         <ul data-role="listview" data-inset="true">
             <li>
-                <h1 data-hook="name"></h1>
-                <p data-hook="description"></p>
+                <h1 data-id="name"></h1>
+                <p data-id="description"></p>
             </li>
         </ul>        
 
@@ -28,8 +28,10 @@
             <li>
                 <h3>Ange datum du vill boka</h3>
                 <p></p>
-				<button data-hook="startDate" data-theme="a"></button>
-				<button data-hook="endDate" data-theme="a"></button>
+                <div data-id="dateButtons">
+					<button data-id="startDate" data-theme="a"></button>
+					<button data-id="endDate" data-theme="a"></button>
+                </div>
             </li>
         </ul>        
 
@@ -37,10 +39,10 @@
         <p/>
 
 		<div data-role="button-row">
-        	<a href='#' data-hook="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="b">Sök</a>
+        	<a href='#' data-id="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="b">Sök</a>
 		</div>
 
-		<div data-hook="searchResult">
+		<div data-id="searchResult">
 		  <label style="color:red">
     		  Fullbokat. Prova med annat datum.
  		  </label>

@@ -11,18 +11,29 @@
             <img src="../images/app-icon.png"/>
         </div>
 
+<<<<<<< HEAD
         <h2 data-hook="title">
+=======
+        <h2>
+            Dina kunder bokar med denna sökväg
+        </h2>  
+        
+        <input data-id="url" type="text" onClick="this.select();" placeholder="Du måste ha minst en bokningsgrupp (klicka på 'Lägg till' nedan)" readonly>
+	    <label class="helptext">Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) 'ctrl+C' (PC) för att kopiera.</label>
+
+        <h2 data-id="title">
+>>>>>>> b23d9a28c83591669fe7edcf9a6a6e8b0c3baa3b
             Bokningsgrupper
         </h2>
 
 	    <p class="helptext">En bokningsgrupp samlar symboler under det namn de ska bokas som. Exempelvis har du symbolerna <strong>Bana 1</strong>, <strong>Bana 2</strong> och <strong>Bana 3</strong>, dessa vill du att dina kunder ska boka som <strong>Tennis</strong>. Då skapar du bokningsgruppen <strong>Tennis</strong> och kopplar dina symboler till denna bokningsgrupp.</p>
         
-        <ul data-hook="listview" data-role="listview" data-inset="true">
+        <ul data-id="listview" data-role="listview" data-inset="true">
         </ul>      
                 
 	    <div data-role="button-row">
-        	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
-        	<a data-hook="add" data-role="button" data-icon="plus" data-inline="true" data-theme="g">Lägg till</a>
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
+        	<a data-id="add" data-role="button" data-icon="plus" data-inline="true" data-theme="g">Lägg till</a>
 	    </div>
                 
     </div>

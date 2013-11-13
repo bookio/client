@@ -7,8 +7,7 @@
     	//$.mobile.ajaxEnabled = false;
     	//$.mobile.linkBindingEnabled = false;
     	//$.mobile.hashListeningEnabled = false;
-    	//$.mobile.pushStateEnabled = false;
-
+    	$.mobile.pushStateEnabled = false;
     	$.mobile.hashListeningEnabled = false;
     	$.mobile.defaultPageTransition = 'fade';
 

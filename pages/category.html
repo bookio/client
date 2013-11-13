@@ -11,21 +11,21 @@
             <img src="../images/app-icon.png"/>
         </div>
         
-        <ul data-hook="listview" data-role="listview" data-inset="true">
+        <ul data-id="listview" data-role="listview" data-inset="true">
 	        <li>
                 <label>Namn</label>
-                <input data-hook="name" type="text" value="" placeholder="Namn" title="">
+                <input data-id="name" type="text" value="" placeholder="Namn" title="">
 	        </li>
         
                 
             <li>   
                 <label>Beskrivning</label>
-                <textarea data-hook="description" type="text" value="" placeholder="" title=""></textarea>
+                <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
             </li>
             
             <li>
 				<label style="display:block">Öppen för bokning</label>
-				<select data-hook="available" data-role="slider">
+				<select data-id="available" data-role="slider">
 					<option value="off" selected>Nej</option>
 					<option value="on">Ja</option>
 				</select>
@@ -33,9 +33,9 @@
 
             <li>
             	<label>Bild som ska visas</label>
-                <div data-hook="dropzone.container">
-                    <div data-hook="dropzone.border">
-                        <img data-hook="dropzone.image" src="../images/icon-drag-drop.png">
+                <div data-id="dropzone.container">
+                    <div data-id="dropzone.border">
+                        <img data-id="dropzone.image" src="../images/icon-drag-drop.png">
                     </div>
                 </div>
             </li>
@@ -44,13 +44,13 @@
             
         
 	    <div data-role="button-row">
-        	<a data-hook="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
-        	<a data-hook="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-        	<a data-hook="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
 	    </div>
     </div>
 
-    <input type="file" data-role="none" data-hook="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
+    <input type="file" data-role="none" data-id="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
 
 </div>
 

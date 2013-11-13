@@ -3,43 +3,40 @@
 
 [data-role="popup"] {
 
-	[data-hook="msgbox"] {
+	[data-id="msgbox"] {
 		padding: 0.5em;
 	
-		[data-hook="content"] {
+		[data-id="content"] {
 		
 			display: table-row;
 	
-			[data-hook="icon.container"] {
+			[data-id="icon.container"] {
 				display: table-cell;
 				vertical-align: middle;
 			}	
 	
-			[data-hook="text"] {
+			[data-id="text"] {
 	
 				white-space: normal;
-				color: black; //@darkGrayColor;
+				color: black;
 				max-width: 300px;
 				display: table-cell;
 				vertical-align: middle;
 				padding: 0.5em;
-				//font-size:16px;
 
-				[data-hook="title"] {
-					//font-size:20px !important;
+				[data-id="title"] {
 					font-weight: bold !important;
 					color: @xxx-darkGrayColor !important;
 				}
 				
-				[data-hook="message"] {
-					//font-size:18px !important;
+				[data-id="message"] {
 					color: @darkGrayColor !important;
 				}
 				
 			}	
 		}
 		
-	    [data-hook="buttons"] {
+	    [data-id="buttons"] {
 		    text-align: center;
 		    padding-top: 0.5em;
 	
@@ -48,9 +45,7 @@
 				min-width: 6em;
 		    }
 	    }		
-		
 	}
-
 }
 
 

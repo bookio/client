@@ -16,18 +16,18 @@
 			function addEmpty() {
 				var template =
 					'<li>' +
-					'<h2></h2>' +
-					'<p></p>' +
+					'<br>' +
+					'<label class="helptext"></label>' +
 					'</li>';
 
 				var row = $(template);
 
-				row.find('h2').text('Bokningsgrupper saknas'); 
-				row.find('p').text('Klicka på "Lägg till" nedan'); 
+				row.find('label').text("Klicka på '+ Lägg till' nedan för att skapa en bokningsgrupp"); 
 
 				_elements.listview.append(row);
 				
 			}
+			
 			function addItem(item) {
 				var template =
 					'<li>' +
@@ -190,13 +190,12 @@
 				enableListeners();
 
 				var isDoneCategories = loadCategories();
-				var isDoneSetURL = getGuestURL();
-				$.when(isDoneCategories, isDoneSetURL).then(function() {
+				//var isDoneSetURL = getGuestURL();
+				$.when(isDoneCategories).then(function() {
 					if (_categories.length == 0)  {
-						_elements.url.val("");
+						//_elements.url.val("");
 						addEmpty();						
 					}
-						
 						
 				});
 			}

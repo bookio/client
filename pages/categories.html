@@ -11,16 +11,11 @@
             <img src="../images/app-icon.png"/>
         </div>
 
-        <h2>
-            Dina kunder bokar med denna sökväg
-        </h2>  
-        
-        <input data-hook="url" type="text" onClick="this.select();" placeholder="Du måste ha minst en bokningsgrupp (klicka på 'Lägg till' nedan)" readonly>
-	    <label class="helptext">Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) 'ctrl+C' (PC) för att kopiera.</label>
-
         <h2 data-hook="title">
             Bokningsgrupper
         </h2>
+
+	    <p class="helptext">En bokningsgrupp samlar symboler under det namn de ska bokas som. Exempelvis har du symbolerna <strong>Bana 1</strong>, <strong>Bana 2</strong> och <strong>Bana 3</strong>, dessa vill du att dina kunder ska boka som <strong>Tennis</strong>. Då skapar du bokningsgruppen <strong>Tennis</strong> och kopplar dina symboler till denna bokningsgrupp.</p>
         
         <ul data-hook="listview" data-role="listview" data-inset="true">
         </ul>      

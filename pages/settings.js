@@ -36,6 +36,7 @@
 					var longURL = sprintf("%s?user=%s", window.location.href, user.username);
 
 					_elements.url.val(longURL);
+					_elements.urlTrial.attr('href',longURL);
 
 					/*
                     var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);

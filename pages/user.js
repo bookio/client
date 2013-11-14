@@ -37,10 +37,13 @@
 
 				if (_user.id) {
 					_elements.save.addClass('hidden');
+					
+					// Cannot delete myself!
+					if (_user.id == Gopher.user.id)
+						_elements.remove.addClass('hidden');
 				}
 				else {
 					_elements.remove.addClass('hidden');
-
 				}
 
 

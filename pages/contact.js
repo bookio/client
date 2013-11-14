@@ -62,7 +62,13 @@
 				var request = Cloudinary.uploadImage(file);
 
 				request.done(function(filename) {
+				
+					if (_client.logo) {
+						Cloudinary.deleteImage(_client.logo);
+					}
+					
 					_client.logo = filename;
+					
 					_elements.dropzone.image.attr('src', Cloudinary.imageURL(filename, {
 						crop: 'fit',
 						width: 100,
@@ -131,8 +137,7 @@
 					event.stopPropagation();
 					event.preventDefault();
 					displayImage(event.target.files[0]);
-				});;
-
+				});
 
 
 				var request = Model.Client.fetch();
@@ -152,7 +157,6 @@
 						var request = Model.Client.save(_client);
 
 						request.done(function() {
-							debugger;
 							$.mobile.popPage();
 						});
 					});

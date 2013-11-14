@@ -152,17 +152,32 @@ requirejs.config({
 	*/
 	
 		$(document).on("pageload", function() {
-			var logo = $('body').find('[src="../images/app-icon.png"]');
 			
-			if (logo && logo.length > 0) {
-				if (Gopher.client.logo) {
-					logo.attr('src', Cloudinary.imageURL(Gopher.client.logo, {
-						crop: 'fit',
-						width: 100,
-						height: 100
-					}));
-				}				
+			function updateLogo(client) {
+				var logo = $('body').find('[data-role="logo"]');
+
+				logo.each(function(index) {
+					if (client.logo) {
+						logo.attr('src', Cloudinary.imageURL(client.logo, {
+							crop: 'fit',
+							width: 100,
+							height: 100
+						}));
+					}	
+					else
+						logo.attr('src', '../images/app-icon.png');
+					
+				});
+				
+				
 			}
+			
+			Notifications.on('client-updated', function(client) {
+				updateLogo(Gopher.client);				
+			});
+
+			updateLogo(Gopher.client);				
+
 		});
 
 		$(document).on("pagebeforechange", function(event, params) {

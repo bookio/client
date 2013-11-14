@@ -1,6 +1,7 @@
 (function() {
 
 	var dependencies = [
+		'../components/msgbox'
 	];
 
 	define(dependencies, function() {

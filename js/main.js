@@ -150,13 +150,21 @@ requirejs.config({
         });
 //        .trigger("hashchange");
 	*/
+
+		$(document).on("pageremove", function() {
+					console.log('Stopped listening...!');
+			Notifications.off('client-updated.logo');
+		});
 	
-		$(document).on("pageload", function() {
-			
+		$(document).on("pageload", function(event) {
+
+			var page = $(this);
+						
 			function updateLogo(client) {
-				var logo = $('body').find('[data-role="logo"]');
+				var logo = page.find('[data-role="logo"]');
 
 				logo.each(function(index) {
+					console.log('Replacing logo!');
 					if (client.logo) {
 						logo.attr('src', Cloudinary.imageURL(client.logo, {
 							crop: 'fit',
@@ -172,7 +180,7 @@ requirejs.config({
 				
 			}
 			
-			Notifications.on('client-updated', function(client) {
+			Notifications.on('client-updated.logo', function(client) {
 				updateLogo(Gopher.client);				
 			});
 

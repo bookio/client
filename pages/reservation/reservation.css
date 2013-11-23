@@ -1,0 +1,33 @@
+#reservation-page [data-id="contact"] {
+  height: 8em;
+}
+#reservation-page [data-role="button"] {
+  -webkit-border-radius: 1.2em;
+  -moz-border-radius: 1.2em;
+  border-radius: 1.2em;
+}
+#reservation-page [data-role="button-row"] [data-role="button"] {
+  min-width: 8em;
+}
+#reservation-page [data-role="list-divider"] {
+  opacity: 0.8;
+}
+#reservation-page li {
+  background-color: rgba(238, 238, 238, 0.5);
+}
+#reservation-page .ui-controlgroup-controls {
+  width: 100%;
+}
+#reservation-page .ui-checkbox {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+#reservation-page [data-id="startdate.button"] [data-id="startdate.text"] {
+  color: #b3b3b3;
+}
+#reservation-page [data-id="enddate.button"] [data-id="enddate.text"] {
+  color: #b3b3b3;
+}
+#reservation-page [data-id=popup] [data-role=listview] {
+  min-width: 300px;
+}

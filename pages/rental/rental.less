@@ -1,0 +1,56 @@
+@import "../../css/bookio.less";
+
+
+#rental-page {
+	
+	[data-id="description"] {
+		height:5em;
+	}
+	
+	[data-role="button"] {
+    	.border-radius(1.2em);
+	}
+
+	[data-role="content"] {
+
+            	
+    	.opacity(0);
+
+		[data-id="icon.container"] {
+    		span {
+        		//text-align: left;
+    		}
+    		
+		}		
+
+		[data-id="category.container"] {
+    		[data-id="category.button"] {
+        		span {
+            		text-align: left;
+        		}
+    		}		
+		}
+		
+	}
+		
+	[data-role="button-row"] {
+		[data-role="button"] {
+			min-width: 8em;
+		}
+	}
+	
+    [data-id="popup"] {
+        [data-role=listview] {
+            min-width:300px;
+        }
+    }
+    
+    .ui-block-a, .ui-block-b {
+        padding: 5px;
+    }
+
+	.ui-listview-filter-inset {
+		margin-top: 0;
+	}
+	
+}

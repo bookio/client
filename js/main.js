@@ -1,83 +1,27 @@
+
 requirejs.config({
 	baseUrl: '.',
 
-	paths: {
+	Xpaths: {
 		'jquery': 'lib/jquery/jquery-1.10.2',
-		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2'
-	},
-
-	shim: {
-		'jquery-mobile': {
-			deps: ['jquery', 'js/config-jquery-mobile']
-		},
-
-		'js/core': {
-			deps: ['jquery']
-		},
-
-
-		'js/tools': {
-			deps: ['js/sprintf']
-		},
-
-		'js/model': {
-			deps: ['js/gopher', 'js/notifications']
-		},
-
-		'js/gopher': {
-			deps: ['jquery', 'js/tools', 'js/base64', 'lib/jquery/plugins/jquery.cookie']
-		},
-
-		'js/config-jquery-mobile': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.cookie': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.debounce': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.hittest': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.hookup': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.isotope': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.mobile-events': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.special-events': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.spin': {
-			deps: ['jquery']
-		},
-
-		'lib/jquery/plugins/jquery.transit': {
-			deps: ['jquery']
-		}
+		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2',
+		'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
+		'components' : './components',
+		'pages' : './pages',
+		'js' : './js',
+		'lib' : './lib',
+		'less' : './less'
 	},
 
 
 	packages: [{
 			name: 'css',
-			location: './lib/require-css',
+			location: 'lib/require-css',
 			main: 'css'
 		},
 		{
 			name: 'text',
-			location: './lib/require-text',
+			location: 'lib/require-text',
 			main: 'text'
 		}
 	],
@@ -86,166 +30,16 @@ requirejs.config({
 });
 
 
+
 (function() {
 
-	var modules = [
-		'jquery-mobile',
-		'css!./less/styles',
 
-		// Make it load the text plugin now since the 
-		// page local path will be changed by jQuery Mobile
-		'text!index.html'
+
+	var modules = [
+		'widgets/datepicker/datepicker'
 	];
 
-	if (false) {
-		var files = [
-			'js/core'
-		];
-
-		modules.push.apply(modules, files)
-	}
-	else {
-		var files = [
-			'lib/jquery/plugins/jquery.cookie',
-			'lib/jquery/plugins/jquery.debounce',
-			'lib/jquery/plugins/jquery.hittest',
-			'lib/jquery/plugins/jquery.hookup',
-			'lib/jquery/plugins/jquery.isotope',
-			'lib/jquery/plugins/jquery.mobile-events',
-			'lib/jquery/plugins/jquery.special-events',
-			'lib/jquery/plugins/jquery.spin',
-			'lib/jquery/plugins/jquery.transit',
-
-			'js/base64',
-			'js/sha1',
-			'js/sprintf',
-			'js/tools',
-			'js/date',
-			'js/gopher',
-			'js/notifications',
-			'js/model',
-			'js/cloudinary'
-		];
-		modules.push.apply(modules, files)
-
-	}
-
 	require(modules, function() {
-
-		var pages = [];
-
-
-
-    
-    
-    	/*
-        $(window).bind("hashchange", function () {
-            var url = window.location.href,
-                hash = $.mobile.path.parseUrl(url).hash;
-            console.log(hash);
-            if (hash == "#login") {
-	            login();
-            }
-
-        });
-//        .trigger("hashchange");
-	*/
-
-		$(document).on("pageremove", function() {
-					console.log('Stopped listening...!');
-			Notifications.off('client-updated.logo');
-		});
-	
-		$(document).on("pageload", function(event) {
-
-			var page = $(this);
-						
-			function updateLogo(client) {
-				var logo = page.find('[data-role="logo"]');
-
-				logo.each(function(index) {
-					console.log('Replacing logo!');
-					if (client.logo) {
-						logo.attr('src', Cloudinary.imageURL(client.logo, {
-							crop: 'fit',
-							width: 100,
-							height: 100
-						}));
-					}	
-					else
-						logo.attr('src', '../images/app-icon.png');
-					
-				});
-				
-				
-			}
-			
-			Notifications.on('client-updated.logo', function(client) {
-				updateLogo(Gopher.client);				
-			});
-
-			updateLogo(Gopher.client);				
-
-		});
-
-		$(document).on("pagebeforechange", function(event, params) {
-			if (params.options.reverse)
-				return;
-
-			if (isObject(params.toPage)) {
-				pages.push(params);
-			}
-			else
-				$.mobile.pageData = (params && params.options && params.options.pageData) ? params.options.pageData : null;
-
-		});
-
-
-		$.mobile.pushPage = function(page, options) {
-
-			var defaults = {
-				changeHash: false,
-				transition: 'fade',
-				showLoadMsg: false
-			};
-
-			options = $.extend({}, defaults, options);
-
-			if (options.require) {
-				require(isString(options.require) ? [options.require] : options.require, function() {
-					$.mobile.changePage(page, options);
-				});
-			}
-			else
-				$.mobile.changePage(page, options);
-
-		}
-
-		$.mobile.gotoPage = function(page, options) {
-			pages = [];
-			$.mobile.pushPage(page, options);
-		}
-
-
-		$.mobile.popPage = function() {
-
-			if (pages.length > 0) {
-				var thisPage = pages.pop();
-
-				if (pages.length > 0) {
-					var nextPage = pages[pages.length - 1];
-
-					var options = {};
-					options.changeHash = false;
-					options.showLoadMsg = false;
-					options.transition = thisPage.options.transition;
-					options.reverse = true;
-
-					$.mobile.changePage(nextPage.absUrl, options);
-				}
-			}
-		}
-
 
 		$.urlParam = function(name) {
 			name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -254,11 +48,45 @@ requirejs.config({
 			return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}
 
-		window.history.back = $.mobile.popPage;
+		function login() {
+			$.mobile.pages.goto('pages/login/login.html');
+		}
 
-		$.mobile.gotoPage("pages/startup.html", {
-			require: 'pages/startup'
-		});
+		function main() {
+			$.mobile.pages.goto('pages/main/main.html');
+		}
+
+		function mobile() {
+			$.mobile.pages.goto('pages/mobile/select-category.html');
+		}
+
+		if ($.urlParam('user')) {
+			var user = $.urlParam('user');
+			var request = Gopher.login(user);
+
+			request.fail(function() {
+				debugger;
+			});
+
+			request.done(function(data) {
+				mobile();
+			});
+		}
+
+		else if (Gopher.sessionID != '') {
+			var request = Gopher.verify();
+
+			request.fail(function() {
+				login();
+			});
+
+			request.done(function(data) {
+				main();
+			});
+
+		}
+		else
+			login();
 		
 
 	});

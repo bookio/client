@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+<div id="category-page" data-role="page">
+    
+    <div data-role="content">
+        <div data-role="pagelogo">
+        </div>
+
+        
+        <ul data-id="listview" data-role="listview" data-inset="true">
+	        <li>
+                <label>Namn</label>
+                <input data-id="name" type="text" value="" placeholder="Namn" title="">
+	        </li>
+        
+                
+            <li>   
+                <label>Beskrivning</label>
+                <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+            </li>
+            
+            <li>
+				<label style="display:block">Öppen för bokning</label>
+				<select data-id="available" data-role="slider">
+					<option value="off" selected>Nej</option>
+					<option value="on">Ja</option>
+				</select>
+            </li>
+
+            <li>
+            	<label>Bild som ska visas</label>
+	    		<div style="text-align:center">
+			        <div data-id="dropzone" data-role="imagepicker">
+			        </div>
+			    </div>
+            </li>
+        
+        </ul>        
+            
+        
+	    <div data-role="button-row">
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
+	    </div>
+    </div>
+
+     
+
+</div>
+
+</body></html>

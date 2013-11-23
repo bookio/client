@@ -1,0 +1,100 @@
+[data-role="datepicker"] {
+  padding-bottom: 0.25em;
+}
+[data-role="datepicker"] table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0.2em;
+}
+[data-role="datepicker"] th,
+[data-role="datepicker"] tr,
+[data-role="datepicker"] td {
+  padding: 0.3em;
+}
+[data-role="datepicker"] tr {
+  height: 2em;
+}
+[data-role="datepicker"] td {
+  width: 2em;
+}
+[data-role="datepicker"] .scroll {
+  cursor: pointer;
+  opacity: 0.4;
+}
+[data-role="datepicker"] .scroll:hover {
+  opacity: 0.8;
+}
+[data-role="datepicker"] .title {
+  text-align: center;
+  color: #9a9a9a;
+}
+[data-role="datepicker"] .daynames {
+  max-height: 15px;
+}
+[data-role="datepicker"] .dayname {
+  color: #b3b3b3;
+  font-size: 80%;
+  max-height: 15px;
+}
+[data-role="datepicker"] .weeknumber,
+[data-role="datepicker"] .padding {
+  color: #cdcdcd;
+  font-size: 70%;
+  text-align: right;
+}
+[data-role="datepicker"] .day {
+  text-align: right;
+  color: #676767;
+  border: 1px solid transparent;
+}
+[data-role="datepicker"] .day.holiday {
+  color: #cc0000;
+}
+[data-role="datepicker"] .day.bold {
+  font-weight: bold;
+}
+[data-role="datepicker"] .day.grayed {
+  color: rgba(103, 103, 103, 0.7);
+}
+[data-role="datepicker"] .day.disabled {
+  color: rgba(103, 103, 103, 0.5);
+}
+[data-role="datepicker"] .day.selected {
+  border: 1px solid rgba(153, 153, 153, 0.19999999999999996);
+  background: rgba(153, 153, 153, 0.19999999999999996);
+}
+[data-role="datepicker"] .day.grayed.holiday {
+  color: rgba(153, 51, 51, 0.15000000000000002);
+}
+[data-role="datepicker"] .day:not(.grayed):hover {
+  cursor: pointer;
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #0081c2;
+  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+[data-role="datepicker"] .day.grayed:hover {
+  cursor: pointer;
+  color: #ffffff;
+  text-shadow: none;
+  background-color: #c7c7c7;
+  background-image: -moz-linear-gradient(top, #cdcdcd, #c0c0c0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cdcdcd), to(#c0c0c0));
+  background-image: -webkit-linear-gradient(top, #cdcdcd, #c0c0c0);
+  background-image: -o-linear-gradient(top, #cdcdcd, #c0c0c0);
+  background-image: linear-gradient(to bottom, #cdcdcd, #c0c0c0);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffcdcdcd', endColorstr='#ffc0c0c0', GradientType=0);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}

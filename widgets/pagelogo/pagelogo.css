@@ -1,0 +1,26 @@
+[data-role="pagelogo"] {
+  text-align: center;
+  height: 75px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+}
+[data-role="pagelogo"] div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: center center no-repeat url(./images/logo.png);
+}
+[data-role="pagelogo"] div.background-image-none {
+  background-image: none;
+}
+[data-role="pagelogo"] div img {
+  position: absolute;
+  max-height: 90%;
+  max-width: 90%;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+}

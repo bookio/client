@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<div data-role="page" id="mobile-search">
+
+    <div data-role="header">
+        <a href='#' data-id="back" data-icon='arrow-l' data-theme="b">Bakåt</a>
+    	<h1>Boka</h1>
+    </div>
+
+	<div data-role="content">
+        
+        <div data-role="pagelogo">
+        </div>
+
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <h1 data-id="name"></h1>
+                <p data-id="description"></p>
+            </li>
+        </ul>        
+
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <h3>Ange datum du vill boka</h3>
+                <p></p>
+                <div data-id="dateButtons">
+					<button data-id="startDate" data-theme="a"></button>
+					<button data-id="endDate" data-theme="a"></button>
+                </div>
+            </li>
+        </ul>        
+
+        <p/>
+        <p/>
+
+		<div data-role="button-row">
+        	<a href='#' data-id="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="b">Sök</a>
+		</div>
+
+		<div data-id="searchResult">
+		  <label style="color:red">
+    		  Fullbokat. Prova med annat datum.
+ 		  </label>
+		</div>
+
+
+	</div><!-- /content -->
+
+</div>
+
+
+</body></html>

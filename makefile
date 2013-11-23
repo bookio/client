@@ -36,28 +36,11 @@ LESS_FILES = $(filter %.less, $(ALL_FILES))
 CSS_FILES = $(patsubst %.less,%.css,$(LESS_FILES))
 
 SITE_FILES = $(addprefix $(SITE_PATH)/,$(CSS_FILES)) $(addprefix $(SITE_PATH)/,$(ALL_FILES)) 
-MAKE_FILES = js/core.js $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
+MAKE_FILES = $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 
-PLUGIN_FILES = $(shell find lib/jquery/plugins -type f -not -path '*/\.*')
-
-JQUERY_FILES = \
-		lib/jquery/jquery-1.10.2.js \
-		lib/jquery-mobile/jquery.mobile-1.3.2.js
-
-CORE_FILES = \
-		$(PLUGIN_FILES) \
-		js/base64.js \
-		js/sprintf.js \
-		js/sha1.js \
-		js/tools.js \
-		js/gopher.js \
-		js/date.js \
-		js/model.js \
-		js/cloudinary.js \
-		js/notifications.js 
 
 all:
-	@echo $(CORE_FILES)
+	@echo $(MAKE_FILES)
 
 clean:
 	$(RM) -r $(SITE_PATH)
@@ -74,8 +57,6 @@ safari: $(MAKE_FILES)
 www: $(MAKE_FILES)
 	$(RSYNC) $(SITE_PATH)/* $(SSH_USER)@$(SSH_HOST):$(SSH_PATH) 
 
-js/core.js: $(CORE_FILES)
-	@cat $^ > $@
 
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)

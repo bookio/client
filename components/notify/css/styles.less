@@ -1,0 +1,30 @@
+@import "../../../css/bookio.less";
+
+
+[data-id="notify"] {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+
+    .border-radius(20px);
+    background-color: @bookioBlue;
+    display: none;
+    color: white;
+    opacity: 0.5;
+    position: fixed;
+    max-width: 300px;
+    min-width: 13em;
+    margin:0 auto;
+    padding: 10px;
+    font-size: large;
+    font-weight: normal;
+    font-style: normal;
+    z-index: 99999999;
+    text-align: center;
+    text-shadow: none;
+     
+    [data-id="message-1"] {
+    }
+
+    [data-id="message-2"] {
+        opacity: 0.5;
+    }
+}

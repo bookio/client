@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+<div id="rental-page" data-role="page">
+
+    <div data-role="content" data-id="content">
+        <div data-role="pagelogo">
+        </div>
+
+         
+        <ul data-id="listview" data-role="listview" data-inset="true">
+
+            <li>        
+	            <label>Namn</label>
+	            <input data-id="name" type="text" value="" title="">
+	            <label class="helptext">Exempel 'Bana 1', 'Lisa', 'Mini Cooper (ADE 234)'</label>
+            </li>
+            
+            <li>
+	            <label>Anteckning</label>
+	            <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+				<label class="helptext">För internt bruk, beskrivningen som kunder ser anger du på Bokningsgruppen</label>
+            </li>
+            
+            <li>
+	            <div class="ui-grid-a">
+	            	<div class="ui-block-a">
+			        	<label>Antal som kan boka samtidigt</label>
+			        	<input data-id="depth" type="text" value="1" title=""/>
+	            	</div>
+	            	<div class="ui-block-b">
+						<label style="display:block">Tillgänglig för bokning</label>
+						<select name="settings-rental-available" data-id="available" data-role="slider">
+							<option value="off">Nej</option>
+							<option value="on" selected>Ja</option>
+						</select>
+	            	</div>
+	            </div> 
+            </li>            
+
+            <li>
+            	<div data-id="category.container">
+                    <label>
+                        Bokningsgrupp
+                    </label>
+                    <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="Bokas under namnet..." data-theme="c">	                    
+                    </ul>
+                    
+                   <!-- <a data-id="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
+                        <span data-id="category.text">&nbsp</span>
+                    </a>-->
+                    
+                    <label class="helptext">Exempel 'Squash', 'Klippning', 'Bil (liten)'</label>
+				</div>
+            </li>
+            
+            <li>
+                <div data-id="icon.container">
+                    <label>
+                        Symbol
+                    </label>
+                    <a data-id="icon.button" data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
+                        <img data-id="icon.image">
+                    </a>
+                </div>
+            </li>
+
+
+        </ul>        
+
+
+        
+	    <div data-role="button-row">
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="arrow-l">Tillbaka</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
+	    </div>
+    </div>
+
+	<div data-id="popup" data-role="popup">
+	</div>
+
+</div>
+
+</body></html>

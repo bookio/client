@@ -16,7 +16,6 @@
 
                 var popup = $('<div data-role="popup"></div>').popup({
                     dismissible: true,
-                    overlayTheme: 'c',
                     theme: "c",
                     transition: "pop",
                     positionTo: button
@@ -39,12 +38,9 @@
             }
 
             function updateButtonTexts() {
-                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
-                _elements.startDate.button('refresh');
 
-                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
-                _elements.endDate.button('refresh');
-
+                _elements.startDate.find('.ui-btn-text').text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
+                _elements.endDate.find('.ui-btn-text').text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
             }
 
             function enableDisable() {

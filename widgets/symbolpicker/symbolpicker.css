@@ -1,0 +1,72 @@
+[data-role="symbolpicker"] {
+  /**** Isotope Filtering ****/
+  /**** Isotope CSS3 transitions ****/
+  /**** disabling Isotope CSS3 transitions ****/
+  /**** End Isotope ****/
+  overflow: hidden;
+  padding: 1em;
+}
+[data-role="symbolpicker"] .isotope-item {
+  z-index: 2;
+}
+[data-role="symbolpicker"] .isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+[data-role="symbolpicker"] .isotope,
+[data-role="symbolpicker"] .isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+[data-role="symbolpicker"] .isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+[data-role="symbolpicker"] .isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -ms-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+}
+[data-role="symbolpicker"] .isotope.no-transition,
+[data-role="symbolpicker"] .isotope.no-transition .isotope-item,
+[data-role="symbolpicker"] .isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+[data-role="symbolpicker"] .isotope-item img {
+  padding: 0.5em;
+}
+[data-role="symbolpicker"] .isotope-item img:hover {
+  background-color: #c8d9f4;
+}
+[data-role="symbolpicker"] .isotope-item img.selected {
+  background-color: #e6e6e6;
+}
+[data-role="symbolpicker"] .isotope-item img.selected:hover {
+  background-color: #c8d9f4;
+}
+[data-role="symbolpicker"] [data-role="controlgroup"] {
+  text-align: center;
+}
+[data-role="symbolpicker"] .supercontainer {
+  padding: 0.5em;
+  border: 1px solid #e6e6e6;
+  overflow: scroll;
+  height: 400px;
+}
+[data-role="symbolpicker"] .symbol {
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}

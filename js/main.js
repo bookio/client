@@ -36,10 +36,14 @@ requirejs.config({
 
 
 	var modules = [
-		'widgets/datepicker/datepicker'
 	];
 
 	require(modules, function() {
+
+			//var request = Gopher.verify();
+
+			//$.mobile.pages.goto('pages/test/test.html');
+			//return;
 
 		$.urlParam = function(name) {
 			name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");

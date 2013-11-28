@@ -1,5 +1,5 @@
 
-define(['module', 'css!./css/styles.css'], function(module) {
+define(['css!./notify'], function() {
 
 	var _element = null;
     var _counter = 0;	

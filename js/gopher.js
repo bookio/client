@@ -41,7 +41,7 @@
 
 		console.log(sprintf('Request failed. %s', message));
 		
-		require(['../components/msgbox/msgbox.js'], function() {
+		require(['../../components/msgbox/msgbox.js'], function() {
 			MsgBox.show({
 				icon:'error',
 				message:message,

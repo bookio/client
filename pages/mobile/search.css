@@ -10,3 +10,15 @@
 #mobile-search [data-role="button-row"] [data-role="button"] {
   min-width: 12em;
 }
+#mobile-search img {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 10px;
+  max-width: 80px;
+  max-height: 80px;
+}

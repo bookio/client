@@ -1,6 +1,8 @@
+
 @import "../lib/jquery-mobile/jquery.mobile-1.3.2.css";
 @import "themes.less";
 @import "bookio.less";
+
 
 
 * {
@@ -63,13 +65,17 @@ h4.bookio-style {
 		
 }
 
+.ui-focus {
+	overflow: visible;
+	padding: 10px 10px 10px 10px;
+
+}
 
 // Make margins tighter to avoid ellipsis in headers/titles
 .ui-header .ui-title {
     margin-right: 5%;
     margin-left: 5%;
 }
-
 
 div.ui-input-text {
 	.border-radius(1.2em);
@@ -90,10 +96,6 @@ textarea.ui-input-text {
 	background: rgba(255, 255, 255, 0.4);
 }
 
-.ui-header, ui-footer {
-    .vertical-gradient(lighten(black, 50%), black);
-	
-}
 
 .ui-mobile-viewport {
     background-image: url(../images/backgrounds/linen.png);    
@@ -141,6 +143,4 @@ textarea.ui-input-text {
 	    }
 	}    
 }
-
-
 

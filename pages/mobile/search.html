@@ -6,20 +6,17 @@
 
 <div data-role="page" id="mobile-search">
 
-    <div data-role="header">
+    <div data-role="header" data-theme="b">
         <a href='#' data-id="back" data-icon='arrow-l' data-theme="b">Bakåt</a>
     	<h1>Boka</h1>
     </div>
 
 	<div data-role="content">
         
-        <div data-role="pagelogo">
-        </div>
-
-
         <ul data-role="listview" data-inset="true">
             <li>
-                <h1 data-id="name"></h1>
+            	<img data-id="image" class="ui-li-thumb">
+                <h2 data-id="name"></h2>
                 <p data-id="description"></p>
             </li>
         </ul>        
@@ -29,8 +26,8 @@
                 <h3>Ange datum du vill boka</h3>
                 <p></p>
                 <div data-id="dateButtons">
-					<button data-id="startDate" data-theme="a"></button>
-					<button data-id="endDate" data-theme="a"></button>
+					<button data-id="startDate" data-theme="b"></button>
+					<button data-id="endDate" data-theme="b"></button>
                 </div>
             </li>
         </ul>        

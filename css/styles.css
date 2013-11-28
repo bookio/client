@@ -133,6 +133,10 @@ h4.bookio-style {
   font-weight: 100;
   padding-left: 1em;
 }
+.ui-focus {
+  overflow: visible;
+  padding: 10px 10px 10px 10px;
+}
 .ui-header .ui-title {
   margin-right: 5%;
   margin-left: 5%;
@@ -156,17 +160,6 @@ textarea.ui-input-text {
   padding-left: 1em;
   padding-right: 1em;
   background: rgba(255, 255, 255, 0.4);
-}
-.ui-header,
-ui-footer {
-  background-color: #4d4d4d;
-  background-image: -moz-linear-gradient(top, #808080, #000000);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#808080), to(#000000));
-  background-image: -webkit-linear-gradient(top, #808080, #000000);
-  background-image: -o-linear-gradient(top, #808080, #000000);
-  background-image: linear-gradient(to bottom, #808080, #000000);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff808080', endColorstr='#ff000000', GradientType=0);
 }
 .ui-mobile-viewport {
   background-image: url(../images/backgrounds/linen.png);

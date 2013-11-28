@@ -140,7 +140,7 @@ define(['css!./timeslider'], function() {
 	       function scroll() {
 	           if (isFunction(_options.scroll))
     	           _options.scroll(delta);
-	           valueChanged();
+	           //valueChanged();
             }
     	    if (_scrollTimer == null) {
         	    _scrollTimer = setInterval(scroll, 80);

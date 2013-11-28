@@ -84,12 +84,4 @@
 
 
 
-define(['text!./symbolpicker.html', 'css!./symbolpicker'], function(template) {
-
-	
-	
-	return ImagePicker;
-
-});
-
   

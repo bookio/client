@@ -23,7 +23,7 @@
             function enableEventsHandlers() {
 
                 _elements.back.on('tap', function (event) {
-                    $.mobile.pages-pop();
+                    $.mobile.pages.pop();
                 });
 
                 _elements.customer.email.on('blur', function (event) {

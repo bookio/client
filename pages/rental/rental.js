@@ -216,6 +216,10 @@
 						$(this).remove();
 					});
 
+					popup.on('popupbeforeposition', function() {
+						symbolpicker.symbolpicker('filter', '*');
+					});
+
 					symbolpicker.on("symbolselected", function(event, icon) {
 						popup.popup('close');
 						_rental.icon_id = icon.id;

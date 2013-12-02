@@ -16,21 +16,37 @@
         margin-top: 1em;
     }
     
+    [data-id="dateButtons"] {
+	    text-align: center;
+    }
+
+    [data-role="listview"] {
+	    text-align: center;
+    }
+    [data-role="button"] {
+	    .border-radius(2em);
+        //max-width: 12em;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    
     [data-role="button-row"] {
+    	text-align: center;
         [data-role="button"] {
-            min-width: 12em;
+            //min-width: 12em;
+            width: 12em;
         }
     }
     
     img {
-    .border-radius(8px);
-    position:absolute;
-    top:0;
-    bottom:0;
-    margin:auto;
-    left:10px;
-    max-width:80px;
-    max-height:80px;
+	    .border-radius(8px);
+	    position:absolute;
+	    top:0;
+	    bottom:0;
+	    margin:auto;
+	    left:10px;
+	    max-width:80px;
+	    max-height:80px;
 	}  
 
 }

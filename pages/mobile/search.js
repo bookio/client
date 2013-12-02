@@ -39,8 +39,8 @@
 
             function updateButtonTexts() {
 
-                _elements.startDate.find('.ui-btn-text').text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
-                _elements.endDate.find('.ui-btn-text').text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
+                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
+                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
             }
 
             function enableDisable() {

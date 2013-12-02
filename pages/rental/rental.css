@@ -6,9 +6,16 @@
   -moz-border-radius: 1.2em;
   border-radius: 1.2em;
 }
+#rental-page [role="application"] {
+  margin: 0px;
+  margin-top: 4px;
+}
 #rental-page [data-role="content"] {
   opacity: 0;
   filter: alpha(opacity=0);
+}
+#rental-page [data-role="content"] li.ui-li-has-thumb {
+  padding: 0.7em 1em;
 }
 #rental-page [data-role="content"] [data-id="category.container"] [data-id="category.button"] span {
   text-align: left;

@@ -11,16 +11,23 @@
     	.border-radius(1.2em);
 	}
 
+	// Center the checkbox
+	[role="application"] {
+    	margin:0px;
+    	margin-top: 4px;
+	}
+
 	[data-role="content"] {
 
             	
     	.opacity(0);
 
+    	// Fix for jQm 1.4.0
+    	li.ui-li-has-thumb {
+	    	padding: 0.7em 1em;	
+    	}
+    	
 		[data-id="icon.container"] {
-    		span {
-        		//text-align: left;
-    		}
-    		
 		}		
 
 		[data-id="category.container"] {

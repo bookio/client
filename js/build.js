@@ -3,7 +3,7 @@
 
 @codekit-prepend "../lib/jquery/jquery-1.10.2.js";
 @codekit-prepend "../lib/jquery-mobile/jquery.mobile.config.js";
-@codekit-prepend "../lib/jquery-mobile/jquery.mobile-1.3.2.js";
+@codekit-prepend "../lib/jquery-mobile/jquery.mobile-1.4.0.js";
 
 @codekit-prepend "../lib/jquery/plugins/jquery.cookie.js";
 @codekit-prepend "../lib/jquery/plugins/jquery.hookup.js";

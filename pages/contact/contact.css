@@ -1,1 +1,63 @@
-#contact-page #foobarX{text-align:center;display:block;width:100%;background-color:red}#contact-page .center{text-align:center}#contact-page [data-role="content"] .ui-grid-a .ui-block-a{padding-right:.5em}#contact-page [data-role="content"] .ui-grid-a .ui-block-b{padding-left:.5em}#contact-page [data-role="content"] .ui-grid-b .ui-block-a{padding-right:.5em}#contact-page [data-role="content"] .ui-grid-b .ui-block-b{padding-right:.5em;padding-left:.5em}#contact-page [data-role="content"] .ui-grid-b .ui-block-c{padding-left:.5em}#contact-page [data-role="content"] [data-id="address"]{height:6em}#contact-page [data-role="button-row"] [data-role="button"]{min-width:8em}
+#contact-page #foobarX {
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: red;
+}
+#contact-page .center {
+  text-align: center;
+}
+#contact-page [data-role="content"] {
+  /*
+
+        [data-id="dropzone.container"] {
+            text-align: center;
+
+
+            [data-id="dropzone.image"] {
+                vertical-align: middle;
+                //border: 3px solid white;
+                max-width:80px;
+                max-height:80px;
+                .border-radius(8px);
+
+            }
+
+            [data-id="dropzone.border"] {
+                .border-radius(12px);
+                
+                border: 4px dashed @x-lightGrayColor;
+                height:100px;
+                width:100px;           
+                display: inline-block; 
+                line-height: 100px;
+                vertical-align: middle;   
+                cursor: pointer;
+
+            }
+        }
+        */
+
+}
+#contact-page [data-role="content"] .ui-grid-a .ui-block-a {
+  padding-right: 0.5em;
+}
+#contact-page [data-role="content"] .ui-grid-a .ui-block-b {
+  padding-left: 0.5em;
+}
+#contact-page [data-role="content"] .ui-grid-b .ui-block-a {
+  padding-right: 0.5em;
+}
+#contact-page [data-role="content"] .ui-grid-b .ui-block-b {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+#contact-page [data-role="content"] .ui-grid-b .ui-block-c {
+  padding-left: 0.5em;
+}
+#contact-page [data-role="content"] [data-id="address"] {
+  height: 6em;
+}
+#contact-page [data-role="button-row"] [data-role="button"] {
+  min-width: 8em;
+}

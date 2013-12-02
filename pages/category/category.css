@@ -1,1 +1,6 @@
-#category-page [data-id="description"]{height:8em}#category-page [data-role="button-row"] [data-role="button"]{min-width:8em}
+#category-page [data-id="description"] {
+  height: 6em !important;
+}
+#category-page [data-role="button-row"] [data-role="button"] {
+  min-width: 8em;
+}

@@ -1,7 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'../../widgets/imagepicker/imagepicker'
+		'../../widgets/imagepicker/imagepicker',
+		'css!./contact'
 	];
 
 	define(dependencies, function(html) {

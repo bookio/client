@@ -1,1 +1,22 @@
-#categories-page [data-id="url"]{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;-o-user-select:text;user-select:text}#categories-page ul li{min-height:90px}#categories-page ul li p{display:inline}#categories-page ul li img{-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;position:absolute;top:0;bottom:0;margin:auto;left:10px;max-width:80px;max-height:80px}
+#categories-page [data-id="url"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+#categories-page ul li p {
+  display: inline;
+}
+#categories-page ul li img {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 10px;
+  max-width: 80px;
+  max-height: 80px;
+}

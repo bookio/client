@@ -102,7 +102,6 @@
 
                 _page.hookup(_elements, 'data-id');
 
-                _elements.title.text(Gopher.client.name);
                 _elements.category.name.text(_params.category.name);
                 _elements.category.description.text(_params.category.description);
 

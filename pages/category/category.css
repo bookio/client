@@ -1,4 +1,4 @@
-#category-page [data-id="description"] {
+#category-page [data-role="content"] [data-id="description"] {
   height: 6em !important;
 }
 #category-page [data-role="button-row"] [data-role="button"] {

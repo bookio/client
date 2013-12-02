@@ -55,8 +55,7 @@
   padding-left: 0.5em;
 }
 #contact-page [data-role="content"] [data-id="address"] {
-  height: 70px !important;
-  background: red !important;
+  height: 70px;
 }
 #contact-page [data-role="button-row"] [data-role="button"] {
   min-width: 8em;

@@ -22,6 +22,8 @@
 						filter: $(this).attr('data-filter')
 					});
 				});
+				
+
 
 				var isotope = widget.element.find('.container');
 
@@ -46,10 +48,14 @@
 					});
 
 				}
-
+			}
+			
+			this.filter = function(value) {
+				var isotope = widget.element.find('.container');
 				isotope.isotope({
-					filter: '*'
+					filter: value
 				});
+				
 			}
 
 			init();
@@ -67,6 +73,10 @@
 
 		widget.symbols = function(value) {
 			this.widget.symbols(value);
+		}
+
+		widget.filter = function(value) {
+			this.widget.filter(value);
 		}
 
 

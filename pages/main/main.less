@@ -28,12 +28,16 @@ html, body {
 	    border:none;
 
 	    [data-role=button] {
-    	    height:30px;
+    	    //height:30px;
 
 	    }
 	    [data-id="startdate.button"], [data-id="enddate.button"] {
 	    
-    	    width:8em;
+    	    width:12em;
+    	    margin: 0px;
+    	    margin-left: 0.5em;
+    	    margin-right: 0.5em;
+    	    .border-radius(2em);
 
             .year {
             	color: @xx-lightGrayColor;
@@ -56,9 +60,13 @@ html, body {
             }
 	    }
 	    
+	    [data-id="popup.menu"] {
+		    display: inline-block;
+	    }
+
 	    [data-id="popup.icon"] {
 	    	cursor: pointer;
-			width: 80px;
+			width: 60px;
 			display: inline-block;
 			vertical-align: middle;
 			text-align: center;

@@ -17,12 +17,15 @@ body {
   background-color: transparent;
   border: none;
 }
-#main-page [data-role=footer] [data-role=button] {
-  height: 30px;
-}
 #main-page [data-role=footer] [data-id="startdate.button"],
 #main-page [data-role=footer] [data-id="enddate.button"] {
-  width: 8em;
+  width: 12em;
+  margin: 0px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
 }
 #main-page [data-role=footer] [data-id="startdate.button"] .year,
 #main-page [data-role=footer] [data-id="enddate.button"] .year {
@@ -46,9 +49,12 @@ body {
   color: #cdcdcd;
   font-size: 80%;
 }
+#main-page [data-role=footer] [data-id="popup.menu"] {
+  display: inline-block;
+}
 #main-page [data-role=footer] [data-id="popup.icon"] {
   cursor: pointer;
-  width: 80px;
+  width: 60px;
   display: inline-block;
   vertical-align: middle;
   text-align: center;

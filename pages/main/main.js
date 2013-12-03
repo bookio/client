@@ -209,6 +209,28 @@
 				});
 
 
+				_elements.iconviewlist.on('tap', function() {
+					_elements.iconviewcalendar.removeClass('selected');
+					_elements.iconviewicon.removeClass('selected');
+					_elements.iconviewlist.addClass('selected');
+					$.cookie('desktopview', 'list');
+				});
+
+				_elements.iconviewcalendar.on('tap', function() {
+					_elements.iconviewlist.removeClass('selected');
+					_elements.iconviewicon.removeClass('selected');
+					_elements.iconviewcalendar.addClass('selected');
+					$.cookie('desktopview', 'calendar');
+				});
+
+				_elements.iconviewicon.on('tap', function() {
+					_elements.iconviewcalendar.removeClass('selected');
+					_elements.iconviewlist.removeClass('selected');
+					_elements.iconviewicon.addClass('selected');
+					$.cookie('desktopview', 'icon');
+				});
+
+
 				_elements.popup.menu.on('tap', function() {
 
 					var options = {
@@ -254,10 +276,23 @@
 					});
 
 				});
-
-				//sliderChanged();
-				//triggerEvent();
-
+				
+				// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
+				switch($.cookie('desktopview')) {
+				
+					case 'list':
+						_elements.iconviewlist.addClass('selected');
+					  break;
+				
+					case 'calendar':
+						_elements.iconviewcalendar.addClass('selected');
+					  break;
+				
+					default:
+						_elements.iconviewicon.addClass('selected');
+				}
+				
+				
 				_page.trigger('updatelayout');
 			}
 

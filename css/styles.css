@@ -86,6 +86,9 @@
   font-weight: bold;
   text-decoration: none;
 }
+meg {
+  width: 23px;
+}
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;

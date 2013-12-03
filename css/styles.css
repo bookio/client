@@ -155,6 +155,9 @@ label.ui-input-text {
   margin-right: 5%;
   margin-left: 5%;
 }
+.ui-page {
+  background: none;
+}
 .ui-mobile-viewport {
   background-image: url(../images/backgrounds/linen.png);
 }

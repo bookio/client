@@ -127,9 +127,9 @@ strong {
 }
 .helptext {
   color: #9a9a9a;
-  font-size: smaller;
+  font-size: smaller !important;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 100 !important;
   padding-left: 1em;
 }
 /*
@@ -199,9 +199,6 @@ input[type=text].ui-input-text {
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li p {
   white-space: normal;
-}
-[data-role="page"] [data-role="content"] [data-role="listview"] li label {
-  color: #9a9a9a;
 }
 [data-role="page"] [data-role="content"] button {
   -webkit-border-radius: 2em;

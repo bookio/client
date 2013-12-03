@@ -72,7 +72,7 @@
 				var range = Math.floor(_timeSlider.innerWidth() / 80);
 
 				_timeSlider.timeslider('range', range);
-				_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.timeslider('range')));
+				_timeScale.endDate(_timeScale.startDate().addDays(range));
 				sliderChanged();
 			}
 
@@ -268,6 +268,8 @@
 					scroll(delta);
 				});
 				
+				setSliderInStartPosition();
+				
 				_elements.startdate.button.on('tap', function(event) {
 
 					event.preventDefault();
@@ -306,7 +308,6 @@
 				}
 				
 				
-				_page.trigger('updatelayout');
 			}
 
 			init();
@@ -314,6 +315,7 @@
 			
 			_page.on("pageshow", function(event) {
 				redrawForResize();
+				_page.trigger('updatelayout');
 			});
 
 

@@ -72,6 +72,9 @@
 	            _elements.slider = _elements.root.find('.slider');
 	            _elements.gripper = _elements.root.find('.gripper');
 	            
+	            $(document).on('updatelayout.timeslider', function(event) {
+		            positionSlider();
+	            });
 	            
 	            _elements.gripper.css({
 	            	height: widget.options.size,

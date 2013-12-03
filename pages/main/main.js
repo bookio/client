@@ -69,37 +69,37 @@
 
 			function redrawForResize() {
 
-				var range = Math.floor(_timeSlider.element().innerWidth() / 80);
+				var range = Math.floor(_timeSlider.innerWidth() / 80);
 
-				_timeSlider.range(range);
-				_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.range()));
+				_timeSlider.timeslider('range', range);
+				_timeScale.endDate(_timeScale.startDate().addDays(_timeSlider.timeslider('range')));
 				sliderChanged();
 			}
 
 
 			function setSliderInStartPosition() {
 
-				_timeSlider.position(0); // Set Now as start position
-				_timeSlider.length(1); // Fill only one 'time slot'
+				_timeSlider.timeslider('position', 0); // Set Now as start position
+				_timeSlider.timeslider('length', 1); // Fill only one 'time slot'
 
 				var date = new Date();
 				date.clearTime();
 
 				_timeScale.startDate(date);
-				_timeScale.endDate(date.addDays(_timeSlider.range()));
+				_timeScale.endDate(date.addDays(_timeSlider.timeslider('range')));
 
 				sliderChanged();
 			}
 
 
 			function sliderChanged() {
-				var selectionStartDate = _timeScale.startDate().addDays(_timeSlider.position());
-				var selectionEndDate = selectionStartDate.addDays(_timeSlider.length());
-
+				var selectionStartDate = _timeScale.startDate().addDays(_timeSlider.timeslider('position'));
+				var selectionEndDate = selectionStartDate.addDays(_timeSlider.timeslider('length'));
+				
+				
 				_desktop.startDate(selectionStartDate);
 				_desktop.endDate(selectionEndDate);
 
-				_timeSlider.positionGripper();
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -108,10 +108,10 @@
 
 			function startDateChanged() {
 				var selectionStartDate = _startDate.clone(); //_picker.startDate().clone();
-				var selectionEndDate = selectionStartDate.addDays(_timeSlider.length());
+				var selectionEndDate = selectionStartDate.addDays(_timeSlider.timeslider('length'));
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.position());
-				var rangeEndDate = rangeStartDate.addDays(_timeSlider.range());
+				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.timeslider('position'));
+				var rangeEndDate = rangeStartDate.addDays(_timeSlider.timeslider('range'));
 
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
@@ -129,10 +129,10 @@
 
 			function endDateChanged() {
 				var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
-				var selectionStartDate = selectionEndDate.addDays(-1 * _timeSlider.length());
+				var selectionStartDate = selectionEndDate.addDays(-1 * _timeSlider.timeslider('length'));
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.position());
-				var rangeEndDate = rangeStartDate.addDays(_timeSlider.range());
+				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.timeslider('position'));
+				var rangeEndDate = rangeStartDate.addDays(_timeSlider.timeslider('range'));
 
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
@@ -223,6 +223,10 @@
 					_elements.popup.content.popup('open');
 				});
 
+
+				_timeSlider = _elements.slider;
+				
+/*
 				_timeSlider = new TimeSlider(_elements.slider, {
 					scroll: scroll,
 					positionChanged: sliderChanged,
@@ -231,8 +235,17 @@
 				});
 
 				_timeSlider.range(10);
+*/
 				_timeScale = new TimeScale(_elements.scale, {});
 
+				_timeSlider.on('positionchanged', sliderChanged);
+				_timeSlider.on('rangechanged', sliderChanged);
+				_timeSlider.on('lengthchanged', sliderChanged);
+				_timeSlider.on('scroll', function(event, delta){
+
+					scroll(delta);
+				});
+				
 				_elements.startdate.button.on('tap', function(event) {
 
 					event.preventDefault();

@@ -57,7 +57,10 @@ requirejs.config({
 		}
 
 		function main() {
-			$.mobile.pages.goto('pages/main/main.html');
+			require(['widgets/timeslider/timeslider'], function(){
+				$.mobile.pages.goto('pages/main/main.html');
+				
+			});
 		}
 
 		function mobile() {

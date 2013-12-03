@@ -48,6 +48,16 @@ strong {
 	border:none !important;
 }
 
+.helptext {
+		color: @lightGrayColor;
+		font-size: smaller;
+		font-style: normal;
+		font-weight: 100;
+		padding-left: 1em;
+		
+}
+
+
 /*
 label.ui-input-text {
 	padding-left: 1em;
@@ -92,15 +102,6 @@ h4.bookio-style {
 }
 
 
-.helptext {
-		color: @lightGrayColor;
-		font-size: smaller;
-		font-style: normal;
-		font-weight: 100;
-		padding-left: 1em;
-		
-}
-
 
 
 
@@ -144,16 +145,20 @@ input[type=text].ui-input-text {
 
 
 	    button {
-			.border-radius(1.2em);
+			.border-radius(2em);
 	    }
+	    
+	    [data-role="button"]  {
+			.border-radius(2em);
+			min-width: 8em;
+		}
 	
 	    [data-role=button-row] {
 		    text-align: center;
+		    [data-role="button"]  {
+				min-width: 8em;
+			}
 
-    	    [data-role="button"]  {
-    			.border-radius(1.2em);
-    			min-width: 8em;
-    	    }
 	    }
 	}    
 }

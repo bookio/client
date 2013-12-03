@@ -122,6 +122,13 @@ strong {
   background-color: white;
   border: none !important;
 }
+.helptext {
+  color: #9a9a9a;
+  font-size: smaller;
+  font-style: normal;
+  font-weight: 100;
+  padding-left: 1em;
+}
 /*
 label.ui-input-text {
 	padding-left: 1em;
@@ -160,15 +167,6 @@ h4.bookio-style {
 }
 
 
-.helptext {
-		color: @lightGrayColor;
-		font-size: smaller;
-		font-style: normal;
-		font-weight: 100;
-		padding-left: 1em;
-		
-}
-
 
 
 
@@ -200,16 +198,19 @@ input[type=text].ui-input-text {
   color: #9a9a9a;
 }
 [data-role="page"] [data-role="content"] button {
-  -webkit-border-radius: 1.2em;
-  -moz-border-radius: 1.2em;
-  border-radius: 1.2em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+[data-role="page"] [data-role="content"] [data-role="button"] {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+  min-width: 8em;
 }
 [data-role="page"] [data-role="content"] [data-role=button-row] {
   text-align: center;
 }
 [data-role="page"] [data-role="content"] [data-role=button-row] [data-role="button"] {
-  -webkit-border-radius: 1.2em;
-  -moz-border-radius: 1.2em;
-  border-radius: 1.2em;
   min-width: 8em;
 }

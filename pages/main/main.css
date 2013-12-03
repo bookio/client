@@ -49,7 +49,6 @@ body {
   color: #cdcdcd;
   font-size: 80%;
 }
-<<<<<<< HEAD
 #main-page [data-role=footer] [data-id="view-group"] {
   cursor: pointer;
   width: 160px;
@@ -89,10 +88,9 @@ body {
 }
 #main-page [data-role=footer] [data-id="view-group"] div.icon-view-calendar:hover {
   opacity: 0.6;
-=======
+}
 #main-page [data-role=footer] [data-id="popup.menu"] {
   display: inline-block;
->>>>>>> 1641eb0ae0eaf2cb2720dac00efcf5d80518b0f3
 }
 #main-page [data-role=footer] [data-id="popup.icon"] {
   cursor: pointer;

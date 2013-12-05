@@ -2,7 +2,8 @@
 requirejs.config({
 	baseUrl: '.',
 
-	Xpaths: {
+	/*
+	paths: {
 		'jquery': 'lib/jquery/jquery-1.10.2',
 		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2',
 		'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
@@ -12,6 +13,7 @@ requirejs.config({
 		'lib' : './lib',
 		'less' : './less'
 	},
+	*/
 
 
 	packages: [{
@@ -33,34 +35,28 @@ requirejs.config({
 
 (function() {
 
+	$.urlParam = function(name) {
+		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+		var results = regex.exec(location.search);
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
 
 
 	var modules = [
+		'components/msgbox/msgbox'
 	];
 
 	require(modules, function() {
 
-			//var request = Gopher.verify();
-
-			//$.mobile.pages.goto('pages/test/test.html');
-			//return;
-
-		$.urlParam = function(name) {
-			name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-			var results = regex.exec(location.search);
-			return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-		}
 
 		function login() {
 			$.mobile.pages.goto('pages/login/login.html');
 		}
 
 		function main() {
-			require(['widgets/timeslider/timeslider'], function(){
-				$.mobile.pages.goto('pages/main/main.html');
+			$.mobile.pages.goto('pages/main/main.html');
 				
-			});
 		}
 
 		function mobile() {

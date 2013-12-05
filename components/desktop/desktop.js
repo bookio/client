@@ -248,6 +248,7 @@ define(['module', 'css!./desktop'], function(module) {
 			
 			_settings = {};
             _settings = $.extend({}, defaults, settings);
+			console.log(_settings);            		
 		}
 
 
@@ -262,7 +263,7 @@ define(['module', 'css!./desktop'], function(module) {
 	        	
 	        	_settings.positions[rental.id] = position;  
             });
-            		
+			console.log(_settings);            		
 			Model.Settings.save('desktop', 'layout', _settings);
 		}
 
@@ -435,8 +436,7 @@ define(['module', 'css!./desktop'], function(module) {
     			}
 			});
 			
-			_element.on('updatelayout', function() {
-    			debugger;
+			$(document).on('updatelayout.desktop', function() {
     			placeRentals();
 			})
 			

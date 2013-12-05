@@ -2,14 +2,13 @@
 
 	var dependencies = [
 		'css!./main',
-		'../../components/msgbox/msgbox',
 		'../../components/notify/notify',
 		'../../components/desktop/desktop',
-		'../../components/timeslider/timeslider',
-		'../../components/timescale/timescale',
-		
 		'../../widgets/pagelogo/pagelogo',
-		'../../widgets/datepicker/datepicker'
+		'../../widgets/datepicker/datepicker',
+		'../../widgets/timeslider/timeslider',
+		'../../widgets/timescale/timescale'
+		
 	];
 
 	define(dependencies, function() {
@@ -20,8 +19,6 @@
 			var _elements = {};
 
 			var _desktop = null;
-			var _timeScale = null;
-			var _timeSlider = null;
 
 			var _startDate = new Date();
 			var _endDate = new Date();
@@ -69,33 +66,33 @@
 
 			function redrawForResize() {
 
-				var range = Math.floor(_timeSlider.innerWidth() / 80);
-
-				_timeSlider.timeslider('range', range);
-				_timeScale.endDate(_timeScale.startDate().addDays(range));
+				var range = Math.floor(_elements.slider.innerWidth() / 80);
+				var startDate = _elements.scale.timescale('startDate');
+				
+				_elements.slider.timeslider('range', range);
+				_elements.scale.timescale('endDate', startDate.addDays(range));
 				sliderChanged();
 			}
 
 
 			function setSliderInStartPosition() {
 
-				_timeSlider.timeslider('position', 0); // Set Now as start position
-				_timeSlider.timeslider('length', 1); // Fill only one 'time slot'
+				_elements.slider.timeslider('position', 0); // Set Now as start position
+				_elements.slider.timeslider('length', 1); // Fill only one 'time slot'
 
 				var date = new Date();
 				date.clearTime();
 
-				_timeScale.startDate(date);
-				_timeScale.endDate(date.addDays(_timeSlider.timeslider('range')));
+				_elements.scale.timescale('startDate', date);
+				_elements.scale.timescale('endDate', date.addDays(_elements.slider.timeslider('range')));
 
 				sliderChanged();
 			}
 
 
 			function sliderChanged() {
-				var selectionStartDate = _timeScale.startDate().addDays(_timeSlider.timeslider('position'));
-				var selectionEndDate = selectionStartDate.addDays(_timeSlider.timeslider('length'));
-				
+				var selectionStartDate = _elements.scale.timescale('startDate').addDays(_elements.slider.timeslider('position'));
+				var selectionEndDate = selectionStartDate.addDays(_elements.slider.timeslider('length'));
 				
 				_desktop.startDate(selectionStartDate);
 				_desktop.endDate(selectionEndDate);
@@ -108,10 +105,10 @@
 
 			function startDateChanged() {
 				var selectionStartDate = _startDate.clone(); //_picker.startDate().clone();
-				var selectionEndDate = selectionStartDate.addDays(_timeSlider.timeslider('length'));
+				var selectionEndDate = selectionStartDate.addDays(_elements.slider.timeslider('length'));
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.timeslider('position'));
-				var rangeEndDate = rangeStartDate.addDays(_timeSlider.timeslider('range'));
+				var rangeStartDate = selectionStartDate.addDays(-1 * _elements.slider.timeslider('position'));
+				var rangeEndDate = rangeStartDate.addDays(_elements.slider.timeslider('range'));
 
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
@@ -119,8 +116,8 @@
 				_desktop.startDate(selectionStartDate);
 				_desktop.endDate(selectionEndDate);
 
-				_timeScale.startDate(rangeStartDate);
-				_timeScale.endDate(rangeEndDate);
+				_elements.scale.timescale('startDate', rangeStartDate);
+				_elements.scale.timescale('endDate', rangeEndDate);
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -129,10 +126,10 @@
 
 			function endDateChanged() {
 				var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
-				var selectionStartDate = selectionEndDate.addDays(-1 * _timeSlider.timeslider('length'));
+				var selectionStartDate = selectionEndDate.addDays(-1 * _elements.slider.timeslider('length'));
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _timeSlider.timeslider('position'));
-				var rangeEndDate = rangeStartDate.addDays(_timeSlider.timeslider('range'));
+				var rangeStartDate = selectionStartDate.addDays(-1 * _elements.slider.timeslider('position'));
+				var rangeEndDate = rangeStartDate.addDays(_elements.slider.timeslider('range'));
 
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
@@ -140,8 +137,8 @@
 				_desktop.startDate(selectionStartDate);
 				_desktop.endDate(selectionEndDate);
 
-				_timeScale.startDate(rangeStartDate);
-				_timeScale.endDate(rangeEndDate);
+				_elements.scale.timescale('startDate', rangeStartDate);
+				_elements.scale.timescale('endDate', rangeEndDate);
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -150,7 +147,7 @@
 
 			function scroll(delta) {
 
-				_timeScale.scroll(delta);
+				_elements.scale.timescale('scroll', delta);
 				sliderChanged();
 			}
 
@@ -246,27 +243,13 @@
 				});
 
 
-				_timeSlider = _elements.slider;
-				
-/*
-				_timeSlider = new TimeSlider(_elements.slider, {
-					scroll: scroll,
-					positionChanged: sliderChanged,
-					lengthChanged: sliderChanged,
-					sliderDblClicked: setSliderInStartPosition
-				});
-
-				_timeSlider.range(10);
-*/
-				_timeScale = new TimeScale(_elements.scale, {});
-
-				_timeSlider.on('positionchanged', sliderChanged);
-				_timeSlider.on('rangechanged', sliderChanged);
-				_timeSlider.on('lengthchanged', sliderChanged);
-				_timeSlider.on('scroll', function(event, delta){
-
+				_elements.slider.on('positionchanged', sliderChanged);
+				_elements.slider.on('rangechanged', sliderChanged);
+				_elements.slider.on('lengthchanged', sliderChanged);
+				_elements.slider.on('scroll', function(event, delta) {
 					scroll(delta);
 				});
+								
 				
 				setSliderInStartPosition();
 				
@@ -312,6 +295,12 @@
 
 			init();
 
+			_page.on("pagebeforeshow", function(event) {
+				var x = _elements.slider.innerWidth();
+				debugger;
+				//_page.trigger('updatelayout');
+			});
+
 			
 			_page.on("pageshow", function(event) {
 				redrawForResize();
@@ -321,9 +310,8 @@
 
 		}
 		
-		$(document).on( "pageinit", "#main-page", function(event) {
+		$(document).on("pageinit", "#main-page", function(event) {
 			new Module($(event.currentTarget));
-			//debugger;
 		});
 
 

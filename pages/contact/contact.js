@@ -58,10 +58,6 @@
 			function init() {
 				_page.hookup(_elements, 'data-id');
 
-				//_elements.dropzone.container.on('tap', function(event) {
-				//	_elements.file.click();
-				//});
-
 				_page.on('dragover', function(event) {
 					event.stopPropagation();
 					event.preventDefault();

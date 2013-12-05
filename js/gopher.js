@@ -41,14 +41,12 @@
 
 		console.log(sprintf('Request failed. %s', message));
 		
-		require(['../../components/msgbox/msgbox.js'], function() {
-			MsgBox.show({
-				icon:'error',
-				message:message,
-				buttons: [{text: 'Skit också'}]
-			});
-			
+		MsgBox.show({
+			icon:'error',
+			message:message,
+			buttons: [{text: 'Skit också'}]
 		});
+			
 	}
 
 	Gopher.signup = function(username, password) {

@@ -1,8 +1,7 @@
 (function() {
 
 	var dependencies = [
-		'css!./login',
-		'../../components/msgbox/msgbox'
+		'css!./login'
 	];
 
 	define(dependencies, function() {

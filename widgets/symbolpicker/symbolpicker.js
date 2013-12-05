@@ -16,14 +16,17 @@
 
 				widget.element.append($(html));
 				widget.element.trigger('create');
-
-				widget.element.find('button').click(function() {
+				
+				var buttons = widget.element.find('button');
+				
+				buttons.click(function() {
+					buttons.removeClass('ui-btn-active');
+					$(this).addClass('ui-btn-active');
 					widget.element.find('.container').isotope({
 						filter: $(this).attr('data-filter')
 					});
 				});
 				
-
 
 				var isotope = widget.element.find('.container');
 

@@ -296,9 +296,6 @@
 			init();
 
 			_page.on("pagebeforeshow", function(event) {
-				var x = _elements.slider.innerWidth();
-				debugger;
-				//_page.trigger('updatelayout');
 			});
 
 			

@@ -82,7 +82,7 @@
 	            });
 	            
 	            _elements.slider.on('doubletap', function(event) {
-	            	widget.element.trigger('dblclick');
+	            	widget.element.trigger('doubletap');
 	            });
 	
 	            _elements.root.on('removed', function(){

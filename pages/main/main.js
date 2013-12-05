@@ -68,6 +68,7 @@
 
 				var range = Math.floor(_elements.slider.innerWidth() / 80);
 				var startDate = _elements.scale.timescale('startDate');
+				range = Math.floor(_elements.slider.innerWidth() / 80);
 				
 				_elements.slider.timeslider('range', range);
 				_elements.scale.timescale('endDate', startDate.addDays(range));
@@ -233,7 +234,6 @@
 					var options = {
 						dismissible: true,
 						theme: "c",
-						overlyaTheme: "a",
 						transition: "pop",
 						positionTo: $(this)
 					};
@@ -248,6 +248,9 @@
 				_elements.slider.on('lengthchanged', sliderChanged);
 				_elements.slider.on('scroll', function(event, delta) {
 					scroll(delta);
+				});
+				_elements.slider.on('doubletap', function(event) {
+					setSliderInStartPosition();
 				});
 								
 				
@@ -291,15 +294,18 @@
 				}
 				
 				
+				
 			}
 
 			init();
 
 			_page.on("pagebeforeshow", function(event) {
+				console.log('main - pagebeforeshow');
 			});
 
 			
 			_page.on("pageshow", function(event) {
+				console.log('main - pageshow');
 				redrawForResize();
 				_page.trigger('updatelayout');
 			});

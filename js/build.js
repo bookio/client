@@ -26,7 +26,5 @@
 @codekit-prepend "model.js";
 @codekit-prepend "notifications.js";
 
-
-
 */
 

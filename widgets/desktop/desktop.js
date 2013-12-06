@@ -3,7 +3,7 @@
 define(['module', 'css!./desktop'], function(module) {
 
 
-	Desktop = function(container, options) {
+	var Widget = function(widget) {
 
 		var self = this;
 		
@@ -13,7 +13,7 @@ define(['module', 'css!./desktop'], function(module) {
     		iconSize:100
 		};
 		
-		var _options = $.extend({}, _defaults, options);
+		var _options = $.extend({}, _defaults, {});
 		var _element = null;
 		var _startDate = new Date();
 		var _endDate = new Date();
@@ -27,7 +27,7 @@ define(['module', 'css!./desktop'], function(module) {
 		var _settings = {};
 		var _icons = {};
 		var _desktopSize = {};
-		var _page = options.page;
+		//var _page = options.page;
 		
 		var _timerForIntroBlob;
 
@@ -367,7 +367,7 @@ define(['module', 'css!./desktop'], function(module) {
 					'<div data-id="buttons.close" class="close button"></div>'+
 				'</div>';
 			
-			_element = $(template).appendTo(container);
+			_element = $(template).appendTo(widget.element);
 
 			_element.hookup(_elements, 'data-id');
 			
@@ -396,8 +396,8 @@ define(['module', 'css!./desktop'], function(module) {
                 self.editMode(false);
 	        });
 
-	        _page.on('pageshow', rememberDesktopSize);
-	        _page.on('pagebeforehide', rememberDesktopSize);
+	        //_page.on('pageshow', rememberDesktopSize);
+	        //_page.on('pagebeforehide', rememberDesktopSize);
 	        
 	        $(window).on('resize.desktop', rememberDesktopSize);
 
@@ -791,9 +791,36 @@ define(['module', 'css!./desktop'], function(module) {
               		
 	}
 	
+	function defineWidget() {
+		var widget = {};
+
+		widget.options = {};
+
+		widget._create = function() {
+			this.widget = new Widget(this);
+		}
+
+		widget.startDate = function(value) {
+			this.widget.startDate(value);
+		}
+		widget.endDate = function(value) {
+			return this.widget.endDate(value);
+		}
+
+		widget.editMode = function(value) {
+			return this.widget.editMode(value);
+		}
+
+		$.widget("mobile.desktop", $.mobile.widget, widget);
+
+		$(document).bind("pagecreate create", function(e) {
+			$(":jqmData(role=desktop)", e.target).desktop();
+		});
+	}
+
+	defineWidget();	
 	
 	
-	return Desktop;
 	
         
 });

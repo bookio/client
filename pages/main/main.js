@@ -3,11 +3,11 @@
 	var dependencies = [
 		'css!./main',
 		'../../components/notify/notify',
-		'../../components/desktop/desktop',
 		'../../widgets/pagelogo/pagelogo',
 		'../../widgets/datepicker/datepicker',
 		'../../widgets/timeslider/timeslider',
-		'../../widgets/timescale/timescale'
+		'../../widgets/timescale/timescale',
+		'../../widgets/desktop/desktop'
 		
 	];
 
@@ -17,8 +17,6 @@
 
 			var _page = page;
 			var _elements = {};
-
-			var _desktop = null;
 
 			var _startDate = new Date();
 			var _endDate = new Date();
@@ -95,8 +93,8 @@
 				var selectionStartDate = _elements.scale.timescale('startDate').addDays(_elements.slider.timeslider('position'));
 				var selectionEndDate = selectionStartDate.addDays(_elements.slider.timeslider('length'));
 				
-				_desktop.startDate(selectionStartDate);
-				_desktop.endDate(selectionEndDate);
+				_elements.desktop.desktop('startDate', selectionStartDate);
+				_elements.desktop.desktop('endDate', selectionEndDate);
 
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
@@ -114,8 +112,8 @@
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
 
-				_desktop.startDate(selectionStartDate);
-				_desktop.endDate(selectionEndDate);
+				_elements.desktop.desktop('startDate', selectionStartDate);
+				_elements.desktop.desktop('endDate', selectionEndDate);
 
 				_elements.scale.timescale('startDate', rangeStartDate);
 				_elements.scale.timescale('endDate', rangeEndDate);
@@ -135,8 +133,8 @@
 				//_picker.startDate(selectionStartDate);
 				//_picker.endDate(selectionEndDate.addDays(-1));
 
-				_desktop.startDate(selectionStartDate);
-				_desktop.endDate(selectionEndDate);
+				_elements.desktop.desktop('startDate', selectionStartDate);
+				_elements.desktop.desktop('endDate', selectionEndDate);
 
 				_elements.scale.timescale('startDate', rangeStartDate);
 				_elements.scale.timescale('endDate', rangeEndDate);
@@ -181,11 +179,10 @@
 			function init() {
 				_page.hookup(_elements, 'data-id');
 
-				_desktop = new Desktop(_elements.desktop, {page:_page});
-				_desktop.editMode(false);
+				_elements.desktop.desktop('editMode', false);
   
 				_elements.editmode.on('tap', function() {
-					_desktop.editMode(!_desktop.editMode());
+					_elements.desktop.desktop('editMode', !_elements.desktop.desktop('editMode'));
 					_elements.popup.content.popup('close');
 				});
 
@@ -293,6 +290,7 @@
 						_elements.iconviewicon.addClass('selected');
 				}
 				
+				triggerEvent();
 				
 				
 			}
@@ -307,9 +305,11 @@
 			_page.on("pageshow", function(event) {
 				console.log('main - pageshow');
 				redrawForResize();
-				_page.trigger('updatelayout');
+				//_page.trigger('updatelayout');
 			});
-
+			
+			console.log('disktop:');
+			console.log(_elements.desktop.innerHeight());
 
 		}
 		

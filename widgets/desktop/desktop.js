@@ -45,11 +45,6 @@ define(['module', 'css!./desktop'], function(module) {
     		saveSettings();
 		});
 
-
-		$(document).on('updatelayout', function() {
-			debugger;
-		});
-		
 		Notifications.on('updateUI.desktop', function() {
     		updateUI();
 		});
@@ -72,6 +67,9 @@ define(['module', 'css!./desktop'], function(module) {
 					break;
 				}
 			}
+			
+			_rentals[rental.id] = rental;
+
 			
 			// Everything is full, add on top others
 			addRentalToScene(rental, col, row);
@@ -190,11 +188,11 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function computeMaxCols() {
-    		return Math.floor((_desktopSize.width - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+    		return Math.floor((_element.innerWidth() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 
 		function computeMaxRows() {
-            return Math.floor((_desktopSize.height - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+            return Math.floor((_element.innerHeight() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 		
 		
@@ -396,9 +394,9 @@ define(['module', 'css!./desktop'], function(module) {
                 self.editMode(false);
 	        });
 
-	        //_page.on('pageshow', rememberDesktopSize);
-	        //_page.on('pagebeforehide', rememberDesktopSize);
-	        
+	        //_page.on('pageshow.desktop', rememberDesktopSize);
+	        //_page.on('pagebeforehide.desktop', rememberDesktopSize);
+
 	        $(window).on('resize.desktop', rememberDesktopSize);
 
             // Remove all my notifications when the element is destroyed
@@ -408,6 +406,14 @@ define(['module', 'css!./desktop'], function(module) {
                 $(window).off('.desktop');
             });
 
+			
+			enableEscKey();
+			
+			self.initialLayout();
+	        				
+		};
+		
+		self.initialLayout = function() {
 			var gopher = Gopher;
 			
 			var rentals = Model.Rentals.fetch(); 
@@ -434,19 +440,19 @@ define(['module', 'css!./desktop'], function(module) {
                 	self.editMode(true);
                 	ShowIntroBlob();
                 }
-				else { 
+				/*else { 
                 	placeRentals();
 					updateRentalAvailability();			
     			}
+    			*/
 			});
 			
-			$(document).on('updatelayout.desktop', function() {
-    			//placeRentals();
-			})
-			
-			enableEscKey();
-	        				
-		};
+		}
+
+		self.layout = function() {
+        	placeRentals();
+			updateRentalAvailability();			
+		}
 		
 		function positionItem(item, col, row, speed) {
 
@@ -756,7 +762,6 @@ define(['module', 'css!./desktop'], function(module) {
                     $(document).off(".desktop-dragdrop");
                     
                     if (moved) {
-                    
                         positionItem(item, col, row, 300);
                         saveSettings();
                     }
@@ -800,6 +805,10 @@ define(['module', 'css!./desktop'], function(module) {
 			this.widget = new Widget(this);
 		}
 
+		widget.refresh = function() {
+			this.widget.layout();			
+		}
+		
 		widget.startDate = function(value) {
 			this.widget.startDate(value);
 		}

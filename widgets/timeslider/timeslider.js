@@ -20,6 +20,7 @@
 			var _busy = false;
 
 			this.position = function(value) {
+
 	    		if (value == undefined)
 	    		    return _position;
 	    		
@@ -95,17 +96,10 @@
 	                $(document).off('.timeslider'); 
 	            });
 	            
-	
-	            widget.element.on('updatelayout', function() {
-	
-	            	if (!_busy)
-	    		        positionSlider(300);
-	        
-	        		_setNeedsLayout = false;
-	
+	            Notifications.on('updateUI.timeslider', function() {
+	                updateLayout();
 	            });
 	
-	            
 	    	};   	
 	
 	    	
@@ -127,6 +121,13 @@
 	    	    _scrollTimer = null;
 		    }
 		    
+		    function updateLayout() {
+		    	if (_setNeedsLayout)
+		    		positionSlider();
+		    		
+		    	_setNeedsLayout = false;
+			    
+		    }
 		    
 			function positionSlider(animationSpeed) {
 	    	    var slider = _elements.slider;

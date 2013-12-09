@@ -190,6 +190,7 @@
 					_elements.popup.content.popup('close');
 				});
 
+
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
 					_page.on('pagehide', function(event, ui) {
@@ -255,15 +256,31 @@
 				});
 								
 				
-				
 				_elements.startdate.button.on('tap', function(event) {
+
+					function dateChanged(value, instance) {
+						debugger;						
+					}
+					_elements.startdate.button.mobiscroll().date({ 
+						theme: 'jqm', 
+						display: 'bubble',
+						dateFormat: 'yy/mm/dd',
+						dateOrder: 'yymmdd',
+						minDate: new Date(),
+						date: _startDate,
+						lang: 'sv',
+						onChange: dateChanged
+					});
+					_elements.startdate.button.mobiscroll('setDate', _startDate);
 
 					event.preventDefault();
 
+					/*
 					pickdate($(this), _startDate, function(date) {
 						_startDate = date;
 						startDateChanged();
 					});
+					*/
 
 				});
 

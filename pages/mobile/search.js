@@ -57,7 +57,7 @@
 
 	                //event.stopPropagation();
 	                //event.preventDefault();
-					_elements.startDate.mobiscroll().date({ theme: 'jqm', display: 'bubble', lang: 'sv' });
+					_elements.startDate.mobiscroll().date({ theme: 'jqm', display: 'bottom', lang: 'sv' });
 
                 });
                 

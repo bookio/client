@@ -258,20 +258,25 @@
 				
 				_elements.startdate.button.on('tap', function(event) {
 
-					function dateChanged(value, instance) {
-						debugger;						
+					function dateChanged(value, button, instance) {
+						if (button == "set") {
+							_startDate = new Date(value);
+							startDateChanged();
+							
+						}
 					}
 					_elements.startdate.button.mobiscroll().date({ 
 						theme: 'jqm', 
 						display: 'bubble',
-						dateFormat: 'yy/mm/dd',
+						dateFormat: 'yy-mm-dd',
 						dateOrder: 'yymmdd',
-						minDate: new Date(),
-						date: _startDate,
+						//minDate: new Date(),
 						lang: 'sv',
-						onChange: dateChanged
+						onClose: dateChanged
 					});
-					_elements.startdate.button.mobiscroll('setDate', _startDate);
+					
+					//_elements.startdate.button.mobiscroll('setDate', _startDate);
+					//_elements.startdate.button.mobiscroll().setValue(_startDate);
 
 					event.preventDefault();
 

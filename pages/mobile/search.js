@@ -34,7 +34,7 @@
                     callback(datepicker.datepicker('getDate'));
                 }); 
 
-                popup.popup('open');
+                popup.popup('open'); 
             }
 
             function updateButtonTexts() {

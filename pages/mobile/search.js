@@ -2,7 +2,8 @@
 
     var dependencies = [
         '../../widgets/datepicker/datepicker',
-        '../../lib/mobiscroll/js/mobiscroll.custom-2.8.3.min'
+        '../../lib/mobiscroll/js/mobiscroll.custom-2.8.3.min',
+        'css!../../lib/mobiscroll/css/mobiscroll.custom-2.8.3.min'
     ];
 
     define(dependencies, function () {

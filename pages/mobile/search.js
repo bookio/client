@@ -1,7 +1,8 @@
 (function () {
 
     var dependencies = [
-        '../../widgets/datepicker/datepicker'
+        '../../widgets/datepicker/datepicker',
+        '../../lib/mobiscroll/js/mobiscroll.custom-2.8.3.min'
     ];
 
     define(dependencies, function () {
@@ -32,15 +33,15 @@
                 datepicker.on("datechanged", function () {
                     popup.popup('close');
                     callback(datepicker.datepicker('getDate'));
-                });
+                }); 
 
                 popup.popup('open');
             }
 
             function updateButtonTexts() {
 
-                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
-                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
+               /* _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
+                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());*/
             }
 
             function enableDisable() {
@@ -53,6 +54,15 @@
                     $.mobile.pages.pop();
                 });
 
+				_elements.startDate.on('tap', function (event) {
+
+	                //event.stopPropagation();
+	                //event.preventDefault();
+					_elements.startDate.mobiscroll().date({ theme: 'jqm', display: 'bubble', lang: 'sv' });
+
+                });
+                
+               /* 
                 _elements.startDate.on('tap', function (event) {
 
 	                event.stopPropagation();
@@ -70,7 +80,7 @@
 
                     pickDate($(this), _params.startDate, dateChanged);
                 });
-
+                
                 _elements.endDate.on('tap', function (event) {
 
 	                event.stopPropagation();
@@ -88,6 +98,7 @@
 
                     pickDate($(this), _params.endDate, dateChanged);
                 });
+*/
 
                 _elements.search.on('tap', function (event) {
 
@@ -137,7 +148,6 @@
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
                 _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/app-icon.png');
-
 
                 enableEventsHandlers();
                 updateButtonTexts();

@@ -302,10 +302,8 @@
 			init();
 
 			_page.on("pageshow", function(event) {
-				console.log('main - pageshow');
 				redrawForResize();
 				_elements.desktop.desktop('refresh');
-				//_page.trigger('updatelayout');
 			});
 			
 		}

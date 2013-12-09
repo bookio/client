@@ -44,7 +44,8 @@ requirejs.config({
 
 
 	var modules = [
-		'components/msgbox/msgbox'
+		'components/msgbox/msgbox',
+		'lib/mobiscroll/js/mobiscroll.custom-2.8.3.min.js'		
 	];
 
 	require(modules, function() {

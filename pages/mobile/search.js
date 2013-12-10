@@ -37,11 +37,11 @@
                 popup.popup('open'); 
             }
 
-            function updateButtonTexts() {
+/*            function updateButtonTexts() {
 
-               /* _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
-                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());*/
-            }
+                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
+                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
+            }*/
 
             function enableDisable() {
                 _elements.search.toggleClass('ui-disabled', _params.startDate == null || _params.endDate == null || _params.startDate > _params.endDate);
@@ -54,19 +54,41 @@
                 });
 
 				_elements.startDate.on('tap', function (event) {
-
 	                //event.stopPropagation();
 	                //event.preventDefault();
-				_elements.startDate.mobiscroll().rangepicker({	theme: 'jqm', 
-																display: 'bubble', 
-																controls: ['calendar'], 
-																weekCounter: 'year', 
-																lang: 'sv', 
-																minDate: new Date(), 
-																defaultValue: [ new Date(), new Date() ]
-															});
-
+					_elements.startDate.mobiscroll().rangepicker(
+						{	theme: 'jqm', 
+							display: 'bubble', 
+							controls: ['calendar'], 
+							weekCounter: 'year', 
+							lang: 'sv', 
+							minDate: new Date(),
+							navigation: 'month',
+							firstDay: 1,
+							startInput: _elements.startDate,
+							endInput: _elements.endDate,
+							defaultValue: [ new Date(), new Date() ]
+						});
                 });
+
+				_elements.endDate.on('tap', function (event) {
+	                //event.stopPropagation();
+	                //event.preventDefault();
+					_elements.endDate.mobiscroll().rangepicker(
+						{	theme: 'jqm', 
+							display: 'bubble', 
+							controls: ['calendar'], 
+							weekCounter: 'year', 
+							lang: 'sv', 
+							minDate: new Date(),
+							navigation: 'month',
+							firstDay: 1,
+							startInput: _elements.startDate,
+							endInput: _elements.endDate,
+							defaultValue: [ new Date(), new Date() ]
+						});
+                });
+
                 
                /* 
                 _elements.startDate.on('tap', function (event) {
@@ -156,7 +178,7 @@
                 _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/app-icon.png');
 
                 enableEventsHandlers();
-                updateButtonTexts();
+                //updateButtonTexts();
                 enableDisable();
             }
 

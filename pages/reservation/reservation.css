@@ -1,5 +1,5 @@
 #reservation-page [data-id="contact"] {
-  height: 8em;
+  height: 8em !important;
 }
 #reservation-page [data-role="button"] {
   -webkit-border-radius: 1.2em;

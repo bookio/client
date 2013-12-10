@@ -1,10 +1,10 @@
 
 /*
 
-@codekit-prepend "../lib/jquery/jquery-1.10.2.js";
+@codekit-prepend "../lib/jquery/jquery-2.0.3.js";
 @codekit-prepend "../lib/jquery-mobile/jquery.mobile.config.js";
 @codekit-prepend "../lib/jquery-mobile/jquery.mobile-1.4.0.js";
-//@Xcodekit-prepend "../lib/mobiscroll/js/mobiscroll.custom-2.8.3.min.js";
+@codekit-prepend "../lib/mobiscroll/js/mobiscroll.custom-2.8.3.min.js";
 
 
 @codekit-prepend "../lib/jquery/plugins/jquery.cookie.js";

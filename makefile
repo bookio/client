@@ -30,7 +30,7 @@ CAT = @cat
 
 SITE_PATH = /tmp/Bookio
 
-ALL_FILES = $(shell find . -type f -not -path '*/\.*')
+ALL_FILES = $(shell find . -type f -not -path '*/\.*') js/core.js
 JS_FILES = $(filter %.js, $(ALL_FILES))
 HTML_FILES = $(filter %.html, $(ALL_FILES))
 LESS_FILES = $(filter %.less, $(ALL_FILES))

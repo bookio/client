@@ -14,7 +14,7 @@
 			var _elements = {};
 
 			function main() {
-				$.mobile.pages.goto('../main/main.html');
+				$.mobile.pages.go('../main/main.html');
 			}
 			
 			function login(email, password) {

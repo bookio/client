@@ -24,6 +24,7 @@ ECHO = @echo
 BEAUTIFY = @js-beautify -b end-expand
 RSYNC = @rsync -rav 
 RM = @rm
+CAT = @cat
 
 #####################
 
@@ -38,9 +39,33 @@ CSS_FILES = $(patsubst %.less,%.css,$(LESS_FILES))
 SITE_FILES = $(addprefix $(SITE_PATH)/,$(CSS_FILES)) $(addprefix $(SITE_PATH)/,$(ALL_FILES)) 
 MAKE_FILES = $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 
+CORE_FILES = \
+	lib/jquery/jquery-2.0.3.js \
+	lib/jquery-mobile/jquery.mobile.config.js \
+	lib/jquery-mobile/jquery.mobile-1.4.0.js \
+	lib/mobiscroll/js/mobiscroll.custom-2.8.3.min.js \
+	lib/jquery/plugins/jquery.cookie.js \
+	lib/jquery/plugins/jquery.hookup.js \
+	lib/jquery/plugins/jquery.debounce.js \
+	lib/jquery/plugins/jquery.hittest.js \
+	lib/jquery/plugins/jquery.isotope.js \
+	lib/jquery/plugins/jquery.mobile-events.js \
+	lib/jquery/plugins/jquery.special-events.js \
+	lib/jquery/plugins/jquery.spin.js \
+	lib/jquery/plugins/jquery.transit.js \
+	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
+	js/base64.js \
+	js/sprintf.js \
+	js/sha1.js \
+	js/tools.js \
+	js/gopher.js \
+	js/date.js \
+	js/model.js \
+	js/notifications.js
+
 
 all:
-	@echo $(MAKE_FILES)
+	@echo Syntax:
 
 clean:
 	$(RM) -r $(SITE_PATH)
@@ -57,14 +82,16 @@ safari: $(MAKE_FILES)
 www: $(MAKE_FILES)
 	$(RSYNC) $(SITE_PATH)/* $(SSH_USER)@$(SSH_HOST):$(SSH_PATH) 
 
+js/core.js: $(CORE_FILES)
+	$(CAT) > $@ $^
 
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)
 
-#$(SITE_PATH)/%.js: %.js
-#	$(ECHO) Compressing '$@'...
-#	$(MKDIR) -p $(SITE_PATH)/$(<D)
-#	$(COMPRESS) $^ -o $@ 
+$(SITE_PATH)/%.js: %.js
+	$(ECHO) Compressing '$@'...
+	$(MKDIR) -p $(SITE_PATH)/$(<D)
+	$(COMPRESS) $^ -o $@ 
 
 $(SITE_PATH)/%:%
 	$(ECHO) Copying '$@'...

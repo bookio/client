@@ -2,19 +2,6 @@
 requirejs.config({
 	baseUrl: '.',
 
-	/*
-	paths: {
-		'jquery': 'lib/jquery/jquery-1.10.2',
-		'jquery-mobile': 'lib/jquery-mobile/jquery.mobile-1.3.2',
-		'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
-		'components' : './components',
-		'pages' : './pages',
-		'js' : './js',
-		'lib' : './lib',
-		'less' : './less'
-	},
-	*/
-
 
 	packages: [{
 			name: 'css',
@@ -51,16 +38,16 @@ requirejs.config({
 
 
 		function login() {
-			$.mobile.pages.goto('pages/login/login.html');
+			$.mobile.pages.go('pages/login/login.html');
 		}
 
 		function main() {
-			$.mobile.pages.goto('pages/main/main.html');
+			$.mobile.pages.go('pages/main/main.html');
 				
 		}
 
 		function mobile() {
-			$.mobile.pages.goto('pages/mobile/select-category.html');
+			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
 
 		if ($.urlParam('user')) {

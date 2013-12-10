@@ -13,7 +13,7 @@
             function enableEventsHandlers() {
 
                 _elements.submit.on('tap', function (event) {
-                    $.mobile.pages.goto('./select-category.html');
+                    $.mobile.pages.go('./select-category.html');
                 });
 
 

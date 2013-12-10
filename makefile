@@ -39,7 +39,7 @@ CSS_FILES = $(patsubst %.less,%.css,$(LESS_FILES))
 SITE_FILES = $(addprefix $(SITE_PATH)/,$(CSS_FILES)) $(addprefix $(SITE_PATH)/,$(ALL_FILES)) 
 MAKE_FILES = $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 
-CORE_FILES = \
+CORE_JS_FILES = \
 	lib/jquery/jquery-2.0.3.js \
 	lib/jquery-mobile/jquery.mobile.config.js \
 	lib/jquery-mobile/jquery.mobile-1.4.0.js \
@@ -63,9 +63,16 @@ CORE_FILES = \
 	js/model.js \
 	js/notifications.js
 
+CORE_CSS_FILES = \
+	lib/jquery-mobile/jquery.mobile-1.4.0.css \
+	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css
 
 all:
-	@echo Syntax:
+	@echo "usage: make www   - Deploys to web site"
+	@echo "       make css   - Compiles all LESS files into CSS"
+	@echo "       make core  - Generates the core files"
+	@echo "       make clean - Clean up temporary files"
+	
 
 clean:
 	$(RM) -r $(SITE_PATH)
@@ -76,14 +83,23 @@ css: $(CSS_FILES)
 site: $(MAKE_FILES)
 	$(ECHO) Done.
 
+core: js/core.js
+	$(ECHO) Done.
+
 safari: $(MAKE_FILES)
 	open -a Safari $(SITE_PATH)/index.html
 
 www: $(MAKE_FILES)
 	$(RSYNC) $(SITE_PATH)/* $(SSH_USER)@$(SSH_HOST):$(SSH_PATH) 
 
-js/core.js: $(CORE_FILES)
+js/core.js: $(CORE_JS_FILES)
+	$(ECHO) Building '$@'...
 	$(CAT) > $@ $^
+
+css/core.css: $(CORE_CSS_FILES)
+	$(ECHO) Building '$@'...
+	$(CAT) > $@ $^
+
 
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)

@@ -57,17 +57,14 @@
 
 	                //event.stopPropagation();
 	                //event.preventDefault();
-					/*_elements.startDate.mobiscroll().date({ theme: 'jqm', 
-															display: 'bubble', 
-															lang: 'sv',
-															dateOrder: 'ddmmy', 
-															minDate: new Date() });*/
-															
-					_elements.startDate.mobiscroll().rangepicker({	theme: 'jqm',
-																	display: 'bubble',
-																	controls: ['calendar', 'date'],
-																	defaultValue: [ new Date(), new Date()+1 ],
-																	tabs: true });
+				_elements.startDate.mobiscroll().rangepicker({	theme: 'jqm', 
+																display: 'bubble', 
+																controls: ['calendar'], 
+																weekCounter: 'year', 
+																lang: 'sv', 
+																minDate: new Date(), 
+																defaultValue: [ new Date(), new Date() ]
+															});
 
                 });
                 

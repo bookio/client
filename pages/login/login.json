@@ -1,0 +1,24 @@
+
+{
+	"sv": {
+		"help-text":"Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!",
+		"try-button": "Prova på",
+		"login-button": "Logga in",
+		"email": "E-post",
+		"password": "**Lösenord**"
+	},
+
+	"sv-se": {
+		"password": "Lösenord"
+	},
+
+	"en": {
+		"help-text":"Not tried this yet? Just enter your e-mail address and try it!",
+		"try-button": "Try it",
+		"login-button": "Log in",
+		"email": "E-mail",
+		"password": "Password"
+	}
+}
+
+

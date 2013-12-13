@@ -12,6 +12,11 @@ requirejs.config({
 			name: 'text',
 			location: 'lib/require-text',
 			main: 'text'
+		},
+		{
+			name: 'i18n',
+			location: 'lib/require-i18n',
+			main: 'i18n'
 		}
 	],
 

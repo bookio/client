@@ -1,10 +1,11 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./login.json',
 		'css!./login'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 		
 		console.log('Loading login.js...');
 
@@ -13,6 +14,7 @@
 			var _page = page;
 			var _elements = {};
 
+			
 			function main() {
 				$.mobile.pages.go('../main/main.html');
 			}
@@ -104,6 +106,8 @@
 			
 			
 				_page.hookup(_elements, 'data-id');
+				_page.i18n(i18n);
+				
 				_elements.login.email.val(username);
 
 				_elements.login.button.on('tap', function() {
@@ -121,13 +125,18 @@
 				_elements.signup.email.on('input', function() {
 					enableDisable();
 				});
-
-				//enableDisable();
+				
+				_elements.login.password.attr('placeholder', i18n.text('password'));
+				_elements.login.email.attr('placeholder', i18n.text('email'));
+				_elements.signup.email.attr('placeholder', i18n.text('email'));
+				
+				enableDisable();
 
 			}
 
 			init();
 		}
+
 
 		$(document).delegate("#login-page", "pageinit", function(event) {
 			new Module($(event.currentTarget));

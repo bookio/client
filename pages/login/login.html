@@ -2,6 +2,7 @@
 <html>
 
 <body>
+
     <div id="login-page" data-role="page">
 
         <div data-role="content">
@@ -12,25 +13,26 @@
             <br/>
             <br/>
             
-            <input data-id="login.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress" />
-            <input data-id="login.password" type="password" name="password" class="password rounded hidefocus" value="" placeholder="Lösenord" />
+            <input data-id="login.email" autocomplete="on" type="text" name="email" value="" />
+            <input data-id="login.password" type="password" name="password" class="password rounded hidefocus" value=""/>
 
             <div data-role="button-row">
-                <a data-id="login.button" data-role="button" data-icon="carat-r" data-inline="true" data-iconpos="right">
-			        	Login
-		        	</a>
+                <a data-id="login.button" data-role="button" data-icon="carat-r" data-inline="true" data-iconpos="right" data-i18n="login-button">
+			    	Login
+		        </a>
             </div>
 
             <br>
-            <p>
+            
+            <p data-i18n="help-text">
                 Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!
             </p>
 
-            <input data-id="signup.email" autocomplete="on" type="text" name="email" value="" placeholder="E-postadress" />
+            <input data-id="signup.email" autocomplete="on" type="text" name="email" value=""/>
             <div data-role="button-row">
-                <a data-id="signup.button" data-role="button" data-icon="carat-r" data-inline="true" data-iconpos="right">
-			        	Prova på!
-		        	</a>
+                <a data-id="signup.button" data-role="button" data-icon="carat-r" data-inline="true" data-iconpos="right" data-i18n="try-button">
+			    	Try it
+			    </a>
             </div>
 
             <br/>

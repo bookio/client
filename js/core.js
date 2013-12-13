@@ -26205,7 +26205,12 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 	$.fn.i18n = function(i18n) {
 		
 	    return this.each(function () {
-		    i18n.translate($(this));
+			$(this).find('[data-i18n]').each(function() {
+				var text = i18n.text($(this).attr('data-i18n'));
+
+				if (text)
+					$(this).text(text);
+			});
 	    });
 	}
 	

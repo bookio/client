@@ -5,6 +5,7 @@
 		'css!./login'
 	];
 
+	
 	define(dependencies, function(i18n) {
 		
 		console.log('Loading login.js...');

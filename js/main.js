@@ -14,6 +14,7 @@ requirejs.config({
 			main: 'text'
 		},
 		{
+
 			name: 'i18n',
 			location: 'lib/require-i18n',
 			main: 'i18n'
@@ -41,6 +42,7 @@ requirejs.config({
 
 	require(modules, function() {
 
+	
 
 		function login() {
 			$.mobile.pages.go('pages/login/login.html');

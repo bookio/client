@@ -1,0 +1,18 @@
+{
+	"sv": {
+		"back": "Tillbaka",
+		"company": "Företag",
+		"email": "E-post",
+		"phone": "Telefon",
+		"website": "Hemsida",
+		"facebook": "Facebook",
+		"twitter": "Twitter",
+		"adress": "Adress",
+		"logo": "Logotyp",
+		"save": "Spara"
+	},
+
+	"en": {
+		"back": "Back"
+	}
+}

@@ -1,11 +1,12 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./contact.json',
 		'../../widgets/imagepicker/imagepicker',
 		'css!./contact'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function(i18n) {
 
 
 
@@ -56,6 +57,7 @@
 			}
 
 			function init() {
+				_page.i18n(i18n);
 				_page.hookup(_elements, 'data-id');
 
 				_page.on('dragover', function(event) {

@@ -1,81 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
-<div id="contact-page" data-role="page" data-dom-cache="false">
-    
-    <div data-role="content">
-        <div data-role="pagelogo">
+    <div id="contact-page" data-role="page" data-dom-cache="false">
+
+        <div data-role="content">
+            <div data-role="pagelogo">
+            </div>
+
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <div class="ui-grid-solo">
+                        <label data-i18n="company">Company name</label>
+                        <input data-id="name" type="text" value="" placeholder="" title="">
+                    </div>
+                </li>
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label data-i18n="email">E-mail</label>
+                            <input data-id="email" type="text" value="" placeholder="" title="">
+                        </div>
+                        <div class="ui-block-b">
+                            <label data-i18n="phone">Phone</label>
+                            <input data-id="phone" type="text" value="" placeholder="" title="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                            <label data-i18n="website">Website</label>
+                            <input data-id="www" type="text" value="" placeholder="" title="">
+                        </div>
+                        <div class="ui-block-b">
+                            <label data-i18n="facebook">Facebook</label>
+                            <input data-id="facebook" type="text" value="" placeholder="" title="">
+                        </div>
+                        <div class="ui-block-c">
+                            <label data-i18n="twitter">Twitter</label>
+                            <input data-id="twitter" type="text" value="" placeholder="" title="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ui-grid-solo">
+                        <label data-i18n="adress">Address</label>
+                        <textarea data-id="address" type="text" value="" placeholder="" title=""></textarea>
+                    </div>
+                </li>
+            </ul>
+
+
+            <ul data-id="listview" data-role="listview" data-inset="true">
+
+                <li>
+                    <label data-i18n="logo">
+                        Logo
+                    </label>
+                    <div style="text-align:center">
+                        <div data-id="dropzone" data-role="imagepicker">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div data-role="button-row">
+                <a data-id="back" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Back</a>
+                <a data-id="save" data-i18n="save" data-role="button" data-inline="true" data-theme="g">Save</a>
+            </div>
+
+
         </div>
-
-        <ul data-role="listview" data-inset="true">
-        	<li>
-        		<div class="ui-grid-solo">
-		        	<label>Företagsnamn</label>
-					<input data-id="name" type="text" value="" placeholder="" title="">
-				</div>
-        	</li>
-        	<li>
-				<div class="ui-grid-a">
-					<div class="ui-block-a">
-				        <label>E-post</label>
-				        <input data-id="email" type="text" value="" placeholder="" title="">
-					</div>
-					<div class="ui-block-b">
-				        <label>Telefon</label>
-				        <input data-id="phone" type="text" value="" placeholder="" title="">
-					</div>
-				</div>
-        	</li>
-        	<li>
-				<div class="ui-grid-b">
-					<div class="ui-block-a">
-				        <label>Hemsida</label>
-				        <input data-id="www" type="text" value="" placeholder="Din hemsida" title="">
-					</div>
-					<div class="ui-block-b">
-				        <label>Facebook</label>
-				        <input data-id="facebook" type="text" value="" placeholder="Din facebook-sida" title="">
-					</div>
-					<div class="ui-block-c">
-				        <label>Twitter</label>
-				        <input data-id="twitter" type="text" value="" placeholder="Din Twitter-adress" title="">
-					</div>
-				</div>
-        	</li>
-        	<li>
-        		<div class="ui-grid-solo">
-			        <label>Adress</label>
-					<textarea data-id="address" type="text" value="" placeholder="" title=""></textarea>
-        		</div>
-        	</li>
-        </ul>
-        
-
-        <ul data-id="listview" data-role="listview" data-inset="true">
-
-			<li>
-	    		<label>
-	    			Logotyp
-	    		</label>
-	    		<div style="text-align:center">
-			        <div data-id="dropzone" data-role="imagepicker">
-			        </div>
-			    </div>
-			</li>
-        </ul>
-            
-	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</a>
-        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-	    </div>	    
-	    
-	    
     </div>
-	<!--    
-    <input type="file" data-role="none" data-id="file" name="file" accept="image/png, image/gif, image/jpeg" style="display:none" />        
-	-->
-</div>
 
 </body>
+
 </html>

@@ -8,8 +8,6 @@
 	
 	define(dependencies, function(i18n) {
 		
-		console.log('Loading login.js...');
-
 		function Module(page) {
 
 			var _page = page;

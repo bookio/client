@@ -1,11 +1,12 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./rental.json',
 		'css!./rental',
 		'../../widgets/symbolpicker/symbolpicker'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function(i18n) {
 
 		function Module(page) {
 
@@ -18,6 +19,7 @@
 			var _categoriesByID = {};
 
 			_page.hookup(_elements, 'data-id');
+			_page.i18n(i18n);
 
 			function fill() {
 				_elements.name.val(_rental.name);
@@ -55,8 +57,8 @@
 
 				var categoryName = $("div.ui-input-search").find("input").val();
 
-				if (!_rental.icon_id)
 				// Set to generic 'cube' if no icon chosen
+				if (!_rental.icon_id)
 					_rental.icon_id = 8;
 
 				if (!_rental.depth)
@@ -97,13 +99,13 @@
 					}
 
 					MsgBox.show({
-						message: 'Är du säker på att du vill ta bort detta objekt',
+						message: i18n.text('confirm-remove', 'Are you sure you want to remove this rental?'),
 						icon: 'warning',
 						buttons: [{
-							text: 'Ja',
+							text: i18n.text('yes', 'Yes'),
 							click: remove
 						}, {
-							text: 'Nej'
+							text: i18n.text('no', 'No')
 						}]
 					});
 
@@ -114,23 +116,21 @@
 					chill();
 
 					if (!_rental.name) {
-						Notify.show('Ange ett namn.');
+						Notify.show(i18n.text('specify-name', 'Please enter a name.'));
 						return;
 					}
 
 					if (!_rental.icon_id) {
-						Notify.show('Välj en symbol.');
+						Notify.show(i18n.text('specify-symbol', 'Please select a symbol.'));
 						return;
 					}
 
 					$('body').spin('large');
 
-
 					var requestCategory;
 					var requestRentals;
 					var categoryName = $("div.ui-input-search").find("input").val();
 					var existingCategory = false;
-
 
 					// Check if category exists, if not we should create a new one
 					if (categoryName.length > 0) {
@@ -204,12 +204,12 @@
 					});
 
 					var options = {};
-					
+
 					options.symbols = _icons;
-					
+
 					if (_rental.icon_id && _iconsByID[_rental.icon_id])
 						options.selection = _iconsByID[_rental.icon_id];
-						 
+
 					var symbolpicker = $('<div data-role="symbolpicker"></div>').appendTo(popup).symbolpicker(options);
 
 					popup.on("popupafterclose", function() {

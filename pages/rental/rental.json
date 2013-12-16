@@ -1,0 +1,27 @@
+
+{
+	"sv": {
+		"name": "Namn",
+		"name-help-text":"Exempel 'Bana 1', 'Lisa', 'Mini Cooper (ADE 234)'",
+		"notes": "Anteckning",
+		"notes-help-text": "För internt bruk, beskrivningen som kunder ser anger du på Bokningsgruppen",
+		"depth": "Antal som kan boka samtidigt",
+		"available": "Tillgänglig för bokning",
+		"category": "Bokningsgrupp",
+		"category-help-text": "Exempel 'Squash', 'Klippning', 'Bil (liten)'",
+		"symbol": "Symbol",
+		"back": "Tillbaka",
+		"save": "Spara",
+		"remove": "Radera",
+		"yes": "Ja",
+		"no": "No",
+		"confirm-remove": "Är du säker på att du vill ta bort detta objekt?",
+		"specify-name": "Ange ett namn.",
+		"specify-icon": "Ange en symbol."
+	},
+
+	"en": {
+	}
+}
+
+

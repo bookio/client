@@ -282,6 +282,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotIcons(icons) {
+			console.log('got icons...');
 			_icons = icons;
 		}
 
@@ -526,8 +527,11 @@ define(['module', 'css!./desktop'], function(module) {
             var item = $(template);
             var image = item.find('img');
             
-            if (rental.icon_id)
+            if (rental.icon_id) {
+				console.log('icon-id: %d', rental.icon_id);	            
+				console.log('icon-img: %s', _icons[rental.icon_id].image);	            
                 image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
+            }
             else
                 image.attr('src', '../../images/symbols/0000.png');
 

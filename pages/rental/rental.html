@@ -4,85 +4,94 @@
 
 <body>
 
-<div id="rental-page" data-role="page">
+    <div id="rental-page" data-role="page">
 
-    <div data-role="content" data-id="content">
-        <div data-role="pagelogo">
+        <div data-role="content" data-id="content">
+            <div data-role="pagelogo">
+            </div>
+
+
+            <ul data-id="listview" data-role="listview" data-inset="true">
+
+                <li>
+                    <label data-i18n="name">
+                        Name
+                    </label>
+                    <input data-id="name" type="text" value="" title="">
+                    <label data-i18n="name-help-text" class="helptext">
+                        Example 'Center court', 'Lisa', 'Mini Cooper (234 ADE)'
+                    </label>
+                </li>
+
+                <li>
+                    <label data-i18n="notes">
+                        Notes
+                    </label>
+                    <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+                    <label data-i18n="notes-help-text" class="helptext">
+                        For your information only, the only the category name is displayed to the customer
+                    </label>
+                </li>
+
+                <li>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <label data-i18n="depth">
+                            	Booking depth
+                            </label>
+                            <input data-id="depth" type="text" value="1" title="" />
+                        </div>
+                        <div class="ui-block-b">
+                            <label data-i18n="available" style="display:block">Available</label>
+                            <select data-id="available" data-role="slider">
+                                <option data-i18n="no" value="off">No</option>
+                                <option data-i18n="yes" value="on" selected>Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div data-id="category.container">
+                        <label data-i18n="category">
+                            Category
+                        </label>
+
+                        <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="" data-theme="a">
+                        </ul>
+
+                        <label data-i18n="category-help-text" class="helptext">Example 'Tennis', 'Root canal', 'Car (sedan)'</label>
+                    </div>
+                </li>
+
+                <li>
+                    <div data-id="icon.container" data-role="none">
+                        <label data-i18n="symbol">
+                            Symbol
+                        </label>
+                        <button data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
+                            <img data-id="icon.image" style="border-bottom-left-radius:0px">
+                        </button>
+                    </div>
+                </li>
+
+
+            </ul>
+
+
+
+            <div data-role="button-row">
+                <a data-id="back" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Back</a>
+                <a data-id="save" data-i18n="save" data-role="button" data-inline="true" data-theme="g">Save</a>
+                <a data-id="remove" data-i18n="remove" data-role="button" data-inline="true" data-theme="r">Remove</a>
+            </div>
         </div>
 
-         
-        <ul data-id="listview" data-role="listview" data-inset="true">
+        <div data-id="popup" data-role="popup">
+        </div>
 
-            <li>        
-	            <label>Namn</label>
-	            <input data-id="name" type="text" value="" title="">
-	            <label class="helptext">Exempel 'Bana 1', 'Lisa', 'Mini Cooper (ADE 234)'</label>
-            </li>
-            
-            <li>
-	            <label>Anteckning</label>
-	            <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
-				<label class="helptext">För internt bruk, beskrivningen som kunder ser anger du på Bokningsgruppen</label>
-            </li>
-            
-            <li>
-	            <div class="ui-grid-a">
-	            	<div class="ui-block-a">
-			        	<label>Antal som kan boka samtidigt</label>
-			        	<input data-id="depth" type="text" value="1" title=""/>
-	            	</div>
-	            	<div class="ui-block-b">
-						<label style="display:block">Tillgänglig för bokning</label>
-						<select name="settings-rental-available" data-id="available" data-role="slider">
-							<option value="off">Nej</option>
-							<option value="on" selected>Ja</option>
-						</select>
-	            	</div>
-	            </div> 
-            </li>            
-
-            <li>
-            	<div data-id="category.container">
-                    <label>
-                        Bokningsgrupp
-                    </label>
-                    <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="Bokas under namnet..." data-theme="a">	                    
-                    </ul>
-                    
-                   <!-- <a data-id="category.button"  data-role="button" data-icon="arrow-d" data-iconpos="right" data-theme="c">
-                        <span data-id="category.text">&nbsp</span>
-                    </a>-->
-                    
-                    <label class="helptext">Exempel 'Squash', 'Klippning', 'Bil (liten)'</label>
-				</div>
-            </li>
-            
-            <li>
-                <div data-id="icon.container" data-role="none">
-                    <label>
-                        Symbol
-                    </label>
-                    <button data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
-                        <img data-id="icon.image" style="border-bottom-left-radius:0px">
-                    </button>
-                </div>
-            </li>
-
-
-        </ul>        
-
-
-        
-	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</a>
-        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
-	    </div>
     </div>
 
-	<div data-id="popup" data-role="popup">
-	</div>
+</body>
 
-</div>
-
-</body></html>
+</html>

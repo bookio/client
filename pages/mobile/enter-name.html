@@ -4,45 +4,47 @@
 <body>
 
 
-<div data-role="page" id="mobile-enter-name">
+    <div data-role="page" id="mobile-enter-name">
 
-    <div data-role="header" data-theme="b">
-        <a href='#' data-id="back" data-icon='carat-l' data-theme="b">Bakåt</a>
-    	<h1 data-id="title">Dina uppgifter</h1>
-    </div>
-
-	<div data-role="content">  
-
-        <div data-role="pagelogo">
+        <div data-role="header" data-theme="b">
+            <a href='#' data-id="back" data-icon='carat-l' data-theme="b">Bakåt</a>
+            <h1 data-id="title">Dina uppgifter</h1>
         </div>
 
-        <ul data-role="listview" data-inset="true">
-            <li>
-                <h1 data-id="category.name"></h1>
-                <p data-id="category.description"></p>
-            </li>
-        </ul>        
+        <div data-role="content">
 
-        <ul data-role="listview" data-inset="true">
-            <li>
-                <label>Ange din e-postadress</label>
-                <input data-id="customer.email" type="text" value="" placeholder="" title="">
-                <label>Namn</label>
-                <input data-id="customer.name" type="text" value="" placeholder="" title="">
-            </li>
-        </ul>        
+            <div data-role="pagelogo">
+            </div>
 
-        <p/>
-        <p/>
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <h1 data-id="category.name"></h1>
+                    <p data-id="category.description"></p>
+                </li>
+            </ul>
 
-		<div data-role="button-row">
-        	<a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="a">Boka</a>
-		</div>
+            <ul data-role="listview" data-inset="true">
+                <li>
+                    <label>Ange din e-postadress</label>
+                    <input data-id="customer.email" type="text" value="" placeholder="" title="">
+                    <label>Namn</label>
+                    <input data-id="customer.name" type="text" value="" placeholder="" title="">
+                </li>
+            </ul>
+
+            <p/>
+            <p/>
+
+            <div data-role="button-row">
+                <a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="a">Boka</a>
+            </div>
 
 
-	</div><!-- /content -->
+        </div>
 
-</div>
+    </div>
 
 
-</body></html>
+</body>
+
+</html>

@@ -125,9 +125,9 @@
 					enableDisable();
 				});
 				
-				_elements.login.password.attr('placeholder', i18n.text('password'));
-				_elements.login.email.attr('placeholder', i18n.text('email'));
-				_elements.signup.email.attr('placeholder', i18n.text('email'));
+				_elements.login.password.attr('placeholder', i18n.text('password', 'Password'));
+				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
+				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				
 				enableDisable();
 

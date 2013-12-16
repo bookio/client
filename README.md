@@ -1,12 +1,11 @@
-<h2>Source client-side of bookio.com</h2>
+<h2>Client-side of bookio.com</h2>
 
-The code should be guided by
+Code guided by
 
 1) speed<br> 
 2) beauty
 
 in that order.
-
 
 
 

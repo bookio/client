@@ -5,7 +5,7 @@ The code should be guided by
 1) speed<br> 
 2) beauty
 
-in that priority.
+in that order.
 
 
 

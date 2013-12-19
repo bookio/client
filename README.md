@@ -83,10 +83,11 @@ for a typical page.
 					...
 					
 					function init() {
-						// Translate the page
+						// Translate the page by looking up all
+						// elements with the 'data-i18n' attribute set.
 						_page.i18n(i18n);
 						
-						// Hook up all elements tagged with 'data-id'
+						// Hook up all elements tagged with 'data-id' attribute
 						// so we may reference them by '_elements.myelement'
 						_page.hookup(_elements, 'data-id');
 						...
@@ -121,5 +122,6 @@ Or, if you want to push a page into view with a transition:
 </pre>
 
 This will automatically load the <b>login.js</b> file in the same directory and start executing the code above.
+All paths are relative to the current page beeing displayed.
 
 

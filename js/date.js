@@ -1,5 +1,5 @@
 
-(function(){
+(function() {
 	
 
 	// Replace the getYear() with getFullYear()

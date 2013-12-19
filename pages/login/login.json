@@ -6,15 +6,8 @@
 		"login-button": "Logga in",
 		"email": "E-post",
 		"password": "Lösenord"
-	},
-
-	"en": {
-		"help-text":"Not tried this yet? Just enter your e-mail address and try it!",
-		"try-button": "Try it",
-		"login-button": "Log in",
-		"email": "E-mail",
-		"password": "Password"
 	}
+
 }
 
 

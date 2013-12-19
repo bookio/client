@@ -34,17 +34,11 @@
                     callback(datepicker.datepicker('getDate'));
                 }); 
 
-                popup.popup('open'); 
+                popup.popup('open');  
             }
 
-/*            function updateButtonTexts() {
-
-                _elements.startDate.text(_params.startDate == null ? 'Från' : _params.startDate.yyyymmdd());
-                _elements.endDate.text(_params.endDate == null ? 'Till' : _params.endDate.yyyymmdd());
-            }*/
-
-            function enableDisable() {
-                _elements.search.toggleClass('ui-disabled', _params.startDate == null || _params.endDate == null || _params.startDate > _params.endDate);
+            function enableDisable(choosenValue) {
+                _elements.search.toggleClass('ui-disabled', choosenValue == undefined);
             }
 
             function enableEventsHandlers() {
@@ -52,84 +46,10 @@
                 _elements.back.on('tap', function (event) {
                     $.mobile.pages.pop();
                 });
-
-				_elements.startDate.on('tap', function (event) {
-	                //event.stopPropagation();
-	                //event.preventDefault();
-					_elements.startDate.mobiscroll().rangepicker(
-						{	theme: 'jqm', 
-							display: 'bubble', 
-							controls: ['calendar'], 
-							weekCounter: 'year', 
-							lang: 'sv', 
-							minDate: new Date(),
-							navigation: 'month',
-							firstDay: 1,
-							startInput: _elements.startDate,
-							endInput: _elements.endDate,
-							defaultValue: [ new Date(), new Date() ]
-						});
-                });
-
-				_elements.endDate.on('tap', function (event) {
-	                //event.stopPropagation();
-	                //event.preventDefault();
-					_elements.endDate.mobiscroll().rangepicker(
-						{	theme: 'jqm', 
-							display: 'bubble', 
-							controls: ['calendar'], 
-							weekCounter: 'year', 
-							lang: 'sv', 
-							minDate: new Date(),
-							navigation: 'month',
-							firstDay: 1,
-							startInput: _elements.startDate,
-							endInput: _elements.endDate,
-							defaultValue: [ new Date(), new Date() ]
-						});
-                });
-
                 
-               /* 
-                _elements.startDate.on('tap', function (event) {
-
-	                event.stopPropagation();
-	                event.preventDefault();
-
-                    function dateChanged(date) {
-                        _params.startDate = date;
-
-                        if (_params.endDate == null || _params.endDate <= _params.startDate)
-                        	_params.endDate = _params.startDate.addDays(1);
-                        	
-                        updateButtonTexts();
-                        enableDisable();
-                    }
-
-                    pickDate($(this), _params.startDate, dateChanged);
-                });
-                
-                _elements.endDate.on('tap', function (event) {
-
-	                event.stopPropagation();
-	                event.preventDefault();
-	                
-                    function dateChanged(date) {
-                        _params.endDate = date;
-
-                        if (_params.startDate == null || _params.startDate >= _params.endDate)
-                        	_params.startDate = _params.endDate.addDays(-1);
-
-                        updateButtonTexts();
-                        enableDisable();
-                    }
-
-                    pickDate($(this), _params.endDate, dateChanged);
-                });
-*/
-
                 _elements.search.on('tap', function (event) {
-
+					_params.startDate = _elements.dateInterval.mobiscroll('getValue')[0];
+					_params.endDate = _elements.dateInterval.mobiscroll('getValue')[1];
                     var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
                     var request = Gopher.request('GET', url);
 
@@ -157,7 +77,6 @@
                             _elements.searchResult.fadeIn();
 							$(window).scrollTop(300); // Make sure message of failed search is visible
                         }
-                        console.log(rentals);
                     });
 
                 });
@@ -168,17 +87,28 @@
 
                 _params = $.mobile.pages.params;
 
-                _params.startDate = _params.startDate ? _params.startDate : null;
-                _params.endDate = _params.endDate ? _params.endDate : null;
-
                 _page.hookup(_elements, 'data-id');
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
                 _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/app-icon.png');
 
+				_elements.dateInterval.mobiscroll().rangepicker(
+					{	theme: 'jqm', 
+						display: 'bubble', 
+						controls: ['calendar'], 
+						weekCounter: 'year', 
+						lang: 'sv', 
+						minDate: new Date(),
+						navigation: 'month',
+						firstDay: 1,
+						defaultValue: [ new Date(), new Date() ],
+						onClose: function (valueText, btn, inst) {
+									enableDisable(valueText);
+								}
+					});
+
                 enableEventsHandlers();
-                //updateButtonTexts();
                 enableDisable();
             }
 
@@ -188,7 +118,6 @@
         $(document).delegate("#mobile-search", "pageinit", function (event) {
             new Module($(this));
         });
-
 
 
     });

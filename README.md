@@ -5,52 +5,58 @@ This documentation covers the client side of Bookio and is completely written in
 <h3>Project layout</h3>
 The directory structure is as follows
 <ul>
-  <li>
-    <b>components</b> - Contains general graphic components. Each component has 
-	its own directory with its privateresources.
-  </li>
-    
-  <li>
-    <b>css</b> - The global less files which is compiled into css. 
-    The <b>styles.css</b> file is included in the main <b>index.html</b>
-  </li>
+	<li>
+		<b>components</b> - Contains general graphic components. Each component has 
+		its own directory with its privateresources.
+	</li>
+	
+	<li>
+		<b>css</b> - The global less files which is compiled into css. 
+		The <b>styles.css</b> file is included in the main <b>index.html</b>
+	</li>
+	
+	<li>
+		<b>images</b> - Contains images used around the app. Includes backgrounds, rental symbols etc.
+	</li>
+	
+	<li>
+		<b>java</b> - Shouldn't be there... 
+	</li>
+	
+	<li>
+		<b>js</b> - Contains misc scripts needed throughout the app. The makefile combines these files
+		into <b>core.js</b> with the command <b>make core</b> and this file is included in <b>index.html</b>. 
+	</li>
+	
+	<li>
+		<b>lib</b> - Contains jQuery, jQuery Mobile (including the jQuery Mobile configuration file), 
+		plugins, and other common libraries. As with the files in the <b>js</b> folder, all library files
+		are combined into <b>core.js</b>.
+	</li>
+	
+	<li>
+		<b>pages</b> - Since this is a jQuery Mobile is built on pages, here are all the pages for the app.
+		Each page has its own folder with its private resources. All pages have an HTML file along with a JavaScript file.
+		Some pages also have a private CSS (compiled LESS), a JSON file containing translation and private images.
+	</li>
+	
+	<li>
+		<b>widgets</b> - Contains jQuery Mobile widgets. Again, each widget has its own directory along with any resources.
+	</li>
 
-  <li>
-    <b>images</b> - Contains images used around the app. Includes backgrounds, rental symbols etc.
-  </li>
+	<li>
+		<b>makefile</b> - The makefile is used for deployment and building the core files. 
+		See the documentation inside the file. The tools needed to assumes Mac OSX.
+	</li>
 
-  <li>
-    <b>java</b> - Shouldn't be there... 
-  </li>
-
-  <li>
-    <b>js</b> - Contains misc scripts needed throughout the app. The makefile combines these files
-    into <b>core.js</b> with the command <b>make core</b> and this file is included in <b>index.html</b>. 
-  </li>
-
-  <li>
-    <b>lib</b> - Contains jQuery, jQuery Mobile (including the jQuery Mobile configuration file), 
-	plugins, and other common libraries. As with the files in the <b>js</b> folder, all library files
-	are combined into <b>core.js</b>.
-  </li>
-
-  <li>
-    <b>pages</b> - Since this is a jQuery Mobile is built on pages, here are all the pages for the app.
-    Each page has its own folder with its private resources. All pages have an HTML file along with a JavaScript file.
-    Some pages also have a private CSS (compiled LESS), a JSON file containing translation and private images.
-  </li>
-
-  <li>
-    <b>widgets</b> - Contains jQuery Mobile widgets. Again, each widget has its own directory along with any resources.
-  </li>
-
+	<li>
+		<b>index.html</b> - The main HTML file. This is just an
+		empty jQuery Mobile page but it also loads the <b>js/main.js</b> file which
+		starts upp the app.
+	</li>
 
 </ul>
 
-
-<h3>The makefile</h3>
-The <b>makefile</b> is used for deployment and building the core files. See the documentation inside the file. The tools
-needed to assumes Mac OSX.
 
 <h3>Pages</h3>
 Since this is a jQuery Mobile app, everything is pages. Below is the code
@@ -114,6 +120,6 @@ Or, if you want to push a page into view with a transition:
 	</code>
 </pre>
 
-This will automatically load the <b>login.js</b> in the same directory and start executing the code above.
+This will automatically load the <b>login.js</b> file in the same directory and start executing the code above.
 
 

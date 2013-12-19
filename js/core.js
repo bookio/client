@@ -23567,9 +23567,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		}
 		
 		if (elements == undefined) {
-			alert('Foo on You!');
 			return;
-			
 		}
 		
 		if (attribute == undefined) {
@@ -27011,7 +27009,7 @@ sha1 = function(msg) {
 
 
 
-(function(){
+(function() {
 	
 
 	// Replace the getYear() with getFullYear()

@@ -6,10 +6,18 @@ This documentation covers the client side of Bookio and is completely written in
 The directory struction is as follows
 <ul>
   <li>
-    <b>components</b> - contains general graphic components
-    <p>css</p> - The global less files which is compiled into css. The <b>styles.css</b> file is included in the main <b>index.html</b>
+    <b>components</b> - Contains general graphic components. Each component has its own directory with its private           resources.
   </li>
-  <li>css</li>
+    
+  <li>
+    <b>css</b> - The global less files which is compiled into css. The <b>styles.css</b> file is included in the main      <b>index.html</b>
+  </li>
+
+  <li>
+    <b>css</b> - The global less files which is compiled into css. The <b>styles.css</b> file is included in the main      <b>index.html</b>
+  </li>
+
+
 </ul>
 
 

@@ -1,7 +1,7 @@
 # Install Xcode (including command line tools)
-# Install nodejs -> http://nodejs.org
-# Install lessc -> npm install -g less
-# Install js-beautify -> npm install -g js-beautify
+# Install nodejs -> See http://nodejs.org
+# Install lessc -> "npm install -g less"
+# Install js-beautify -> "npm install -g js-beautify" (not really needed)
 #
 # Command to use ssh without password: 
 # cat ~/.ssh/id_rsa.pub | ssh 163702_ssh@ssh.binero.se "mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys"
@@ -66,7 +66,8 @@ CORE_JS_FILES = \
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \
-	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css
+	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css \
+	css/styles.css
 
 all:
 	@echo "usage: make www   - Deploys to web site"

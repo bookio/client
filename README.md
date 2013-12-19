@@ -46,7 +46,7 @@ The directory structure is as follows
 
 	<li>
 		<b>makefile</b> - The makefile is used for deployment and building the core files. 
-		See the documentation inside the file. The tools needed to assumes Mac OSX.
+		See the documentation inside the file. The tools needed assumes Mac OSX.
 	</li>
 
 	<li>

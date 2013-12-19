@@ -2,7 +2,7 @@
 
 Code guided by
 
-1) speed<br> 
+1) speed<br>
 2) beauty
 
 in that order.
@@ -11,7 +11,6 @@ in that order.
 The client side of Bookio is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
 
 <h2>Project layout (as of 2013-12-19)</h2>
-
 
 
 

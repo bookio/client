@@ -1,8 +1,8 @@
-<h2>Client Side of Bookio.com</h2>
+<h2>Client Side of Bookio.com (2013-12-19)</h2>
 
 This documentation covers the client side of Bookio and is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
 
-<h3>Project layout (as of 2013-12-19)</h3>
+<h3>Project layout</h3>
 The directory structure is as follows
 <ul>
   <li>
@@ -53,8 +53,8 @@ The <b>makefile</b> is used for deployment and building the core files. See the 
 needed to assumes Mac OSX.
 
 <h3>Pages</h3>
-
-<h4>Typical page</h4>
+Since this is a jQuery Mobile app, everything is pages. Below is the code
+for a typical page.
 
 <pre>
 	<code>
@@ -99,3 +99,21 @@ needed to assumes Mac OSX.
 	
 	</code>
 </pre>
+
+To display the page use:
+<pre>
+	<code>
+		$.mobile.go('pages/login/login.html');
+	</code>
+</pre>
+
+Or, if you want to push a page into view with a transition:
+<pre>
+	<code>
+		$.mobile.push('pages/login/login.html');
+	</code>
+</pre>
+
+This will automatically load the <b>login.js</b> in the same directory and start executing the code above.
+
+

@@ -105,10 +105,14 @@ css/core.css: $(CORE_CSS_FILES)
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)
 
-$(SITE_PATH)/%.js: %.js
-	$(ECHO) Compressing '$@'...
-	$(MKDIR) -p $(SITE_PATH)/$(<D)
-	$(COMPRESS) $^ -o $@ 
+#
+# Comment out this rule for compressed output
+# (would be nice with comething like 'make debug' and 'make release'...)
+#
+#$(SITE_PATH)/%.js: %.js
+#	$(ECHO) Compressing '$@'...
+#	$(MKDIR) -p $(SITE_PATH)/$(<D)
+#	$(COMPRESS) $^ -o $@ 
 
 $(SITE_PATH)/%:%
 	$(ECHO) Copying '$@'...

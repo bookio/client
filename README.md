@@ -52,3 +52,50 @@ The directory structure is as follows
 The <b>makefile</b> is used for deployment and building the core files. See the documentation inside the file. The tools
 needed to assumes Mac OSX.
 
+<h3>Pages</h3>
+
+<h4>Typical page</h4>
+
+<pre>
+	<code>
+		(function() {
+		
+			// Specify dependencies. In this case the language file
+			// and some css.
+			var dependencies = [
+				'i18n!./login.json',
+				'css!./login'
+			];
+			
+			define(dependencies, function(i18n) {
+				
+				function Module(page) {
+		
+					var _page = page;
+					var _elements = {};
+		
+					...
+					
+					function init() {
+						// Translate the page
+						_page.i18n(i18n);
+						
+						// Hook up all elements tagged with 'data-id'
+						// so we may reference them by '_elements.myelement'
+						_page.hookup(_elements, 'data-id');
+						...
+					}
+		
+					init();
+				}
+		
+		
+				$(document).delegate("#login-page", "pageinit", function(event) {
+					// Create a new instance of the module when the page is loaded into the DOM.
+					new Module($(event.currentTarget));
+				});
+			});
+		})();
+	
+	</code>
+</pre>

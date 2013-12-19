@@ -1,8 +1,8 @@
 <h2>Client Side of Bookio.com (2013-12-19)</h2>
 
-This documentation covers the client side of Bookio and is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
+This documentation covers the client side of Bookio which is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
 
-<h3>Project layout</h3>
+<h3>Project Layout</h3>
 The directory structure is as follows
 <ul>
 	<li>
@@ -35,7 +35,7 @@ The directory structure is as follows
 	</li>
 	
 	<li>
-		<b>pages</b> - Since this is a jQuery Mobile is built on pages, here are all the pages for the app.
+		<b>pages</b> - Since this is a jQuery Mobile app, it is all about pages.
 		Each page has its own folder with its private resources. All pages have an HTML file along with a JavaScript file.
 		Some pages also have a private CSS (compiled LESS), a JSON file containing translation and private images.
 	</li>
@@ -125,3 +125,6 @@ This will automatically load the <b>login.js</b> file in the same directory and 
 All paths are relative to the current page beeing displayed.
 
 
+<h3>Compiling LESS</h3>
+Even though the makefile compiles the LESS files, it might be convinient to install LESS.app for OSX. 
+It automatically compiles the LESS files in the background when modified. Another alternative is <b>CodeKit</b>.

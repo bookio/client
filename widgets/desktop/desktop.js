@@ -241,6 +241,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotSettings(settings) {
+			console.log("got settings");
 
 		    var defaults = {
     		    positions: {},
@@ -270,6 +271,7 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function gotCustomers(customers) {
+			console.log("got customers");
 
     		_customers = {};
     		
@@ -302,6 +304,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotRentals(rentals) {
+			console.log("got rentals");
 			_rentals = {};
 
 			$.each(rentals, function(i, rental) {
@@ -310,6 +313,7 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function gotReservations(reservations) {
+			console.log("got reservations");
             _reservations = {};    		
         	
         	$.each(reservations, function(i, reservation){
@@ -410,12 +414,13 @@ define(['module', 'css!./desktop'], function(module) {
 			
 			enableEscKey();
 			
-			self.initialLayout();
 	        				
 		};
 		
-		self.initialLayout = function() {
+		self.refresh = function() {
 			var gopher = Gopher;
+			
+			console.log("sending request...");
 			
 			var rentals = Model.Rentals.fetch(); 
 			var reservations = Model.Reservations.fetch(); 
@@ -432,29 +437,22 @@ define(['module', 'css!./desktop'], function(module) {
 			$('body').spin("large");
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
+				console.log("got everything");
     			$('body').spin(false);
     			
 				rememberDesktopSize();
+            	placeRentals();
+				updateRentalAvailability();			
 				
 				if (Object.keys(_rentals).length == 0) {
 					// No objects created, enter edit mode so user can add objects
                 	self.editMode(true);
                 	ShowIntroBlob();
                 }
-				/*else { 
-                	placeRentals();
-					updateRentalAvailability();			
-    			}
-    			*/
 			});
 			
 		}
 
-		self.layout = function() {
-        	placeRentals();
-			updateRentalAvailability();			
-		}
-		
 		function positionItem(item, col, row, speed) {
 
             var maxCols = computeMaxCols();
@@ -528,6 +526,7 @@ define(['module', 'css!./desktop'], function(module) {
             var image = item.find('img');
             
             if (rental.icon_id) {
+				console.log(_icons);
 				console.log('icon-id: %d', rental.icon_id);	            
 				console.log('icon-img: %s', _icons[rental.icon_id].image);	            
                 image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
@@ -810,7 +809,7 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		widget.refresh = function() {
-			this.widget.layout();			
+			this.widget.refresh();			
 		}
 		
 		widget.startDate = function(value) {

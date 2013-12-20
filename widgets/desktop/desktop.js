@@ -20,14 +20,13 @@ define(['module', 'css!./desktop'], function(module) {
 		var _setNeedsLayout = false;
 		var _editMode = false;
 		var _elements = {};
+		var _initialRefreshDone = false;
 
 		var _reservations = {};
 		var _customers = {};
 		var _rentals = {};
 		var _settings = {};
 		var _icons = {};
-		var _desktopSize = {};
-		//var _page = options.page;
 		
 		var _timerForIntroBlob;
 
@@ -241,8 +240,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotSettings(settings) {
-			console.log("got settings");
-
 		    var defaults = {
     		    positions: {},
     		    orderAutomatically: false,
@@ -251,7 +248,6 @@ define(['module', 'css!./desktop'], function(module) {
 			
 			_settings = {};
             _settings = $.extend({}, defaults, settings);
-			console.log(_settings);            		
 		}
 
 
@@ -266,12 +262,11 @@ define(['module', 'css!./desktop'], function(module) {
 	        	
 	        	_settings.positions[rental.id] = position;  
             });
-			console.log(_settings);            		
+
 			Model.Settings.save('desktop', 'layout', _settings);
 		}
 
 		function gotCustomers(customers) {
-			console.log("got customers");
 
     		_customers = {};
     		
@@ -284,7 +279,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotIcons(icons) {
-			console.log('got icons...');
 			_icons = icons;
 		}
 
@@ -304,7 +298,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotRentals(rentals) {
-			console.log("got rentals");
 			_rentals = {};
 
 			$.each(rentals, function(i, rental) {
@@ -313,7 +306,6 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function gotReservations(reservations) {
-			console.log("got reservations");
             _reservations = {};    		
         	
         	$.each(reservations, function(i, reservation){
@@ -345,13 +337,6 @@ define(['module', 'css!./desktop'], function(module) {
 		    _element.removeClass("intromode");
 	    }
 	    
-	    function rememberDesktopSize() {
-	    	if (_element.innerWidth() > 0 && _element.innerHeight() > 0) {
-		        _desktopSize.width = _element.innerWidth();
-		        _desktopSize.height = _element.innerHeight();
-	    	}
-		    
-	    }
 				
 		function init() {
 				
@@ -374,11 +359,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_element.hookup(_elements, 'data-id');
 			
-			/*
-			setInterval(function(){
-				console.log('Width: %f', _element.innerWidth()); 	
-			}, 500);
-			*/
 			
 			
             _element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
@@ -399,11 +379,6 @@ define(['module', 'css!./desktop'], function(module) {
                 self.editMode(false);
 	        });
 
-	        //_page.on('pageshow.desktop', rememberDesktopSize);
-	        //_page.on('pagebeforehide.desktop', rememberDesktopSize);
-
-	        $(window).on('resize.desktop', rememberDesktopSize);
-
             // Remove all my notifications when the element is destroyed
             _element.on('removed', function() {
                 Notifications.off('.desktop');
@@ -418,9 +393,13 @@ define(['module', 'css!./desktop'], function(module) {
 		};
 		
 		self.refresh = function() {
+		
+			if (_initialRefreshDone) {
+				return;
+				
+			}
+
 			var gopher = Gopher;
-			
-			console.log("sending request...");
 			
 			var rentals = Model.Rentals.fetch(); 
 			var reservations = Model.Reservations.fetch(); 
@@ -437,10 +416,8 @@ define(['module', 'css!./desktop'], function(module) {
 			$('body').spin("large");
 			
 			$.when(rentals, reservations, customers, settings, icons).then(function() {
-				console.log("got everything");
     			$('body').spin(false);
-    			
-				rememberDesktopSize();
+    				
             	placeRentals();
 				updateRentalAvailability();			
 				
@@ -449,6 +426,8 @@ define(['module', 'css!./desktop'], function(module) {
                 	self.editMode(true);
                 	ShowIntroBlob();
                 }
+                
+                _initialRefreshDone = true;
 			});
 			
 		}
@@ -526,9 +505,6 @@ define(['module', 'css!./desktop'], function(module) {
             var image = item.find('img');
             
             if (rental.icon_id) {
-				console.log(_icons);
-				console.log('icon-id: %d', rental.icon_id);	            
-				console.log('icon-img: %s', _icons[rental.icon_id].image);	            
                 image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
             }
             else

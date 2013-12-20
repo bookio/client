@@ -22,6 +22,7 @@
 			function chill() {
 				_user.name = _elements.name.val();
 				_user.email = _elements.email.val();
+				_user.username = _elements.email.val();
 				_user.password = _elements.password.val();
 			}
 
@@ -80,7 +81,6 @@
 					});
 
 					request.fail(function() {
-						$.mobile.pages.pop();
 					});
 					
 					

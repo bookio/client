@@ -3,6 +3,7 @@
 (function() {
 
 	var dependencies = [
+	   'i18n!./settings.json',
 	   '../users/users',
 	   '../categories/categories',
 	   '../contact/contact',
@@ -10,7 +11,7 @@
 	   '../../widgets/pagelogo/pagelogo'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 		
 		
 	    function Module(page) {
@@ -21,7 +22,9 @@
 	        function init() {
 
 	           _page.hookup(_elements, 'data-id');
-
+	           
+	           _page.i18n(i18n);
+	           
 	           _elements.back.on('tap', function(event){
 		          event.preventDefault();
 		          $.mobile.pages.pop();

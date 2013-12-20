@@ -1,0 +1,11 @@
+{
+	"sv": {
+			"rules-titles": "Tvinga kund att ange:",
+			"rules-phone": "Telefon",
+			"rules-no": "Nej",
+			"rules-yes": "Ja",
+			"rules-email": "E-post",
+			"rules-address": "Adress",
+			"rules-button-back": "Tillbaka"
+	}
+}

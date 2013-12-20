@@ -1,10 +1,11 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./user.json',
 		'css!./user'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 
 
 		function Module(page) {
@@ -29,6 +30,8 @@
 
 			function init() {
 				_page.hookup(_elements, 'data-id');
+
+				_page.i18n(i18n);
 
 				if ($.mobile.pageData && $.mobile.pageData.user) {
 					_user = $.mobile.pageData.user;

@@ -10,40 +10,40 @@
         <div data-role="pagelogo">
         </div>
 
-        <h2 data-id="title">
-            Inställningar
+        <h2 data-id="title" data-i18n="settings-title">
+            Settings
         </h2>
         
         <ul data-id="listview" data-role="listview" data-inset="true">
 
 	        <li>
 	        	<a href="../contact/contact.html" data-transition="slide">
-		        	<h2>
-						Uppgifter om din verksamhet	        		
+		        	<h2 data-i18n="settings-choice-info">
+						About your Business	        		
 		        	</h2>
 	        	</a>
 	        </li>
 
 	        <li>
 	        	<a href="../users/users.html" data-transition="slide">
-		        	<h2>
-						Användare	        		
+		        	<h2 data-i18n="settings-choice-users">
+						Users	        		
 		        	</h2>
 	        	</a>
 	        </li>
 
 	        <li>
 	        	<a href="../categories/categories.html" data-transition="slide">
-		        	<h2>
-						Bokningsgrupper	        		
+		        	<h2 data-i18n="settings-choice-categories">
+						Booking Categories	        		
 		        	</h2>
 	        	</a>
 	        </li>
 
 	        <li>
 	        	<a href="../rules/rules.html" data-transition="slide">
-		        	<h2>
-						Regler för bokning        		
+		        	<h2 data-i18n="settings-choice-rules">
+						Rules for Booking        		
 		        	</h2>
 	        	</a>
 	        </li>
@@ -51,15 +51,15 @@
         </ul>  
         
         <br>
-        <h4 class="bookio-style" data-id="title">
-            Kundernas ingång till bokning
+        <h4 class="bookio-style" data-id="title" data-i18n="settings-path-title">        	
+            Path to Booking Page
         </h4>
         
-        <input data-id="url" type="text" onClick="this.select();" placeholder="Du måste ha minst en bokningsgrupp." readonly>
-	    <p class="helptext">Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) <strong>eller</strong> 'ctrl+C' (PC) för att kopiera.<br>För att se hur bokningssidan ser ut hos dina kunder <a data-id="urlTrial" href="#" target="_blank">klicka här</a>.</p>
+        <input data-id="url" type="text" onClick="this.select();" readonly>
+	    <p class="helptext" data-i18n="settings-path-help">Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy.<br>To see a preview of the booking page <a data-id="urlTrial" href="#" target="_blank">click here</a>.</p>
 
 	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</a>
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="settings-button-back">Back</a>
 	    </div>
         
     </div>

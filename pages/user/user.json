@@ -1,0 +1,10 @@
+{
+	"sv": {
+			"user-name": "Namn",
+			"user-email": "E-post",
+			"user-pw": "Lösenord",
+			"user-button-back": "Tillbaka",
+			"user-button-save": "Spara",
+			"user-button-delete": "Radera"
+	}
+}

@@ -1,0 +1,16 @@
+
+{
+	"sv": {
+		"settings-title": "Inställningar",
+		"settings-choice-info": "Uppgifter om din verksamhet",
+		"settings-choice-users": "Användare",
+		"settings-choice-categories": "Bokningsgrupper",
+		"settings-choice-rules": "Regler för bokning",
+		"settings-url-title": "Kundernas ingång till bokning",
+		"settings-url-help": "Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) <strong>eller</strong> 'ctrl+C' (PC) för att kopiera.<br>För att se hur bokningssidan ser ut hos dina kunder <a data-id='urlTrial' href='#' target='_blank'>klicka här</a>.",
+		"settings-button-back": "Tillbaka"
+	}
+
+}
+
+

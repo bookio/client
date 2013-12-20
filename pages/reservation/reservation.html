@@ -16,32 +16,32 @@
 
         <ul data-id="listview" data-role="listview" data-inset="true" data-divider-theme="c">
             <li>
-                <label>
-                    Vem
+                <label data-i18n="reservation-who">
+                    Who
                 </label>
                     <textarea data-id="contact" type="text" value="" placeholder="" title="">
 	                    
                     </textarea>
             	    <div data-role="button-row">
-                    	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" data-theme="c" class="ui-disabled">Välj kund</a>
+                    	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" data-theme="c" class="ui-disabled" data-i18n="reservation-pick-customer">Select Customer</a>
             	    </div>
             </li>
 
             <li>
-                <label>
-                    När
+                <label data-i18n="reservation-when">
+                    When
                 </label>
 
                 <div class="ui-grid-a">
                 	<div class="ui-block-a">
                         <a data-id="startdate.button" data-role="button" data-theme="c" class="Xui-disabled">
-                            <span data-id="startdate.text">Från</span>
+                            <span data-id="startdate.text" data-i18n="reservation-from">From</span>
                             <span data-id="startdate.date"></span>
                         </a>
                 	</div>
                 	<div class="ui-block-b">
                         <a data-id="enddate.button" data-role="button" data-theme="c" class="Xui-disabled">
-                            <span data-id="enddate.text">Till</span>
+                            <span data-id="enddate.text" data-i18n="reservation-to">To</span>
                             <span data-id="enddate.date"></span>
                         </a>
                 	</div>
@@ -50,15 +50,15 @@
             </li>
 
             <li>
-                <label>
-                    Pris
+                <label  data-i18n="reservation-price">
+                    Price
                 </label>
                 <input data-id="price" type="text" value="" placeholder="" title="">
             </li>
 
 
             <li>
-                <label>
+                <label  data-i18n="reservation-status">
                     Status
                 </label>
 
@@ -66,10 +66,10 @@
                 	<div class="ui-block-a">
                         <div data-role="fieldcontain">
                         	<fieldset data-role="controlgroup" data-theme="c">
-                        		<label>Har ankommit
+                        		<label  data-i18n="reservation-status-arrived">Arrived
                             		<input data-id="arrived" type="checkbox"/>
                         		</label>
-                        		<label>Betald
+                        		<label data-i18n="reservation-status-paid">Paid
                             		<input data-id="payed" type="checkbox" class="custom" />
                         		</label>
                             </fieldset>
@@ -79,10 +79,10 @@
                 	<div class="ui-block-b">
                         <div data-role="fieldcontain">
                         	<fieldset data-role="controlgroup">
-                        		<label>Lämnat
+                        		<label data-i18n="reservation-status-left">Left
                             		<input data-id="delivered" type="checkbox" class="custom" />
                         		</label>
-                        		<label>Överförd
+                        		<label data-i18n="reservation-status-transfered">Transfered
                             		<input data-id="transferred" type="checkbox" class="custom" />
                         		</label>
                             </fieldset>
@@ -100,9 +100,9 @@
         </div>
 
 	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</a>
-        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Avboka</a> 
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="reservation-button-back">Back</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g" data-i18n="reservation-button-save">Save</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r" data-i18n="reservation-button-cancel-reservation">Cancel Reservation</a> 
 	    </div>
 
         

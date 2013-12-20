@@ -3,10 +3,11 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./users.json',
 		'css!./users'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 		
 		
 	    function Module(page) {
@@ -67,6 +68,8 @@
 	        function init() {
 
 	           _page.hookup(_elements, 'data-id');
+	           
+	           _page.i18n(i18n);
 
 	           _elements.back.on('tap', function(event){
 		           $.mobile.pages.pop();

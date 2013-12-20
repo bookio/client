@@ -1,0 +1,18 @@
+{
+	"sv": {
+		"reservation-who": "Vem",
+		"reservation-pick-customer": "Välj kund",
+		"reservation-when": "När",
+		"reservation-from": "Från",
+		"reservation-to": "Till",
+		"reservation-price": "Pris",
+		"reservation-status": "Status",
+		"reservation-status-arrived": "Har ankommit",
+		"reservation-status-paid": "Betald",
+		"reservation-status-left": "Lämnat",
+		"reservation-status-transfered": "Överförd",
+		"reservation-button-back": "Tillbaka",
+		"reservation-button-save": "Spara",
+		"reservation-button-cancel-reservation": "Avboka"
+	}
+}

@@ -3,10 +3,11 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./rules.json',
 		'css!./rules',
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function(i18n) {
 		
 		
 	    function Module(page) {
@@ -31,6 +32,8 @@
             
             function init() {
                 _page.hookup(_elements, 'data-id');
+                
+                _page.i18n(i18n);
                 
                 var request = Gopher.request('GET', 'settings/app/contact');
                 

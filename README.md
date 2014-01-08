@@ -134,7 +134,7 @@ The client uses the same language as the browser. If this language is missing, t
 
 To add a new language, look up the language code here: <a href="http://www.metamodpro.com/browser-language-codes">http://www.metamodpro.com/browser-language-codes</a>
 
-Locate all .json-files in the project and add the new language. To see the english texts for translation you have to open the corresponding .html-files.
+Locate all .json-files in the project (folder pages) and add a new section for the new language. To see the english texts for translation you have to open the corresponding .html-files.
 
 In the sample below we have opened a .json-file and added the language Hungarian (hu). The sv-section (Swedish) was there from the start.
 
@@ -156,4 +156,26 @@ In the sample below we have opened a .json-file and added the language Hungarian
 }
 </code>
 </pre>
-  
+
+Besides from translating text in the .html-files, there can be text embedded in .js-files as well. Make a search for 'i18n' to find all occurrances.
+
+<pre>
+<code>
+	MsgBox.show({
+		message: i18n.text('confirm-remove', 'Are you sure you want to remove this rental?'),
+		icon: 'warning',
+		buttons: [{
+			text: i18n.text('yes', 'Yes'),
+			click: remove
+		}, {
+			text: i18n.text('no', 'No')
+		}]
+	});
+
+</code>
+</pre>
+
+In this sample we have to add a "confirm-remove" to the "hu"-section in the corresponding .json-file.
+
+<code>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'</code>
+

@@ -13,26 +13,26 @@
         
         <ul data-id="listview" data-role="listview" data-inset="true">
 	        <li>
-                <label>Namn</label>
+                <label data-i18n="category-name">Name</label>
                 <input data-id="name" type="text" value="" placeholder="Namn" title="">
 	        </li>
         
                 
             <li>   
-                <label>Beskrivning</label>
+                <label data-i18n="category-description">Description</label>
                 <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
             </li>
             
             <li>
-				<label style="display:block">Öppen för bokning</label>
+				<label style="display:block" data-i18n="category-available">Available for Reservation</label>
 				<select data-id="available" data-role="slider">
-					<option value="off" selected>Nej</option>
-					<option value="on">Ja</option>
+					<option value="off" data-i18n="category-no" selected>No</option>
+					<option value="on" data-i18n="category-yes">Yes</option>
 				</select>
             </li>
 
             <li>
-            	<label>Bild som ska visas</label>
+            	<label data-i18n="category-picture">Picture to Show</label>
 	    		<div style="text-align:center">
 			        <div data-id="dropzone" data-role="imagepicker">
 			        </div>
@@ -43,9 +43,9 @@
             
         
 	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</a>
-        	<a data-id="save" data-role="button" data-inline="true" data-theme="g">Spara</a>
-        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r">Radera</a>
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="category-back">Back</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g" data-i18n="category-save">Save</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r" data-i18n="category-delete">Delete</a>
 	    </div>
     </div>
 

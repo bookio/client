@@ -1,0 +1,16 @@
+{
+	"sv": {
+		"category-name": "Namn",
+		"category-description": "Beskrivning",
+		"category-available": "Öppen för bokning",
+		"category-no": "Nej",
+		"category-yes": "Ja",
+		"category-picture": "Bild som ska visas",
+		"category-back": "Tillbaka",
+		"category-save": "Spara", 
+		"category-delete": "Radera"
+	}
+
+}
+
+

@@ -128,3 +128,31 @@ All paths are relative to the current page beeing displayed.
 <h3>Compiling LESS</h3>
 Even though the makefile compiles the LESS files, it might be convinient to install LESS.app for OSX. 
 It automatically compiles the LESS files in the background when modified. Another alternative is <b>CodeKit</b>.
+
+<h3>Localization</h3>
+The client uses the same language as the browser. If this language is missing, the default language is english.
+
+To add a new language, look up the language code here: <a href="http://www.metamodpro.com/browser-language-codes">http://www.metamodpro.com/browser-language-codes</a>
+
+Locate all .json-files in the project and add the new language. To see the english texts for translation you have to open the corresponding .html-files.
+
+In the sample below we have opened a .json-file and added the language Hungarian (hu). The sv-section (Swedish) was there from the start.
+
+<code>
+{
+	"sv": {
+		"name": "Namn",
+		"yes": "Ja",
+		"no": "No"
+	},
+	
+	"hu": {
+		"name": "Név",
+		"yes": "Igen",
+		"no": "Ellen"
+	},
+
+}
+</code>
+
+  

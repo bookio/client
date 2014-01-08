@@ -138,6 +138,7 @@ Locate all .json-files in the project and add the new language. To see the engli
 
 In the sample below we have opened a .json-file and added the language Hungarian (hu). The sv-section (Swedish) was there from the start.
 
+<pre>
 <code>
 {
 	"sv": {
@@ -154,5 +155,5 @@ In the sample below we have opened a .json-file and added the language Hungarian
 
 }
 </code>
-
+</pre>
   

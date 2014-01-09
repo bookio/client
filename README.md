@@ -175,7 +175,30 @@ Besides from translating text in the .html-files, there can be text embedded in 
 </code>
 </pre>
 
-In this sample we have to add a "confirm-remove" to the "hu"-section in the corresponding .json-file.
+In this sample we have to add a "confirm-remove" to the "hu"-section in the corresponding .json-file. Like this:
+
+<pre>
+<code>
+{
+	"sv": {
+		"name": "Namn",
+		"yes": "Ja",
+		"no": "Nej",
+		"confirm-remove": "Vill du radera denna symbol?"
+
+	},
+	
+	"hu": {
+		"name": "Név",
+		"yes": "Igen",
+		"no": "Ellen",
+		<strong>"confirm-remove": "the hungarian phrase"</strong>
+	},
+
+}
+</code>
+</pre>
+
 
 <code>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'</code>
 

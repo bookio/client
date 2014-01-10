@@ -132,7 +132,11 @@ It automatically compiles the LESS files in the background when modified. Anothe
 <h3>Localization</h3>
 The client uses the same language as the browser. If this language is missing, the default language is english.
 
-To add a new language, look up the language code here: <a href="http://www.metamodpro.com/browser-language-codes">http://www.metamodpro.com/browser-language-codes</a>
+To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
+
+Assume you want to translate to hungarian, using the link above this gives us the language code <italic>hu</italic> for Hungarian.
+
+
 
 Locate all .json-files in the project (folder pages) and add a new section for the new language. To see the english texts for translation you have to open the corresponding .html-files.
 

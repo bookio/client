@@ -270,33 +270,40 @@
 						display: 'bubble',
 						dateFormat: 'yy-mm-dd',
 						dateOrder: 'yymmdd',
-						//minDate: new Date(),
 						lang: 'sv',
 						onClose: dateChanged
 					});
 					
-					//_elements.startdate.button.mobiscroll('setDate', _startDate);
-					//_elements.startdate.button.mobiscroll().setValue(_startDate);
+					_elements.startdate.button.mobiscroll('setDate', _startDate); 
 
+					
 					event.preventDefault();
-
-					/*
-					pickdate($(this), _startDate, function(date) {
-						_startDate = date;
-						startDateChanged();
-					});
-					*/
 
 				});
 
 				_elements.enddate.button.on('tap', function(event) {
 
-					event.preventDefault();
-
-					pickdate($(this), _endDate, function(date) {
-						_endDate = date;
-						endDateChanged();
+					function dateChanged(value, button, instance) {
+						if (button == "set") {
+							_endDate = new Date(value);
+							_endDate = _endDate.addDays(1);
+							endDateChanged();
+						}
+					}
+					_elements.enddate.button.mobiscroll().date({ 
+						theme: 'jqm', 
+						display: 'bubble',
+						dateFormat: 'yy-mm-dd',
+						dateOrder: 'yymmdd',
+						lang: 'sv',
+						minDate: _startDate,
+						onClose: dateChanged
 					});
+					
+					_elements.enddate.button.mobiscroll('setDate', _endDate.addDays(-1)); 
+
+					
+					event.preventDefault();
 
 				});
 				

@@ -17,16 +17,19 @@
             var _info = {};
             
             function fill() {
-	    	    _elements.demandPhone.val((_info.demandPhone == 0 || _info.demandPhone == undefined) ? 'off' : 'on').slider("refresh");
-				_elements.demandEmail.val((_info.demandEmail == 0 || _info.demandEmail == undefined) ? 'off' : 'on').slider("refresh");
-	    	    _elements.demandAddress.val((_info.demandAddress == 0 || _info.demandAddress == undefined) ? 'off' : 'on').slider("refresh");
+				console.log(_info);
+	    	    _elements.demandPhone.val(_info.demandPhone  ? '1' : '0').slider("refresh");
+				_elements.demandEmail.val(_info.demandEmail ? '1' : '0').slider("refresh");
+	    	    _elements.demandAddress.val(_info.demandAddress ? '1' : '0').slider("refresh");
 
             }	        
             
             function chill() {
-                _info.demandPhone = _elements.demandPhone.val();
-                _info.demandEmail = _elements.demandEmail.val();
-                _info.demandAddress = _elements.demandAddress.val();
+            
+                _info.demandPhone = parseInt(_elements.demandPhone.val());
+                _info.demandEmail = parseInt(_elements.demandEmail.val());
+                _info.demandAddress = parseInt(_elements.demandAddress.val());
+				console.log(_info);
             }
             
             
@@ -38,7 +41,7 @@
                 var request = Gopher.request('GET', 'settings/app/contact');
                 
                 request.done(function(info) {
-                    _info = info;
+                    _info = info == null ? {} : info;
                 
                     fill();
                                     

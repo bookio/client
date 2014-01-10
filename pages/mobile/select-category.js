@@ -17,11 +17,11 @@
 			function additem(category) {
 				var template =
 					'<li>' +
-					'<a data-id="link" href="">' +
-					'<img data-id="image" class="ui-li-thumb">' +
-					'<h2 data-id="name"></h2>' +
-					'<p data-id="description"></p>' +
-					'</a>' +
+						'<a data-id="link" href="">' +
+							'<img data-id="image" class="ui-li-thumb">' +
+							'<h2 data-id="name"></h2>' +
+							'<p data-id="description"></p>' +
+						'</a>' +
 					'</li>';
 
 				var li = $(template);

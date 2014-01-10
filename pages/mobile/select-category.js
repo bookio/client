@@ -32,7 +32,7 @@
 				elements.name.text(category.name);
 				elements.description.text(category.description);
 
-				elements.image.attr('src', category.image ? category.image : '../../images/app-icon.png');
+				elements.image.attr('src', category.image ? category.image : '../../images/icons/bookio.png');
 
 				elements.link.on('tap', function(event) {
 					event.preventDefault();

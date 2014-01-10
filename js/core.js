@@ -26207,7 +26207,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				var text = i18n.text($(this).attr('data-i18n'));
 
 				if (text)
-					$(this).text(text);
+					$(this).html(text);
 			});
 	    });
 	}

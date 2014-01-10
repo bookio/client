@@ -65,7 +65,7 @@
 				var item = row.data('item');
 				row.find('h2').text(item.name);
 				row.find('p').text(item.description);
-				row.find('img').attr('src', item.image ? item.image : '../images/app-icon.png');
+				row.find('img').attr('src', item.image ? item.image : '../../images/icons/bookio.png');
 			}
 
 			function refreshListView() {
@@ -151,25 +151,6 @@
 					var longURL = sprintf("%s?user=%s", window.location.href, user.username);
 
 					_elements.url.val(longURL);
-
-					/*
-                    var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);
-
-                    var request = $.ajax({
-                        url: url,
-                        type: 'GET',
-                        dataType: 'html',
-                        crossDomain: true
-                    });
-                    
-                    request.done(function(tinyURL) {
-                        _elements.url.text(tinyURL);
-                    });
-                    
-                    request.fail(function(result) {
-                    });
-                    */
-
 				});
 
 				return request;
@@ -182,11 +163,8 @@
 				
 				enableListeners();
 
-				var isDoneCategories = loadCategories();
-				//var isDoneSetURL = getGuestURL();
-				$.when(isDoneCategories).then(function() {
+				$.when(loadCategories()).then(function() {
 					if (_categories.length == 0)  {
-						//_elements.url.val("");
 						addEmpty();						
 					}
 						

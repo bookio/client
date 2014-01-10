@@ -91,7 +91,7 @@
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
-                _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/app-icon.png');
+                _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/icons/bookio.png');
 
 				_elements.dateInterval.mobiscroll().rangepicker(
 					{	theme: 'jqm', 

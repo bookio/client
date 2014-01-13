@@ -159,13 +159,11 @@ Lets start to translate the reservation page (double-click a symbol to open this
 
 Open the files <i>reservation.html</i> and <i>reservation.json</i>. If you look in <i>reservation.html</i> you see the following lines:
 
-<pre>
-<code>
+```
 	<label data-i18n="reservation-who">
 	    Who
 	</label>
-</code>
-</pre>
+```
 
 The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now looks like this:
 
@@ -178,15 +176,9 @@ The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now
 		"reservation-when": "När",
 		"reservation-from": "Från",
 		"reservation-to": "Till",
-		"reservation-price": "Pris",
-		"reservation-status": "Status",
-		"reservation-status-arrived": "Har ankommit",
-		"reservation-status-paid": "Betald",
-		"reservation-status-left": "Lämnat",
-		"reservation-status-transfered": "Överförd",
-		"reservation-button-back": "Tillbaka",
-		"reservation-button-save": "Spara",
-		"reservation-button-cancel-reservation": "Avboka"
+		.
+		.
+		.
 	}	
 }
 </pre>
@@ -203,15 +195,9 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 		"reservation-when": "När",
 		"reservation-from": "Från",
 		"reservation-to": "Till",
-		"reservation-price": "Pris",
-		"reservation-status": "Status",
-		"reservation-status-arrived": "Har ankommit",
-		"reservation-status-paid": "Betald",
-		"reservation-status-left": "Lämnat",
-		"reservation-status-transfered": "Överförd",
-		"reservation-button-back": "Tillbaka",
-		"reservation-button-save": "Spara",
-		"reservation-button-cancel-reservation": "Avboka"
+		.
+		.
+		.
 	}	
 	
 	"hu": {
@@ -221,7 +207,7 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 </pre>
 </code>
 
-Continue and add translations for all <i>data-i18n</i> tags found in the html-file.
+Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number in the other sections (in this sample the "sv"-section).
 
 ---
 

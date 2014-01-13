@@ -204,6 +204,8 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 
 Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number of entries in the other sections (in this sample the "sv"-section).
 
+Repeat for all html-files in the project.
+
 <h4>Go through all .js-files</h4>
 Besides from translating text in the .html-files, text can be embedded in .js-files as well. Make a search for <i>i18n.text</i> to find all occurrances.
 

@@ -27,6 +27,7 @@ define(['module', 'css!./desktop'], function(module) {
 		var _rentals = {};
 		var _settings = {};
 		var _icons = {};
+		var _desktopSize = {};
 		
 		var _timerForIntroBlob;
 
@@ -60,15 +61,19 @@ define(['module', 'css!./desktop'], function(module) {
 				var y = Math.floor(i / cols);
 				var x = i % rows;
 					
+				
 				if (isPositionAvailable(x, y)) {
+					console.log(sprintf("testing position %d %d AVAILABLE", x, y));
 					col = x;
 					row = y;
 					break;
 				}
+				console.log(sprintf("testing position %d %d not avaiable", x, y));
 			}
 			
 			_rentals[rental.id] = rental;
 
+			console.log(sprintf("Adding to position %d %d", col, row));
 			
 			// Everything is full, add on top others
 			addRentalToScene(rental, col, row);
@@ -187,11 +192,11 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function computeMaxCols() {
-			return Math.floor((_element.innerWidth() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+			return Math.floor((_desktopSize.width - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 
 		function computeMaxRows() {
-			return Math.floor((_element.innerHeight() - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
+			return Math.floor((_desktopSize.height - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
 		}
 		
 		
@@ -221,7 +226,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			if (!_settings.positions)
 				_settings.positions = {};
-				
+			
 			for (var rental_id in _rentals) {
 				var rental = _rentals[rental_id];
 				var position = _settings.positions[rental_id];
@@ -394,6 +399,8 @@ define(['module', 'css!./desktop'], function(module) {
 		
 		self.refresh = function() {
 		
+			_desktopSize = {width:_element.innerWidth(), height:_element.innerHeight()};
+			
 			if (_initialRefreshDone) {
 				return;
 				

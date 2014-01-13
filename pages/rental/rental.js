@@ -59,7 +59,7 @@
 
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)
-					_rental.icon_id = 8;
+					_rental.icon_id = 1;
 
 				if (!_rental.depth)
 					_rental.depth = 1;

@@ -7,4 +7,13 @@
 			"user-button-save": "Spara",
 			"user-button-delete": "Radera"
 	}
+	
+	"hu": {
+			"user-name": "Név",
+			"user-email": "Email",
+			"user-pw": "Jelszó",
+			"user-button-back": "Vissza",
+			"user-button-save": "Mentés",
+			"user-button-delete": "Törlés"
+	}
 }

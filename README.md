@@ -167,8 +167,7 @@ Open the files <i>reservation.html</i> and <i>reservation.json</i>. If you look 
 
 The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now looks like this:
 
-<pre>
-<code>
+```
 {
 	"sv": {
 		"reservation-who": "Vem",
@@ -181,13 +180,11 @@ The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now
 		.
 	}	
 }
-</pre>
-</code>
+```
 
 Now we add a Hungarian section below the section that translates to Swedish (sv):
 
-<pre>
-<code>
+```
 {
 	"sv": {
 		"reservation-who": "Vem",
@@ -204,12 +201,15 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 		"reservation-who": "Ki"	
 	}
 }
-</pre>
-</code>
+```
 
 Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number in the other sections (in this sample the "sv"-section).
-
+>En test
+>på en 
+>quote
 ---
+***
+###
 
 Locate all .json-files in the project (folder pages) and add a new section for the new language. To see the english texts for translation you have to open the corresponding .html-files.
 

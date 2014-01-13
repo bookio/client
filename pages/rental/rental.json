@@ -20,13 +20,13 @@
 	
 	"hu": {
 		"name": "Név",
-		"name-help-text":"Például: '1-es pálya', 'Kiss Virág' vagy 'Sportautó (típusszám vagy azonosító)'",
+		"name-help-text":"Például: '2-es pálya', 'Ágnes' vagy 'Mini Cooper (ADE-234)'",
 		"notes": "Megjegyzés",
 		"depth": "Add meg hányan foglalhatják le egyazon időben.",
-		"available": "Szabad",
-		"category": "Foglalás csoportoknak",
-		"category-help-text": "Példa csoportokra: 'Squash', 'Masszázs', 'Kocsi (kicsi, kék)'",
-		"symbol": "Jelkép",
+		"available": "Lefoglalható",
+		"category": "Kategória",
+		"category-help-text": "Példa kategória: 'Tenisz', 'Fodrász', 'Autó (kicsi, kék)'",
+		"symbol": "Szimbólum",
 		"back": "Vissza",
 		"save": "Mentés",
 		"remove": "Törlés",

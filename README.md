@@ -165,7 +165,7 @@ Open the files <i>reservation.html</i> and <i>reservation.json</i>. If you look 
 	</label>
 ```
 
-The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now looks like this:
+The tag <i>data-i18n</i> shows the entry to be added in the json-file if we want to translate the word 'Who':
 
 ```
 {
@@ -182,7 +182,7 @@ The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now
 }
 ```
 
-Now we add a Hungarian section below the section that translates to Swedish (sv):
+Now we add a Hungarian section below the section that translates to Swedish (sv), and adds the Hungarian word for the english 'Who':
 
 ```
 {
@@ -203,41 +203,11 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 }
 ```
 
-Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number in the other sections (in this sample the "sv"-section).
->En test
->på en 
->quote
----
-***
-###
+Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number of entries in the other sections (in this sample the "sv"-section).
 
-Locate all .json-files in the project (folder pages) and add a new section for the new language. To see the english texts for translation you have to open the corresponding .html-files.
+Besides from translating text in the .html-files, text can be embedded in .js-files as well. Make a search for <i>i18n.text</i> to find all occurrances.
 
-In the sample below we have opened a .json-file and added the language Hungarian (hu). The sv-section (Swedish) was there from the start.
-
-<pre>
-<code>
-{
-	"sv": {
-		"name": "Namn",
-		"yes": "Ja",
-		"no": "No"
-	},
-	
-	"hu": {
-		"name": "Név",
-		"yes": "Igen",
-		"no": "Ellen"
-	},
-
-}
-</code>
-</pre>
-
-Besides from translating text in the .html-files, there can be text embedded in .js-files as well. Make a search for 'i18n' to find all occurrances.
-
-<pre>
-<code>
+```
 	MsgBox.show({
 		message: i18n.text('confirm-remove', 'Are you sure you want to remove this rental?'),
 		icon: 'warning',
@@ -248,34 +218,36 @@ Besides from translating text in the .html-files, there can be text embedded in 
 			text: i18n.text('no', 'No')
 		}]
 	});
+```
 
-</code>
-</pre>
+In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-section in the corresponding .json-file. Like this:
 
-In this sample we have to add a "confirm-remove" to the "hu"-section in the corresponding .json-file. Like this:
-
-<pre>
-<code>
+```
 {
 	"sv": {
-		"name": "Namn",
-		"yes": "Ja",
-		"no": "Nej",
-		"confirm-remove": "Vill du radera denna symbol?"
-
-	},
+		"reservation-who": "Vem",
+		"reservation-pick-customer": "Välj kund",
+		"reservation-when": "När",
+		"reservation-from": "Från",
+		"reservation-to": "Till",
+		.
+		.
+		.
+	}	
 	
 	"hu": {
-		"name": "Név",
+		"reservation-who": "Ki"
+		.
+		.
+		.
+		"confirm-remove": "the hungarian phrase",
 		"yes": "Igen",
-		"no": "Ellen",
-		<strong>"confirm-remove": "the hungarian phrase"</strong>
-	},
-
+		"no": "Ellen"
+	}
 }
-</code>
-</pre>
+```
 
+>Dont change anything between the characters '<' or '>', for instance you can see something like '<strong>Som text</strong>', when translated the '<strong>' and '</strong>' must remain unchanged!
 
-<code>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'</code>
+>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
 

@@ -247,7 +247,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 }
 ```
 
->Dont change anything between the characters '<' or '>', for instance you can see something like '&lt;strong>Some text&lt;/strong>', when translated the '&lt;strong>' and '&lt;/strong>' must remain unchanged!
+>Dont change anything between the characters '<' or '>', for instance you can see something like '&lt;strong>Some text&lt;/strong>', <strong>when translated the '&lt;strong>' and '&lt;/strong>' must remain unchanged!</strong>
 
 >Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
 

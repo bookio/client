@@ -12,11 +12,11 @@
 	
 	"hu": {
 		"settings-title": "Beállítások",
-		"settings-choice-info": "Válalkozásával kapcsolatos információk",
-		"settings-choice-users": "Egyéni felhasználók",
-		"settings-choice-categories": "Csoportok foglalás",
+		"settings-choice-info": "Válalkozással kapcsolatos információk",
+		"settings-choice-users": "Felhasználók",
+		"settings-choice-categories": "Csoportosan foglalók",
 		"settings-choice-rules": "Foglalás menete (Szabályok)",
-		"settings-url-title": "Mit kell tennie a vevőnek, hogy foglalhasson?",
+		"settings-url-title": "Foglalással kapcsolatos előzetes teendők",
 		"settings-url-help": "Kattints a fenti elérési útra majd a másoláshoz nyomd meg a 'ctrl+C' kombinációt (ha PC-t használsz) strong>vagy</strong> a 'cmd+C' kombbinációt (ha Mac-et használsz). <br> Ha megnéznéd, hogy ügyfeleid hogyan látják a foglalási oldalt, <a data-id='urlTrial' href='#' target='_blank'>kattints ide</a>.",
 		"settings-button-back": "Vissza"
 	}

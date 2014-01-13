@@ -7,7 +7,7 @@
 	}
 	
 	"hu": {
-		"categories-title": "Foglalás csoportoknak / csapatoknak",
+		"categories-title": "Foglalási csoportok/csapatok",
 		"categories-help": "Ezzel a funkcióval hozzáadhatod a foglalt egységet csoportokhoz vagy csapatokhoz. Itt egy példa: van három sportpálya amit kiadásra kínálsz (az strong>1-es pálya</strong>, <strong>2-es pálya</strong> és a <strong>3-as pálya</strong>). Ezeket az esti <strong>teniszmeccsre</strong> külön-külön lefoglalták nálad. Hozz létre létre csoporto(ka)t és húzd minden <strong>teniszálya<strong> szimbólumát a megfelelő csapat(ok)hoz. Ilyen egyszerű!",
 		"categories-button-back": "Vissza",
 		"categories-button-add": "Hozzáadás"

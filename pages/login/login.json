@@ -1,4 +1,3 @@
-
 {
 	"sv": {
 		"help-text":"Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!",
@@ -6,6 +5,14 @@
 		"login-button": "Logga in",
 		"email": "E-post",
 		"password": "Lösenord"
+	}
+	
+	"hu": {
+		"help-text":"Nem tudsz bejelentkezni? Add meg az e-mail címed és próbáld meg újból!",
+		"try-button": "Tégy egy próbát",
+		"login-button": "Belépés",
+		"email": "Email",
+		"password": "Jelszó"
 	}
 
 }

@@ -2,7 +2,7 @@
 
 This documentation covers the client side of Bookio which is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
 
-To get a quick understanding of how the client works from the users perspective, check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
+To get a quick understanding of how the client works from a user perspective, check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
 
 <h3>Project Goal</h3>
 Build a cloud based reservation system with the following goals:
@@ -71,9 +71,9 @@ The directory structure is as follows
 </ul>
 
 <h3>Todo</h3>
-Upcoming functionality is found under Issues and Milestones (check both under client and server).
+Upcoming functionality is found under Issues and Milestones (check both <i>client</i> and <i>server</i>).
 
-Issues tagged 'todo' is up for grabs, just start coding. Milestones are more to show larger 'chunks' that should be done in a near future. For now they needs ideas, feedback and discussion for best approach.
+Issues tagged <i>todo</i> is up for grabs, just start coding. Milestones are larger 'chunks' that should be done in a near future. For now they needs ideas, feedback and discussion for best approach.
 
 <h3>Pages</h3>
 Since this is a jQuery Mobile app, everything is pages. Below is the code

@@ -222,6 +222,8 @@ Besides from translating text in the .html-files, text can be embedded in .js-fi
 	});
 ```
 
+>The i18n.text(<i>key</i>, <i>english text</i>) works like this; the corresponding .json-file is searched for <i>key</i> under the section with the language code of the current browser, if it's found the text after the key is returned, else the default <i>english text</i> is used.
+
 In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-section in the corresponding .json-file. Like this:
 
 ```

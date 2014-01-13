@@ -147,9 +147,7 @@ Even though the makefile compiles the LESS files, it might be convinient to inst
 It automatically compiles the LESS files in the background when modified. Another alternative is <b>CodeKit</b>.
 
 <h3>Localization</h3>
-The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english.
-
-To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
+The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english. To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
 Assume you want to translate to hungarian, the link above gives the language code <i>hu</i> for Hungarian.
 

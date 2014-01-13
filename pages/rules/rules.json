@@ -8,4 +8,13 @@
 			"rules-address": "Adress",
 			"rules-button-back": "Tillbaka"
 	}
+	
+	"hu": {
+			"rules-titles": "Kérem, hogy az ügyfél határozza meg:",
+			"rules-phone": "Telefon",
+			"rules-no": "Nem",
+			"rules-yes": "Igen",
+			"rules-email": "Email",
+			"rules-address": "Cím",
+			"rules-button-back": "Vissza"
 }

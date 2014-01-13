@@ -151,7 +151,7 @@ The client uses the same language as the browser. If this language is not suppor
 
 Assume you want to translate to hungarian, the link above gives the language code <i>hu</i> for Hungarian.
 
-Lets start to translate the reservation page (double-click a symbol to open this page):
+Lets start to translate the reservation page:
 
 <img src="https://f.cloud.github.com/assets/4263707/1900821/67af8332-7c59-11e3-852a-15555ff3ee93.png"/>
 
@@ -202,7 +202,7 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 ```
 
 Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number of entries in the other sections (in this sample the "sv"-section).
-
+<h4>Test på titel</h4>
 Besides from translating text in the .html-files, text can be embedded in .js-files as well. Make a search for <i>i18n.text</i> to find all occurrances.
 
 ```

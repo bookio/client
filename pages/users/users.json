@@ -4,4 +4,10 @@
 		"user-button-back": "Tillbaka",
 		"user-button-add": "Lägg till"
 	}
+	
+	"hu": {
+		"users-title": "Felhasználó",
+		"user-button-back": "Vissza",
+		"user-button-add": "Add hozzá"
+	}
 }

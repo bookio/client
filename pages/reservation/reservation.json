@@ -25,9 +25,9 @@
 		"reservation-price": "Ár",
 		"reservation-status": "Állapot",
 		"reservation-status-arrived": "Megérkezett",
-		"reservation-status-paid": "Kifizetve",
-		"reservation-status-left": "Elhagyja/Távozik",
-		"reservation-status-transfered": "Átadva",
+		"reservation-status-paid": "Kifizette",
+		"reservation-status-left": "Éppen távozik",
+		"reservation-status-transfered": "Átvéve",
 		"reservation-button-back": "Vissza",
 		"reservation-button-save": "Mentés",
 		"reservation-button-cancel-reservation": "Mégse"

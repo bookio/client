@@ -8,10 +8,10 @@
 	}
 	
 	"hu": {
-		"help-text":"Nem tudsz bejelentkezni? Add meg az e-mail címed és próbáld meg újból!",
-		"try-button": "Tégy egy próbát",
+		"help-text":"Érdekel a Bookio? Add meg az e-mail címed és próbáld ki!",
+		"try-button": "Próbáld ki",
 		"login-button": "Belépés",
-		"email": "Email",
+		"email": "E-mail",
 		"password": "Jelszó"
 	}
 

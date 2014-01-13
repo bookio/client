@@ -211,7 +211,7 @@ Besides from translating text in the .html-files, text can be embedded in .js-fi
 
 ```
 	MsgBox.show({
-		message: <strong>i18n.text</strong>('confirm-remove', 'Are you sure you want to remove this rental?'),
+		message: i18n.text('confirm-remove', 'Are you sure you want to remove this rental?'),
 		icon: 'warning',
 		buttons: [{
 			text: i18n.text('yes', 'Yes'),

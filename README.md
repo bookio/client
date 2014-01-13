@@ -147,7 +147,7 @@ Even though the makefile compiles the LESS files, it might be convinient to inst
 It automatically compiles the LESS files in the background when modified. Another alternative is <b>CodeKit</b>.
 
 <h3>Localization</h3>
-The client uses the same language as the browser. If this language is missing, the default language is english.
+The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english.
 
 To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
@@ -157,15 +157,13 @@ Lets start to translate the reservation page (double-click a symbol to open this
 
 <img src="https://f.cloud.github.com/assets/4263707/1900821/67af8332-7c59-11e3-852a-15555ff3ee93.png"/>
 
-Open the files <i>reservation.html</i> and <i>reservation.json</i>.
-
-If you look in <i>reservation.html</i> you see the following lines:
+Open the files <i>reservation.html</i> and <i>reservation.json</i>. If you look in <i>reservation.html</i> you see the following lines:
 
 <pre>
 <code>
-<label data-i18n="reservation-who">
-    Who
-</label>
+	<label data-i18n="reservation-who">
+	    Who
+	</label>
 </code>
 </pre>
 

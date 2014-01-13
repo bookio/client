@@ -1,12 +1,11 @@
-
 {
 	"sv": {
 		"name": "Namn",
 		"name-help-text":"Exempel 'Bana 1', 'Lisa', 'Mini Cooper (ADE 234)'",
 		"notes": "Anteckning",
-		"depth": "Antal som kan boka samtidigt",
-		"available": "Tillgänglig för bokning",
-		"category": "Bokningsgrupp",
+		"depth": "Hányan foglalhatják le ezt egyazon időben?",
+		"available": "Szabad",
+		"category": "Foglalási csoport",
 		"category-help-text": "Exempel 'Squash', 'Klippning', 'Bil (liten)'",
 		"symbol": "Symbol",
 		"back": "Tillbaka",
@@ -17,6 +16,25 @@
 		"confirm-remove": "Är du säker på att du vill ta bort detta objekt?",
 		"specify-name": "Ange ett namn.",
 		"specify-icon": "Ange en symbol."
+	}
+	
+	"sv": {
+		"name": "Név",
+		"name-help-text":"Például: '1-es pálya', 'Kiss Virág', 'Sportautó (rendszám)'",
+		"notes": "Megjegyzés",
+		"depth": "Add meg hányan foglalhatják le egyazon időben.",
+		"available": "Szabad",
+		"category": "Foglalás csoportoknak",
+		"category-help-text": "Példa csoportokra: 'Squash', 'Masszázs', 'Kocsi (kicsi, kék)'",
+		"symbol": "jelkép",
+		"back": "Vissza",
+		"save": "Mentés",
+		"remove": "Törlés",
+		"yes": "Igen",
+		"no": "Nem",
+		"confirm-remove": "Biztos benne, hogy törölni szeretné ezt?",
+		"specify-name": "Adj meg egy nevet.",
+		"specify-icon": "Adj meg egy jelképet."
 	}
 
 }

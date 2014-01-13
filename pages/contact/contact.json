@@ -12,6 +12,16 @@
 		"save": "Spara"
 	},
 
-	"en": {
+	"hu": {
+		"back": "Vissza",
+		"company": "Cég",
+		"email": "Email",
+		"phone": "Telefon",
+		"website": "Weboldal",
+		"facebook": "Facebook",
+		"twitter": "Twitter",
+		"adress": "Cím",
+		"logo": "Logó",
+		"save": "Mentés"
 	}
 }

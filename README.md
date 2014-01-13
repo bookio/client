@@ -149,6 +149,7 @@ It automatically compiles the LESS files in the background when modified. Anothe
 <h3>Localization</h3>
 The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english. To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
+<h4>Go through all .html-files</h4>
 Assume you want to translate to hungarian, the link above gives the language code <i>hu</i> for Hungarian.
 
 Lets start to translate the reservation page:
@@ -202,7 +203,8 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 ```
 
 Continue and add translations for all <i>data-i18n</i> tags found in the html-file. The number of entries in the "hu"-section should exactly match the number of entries in the other sections (in this sample the "sv"-section).
-<h4>Test på titel</h4>
+
+<h4>Go through all .js-files</h4>
 Besides from translating text in the .html-files, text can be embedded in .js-files as well. Make a search for <i>i18n.text</i> to find all occurrances.
 
 ```

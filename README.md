@@ -1,6 +1,16 @@
-<h2>Client Side of Bookio.com (2013-12-19)</h2>
+<h2>Client Side of Bookio.com</h2>
 
 This documentation covers the client side of Bookio which is completely written in JavaScript and HTML. It uses jQuery along with jQuery Mobile. RequireJS is also used for modularity.
+
+<h3>Project Goal</h3>
+Build a cloud based reservation system with the following goals:
+<ul>
+<li>Built for a global market</li>
+<li>'Plug and play' for the user</li>
+<li>Integrates with social media services</li>
+<li>Strong visual approach</li>
+</ul>
+
 
 <h3>Project Layout</h3>
 The directory structure is as follows
@@ -134,7 +144,7 @@ The client uses the same language as the browser. If this language is missing, t
 
 To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
-Assume you want to translate to hungarian, using the link above this gives us the language code <italic>hu</italic> for Hungarian.
+Assume you want to translate to hungarian, using the link above this gives us the language code <i>hu</i> for Hungarian.
 
 
 

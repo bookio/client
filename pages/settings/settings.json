@@ -16,7 +16,7 @@
 		"settings-choice-users": "Felhasználók",
 		"settings-choice-categories": "Foglalható kategóriák",
 		"settings-choice-rules": "Foglalási szabályzat",
-		"settings-url-title": "A foglalási oldal elérhető erről a linkről:",
+		"settings-url-title": "A foglalási oldal elérési útja:",
 		"settings-url-help": "Másoláshoz kattints a fenti linkre és nyomd meg a 'Ctrl+C' kombinációt (ha PC-t használsz) strong>vagy</strong> a 'cmd+C' kombinációt (ha Mac-et használsz). <br> A foglalási oldal előnézetéhez <a data-id='urlTrial' href='#' target='_blank'>kattints ide</a>.",
 		"settings-button-back": "Vissza"
 	}

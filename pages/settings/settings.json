@@ -1,4 +1,3 @@
-
 {
 	"sv": {
 		"settings-title": "Inställningar",
@@ -9,6 +8,17 @@
 		"settings-url-title": "Kundernas ingång till bokning",
 		"settings-url-help": "Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) <strong>eller</strong> 'ctrl+C' (PC) för att kopiera.<br>För att se hur bokningssidan ser ut hos dina kunder <a data-id='urlTrial' href='#' target='_blank'>klicka här</a>.",
 		"settings-button-back": "Tillbaka"
+	}
+	
+	"hu": {
+		"settings-title": "Beállítások",
+		"settings-choice-info": "Válalkozásával kapcsolatos információk",
+		"settings-choice-users": "Egyéni felhasználók",
+		"settings-choice-categories": "Csoportok foglalás",
+		"settings-choice-rules": "Foglalás menete (Szabályok)",
+		"settings-url-title": "Mit kell tennie a vevőnek, hogy foglalhasson?",
+		"settings-url-help": "Kattints a fenti elérési útra majd a másoláshoz nyomd meg a 'ctrl+C' kombinációt (ha PC-t használsz) strong>vagy</strong> a 'cmd+C' kombbinációt (ha Mac-et használsz). <br> Ha megnéznéd, hogy ügyfeleid hogyan látják a foglalási oldalt, <a data-id='urlTrial' href='#' target='_blank'>kattints ide</a>.",
+		"settings-button-back": "Vissza"
 	}
 
 }

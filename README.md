@@ -151,9 +151,81 @@ The client uses the same language as the browser. If this language is missing, t
 
 To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
-Assume you want to translate to hungarian, using the link above this gives us the language code <i>hu</i> for Hungarian.
+Assume you want to translate to hungarian, the link above gives the language code <i>hu</i> for Hungarian.
 
+Lets start to translate the reservation page (double-click a symbol to open this page):
 
+<img src="https://f.cloud.github.com/assets/4263707/1900821/67af8332-7c59-11e3-852a-15555ff3ee93.png"/>
+
+Open the files <i>reservation.html</i> and <i>reservation.json</i>.
+
+If you look in <i>reservation.html</i> you see the following lines:
+
+<pre>
+<code>
+<label data-i18n="reservation-who">
+    Who
+</label>
+</code>
+</pre>
+
+The tag <i>data-i18n</i> shows the entry to be added in the json-file, which now looks like this:
+
+<pre>
+<code>
+{
+	"sv": {
+		"reservation-who": "Vem",
+		"reservation-pick-customer": "Välj kund",
+		"reservation-when": "När",
+		"reservation-from": "Från",
+		"reservation-to": "Till",
+		"reservation-price": "Pris",
+		"reservation-status": "Status",
+		"reservation-status-arrived": "Har ankommit",
+		"reservation-status-paid": "Betald",
+		"reservation-status-left": "Lämnat",
+		"reservation-status-transfered": "Överförd",
+		"reservation-button-back": "Tillbaka",
+		"reservation-button-save": "Spara",
+		"reservation-button-cancel-reservation": "Avboka"
+	}	
+}
+</pre>
+</code>
+
+Now we add a Hungarian section below the section that translates to Swedish (sv):
+
+<pre>
+<code>
+{
+	"sv": {
+		"reservation-who": "Vem",
+		"reservation-pick-customer": "Välj kund",
+		"reservation-when": "När",
+		"reservation-from": "Från",
+		"reservation-to": "Till",
+		"reservation-price": "Pris",
+		"reservation-status": "Status",
+		"reservation-status-arrived": "Har ankommit",
+		"reservation-status-paid": "Betald",
+		"reservation-status-left": "Lämnat",
+		"reservation-status-transfered": "Överförd",
+		"reservation-button-back": "Tillbaka",
+		"reservation-button-save": "Spara",
+		"reservation-button-cancel-reservation": "Avboka"
+	}	
+	
+	"hu": {
+		"reservation-who": "Ki"	
+	}
+}
+</pre>
+</code>
+
+Continue and add translations for all <i>data-i18n</i> tags found in the html-file.
+
+---
 
 Locate all .json-files in the project (folder pages) and add a new section for the new language. To see the english texts for translation you have to open the corresponding .html-files.
 

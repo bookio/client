@@ -1,4 +1,4 @@
-###Draft for a syntax to use when booking through SMS, Twitter and Mail
+###Draft for syntax to use when booking through SMS, Twitter and Mail
 
 ####COMMAND
 ```
@@ -49,6 +49,7 @@ B[#] (ASAP) | ((åå)mmdd) hh(:mm) | (dd) hh:mm-hh:mm, [name]
 ####REPLY (if requested time free)
 ```
 Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
+
 Reply C [ID] to cancel reservation 
 ```
 

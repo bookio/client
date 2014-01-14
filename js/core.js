@@ -27140,20 +27140,6 @@ sha1 = function(msg) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    Model.Patterns = {};	
-    
-    (function() {
-        
-        Model.Patterns.fetch = function() {
-        
-            var request = gopher.request('GET', 'icons/folder/patterns');
-            
-            return request;
-        }
-
-
-    })();    
-
     ////////////////////////////////////////////////////////////////////////////
 
     Model.Icons = {};	
@@ -27162,7 +27148,7 @@ sha1 = function(msg) {
         
         Model.Icons.fetch = function() {
         
-            var request = gopher.request('GET', 'icons/folder/symbols');
+            var request = gopher.request('GET', 'icons');
             
             return request;
         }

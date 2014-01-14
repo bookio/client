@@ -2,20 +2,39 @@
 
 	var dependencies = [
 		'text!./symbolpicker.html',
+		'i18n!./symbolpicker.json',
 		'css!./symbolpicker'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function(html, i18n) {
 
 
 		var Widget = function(widget) {
 
 			var self = this;
 
-			function init() {
+			function init(tags) {
 
 				widget.element.append($(html));
-				widget.element.trigger('create');
+				
+				var controls = widget.element.find('[data-role="controlgroup"]');
+				 
+				// Add the 'all' button
+				if (true) {
+					var button = $('<button type="button" data-filter="*" data-theme="a" class="ui-btn-active"></button>');
+					button.text(i18n.text('All', 'All'));
+					controls.append(button);
+				}
+				 
+				// Add all the tags				 
+				$.each(tags, function(i, tag) {
+					var button = $('<button type="button" data-theme="a"></button>');
+					var text = i18n.text(tag, tag);
+					button.attr('data-filter', sprintf('.%s', tag));
+					button.text(text);
+					
+					controls.append(button);
+				});
 				
 				var buttons = widget.element.find('button');
 				
@@ -51,6 +70,7 @@
 					});
 
 				}
+				widget.element.trigger('create');
 			}
 			
 			this.filter = function(value) {
@@ -61,7 +81,11 @@
 				
 			}
 
-			init();
+			var request = Gopher.request('GET', 'icons/tags');
+			
+			request.done(function(tags) {
+				init(tags);
+			});
 		};
 
 

@@ -407,7 +407,7 @@ define(['module', 'css!./desktop'], function(module) {
 			var reservations = Model.Reservations.fetch();
 			var customers = Model.Customers.fetch();
 			var settings = Model.Settings.fetch('desktop', 'layout');
-			var icons = gopher.request('GET', 'icons/all');
+			var icons = gopher.request('GET', 'icons/hash');
 
 			rentals.done(gotRentals);
 			reservations.done(gotReservations);

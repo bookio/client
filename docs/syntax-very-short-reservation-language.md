@@ -1,8 +1,8 @@
 ####COMMAND
-````? | any text
+```? | any text
 
 ####REPLY
-
+```
 Available for reservation:
 1 [Name of booking category 1] [reservation length for category 1], [price for category 1]
 2 [Name of booking category 2] [reservation length for category 2], [price for category 2]
@@ -11,6 +11,7 @@ Available for reservation:
 To make a reservation reply with: B# date/time, your name
 Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 Reply ?? for more samples
+```
 
 ####Sample of reply:
 Available for reservation:

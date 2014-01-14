@@ -1,5 +1,4 @@
 ##COMMAND
-
 ? | any text
 
 ##REPLY

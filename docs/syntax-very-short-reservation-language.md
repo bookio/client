@@ -54,11 +54,9 @@ Reply C [ID] to cancel reservation
 ```
 
 Sample:
-
 Confirmed Squash 10/25/2014 09.30am-10.15am (AQ53E)
-
 Reply C AQ53E to cancel reservation
-
+ 
 ####REPLY (if requested time is fully booked)
 ```
 FULL alternativ:

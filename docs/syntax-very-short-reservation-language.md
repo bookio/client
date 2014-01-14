@@ -16,15 +16,12 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 Reply ?? for more samples
 ```
 
-Sample
-Available for reservation:
-[1] Squash 45 min, 11$
-[2] Tennis 60 min, 21$
-[3] Badminton 60 min, 8$
-rad 1
-rad 2
-rad 3
-Available for reservatrol
+Sample  
+Available for reservation:  
+[1] Squash 45 min, 11$  
+[2] Tennis 60 min, 21$  
+[3] Badminton 60 min, 8$  
+
 
 To make a reservation reply with: B# date/time, your name
 Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am

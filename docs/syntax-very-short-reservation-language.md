@@ -1,7 +1,7 @@
-##COMMAND
-? | any text
+####COMMAND
+````? | any text
 
-##REPLY
+####REPLY
 
 Available for reservation:
 1 [Name of booking category 1] [reservation length for category 1], [price for category 1]

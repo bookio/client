@@ -10,7 +10,7 @@
 		"reservation-status-arrived": "Har ankommit",
 		"reservation-status-paid": "Betald",
 		"reservation-status-left": "Lämnat",
-		"reservation-status-transfered": "Överförd",
+		"reservation-status-transferred": "Överförd",
 		"reservation-button-back": "Tillbaka",
 		"reservation-button-save": "Spara",
 		"reservation-button-cancel-reservation": "Avboka"
@@ -27,7 +27,7 @@
 		"reservation-status-arrived": "Megérkezett",
 		"reservation-status-paid": "Kifizette",
 		"reservation-status-left": "Éppen távozik",
-		"reservation-status-transfered": "Átvéve",
+		"reservation-status-transferred": "Átvéve",
 		"reservation-button-back": "Vissza",
 		"reservation-button-save": "Mentés",
 		"reservation-button-cancel-reservation": "Mégse"

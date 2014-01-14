@@ -21,7 +21,7 @@ To make a reservation reply with: B# date/time, your name
 Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 Reply ?? for more samples
 
-
+-----
 
 COMMAND
 ??

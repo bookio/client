@@ -73,7 +73,7 @@ The directory structure is as follows
 <h3>Todo</h3>
 Upcoming functionality is found under Issues and Milestones (check both <i>client</i> and <i>server</i>).
 
-Issues tagged <i>todo</i> is up for grabs, just start coding. Milestones are larger 'chunks' that should be done in a near future. For now they needs ideas, feedback and discussion for best approach.
+Issues tagged <i>todo</i> is up for grabs, just start coding. Milestones are larger 'chunks' that should be done in a near future. For now they need ideas, feedback and discussion for best approach.
 
 <h3>Pages</h3>
 Since this is a jQuery Mobile app, everything is pages. Below is the code

@@ -1,6 +1,6 @@
 ###Draft for syntax when booking through SMS, Twitter and Mail
 
-####COMMAND
+####COMMAND - get a list of bookable resources 
 ```
 ? | any text
 ```
@@ -13,10 +13,10 @@ Available for reservation:
 
 To make a reservation reply with: B# date/time, your name
 Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
-Reply ?? for more samples
+(reply ?? for more samples)
 ```
 
->Sample  
+>######Sample  
 >Available for reservation:  
 >[1] Squash 45 min, 11$  
 >[2] Tennis 60 min, 21$  
@@ -24,11 +24,11 @@ Reply ?? for more samples
 >  
 >To make a reservation reply with: B# date/time, your name  
 >Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am  
->Reply ?? for more samples
+>(reply ?? for more samples)
 
 ======
 
-####COMMAND
+####COMMAND - get more samples of using date/time 
 ```
 ??
 ```
@@ -41,7 +41,7 @@ B2 ASAP, edward s (book tennis first free slot for Edward S)
 
 ======
 
-####COMMAND
+####COMMAND - make reservation
 ```
 B[#] (ASAP) | ((åå)mmdd) hh(:mm) | (dd) hh:mm-hh:mm, [name]
 ```
@@ -50,18 +50,18 @@ B[#] (ASAP) | ((åå)mmdd) hh(:mm) | (dd) hh:mm-hh:mm, [name]
 ```
 Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 
-Reply C [ID] to cancel reservation 
+(reply C [ID] to cancel reservation) 
 ```
 
->Sample  
+>######Sample  
 >Confirmed Squash 10/25/2014 09.30am-10.15am (AQ53E)  
 >Reply C AQ53E to cancel reservation  
  
 ####REPLY (if requested time is fully booked)
 ```
-FULL alternativ:
-[A] Squash 08:00 (Svara B1 A)
-[B] Squash 11:00 (Svara B1 B)
-[C] fler senare alternativ (Svara B1 C)
-[D] fler tidigare alternativ (Svara B1 D)
+FULL, see alternatives:
+Squash 08:00 (AQ53E)
+Squash 11:00 (AQ67F)
+
+Reply B+(code) to book or <AQ53E or >AQ67F for earlier or later suggestions 
 ```

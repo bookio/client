@@ -244,7 +244,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 		.
 		.
 		.
-		"confirm-remove": "the hungarian phrase",
+		"confirm-remove": "Biztosan el akarja távolítani ezt az elemet?",
 		"yes": "Igen",
 		"no": "Ellen"
 	}

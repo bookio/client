@@ -16,16 +16,15 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 Reply ?? for more samples
 ```
 
-Sample  
-Available for reservation:  
-[1] Squash 45 min, 11$  
-[2] Tennis 60 min, 21$  
-[3] Badminton 60 min, 8$  
-
-
-To make a reservation reply with: B# date/time, your name
-Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
-Reply ?? for more samples
+>Sample  
+>Available for reservation:  
+>[1] Squash 45 min, 11$  
+>[2] Tennis 60 min, 21$  
+>[3] Badminton 60 min, 8$  
+>  
+>To make a reservation reply with: B# date/time, your name  
+>Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am  
+>Reply ?? for more samples
 
 ======
 
@@ -54,9 +53,9 @@ Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 Reply C [ID] to cancel reservation 
 ```
 
-Sample:
-Confirmed Squash 10/25/2014 09.30am-10.15am (AQ53E)
-Reply C AQ53E to cancel reservation
+>Sample  
+>Confirmed Squash 10/25/2014 09.30am-10.15am (AQ53E)  
+>Reply C AQ53E to cancel reservation  
  
 ####REPLY (if requested time is fully booked)
 ```

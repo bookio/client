@@ -6,7 +6,7 @@
 * Speak directly to the user
 * Be brief, use short words
 
-The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english. To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
+The client uses the same language as the browser. If this language is not supported in Bookio, the default language is English. To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
 <h4>Go through all .html-files</h4>
 Assume you want to translate to hungarian, the link above gives the language code <i>hu</i> for Hungarian.
@@ -116,5 +116,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 
 ####Finally, Run the Client and Call a Friend
 Check all pages to make sure no text overflows and that all translations make sense in their context.
+
+Make someone in the team to build and deploy with the updated json-files.
 
 Call a friend that is native to the translated language. Let them run the client and make sure they understand everything.

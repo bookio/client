@@ -1,10 +1,10 @@
 ###How to Add a New Language to Bookio
 
-####Guidelines for Localization
-* Use a simple language
+####Language Guidelines for Localization
+* Use plain, simple language
 * Avoid technical jargon
 * Speak directly to the user
-* Be brief!
+* Be brief, use short words
 
 The client uses the same language as the browser. If this language is not supported in Bookio, the default language is english. To add a new language, look up the language code <a href="http://www.metamodpro.com/browser-language-codes">here</a>.
 
@@ -114,5 +114,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 
 >Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
 
-####Finally, Run the Client
-Check all pages to make sure no text overflows and all translations make sense.
+####Finally, Run the Client and Call a Friend
+Check all pages to make sure no text overflows and that all translations make sense in their context.
+
+Call a friend that is native to the translated language. Let them run the client and make sure they understand everything.

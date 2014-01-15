@@ -115,8 +115,8 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 >Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
 
 ####Finally, Run the Client and Call a Friend
-Check all pages to make sure no text overflows and that all translations make sense in their context.
-
 Make someone in the team to build and deploy with the updated json-files.
+
+Check all pages to make sure no text overflows and that all translations make sense in their context.
 
 Call a friend that is native to the translated language. Let them run the client and make sure they understand everything.

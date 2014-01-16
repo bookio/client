@@ -7,7 +7,7 @@ The goal is to make the server part stateless.
 
 ####COMMAND - get a list of bookable resources 
 ```
-? | any text
+? | any unrecognized text
 ```
 ####REPLY
 ```

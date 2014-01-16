@@ -96,7 +96,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 		.
 		.
 		.
-	}	
+	},	
 	
 	"hu": {
 		"reservation-who": "Ki"

@@ -40,7 +40,7 @@ The tag <i>data-i18n</i> shows the entry to be added in the json-file if we want
 }
 ```
 
-Now we add a Hungarian section below the section that translates to Swedish (sv), and adds the Hungarian word for the english 'Who':
+Now we add a Hungarian section below the section that translates to Swedish (sv) (don´t forget to add ',' after the preceding section), and adds the Hungarian word for the english 'Who':
 
 ```
 {
@@ -53,7 +53,7 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 		.
 		.
 		.
-	}	
+	},	
 	
 	"hu": {
 		"reservation-who": "Ki"	

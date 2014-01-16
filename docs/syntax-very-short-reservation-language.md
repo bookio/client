@@ -1,4 +1,8 @@
 ###Draft for syntax when booking through SMS, Twitter and Mail
+
+[logo]: https://f.cloud.github.com/assets/4263707/1930691/22bc6f96-7eb2-11e3-97dd-9a7d10891833.png "Sample of SMS reservation"
+
+
 The goal is to make the server part stateless.
 
 ####COMMAND - get a list of bookable resources 

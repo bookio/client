@@ -5,10 +5,10 @@
 		"login-button": "Logga in",
 		"email": "E-post",
 		"password": "Lösenord"
-	}
+	},
 	
 	"hu": {
-		"help-text":"Érdekel a Bookio? Add meg az e-mail címed és próbáld ki!",
+		"help-text": "Érdekel a Bookio? Add meg az e-mail címed és próbáld ki!",
 		"try-button": "Kipróbálom",
 		"login-button": "Belépés",
 		"email": "E-mail",

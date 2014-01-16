@@ -1,4 +1,5 @@
 ###Draft for syntax when booking through SMS, Twitter and Mail
+The goal is to make the server part stateless.
 
 ####COMMAND - get a list of bookable resources 
 ```
@@ -65,3 +66,4 @@ Squash 11:00 (AQ67F)
 
 Reply B ID to book or <AQ53E or >AQ67F for earlier or later suggestions 
 ```
+The alternative reservations above are reserved in the database for a limited time (1 min?). This allows the customer to respond immediately and book a slot withot making a new reservation request (and to be sure its available). 

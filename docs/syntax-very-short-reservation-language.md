@@ -63,5 +63,5 @@ FULL, see alternatives:
 Squash 08:00 (AQ53E)
 Squash 11:00 (AQ67F)
 
-Reply B+(code) to book or <AQ53E or >AQ67F for earlier or later suggestions 
+Reply B(id) to book or <AQ53E or >AQ67F for earlier or later suggestions 
 ```

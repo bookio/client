@@ -112,11 +112,11 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 
 >Dont change anything between the characters '<' or '>', for instance you can see something like '&lt;strong>Some text&lt;/strong>', <strong>when translated the '&lt;strong>' and '&lt;/strong>' must remain unchanged!</strong>
 
->Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
-
 ####Finally, Run the Client and Call a Friend
 Make someone in the team to build and deploy with the updated json-files.
 
 Check all pages to make sure no text overflows and that all translations make sense in their context. Take a hard look on all longer texts, almost all text can be edited down without losing meaning. Challenge yourself!
 
 Call a friend that is native to the translated language. Let him/her run the client and make sure everything is clear.
+
+>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'

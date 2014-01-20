@@ -2,7 +2,6 @@
 
 	var dependencies = [
 		'i18n!./rental.json',
-		'css!./rental',
 		'../../widgets/symbolpicker/symbolpicker'
 	];
 
@@ -10,7 +9,7 @@
 
 		function Module(page) {
 
-			var _element = page;
+			var _element = page.element;
 			var _elements = {};
 			var _rental = {};
 			var _icons = [];
@@ -18,6 +17,7 @@
 			var _categories = [];
 			var _categoriesByID = {};
 
+			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
 			_element.i18n(i18n);
 
@@ -270,17 +270,15 @@
 					init();
 
 					$('body').spin(false);
+					
+					page.show();
 
 				});
 
 			}
 		}
-
-		$(document).delegate("#rental-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
-
-
+		
+		return Module;
 	});
 
 

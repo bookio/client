@@ -663,8 +663,8 @@ define(['module', 'css!./desktop'], function(module) {
 				params.rental = rental;
 
 				$.mobile.pages.push('../rental/rental.html', {
-					params: params,
-					transition: 'fade'
+					transition: 'fade',
+					params: params
 				});
 
 			});

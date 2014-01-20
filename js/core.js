@@ -26219,62 +26219,61 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 
 
-
-
 (function($) {
 
 	var _pages = [];
 	var _baseUrl = $('head base').attr('href');
-	var _pageParams = {};
 
-    function makeNormalizedPath(path) {
+	function makeNormalizedPath(path) {
 
-	    var BLANK = '';
-	    var SLASH = '/';
-	    var DOT = '.';
-	    var DOTS = DOT.concat(DOT);
-	    var SCHEME = '://';
+		var BLANK = '';
+		var SLASH = '/';
+		var DOT = '.';
+		var DOTS = DOT.concat(DOT);
+		var SCHEME = '://';
 
-        if (!path || path === SLASH) {
-            return SLASH;
-        }
+		if (!path || path === SLASH) {
+			return SLASH;
+		}
 
-        /*
-           * for IE 6 & 7 - use path.charAt(i), not path[i]
-           */
-        var prependSlash = (path.charAt(0) == SLASH || path.charAt(0) == DOT);
-        var target = [];
-        var src;
-        var scheme;        
-        var parts;
-        var token;
-        
-        if (path.indexOf(SCHEME) > 0) {
-        
-            parts = path.split(SCHEME);
-            scheme = parts[0];
-            src = parts[1].split(SLASH);
-        } else {
-        
-            src = path.split(SLASH);
-        }
+		/*
+		 * for IE 6 & 7 - use path.charAt(i), not path[i]
+		 */
+		var prependSlash = (path.charAt(0) == SLASH || path.charAt(0) == DOT);
+		var target = [];
+		var src;
+		var scheme;
+		var parts;
+		var token;
 
-        for (var i = 0; i < src.length; ++i) {
-        
-            token = src[i];
-            
-            if (token === DOTS) {
-                target.pop();
-            } else if (token !== BLANK && token !== DOT) {
-                target.push(token);
-            }
-        }
+		if (path.indexOf(SCHEME) > 0) {
 
-        var result = target.join(SLASH).replace(/[\/]{2,}/g, SLASH);
-              
-        return (scheme ? scheme + SCHEME : '') + (prependSlash ? SLASH : BLANK) + result;
-    }
-	
+			parts = path.split(SCHEME);
+			scheme = parts[0];
+			src = parts[1].split(SLASH);
+		}
+		else {
+
+			src = path.split(SLASH);
+		}
+
+		for (var i = 0; i < src.length; ++i) {
+
+			token = src[i];
+
+			if (token === DOTS) {
+				target.pop();
+			}
+			else if (token !== BLANK && token !== DOT) {
+				target.push(token);
+			}
+		}
+
+		var result = target.join(SLASH).replace(/[\/]{2,}/g, SLASH);
+
+		return (scheme ? scheme + SCHEME : '') + (prependSlash ? SLASH : BLANK) + result;
+	}
+
 	function makePathRelativeToBaseUrl(path) {
 		var pageUrl = $('head base').attr('href');
 		var baseUrl = _baseUrl;
@@ -26283,17 +26282,15 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		var pagePath = $.mobile.path.parseUrl(pageUrl).directory;
 
 		var i = 0;
-		
+
 		while (i < pagePath.length && i < basePath.length && pagePath[i] == basePath[i])
 			i++;
-			
-		return makeNormalizedPath(pagePath.substring(i) + path);
-	}	
 
-	
+		return makeNormalizedPath(pagePath.substring(i) + path);
+	}
+
+
 	$.mobile.pages = {};
-	$.mobile.pages.params = null;
-	
 
 	$.mobile.pages.push = function(url, options) {
 
@@ -26307,13 +26304,13 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 		var parts = url.split('/');
 		var lastPart = parts.pop();
-		
+
 		parts.push(lastPart.split('.')[0]);
-		
-		var htmlUrl = makePathRelativeToBaseUrl(url); 
+
+		var htmlUrl = makePathRelativeToBaseUrl(url);
 		var scriptUrl = makePathRelativeToBaseUrl(parts.join('/'));
 		var modules = [scriptUrl, 'text!' + htmlUrl, 'css!' + scriptUrl];
-		
+
 		// Restore original location
 		$('head base').attr('href', _baseUrl);
 		console.log('base changed to ', $('head base').attr('href'));
@@ -26325,35 +26322,35 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 			if ($.isFunction(script)) {
 				// Create the page object to pass on to the JavaScript code
 				var page = {};
-				
+
 				// Change the base of the page
 				page.url = $.mobile.path.makeUrlAbsolute(htmlUrl, _baseUrl);
 				$('head base').attr('href', page.url);
 				console.log('Base changed to ', $('head base').attr('href'));
 
 				// Parse the HTML and add it to the page container
-				page.element = $(html); 
+				page.element = $(html);
 				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
 				page.element.appendTo($.mobile.pageContainer);
 
-				// Initialize the page
-                //page.element.trigger('create');
-
-				if (options != undefined && options.params != undefined) {
-					$.mobile.pages.params = options.params;
-					page.params = options.params;
-				}
-
-				// Push it on the page stack
-				console.log('Pushing page ', page.url);
-				_pages.push({page:page.element, options:options, absUrl:page.url});
-
+				// Set up parameters
+				page.params = (options != undefined && options.params != undefined) ? options.params : {};
 
 				// Define the show function
 				page.show = function() {
 					$.mobile.changePage(page.element, options);
-				}				
+				}
+				
+				// Push it on the page stack
+				console.log('Pushing page ', page.url);
+				
+				_pages.push({
+					page: page.element,
+					options: options,
+					absUrl: page.url
+				});
 
+				// Execute the page script
 				new script(page);
 			}
 		});
@@ -26362,19 +26359,22 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 	$.mobile.pages.go = function(page, options) {
 
-		$.mobile.pageContainer.find('.ui-page-active').on('pagehide', function() {
-			$(this).on('pagehide', function() {
+		$('[data-role="page"]').each(function() {
+
+			// If active page, wait to remove until the new page is displayed
+			if ($(this).hasClass('ui-page-active')) {
+				$(this).one('pagehide', function() {
+					$(this).remove();
+				});
+			}
+			else {
+				// Not active page, just remove it!
 				$(this).remove();
-			});
+			}
 		});
-		/*
-		$.mobile.pageContainer.find(':not(.ui-page-active)').each(function(index) {
-			$(this).remove();
-		});
-		*/		
-		
+
 		_pages = [];
-		
+
 		$.mobile.pages.push(page, options);
 	}
 
@@ -26406,10 +26406,6 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		}
 	}
 	
-	
-
-
-
 })(jQuery);
 var Base64 = {
 

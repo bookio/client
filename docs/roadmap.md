@@ -6,7 +6,7 @@
 To get a quick understanding of how the client works (and terminology used below), check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
 
 #####Initial Scope
-The goal of the system is to work for three categories of reservations:
+The final goal of the system is to work for three categories of reservations:
 
 * Hardware (houses, boats, tools, sport equipment, ..)
 * Resources (doctors, therapists, hairdressers, stand-up comedians, ..)

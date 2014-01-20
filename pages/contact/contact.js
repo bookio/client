@@ -57,6 +57,8 @@
 			}
 
 			function init() {
+				$.spin(true);
+				
 				_element.i18n(i18n);
 				_element.hookup(_elements, 'data-id');
 
@@ -94,9 +96,9 @@
 					_client = client ? client : {};
 
 					fill();
-					
+
 					page.show();
-					
+					$.spin(false);
 				});
 			}
 

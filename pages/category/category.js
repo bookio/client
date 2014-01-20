@@ -1,11 +1,10 @@
 (function() {
 
 	var dependencies = [
-		'css!./category',
 		'../../widgets/imagepicker/imagepicker'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function() {
 
 
 		function Module(page) {
@@ -35,6 +34,9 @@
 
 
 			function init() {
+				$.spin(true);
+				
+				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 
 				if (page.params && page.params.category) {
@@ -95,6 +97,8 @@
 				});
 				
 				page.show();
+				
+				$.spin(false);
 
 
 			}

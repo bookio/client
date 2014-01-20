@@ -156,6 +156,8 @@
 			}
 
 			function init() {
+				$.spin(true);
+				
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
@@ -168,6 +170,9 @@
 					}
 					
 					page.show();
+					
+					
+					$.spin(false);
 						
 				});
 			}

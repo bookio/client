@@ -301,6 +301,8 @@
 
 				page.element.trigger('create');
 				
+				$.mobile.pageContainer.spin(true);
+				
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
@@ -363,6 +365,7 @@
 					  enableButtonActions();	
 					  
 					  page.show();
+					  $.mobile.pageContainer.spin(false);
 			
 				});
 

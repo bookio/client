@@ -26154,6 +26154,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
     
 	$.fn.spin = function(opts, color) {
 		var presets = {
+			"default": { lines: 12, length: 8, width: 4, radius: 10 },
 			"tiny": { lines: 8, length: 2, width: 2, radius: 3 },
 			"small": { lines: 8, length: 4, width: 3, radius: 5 },
 			"large": { lines: 12, length: 8, width: 4, radius: 10 },
@@ -26171,7 +26172,10 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 					delete data.spinner;
 				}
 				if (opts !== false) {
-					if (typeof opts === "string") {
+					if (opts === true) {
+						opts = presets["default"];
+					}
+					else if (typeof opts === "string") {
 						if (opts in presets) {
 							opts = presets[opts];
 						} else {
@@ -26181,6 +26185,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 							opts.color = color;
 						}
 					}
+
 					data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
 				}
 			});
@@ -26188,6 +26193,11 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 			throw "Spinner class not available.";
 		}
 	};
+	
+	$.spin = function(opts, color) {
+		$('body').spin(opts, color);
+	}
+	
 })(jQuery);
 /*!
  * jQuery Transit - CSS3 transitions and transformations

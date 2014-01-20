@@ -3,7 +3,7 @@
 #####Prerequisites
 > By _user_ we mean the one using the product in his/hers business. _Customer_ is the users customer, the one who's address is in the reservation.
 
-To get a quick understanding of how the client works (and therminology), check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
+To get a quick understanding of how the client works (and terminology), check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
 
 #####Initial Scope
 The goal of the system is to work for three categories of reservations:

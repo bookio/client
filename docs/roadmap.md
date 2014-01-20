@@ -1,4 +1,4 @@
-###Roadmap to First Public Release
+##Roadmap First Public Release
 
 #####Prerequisites
 > By _user_ we mean the one using the product in his/hers business. _Customer_ is the users customer, the one who's address is in the reservation.
@@ -14,7 +14,7 @@ The goal of the system is to work for three categories of reservations:
 
 For 1.0 we exclude Activities due to more complex handling. Resources will be handled as hardware initially.
 
-#The following user stories must be done for 1.0
+##User stories for 1.0
 
 ###Build a Rental Space in the Desktop
 The user should be able to add symbols that represents his business. The symbols have a set of propertys to define its behavior:

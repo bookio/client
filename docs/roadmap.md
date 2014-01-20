@@ -46,10 +46,10 @@ When going back in time, the historical status should be shown (i.e. going back 
 The ruler should be zoomable according to the time slots assigned to the rental symbols (i.e. If the user has a tennis hall he can chose days on the ruler, scroll forward a week, and then zoom down to hours to make a reservation.)
 
 ###Setup a Price List
-The user should be able to build price lists and attach these to any symbol and rental period. Price can be different depending on the customer (student, senior, member, ..) and the time of day and year. 
+The user should be able to build price lists and attach these to any symbol and rental period. Price can be different depending on the customer (student, senior, member, ..) and the time of day and year (high season, early bird). 
 
 ###Define Rental Periods
-The user should be able to define the time slots in which the rental objects are reserved (i.e. Squash 45 minutes, Car 24 Hours). For now the only slot length supported is day.
+The user should be able to define the time slots in which the rental objects are reserved (i.e. Squash 45 minutes, Car 24 hours). For now the only slot length supported is day.
 
 ###Send Confirmations
 After a reservation is made a confirmation should be sent to the customer via e-mail, SMS, Twitter, Facebook. (E-mail enough for 1.0?)

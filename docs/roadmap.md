@@ -1,9 +1,11 @@
 ###Roadmap to First Public Release
 
+#####Prerequisites
 > By _user_ we mean the one using the product in his/hers business. _Customer_ is the users customer, the one who's address is in the reservation.
 
-To get a quick understanding of how the client works from a user perspective, check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
+To get a quick understanding of how the client works (and therminology), check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
 
+#####Initial Scope
 The goal of the system is to work for three categories of reservations:
 
 * Hardware (houses, boats, tools, sport equipment, ..)
@@ -12,7 +14,7 @@ The goal of the system is to work for three categories of reservations:
 
 For 1.0 we exclude Activities due to more complex handling. Resources will be handled as hardware initially.
 
-The following user stories must be done for 1.0:
+#The following user stories must be done for 1.0
 
 ###Build a Rental Space in the Desktop
 The user should be able to add symbols that represents his business. The symbols have a set of propertys to define its behavior:

@@ -2,7 +2,7 @@
 
 > By _user_ we mean the one using the product in his/hers business. _Customer_ is the users customer, the one who's address is in the reservation.
 
-To see how 
+To get a quick understanding of how the client works from a user perspective, check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.
 
 The goal of the system is to work for three categories of reservations:
 
@@ -21,7 +21,7 @@ The user should be able to add symbols that represents his business. The symbols
 The user can view the rental space in three different ways. As symbols, as calendars or as a list of rows.
 
 #####See Status for Chosen Time Period
-The rental symbols should show their status depending on the chosen time period, by specifically show:
+The rental symbols should show their status depending on the chosen time period, by specifically show if they are:
 * free
 * reserved
 * ongoing reservation
@@ -34,13 +34,13 @@ When going back in time, the historical status should be shown (i.e. going back 
 The user should be able to build price lists and attach these to any symbol and rental period. Price can be different depending on the customer (student, senior, member, ..) and the time of day and year. 
 
 ####Define Rental Periods
-The user should be able to set the time slots in which the rental objects are reserved (i.e. Squash 45 minutes, Car 24 Hours).
+The user should be able to define the time slots in which the rental objects are reserved (i.e. Squash 45 minutes, Car 24 Hours).
 
 ####Send Confirmations
-After a reservation is made a confirmation should be sent to the customer via e-mail, SMS, Twitter, Facebook. E-mail enough for 1.0? 
+After a reservation is made a confirmation should be sent to the customer via e-mail, SMS, Twitter, Facebook. (E-mail enough for 1.0?)
 
 ####Make a Reservation
-Both the user and the customer should be able to make a reservation. The user through the Desktop and the customer through the Mobile interface. 
+Both the user and the customer should be able to make a reservation. The user through the Desktop and the customer through the Mobile interface. To make a reservation as a customer no registration should be required. A customer database should be built in the background, adding more data about the customer when new data gets known.  
 
 ####Search and Find
 The user should be able to search for everything in a "Google-style" search. The search result can be a:

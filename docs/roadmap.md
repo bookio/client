@@ -17,7 +17,7 @@ For 1.0 we exclude Activities due to more complex handling. Resources will be ha
 ##User stories for 1.0
 
 ###Build a Rental Space in the Desktop
-The user should be able to add symbols that represents his business. The symbols have a set of propertys to define its behavior:
+The user should be able to add symbols that represents his business. The symbols have a set of propertys to define their behavior:
 * Name
 * Notes
 * Booking Depth, number of reservations that can be made in the same time slot

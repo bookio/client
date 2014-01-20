@@ -15,10 +15,20 @@ For 1.0 we exclude Activities due to more complex handling. Resources will be ha
 The following user stories must be done for 1.0:
 
 ###Build a Rental Space in the Desktop
-The user should be able to add symbols that represents his business. The symbols have a set of propertys that defines how and when the symbol can be booked.
+The user should be able to add symbols that represents his business. The symbols have a set of propertys to define its behavior:
+* Name
+* Notes
+* Booking Depth, number of reservations that can be made in the same time slot
+* Available, open for reservations
+* Category, if the object is member of a booking category (group)
+* Symbol
+* Rental periods with prices
 
 #####Change Views
-The user can view the rental space in three different ways. As symbols, as calendars or as a list of rows.
+The user can view the rental space in three different ways. 
+* Symbols
+* Calendars
+* List of rows
 
 #####See Status for Chosen Time Period
 The rental symbols should show their status depending on the chosen time period, by specifically show if they are:
@@ -45,8 +55,8 @@ After a reservation is made a confirmation should be sent to the customer via e-
 ###Make a Reservation
 Both the user and the customer should be able to make a reservation. The user through the Desktop and the customer through the Mobile interface. To make a reservation as a customer no registration should be required. A customer database should be built in the background, adding more data about the customer when new data gets known.  
 
-####Search and Find
+###Search and Find
 The user should be able to search for everything in a "Google-style" search. The search result can be a:
-* reservation
+* reservation (future or past)
 * customer
 * rental object

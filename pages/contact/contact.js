@@ -12,7 +12,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
 			var _client = {};
 
@@ -57,16 +57,16 @@
 			}
 
 			function init() {
-				_page.i18n(i18n);
-				_page.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
+				_element.hookup(_elements, 'data-id');
 
-				_page.on('dragover', function(event) {
+				_element.on('dragover', function(event) {
 					event.stopPropagation();
 					event.preventDefault();
 					event.originalEvent.dataTransfer.dropEffect = 'none';
 				});
 
-				_page.on('drop', function(event) {
+				_element.on('drop', function(event) {
 					event.stopPropagation();
 					event.preventDefault();
 				});
@@ -95,15 +95,15 @@
 
 					fill();
 					
+					page.show();
+					
 				});
 			}
 
 			init();
 		}
-
-		$(document).delegate("#contact-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
+		
+		return Module;
 
 
 	});

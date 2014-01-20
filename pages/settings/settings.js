@@ -4,10 +4,6 @@
 
 	var dependencies = [
 	   'i18n!./settings.json',
-	   '../users/users',
-	   '../categories/categories',
-	   '../contact/contact',
-	   '../rules/rules',
 	   '../../widgets/pagelogo/pagelogo'
 	];
 
@@ -16,22 +12,11 @@
 		
 	    function Module(page) {
             
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
             
-	        function init() {
-
-	           _page.hookup(_elements, 'data-id');
-	           
-	           _page.i18n(i18n);
-	           
-	           _elements.back.on('tap', function(event){
-		          event.preventDefault();
-		          $.mobile.pages.pop();
-	           });
-	        }	  
 	        
-	       function getGuestURL() {
+	       function requestGuestUrl() {
 				var request = Gopher.request('GET', 'users/guest');
 
 				request.done(function(user) {
@@ -40,40 +25,49 @@
 
 					_elements.url.val(longURL);
 					_elements.urlTrial.attr('href',longURL);
-
-					/*
-                    var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);
-
-                    var request = $.ajax({
-                        url: url,
-                        type: 'GET',
-                        dataType: 'html',
-                        crossDomain: true
-                    });
-                    
-                    request.done(function(tinyURL) {
-                        _elements.url.text(tinyURL);
-                    });
-                    
-                    request.fail(function(result) {
-                    });
-                    */
-
 				});
 
 				return request;
 			}
 
-			var isDoneSetURL = getGuestURL();
+	        function init() {
+
+	           _element.hookup(_elements, 'data-id');	           
+	           _element.i18n(i18n);
+	           
+	           _elements.back.on('tap', function(event){
+		          event.preventDefault();
+		          $.mobile.pages.pop();
+	           });
+	           
+	           _elements.contact.on('tap', function() {
+		           $.mobile.pages.push('../contact/contact.html');
+	           });
+	           
+	           _elements.users.on('tap', function() {
+		           $.mobile.pages.push('../users/users.html');
+	           });
+	           
+	           _elements.categories.on('tap', function() {
+		           $.mobile.pages.push('../categories/categories.html');
+	           });
+	           
+	           _elements.rules.on('tap', function() {
+		           $.mobile.pages.push('../rules/rules.html');
+	           });
+			
+			   var request = requestGuestUrl();
+	        
+			   request.always(function(){
+				   page.show();
+			   });
+	        }	  
 
 	        init();
 		}
-
-    	$(document).delegate("#settings-page", "pageinit", function(event) {
-        	new Module($(this));
-        });
-
 		
+		return Module;
+
 	
 	});
 

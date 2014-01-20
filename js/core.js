@@ -26290,43 +26290,12 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		return makeNormalizedPath(pagePath.substring(i) + path);
 	}	
 
-
-	$(document).on("pagebeforechange", function(event, params) {
-		if (params.options.reverse)
-			return;
-
-		if (isObject(params.toPage)) {
-			_pages.push(params);
-		}
-		else {
-			$.mobile.pageData = $.mobile.pages.params = null;
-			 
-			if (params.options && params.options.pageData) {
-				$.mobile.pageData = $.mobile.pages.params = params.options.pageData; 
-			}
-			if (params.options && params.options.params) {
-				$.mobile.pageData = $.mobile.pages.params = params.options.params; 
-			}			
-		}
-
-	});
-
-	$(document).on("pageshow", function(event, params) {
-	
-		var pageParams = _pages[_pages.length - 1];
-		
-		if (pageParams && pageParams.absUrl) {
-			// Make sure the base is restored after we changed it
-			$('head base').attr('href', pageParams.absUrl);
-		}
-
-	});
 	
 	$.mobile.pages = {};
 	$.mobile.pages.params = null;
 	
 
-	$.mobile.pages.push = function(page, options) {
+	$.mobile.pages.push = function(url, options) {
 
 		var defaults = {
 			changeHash: false,
@@ -26336,36 +26305,76 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 		options = $.extend({}, defaults, options);
 
-
-		var parts = page.split('/');
+		var parts = url.split('/');
 		var lastPart = parts.pop();
 		
 		parts.push(lastPart.split('.')[0]);
 		
-		var jsModule = makePathRelativeToBaseUrl(parts.join('/'));
-		var cssModule = 'css!' + jsModule;
-		var modules = [cssModule, jsModule];
-
-		if (options.require) {
-			if (isArray(options.require)) {
-				modules.push.apply(modules, options.require);
-			}
-			else if (isString(options.require)) {
-				modules.push(options.require);				
-			}
-		}
-
+		var htmlUrl = makePathRelativeToBaseUrl(url); 
+		var scriptUrl = makePathRelativeToBaseUrl(parts.join('/'));
+		var modules = [scriptUrl, 'text!' + htmlUrl, 'css!' + scriptUrl];
+		
 		// Restore original location
 		$('head base').attr('href', _baseUrl);
+		console.log('base changed to ', $('head base').attr('href'));
 
-		require(modules, function() {
-			$.mobile.changePage(page, options);
+		console.log('Loading modules', modules);
+
+		require(modules, function(script, html) {
+
+			if ($.isFunction(script)) {
+				// Create the page object to pass on to the JavaScript code
+				var page = {};
+				
+				// Change the base of the page
+				page.url = $.mobile.path.makeUrlAbsolute(htmlUrl, _baseUrl);
+				$('head base').attr('href', page.url);
+				console.log('Base changed to ', $('head base').attr('href'));
+
+				// Parse the HTML and add it to the page container
+				page.element = $(html); 
+				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
+				page.element.appendTo($.mobile.pageContainer);
+
+				// Initialize the page
+                //page.element.trigger('create');
+
+				if (options != undefined && options.params != undefined) {
+					$.mobile.pages.params = options.params;
+					page.params = options.params;
+				}
+
+				// Push it on the page stack
+				console.log('Pushing page ', page.url);
+				_pages.push({page:page.element, options:options, absUrl:page.url});
+
+
+				// Define the show function
+				page.show = function() {
+					$.mobile.changePage(page.element, options);
+				}				
+
+				new script(page);
+			}
 		});
 
 	}
 
 	$.mobile.pages.go = function(page, options) {
+
+		$.mobile.pageContainer.find('.ui-page-active').on('pagehide', function() {
+			$(this).on('pagehide', function() {
+				$(this).remove();
+			});
+		});
+		/*
+		$.mobile.pageContainer.find(':not(.ui-page-active)').each(function(index) {
+			$(this).remove();
+		});
+		*/		
+		
 		_pages = [];
+		
 		$.mobile.pages.push(page, options);
 	}
 
@@ -26384,7 +26393,15 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				options.transition = thisPage.options.transition;
 				options.reverse = true;
 
-				$.mobile.changePage(nextPage.absUrl, options);
+				// Remove this page when it is hidden
+				thisPage.page.on('pagehide', function(event, params) {
+					$(this).remove();
+				});
+
+				$('head base').attr('href', nextPage.absUrl);
+				console.log('Base changed to ', $('head base').attr('href'));
+
+				$.mobile.changePage(nextPage.page, options);
 			}
 		}
 	}

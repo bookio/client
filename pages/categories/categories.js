@@ -1,8 +1,7 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./categories.json',
-		'css!./categories'
+		'i18n!./categories.json'
 	];
 
 	define(dependencies, function(i18n) {
@@ -10,7 +9,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _categories = {};
 			var _elements = {};
 
@@ -113,7 +112,7 @@
 					$.mobile.pages.push('../category/category.html');
 				});
 
-				_page.on('remove', function() {
+				_element.on('remove', function() {
 					Notifications.off('.categories');
 				});
 			}
@@ -157,9 +156,9 @@
 			}
 
 			function init() {
-				_page.hookup(_elements, 'data-id');
-				
-				_page.i18n(i18n);
+				_element.trigger('create');
+				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 				
 				enableListeners();
 
@@ -167,18 +166,16 @@
 					if (_categories.length == 0)  {
 						addEmpty();						
 					}
+					
+					page.show();
 						
 				});
 			}
 
 			init();
 		}
-
-		$(document).delegate("#categories-page", "pageinit", function(event) {
-			new Module($(this));
-		});
-
-
+		
+		return Module;
 
 	});
 

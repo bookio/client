@@ -4,11 +4,11 @@
         '../../widgets/datepicker/datepicker'
     ];
 
-    define(dependencies, function () {
+    define(dependencies, function() {
 
         function Module(page) {
 
-            var _page = page;
+            var _element = page.element;
             var _params = {};
             var _elements = {};
 
@@ -85,9 +85,9 @@
 
             function init() {
 
-                _params = $.mobile.pages.params;
+                _params = pages.params;
 
-                _page.hookup(_elements, 'data-id');
+                _element.hookup(_elements, 'data-id');
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
@@ -110,15 +110,15 @@
 
                 enableEventsHandlers();
                 enableDisable();
+  
+  				page.show();
+	            
             }
 
             init();
         }
 
-        $(document).delegate("#mobile-search", "pageinit", function (event) {
-            new Module($(this));
-        });
-
+		return Module;
 
     });
 

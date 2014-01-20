@@ -3,8 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./rules.json',
-		'css!./rules',
+		'i18n!./rules.json'
 	];
 
 	define(dependencies, function(i18n) {
@@ -12,7 +11,7 @@
 		
 	    function Module(page) {
             
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
             var _info = {};
             
@@ -31,8 +30,11 @@
             
             
             function init() {
-                _page.hookup(_elements, 'data-id');
-                _page.i18n(i18n);
+                
+                page.element.trigger('create');
+                
+                _element.hookup(_elements, 'data-id');
+                _element.i18n(i18n);
                 
                 var request = Gopher.request('GET', 'settings/app/contact');
                 
@@ -51,17 +53,18 @@
                             $.mobile.pages.pop();
                         });
                     });
+                    
+                });
+                
+                request.always(function() {
+                    page.show();
                 });
             }	  
 
             init();
         }
-
-    	$(document).delegate("#rules-page", "pageinit", function(event) {
-        	new Module($(event.currentTarget));
-        });
-		
-	
+        
+        return Module;
 	});
 
 	

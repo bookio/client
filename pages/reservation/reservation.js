@@ -4,7 +4,6 @@
 
 	var dependencies = [
 	   'i18n!./reservation.json',
-	   'css!./reservation',
 	   '../../js/parser'
 	];
 
@@ -12,7 +11,7 @@
 		
 	    function Module(page) {
             
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
 
     	    var _timer = null;
@@ -300,11 +299,11 @@
             
 	        function init() {
 
-	           _page.hookup(_elements, 'data-id');
+	           _element.hookup(_elements, 'data-id');
 	           
-	           _page.i18n(i18n);
+	           _element.i18n(i18n);
 
-				_reservation = $.mobile.pageData.reservation;
+				_reservation = page.params;
                 	    	
 				var requests = [];
 				
@@ -361,6 +360,8 @@
 
 		            updateDOM();
 		            enableButtonActions();	
+		            
+		            page.show();
 			
 				});
 
@@ -370,10 +371,7 @@
 	        init();
 		}
 
-    	$(document).delegate("#reservation-page", "pageinit", function(event) {
-        	new Module($(this));
-        });
-
+		return Module;
 		
 	
 	});

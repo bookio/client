@@ -10,9 +10,8 @@
 		
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
-
 			
 			function main() {
 				$.mobile.pages.go('../main/main.html');
@@ -104,8 +103,8 @@
 				Gopher.logout();
 			
 			
-				_page.hookup(_elements, 'data-id');
-				_page.i18n(i18n);
+				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 				
 				_elements.login.email.val(username);
 
@@ -130,16 +129,15 @@
 				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				
 				enableDisable();
-
+			
+				page.show();
 			}
 
 			init();
 		}
 
+		return Module;
 
-		$(document).delegate("#login-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
 
 
 	});

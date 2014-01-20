@@ -10,7 +10,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page;
 			var _elements = {};
 			var _rental = {};
 			var _icons = [];
@@ -18,8 +18,8 @@
 			var _categories = [];
 			var _categoriesByID = {};
 
-			_page.hookup(_elements, 'data-id');
-			_page.i18n(i18n);
+			_element.hookup(_elements, 'data-id');
+			_element.i18n(i18n);
 
 			function fill() {
 				_elements.name.val(_rental.name);
@@ -73,8 +73,8 @@
 					opacity: 1
 				}, 1000);
 
-				if ($.mobile.pageData && $.mobile.pageData.rental) {
-					$.extend(_rental, $.mobile.pageData.rental);
+				if (page.params && page.params.rental) {
+					$.extend(_rental, page.params.rental);
 				}
 
 				if (!_rental.id)

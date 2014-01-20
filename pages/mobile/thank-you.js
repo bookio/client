@@ -7,7 +7,7 @@
 
         function Module(page) {
 
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
 
             function enableEventsHandlers() {
@@ -21,19 +21,18 @@
 
             function init() {
 
-                _page.hookup(_elements, 'data-id');
+                _element.hookup(_elements, 'data-id');
                 _elements.title.text(Gopher.client.name);
 
                 enableEventsHandlers();
+                
+                _element.trigger('show');
             }
 
             init();
         }
 
-        $(document).delegate("#mobile-thank-you", "pageinit", function (event) {
-            new Module($(this));
-        });
-
+		return Module;
 
 
     });

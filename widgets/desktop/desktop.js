@@ -204,7 +204,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			$.mobile.pages.push('../reservation/reservation.html', {
 				transition:'fade',
-				pageData:{reservation:reservation}
+				params:{reservation:reservation}
 			});
 
 		};
@@ -557,7 +557,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			$.mobile.pages.push('../reservation/reservation.html', {
 				transition: 'fade',
-				pageData: {reservation:reservation}
+				params: {reservation:reservation}
 			});
 		}
 
@@ -659,11 +659,11 @@ define(['module', 'css!./desktop'], function(module) {
 				var rental = item.data('rental');
 				var reservation = getReservationForRental(rental);
 
-				var pageData = {};
-				pageData.rental = rental;
+				var params = {};
+				params.rental = rental;
 
 				$.mobile.pages.push('../rental/rental.html', {
-					pageData: pageData,
+					params: params,
 					transition: 'fade'
 				});
 

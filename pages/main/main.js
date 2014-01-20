@@ -15,7 +15,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
 
 			var _startDate = new Date();
@@ -29,7 +29,7 @@
 			function NotifyUpdate(startDate, endDate) {
 
 
-				if (_page.is(':visible')) {
+				if (_element.is(':visible')) {
 					if (_startDate.getTime() != startDate.getTime() || _endDate.getTime() != endDate.getTime()) {
 						if ((startDate.getFullYear() == endDate.addDays(-1).getFullYear()) && (startDate.getMonth() == endDate.addDays(-1).getMonth()) && (startDate.getDate() == endDate.addDays(-1).getDate())) {
 							Notify.show(startDate.getFriendlyDate(), startDate.getYear());
@@ -177,8 +177,8 @@
 
 
 			function init() {
-				_page.hookup(_elements, 'data-id');
-
+				_element.hookup(_elements, 'data-id');
+				
 				_elements.desktop.desktop();
 				_elements.slider.timeslider();
 				_elements.scale.timescale();
@@ -193,11 +193,8 @@
 
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
-					_page.on('pagehide', function(event, ui) {
-						$(this).remove();
-					});
 
-					$.mobile.pages.push('../login/login.html', {
+					$.mobile.pages.go('../login/login.html', {
 						transition: 'fade'
 					});
 				});
@@ -326,21 +323,19 @@
 				redrawForResize();
 				triggerEvent();
 				
+				page.show();
 			}
 
 			init();
 
-			_page.on("pageshow", function(event) {
+			_element.on("pageshow", function(event) {
 				redrawForResize();
 				_elements.desktop.desktop('refresh');
 			});
 			
 		}
 		
-		$(document).on("pageinit", "#main-page", function(event) {
-			new Module($(event.currentTarget));
-		});
-
+		return Module;
 
 
 	});

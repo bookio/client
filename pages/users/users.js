@@ -3,8 +3,7 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./users.json',
-		'css!./users'
+		'i18n!./users.json'
 	];
 
 	define(dependencies, function(i18n) {
@@ -12,7 +11,7 @@
 		
 	    function Module(page) {
             
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
             
             
@@ -41,7 +40,7 @@
                     event.stopPropagation();
                 });
                 
-                _page.find('ul').append(li);
+                _element.find('ul').append(li);
                 
             }
             
@@ -56,9 +55,11 @@
         	       $.each(users, function(index, user) {
             	       addItem(user);
         	       });
-        	        
+        	       
+        	       _elements.listview.listview(); 
         	       _elements.listview.listview('refresh');
-
+        	       
+        	       page.show();
     	       });
     	        
                 
@@ -67,9 +68,8 @@
             
 	        function init() {
 
-	           _page.hookup(_elements, 'data-id');
-	           
-	           _page.i18n(i18n);
+	           _element.hookup(_elements, 'data-id');
+	           _element.i18n(i18n);
 
 	           _elements.back.on('tap', function(event){
 		           $.mobile.pages.pop();
@@ -84,11 +84,8 @@
 
 	        init();
 		}
-
-    	$(document).delegate("#users-page", "pageinit", function(event) {
-        	new Module($(this));
-        });
-
+		
+		return Module;
 		
 	
 	});

@@ -5,12 +5,12 @@
 		'../../widgets/pagelogo/pagelogo'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function() {
 
 		
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
 
 
@@ -51,7 +51,7 @@
 
 
 			function init() {
-				_page.hookup(_elements, 'data-id');
+				_element.hookup(_elements, 'data-id');
 
 				_elements.title.text(Gopher.client.name);
 
@@ -71,12 +71,12 @@
 							additem(category);
 						});
 
-
+						_elements.listview.listview();
 						_elements.listview.listview('refresh');
-						_elements.content.removeClass("invisible");
-						_elements.content.addClass("fade in");
+						
+						page.show();
 					});
-
+					
 				}
 
 				load();
@@ -85,11 +85,8 @@
 
 			init();
 		}
-
-		$(document).delegate("#mobile-select-category-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
-
+		
+		return Module;
 
 	});
 

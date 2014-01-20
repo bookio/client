@@ -7,7 +7,7 @@
 
         function Module(page) {
 
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
             var _params = {};
 
@@ -97,25 +97,25 @@
 
             function init() {
 
-                _params = $.mobile.pages.params;
+                _params = page.params;
                 _params.customer = _params.customer ? _params.customer : null;
 
-                _page.hookup(_elements, 'data-id');
+                _element.hookup(_elements, 'data-id');
 
                 _elements.category.name.text(_params.category.name);
                 _elements.category.description.text(_params.category.description);
 
                 enableEventsHandlers();
                 enableDisable();
+                
+                page.show();
             }
 
             init();
         }
 
-        $(document).delegate("#mobile-enter-name", "pageinit", function (event) {
-            new Module($(this));
-        });
-
+		return Module;
+		
 
 
     });

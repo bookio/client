@@ -42,7 +42,7 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 ```
 B1 10/25/14 7.15pm, Jane (book squash 7.15 pm 10/25/2014 for Jane)
 B3 th 11am, john (book badminton 11.00 am next thursday for John)
-B2 ASAP, edward s (book tennis first free slot for Edward S)
+B2 ASAP, @edward_s (book tennis first free slot for @edward_s)
 ```
 
 ======

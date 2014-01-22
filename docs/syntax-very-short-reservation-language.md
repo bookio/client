@@ -27,7 +27,7 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 >2: Tennis 60 min, 21$  
 >3: Badminton 60 min, 8$  
 >  
->To make a reservation reply with: B# date/time, your name  
+>To book reply with: B# date/time, your name  
 >Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am  
 >(reply ?? for more samples)
 

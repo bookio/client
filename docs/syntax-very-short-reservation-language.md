@@ -73,10 +73,10 @@ Reply B ID to book or <ID-1 or >ID-2 for earlier or later suggestions
 ```
 
 >######Sample  
->Full, see alternatives: 
->Squash 22/1 08:00 (AQ53E)
->Squash 22/1 11:00 (AQ67F)
+>Full, see alternatives:   
+>Squash 22/1 08:00 (AQ53E)  
+>Squash 22/1 11:00 (AQ67F)  
 >
->Reply B ID to book or <AQ53E or >AQ67F for earlier or later suggestions
+>Reply B ID to book or &#60;AQ53E or &#62;AQ67F for earlier or later suggestions
 
 The alternative reservations above are reserved in the database for a limited time (1 min?). This allows the customer to respond immediately and book a slot without making a new reservation request (and to be sure its available). 

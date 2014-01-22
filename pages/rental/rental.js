@@ -80,8 +80,6 @@
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');
 
-				fill();
-
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
@@ -270,12 +268,14 @@
 
 
 				$.when(icons, categories).then(function() {
+				
+					fill();
 					callback();
 
 					$.spin(false);
 				});
 					
-			});
+			}
 		}
 		
 		return Module;

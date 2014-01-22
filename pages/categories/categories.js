@@ -153,12 +153,16 @@
 			}
 			
 			this.refresh = function(callback) {
+			
+				$.spin(true);
+				
 				$.when(loadCategories()).then(function() {
 					if (_categories.length == 0)  {
 						addEmpty();						
 					}
 					
 					callback();
+					$.spin(false);
 				});
 			
 			}

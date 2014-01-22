@@ -51,7 +51,7 @@ The user should be able to build price lists and attach these to any symbol and 
 ###Define Rental Periods
 The user should be able to define the time slots in which the rental objects are reserved (i.e. Squash 45 minutes, Car 24 hours). For now the only slot length supported is day.
 
-Here is a draft/sketch of how the rental periods and price lists could be handled.
+Here is a draft/sketch of how rental periods and price lists can be handled:
 https://cacoo.com/diagrams/1YMHGARTs2lx4636-EAB88.png
 
 ###Send Confirmations

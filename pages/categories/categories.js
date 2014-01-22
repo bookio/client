@@ -13,6 +13,7 @@
 			var _categories = {};
 			var _elements = {};
 
+			
 			function addEmpty() {
 				var template =
 					'<li>' +
@@ -142,43 +143,27 @@
 
 			}
 
-			function getGuestURL() {
-				var request = Gopher.request('GET', 'users/guest');
-
-				request.done(function(user) {
-
-					var longURL = sprintf("%s?user=%s", window.location.href, user.username);
-
-					_elements.url.val(longURL);
-				});
-
-				return request;
-			}
-
-			function init() {
-				$.spin(true);
+			this.init = function() {
 				
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				
 				enableListeners();
-
+			}
+			
+			this.refresh = function(callback) {
 				$.when(loadCategories()).then(function() {
 					if (_categories.length == 0)  {
 						addEmpty();						
 					}
 					
-					page.show();
-					
-					
-					$.spin(false);
-						
+					callback();
 				});
+			
 			}
-
-			init();
 		}
+		
 		
 		return Module;
 

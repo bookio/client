@@ -47,10 +47,7 @@
 
 
 
-			function init() {
-
-				$.spin(true);
-				
+			this.init = function() {
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
@@ -61,27 +58,35 @@
 				_elements.add.on('tap', function(event) {
 					$.mobile.pages.push('../user/user.html');
 				});
+				
+				_elements.listview.listview();
+
+			}
+			
+			this.refresh = function(callback) {
+
+				$.spin(true);
+
+				_elements.listview.empty();
 
 				var request = Gopher.request('GET', 'users');
 
 				request.done(function(users) {
 
-					_elements.listview.empty();
-
 					$.each(users, function(index, user) {
 						addItem(user);
 					});
 
-					_elements.listview.listview();
 					_elements.listview.listview('refresh');
 
-					page.show();
-					
+				});
+				
+				request.always(function() {
 					$.spin(false);
+					callback();
 				});
 			}
 
-			init();
 		}
 
 		return Module;

@@ -56,8 +56,7 @@
 				_client.logo = _elements.dropzone.imagepicker('getImage');
 			}
 
-			function init() {
-				$.spin(true);
+			this.init = function() {
 				
 				_element.i18n(i18n);
 				_element.hookup(_elements, 'data-id');
@@ -89,6 +88,11 @@
 						$.mobile.pages.pop();
 					});
 				});
+			}
+			
+			
+			this.refresh = function(callback) {
+				$.spin(true);
 
 				var request = Model.Client.fetch();
 
@@ -96,13 +100,13 @@
 					_client = client ? client : {};
 
 					fill();
-
-					page.show();
+				});
+				
+				request.always(function() {
 					$.spin(false);
+					callback();
 				});
 			}
-
-			init();
 		}
 		
 		return Module;

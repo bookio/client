@@ -9,7 +9,7 @@
         function Module(page) {
 
             var _element = page.element;
-            var _params = {};
+            var _params = page.params;
             var _elements = {};
 
             function pickDate(button, date, callback) {
@@ -50,15 +50,16 @@
                 _elements.search.on('tap', function (event) {
 					_params.startDate = _elements.dateInterval.mobiscroll('getValue')[0];
 					_params.endDate = _elements.dateInterval.mobiscroll('getValue')[1];
+					
                     var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
                     var request = Gopher.request('GET', url);
 
                     _elements.searchResult.fadeOut();
 
-                    $('body').spin('large');
+                    $.spin(true);
 
                     request.always(function () {
-                        $('body').spin(false);
+                        $.spin(false);
                     });
 
                     request.done(function (rentals) {
@@ -83,9 +84,7 @@
 
             }
 
-            function init() {
-
-                _params = pages.params;
+            this.init = function() {
 
                 _element.hookup(_elements, 'data-id');
 
@@ -110,12 +109,7 @@
 
                 enableEventsHandlers();
                 enableDisable();
-  
-  				page.show();
-	            
             }
-
-            init();
         }
 
 		return Module;

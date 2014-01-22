@@ -27,7 +27,7 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 				_user = page.params && page.params.user ? page.params.user : {};
 				
 				_element.hookup(_elements, 'data-id');
@@ -85,12 +85,7 @@
 					
 
 				});
-				
-				page.show();
-
 			}
-
-			init();
 		}
 
 		return Module;

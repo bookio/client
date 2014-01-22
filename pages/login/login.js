@@ -95,13 +95,12 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 
 				var username = isString($.cookie('username')) ? $.cookie('username') : '';
 
 				// Logout
 				Gopher.logout();
-			
 			
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
@@ -127,13 +126,14 @@
 				_elements.login.password.attr('placeholder', i18n.text('password', 'Password'));
 				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
+
+				_element.on('load pagebeforechange pagechange pagebeforeshow pagebeforehide pagehide pageshow pageload pagebeforecreate pagecreate pageinit pageremove', function(event, params) {
+					console.log("login:" , event.type, event, params);
+				});
 				
 				enableDisable();
-			
-				page.show();
 			}
-
-			init();
+			
 		}
 
 		return Module;

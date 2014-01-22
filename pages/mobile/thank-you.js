@@ -19,17 +19,13 @@
 
             }
 
-            function init() {
+            this.init = function() {
 
                 _element.hookup(_elements, 'data-id');
                 _elements.title.text(Gopher.client.name);
 
                 enableEventsHandlers();
-                
-                _element.trigger('show');
             }
-
-            init();
         }
 
 		return Module;

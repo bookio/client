@@ -33,8 +33,7 @@
 			}
 
 
-			function init() {
-				$.spin(true);
+			this.init = function() {
 				
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
@@ -96,14 +95,8 @@
 					event.preventDefault();
 				});
 				
-				page.show();
-				
-				$.spin(false);
-
 
 			}
-
-			init();
 		}
 
 		return Module;

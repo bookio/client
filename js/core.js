@@ -26342,26 +26342,34 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				page.element = $(html);
 				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
 				page.element.appendTo($.mobile.pageContainer);
-
-				// Set up parameters
 				page.params = (options != undefined && options.params != undefined) ? options.params : {};
-
-				// Define the show function
-				page.show = function() {
-					$.mobile.changePage(page.element, options);
+				
+				// Execute the page script
+				var module = new script(page);
+				
+				if ($.isFunction(module.init)) {
+					module.init();
 				}
+				
+				if ($.isFunction(module.refresh)) {
+
+					function callback() {
+						$.mobile.changePage(page.element, options);
+					}
+					
+					module.refresh(callback);
+				}
+				else
+					$.mobile.changePage(page.element, options);
 				
 				// Push it on the page stack
 				console.log('Pushing page ', page.url);
-				
-				_pages.push({
-					page: page.element,
-					options: options,
-					absUrl: page.url
-				});
 
-				// Execute the page script
-				new script(page);
+				_pages.push({
+					page: page,
+					module: module,
+					options: options
+				});
 			}
 		});
 
@@ -26403,15 +26411,28 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				options.transition = thisPage.options.transition;
 				options.reverse = true;
 
+		
 				// Remove this page when it is hidden
-				thisPage.page.on('pagehide', function(event, params) {
+				thisPage.page.element.on('pagehide', function(event, params) {
 					$(this).remove();
 				});
 
-				$('head base').attr('href', nextPage.absUrl);
+				$('head base').attr('href', nextPage.page.url);
 				console.log('Base changed to ', $('head base').attr('href'));
 
-				$.mobile.changePage(nextPage.page, options);
+
+				if ($.isFunction(nextPage.module.refresh)) {
+				
+					function complete() {
+						$.mobile.changePage(nextPage.page.element, options);
+					}
+					
+					nextPage.module.refresh(complete);	
+					
+				}
+				else
+					$.mobile.changePage(nextPage.page.element, options);
+				
 			}
 		}
 	}

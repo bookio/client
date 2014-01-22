@@ -67,7 +67,7 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 
 				_elements.content.transition({
 					opacity: 1
@@ -231,9 +231,9 @@
 
 			}
 
-			if (true) {
+			this.refresh = function(callback) {
 
-				$('body').spin("large");
+				$.spin(true);
 
 				var icons = Model.Icons.fetch();
 				var categories = Model.Categories.fetch();
@@ -247,35 +247,35 @@
 
 				});
 
-				var html = "";
 				_elements.category.listview.html("");
 
 				categories.done(function(categories) {
 					_categories = categories;
 
+					var html = "";
+					
 					$.each(categories, function(index, category) {
 						_categoriesByID[category.id] = category;
 
 						// Build listview drop down with 'categories'
 						html += "<li class='ui-screen-hidden' data-icon='false'><a id='" + category.id + "' href='#'>" + category.name + "</a></li>";
-						_elements.category.listview.html(html);
-						_elements.category.listview.listview("refresh");
+						
 
 					});
+					
+					_elements.category.listview.html(html);
+					_elements.category.listview.listview("refresh");
 
 				});
 
 
 				$.when(icons, categories).then(function() {
-					init();
+					callback();
 
-					$('body').spin(false);
-					
-					page.show();
-
+					$.spin(false);
 				});
-
-			}
+					
+			});
 		}
 		
 		return Module;

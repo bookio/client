@@ -9,7 +9,7 @@
 
             var _element = page.element;
             var _elements = {};
-            var _params = {};
+            var _params = page.params;
 
 
             function enableDisable() {
@@ -41,6 +41,12 @@
                 });
 
                 _elements.submit.on('tap', function (event) {
+
+                                $.mobile.pages.push('./thank-you.html', {
+                                    params: _params
+                                });
+					return;
+					
                     var email = _elements.customer.email.val();
                     var name = _elements.customer.name.val();
 
@@ -95,9 +101,8 @@
 
             }
 
-            function init() {
+            this.init = function() {
 
-                _params = page.params;
                 _params.customer = _params.customer ? _params.customer : null;
 
                 _element.hookup(_elements, 'data-id');
@@ -107,11 +112,7 @@
 
                 enableEventsHandlers();
                 enableDisable();
-                
-                page.show();
             }
-
-            init();
         }
 
 		return Module;

@@ -10,7 +10,7 @@ The goal is to make the server part stateless, which will make the client side s
 ```
 ? | any unrecognized text
 ```
-####REPLY
+#####REPLY
 ```
 Available for reservation:
 1: [Name of booking category 1] [reservation slot length for category 1], [price for category 1]
@@ -38,7 +38,7 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 ```
 ??
 ```
-####REPLY (three samples of how date/time can be expressed)
+#####REPLY (three samples of how date/time can be expressed)
 ```
 B1 10/25/14 7.15pm, Jane (book squash 7.15 pm 10/25/2014 for Jane)
 B3 th 11am, john (book badminton 11.00 am next thursday for John)
@@ -52,7 +52,7 @@ B2 ASAP, edward s (book tennis first free slot for Edward S)
 B[#] (ASAP) | ((åå)mmdd) hh(:mm) | (dd) hh:mm-hh:mm, [name]
 ```
 
-####REPLY (if requested time free)
+#####REPLY (if requested time free)
 ```
 Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 
@@ -63,7 +63,7 @@ Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 >Confirmed Squash 10/25/2014 09.30am-10.15am (AQ53E)  
 >(reply C AQ53E to cancel reservation)  
  
-####REPLY (if requested time is fully booked)
+#####REPLY (if requested time is fully booked)
 ```
 FULL, see alternatives:
 Squash dd/mm hh:mm (ID-1)

@@ -2,7 +2,7 @@
 
 ![text](https://f.cloud.github.com/assets/4263707/1930691/22bc6f96-7eb2-11e3-97dd-9a7d10891833.png)
 
-Above you can see a sample conversation between a customer and the reservation server on a iPhone (SMS).
+Above you can see a sample conversation between a customer and the reservation server on an iPhone (SMS).
 
 The goal is to make the server part stateless, which will make the client side slighly more complex.
 
@@ -56,7 +56,7 @@ B[#] (ASAP) | ((åå)mmdd) hh(:mm) | (dd) hh:mm-hh:mm, [name]
 ```
 Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 
-(reply C ID to cancel reservation) 
+(reply C [ID] to cancel reservation) 
 ```
 
 >######Sample  
@@ -66,9 +66,17 @@ Confirmed [description] mm/dd/yyyy hh:mm-hh:mm (ID)
 ####REPLY (if requested time is fully booked)
 ```
 FULL, see alternatives:
-Squash 08:00 (AQ53E)
-Squash 11:00 (AQ67F)
+Squash dd/mm hh:mm (ID-1)
+Squash dd/mm hh:mm (ID-2)
 
-Reply B ID to book or <AQ53E or >AQ67F for earlier or later suggestions 
+Reply B ID to book or <ID-1 or >ID-2 for earlier or later suggestions 
 ```
-The alternative reservations above are reserved in the database for a limited time (1 min?). This allows the customer to respond immediately and book a slot withot making a new reservation request (and to be sure its available). 
+
+>######Sample  
+>Full, see alternatives: 
+>Squash 22/1 08:00 (AQ53E)
+>Squash 22/1 11:00 (AQ67F)
+>
+>Reply B ID to book or <AQ53E or >AQ67F for earlier or later suggestions
+
+The alternative reservations above are reserved in the database for a limited time (1 min?). This allows the customer to respond immediately and book a slot without making a new reservation request (and to be sure its available). 

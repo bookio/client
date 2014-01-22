@@ -54,11 +54,11 @@ The user should be able to define the time slots in which the rental objects are
 Here is a draft/sketch of how rental periods and price lists can be handled:
 https://cacoo.com/diagrams/1YMHGARTs2lx4636-EAB88.png
 
-###Send Confirmations
-After a reservation is made a confirmation should be sent to the customer via e-mail, SMS, Twitter, Facebook. (E-mail enough for 1.0?)
-
 ###Make a Reservation
 Both the user and the customer should be able to make a reservation. The user through the Desktop and the customer through the Mobile interface. To make a reservation as a customer no registration should be required. A customer database should be built in the background, adding more data about the customer when new data gets known.  
+
+###Send Confirmations
+After a reservation is made a confirmation should be sent to the customer via e-mail, SMS, Twitter, Facebook. (E-mail enough for 1.0?)
 
 ###Search and Find
 The user should be able to search for everything in a "Google-style" search. The search result can be a:

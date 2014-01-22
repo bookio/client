@@ -1,10 +1,9 @@
 ###Draft for syntax when booking through SMS, Twitter and Mail
+Below you see a sample conversation between a customer and the reservation server at Wendys Massage (iPhone SMS).
 
 ![text](https://f.cloud.github.com/assets/4263707/1930691/22bc6f96-7eb2-11e3-97dd-9a7d10891833.png)
 
-Above you can see a sample conversation between a customer and the reservation server on an iPhone (SMS).
-
-The goal is to make the server part stateless, which will make the client side slighly more complex.
+The goal is to make the server part stateless, which will make the client side slightly more complex.
 
 ####COMMAND - get a list of bookable resources 
 ```

@@ -31,6 +31,9 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 >Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am  
 >(reply ?? for more samples)
 
+Better sample text??
+SAMPLE: Replying "B2 10am, john doe" means "Reserve tennis for John Doe at 10 am" 
+
 ======
 
 ####COMMAND - get more samples of using date/time 

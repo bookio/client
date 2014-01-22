@@ -68,7 +68,7 @@ FULL, see alternatives:
 Squash dd/mm hh:mm (ID-1)
 Squash dd/mm hh:mm (ID-2)
 
-Reply B ID to book or <ID-1 or >ID-2 for earlier or later suggestions 
+Reply B ID[1|2] to book or <[ID-1] or >[ID-2] for earlier or later suggestions 
 ```
 
 >######Sample  

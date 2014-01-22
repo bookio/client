@@ -16,7 +16,7 @@ Available for reservation:
 2: [Name of booking category 2] [reservation slot length for category 2], [price for category 2]
 3: ...
 
-To make a reservation reply with: B# date/time, your name
+To book reply with: B# date/time, your name
 Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 (reply ?? for more samples)
 ```

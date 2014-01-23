@@ -8,11 +8,11 @@ To get a quick understanding of how the client works (and terminology used below
 #####Initial Scope
 The final goal of the system is to work for three categories of reservations:
 
-* Hardware (houses, boats, tools, sport equipment, ..)
-* Resources (doctors, therapists, hairdressers, stand-up comedians, ..)
-* Activities (Seminars, adventure tours, tastings, courses, ..)
+* _Hardware_ (houses, boats, tools, sport equipment, ..)
+* _Resources_ (doctors, therapists, hairdressers, stand-up comedians, ..)
+* _Activities_ (Seminars, adventure tours, tastings, courses, ..)
 
-For 1.0 we exclude Activities due to more complex handling. Resources will be handled as hardware initially.
+For 1.0 we exclude _Activities_ due to more complex handling. Resources will be handled as hardware initially.
 
 ##User stories for 1.0
 

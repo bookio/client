@@ -3,7 +3,7 @@ Below you see a sample conversation between a customer and the reservation serve
 
 ![text](https://f.cloud.github.com/assets/4263707/1930691/22bc6f96-7eb2-11e3-97dd-9a7d10891833.png)
 
-The goal is to make the server part stateless, which will make the client side slightly more complex.
+The goal is to make the server part stateless, which will make the usage of the client side slightly more complex (you have to refer to reservation ID).
 
 ####COMMAND - get a list of bookable resources 
 ```

@@ -26325,8 +26325,6 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		$('head base').attr('href', _baseUrl);
 		console.log('base changed to ', $('head base').attr('href'));
 
-		console.log('Loading modules', modules);
-
 		require(modules, function(script, html) {
 
 			if ($.isFunction(script)) {
@@ -26351,16 +26349,15 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 					module.init();
 				}
 				
-				if ($.isFunction(module.refresh)) {
+				function callback() {
+					$.mobile.changePage(page.element, options);
+				}
 
-					function callback() {
-						$.mobile.changePage(page.element, options);
-					}
-					
+				if ($.isFunction(module.refresh)) {
 					module.refresh(callback);
 				}
 				else
-					$.mobile.changePage(page.element, options);
+					callback();
 				
 				// Push it on the page stack
 				console.log('Pushing page ', page.url);
@@ -26410,7 +26407,6 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				options.showLoadMsg = false;
 				options.transition = thisPage.options.transition;
 				options.reverse = true;
-
 		
 				// Remove this page when it is hidden
 				thisPage.page.element.on('pagehide', function(event, params) {
@@ -26420,18 +26416,14 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				$('head base').attr('href', nextPage.page.url);
 				console.log('Base changed to ', $('head base').attr('href'));
 
-
-				if ($.isFunction(nextPage.module.refresh)) {
-				
-					function complete() {
-						$.mobile.changePage(nextPage.page.element, options);
-					}
-					
-					nextPage.module.refresh(complete);	
-					
-				}
-				else
+				function callback() {
 					$.mobile.changePage(nextPage.page.element, options);
+				}
+
+				if ($.isFunction(nextPage.module.refresh))
+					nextPage.module.refresh(callback);	
+				else
+					callback();
 				
 			}
 		}

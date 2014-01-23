@@ -51,8 +51,6 @@
 					});
 
 				}
-
-
 			}
 
 			function signup() {
@@ -126,10 +124,6 @@
 				_elements.login.password.attr('placeholder', i18n.text('password', 'Password'));
 				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
-
-				_element.on('load pagebeforechange pagechange pagebeforeshow pagebeforehide pagehide pageshow pageload pagebeforecreate pagecreate pageinit pageremove', function(event, params) {
-					console.log("login:" , event.type, event, params);
-				});
 				
 				enableDisable();
 			}

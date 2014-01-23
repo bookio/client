@@ -81,4 +81,4 @@ Reply B ID[1|2] to book or <[ID-1] or >[ID-2] for earlier or later suggestions
 >
 >Reply B ID to book or &#60;AQ53E or &#62;AQ67F for earlier or later suggestions
 
-The alternative reservations above are reserved in the database for a limited time (1 min?). This allows the customer to respond immediately and book a slot without making a new reservation request (and to be sure its available). 
+The alternative reservations above are reserved in the database for a limited time (minute/minutes). This allows the customer to respond immediately and book a slot without making a new reservation request (and to be sure its available). 

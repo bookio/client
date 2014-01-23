@@ -28,9 +28,9 @@ The user should be able to add symbols that represents his business. The symbols
 
 #####Change Views
 The user can view the rental space in three different ways. 
-* Symbols
-* Calendars
-* List of rows
+* Symbols ([sample](https://github.com/bookio/client/blob/master/docs/sample-desktop-symbols.jpg))
+* Calendars ([sample](https://github.com/bookio/client/blob/master/docs/sample-desktop-calendars.jpg))
+* List of rows ([sample](https://github.com/bookio/client/blob/master/docs/sample-desktop-list.jpg))
 
 #####See Status for Chosen Time Period
 The rental symbols should show their status depending on the chosen time period, by specifically show if they are:
@@ -65,3 +65,5 @@ The user should be able to search for everything in a "Google-style" search. The
 * reservation (future or past)
 * customer
 * rental object
+
+[See sample of search here](https://github.com/bookio/client/blob/master/docs/sample-desktop-search.jpg)

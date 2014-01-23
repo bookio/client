@@ -4,12 +4,12 @@
         '../../widgets/datepicker/datepicker'
     ];
 
-    define(dependencies, function () {
+    define(dependencies, function() {
 
         function Module(page) {
 
-            var _page = page;
-            var _params = {};
+            var _element = page.element;
+            var _params = page.params;
             var _elements = {};
 
             function pickDate(button, date, callback) {
@@ -50,15 +50,16 @@
                 _elements.search.on('tap', function (event) {
 					_params.startDate = _elements.dateInterval.mobiscroll('getValue')[0];
 					_params.endDate = _elements.dateInterval.mobiscroll('getValue')[1];
+					
                     var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
                     var request = Gopher.request('GET', url);
 
                     _elements.searchResult.fadeOut();
 
-                    $('body').spin('large');
+                    $.spin(true);
 
                     request.always(function () {
-                        $('body').spin(false);
+                        $.spin(false);
                     });
 
                     request.done(function (rentals) {
@@ -83,11 +84,9 @@
 
             }
 
-            function init() {
+            this.init = function() {
 
-                _params = $.mobile.pages.params;
-
-                _page.hookup(_elements, 'data-id');
+                _element.hookup(_elements, 'data-id');
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
@@ -111,14 +110,9 @@
                 enableEventsHandlers();
                 enableDisable();
             }
-
-            init();
         }
 
-        $(document).delegate("#mobile-search", "pageinit", function (event) {
-            new Module($(this));
-        });
-
+		return Module;
 
     });
 

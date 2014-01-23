@@ -1,81 +1,79 @@
-
-
 (function() {
 
 	var dependencies = [
-	   'i18n!./settings.json',
-	   '../users/users',
-	   '../categories/categories',
-	   '../contact/contact',
-	   '../rules/rules',
-	   '../../widgets/pagelogo/pagelogo'
+		'i18n!./settings.json',
+		'../../widgets/pagelogo/pagelogo'
 	];
 
 	define(dependencies, function(i18n) {
-		
-		
-	    function Module(page) {
-            
-            var _page = page;
-            var _elements = {};
-            
-	        function init() {
 
-	           _page.hookup(_elements, 'data-id');
-	           
-	           _page.i18n(i18n);
-	           
-	           _elements.back.on('tap', function(event){
-		          event.preventDefault();
-		          $.mobile.pages.pop();
-	           });
-	        }	  
-	        
-	       function getGuestURL() {
-				var request = Gopher.request('GET', 'users/guest');
 
-				request.done(function(user) {
+		function Module(page) {
 
-					var longURL = sprintf("%s?user=%s", window.location.href, user.username);
+			var _element = page.element;
+			var _elements = {};
+			var _guestUrl = null;
 
-					_elements.url.val(longURL);
-					_elements.urlTrial.attr('href',longURL);
 
-					/*
-                    var url = sprintf("http://tinyurl.com/api-create.php?url=%s", longURL);
+			this.init = function() {
+				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 
-                    var request = $.ajax({
-                        url: url,
-                        type: 'GET',
-                        dataType: 'html',
-                        crossDomain: true
-                    });
-                    
-                    request.done(function(tinyURL) {
-                        _elements.url.text(tinyURL);
-                    });
-                    
-                    request.fail(function(result) {
-                    });
-                    */
-
+				_elements.back.on('tap', function(event) {
+					event.preventDefault();
+					$.mobile.pages.pop();
 				});
 
-				return request;
+				_elements.contact.on('tap', function() {
+					$.mobile.pages.push('../contact/contact.html');
+				});
+
+				_elements.users.on('tap', function() {
+					$.mobile.pages.push('../users/users.html');
+				});
+
+				_elements.categories.on('tap', function() {
+					$.mobile.pages.push('../categories/categories.html');
+				});
+
+				_elements.rules.on('tap', function() {
+					$.mobile.pages.push('../rules/rules.html');
+				});
 			}
 
-			var isDoneSetURL = getGuestURL();
+			this.refresh = function(callback) {
+			
+				function updateUrl(url) {
+					_elements.url.val(url);
+					_elements.urlTrial.attr('href', url);
+				}
+				
+				if (_guestUrl == null) {
+					var request = Gopher.request('GET', 'users/guest');
+	
+					request.done(function(user) {
+	
+						_guestUrl = sprintf("%s?user=%s", window.location.href, user.username);
+	
+					});
+					
+					request.always(function() {
+						updateUrl(_guestUrl);
+						callback();
+					});
+				}
+				else {
+					updateUrl(_guestUrl);
+					callback();
+				}
+			}
 
-	        init();
 		}
 
-    	$(document).delegate("#settings-page", "pageinit", function(event) {
-        	new Module($(this));
-        });
+		return Module;
 
-		
-	
+
 	});
 
-	
+
 })();

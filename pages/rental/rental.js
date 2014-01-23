@@ -2,7 +2,6 @@
 
 	var dependencies = [
 		'i18n!./rental.json',
-		'css!./rental',
 		'../../widgets/symbolpicker/symbolpicker'
 	];
 
@@ -10,7 +9,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
 			var _rental = {};
 			var _icons = [];
@@ -18,8 +17,9 @@
 			var _categories = [];
 			var _categoriesByID = {};
 
-			_page.hookup(_elements, 'data-id');
-			_page.i18n(i18n);
+			_element.trigger('create');
+			_element.hookup(_elements, 'data-id');
+			_element.i18n(i18n);
 
 			function fill() {
 				_elements.name.val(_rental.name);
@@ -67,20 +67,18 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 
 				_elements.content.transition({
 					opacity: 1
 				}, 1000);
 
-				if ($.mobile.pageData && $.mobile.pageData.rental) {
-					$.extend(_rental, $.mobile.pageData.rental);
+				if (page.params && page.params.rental) {
+					$.extend(_rental, page.params.rental);
 				}
 
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');
-
-				fill();
 
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
@@ -231,9 +229,9 @@
 
 			}
 
-			if (true) {
+			this.refresh = function(callback) {
 
-				$('body').spin("large");
+				$.spin(true);
 
 				var icons = Model.Icons.fetch();
 				var categories = Model.Categories.fetch();
@@ -247,40 +245,40 @@
 
 				});
 
-				var html = "";
 				_elements.category.listview.html("");
 
 				categories.done(function(categories) {
 					_categories = categories;
 
+					var html = "";
+					
 					$.each(categories, function(index, category) {
 						_categoriesByID[category.id] = category;
 
 						// Build listview drop down with 'categories'
 						html += "<li class='ui-screen-hidden' data-icon='false'><a id='" + category.id + "' href='#'>" + category.name + "</a></li>";
-						_elements.category.listview.html(html);
-						_elements.category.listview.listview("refresh");
+						
 
 					});
+					
+					_elements.category.listview.html(html);
+					_elements.category.listview.listview("refresh");
 
 				});
 
 
 				$.when(icons, categories).then(function() {
-					init();
+				
+					fill();
+					callback();
 
-					$('body').spin(false);
-
+					$.spin(false);
 				});
-
+					
 			}
 		}
-
-		$(document).delegate("#rental-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
-
-
+		
+		return Module;
 	});
 
 

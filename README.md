@@ -14,6 +14,7 @@ Build a cloud based reservation system with the following goals:
 <li>Beautiful GUI and fast as greased lightning ;)
 </ul>
 
+Roadmap for first public release <a href="https://github.com/bookio/client/blob/master/docs/roadmap.md">can be found here</a>.
 
 <h3>Project Layout</h3>
 The directory structure is as follows
@@ -74,6 +75,8 @@ The directory structure is as follows
 Upcoming functionality is found under Issues and Milestones (check both <i>client</i> and <i>server</i>).
 
 Issues tagged <i>todo</i> is up for grabs, just start coding. Milestones are larger 'chunks' that should be done in a near future. For now they need ideas, feedback and discussion for best approach.
+
+Sketches and drafts on GUI <a href="https://cacoo.com/diagrams/1YMHGARTs2lx4636">can be found on Cacoo</a>.
 
 <h3>Pages</h3>
 Since this is a jQuery Mobile app, everything is pages. Below is the code

@@ -8,12 +8,13 @@
 
 	define(dependencies, function(html, i18n) {
 
-
+		var _tags = [];
+		
 		var Widget = function(widget) {
 
 			var self = this;
 
-			function init(tags) {
+			function init() {
 
 				widget.element.append($(html));
 				
@@ -27,7 +28,7 @@
 				}
 				 
 				// Add all the tags				 
-				$.each(tags, function(i, tag) {
+				$.each(_tags, function(i, tag) {
 					var button = $('<button type="button" data-theme="a"></button>');
 					var text = i18n.text(tag, tag);
 					button.attr('data-filter', sprintf('.%s', tag));
@@ -52,7 +53,7 @@
 				// Fill container with symbols
 				for (var i = 0; i < widget.options.symbols.length; i++) {
 					var icon = widget.options.symbols[i];
-					var div = $('<div class="symbol ' + icon.tags + '"></div>').appendTo(isotope);
+					var div = $('<div class="symbol ' + icon.tag + '"></div>').appendTo(isotope);
 					var image = sprintf('../../images/symbols/%s', icon.image);
 					var img = $('<img/>').attr('src', image).appendTo(div);
 
@@ -80,39 +81,45 @@
 				});
 				
 			}
-
-			var request = Gopher.request('GET', 'icons/tags');
 			
-			request.done(function(tags) {
-				init(tags);
-			});
+			init();
+
 		};
 
+		// Load the icon tags
+		var request = Gopher.request('GET', 'icons/tags');
+		
+		request.done(function(tags) {
+			_tags = tags;
 
-		// Define the widget
-		var widget = {};
+			// Define the widget
+			var widget = {};
+	
+			widget.options = {};
+	
+			widget._create = function() {
+				this.widget = new Widget(this);
+			}
+	
+			widget.symbols = function(value) {
+				this.widget.symbols(value);
+			}
+	
+			widget.filter = function(value) {
+				this.widget.filter(value);
+			}
+	
+	
+			$.widget("mobile.symbolpicker", $.mobile.widget, widget);
+	
+			// taking into account of the component when creating the window
+			// or at the create event
+			$(document).bind("pagecreate create", function(e) {
+				$(":jqmData(role=symbolpicker)", e.target).symbolpicker();
+			});
+	
 
-		widget.options = {};
 
-		widget._create = function() {
-			this.widget = new Widget(this);
-		}
-
-		widget.symbols = function(value) {
-			this.widget.symbols(value);
-		}
-
-		widget.filter = function(value) {
-			this.widget.filter(value);
-		}
-
-
-		$.widget("mobile.symbolpicker", $.mobile.widget, widget);
-
-		// taking into account of the component when creating the window
-		// or at the create event
-		$(document).bind("pagecreate create", function(e) {
-			$(":jqmData(role=symbolpicker)", e.target).symbolpicker();
 		});
 
 

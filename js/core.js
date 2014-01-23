@@ -26154,6 +26154,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
     
 	$.fn.spin = function(opts, color) {
 		var presets = {
+			"default": { lines: 12, length: 8, width: 4, radius: 10 },
 			"tiny": { lines: 8, length: 2, width: 2, radius: 3 },
 			"small": { lines: 8, length: 4, width: 3, radius: 5 },
 			"large": { lines: 12, length: 8, width: 4, radius: 10 },
@@ -26171,7 +26172,10 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 					delete data.spinner;
 				}
 				if (opts !== false) {
-					if (typeof opts === "string") {
+					if (opts === true) {
+						opts = presets["default"];
+					}
+					else if (typeof opts === "string") {
 						if (opts in presets) {
 							opts = presets[opts];
 						} else {
@@ -26181,6 +26185,7 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 							opts.color = color;
 						}
 					}
+
 					data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
 				}
 			});
@@ -26188,6 +26193,11 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 			throw "Spinner class not available.";
 		}
 	};
+	
+	$.spin = function(opts, color) {
+		$('body').spin(opts, color);
+	}
+	
 })(jQuery);
 /*!
  * jQuery Transit - CSS3 transitions and transformations
@@ -26219,62 +26229,61 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 
 
-
-
 (function($) {
 
 	var _pages = [];
 	var _baseUrl = $('head base').attr('href');
-	var _pageParams = {};
 
-    function makeNormalizedPath(path) {
+	function makeNormalizedPath(path) {
 
-	    var BLANK = '';
-	    var SLASH = '/';
-	    var DOT = '.';
-	    var DOTS = DOT.concat(DOT);
-	    var SCHEME = '://';
+		var BLANK = '';
+		var SLASH = '/';
+		var DOT = '.';
+		var DOTS = DOT.concat(DOT);
+		var SCHEME = '://';
 
-        if (!path || path === SLASH) {
-            return SLASH;
-        }
+		if (!path || path === SLASH) {
+			return SLASH;
+		}
 
-        /*
-           * for IE 6 & 7 - use path.charAt(i), not path[i]
-           */
-        var prependSlash = (path.charAt(0) == SLASH || path.charAt(0) == DOT);
-        var target = [];
-        var src;
-        var scheme;        
-        var parts;
-        var token;
-        
-        if (path.indexOf(SCHEME) > 0) {
-        
-            parts = path.split(SCHEME);
-            scheme = parts[0];
-            src = parts[1].split(SLASH);
-        } else {
-        
-            src = path.split(SLASH);
-        }
+		/*
+		 * for IE 6 & 7 - use path.charAt(i), not path[i]
+		 */
+		var prependSlash = (path.charAt(0) == SLASH || path.charAt(0) == DOT);
+		var target = [];
+		var src;
+		var scheme;
+		var parts;
+		var token;
 
-        for (var i = 0; i < src.length; ++i) {
-        
-            token = src[i];
-            
-            if (token === DOTS) {
-                target.pop();
-            } else if (token !== BLANK && token !== DOT) {
-                target.push(token);
-            }
-        }
+		if (path.indexOf(SCHEME) > 0) {
 
-        var result = target.join(SLASH).replace(/[\/]{2,}/g, SLASH);
-              
-        return (scheme ? scheme + SCHEME : '') + (prependSlash ? SLASH : BLANK) + result;
-    }
-	
+			parts = path.split(SCHEME);
+			scheme = parts[0];
+			src = parts[1].split(SLASH);
+		}
+		else {
+
+			src = path.split(SLASH);
+		}
+
+		for (var i = 0; i < src.length; ++i) {
+
+			token = src[i];
+
+			if (token === DOTS) {
+				target.pop();
+			}
+			else if (token !== BLANK && token !== DOT) {
+				target.push(token);
+			}
+		}
+
+		var result = target.join(SLASH).replace(/[\/]{2,}/g, SLASH);
+
+		return (scheme ? scheme + SCHEME : '') + (prependSlash ? SLASH : BLANK) + result;
+	}
+
 	function makePathRelativeToBaseUrl(path) {
 		var pageUrl = $('head base').attr('href');
 		var baseUrl = _baseUrl;
@@ -26283,50 +26292,17 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		var pagePath = $.mobile.path.parseUrl(pageUrl).directory;
 
 		var i = 0;
-		
+
 		while (i < pagePath.length && i < basePath.length && pagePath[i] == basePath[i])
 			i++;
-			
+
 		return makeNormalizedPath(pagePath.substring(i) + path);
-	}	
+	}
 
 
-	$(document).on("pagebeforechange", function(event, params) {
-		if (params.options.reverse)
-			return;
-
-		if (isObject(params.toPage)) {
-			_pages.push(params);
-		}
-		else {
-			$.mobile.pageData = $.mobile.pages.params = null;
-			 
-			if (params.options && params.options.pageData) {
-				$.mobile.pageData = $.mobile.pages.params = params.options.pageData; 
-			}
-			if (params.options && params.options.params) {
-				$.mobile.pageData = $.mobile.pages.params = params.options.params; 
-			}			
-		}
-
-	});
-
-	$(document).on("pageshow", function(event, params) {
-	
-		var pageParams = _pages[_pages.length - 1];
-		
-		if (pageParams && pageParams.absUrl) {
-			// Make sure the base is restored after we changed it
-			$('head base').attr('href', pageParams.absUrl);
-		}
-
-	});
-	
 	$.mobile.pages = {};
-	$.mobile.pages.params = null;
-	
 
-	$.mobile.pages.push = function(page, options) {
+	$.mobile.pages.push = function(url, options) {
 
 		var defaults = {
 			changeHash: false,
@@ -26336,36 +26312,84 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 
 		options = $.extend({}, defaults, options);
 
-
-		var parts = page.split('/');
+		var parts = url.split('/');
 		var lastPart = parts.pop();
-		
-		parts.push(lastPart.split('.')[0]);
-		
-		var jsModule = makePathRelativeToBaseUrl(parts.join('/'));
-		var cssModule = 'css!' + jsModule;
-		var modules = [cssModule, jsModule];
 
-		if (options.require) {
-			if (isArray(options.require)) {
-				modules.push.apply(modules, options.require);
-			}
-			else if (isString(options.require)) {
-				modules.push(options.require);				
-			}
-		}
+		parts.push(lastPart.split('.')[0]);
+
+		var htmlUrl = makePathRelativeToBaseUrl(url);
+		var scriptUrl = makePathRelativeToBaseUrl(parts.join('/'));
+		var modules = [scriptUrl, 'text!' + htmlUrl, 'css!' + scriptUrl];
 
 		// Restore original location
 		$('head base').attr('href', _baseUrl);
+		console.log('base changed to ', $('head base').attr('href'));
 
-		require(modules, function() {
-			$.mobile.changePage(page, options);
+		require(modules, function(script, html) {
+
+			if ($.isFunction(script)) {
+				// Create the page object to pass on to the JavaScript code
+				var page = {};
+
+				// Change the base of the page
+				page.url = $.mobile.path.makeUrlAbsolute(htmlUrl, _baseUrl);
+				$('head base').attr('href', page.url);
+				console.log('Base changed to ', $('head base').attr('href'));
+
+				// Parse the HTML and add it to the page container
+				page.element = $(html);
+				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
+				page.element.appendTo($.mobile.pageContainer);
+				page.params = (options != undefined && options.params != undefined) ? options.params : {};
+				
+				// Execute the page script
+				var module = new script(page);
+				
+				if ($.isFunction(module.init)) {
+					module.init();
+				}
+				
+				function callback() {
+					$.mobile.changePage(page.element, options);
+				}
+
+				if ($.isFunction(module.refresh)) {
+					module.refresh(callback);
+				}
+				else
+					callback();
+				
+				// Push it on the page stack
+				console.log('Pushing page ', page.url);
+
+				_pages.push({
+					page: page,
+					module: module,
+					options: options
+				});
+			}
 		});
 
 	}
 
 	$.mobile.pages.go = function(page, options) {
+
+		$('[data-role="page"]').each(function() {
+
+			// If active page, wait to remove until the new page is displayed
+			if ($(this).hasClass('ui-page-active')) {
+				$(this).one('pagehide', function() {
+					$(this).remove();
+				});
+			}
+			else {
+				// Not active page, just remove it!
+				$(this).remove();
+			}
+		});
+
 		_pages = [];
+
 		$.mobile.pages.push(page, options);
 	}
 
@@ -26383,16 +26407,28 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				options.showLoadMsg = false;
 				options.transition = thisPage.options.transition;
 				options.reverse = true;
+		
+				// Remove this page when it is hidden
+				thisPage.page.element.on('pagehide', function(event, params) {
+					$(this).remove();
+				});
 
-				$.mobile.changePage(nextPage.absUrl, options);
+				$('head base').attr('href', nextPage.page.url);
+				console.log('Base changed to ', $('head base').attr('href'));
+
+				function callback() {
+					$.mobile.changePage(nextPage.page.element, options);
+				}
+
+				if ($.isFunction(nextPage.module.refresh))
+					nextPage.module.refresh(callback);	
+				else
+					callback();
+				
 			}
 		}
 	}
 	
-	
-
-
-
 })(jQuery);
 var Base64 = {
 

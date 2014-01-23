@@ -40,7 +40,7 @@ The tag <i>data-i18n</i> shows the entry to be added in the json-file if we want
 }
 ```
 
-Now we add a Hungarian section below the section that translates to Swedish (sv), and adds the Hungarian word for the english 'Who':
+Now we add a Hungarian section below the section that translates to Swedish (sv) (don´t forget to add ',' after the preceding section), and adds the Hungarian word for the english 'Who':
 
 ```
 {
@@ -53,7 +53,7 @@ Now we add a Hungarian section below the section that translates to Swedish (sv)
 		.
 		.
 		.
-	}	
+	},	
 	
 	"hu": {
 		"reservation-who": "Ki"	
@@ -96,7 +96,7 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 		.
 		.
 		.
-	}	
+	},	
 	
 	"hu": {
 		"reservation-who": "Ki"
@@ -112,11 +112,11 @@ In this sample we have to add a "confirm-remove", "yes" and "no" to the "hu"-sec
 
 >Dont change anything between the characters '<' or '>', for instance you can see something like '&lt;strong>Some text&lt;/strong>', <strong>when translated the '&lt;strong>' and '&lt;/strong>' must remain unchanged!</strong>
 
->Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'
-
 ####Finally, Run the Client and Call a Friend
 Make someone in the team to build and deploy with the updated json-files.
 
-Check all pages to make sure no text overflows and that all translations make sense in their context.
+Check all pages to make sure no text overflows and that all translations make sense in their context. Take a hard look on all longer texts, almost all text can be edited down without losing meaning. Challenge yourself!
 
-Call a friend that is native to the translated language. Let them run the client and make sure they understand everything.
+Call a friend that is native to the translated language. Let him/her run the client and make sure everything is clear.
+
+>Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'

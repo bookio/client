@@ -7,9 +7,9 @@
 
         function Module(page) {
 
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
-            var _params = {};
+            var _params = page.params;
 
 
             function enableDisable() {
@@ -41,6 +41,12 @@
                 });
 
                 _elements.submit.on('tap', function (event) {
+
+                                $.mobile.pages.push('./thank-you.html', {
+                                    params: _params
+                                });
+					return;
+					
                     var email = _elements.customer.email.val();
                     var name = _elements.customer.name.val();
 
@@ -95,12 +101,11 @@
 
             }
 
-            function init() {
+            this.init = function() {
 
-                _params = $.mobile.pages.params;
                 _params.customer = _params.customer ? _params.customer : null;
 
-                _page.hookup(_elements, 'data-id');
+                _element.hookup(_elements, 'data-id');
 
                 _elements.category.name.text(_params.category.name);
                 _elements.category.description.text(_params.category.description);
@@ -108,14 +113,10 @@
                 enableEventsHandlers();
                 enableDisable();
             }
-
-            init();
         }
 
-        $(document).delegate("#mobile-enter-name", "pageinit", function (event) {
-            new Module($(this));
-        });
-
+		return Module;
+		
 
 
     });

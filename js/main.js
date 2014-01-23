@@ -42,7 +42,6 @@ requirejs.config({
 	require(modules, function() {
 
 	
-
 		function login() {
 			$.mobile.pages.go('pages/login/login.html');
 		}

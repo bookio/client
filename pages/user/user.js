@@ -1,8 +1,7 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./user.json',
-		'css!./user'
+		'i18n!./user.json'
 	];
 
 	define(dependencies, function(i18n) {
@@ -10,7 +9,7 @@
 
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
 			var _user = {};
 
@@ -28,14 +27,11 @@
 			}
 
 
-			function init() {
-				_page.hookup(_elements, 'data-id');
-
-				_page.i18n(i18n);
-
-				if ($.mobile.pageData && $.mobile.pageData.user) {
-					_user = $.mobile.pageData.user;
-				}
+			this.init = function() {
+				_user = page.params && page.params.user ? page.params.user : {};
+				
+				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 
 				fill();
 
@@ -89,15 +85,10 @@
 					
 
 				});
-
 			}
-
-			init();
 		}
 
-		$(document).delegate("#user-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
+		return Module;
 
 
 	});

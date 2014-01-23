@@ -5,16 +5,17 @@
 		'../../widgets/pagelogo/pagelogo'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function() {
 
 		
 		function Module(page) {
 
-			var _page = page;
+			var _element = page.element;
 			var _elements = {};
+			var _categories = null;
 
 
-			function additem(category) {
+			function addCategory(category) {
 				var template =
 					'<li>' +
 						'<a data-id="link" href="">' +
@@ -49,47 +50,49 @@
 
 			}
 
+			function addCategories(categories) {
+				_elements.listview.empty();
 
-			function init() {
-				_page.hookup(_elements, 'data-id');
+				$.each(categories, function(index, category) {
+					addCategory(category);
+				});
 
-				_elements.title.text(Gopher.client.name);
-
-
-				$('body').spin("large");
-
-				function load() {
-					var request = Gopher.request('GET', 'categories');
-
-					request.always(function() {
-						$('body').spin(false);
-					});
-
-					request.done(function(categories) {
-
-						$.each(categories, function(index, category) {
-							additem(category);
-						});
-
-
-						_elements.listview.listview('refresh');
-						_elements.content.removeClass("invisible");
-						_elements.content.addClass("fade in");
-					});
-
-				}
-
-				load();
-
+				_elements.listview.listview('refresh');
+				
 			}
 
-			init();
+			this.init = function() {
+				_element.hookup(_elements, 'data-id');
+				_elements.listview.listview();
+				_elements.title.text(Gopher.client.name);
+
+			}
+			
+			this.refresh = function(callback) {
+			
+				if (_categories == null) {
+				
+					$.spin(true);
+					
+					var request = Gopher.request('GET', 'categories');
+	
+					request.done(function(categories) {
+						addCategories(_categories = categories);
+					});
+					
+					request.always(function() {
+						$.spin(false);
+						callback();
+					});
+				}
+				else {
+					addCategories(_categories);
+					callback();
+				}
+			}				
 		}
-
-		$(document).delegate("#mobile-select-category-page", "pageinit", function(event) {
-			new Module($(event.currentTarget));
-		});
-
+		
+		return Module;
 
 	});
 

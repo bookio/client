@@ -27,6 +27,8 @@
 						opacity: 0.5
 					}, 200);
 
+					$.spin(true);
+					
 					var request = Gopher.login(email, password);
 
 					request.fail(function() {
@@ -40,6 +42,7 @@
 					});
 
 					request.always(function() {
+						$.spin(false);
 						_elements.login.button.transition({
 							opacity: 1.0
 						}, 100);
@@ -62,6 +65,8 @@
 						opacity: 0.5
 					}, 200);
 
+					$.spin(true);
+
 					var request = Gopher.signup(email, '');
 
 					request.fail(function() {
@@ -76,6 +81,7 @@
 					});
 
 					request.always(function() {
+						$.spin(false);
 						_elements.signup.button.transition({
 							opacity: 1.0
 						}, 100);

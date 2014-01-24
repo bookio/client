@@ -42,10 +42,6 @@
 
                 _elements.submit.on('tap', function (event) {
 
-                                $.mobile.pages.push('./thank-you.html', {
-                                    params: _params
-                                });
-					return;
 					
                     var email = _elements.customer.email.val();
                     var name = _elements.customer.name.val();
@@ -53,9 +49,9 @@
                     var url = sprintf('customers/search_email?email=%s', email);
                     var request = Gopher.request('GET', url);
 
-                    $('body').spin('large');
+                    $.spin(true);
 
-                    request.done(function (customers) {
+                    request.done(function(customers) {
                         var customer = customers.length > 0 ? customers[0] : {};
 
                         customer.name = name;
@@ -64,13 +60,17 @@
                         var request = Model.Customers.save(customer);
 
                         request.done(function (customer) {
+                        	
                             var reservation = {};
                             reservation.customer_id = customer.id;
                             reservation.rental_id = _params.rental.id;
                             reservation.begin_at = _params.startDate;
                             reservation.end_at = _params.endDate;
 
+							console.log('Saving reservation', reservation);
+
                             var request = Model.Reservations.save(reservation);
+                            
                             request.done(function (reservation) {
 
                                 $.mobile.pages.push('./thank-you.html', {
@@ -80,19 +80,19 @@
                             });
                             
                             request.always(function() {
-                                $('body').spin(false);
+                                $.spin(false);
                             });
 
                         });
                         
                         request.fail(function() {
-                            $('body').spin(false);
+                            $.spin(false);
                         });
 
                     });
                     
                     request.fail(function() {
-                        $('body').spin(false);
+                        $.spin(false);
                     });
 
 

@@ -132,6 +132,7 @@
                 enableEventsHandlers();
                 enableDisable();
             }
+            
         }
 
 		return Module;

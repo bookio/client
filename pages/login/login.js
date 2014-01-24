@@ -27,6 +27,8 @@
 						opacity: 0.5
 					}, 200);
 
+					$.spin(true);
+					
 					var request = Gopher.login(email, password);
 
 					request.fail(function() {
@@ -40,6 +42,7 @@
 					});
 
 					request.always(function() {
+						$.spin(false);
 						_elements.login.button.transition({
 							opacity: 1.0
 						}, 100);
@@ -51,8 +54,6 @@
 					});
 
 				}
-
-
 			}
 
 			function signup() {
@@ -63,6 +64,8 @@
 					_elements.signup.button.transition({
 						opacity: 0.5
 					}, 200);
+
+					$.spin(true);
 
 					var request = Gopher.signup(email, '');
 
@@ -78,6 +81,7 @@
 					});
 
 					request.always(function() {
+						$.spin(false);
 						_elements.signup.button.transition({
 							opacity: 1.0
 						}, 100);
@@ -95,13 +99,12 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 
 				var username = isString($.cookie('username')) ? $.cookie('username') : '';
 
 				// Logout
 				Gopher.logout();
-			
 			
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
@@ -129,11 +132,8 @@
 				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				
 				enableDisable();
-			
-				page.show();
 			}
-
-			init();
+			
 		}
 
 		return Module;

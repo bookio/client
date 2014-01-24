@@ -12,26 +12,9 @@
 
 			var _element = page.element;
 			var _elements = {};
+			var _guestUrl = null;
 
-
-			function requestGuestUrl() {
-				var request = Gopher.request('GET', 'users/guest');
-
-				request.done(function(user) {
-
-					var longURL = sprintf("%s?user=%s", window.location.href, user.username);
-
-					_elements.url.val(longURL);
-					_elements.urlTrial.attr('href', longURL);
-					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + longURL + '&choe=UTF-8');
-				});
-
-				return request;
-			}
-
-			function init() {
-
-				$.mobile.pageContainer.spin(true);
+			this.init = function() {
 
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
@@ -56,17 +39,36 @@
 				_elements.rules.on('tap', function() {
 					$.mobile.pages.push('../rules/rules.html');
 				});
-
-				var request = requestGuestUrl();
-
-				request.always(function() {
-					page.show();
-					
-					$.mobile.pageContainer.spin(false);
-				});
 			}
 
-			init();
+			this.refresh = function(callback) {
+			
+				function updateUrl(url) {
+					_elements.url.val(url);
+					_elements.urlTrial.attr('href', url);
+					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + url + '&choe=UTF-8');
+				}
+				
+				if (_guestUrl == null) {
+					var request = Gopher.request('GET', 'users/guest');
+	
+					request.done(function(user) {
+	
+						_guestUrl = sprintf("%s?user=%s", window.location.href, user.username);
+	
+					});
+					
+					request.always(function() {
+						updateUrl(_guestUrl);
+						callback();
+					});
+				}
+				else {
+					updateUrl(_guestUrl);
+					callback();
+				}
+			}
+
 		}
 
 		return Module;

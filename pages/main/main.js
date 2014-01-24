@@ -176,7 +176,7 @@
 			}
 
 
-			function init() {
+			this.init = function() {
 				_element.hookup(_elements, 'data-id');
 				
 				_elements.desktop.desktop();
@@ -303,6 +303,11 @@
 					event.preventDefault();
 
 				});
+
+				_element.on("pageshow", function(event) {
+					redrawForResize();
+					_elements.desktop.desktop('refresh');
+				});
 				
 				// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
 				switch($.cookie('desktopview')) {
@@ -323,16 +328,7 @@
 				redrawForResize();
 				triggerEvent();
 				
-				page.show();
 			}
-
-			init();
-
-			_element.on("pageshow", function(event) {
-				redrawForResize();
-				_elements.desktop.desktop('refresh');
-			});
-			
 		}
 		
 		return Module;

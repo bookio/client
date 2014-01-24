@@ -26325,8 +26325,6 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 		$('head base').attr('href', _baseUrl);
 		console.log('base changed to ', $('head base').attr('href'));
 
-		console.log('Loading modules', modules);
-
 		require(modules, function(script, html) {
 
 			if ($.isFunction(script)) {
@@ -26342,26 +26340,33 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				page.element = $(html);
 				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
 				page.element.appendTo($.mobile.pageContainer);
-
-				// Set up parameters
 				page.params = (options != undefined && options.params != undefined) ? options.params : {};
-
-				// Define the show function
-				page.show = function() {
+				
+				// Execute the page script
+				var module = new script(page);
+				
+				if ($.isFunction(module.init)) {
+					module.init();
+				}
+				
+				function callback() {
 					$.mobile.changePage(page.element, options);
 				}
+
+				if ($.isFunction(module.refresh)) {
+					module.refresh(callback);
+				}
+				else
+					callback();
 				
 				// Push it on the page stack
 				console.log('Pushing page ', page.url);
-				
-				_pages.push({
-					page: page.element,
-					options: options,
-					absUrl: page.url
-				});
 
-				// Execute the page script
-				new script(page);
+				_pages.push({
+					page: page,
+					module: module,
+					options: options
+				});
 			}
 		});
 
@@ -26402,16 +26407,24 @@ f,s).text(e);if(f){A=h;N=e}else{p=h;v=e}if(M){I(p,h);I(A,h)}if(p>A)if(f){p=new D
 				options.showLoadMsg = false;
 				options.transition = thisPage.options.transition;
 				options.reverse = true;
-
+		
 				// Remove this page when it is hidden
-				thisPage.page.on('pagehide', function(event, params) {
+				thisPage.page.element.on('pagehide', function(event, params) {
 					$(this).remove();
 				});
 
-				$('head base').attr('href', nextPage.absUrl);
+				$('head base').attr('href', nextPage.page.url);
 				console.log('Base changed to ', $('head base').attr('href'));
 
-				$.mobile.changePage(nextPage.page, options);
+				function callback() {
+					$.mobile.changePage(nextPage.page.element, options);
+				}
+
+				if ($.isFunction(nextPage.module.refresh))
+					nextPage.module.refresh(callback);	
+				else
+					callback();
+				
 			}
 		}
 	}

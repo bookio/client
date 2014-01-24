@@ -23,6 +23,7 @@
 
 					_elements.url.val(longURL);
 					_elements.urlTrial.attr('href', longURL);
+					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + longURL + '&choe=UTF-8');
 				});
 
 				return request;

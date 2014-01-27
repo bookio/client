@@ -29,12 +29,12 @@
 
 			this.init = function() {
 
-
-				_elements.demandPhone.flipswitch({defaults: true});
-				_elements.demandEmail.flipswitch({defaults: true});
-				_elements.demandAddress.flipswitch({defaults: true});
-				
 				_element.enhanceWithin();
+
+//				_elements.demandPhone.flipswitch();
+//				_elements.demandEmail.flipswitch();
+//				_elements.demandAddress.flipswitch();
+				
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 

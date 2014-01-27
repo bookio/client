@@ -61,7 +61,7 @@
 				_element.i18n(i18n);
 				_element.hookup(_elements, 'data-id');
 
-				_elements.dropzone.imagepicker();
+				_element.enhanceWithin();
 
 				_element.on('dragover', function(event) {
 					event.stopPropagation();

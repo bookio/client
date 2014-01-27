@@ -29,7 +29,12 @@
 
 			this.init = function() {
 
-				_element.trigger('create');
+
+				_elements.demandPhone.flipswitch({defaults: true});
+				_elements.demandEmail.flipswitch({defaults: true});
+				_elements.demandAddress.flipswitch({defaults: true});
+				
+				_element.enhanceWithin();
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 

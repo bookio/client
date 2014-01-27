@@ -46,7 +46,7 @@
 				function updateUrl(url) {
 					_elements.url.val(url);
 					_elements.urlTrial.attr('href', url);
-					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + url + '&choe=UTF-8');
+					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + url + '&choe=UTF-8&chld=L|1');
 				}
 				
 				if (_guestUrl == null) {

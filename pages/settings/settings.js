@@ -46,6 +46,7 @@
 				function updateUrl(url) {
 					_elements.url.val(url);
 					_elements.urlTrial.attr('href', url);
+					// See google charts: https://developers.google.com/chart/infographics/docs/qr_codes
 					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + url + '&choe=UTF-8&chld=L|1');
 				}
 				

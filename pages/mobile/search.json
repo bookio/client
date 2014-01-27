@@ -1,0 +1,23 @@
+{
+	"sv": {
+		"search-back": "Bakåt",
+		"search-book": "Boka",
+		"search-date-header": "Ange datum du vill boka",
+		"search-search": "Sök",
+		"search-fail": "Fullbokat. Prova med annat datum.",
+		"search-email": "E-post",
+		"search-phone": "Telefon"
+	},
+	
+	"hu": {
+		"search-back": "***",
+		"search-date-header": "***",
+		"search-search": "***",
+		"search-fail": "***",
+		"search-email": "***",
+		"search-phone": "***"
+	}
+
+}
+
+

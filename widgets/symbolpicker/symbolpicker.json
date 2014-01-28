@@ -10,9 +10,9 @@
 	},
 	
 	"hu": {
-		"All": "Minden",
-	    "Accommodation": "Szálláshelyek",
-	    "Activity": "Események",
+		"All": "Összes",
+	    "Accommodation": "Szállás",
+	    "Activity": "Esemény/Szabadidő",
 	    "Resource": "Emberi erőforrás",
 	    "Sports": "Sport",
 	    "Tools": "Eszközök",

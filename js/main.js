@@ -54,6 +54,12 @@ requirejs.config({
 		function mobile() {
 			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
+		
+		$.mobiscroll.setDefaults({
+			lang: 'de'
+			
+			
+		});
 
 		if ($.urlParam('user')) {
 			var user = $.urlParam('user');

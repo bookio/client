@@ -3,8 +3,8 @@
 <div data-role="page" id="mobile-search">
 
     <div data-role="header" data-theme="b">
-        <a href='#' data-id="back" data-icon='carat-l' data-theme="b">Bakåt</a>
-    	<h1>Boka</h1>
+        <a href='#' data-id="back" data-icon='carat-l' data-theme="b" data-i18n="back">Back</a>
+    	<h1 data-i18n="book">Book</h1>
     </div>
 
 	<div data-role="content">
@@ -19,20 +19,19 @@
 
         <ul data-role="listview" data-inset="true"> 
             <li>
-                <h3>Ange datum du vill boka</h3>
-				<input data-id="dateInterval"/>
+				<input data-i18n="date-interval" data-id="dateInterval" placeholder="When do you want to make your reservation?">
             </li>
         </ul>        
 
         <p/>
 
 		<div data-role="button-row">
-        	<button href='#' data-id="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="a">Sök</button>
+        	<button href='#' data-id="search" data-role="button" data-icon="search" data-iconpos="right" data-theme="a" data-i18n="search">Search</button>
 		</div>
 
 		<div data-id="searchResult">
-		  <label style="color:red">
-    		  Fullbokat. Prova med annat datum.
+		  <label style="color:red" data-i18n="fail">
+    		  Full, try another period.
  		  </label>
 		</div>
 

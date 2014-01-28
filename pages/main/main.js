@@ -265,9 +265,7 @@
 					_elements.startdate.button.mobiscroll().date({ 
 						theme: 'jqm', 
 						display: 'bubble',
-						dateFormat: 'yy-mm-dd',
-						dateOrder: 'yymmdd',
-						lang: 'sv',
+						//lang: navigator.language.toLowerCase(),
 						onClose: dateChanged
 					});
 					
@@ -290,9 +288,7 @@
 					_elements.enddate.button.mobiscroll().date({ 
 						theme: 'jqm', 
 						display: 'bubble',
-						dateFormat: 'yy-mm-dd',
-						dateOrder: 'yymmdd',
-						lang: 'sv',
+						//lang: navigator.language.toLowerCase(),
 						minDate: _startDate,
 						onClose: dateChanged
 					});

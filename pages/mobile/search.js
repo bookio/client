@@ -1,10 +1,11 @@
 (function () {
 
     var dependencies = [
+		'i18n!./search.json',
         '../../widgets/datepicker/datepicker'
     ];
 
-    define(dependencies, function() {
+    define(dependencies, function(i18n) {
 
         function Module(page) {
 
@@ -100,6 +101,7 @@
             this.init = function() {
 
                 _element.hookup(_elements, 'data-id');
+                _element.i18n(i18n);
 
                 _elements.name.text(_params.category.name);
                 _elements.description.text(_params.category.description);
@@ -119,7 +121,7 @@
 						display: 'bubble', 
 						controls: ['calendar'], 
 						weekCounter: 'year', 
-						lang: 'sv', 
+						lang: navigator.language.toLowerCase(), 
 						minDate: minDate,
 						navigation: 'month',
 						firstDay: 1,
@@ -129,7 +131,8 @@
 						}
 					});
 
-                enableEventsHandlers();
+                
+                enableEventsHandlers();                
                 enableDisable();
             }
             

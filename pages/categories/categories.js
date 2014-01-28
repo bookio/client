@@ -23,7 +23,7 @@
 
 				var row = $(template);
 
-				row.find('label').text("Klicka på '+ Lägg till' nedan för att skapa en bokningsgrupp"); 
+				row.find('label').text("..."); 
 
 				_elements.listview.append(row);
 				

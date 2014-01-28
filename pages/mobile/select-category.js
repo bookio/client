@@ -2,10 +2,11 @@
 
 
 	var dependencies = [
+		'i18n!./select-category.json',
 		'../../widgets/pagelogo/pagelogo'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 
 		
 		function Module(page) {
@@ -63,6 +64,7 @@
 
 			this.init = function() {
 				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 				_elements.listview.listview();
 				_elements.title.text(Gopher.client.name);
 

@@ -1,10 +1,11 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./category.json',
 		'../../widgets/imagepicker/imagepicker'
 	];
 
-	define(dependencies, function() {
+	define(dependencies, function(i18n) {
 
 
 		function Module(page) {
@@ -37,6 +38,7 @@
 				
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
+				_element.i18n(i18n);
 
 				if (page.params && page.params.category) {
 					$.extend(_category, page.params.category);

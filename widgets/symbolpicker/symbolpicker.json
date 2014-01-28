@@ -10,6 +10,13 @@
 	},
 	
 	"hu": {
+		"All": "Allt",
+	    "Accommodation": "Szálláshelyek",
+	    "Activity": "Események",
+	    "Resource": "Emberi erőforrás",
+	    "Sports": "Sport",
+	    "Tools": "Eszközök",
+	    "Transport": "Közlekedés"
 		
 	}
 }

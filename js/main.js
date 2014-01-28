@@ -56,9 +56,7 @@ requirejs.config({
 		}
 		
 		$.mobiscroll.setDefaults({
-			lang: 'de'
-			
-			
+			lang: 'de'			
 		});
 
 		if ($.urlParam('user')) {

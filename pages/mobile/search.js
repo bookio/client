@@ -117,11 +117,11 @@
 				minDate.clearTime();
 				
 				_elements.dateInterval.mobiscroll().rangepicker(
-					{	theme: 'jqm', 
+					{	
+						theme: 'jqm', 
 						display: 'bubble', 
 						controls: ['calendar'], 
 						weekCounter: 'year', 
-						lang: navigator.language.toLowerCase(), 
 						minDate: minDate,
 						navigation: 'month',
 						firstDay: 1,

@@ -2,7 +2,8 @@
 
 	var dependencies = [
 		'i18n!./settings.json',
-		'../../widgets/pagelogo/pagelogo'
+		'../../widgets/pagelogo/pagelogo',
+		'./qrcode.js'
 	];
 
 	define(dependencies, function(i18n) {
@@ -46,8 +47,14 @@
 				function updateUrl(url) {
 					_elements.url.val(url);
 					_elements.urlTrial.attr('href', url);
-					// See google charts: https://developers.google.com/chart/infographics/docs/qr_codes
-					_elements.urlQR.attr('src', 'http://chart.apis.google.com/chart?chs=120x120&cht=qr&chl=' + url + '&choe=UTF-8&chld=L|1');
+					var qrcode = new QRCode(_elements.qrcanvas), {
+						text: url,
+						width: 120,
+						height: 120,
+						colorDark : "#000000",
+						colorLight : "#ffffff",
+						correctLevel : QRCode.CorrectLevel.H
+					});
 				}
 				
 				if (_guestUrl == null) {

@@ -11,8 +11,8 @@
 		"category-delete": "Radera"
 	},
 	
-    "hu": {
-        "category-name": "Név",
+    	"hu": {
+        	"category-name": "Név",
 		"category-description": "Leírás",
 		"category-available": "Lefoglalható",
 		"category-no": "Nem",

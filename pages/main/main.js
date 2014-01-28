@@ -265,7 +265,6 @@
 					_elements.startdate.button.mobiscroll().date({ 
 						theme: 'jqm', 
 						display: 'bubble',
-						//lang: navigator.language.toLowerCase(),
 						onClose: dateChanged
 					});
 					
@@ -285,10 +284,10 @@
 							endDateChanged();
 						}
 					}
+
 					_elements.enddate.button.mobiscroll().date({ 
 						theme: 'jqm', 
 						display: 'bubble',
-						//lang: navigator.language.toLowerCase(),
 						minDate: _startDate,
 						onClose: dateChanged
 					});

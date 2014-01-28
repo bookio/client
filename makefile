@@ -114,9 +114,10 @@ $(SITE_PATH):
 #	$(COMPRESS) $^ -o $@ 
 
 # Compress all css files to local site
-#$(SITE_PATH)/%.css: %.css
-#	$(ECHO) Compressing '$@'...
-#	$(LESSC) --yui-compress $^ > $@
+$(SITE_PATH)/%.css: %.css
+	$(ECHO) Compressing '$@'...
+	$(MKDIR) -p $(SITE_PATH)/$(<D)
+	$(LESSC) --yui-compress $^ > $@
 
 # Just copy all other files
 $(SITE_PATH)/%:%

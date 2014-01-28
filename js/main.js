@@ -27,6 +27,10 @@ requirejs.config({
 
 (function() {
 
+	var modules = [
+		'components/msgbox/msgbox'
+	];
+
 	$.urlParam = function(name) {
 		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -34,13 +38,30 @@ requirejs.config({
 		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 
-
-	var modules = [
-		'components/msgbox/msgbox'
-	];
-
 	require(modules, function() {
 
+
+		function init() {
+		
+			var lang = $.urlParam('lang') ? $.urlParam('lang') : navigator.language;
+
+			// Translate to language codes that mobiscroll supports			
+			switch (lang) {
+				case 'sv-se': {
+					lang = 'sv';
+					break;
+				}
+				
+				// Mobiscroll doesn't support hungarian
+				case 'hu': {
+					lang = undefined;
+					break;
+				}
+			}
+	
+			if (lang)
+				$.mobiscroll.defaults.lang = lang;
+		}
 	
 		function login() {
 			$.mobile.pages.go('pages/login/login.html');
@@ -54,11 +75,9 @@ requirejs.config({
 		function mobile() {
 			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
-		
-		$.mobiscroll.setDefaults({
-			lang: 'de'			
-		});
 
+		init();
+		
 		if ($.urlParam('user')) {
 			var user = $.urlParam('user');
 			var request = Gopher.login(user);
@@ -86,8 +105,6 @@ requirejs.config({
 		}
 		else
 			login();
-		
-
 	});
 
 

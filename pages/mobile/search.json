@@ -8,11 +8,11 @@
 	},
 	
 	"hu": {
-		"back": "***",
-		"book": "***",
-		"date-interval": "***",
-		"search": "***",
-		"fail": "***"
+		"back": "Vissza",
+		"book": "Foglal",
+		"date-interval": "Mikorra foglalnád?",
+		"search": "Keresés",
+		"fail": "Nem elérhető. Adj meg egy másik dátumot!"
 	}
 
 }

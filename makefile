@@ -43,7 +43,7 @@ CORE_JS_FILES = \
 	lib/jquery/jquery-2.0.3.js \
 	lib/jquery-mobile/jquery.mobile.config.js \
 	lib/jquery-mobile/jquery.mobile-1.4.0.js \
-	lib/mobiscroll/js/mobiscroll.custom.9.2.min.js \
+	lib/mobiscroll/mobiscroll.2.9.2.min.js \
 	lib/jquery/plugins/jquery.cookie.js \
 	lib/jquery/plugins/jquery.hookup.js \
 	lib/jquery/plugins/jquery.debounce.js \
@@ -66,7 +66,7 @@ CORE_JS_FILES = \
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \
-	lib/mobiscroll/css/mobiscroll.custom.9.2.min.css
+	lib/mobiscroll/mobiscroll.2.9.2.min.css
 
 all:
 	@echo "usage: make www   - Deploys to web site"
@@ -108,15 +108,15 @@ $(SITE_PATH):
 # Comment out this rule for compressed output
 # (would be nice with comething like 'make debug' and 'make release'...)
 #
-$(SITE_PATH)/%.js: %.js
-	$(ECHO) Compressing '$@'...
-	$(MKDIR) -p $(SITE_PATH)/$(<D)
-	$(COMPRESS) $^ -o $@ 
+#$(SITE_PATH)/%.js: %.js
+#	$(ECHO) Compressing '$@'...
+#	$(MKDIR) -p $(SITE_PATH)/$(<D)
+#	$(COMPRESS) $^ -o $@ 
 
 # Compress all css files to local site
-$(SITE_PATH)/%.css: %.css
-	$(ECHO) Compressing '$@'...
-	$(LESSC) --yui-compress $^ > $@
+#$(SITE_PATH)/%.css: %.css
+#	$(ECHO) Compressing '$@'...
+#	$(LESSC) --yui-compress $^ > $@
 
 # Just copy all other files
 $(SITE_PATH)/%:%

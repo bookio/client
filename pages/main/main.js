@@ -263,8 +263,6 @@
 						}
 					}
 					_elements.startdate.button.mobiscroll().date({ 
-						theme: 'jqm', 
-						display: 'bubble',
 						onClose: dateChanged
 					});
 					
@@ -286,8 +284,6 @@
 					}
 
 					_elements.enddate.button.mobiscroll().date({ 
-						theme: 'jqm', 
-						display: 'bubble',
 						minDate: _startDate,
 						onClose: dateChanged
 					});

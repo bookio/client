@@ -118,8 +118,6 @@
 				
 				_elements.dateInterval.mobiscroll().rangepicker(
 					{	
-						theme: 'jqm', 
-						display: 'bubble', 
 						controls: ['calendar'], 
 						weekCounter: 'year', 
 						minDate: minDate,

@@ -61,6 +61,14 @@ requirejs.config({
 	
 			if (lang)
 				$.mobiscroll.defaults.lang = lang;
+
+			// Set mobiscroll defaults
+			$.mobiscroll.setDefaults({
+				theme: 'jqm', 
+				display: 'bubble'
+			});
+
+
 		}
 	
 		function login() {
@@ -75,6 +83,7 @@ requirejs.config({
 		function mobile() {
 			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
+
 
 		init();
 		

@@ -43,7 +43,7 @@ CORE_JS_FILES = \
 	lib/jquery/jquery-2.0.3.js \
 	lib/jquery-mobile/jquery.mobile.config.js \
 	lib/jquery-mobile/jquery.mobile-1.4.0.js \
-	lib/mobiscroll/js/mobiscroll.custom-2.8.3.min.js \
+	lib/mobiscroll/js/mobiscroll.custom.9.2.min.js \
 	lib/jquery/plugins/jquery.cookie.js \
 	lib/jquery/plugins/jquery.hookup.js \
 	lib/jquery/plugins/jquery.debounce.js \
@@ -66,7 +66,7 @@ CORE_JS_FILES = \
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \
-	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css
+	lib/mobiscroll/css/mobiscroll.custom.9.2.min.css
 
 all:
 	@echo "usage: make www   - Deploys to web site"

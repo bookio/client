@@ -59,7 +59,7 @@ requirejs.config({
 		$.mobiscroll.setDefaults({
 			theme: 'jqm', 
 			display: 'bubble',		
-			lang: navigator.language;
+			lang: navigator.language
 		});
 
 		if ($.urlParam('user')) {

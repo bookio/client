@@ -12,7 +12,7 @@
 		"book": "Foglal",
 		"date-interval": "Mikorra foglalnád?",
 		"search": "Keresés",
-		"fail": "Nem elérhető. Adj meg egy másik dátumot!"
+		"fail": "Tele van. Adj meg másik időpontot!"
 	}
 
 }

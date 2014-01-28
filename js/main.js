@@ -55,8 +55,11 @@ requirejs.config({
 			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
 		
+		// Set date picker defaults
 		$.mobiscroll.setDefaults({
-			lang: 'de'			
+			theme: 'jqm', 
+			display: 'bubble',		
+			lang: navigator.language;
 		});
 
 		if ($.urlParam('user')) {

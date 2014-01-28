@@ -17,7 +17,7 @@ SSH_PATH = bookio.com/public_html/booker
 #####################
 
 COMPRESS = @java -jar Java/yuicompressor-2.4.8.jar --charset utf-8
-LESSC = @lessc --yui-compress
+LESSC = @lessc 
 MKDIR = @mkdir
 CP = @cp
 ECHO = @echo
@@ -66,8 +66,7 @@ CORE_JS_FILES = \
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \
-	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css \
-	css/styles.css
+	lib/mobiscroll/css/mobiscroll.custom-2.8.3.min.css
 
 all:
 	@echo "usage: make www   - Deploys to web site"
@@ -85,7 +84,7 @@ css: $(CSS_FILES)
 site: $(MAKE_FILES)
 	$(ECHO) Done.
 
-core: js/core.js
+core: js/core.js css/core.css
 	$(ECHO) Done.
 
 safari: $(MAKE_FILES)
@@ -102,7 +101,6 @@ css/core.css: $(CORE_CSS_FILES)
 	$(ECHO) Building '$@'...
 	$(CAT) > $@ $^
 
-
 $(SITE_PATH):
 	$(MKDIR) -p $(SITE_PATH)
 
@@ -110,17 +108,22 @@ $(SITE_PATH):
 # Comment out this rule for compressed output
 # (would be nice with comething like 'make debug' and 'make release'...)
 #
-#$(SITE_PATH)/%.js: %.js
-#	$(ECHO) Compressing '$@'...
-#	$(MKDIR) -p $(SITE_PATH)/$(<D)
-#	$(COMPRESS) $^ -o $@ 
+$(SITE_PATH)/%.js: %.js
+	$(ECHO) Compressing '$@'...
+	$(MKDIR) -p $(SITE_PATH)/$(<D)
+	$(COMPRESS) $^ -o $@ 
 
+# Compress all css files to local site
+$(SITE_PATH)/%.css: %.css
+	$(ECHO) Compressing '$@'...
+	$(LESSC) --yui-compress $^ > $@
+
+# Just copy all other files
 $(SITE_PATH)/%:%
 	$(ECHO) Copying '$@'...
 	$(MKDIR) -p $(SITE_PATH)/$(<D)
 	$(CP) $^ $@ 
 
-# This rule must be placed last, since we want to copy the CSS files from the site
 %.css: %.less
 	$(ECHO) Compiling '$@'...
 	$(LESSC) $^ > $@

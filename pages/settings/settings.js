@@ -3,7 +3,7 @@
 	var dependencies = [
 		'i18n!./settings.json',
 		'../../widgets/pagelogo/pagelogo',
-		'./qrcode.min.js'
+		'./qrcode.js'
 	];
 
 	define(dependencies, function(i18n) {
@@ -47,7 +47,7 @@
 				function updateUrl(url) {
 					_elements.url.val(url);
 					_elements.urlTrial.attr('href', url);
-					var qrcode = new QRCode(document.getElementById("qrcanvas"), {
+					var qrcode = new QRCode(_elements.qrcanvas), {
 						text: url,
 						width: 120,
 						height: 120,

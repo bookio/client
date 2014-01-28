@@ -26,15 +26,17 @@
                     $.mobile.pages.pop();
                 });
 
-                _elements.customer.email.on('blur', function (event) {
-                    var email = _elements.customer.email.val();
+                _elements.info.on('blur', function (event) {
+ 	               var lines = _elements.info.val().split('\n');
+                
+                    var email = lines[0];
                     var url = sprintf('customers/search_email?email=%s', email);
                     var request = Gopher.request('GET', url);
 
                     request.done(function (customers) {
                         if (customers.length > 0) {
                             var customer = customers[0];
-                            _elements.customer.name.val(customer.name);
+                            _elements.info.val(lines[0] + '\n' + customer.name);
                         }
                     });
 
@@ -42,9 +44,10 @@
 
                 _elements.submit.on('tap', function (event) {
 
-					
-                    var email = _elements.customer.email.val();
-                    var name = _elements.customer.name.val();
+					var lines = _elements.info.val().split('\n');
+
+                    var email = lines[0]; //_elements.customer.email.val();
+                    var name = lines[1]; //_elements.customer.name.val();
 
                     var url = sprintf('customers/search_email?email=%s', email);
                     var request = Gopher.request('GET', url);

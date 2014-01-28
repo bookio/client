@@ -84,7 +84,6 @@ requirejs.config({
 			$.mobile.pages.go('pages/mobile/select-category.html');
 		}
 
-
 		init();
 		
 		if ($.urlParam('user')) {

@@ -61,8 +61,9 @@
 					var request = Gopher.request('GET', 'users/guest');
 	
 					request.done(function(user) {
-	
-						_guestUrl = sprintf("%s?user=%s", window.location.href, user.username);
+						var url = $.mobile.path.parseUrl(window.location.href);
+						
+						_guestUrl = sprintf("%s?user=%s", url.hrefNoSearch, user.username);
 	
 					});
 					

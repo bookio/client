@@ -1,0 +1,11 @@
+#settings-page [data-id='qrcontainer'] {
+  text-align: center;
+}
+#settings-page [data-id='qrcontainer'] [data-id='qrcanvas'] {
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  border: 2px solid #b3b3b3;
+  padding: 8px;
+  display: inline-block;
+}

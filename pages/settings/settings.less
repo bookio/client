@@ -1,6 +1,14 @@
 @import "../../css/bookio.less";
 
 #settings-page {
-	
-	
+	[data-id='qrcontainer'] {
+		text-align: center;
+		
+		[data-id='qrcanvas'] {
+			.border-radius(16px);
+			border: 2px solid @x-lightGrayColor;
+			padding: 8px;
+			display: inline-block;
+		}
+	}	
 }

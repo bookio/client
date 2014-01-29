@@ -30,20 +30,32 @@ requirejs.config({
 	var modules = [
 		'components/msgbox/msgbox'
 	];
-
-	$.urlParam = function(name) {
-		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-		var results = regex.exec(location.search);
-		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-
+	
 	require(modules, function() {
 
 
+		function parseUrlParams() {
+			var params = {};
+			
+			var parts = location.search.split('?');
+
+			if (parts.length > 1) {
+				parts = decodeURIComponent(parts[1]).split('&');
+				
+				for (var i = 0; i < parts.length; i ++) {
+					var part = parts[i].split('=');
+					params[part[0]] = part[1];
+				}
+			}
+			
+			return params;
+		}
+		
+		var params = parseUrlParams();
+
 		function init() {
 		
-			var lang = $.urlParam('lang') ? $.urlParam('lang') : navigator.language;
+			var lang = params['lang'] ? params['lang'] : navigator.language;
 
 			// Translate to language codes that mobiscroll supports			
 			switch (lang) {
@@ -54,20 +66,17 @@ requirejs.config({
 				
 				// Mobiscroll doesn't support hungarian
 				case 'hu': {
-					lang = undefined;
+					lang = 'en-US';
 					break;
 				}
 			}
 	
-			if (lang)
-				$.mobiscroll.defaults.lang = lang;
-
 			// Set mobiscroll defaults
 			$.mobiscroll.setDefaults({
 				theme: 'jqm', 
+				lang: lang,
 				display: 'bubble'
 			});
-
 
 		}
 	
@@ -85,9 +94,29 @@ requirejs.config({
 		}
 
 		init();
+
+		// Check if we are going to a specific page (for debugging)
+		if (params['page']) {
+			var page = params['page'];
+			var password = params['pwd'];
+			var user = params['user'];
+			var sessionID = Gopher.sessionID;
+			
+			var request = Gopher.login(user, password);
+
+			request.fail(function() {
+				debugger;
+			});
+
+			request.done(function(data) {
+				$.mobile.pages.go(page);
+			});
+			
+		}
 		
-		if ($.urlParam('user')) {
-			var user = $.urlParam('user');
+		// Check if it is the 'mobile' version of the app
+		else if (params['user']) {
+			var user = params['user'];
 			var request = Gopher.login(user);
 
 			request.fail(function() {
@@ -99,6 +128,7 @@ requirejs.config({
 			});
 		}
 
+		//
 		else if (Gopher.sessionID != '') {
 			var request = Gopher.verify();
 

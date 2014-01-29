@@ -13,12 +13,11 @@
 
 			var _element = page.element;
 			var _elements = {};
-			var _guestUrl = null;
 
 			this.init = function() {
 
-				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
+				_element.hookup(_elements, 'data-id');
 
 				_elements.back.on('tap', function(event) {
 					event.preventDefault();
@@ -45,34 +44,36 @@
 			this.refresh = function(callback) {
 			
 				function updateUrl(url) {
-					_elements.url.val(url);
-					_elements.urlTrial.attr('href', url);
-					var qrcode = new QRCode(_elements.qrcanvas[0], {
-						text: url,
-						width: 120,
-						height: 120,
-						colorDark : "#000000",
-						colorLight : "#ffffff",
-						correctLevel : QRCode.CorrectLevel.H
-					});
+					
+
 				}
 				
-				if (_guestUrl == null) {
+				if (_elements.urlTrial.attr('href').length <= 1) {
 					var request = Gopher.request('GET', 'users/guest');
 	
 					request.done(function(user) {
+						var urlparts = $.mobile.path.parseUrl(window.location.href);						
+						var url = sprintf("%s?user=%s", urlparts.hrefNoSearch, user.username);
+
+						_elements.url.val(url);
+						_elements.urlTrial.attr('href', url);
 	
-						_guestUrl = sprintf("%s?user=%s", window.location.href, user.username);
-	
+						console.log(_elements.urlTrial.attr('href'));
+						var qrcode = new QRCode(_elements.qrcanvas[0], {
+							text: url,
+							width: 120,
+							height: 120,
+							colorDark : "#000000",
+							colorLight : "#ffffff",
+							correctLevel : QRCode.CorrectLevel.H
+						});
 					});
 					
 					request.always(function() {
-						updateUrl(_guestUrl);
 						callback();
 					});
 				}
 				else {
-					updateUrl(_guestUrl);
 					callback();
 				}
 			}

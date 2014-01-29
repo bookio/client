@@ -47,6 +47,7 @@
 				function updateUrl(url) {
 					_elements.url.val(url);
 					_elements.urlTrial.attr('href', url);
+
 					var qrcode = new QRCode(_elements.qrcanvas[0], {
 						text: url,
 						width: 120,
@@ -55,6 +56,7 @@
 						colorLight : "#ffffff",
 						correctLevel : QRCode.CorrectLevel.H
 					});
+
 				}
 				
 				if (_guestUrl == null) {
@@ -64,16 +66,14 @@
 						var url = $.mobile.path.parseUrl(window.location.href);
 						
 						_guestUrl = sprintf("%s?user=%s", url.hrefNoSearch, user.username);
-	
+						updateUrl(_guestUrl);
 					});
 					
 					request.always(function() {
-						updateUrl(_guestUrl);
 						callback();
 					});
 				}
 				else {
-					updateUrl(_guestUrl);
 					callback();
 				}
 			}

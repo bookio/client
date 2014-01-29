@@ -2,9 +2,9 @@
   text-align: center;
 }
 #settings-page [data-id='qrcontainer'] [data-id='qrcanvas'] {
-  -webkit-border-radius: 16px;
-  -moz-border-radius: 16px;
-  border-radius: 16px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   border: 2px solid #b3b3b3;
   padding: 8px;
   display: inline-block;

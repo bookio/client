@@ -40,6 +40,8 @@
 
 				_elements.back.on('tap', function(event) {
 
+					$.spin(true);
+
 					chill();
 
 					var request = Gopher.request('PUT', 'settings/app/contact', _info);
@@ -47,6 +49,11 @@
 					request.done(function() {
 						$.mobile.pages.pop();
 					});
+
+					request.always(function() {
+						$.spin(false);
+					});
+
 				});
 			}
 			

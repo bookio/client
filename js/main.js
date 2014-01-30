@@ -70,14 +70,19 @@ requirejs.config({
 					break;
 				}
 			}
-	
+
+			$.mobiscroll.defaults.lang = lang;
+			$.mobiscroll.defaults.display = 'bubble';
+			$.mobiscroll.defaults.theme = 'jqm';
+			
 			// Set mobiscroll defaults
+/*
 			$.mobiscroll.setDefaults({
 				theme: 'jqm', 
 				lang: lang,
 				display: 'bubble'
 			});
-
+*/
 		}
 	
 		function login() {

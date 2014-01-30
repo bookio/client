@@ -32,6 +32,12 @@ strong {
   font-weight: 100 !important;
   padding-left: 1em;
 }
+.jqm .dw-calendar .dw-cal-pnl {
+  padding: 5px;
+}
+.jqm .dw-calendar .dw-cal-header {
+  line-height: 20px;
+}
 [data-role="popup"] {
   background-color: white;
   border: none !important;

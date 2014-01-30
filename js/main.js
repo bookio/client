@@ -55,34 +55,21 @@ requirejs.config({
 
 		function init() {
 		
-			var lang = params['lang'] ? params['lang'] : navigator.language;
-
-			// Translate to language codes that mobiscroll supports			
-			switch (lang) {
-				case 'sv-se': {
-					lang = 'sv';
-					break;
-				}
-				
-				// Mobiscroll doesn't support hungarian
-				case 'hu': {
-					lang = 'en-US';
-					break;
-				}
-			}
+			var lang = params['lang'] ? params['lang'] : $.i18n.lang;
+			
 
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
 			$.mobiscroll.defaults.theme = 'jqm';
+
+			// Use 'sv' instead of 'sv-se' for mobiscroll
+			switch ($.mobiscroll.defaults.lang) {
+				case 'sv-se':
+					$.mobiscroll.defaults.lang = 'sv';
+					break;
+			}
 			
-			// Set mobiscroll defaults
-/*
-			$.mobiscroll.setDefaults({
-				theme: 'jqm', 
-				lang: lang,
-				display: 'bubble'
-			});
-*/
+			$.i18n.lang = lang;
 		}
 	
 		function login() {

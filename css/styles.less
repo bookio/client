@@ -40,28 +40,43 @@ strong {
 	padding-left: 1em;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
 // Fix for mobiscroll
-.jqm {
-	.dw-calendar {
-		
-		.dw-cal-pnl {
-			padding: 5px;
-		}
+//
+
+.dw-calendar {
 	
-		.dw-cal-header {
-			line-height: 20px;
-		}
+	.dwbc {
+		padding: 5px;
+	}
+	
+	.dw-dr-t {
+		padding:5px;
+	}
+
+	.dw-cal-header {
+		line-height: 20px;
 	}
 	
 }
+
+.dw-bubble-top {
+	.dwbc {
+		padding: 5px;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// jQuery Mobile fixes
+//
 
 // Remove the border and set background color
 [data-role="popup"] {
 	background-color: white;
 	border:none !important;
 }
-
-
 
 // Make sliders have Bookio blue background
 .ui-page-theme-a .ui-slider-track .ui-btn-active {
@@ -85,7 +100,7 @@ strong {
 	
 }
 
-// Make the focus less focues
+// Make the focus less focused
 .ui-focus {
 	-webkit-box-shadow: 0 0 6px @x-lightGrayColor !important; //	
 	-moz-box-shadow: 0 0 6px @x-lightGrayColor !important; // 	

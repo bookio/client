@@ -26467,6 +26467,10 @@ a(".dwwl"+C,c).on("mousedown touchstart",function(){clearTimeout(z)});if(B){c.ad
 	    });
 	}
 	
+	$.i18n = {};
+	
+	$.i18n.lang = navigator.language;
+	
 
 })(jQuery);
 

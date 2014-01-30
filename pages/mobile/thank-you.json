@@ -1,0 +1,14 @@
+{
+	"sv": {
+		"thanks": "Tack för din bokning",
+		"confirmation": "Du kommer få en bekräftelse på e-post, Twitter eller SMS. Välkommen!",
+		"done": "Klar"
+	},
+	
+	"hu": {
+		"thanks": "***",
+		"confirmation": "***",
+		"done": "***"
+	}
+
+}

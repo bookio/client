@@ -12,7 +12,7 @@
 	},
 	
     "hu": {
-        "category-name": "Név",
+        	"category-name": "Név",
 		"category-description": "Leírás",
 		"category-available": "Lefoglalható",
 		"category-no": "Nem",

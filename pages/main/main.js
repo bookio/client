@@ -282,6 +282,7 @@
 							endDateChanged();
 						}
 					}
+
 					_elements.enddate.button.mobiscroll().date({ 
 						minDate: _startDate,
 						onClose: dateChanged

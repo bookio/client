@@ -6,9 +6,9 @@
 	},
 	
 	"hu": {
-		"thanks": "***",
-		"confirmation": "***",
-		"done": "***"
+		"thanks": "Köszönjük foglalásod!",
+		"confirmation": "Hamarosan értesítést küldünk (E-mailben, SMS-ben vagy Twitteren).",
+		"done": "Kész!"
 	}
 
 }

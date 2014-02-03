@@ -8,7 +8,7 @@
 	
 	"hu": {
 		"categories-title": "Foglalható kategóriák",
-		"categories-help": "Egy foglalható kategória alá lehet összegyűjteni az oda tartozó szimbólumokat. strong>Példa:</strong> létrehoztál három sportpályát jelző szimbólumot, így az strong>1-es pályát</strong>, <strong>2-es pályát</strong> és <strong>3-as pályát</strong>) - melyeket szeretnél strong>teniszezésre</strong> kiadni. Először hozz létre egy <strong>tenisz<strong> foglalási kategóriát. Majd add hozzá a pályákat jelző szimbólumokat ehhez a kategóriához.",
+		"categories-help": "Egy foglalható kategória alá lehet összegyűjteni az oda tartozó szimbólumo(ka)t. Ha például létrehoznál három sportpályát jelző 'szimbólumot' (<strong>1-es</strong>, <strong>2-es</strong> és <strong>3-as pályákat</strong>), amiket szeretnél strong>teniszezésre</strong> kiadni), akkor először hozz létre egy <strong>tenisz<strong> kategóriát. Ezután add hozzá a pályákat jelző szimbólumokat.",
 		"categories-button-back": "Vissza",
 		"categories-button-add": "Hozzáadás"
 	}

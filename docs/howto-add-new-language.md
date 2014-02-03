@@ -119,7 +119,7 @@ Check all pages to make sure no text overflows and that all translations make se
 
 Call a friend that is native to the translated language. Let him/her run the client and make sure everything is clear.
 
-You can force the browser to show any language, use URL and add "?lang='language code'".
-Sample: http://www.bookio.com/booker/?lang=hu (this will start the client with Hungarian as the chosen language.
+You can force the browser to show any language, use URL and add "?lang='language code'".   
+Sample: http://www.bookio.com/booker/?lang=hu (this will start the client with Hungarian as the chosen language)
 
 >Nerdy facts: i18n = internationalization, 18 letters between 'i' and 'n'

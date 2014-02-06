@@ -1,5 +1,3 @@
-
-
 define(['module', 'css!./desktop'], function(module) {
 
 
@@ -8,9 +6,9 @@ define(['module', 'css!./desktop'], function(module) {
 		var self = this;
 
 		var _defaults = {
-			iconMargin:10,
-			iconSpacing:0,
-			iconSize:100
+			iconMargin: 10,
+			iconSpacing: 0,
+			iconSize: 100
 		};
 
 		var _options = $.extend({}, _defaults, {});
@@ -21,6 +19,7 @@ define(['module', 'css!./desktop'], function(module) {
 		var _editMode = false;
 		var _elements = {};
 		var _initialRefreshDone = false;
+		var _page = widget.element.parents("[data-role='page']");
 
 		var _reservations = {};
 		var _customers = {};
@@ -40,22 +39,13 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 
-		Notifications.on('background-changed.desktop', function(background) {
-			_settings.background = background;
-			saveSettings();
-		});
-
-		Notifications.on('updateUI.desktop', function() {
-			updateUI();
-		});
-
 		Notifications.on('rental-added.desktop', function(rental) {
 
-			var cols  = computeMaxCols();
-			var rows  = computeMaxRows();
+			var cols = computeMaxCols();
+			var rows = computeMaxRows();
 			var cells = cols * rows;
-			var row	  = 0;
-			var col	  = 0;
+			var row = 0;
+			var col = 0;
 
 			for (var i = 0; i < cells; i++) {
 				var y = Math.floor(i / cols);
@@ -87,7 +77,7 @@ define(['module', 'css!./desktop'], function(module) {
 			rentals.done(gotRentals);
 			reservations.done(gotReservations);
 
-			$.when(rentals, reservations).then(function(){
+			$.when(rentals, reservations).then(function() {
 				placeRentals();
 				updateRentalAvailability();
 				saveSettings();
@@ -116,16 +106,15 @@ define(['module', 'css!./desktop'], function(module) {
 
 			var reservations = Model.Reservations.fetch();
 
-			reservations.done(function(reservations){
-		 		gotReservations(reservations);
+			reservations.done(function(reservations) {
+				gotReservations(reservations);
 				_setNeedsLayout = true;
 				updateUI();
 			});
 		});
 
 
-		function getReservationForRental(rental)
-		{
+		function getReservationForRental(rental) {
 			var reservations = _reservations[rental.id];
 
 			if (reservations == undefined)
@@ -137,8 +126,7 @@ define(['module', 'css!./desktop'], function(module) {
 				var start = new Date(reservation.begin_at);
 				var end = new Date(reservation.end_at);
 
-				if (end <= _startDate || start >= _endDate) {
-				}
+				if (end <= _startDate || start >= _endDate) {}
 				else {
 					return reservation;
 				}
@@ -148,15 +136,14 @@ define(['module', 'css!./desktop'], function(module) {
 
 		}
 
-		function isRentalAvailable(rental)
-		{
+		function isRentalAvailable(rental) {
 			return getReservationForRental(rental) == null ? true : false;
 		}
 
 		function updateRentalAvailability() {
 			var items = _element.find('.item');
 
-			$.each(items, function(i, element){
+			$.each(items, function(i, element) {
 				var item = $(element);
 				var rental = item.data('rental');
 
@@ -203,8 +190,10 @@ define(['module', 'css!./desktop'], function(module) {
 			reservation.rental_id = rental.id;
 
 			$.mobile.pages.push('../reservation/reservation.html', {
-				transition:'fade',
-				params:{reservation:reservation}
+				transition: 'fade',
+				params: {
+					reservation: reservation
+				}
 			});
 
 		};
@@ -227,11 +216,11 @@ define(['module', 'css!./desktop'], function(module) {
 				var position = _settings.positions[rental_id];
 
 				if (!isObject(position)) {
-					  position = {};
-					  position.y = Math.floor(index / maxCols);
-					  position.x = index % maxCols;
+					position = {};
+					position.y = Math.floor(index / maxCols);
+					position.x = index % maxCols;
 
-					  index++;
+					index++;
 				}
 
 				addRentalToScene(rental, position.x, position.y);
@@ -240,11 +229,11 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotSettings(settings) {
-			  var defaults = {
-				  positions: {},
-				  orderAutomatically: false,
-				  background: 'linen.png'
-			  };
+			var defaults = {
+				positions: {},
+				orderAutomatically: false,
+				background: 'linen.png'
+			};
 
 			_settings = {};
 			_settings = $.extend({}, defaults, settings);
@@ -257,10 +246,10 @@ define(['module', 'css!./desktop'], function(module) {
 			_settings.positions = {};
 
 			_element.find('.item').each(function() {
-				 var position = $(this).data('position');
-			 	var rental = $(this).data('rental')
+				var position = $(this).data('position');
+				var rental = $(this).data('rental')
 
-			 	_settings.positions[rental.id] = position;
+				_settings.positions[rental.id] = position;
 			});
 
 			Model.Settings.save('desktop', 'layout', _settings);
@@ -287,7 +276,7 @@ define(['module', 'css!./desktop'], function(module) {
 		function removeSelectedRental() {
 			var elements = _element.find('.title.selected');
 
-			$.each(elements, function(i, element){
+			$.each(elements, function(i, element) {
 				var item = $(element).parent();
 				var rental = item.data('rental');
 
@@ -308,7 +297,7 @@ define(['module', 'css!./desktop'], function(module) {
 		function gotReservations(reservations) {
 			_reservations = {};
 
-			$.each(reservations, function(i, reservation){
+			$.each(reservations, function(i, reservation) {
 
 				if (!_reservations[reservation.rental_id])
 					_reservations[reservation.rental_id] = {};
@@ -329,33 +318,37 @@ define(['module', 'css!./desktop'], function(module) {
 				}
 			});
 
-		 };
+		};
 
-		 function clearIntroBlob() {
+		function clearIntroBlob() {
 			// Clear intro blob
 			clearTimeout(_timerForIntroBlob);
 			_element.removeClass("intromode");
-		 }
+		}
 
 
 		function init() {
 
 			var template =
-				'<div class="desktop">'+
-					'<div class="intro">'+
-						'<div data-id="intro.text" class="text"></div>'+
-						'<div data-id="intro.arrow" class="arrow"></div>'+
-						'<div data-id="intro.house" class="house"></div>'+
-						'<div data-id="intro.man" class="man"></div>'+
-						'<div data-id="intro.squash" class="squash"></div>'+
-						'<div data-id="intro.bike" class="bike"></div>'+
-						'<div data-id="intro.car" class="car"></div>'+
-					'</div>'+
-					'<div data-id="buttons.add" class="add button"></div>'+
-					'<div data-id="buttons.close" class="close button"></div>'+
+				'<div class="desktop">' +
+				'<div class="intro">' +
+				'<div data-id="intro.text" class="text"></div>' +
+				'<div data-id="intro.arrow" class="arrow"></div>' +
+				'<div data-id="intro.house" class="house"></div>' +
+				'<div data-id="intro.man" class="man"></div>' +
+				'<div data-id="intro.squash" class="squash"></div>' +
+				'<div data-id="intro.bike" class="bike"></div>' +
+				'<div data-id="intro.car" class="car"></div>' +
+				'</div>' +
+				'<div data-id="buttons.add" class="add button"></div>' +
+				'<div data-id="buttons.close" class="close button"></div>' +
 				'</div>';
 
 			_element = $(template).appendTo(widget.element);
+
+			_page.on('refresh.desktop', function() {
+				updateUI();
+			});
 
 			_element.hookup(_elements, 'data-id');
 
@@ -366,22 +359,23 @@ define(['module', 'css!./desktop'], function(module) {
 
 				clearIntroBlob();
 
-			 });
+			});
 
 			_elements.buttons.add.on("mousedown touchstart", function(event) {
 				$.mobile.pages.push('../rental/rental.html', {
-			 		transition: 'fade'
+					transition: 'fade'
 				});
-			 });
+			});
 
 
 			_elements.buttons.close.on("mousedown touchstart", function(event) {
 				self.editMode(false);
-			 });
+			});
 
 			// Remove all my notifications when the element is destroyed
-			_element.on('removed', function() {
+			_element.on('removed.desktop', function() {
 				Notifications.off('.desktop');
+				_page.off('.desktop');
 				$(document).off('.desktop');
 				$(window).off('.desktop');
 			});
@@ -394,7 +388,10 @@ define(['module', 'css!./desktop'], function(module) {
 
 		self.refresh = function() {
 
-			_desktopSize = {width:_element.innerWidth(), height:_element.innerHeight()};
+			_desktopSize = {
+				width: _element.innerWidth(),
+				height: _element.innerHeight()
+			};
 
 			if (_initialRefreshDone) {
 				return;
@@ -438,7 +435,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			var maxCols = computeMaxCols();
 			var maxRows = computeMaxRows();
-			var rental	= item.data('rental');
+			var rental = item.data('rental');
 
 			row = Math.min(row, maxRows - 1);
 			row = Math.max(row, 0);
@@ -450,12 +447,21 @@ define(['module', 'css!./desktop'], function(module) {
 			var y = _options.iconMargin + (row * (_options.iconSize + _options.iconSpacing));
 
 			// Store the position
-			item.data('position', {x:col, y:row});
+			item.data('position', {
+				x: col,
+				y: row
+			});
 
 			if (isNumeric(speed))
-				item.transition({left:x, top:y}, speed, 'ease-in-out');
+				item.transition({
+					left: x,
+					top: y
+				}, speed, 'ease-in-out');
 			else
-				item.css({left:x, top:y});
+				item.css({
+					left: x,
+					top: y
+				});
 
 		}
 
@@ -464,12 +470,12 @@ define(['module', 'css!./desktop'], function(module) {
 			var available = true;
 
 			_element.find('.item').each(function() {
-				 var position = $(this).data('position');
+				var position = $(this).data('position');
 
-				 if (position.x == col && position.y == row) {
-					  available = false;
-					  return false;
-				 }
+				if (position.x == col && position.y == row) {
+					available = false;
+					return false;
+				}
 			});
 
 			return available;
@@ -501,10 +507,10 @@ define(['module', 'css!./desktop'], function(module) {
 
 		function addRentalToScene(rental, col, row) {
 			var template =
-				'<div class="item">'+
-					'<div class="icon"><img/></div>'+
-					'<br>'+
-					'<div class="title"></div>'+
+				'<div class="item">' +
+				'<div class="icon"><img/></div>' +
+				'<br>' +
+				'<div class="title"></div>' +
 				'</div>'
 
 			var item = $(template);
@@ -525,9 +531,9 @@ define(['module', 'css!./desktop'], function(module) {
 				title.text(rental.name);
 
 				// Ignore mousedown on the title
-				title.on("mousedown touchstart", function(event){
-					 event.preventDefault();
-					 event.stopPropagation();
+				title.on("mousedown touchstart", function(event) {
+					event.preventDefault();
+					event.stopPropagation();
 				});
 			}
 
@@ -557,7 +563,9 @@ define(['module', 'css!./desktop'], function(module) {
 
 			$.mobile.pages.push('../reservation/reservation.html', {
 				transition: 'fade',
-				params: {reservation:reservation}
+				params: {
+					reservation: reservation
+				}
 			});
 		}
 
@@ -566,27 +574,107 @@ define(['module', 'css!./desktop'], function(module) {
 			_element.addClass('intromode');
 
 			_timerForIntroBlob = setInterval(function() {
-				_elements.intro.house.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:500}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
-				_elements.intro.man.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:600}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
-				_elements.intro.squash.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:700}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
-				_elements.intro.bike.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:800}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
-				_elements.intro.car.transition({ y: '-=15', duration:200, easing:'easeOutQuart', delay:900}).transition({ y: '+=15', duration:200, easing:'easeInQuint'});
+				_elements.intro.house.transition({
+					y: '-=15',
+					duration: 200,
+					easing: 'easeOutQuart',
+					delay: 500
+				}).transition({
+					y: '+=15',
+					duration: 200,
+					easing: 'easeInQuint'
+				});
+				_elements.intro.man.transition({
+					y: '-=15',
+					duration: 200,
+					easing: 'easeOutQuart',
+					delay: 600
+				}).transition({
+					y: '+=15',
+					duration: 200,
+					easing: 'easeInQuint'
+				});
+				_elements.intro.squash.transition({
+					y: '-=15',
+					duration: 200,
+					easing: 'easeOutQuart',
+					delay: 700
+				}).transition({
+					y: '+=15',
+					duration: 200,
+					easing: 'easeInQuint'
+				});
+				_elements.intro.bike.transition({
+					y: '-=15',
+					duration: 200,
+					easing: 'easeOutQuart',
+					delay: 800
+				}).transition({
+					y: '+=15',
+					duration: 200,
+					easing: 'easeInQuint'
+				});
+				_elements.intro.car.transition({
+					y: '-=15',
+					duration: 200,
+					easing: 'easeOutQuart',
+					delay: 900
+				}).transition({
+					y: '+=15',
+					duration: 200,
+					easing: 'easeInQuint'
+				});
 
-				_elements.intro.arrow.transition({ x:'+=3', y:'-=4', duration:200, delay:1000}).transition({ x: '-=3', y:'+=4', duration:200});
-				_elements.intro.arrow.transition({ x:'+=3', y:'-=4', duration:200, delay:0}).transition({ x: '-=3', y:'+=4', duration:200});
-				_elements.intro.arrow.transition({ x:'+=3', y:'-=4', duration:200, delay:0}).transition({ x: '-=3', y:'+=4', duration:200});
+				_elements.intro.arrow.transition({
+					x: '+=3',
+					y: '-=4',
+					duration: 200,
+					delay: 1000
+				}).transition({
+					x: '-=3',
+					y: '+=4',
+					duration: 200
+				});
+				_elements.intro.arrow.transition({
+					x: '+=3',
+					y: '-=4',
+					duration: 200,
+					delay: 0
+				}).transition({
+					x: '-=3',
+					y: '+=4',
+					duration: 200
+				});
+				_elements.intro.arrow.transition({
+					x: '+=3',
+					y: '-=4',
+					duration: 200,
+					delay: 0
+				}).transition({
+					x: '-=3',
+					y: '+=4',
+					duration: 200
+				});
 
-				}, 3000);
+			}, 3000);
 
 		}
 
 		function BounceButtons() {
 
-			_elements.buttons.close.transition({ scale: 2 }, 300);
-			_elements.buttons.close.transition({ scale: 1 }, 400);
+			_elements.buttons.close.transition({
+				scale: 2
+			}, 300);
+			_elements.buttons.close.transition({
+				scale: 1
+			}, 400);
 
-			_elements.buttons.add.transition({ scale: 2 }, 300);
-			_elements.buttons.add.transition({ scale: 1 }, 400);
+			_elements.buttons.add.transition({
+				scale: 2
+			}, 300);
+			_elements.buttons.add.transition({
+				scale: 1
+			}, 400);
 
 		}
 
@@ -608,7 +696,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function disableMouseActions() {
-			_element.find('.item').each(function(index){
+			_element.find('.item').each(function(index) {
 				$(this).off();
 			});
 		}
@@ -627,13 +715,13 @@ define(['module', 'css!./desktop'], function(module) {
 				var rental = item.data('rental');
 				var reservation = getReservationForRental(rental);
 
-				  if (reservation == null) {
-					  newReservation(rental);
-				 }
+				if (reservation == null) {
+					newReservation(rental);
+				}
 
-				  if (reservation != null) {
-					  editReservation(reservation);
-				 }
+				if (reservation != null) {
+					editReservation(reservation);
+				}
 			});
 
 			item.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
@@ -669,7 +757,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			});
 
-			item.on(isTouch() ? 'touchstart' : 'mousedown', function(event){
+			item.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
 
 				event.stopPropagation();
 				event.preventDefault();
@@ -702,7 +790,7 @@ define(['module', 'css!./desktop'], function(module) {
 				title.addClass('selected');
 
 
-				$(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event){
+				$(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event) {
 
 					event.preventDefault();
 					event.stopPropagation();
@@ -721,11 +809,14 @@ define(['module', 'css!./desktop'], function(module) {
 					y = Math.max(y, 0);
 					y = Math.min(y, parent.innerHeight() - item.outerHeight());
 
-					item.css({left:x, top:y});
+					item.css({
+						left: x,
+						top: y
+					});
 
 				});
 
-				$(document).on(isTouch() ? 'touchend.desktop-dragdrop' : 'mouseup.desktop-dragdrop', function(event){
+				$(document).on(isTouch() ? 'touchend.desktop-dragdrop' : 'mouseup.desktop-dragdrop', function(event) {
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -760,22 +851,22 @@ define(['module', 'css!./desktop'], function(module) {
 		this.endDate = endDate;
 
 		this.editMode = function(value) {
-			  if (value == undefined)
-				  return _editMode;
+			if (value == undefined)
+				return _editMode;
 
-			  // Show user if he is in edit mode
-			  if (value)
-			  	SetupEditMode();
-			  else
-			  	CloseEditMode();
+			// Show user if he is in edit mode
+			if (value)
+				SetupEditMode();
+			else
+				CloseEditMode();
 
-			  _editMode = value ? true : false;
+			_editMode = value ? true : false;
 
-			  disableMouseActions();
+			disableMouseActions();
 
-			  _element.find('.item').each(function(index){
-				  enableMouseActions($(this));
-			  });
+			_element.find('.item').each(function(index) {
+				enableMouseActions($(this));
+			});
 		}
 
 	}
@@ -817,4 +908,3 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 });
-

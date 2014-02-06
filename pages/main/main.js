@@ -58,7 +58,7 @@
 
 
 			function triggerEvent() {
-				Notifications.trigger('updateUI');
+				_element.trigger('refresh');
 			}
 
 
@@ -289,7 +289,6 @@
 					});
 					
 					_elements.enddate.button.mobiscroll('setDate', _endDate.addDays(-1)); 
-
 					
 					event.preventDefault();
 

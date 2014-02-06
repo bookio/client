@@ -4,7 +4,7 @@
 		'css!./timescale'
 	];
 
-	define(dependencies, function(html) {
+	define(dependencies, function() {
 
 	    var Widget = function(widget) {
 
@@ -13,6 +13,7 @@
 	        var _startDate = new Date();
 	        var _endDate = _startDate.addDays(10);
 	        var _setNeedsLayout = true;
+	        var _page = widget.element.parents("[data-role='page']");
 	
 	        _startDate.clearTime();
 	        _endDate.clearTime();
@@ -58,16 +59,18 @@
 	
 	            var html = $(template);
 	
-	            html.on('removed', function() {
-	                Notifications.off('.timescale');
-	            });
-	
-	            Notifications.on('updateUI.timescale', function() {
+	            _page.on('refresh.timescale', function() {
 	                if (_setNeedsLayout)
 	                    buildDOM();
 	                _setNeedsLayout = false;
 	            });
+
+	            _page.on('removed.timescale', function() {
+	                debugger;
+	                _page.off('.timescale');
+	            });
 	
+
 	            widget.element.append(html);
 	
 	        };
@@ -154,8 +157,8 @@
 	
 			$.widget("mobile.timescale", $.mobile.widget, widget);
 	
-			$(document).bind("pagecreate create", function(e) {
-				$(":jqmData(role=timescale)", e.target).timescale();
+			$(document).bind("pagecreate", function(event) {
+				//$(":jqmData(role=timescale)", event.target).timescale();
 			});
 		}
 

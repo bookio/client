@@ -16,6 +16,23 @@ Build a cloud based reservation system with the following goals:
 
 Roadmap for first public release <a href="https://github.com/bookio/client/blob/master/docs/roadmap.md">can be found here</a>.
 
+<h3>Contribute</h3>
+Read the description and roadmap above to get an understanding of what we are building.
+
+<h5>Code</h5>
+Issues (under Client or Server) tagged with Todo is up for grabs. Take one and start coding.
+
+<h5>Localize</h5>
+Do you speak another language than swedish, english or hungarian? Add another language!
+
+Instructions: https://github.com/bookio/client/blob/master/docs/howto-add-new-language.md
+
+<h5>Think</h5>
+Add your GUI/UX wisdome to the sketches here: https://cacoo.com/diagrams/1YMHGARTs2lx4636   
+Or add your CS/syntax skills here: https://github.com/bookio/client/blob/master/docs/syntax-very-short-reservation-language.md
+
+Feel free to add comments/improvements/suggestions.
+
 <h3>Project Layout</h3>
 The directory structure is as follows
 <ul>

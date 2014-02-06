@@ -29,7 +29,9 @@ Instructions: https://github.com/bookio/client/blob/master/docs/howto-add-new-la
 
 <h5>Think</h5>
 Add your GUI/UX wisdome to the sketches here: https://cacoo.com/diagrams/1YMHGARTs2lx4636   
-Or add your CS/syntax skills here: https://github.com/bookio/client/blob/master/docs/syntax-very-short-reservation-language.md
+Add your CS/syntax skills here: https://github.com/bookio/client/blob/master/docs/syntax-very-short-reservation-language.md
+
+Read the Project Goal and come up with new ideas or cool concepts.  
 
 Feel free to add comments/improvements/suggestions.
 

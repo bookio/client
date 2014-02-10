@@ -32,8 +32,16 @@
 				}
 				
 				// Make sure 'to' is before 'from'
-				if (_elements.limit_from.mobiscroll('getDate') < _elements.limit_to.mobiscroll('getDate'))
-					 _elements.limit_to.mobiscroll('setDate', _elements.limit_from.mobiscroll('getDate'));
+				if (_elements.limit_from.mobiscroll('getDate') >= _elements.limit_to.mobiscroll('getDate')) {
+					var d = _elements.limit_from.mobiscroll('getDate');
+					
+					if (d.getHours() < 23)
+						d.setHours(d.getHours() + 1);
+					else
+						d.setHours(23, 59);
+					
+					 _elements.limit_to.mobiscroll('setDate', d, true);
+				}
 			}
 
 			function fill() {

@@ -13,26 +13,63 @@
         
         <ul data-id="listview" data-role="listview" data-inset="true">
 	        <li>
-                <label data-i18n="category-name">Name</label>
-                <input data-id="name" type="text" value="" placeholder="Namn" title="">
+                <label data-i18n="name">Name</label>
+                <input data-id="name" type="text">
 	        </li>
         
                 
             <li>   
-                <label data-i18n="category-description">Description</label>
-                <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+                <label data-i18n="description">Description</label>
+                <textarea data-id="description" type="text"></textarea>
             </li>
             
             <li>
-				<label style="display:block" data-i18n="category-available">Available for Reservation</label>
-				<select data-id="available" data-role="slider">
-					<option value="off" data-i18n="category-no" selected>No</option>
-					<option value="on" data-i18n="category-yes">Yes</option>
-				</select>
+            	<div class="ui-grid-c">
+
+
+                	<div class="ui-block-a">
+						<label style="display:block" data-i18n="available">Available</label>
+                	</div>
+
+                	<div class="ui-block-b">
+						<label style="display:block" data-id="label_between" data-i18n="label-limit">Between Hours</label>
+                	</div>
+
+                	<div class="ui-block-c">
+                	</div>
+
+                	<div class="ui-block-d">
+                	</div>
+
+
+                	<div class="ui-block-a">
+						<select data-id="available" data-role="flipswitch">
+							<option value="off" data-i18n="no">No</option>
+							<option value="on" data-i18n="yes" selected>Yes</option>
+						</select>
+                	</div>
+
+                	<div class="ui-block-b">
+						<select data-id="limit_time" data-role="flipswitch">
+							<option value="off" data-i18n="24h" selected>24h</option>
+							<option value="on" data-i18n="limit">Limit</option>
+						</select>
+                	</div>
+
+                	<div class="ui-block-c">
+						<input data-i18n="from" data-id="limit_from" placeholder="From" disabled>
+                	</div>
+
+                	<div class="ui-block-d">
+						<input data-i18n="to" data-id="limit_to" placeholder="To" disabled>
+                	</div>
+
+            	</div>
+				
             </li>
 
             <li>
-            	<label data-i18n="category-picture">Picture</label>
+            	<label data-i18n="picture">Picture</label>
 	    		<div style="text-align:center">
 			        <div data-id="dropzone" data-role="imagepicker">
 			        </div>
@@ -43,9 +80,9 @@
             
         
 	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="category-back">Back</a>
-        	<a data-id="save" data-role="button" data-inline="true" data-theme="g" data-i18n="category-save">Save</a>
-        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r" data-i18n="category-delete">Delete</a>
+        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="back">Back</a>
+        	<a data-id="save" data-role="button" data-inline="true" data-theme="g" data-i18n="save">Save</a>
+        	<a data-id="remove" data-role="button" data-inline="true" data-theme="r" data-i18n="delete">Delete</a>
 	    </div>
     </div>
 

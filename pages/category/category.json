@@ -1,26 +1,36 @@
 {
 	"sv": {
-		"category-name": "Namn",
-		"category-description": "Beskrivning",
-		"category-available": "Öppen för bokning",
-		"category-no": "Nej",
-		"category-yes": "Ja",
-		"category-picture": "Bild som ska visas",
-		"category-back": "Tillbaka",
-		"category-save": "Spara", 
-		"category-delete": "Radera"
+		"name": "Namn",
+		"description": "Beskrivning",
+		"available": "Öppen för bokning",
+		"label-limit" : "Bokas",
+		"no": "Nej",
+		"yes": "Ja",
+		"picture": "Bild som ska visas",
+		"back": "Tillbaka",
+		"save": "Spara", 
+		"delete": "Radera",
+		"24h": "24h",
+		"limit": "mellan",
+		"from" : "Från",
+		"to" : "Till"
 	},
 	
     "hu": {
-        	"category-name": "Név",
-		"category-description": "Leírás",
-		"category-available": "Lefoglalható",
-		"category-no": "Nem",
-		"category-yes": "Igen",
-		"category-picture": "Megjelenítendő kép",
-		"category-back": "Vissza",
-		"category-save": "Mentés", 
-		"category-delete": "Törlés"
+        "name": "Név",
+		"description": "Leírás",
+		"available": "Lefoglalható",
+		"label-limit" : "***",		
+		"no": "Nem",
+		"yes": "Igen",
+		"picture": "Megjelenítendő kép",
+		"back": "Vissza",
+		"save": "Mentés", 
+		"delete": "Törlés",
+		"24h": "***",
+		"limit": "***",		
+		"from" : "***",
+		"to" : "***"
     }
 }
 

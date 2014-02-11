@@ -12,37 +12,35 @@
 	
 	        var _startDate = new Date();
 	        var _endDate = _startDate.addDays(10);
-	        var _setNeedsLayout = true;
 	        var _page = widget.element.parents("[data-role='page']");
+	        var _element = widget.element;
 	
 	        _startDate.clearTime();
 	        _endDate.clearTime();
 	
 	        console.log('Creating widget timescale...');
 	        
-	        this.startDate = function(value) {
-	            if (value == undefined)
-	                return _startDate;
-	
-	            _startDate = value;
-	            _setNeedsLayout = true;
-	        }
-	
-	
-	        this.endDate = function(value) {
-	            if (value == undefined)
-	                return _endDate;
-	
-	            _endDate = value;
-	            _setNeedsLayout = true;
-	        }
 	        
-	        this.refresh = function() {
+	        _element.subscribe('set', function(params) {
+		        
+		        var changed = false;
+		        
+		        if (params.startDate != undefined)
+		        	_startDate = params.startDate, changed = true;
+		        	 
+		        if (params.endDate != undefined)
+		        	_endDate = params.endDate, changed = true;
+		        	
+		        if (changed)
+		        	buildDOM(); 
+	        });
 	        
-	        	if (_setNeedsLayout)
-			        buildDOM();
-			        
-	        }
+	        
+	        _element.subscribe('get', function(params) {
+		        params.startDate = _startDate;
+		        params.endDate = _endDate;
+	        });
+	        
 	
 	        function init() {
 	
@@ -57,30 +55,13 @@
 	                '</div>';
 	
 	
-	            var html = $(template);
-	
-	            _page.on('refresh.timescale', function() {
-	                if (_setNeedsLayout)
-	                    buildDOM();
-	                _setNeedsLayout = false;
-	            });
+				_element.on('removed', function() {
+					// ??
+				});
 
-	            _page.on('removed.timescale', function() {
-	                debugger;
-	                _page.off('.timescale');
-	            });
-	
-
-	            widget.element.append(html);
-	
+	            _element.append($(template));
+	            
 	        };
-	
-	        this.scroll = function(delta) {
-	            _startDate = _startDate.addDays(delta);
-	            _endDate = _endDate.addDays(delta);
-	            buildDOM();
-	        }
-	
 	
 	        function buildDOM() {
 	            var calendar = _startDate.clone();
@@ -120,8 +101,6 @@
 	                calendar = calendar.addDays(1);
 	            }
 	            
-	            _setNeedsLayout = false;
-
 	        }
 	
 	
@@ -137,22 +116,6 @@
 	
 			widget._create = function() {
 				this.widget = new Widget(this);
-			}
-	
-			widget.refresh = function() {
-				this.widget.refresh();
-			}
-
-			widget.scroll = function(delta) {
-				this.widget.scroll(delta);
-			}
-			
-			widget.startDate = function(value) {
-				return this.widget.startDate(value);
-			}
-	
-			widget.endDate = function(value) {
-				return this.widget.endDate(value);
 			}
 	
 			$.widget("mobile.timescale", $.mobile.widget, widget);

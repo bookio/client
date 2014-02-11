@@ -20,6 +20,7 @@
 			var _busy = false;
 			var _page = widget.element.parents("[data-role='page']");
 
+/*
 			this.position = function(value) {
 
 				if (value == undefined)
@@ -44,7 +45,7 @@
 				_setNeedsLayout = true;
 				return _length = value;
 			}
-
+*/
 
 			function init() {
 
@@ -74,9 +75,9 @@
 				_elements.slider = _elements.root.find('.slider');
 				_elements.gripper = _elements.root.find('.gripper');
 
-				$(document).on('updatelayout.timeslider', function(event) {
-					positionSlider();
-				});
+				//$(document).on('updatelayout.timeslider', function(event) {
+				//	positionSlider();
+				//});
 
 				_elements.gripper.css({
 					height: widget.options.size,
@@ -84,7 +85,8 @@
 				});
 
 				_elements.slider.on('doubletap', function(event) {
-					widget.element.trigger('doubletap');
+					//widget.element.trigger('doubletap');
+					widget.element.publish('reset');
 				});
 
 				_elements.root.on('removed', function() {
@@ -93,13 +95,28 @@
 					Notifications.off('.timeslider');
 
 					// And some more...   
-					_page.off('.timeslider');
 					$(window).off('.timeslider');
 					$(document).off('.timeslider');
 				});
 
-				_page.on('refresh.timeslider', function() {
+				widget.element.subscribe('set', function(data) {
+
+					if (data.length != undefined)
+						_length = data.length;
+					if (data.position != undefined)
+						_position = data.position;
+					if (data.range != undefined)
+						_range = data.range;
+
+					_setNeedsLayout = true;
+					
 					updateLayout();
+				});
+
+				widget.element.subscribe('get', function(data) {
+					data.length = _length;
+					data.position = _position;
+					data.range = _range;
 				});
 
 
@@ -108,7 +125,7 @@
 
 			function startScrolling(delta) {
 				function scroll() {
-					widget.element.trigger('scroll', delta);
+					widget.element.publish('scroll', delta);
 				}
 				if (_scrollTimer == null) {
 					_scrollTimer = setInterval(scroll, 80);
@@ -232,18 +249,20 @@
 						position = Math.min(position, _range - length);
 						position = Math.max(position, 0);
 
-						if (position != _position) {
-							_position = position;
+						var changed = false;
 
-							widget.element.trigger('positionchanged', _position);
+						if (position != _position) {
+							changed = true;
+							_position = position;
 						}
 
 						if (length != _length) {
+							changed = true;
 							_length = length;
-
-							widget.element.trigger('lengthchanged', _length);
-
 						}
+						
+						if (changed)
+							widget.element.publish('change', {position:_position, length:_length, range:_range});
 
 					});
 
@@ -269,7 +288,6 @@
 			enableScrolling();
 			positionSlider();
 
-			this.refresh = positionSlider;
 		};
 
 
@@ -286,7 +304,7 @@
 		widget._create = function() {
 			this.widget = new Widget(this);
 		}
-
+/*
 		widget.refresh = function() {
 			this.widget.refresh();
 		}
@@ -302,7 +320,7 @@
 		widget.range = function(value) {
 			return this.widget.range(value);
 		}
-
+*/
 
 		$.widget("mobile.timeslider", $.mobile.widget, widget);
 

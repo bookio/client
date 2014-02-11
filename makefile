@@ -54,6 +54,7 @@ CORE_JS_FILES = \
 	lib/jquery/plugins/jquery.spin.js \
 	lib/jquery/plugins/jquery.transit.js \
 	lib/jquery/plugins/jquery.i18n.js \
+	lib/jquery/plugins/jquery.pubsub.js \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
 	js/base64.js \
 	js/sprintf.js \

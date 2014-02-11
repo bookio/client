@@ -7,7 +7,8 @@
 		'../../widgets/datepicker/datepicker',
 		'../../widgets/timeslider/timeslider',
 		'../../widgets/timescale/timescale',
-		'../../widgets/desktop/desktop'
+		'../../widgets/desktop/desktop',
+		'../../widgets/desktoplist/desktoplist',
 		
 	];
 
@@ -64,34 +65,46 @@
 
 			function redrawForResize() {
 
-				var range = Math.floor(_elements.slider.innerWidth() / 80);
-				var startDate = _elements.scale.timescale('startDate');
-				range = Math.floor(_elements.slider.innerWidth() / 80);
+				var scale = {};
+				_elements.scale.publish('get', scale);
+
+				var range = Math.floor(_elements.slider.innerWidth() / 80);				
 				
-				_elements.slider.timeslider('range', range);
-				_elements.scale.timescale('endDate', startDate.addDays(range));
+				_elements.slider.publish('set', {range:range});
+				_elements.scale.publish('set', {startDate: scale.startDate, endDate: scale.startDate.addDays(range)});
+
 				sliderChanged();
 			}
 
 
 			function setSliderInStartPosition() {
 
-				_elements.slider.timeslider('position', 0); // Set Now as start position
-				_elements.slider.timeslider('length', 1); // Fill only one 'time slot'
+				var slider = {};
+				_elements.slider.publish('get', slider);
+				
+				slider.position = 0;
+				slider.length = 1;
+				
+				_elements.slider.publish('set', slider);
 
 				var date = new Date();
 				date.clearTime();
 
-				_elements.scale.timescale('startDate', date);
-				_elements.scale.timescale('endDate', date.addDays(_elements.slider.timeslider('range')));
+				_elements.scale.publish('set', {startDate: date, endDate: date.addDays(slider.range)});
 
 				sliderChanged();
 			}
 
 
 			function sliderChanged() {
-				var selectionStartDate = _elements.scale.timescale('startDate').addDays(_elements.slider.timeslider('position'));
-				var selectionEndDate = selectionStartDate.addDays(_elements.slider.timeslider('length'));
+				var slider = {};
+				_elements.slider.publish('get', slider);
+
+				var scale = {};
+				_elements.scale.publish('get', scale);
+
+				var selectionStartDate = scale.startDate.addDays(slider.position);
+				var selectionEndDate = selectionStartDate.addDays(slider.length);
 				
 				_elements.desktop.desktop('startDate', selectionStartDate);
 				_elements.desktop.desktop('endDate', selectionEndDate);
@@ -103,20 +116,19 @@
 			}
 
 			function startDateChanged() {
+				var slider = {};
+				_elements.slider.publish('get', slider);
+
 				var selectionStartDate = _startDate.clone(); //_picker.startDate().clone();
-				var selectionEndDate = selectionStartDate.addDays(_elements.slider.timeslider('length'));
+				var selectionEndDate = selectionStartDate.addDays(slider.length);
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _elements.slider.timeslider('position'));
-				var rangeEndDate = rangeStartDate.addDays(_elements.slider.timeslider('range'));
-
-				//_picker.startDate(selectionStartDate);
-				//_picker.endDate(selectionEndDate.addDays(-1));
+				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
+				var rangeEndDate = rangeStartDate.addDays(slider.range);
 
 				_elements.desktop.desktop('startDate', selectionStartDate);
 				_elements.desktop.desktop('endDate', selectionEndDate);
 
-				_elements.scale.timescale('startDate', rangeStartDate);
-				_elements.scale.timescale('endDate', rangeEndDate);
+				_elements.scale.publish('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -124,20 +136,19 @@
 			}
 
 			function endDateChanged() {
+				var slider = {};
+				_elements.slider.publish('get', slider);
+
 				var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
-				var selectionStartDate = selectionEndDate.addDays(-1 * _elements.slider.timeslider('length'));
+				var selectionStartDate = selectionEndDate.addDays(-1 * slider.length);
 
-				var rangeStartDate = selectionStartDate.addDays(-1 * _elements.slider.timeslider('position'));
-				var rangeEndDate = rangeStartDate.addDays(_elements.slider.timeslider('range'));
-
-				//_picker.startDate(selectionStartDate);
-				//_picker.endDate(selectionEndDate.addDays(-1));
+				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
+				var rangeEndDate = rangeStartDate.addDays(slider.range);
 
 				_elements.desktop.desktop('startDate', selectionStartDate);
 				_elements.desktop.desktop('endDate', selectionEndDate);
 
-				_elements.scale.timescale('startDate', rangeStartDate);
-				_elements.scale.timescale('endDate', rangeEndDate);
+				_elements.scale.publish('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -146,33 +157,11 @@
 
 			function scroll(delta) {
 
-				_elements.scale.timescale('scroll', delta);
+				var range = {};
+				_elements.scale.publish('get', range);
+				_elements.scale.publish('set', {startDate:range.startDate.addDays(delta), endDate:range.endDate.addDays(delta)});
+
 				sliderChanged();
-			}
-
-
-			function pickdate(button, date, callback) {
-
-
-				var popup = $('<div data-role="popup"/>').popup({
-					dismissible: true,
-					theme: "c",
-					transition: "pop",
-					positionTo: button
-				});
-
-				var datepicker = $('<div data-role="datepicker"/>').appendTo(popup).datepicker();
-				 
-				popup.on('popupafterclose', function() {
-					$(this).remove();
-				});
-
-				datepicker.on("datechanged", function() {
-					popup.popup('close');
-					callback(datepicker.datepicker('getDate'));
-				});
-
-				popup.popup('open');
 			}
 
 
@@ -190,6 +179,10 @@
 					_elements.popup.content.popup('close');
 				});
 
+
+				_element.subscribe('datechange', function(data) {
+					console.log(data);
+				});
 
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
@@ -241,14 +234,18 @@
 					_elements.popup.content.popup('open');
 				});
 
-				_elements.slider.on('positionchanged', sliderChanged);
-				_elements.slider.on('rangechanged', sliderChanged);
-				_elements.slider.on('lengthchanged', sliderChanged);
-				_elements.slider.on('scroll', function(event, delta) {
+				_elements.slider.subscribe('change', function(data){
+					sliderChanged();	
+				});
+
+				//_elements.slider.on('positionchanged', sliderChanged);
+				//_elements.slider.on('rangechanged', sliderChanged);
+				//_elements.slider.on('lengthchanged', sliderChanged);
+				_elements.slider.subscribe('scroll', function(delta) {
 					scroll(delta);
 				});
 				
-				_elements.slider.on('doubletap', function(event) {
+				_elements.slider.subscribe('reset', function(event) {
 					setSliderInStartPosition();
 				});
 								
@@ -302,13 +299,14 @@
 				// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
 				switch($.cookie('desktopview')) {
 				
-					case 'list':
+					case 'list': 
 						_elements.iconviewlist.addClass('selected');
-					  break;
+						
+						break;
 				
 					case 'calendar':
 						_elements.iconviewcalendar.addClass('selected');
-					  break;
+						break;
 				
 					default:
 						_elements.iconviewicon.addClass('selected');

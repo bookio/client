@@ -66,12 +66,12 @@
 			function redrawForResize() {
 
 				var scale = {};
-				_elements.scale.publish('get', scale);
+				_elements.scale.invoke('get', scale);
 
 				var range = Math.floor(_elements.slider.innerWidth() / 80);				
 				
-				_elements.slider.publish('set', {range:range});
-				_elements.scale.publish('set', {startDate: scale.startDate, endDate: scale.startDate.addDays(range)});
+				_elements.slider.invoke('set', {range:range});
+				_elements.scale.invoke('set', {startDate: scale.startDate, endDate: scale.startDate.addDays(range)});
 
 				sliderChanged();
 			}
@@ -80,17 +80,17 @@
 			function setSliderInStartPosition() {
 
 				var slider = {};
-				_elements.slider.publish('get', slider);
+				_elements.slider.invoke('get', slider);
 				
 				slider.position = 0;
 				slider.length = 1;
 				
-				_elements.slider.publish('set', slider);
+				_elements.slider.invoke('set', slider);
 
 				var date = new Date();
 				date.clearTime();
 
-				_elements.scale.publish('set', {startDate: date, endDate: date.addDays(slider.range)});
+				_elements.scale.invoke('set', {startDate: date, endDate: date.addDays(slider.range)});
 
 				sliderChanged();
 			}
@@ -98,10 +98,10 @@
 
 			function sliderChanged() {
 				var slider = {};
-				_elements.slider.publish('get', slider);
+				_elements.slider.invoke('get', slider);
 
 				var scale = {};
-				_elements.scale.publish('get', scale);
+				_elements.scale.invoke('get', scale);
 
 				var selectionStartDate = scale.startDate.addDays(slider.position);
 				var selectionEndDate = selectionStartDate.addDays(slider.length);
@@ -117,7 +117,7 @@
 
 			function startDateChanged() {
 				var slider = {};
-				_elements.slider.publish('get', slider);
+				_elements.slider.invoke('get', slider);
 
 				var selectionStartDate = _startDate.clone(); //_picker.startDate().clone();
 				var selectionEndDate = selectionStartDate.addDays(slider.length);
@@ -128,7 +128,7 @@
 				_elements.desktop.desktop('startDate', selectionStartDate);
 				_elements.desktop.desktop('endDate', selectionEndDate);
 
-				_elements.scale.publish('set', {startDate:rangeStartDate, endDate:rangeEndDate});
+				_elements.scale.invoke('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -137,7 +137,7 @@
 
 			function endDateChanged() {
 				var slider = {};
-				_elements.slider.publish('get', slider);
+				_elements.slider.invoke('get', slider);
 
 				var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
 				var selectionStartDate = selectionEndDate.addDays(-1 * slider.length);
@@ -148,7 +148,7 @@
 				_elements.desktop.desktop('startDate', selectionStartDate);
 				_elements.desktop.desktop('endDate', selectionEndDate);
 
-				_elements.scale.publish('set', {startDate:rangeStartDate, endDate:rangeEndDate});
+				_elements.scale.invoke('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
@@ -158,8 +158,8 @@
 			function scroll(delta) {
 
 				var range = {};
-				_elements.scale.publish('get', range);
-				_elements.scale.publish('set', {startDate:range.startDate.addDays(delta), endDate:range.endDate.addDays(delta)});
+				_elements.scale.invoke('get', range);
+				_elements.scale.invoke('set', {startDate:range.startDate.addDays(delta), endDate:range.endDate.addDays(delta)});
 
 				sliderChanged();
 			}
@@ -234,13 +234,10 @@
 					_elements.popup.content.popup('open');
 				});
 
-				_elements.slider.subscribe('change', function(data){
+				_elements.slider.subscribe('change', function(data) {
 					sliderChanged();	
 				});
 
-				//_elements.slider.on('positionchanged', sliderChanged);
-				//_elements.slider.on('rangechanged', sliderChanged);
-				//_elements.slider.on('lengthchanged', sliderChanged);
 				_elements.slider.subscribe('scroll', function(delta) {
 					scroll(delta);
 				});

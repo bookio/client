@@ -26482,7 +26482,6 @@ a(".dwwl"+C,c).on("mousedown touchstart",function(){clearTimeout(z)});if(B){c.ad
 
 (function ($) { 
 
-
 	function Pubsub() {
 	
 		var cache = {};
@@ -26559,6 +26558,65 @@ a(".dwwl"+C,c).on("mousedown touchstart",function(){clearTimeout(z)});if(B){c.ad
 	    });
 	}	
 
+
+})(jQuery);
+
+
+
+
+
+// Small plugin to hook up elements that use the 'data-id' attribute
+
+(function ($) { 
+
+	function Devoke() {
+	
+		var _callbacks = {};
+		
+		this.invoke = function(name, args) {
+		
+			if (args == undefined)
+				args = [];
+			
+			else if (!$.isArray(args))
+				args = [args];
+			
+			var callback = _callbacks[name];
+			
+			if ($.isFunction(callback)) {
+				callback.apply($, args);
+			}	
+		}
+		
+		this.define = function(name, callback) {
+			_callbacks[name] = callback;
+		}
+		
+	}
+	
+	$.fn.invoke = function(name, args) {
+	    return this.each(function () {
+
+			var devoke = $(this).data('devoke');
+			
+			if (devoke != undefined)
+				devoke.invoke(name, args);
+
+	    });
+	}	
+	
+	$.fn.define = function(name, callback) {
+	    return this.each(function () {
+
+			var devoke = $(this).data('devoke');
+			
+			if (!devoke) {
+				$(this).data('devoke', devoke = new Devoke());
+			}
+
+			devoke.define(name, callback);
+	    });
+	}	
 
 })(jQuery);
 
@@ -27878,25 +27936,3 @@ Notifications.off = function(notification) {
     $(this).off(notification);
 }
 
-
-NotificationListener = function(name) {
-	
-	this.on = function(events, callback) {
-
-		var notification = '';
-
-		$.each(split(events, ' '), function(index, value) {
-			
-			if (notification != '')
-				notification += ' ';
-				
-			notification += value + '.' + name; 
-		});
-		
-		Notifications.on(notification, callback); 
-	}
-	
-	this.off = function() {
-		Notifications.off('.' + name);
-	}
-}

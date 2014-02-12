@@ -20,33 +20,6 @@
 			var _busy = false;
 			var _page = widget.element.parents("[data-role='page']");
 
-/*
-			this.position = function(value) {
-
-				if (value == undefined)
-					return _position;
-
-				_setNeedsLayout = true;
-				return _position = value;
-			}
-
-			this.range = function(value) {
-				if (value == undefined)
-					return _range;
-
-				_setNeedsLayout = true;
-				return _range = value;
-			}
-
-			this.length = function(value) {
-				if (value == undefined)
-					return _length;
-
-				_setNeedsLayout = true;
-				return _length = value;
-			}
-*/
-
 			function init() {
 
 				var template =
@@ -75,9 +48,6 @@
 				_elements.slider = _elements.root.find('.slider');
 				_elements.gripper = _elements.root.find('.gripper');
 
-				//$(document).on('updatelayout.timeslider', function(event) {
-				//	positionSlider();
-				//});
 
 				_elements.gripper.css({
 					height: widget.options.size,
@@ -85,7 +55,6 @@
 				});
 
 				_elements.slider.on('doubletap', function(event) {
-					//widget.element.trigger('doubletap');
 					widget.element.publish('reset');
 				});
 
@@ -99,7 +68,7 @@
 					$(document).off('.timeslider');
 				});
 
-				widget.element.subscribe('set', function(data) {
+				widget.element.define('set', function(data) {
 
 					if (data.length != undefined)
 						_length = data.length;
@@ -113,7 +82,7 @@
 					updateLayout();
 				});
 
-				widget.element.subscribe('get', function(data) {
+				widget.element.define('get', function(data) {
 					data.length = _length;
 					data.position = _position;
 					data.range = _range;
@@ -291,43 +260,30 @@
 		};
 
 
-		// Define the widget
-		var widget = {};
-
-		widget.options = {};
-
-		widget.options.size = "25px";
-		widget.options.length = 7;
-		widget.options.position = 3;
-		widget.options.range = 10;
-
-		widget._create = function() {
-			this.widget = new Widget(this);
-		}
-/*
-		widget.refresh = function() {
-			this.widget.refresh();
-		}
-
-		widget.position = function(value) {
-			return this.widget.position(value);
-		}
-
-		widget.length = function(value) {
-			return this.widget.length(value);
-		}
-
-		widget.range = function(value) {
-			return this.widget.range(value);
-		}
-*/
-
-		$.widget("mobile.timeslider", $.mobile.widget, widget);
-
-		$(document).bind("pagecreate create", function(e) {
-			//$(":jqmData(role=timeslider)", e.target).timeslider();
-		});
-
+		(function(){
+			// Define the widget
+			var widget = {};
+	
+			widget.options = {};
+	
+			widget.options.size = "25px";
+			widget.options.length = 5;
+			widget.options.position = 0;
+			widget.options.range = 10;
+	
+			widget._create = function() {
+				debugger;
+				this.widget = new Widget(this);
+			}
+	
+			$.widget("mobile.timeslider", $.mobile.widget, widget);
+	
+			$(document).bind("pagecreate create", function(e) {
+				//$(":jqmData(role=timeslider)", e.target).timeslider();
+			});
+	
+			
+		})();
 
 	});
 

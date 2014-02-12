@@ -21,7 +21,7 @@
 	        console.log('Creating widget timescale...');
 	        
 	        
-	        _element.subscribe('set', function(params) {
+	        _element.define('set', function(params) {
 		        
 		        var changed = false;
 		        
@@ -36,7 +36,7 @@
 	        });
 	        
 	        
-	        _element.subscribe('get', function(params) {
+	        _element.define('get', function(params) {
 		        params.startDate = _startDate;
 		        params.endDate = _endDate;
 	        });

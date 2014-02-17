@@ -15,7 +15,6 @@ define(['module', 'css!./desktop'], function(module) {
 		var _element = null;
 		var _startDate = new Date();
 		var _endDate = new Date();
-		var _setNeedsLayout = false;
 		var _editMode = false;
 		var _elements = {};
 		var _initialRefreshDone = false;
@@ -30,13 +29,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 		var _timerForIntroBlob;
 
-		function updateUI() {
-			if (_setNeedsLayout)
-				updateRentalAvailability();
-
-			_setNeedsLayout = false;
-
-		}
 
 
 		Notifications.on('rental-added.desktop', function(rental) {
@@ -96,9 +88,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_reservations[reservation.rental_id][reservation.id] = reservation;
 
-			_setNeedsLayout = true;
-
-			updateUI();
+			updateRentalAvailability();
 
 		});
 
@@ -108,8 +98,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			reservations.done(function(reservations) {
 				gotReservations(reservations);
-				_setNeedsLayout = true;
-				updateUI();
+				updateRentalAvailability();
 			});
 		});
 
@@ -156,22 +145,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 
-		function startDate(value) {
-			if (value == undefined)
-				return _startDate;
-
-			_startDate = value;
-			_setNeedsLayout = true;
-		}
-
-
-		function endDate(value) {
-			if (value == undefined)
-				return _endDate;
-
-			_endDate = value;
-			_setNeedsLayout = true;
-		}
 
 		function computeMaxCols() {
 			return Math.floor((_desktopSize.width - 2 * _options.iconMargin) / (_options.iconSpacing + _options.iconSize));
@@ -185,8 +158,8 @@ define(['module', 'css!./desktop'], function(module) {
 		function newReservation(rental) {
 
 			var reservation = {};
-			reservation.begin_at = startDate();
-			reservation.end_at = endDate();
+			reservation.begin_at = _startDate;
+			reservation.end_at = _endDate;
 			reservation.rental_id = rental.id;
 
 			$.mobile.pages.push('../reservation/reservation.html', {
@@ -314,7 +287,7 @@ define(['module', 'css!./desktop'], function(module) {
 			$(document).on('keyup.desktop', function(event) {
 
 				if (event.keyCode == 27) {
-					self.editMode(false);
+					widget.element.invoke('set', {editMode:false});
 				}
 			});
 
@@ -346,12 +319,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_element = $(template).appendTo(widget.element);
 
-			_page.on('refresh.desktop', function() {
-				updateUI();
-			});
-
 			_element.hookup(_elements, 'data-id');
-
 
 
 			_element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
@@ -369,8 +337,90 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 			_elements.buttons.close.on("mousedown touchstart", function(event) {
-				self.editMode(false);
+				widget.element.invoke('set', {editMode:false});
 			});
+
+
+			widget.element.define('set', function(data) {
+				var changed = false;
+
+				if (data.startDate != undefined)
+					_startDate = data.startDate, changed = true;
+					
+				if (data.endDate != undefined)
+					_endDate = data.endDate, changed = true;
+					
+				if (data.editMode != undefined) {
+					_editMode = data.editMode;
+
+					if (_editMode)
+						SetupEditMode();
+					else
+						CloseEditMode();
+						
+					disableMouseActions();
+		
+					_element.find('.item').each(function(index) {
+						enableMouseActions($(this));
+					});
+				}
+				
+				if (changed) {
+					updateRentalAvailability();				
+				}
+			});
+			
+			widget.element.define('get', function(data) {
+				data.startDate = _startDate;
+				data.endDate = _endDate;
+				data.editMode = _editMode;
+			});
+
+			widget.element.define('refresh', function() {
+	
+				_desktopSize = {
+					width: _element.innerWidth(),
+					height: _element.innerHeight()
+				};
+	
+				if (_initialRefreshDone) {
+					return;
+				}
+	
+				var gopher = Gopher;
+	
+				var rentals = Model.Rentals.fetch();
+				var reservations = Model.Reservations.fetch();
+				var customers = Model.Customers.fetch();
+				var settings = Model.Settings.fetch('desktop', 'layout');
+				var icons = gopher.request('GET', 'icons/hash');
+	
+				rentals.done(gotRentals);
+				reservations.done(gotReservations);
+				customers.done(gotCustomers);
+				settings.done(gotSettings);
+				icons.done(gotIcons);
+	
+				$('body').spin("large");
+	
+				$.when(rentals, reservations, customers, settings, icons).then(function() {
+					$('body').spin(false);
+	
+					placeRentals();
+					updateRentalAvailability();
+	
+					if (Object.keys(_rentals).length == 0) {
+						// No objects created, enter edit mode so user can add objects
+						_element.invoke('set', {editMode:true});
+						
+						ShowIntroBlob();
+					}
+	
+					_initialRefreshDone = true;
+				});
+	
+			});
+
 
 			// Remove all my notifications when the element is destroyed
 			_element.on('removed.desktop', function() {
@@ -386,50 +436,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 		};
 
-		self.refresh = function() {
-
-			_desktopSize = {
-				width: _element.innerWidth(),
-				height: _element.innerHeight()
-			};
-
-			if (_initialRefreshDone) {
-				return;
-
-			}
-
-			var gopher = Gopher;
-
-			var rentals = Model.Rentals.fetch();
-			var reservations = Model.Reservations.fetch();
-			var customers = Model.Customers.fetch();
-			var settings = Model.Settings.fetch('desktop', 'layout');
-			var icons = gopher.request('GET', 'icons/hash');
-
-			rentals.done(gotRentals);
-			reservations.done(gotReservations);
-			customers.done(gotCustomers);
-			settings.done(gotSettings);
-			icons.done(gotIcons);
-
-			$('body').spin("large");
-
-			$.when(rentals, reservations, customers, settings, icons).then(function() {
-				$('body').spin(false);
-
-				placeRentals();
-				updateRentalAvailability();
-
-				if (Object.keys(_rentals).length == 0) {
-					// No objects created, enter edit mode so user can add objects
-					self.editMode(true);
-					ShowIntroBlob();
-				}
-
-				_initialRefreshDone = true;
-			});
-
-		}
 
 		function positionItem(item, col, row, speed) {
 
@@ -702,7 +708,7 @@ define(['module', 'css!./desktop'], function(module) {
 		}
 
 		function enableMouseActions(item) {
-			if (self.editMode())
+			if (_editMode)
 				enableDragDrop(item);
 			else
 				enableClicks(item);
@@ -844,30 +850,8 @@ define(['module', 'css!./desktop'], function(module) {
 				});
 			});
 		}
-
+		
 		init();
-
-		this.startDate = startDate;
-		this.endDate = endDate;
-
-		this.editMode = function(value) {
-			if (value == undefined)
-				return _editMode;
-
-			// Show user if he is in edit mode
-			if (value)
-				SetupEditMode();
-			else
-				CloseEditMode();
-
-			_editMode = value ? true : false;
-
-			disableMouseActions();
-
-			_element.find('.item').each(function(index) {
-				enableMouseActions($(this));
-			});
-		}
 
 	}
 
@@ -878,21 +862,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 		widget._create = function() {
 			this.widget = new Widget(this);
-		}
-
-		widget.refresh = function() {
-			this.widget.refresh();
-		}
-
-		widget.startDate = function(value) {
-			this.widget.startDate(value);
-		}
-		widget.endDate = function(value) {
-			return this.widget.endDate(value);
-		}
-
-		widget.editMode = function(value) {
-			return this.widget.editMode(value);
 		}
 
 		$.widget("mobile.desktop", $.mobile.widget, widget);

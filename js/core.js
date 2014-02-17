@@ -26565,7 +26565,6 @@ a(".dwwl"+C,c).on("mousedown touchstart",function(){clearTimeout(z)});if(B){c.ad
 
 
 
-// Small plugin to hook up elements that use the 'data-id' attribute
 
 (function ($) { 
 
@@ -26718,7 +26717,7 @@ a(".dwwl"+C,c).on("mousedown touchstart",function(){clearTimeout(z)});if(B){c.ad
 
 		// Restore original location
 		$('head base').attr('href', _baseUrl);
-		console.log('base changed to ', $('head base').attr('href'));
+		console.log('Base changed to ', $('head base').attr('href'));
 
 		require(modules, function(script, html) {
 

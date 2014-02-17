@@ -1,5 +1,5 @@
-[data-role="desktoplist"] {
-  background: red;
+[data-role="desktopcalendar"] {
+  background: blue;
   width: 100%;
   height: 100%;
   display: block;

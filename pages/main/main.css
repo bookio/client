@@ -126,7 +126,7 @@ body {
 #main-page [data-role="popup"] li a div:hover {
   opacity: 0.5;
 }
-#main-page [data-id=desktop] {
+#main-page [data-id=desktopcontainer] {
   position: absolute;
   left: 10px;
   right: 10px;

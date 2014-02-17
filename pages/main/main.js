@@ -9,6 +9,7 @@
 		'../../widgets/timescale/timescale',
 		'../../widgets/desktop/desktop',
 		'../../widgets/desktoplist/desktoplist',
+		'../../widgets/desktopcalendar/desktopcalendar',
 		
 	];
 
@@ -58,11 +59,6 @@
 			}
 
 
-			function triggerEvent() {
-				_element.trigger('refresh');
-			}
-
-
 			function redrawForResize() {
 
 				var scale = {};
@@ -106,13 +102,10 @@
 				var selectionStartDate = scale.startDate.addDays(slider.position);
 				var selectionEndDate = selectionStartDate.addDays(slider.length);
 				
-				_elements.desktop.desktop('startDate', selectionStartDate);
-				_elements.desktop.desktop('endDate', selectionEndDate);
-
+				_elements.desktop.invoke('set', {startDate:selectionStartDate, endDate:selectionEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
-				triggerEvent();
 			}
 
 			function startDateChanged() {
@@ -125,14 +118,11 @@
 				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
 				var rangeEndDate = rangeStartDate.addDays(slider.range);
 
-				_elements.desktop.desktop('startDate', selectionStartDate);
-				_elements.desktop.desktop('endDate', selectionEndDate);
-
+				_elements.desktop.invoke('set', {startDate:selectionStartDate, endDate:selectionEndDate});
 				_elements.scale.invoke('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
-				triggerEvent();
 			}
 
 			function endDateChanged() {
@@ -145,14 +135,11 @@
 				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
 				var rangeEndDate = rangeStartDate.addDays(slider.range);
 
-				_elements.desktop.desktop('startDate', selectionStartDate);
-				_elements.desktop.desktop('endDate', selectionEndDate);
-
+				_elements.desktop.invoke('set', {startDate:selectionStartDate, endDate:selectionEndDate});
 				_elements.scale.invoke('set', {startDate:rangeStartDate, endDate:rangeEndDate});
 
 				NotifyUpdate(selectionStartDate, selectionEndDate);
 
-				triggerEvent();
 			}
 
 			function scroll(delta) {
@@ -172,17 +159,18 @@
 				_elements.slider.timeslider();
 				_elements.scale.timescale();
 
-				_elements.desktop.desktop('editMode', false);
+				_elements.desktop.invoke('set', {editMode:false});
   
 				_elements.editmode.on('tap', function() {
-					_elements.desktop.desktop('editMode', !_elements.desktop.desktop('editMode'));
+					var options = {};
+					_elements.desktop.invoke('get', options);
+
+					if (options.editMode != undefined)
+						_elements.desktop.invoke('set', {editMode:!options.editMode});
+	
 					_elements.popup.content.popup('close');
 				});
 
-
-				_element.subscribe('datechange', function(data) {
-					console.log(data);
-				});
 
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
@@ -199,18 +187,34 @@
 				});
 
 
-				_elements.iconviewlist.on('tap', function() {
-					_elements.iconviewcalendar.removeClass('selected');
+				_elements.iconviewcalendar.on('tap', function() {
+					_elements.iconviewcalendar.addClass('selected');
 					_elements.iconviewicon.removeClass('selected');
-					_elements.iconviewlist.addClass('selected');
+					_elements.iconviewlist.removeClass('selected');
 					$.cookie('desktopview', 'list');
+
+					_elements.desktopcontainer.empty();
+
+					_elements.desktop = $('<div data-role="desktopcalendar"></div>');
+					_elements.desktop.appendTo(_elements.desktopcontainer);
+
+					_elements.desktop.desktopcalendar();
+					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
+					_elements.desktop.invoke('refresh');
+
 				});
 
-				_elements.iconviewcalendar.on('tap', function() {
-					_elements.iconviewlist.removeClass('selected');
+				_elements.iconviewlist.on('tap', function() {
+					_elements.iconviewlist.addClass('selected');
 					_elements.iconviewicon.removeClass('selected');
-					_elements.iconviewcalendar.addClass('selected');
+					_elements.iconviewcalendar.removeClass('selected');
 					$.cookie('desktopview', 'calendar');
+					
+					_elements.desktopcontainer.empty();
+					
+					_elements.desktop = $('<div data-role="desktoplist"></div>');
+					_elements.desktop.desktoplist();
+					_elements.desktop.appendTo(_elements.desktopcontainer);
 				});
 
 				_elements.iconviewicon.on('tap', function() {
@@ -218,6 +222,16 @@
 					_elements.iconviewlist.removeClass('selected');
 					_elements.iconviewicon.addClass('selected');
 					$.cookie('desktopview', 'icon');
+
+					_elements.desktopcontainer.empty();
+
+					_elements.desktop = $('<div data-role="desktop"></div>');
+					_elements.desktop.appendTo(_elements.desktopcontainer);
+
+					_elements.desktop.desktop();
+					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
+					_elements.desktop.invoke('refresh');
+
 				});
 
 
@@ -290,7 +304,7 @@
 
 				_element.on("pageshow", function(event) {
 					redrawForResize();
-					_elements.desktop.desktop('refresh');
+					_elements.desktop.invoke('refresh');
 				});
 				
 				// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
@@ -311,7 +325,6 @@
 				
 				setSliderInStartPosition();
 				redrawForResize();
-				triggerEvent();
 				
 			}
 		}

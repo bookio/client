@@ -272,7 +272,6 @@
 			widget.options.range = 10;
 	
 			widget._create = function() {
-				debugger;
 				this.widget = new Widget(this);
 			}
 	

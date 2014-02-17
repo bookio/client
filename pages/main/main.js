@@ -188,10 +188,22 @@
 
 
 				_elements.iconviewcalendar.on('tap', function() {
+					setCalendarViewMode();
+				});
+
+				_elements.iconviewlist.on('tap', function() {
+					setListViewMode();
+				});
+				_elements.iconviewicon.on('tap', function() {
+					setIconViewMode();
+				});
+
+				function setCalendarViewMode() {
+					$.cookie('desktopview', 'calendar');
+
 					_elements.iconviewcalendar.addClass('selected');
 					_elements.iconviewicon.removeClass('selected');
 					_elements.iconviewlist.removeClass('selected');
-					$.cookie('desktopview', 'list');
 
 					_elements.desktopcontainer.empty();
 
@@ -201,27 +213,14 @@
 					_elements.desktop.desktopcalendar();
 					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
 					_elements.desktop.invoke('refresh');
+				}
+				
+				function setIconViewMode() {
+					$.cookie('desktopview', 'icon');
 
-				});
-
-				_elements.iconviewlist.on('tap', function() {
-					_elements.iconviewlist.addClass('selected');
-					_elements.iconviewicon.removeClass('selected');
-					_elements.iconviewcalendar.removeClass('selected');
-					$.cookie('desktopview', 'calendar');
-					
-					_elements.desktopcontainer.empty();
-					
-					_elements.desktop = $('<div data-role="desktoplist"></div>');
-					_elements.desktop.desktoplist();
-					_elements.desktop.appendTo(_elements.desktopcontainer);
-				});
-
-				_elements.iconviewicon.on('tap', function() {
 					_elements.iconviewcalendar.removeClass('selected');
 					_elements.iconviewlist.removeClass('selected');
 					_elements.iconviewicon.addClass('selected');
-					$.cookie('desktopview', 'icon');
 
 					_elements.desktopcontainer.empty();
 
@@ -231,8 +230,22 @@
 					_elements.desktop.desktop();
 					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
 					_elements.desktop.invoke('refresh');
+				}
 
-				});
+				function setListViewMode() {
+					$.cookie('desktopview', 'list');
+
+					_elements.iconviewlist.addClass('selected');
+					_elements.iconviewicon.removeClass('selected');
+					_elements.iconviewcalendar.removeClass('selected');
+					
+					_elements.desktopcontainer.empty();
+					
+					_elements.desktop = $('<div data-role="desktoplist"></div>');
+					_elements.desktop.desktoplist();
+					_elements.desktop.appendTo(_elements.desktopcontainer);
+					
+				}
 
 
 				_elements.popup.menu.on('tap', function() {
@@ -304,24 +317,24 @@
 
 				_element.on("pageshow", function(event) {
 					redrawForResize();
-					_elements.desktop.invoke('refresh');
+
+					// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
+					switch($.cookie('desktopview')) {
+					
+						case 'list': 
+							setListViewMode();
+							break;
+					
+						case 'calendar':
+							setCalendarViewMode();
+							break;
+					
+						default:
+							setIconViewMode();
+					}
+
 				});
 				
-				// Set desktop view to last selected state (show rental objects as symbols, list or calendar)
-				switch($.cookie('desktopview')) {
-				
-					case 'list': 
-						_elements.iconviewlist.addClass('selected');
-						
-						break;
-				
-					case 'calendar':
-						_elements.iconviewcalendar.addClass('selected');
-						break;
-				
-					default:
-						_elements.iconviewicon.addClass('selected');
-				}
 				
 				setSliderInStartPosition();
 				redrawForResize();

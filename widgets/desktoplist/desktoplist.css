@@ -1,7 +1,44 @@
 [data-role="desktoplist"] {
-  background: red;
   width: 100%;
   height: 100%;
   display: block;
-  overflow: hidden;
+  overflow-y: scroll;
+  background-color: #fafbfe;
+  font-size: smaller;
+}
+[data-role="desktoplist"] table {
+  width: 100%;
+  border-collapse: collapse;
+}
+[data-role="desktoplist"] table thead th {
+  background-color: #dce7f8;
+  text-align: left;
+  font-size: smaller;
+}
+[data-role="desktoplist"] table thead th.name {
+  width: 20%;
+}
+[data-role="desktoplist"] table thead th.description {
+  width: 20%;
+}
+[data-role="desktoplist"] table thead th.icon {
+  width: 50px;
+}
+[data-role="desktoplist"] table tbody tr:nth-child(even) {
+  background-color: #dce7f8;
+}
+[data-role="desktoplist"] table tbody tr:nth-child(odd) {
+  background-color: #f1f5fc;
+}
+[data-role="desktoplist"] table tbody tr.disabled {
+  color: #cdcdcd;
+}
+[data-role="desktoplist"] table tbody tr td {
+  text-align: left;
+}
+[data-role="desktoplist"] table tbody tr td.icon {
+  text-align: center;
+}
+[data-role="desktoplist"] table tbody tr td.icon img {
+  width: 30px;
 }

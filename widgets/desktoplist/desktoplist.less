@@ -2,12 +2,72 @@
 
 
 [data-role="desktoplist"] {
-	background: red;	
+	//background: red;	
 	width:100%;
 	height:100%;
 	display: block;
-    //top:0px;left:0px;right:0px;bottom:0px;
-    overflow:hidden;	
+    overflow-y: scroll;	
+	background-color: lighten(@bookioBlue, 27%);
+    font-size: smaller;
+    
+    table {
+    	width:100%;
+		border-collapse:collapse;
+		
+		thead {
+			th {
+				background-color: lighten(@bookioBlue, 20%);
+				text-align: left;	
+				font-size: smaller;
+
+				&.name {
+					width:20%;
+				}
+
+				&.description {
+					width:20%;
+				}
+				
+				&.icon {
+					width: 50px;
+				}
+			}
+		}  
+		
+		
+		tbody {
+			tr {
+				&:nth-child(even) {
+				  background-color: lighten(@bookioBlue, 20%);
+				}
+				
+				
+				&:nth-child(odd) {
+				  background-color: lighten(@bookioBlue, 25%);
+				}
+
+
+				&.disabled {
+					color: @xx-lightGrayColor;
+				}
+				
+				td {
+					text-align: left;
+					
+					&.icon {
+						text-align: center;
+						
+						img {
+							width:30px;
+						}
+					}
+					
+				}
+				
+			}
+		}
+	    
+    }
 	
 }
 

@@ -242,8 +242,12 @@
 					_elements.desktopcontainer.empty();
 					
 					_elements.desktop = $('<div data-role="desktoplist"></div>');
-					_elements.desktop.desktoplist();
 					_elements.desktop.appendTo(_elements.desktopcontainer);
+
+					_elements.desktop.desktoplist();
+					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
+					_elements.desktop.invoke('refresh');
+
 					
 				}
 
@@ -315,7 +319,7 @@
 
 				});
 
-				_element.on("pageshow", function(event) {
+				_element.one("pageshow", function(event) {
 					redrawForResize();
 
 					// Set desktop view to last selected state (show rental objects as symbols, list or calendar)

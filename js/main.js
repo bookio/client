@@ -1,6 +1,9 @@
 
 requirejs.config({
 	baseUrl: '.',
+	
+	// Make 'moment' global
+	noGlobal: false,
 
 
 	packages: [{
@@ -57,7 +60,7 @@ requirejs.config({
 		
 			var lang = params['lang'] ? params['lang'] : $.i18n.lang;
 			
-
+			moment.lang(lang);
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
 			$.mobiscroll.defaults.theme = 'jqm';

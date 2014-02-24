@@ -35,6 +35,11 @@ Read the Project Goal and come up with new ideas or cool concepts.
 
 Feel free to add comments/improvements/suggestions.
 
+<h5>Test</h5>  
+Try to find bugs in the client (http://www.bookio.com/booker)  
+Write test scripts.  
+Check texts and layout on different Browsers (we only support the latest versions of all browsers)  
+
 <h3>Project Layout</h3>
 The directory structure is as follows
 <ul>

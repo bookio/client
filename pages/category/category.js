@@ -50,7 +50,7 @@
 
 				_elements.available.val((_category.available == 1 || _category.available == undefined) ? 'on' : 'off').flipswitch("refresh");
 
-				_elements.limit_time.val((_category.limit_time == 1) ? 'on' : 'off').flipswitch("refresh");
+				_elements.limit_time.val((_category.limit_availability == 1) ? 'on' : 'off').flipswitch("refresh");
 
 
 				// Set available default to 8am - 5pm
@@ -75,7 +75,7 @@
 			
 				_category.available = (_elements.available.val() == 'on') ? 1 : 0;
 			
-				_category.limit_time = (_elements.limit_time.val() == 'on') ? 1 : 0;
+				_category.limit_availability = (_elements.limit_time.val() == 'on') ? 1 : 0;
 				_category.limit_from = _elements.limit_from.mobiscroll('getDate');
 				_category.limit_to = _elements.limit_to.mobiscroll('getDate');
 			

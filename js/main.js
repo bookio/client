@@ -2,10 +2,6 @@
 requirejs.config({
 	baseUrl: '.',
 	
-	// Make 'moment' global
-	noGlobal: false,
-
-
 	packages: [{
 			name: 'css',
 			location: 'lib/require-css',

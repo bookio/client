@@ -27,10 +27,10 @@
 		"back": "Vissza",
 		"save": "Mentés", 
 		"delete": "Törlés",
-		"24h": "***",
-		"limit": "***",		
-		"from" : "***",
-		"to" : "***"
+		"24h": "24h",
+		"limit": "korlátozás",		
+		"from" : "-tól",
+		"to" : "-ig"
     }
 }
 

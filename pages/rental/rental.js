@@ -43,9 +43,8 @@
 						_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', icon.image));
 				}
 				else {
-					var icon = _icons[0];
-					_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', icon.image));
-
+					// Default 'generic square box' symbol
+					_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', '0000.png'));
 				}
 			}
 

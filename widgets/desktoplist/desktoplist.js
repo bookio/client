@@ -2,12 +2,114 @@
 
 	var dependencies = [
 		'text!./desktoplist.html',
-//		'../../lib/moment/moment-2.5.1',
 		'css!./desktoplist.css'
 	];
 
 	define(dependencies, function(template) {
 
+		
+		var Foo = function() {
+		
+			var _startDate = new Date();
+			var _endDate = new Date();
+	
+			var _reservations = {};
+			var _customers = {};
+			var _rentals = {};
+			var _icons = {};
+
+			this.load = function() {
+				var rentals = Model.Rentals.fetch();
+				var reservations = Model.Reservations.fetch();
+				var customers = Model.Customers.fetch();
+				var icons = Model.Icons.fetch();
+
+				_rentals = {};
+				_customers = {};
+				_icons = {};
+				_reservations = {};
+				
+				rentals.done(function(rentals){
+					
+					$.each(rentals, function(i, rental) {
+						_rentals[rental.id] = rental;
+					});
+					
+				});
+				
+				reservations.done(function(reservations){
+					$.each(reservations, function(i, reservation) {
+						// Make into Date objects
+						reservation.begin_at = new Date(reservation.begin_at);
+						reservation.end_at = new Date(reservation.end_at);
+		
+						if (_reservations[reservation.rental_id] == undefined)
+							_reservations[reservation.rental_id] = [];
+		
+						_reservations[reservation.rental_id].push(reservation);
+		
+					});
+					
+					// Sort by reservation by start time
+					for (var key in _reservations) {
+						var reservations = _reservations[key];
+						
+						reservations.sort(function(a, b) {
+							var delta = a.valueOf() - b.valueOf();
+							
+							if (delta < 0)
+								return -1;
+							if (delta > 0)
+								return 1;
+							
+							return 0;
+						});
+						 
+					}
+						
+				});
+				
+				customers.done(function(customers) {
+					$.each(customers, function(i, customer) {
+						_customers[customer.id] = customer;
+					});
+					
+				});
+
+				icons.done(function(icons) {
+					$.each(icons, function(i, icon) {
+						_icons[icon.id] = icon;
+					});
+					
+				});
+				
+				var defer = $.Deferred();
+	
+				function failure() {
+					defer.reject();					
+				}
+				
+				function success() {
+					defer.resolve();	
+				}
+				
+				$.when(rentals, reservations, customers, icons).then(success, failure);
+
+				return defer;
+			}
+	
+			this.getReservationsForRental = function(rental) {
+				var reservations = _reservations[rental.id];
+	
+				if (reservations == undefined)
+					reservations = [];
+					
+				return reservations;
+			}
+			
+
+		};
+		
 		
 		var Widget = function(widget) {
 	

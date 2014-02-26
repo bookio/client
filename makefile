@@ -55,6 +55,7 @@ CORE_JS_FILES = \
 	lib/jquery/plugins/jquery.i18n.js \
 	lib/jquery/plugins/jquery.pubsub.js \
 	lib/jquery/plugins/jquery.devoke.js \
+	lib/jquery/plugins/jquery.textrange.js \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
 	lib/mobiscroll/mobiscroll.2.9.2.min.js \
 	lib/moment/moment-2.5.1.js \

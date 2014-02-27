@@ -241,7 +241,12 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 		function gotIcons(icons) {
-			_icons = icons;
+			_icons = {};
+			
+			$.each(icons, function(index, icon) {
+				_icons[icon.id] = icon;
+				
+			});
 		}
 
 
@@ -393,7 +398,7 @@ define(['module', 'css!./desktop'], function(module) {
 				var reservations = Model.Reservations.fetch();
 				var customers = Model.Customers.fetch();
 				var settings = Model.Settings.fetch('desktop', 'layout');
-				var icons = gopher.request('GET', 'icons?hash=id');
+				var icons = Model.Icons.fetch();
 	
 				rentals.done(gotRentals);
 				reservations.done(gotReservations);

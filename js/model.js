@@ -14,6 +14,8 @@
 
 		var model = {};
 
+		model.cache = null;
+		
 		model.trigger = function(event, param) {
 			$(model).trigger(event, param);
 		}
@@ -28,18 +30,66 @@
 			$(model).off(event);
 		}
 		
-		model.fetch = function(id) {
-        	var url = isNumeric(id) ? sprintf('%s/%d', name, id) : name;
-            var request = gopher.request('GET', url);
-            
-            return request;
+
+		model.fetch = function(options) {
+
+			function fetchOne(id) {
+	            var request = gopher.request('GET', sprintf('%s/%d', name, id));
+
+				if (model.cache != null) {
+					request.done(function(item) {
+						model.cache[item.id] = item;
+					});
+				}
+				
+	            return request;
+				
+			}
+			
+			function fetchAll() {
+				if (model.cache == null) {
+		            var request = gopher.request('GET', sprintf('%s', name));
+
+					request.done(function(items) {
+						model.cache = {};
+						
+						$.each(items, function(index, item) {
+							model.cache[item.id] = item;
+						});
+					});
+					
+		            return request;
+					
+				}
+				else {
+					var defer = $.Deferred();
+					var items = [];
+					
+					for (key in model.cache) {
+						items.push(model.cache[key]);	
+					}
+					
+					defer.resolve(items);
+					
+					return defer;
+				}
+				
+				
+			}
+			
+			if (arguments.length == 1 && isNumeric(arguments[0]))
+				return fetchOne(arguments[0]);
+				
+			return fetchAll();
 		}
+		
 		
         model.add = function(item) {
 
 			var request = gopher.request('POST', name, item);
 			
 			request.done(function(item) {
+				model.cache[item.id] = item;
                 model.trigger('added', item);
     		});
     		
@@ -51,6 +101,7 @@
 			var request = gopher.request('PUT', sprintf('%s/%d', name, item.id), item);
 			
 			request.done(function(item) {
+				model.cache[item.id] = item;
                 model.trigger('updated', item);
     		});
     		
@@ -62,6 +113,7 @@
 			var request = gopher.request('DELETE', sprintf('%s/%d', name, item.id), item);
 			
 			request.done(function() {
+				delete model.cache[item.id];
 				model.trigger('removed', item);
     		});
 
@@ -85,13 +137,7 @@
     (function() {
         
 	    Model.Icons = {};	
-	    
-        Model.Icons.fetch = function() {
-        
-            var request = gopher.request('GET', 'icons');
-            
-            return request;
-        }
+        $.extend(Model.Icons, requests('icons'));	
 
 
     })();    

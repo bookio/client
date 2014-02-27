@@ -35539,7 +35539,6 @@ sha1 = function(msg) {
 
 })();
 
-//define(['js/sprintf', 'js/tools', 'js/gopher', 'js/notifications'], function() {
 (function() {
 	
 
@@ -35622,10 +35621,11 @@ sha1 = function(msg) {
 
     ////////////////////////////////////////////////////////////////////////////
 
-    Model.Icons = {};	
     
     (function() {
         
+	    Model.Icons = {};	
+	    
         Model.Icons.fetch = function() {
         
             var request = gopher.request('GET', 'icons');

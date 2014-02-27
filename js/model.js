@@ -88,7 +88,7 @@
 	    
         Model.Icons.fetch = function() {
         
-            var request = gopher.request('GET', 'icons?hash=id');
+            var request = gopher.request('GET', 'icons');
             
             return request;
         }

@@ -9,13 +9,12 @@
 	define(dependencies, function(html, i18n) {
 
 		var _tags = [];
-		
+
 		var Widget = function(widget) {
 
 			var self = this;
 
 			function init() {
-
 				widget.element.append($(html));
 				
 				var controls = widget.element.find('[data-role="controlgroup"]');
@@ -86,12 +85,6 @@
 
 		};
 
-		// Load the icon tags
-		var request = Gopher.request('GET', 'icons/tags');
-		
-		request.done(function(tags) {
-			_tags = tags;
-
 			// Define the widget
 			var widget = {};
 	
@@ -117,8 +110,20 @@
 			$(document).bind("pagecreate create", function(e) {
 				$(":jqmData(role=symbolpicker)", e.target).symbolpicker();
 			});
-	
 
+		// Load the icon tags
+		var request = Model.Icons.fetch();
+		
+		request.done(function(icons) {
+		
+			var map = {};
+			
+			$.each(icons, function(index, icon) {
+				if (icon.tag != '')	
+					map[icon.tag] = icon.tag;	
+			});
+
+			_tags = Object.keys(map);
 
 		});
 

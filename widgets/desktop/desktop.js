@@ -393,7 +393,7 @@ define(['module', 'css!./desktop'], function(module) {
 				var reservations = Model.Reservations.fetch();
 				var customers = Model.Customers.fetch();
 				var settings = Model.Settings.fetch('desktop', 'layout');
-				var icons = gopher.request('GET', 'icons/hash');
+				var icons = Model.Icons.fetch();
 	
 				rentals.done(gotRentals);
 				reservations.done(gotReservations);

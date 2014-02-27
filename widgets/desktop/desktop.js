@@ -31,7 +31,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 
 
-		Notifications.on('rental-added.desktop', function(rental) {
+		Model.Rentals.on('added.desktop', function(rental) {
 
 			var cols = computeMaxCols();
 			var rows = computeMaxRows();
@@ -57,11 +57,11 @@ define(['module', 'css!./desktop'], function(module) {
 			saveSettings();
 		});
 
-		Notifications.on('rental-updated.desktop', function(rental) {
+		Model.Rentals.on('updated.desktop', function(rental) {
 			updateRental(rental);
 		});
 
-		Notifications.on('rental-removed.desktop', function(rental) {
+		Model.Rentals.on('removed.desktop', function(rental) {
 
 			var rentals = Model.Rentals.fetch();
 			var reservations = Model.Reservations.fetch();
@@ -77,11 +77,11 @@ define(['module', 'css!./desktop'], function(module) {
 
 		});
 
-		Notifications.on('customer-added.desktop customer-updated.desktop', function(customer) {
+		Model.Customers.on('added.desktop updated.desktop', function(customer) {
 			_customers[customer.id] = customer;
 		});
 
-		Notifications.on('reservation-added.desktop reservation-updated.desktop', function(reservation) {
+		Model.Reservations.on('added.desktop updated.desktop', function(reservation) {
 
 			if (!_reservations[reservation.rental_id])
 				_reservations[reservation.rental_id] = {};
@@ -92,7 +92,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 		});
 
-		Notifications.on('reservation-removed.desktop', function(reservation) {
+		Model.Reservations.on('removed.desktop', function(reservation) {
 
 			var reservations = Model.Reservations.fetch();
 
@@ -424,7 +424,9 @@ define(['module', 'css!./desktop'], function(module) {
 
 			// Remove all my notifications when the element is destroyed
 			_element.on('removed.desktop', function() {
-				Notifications.off('.desktop');
+				Model.Reservations.off('.desktop');
+				Model.Customers.off('.desktop');
+				Model.Rentals.off('.desktop');
 				_page.off('.desktop');
 				$(document).off('.desktop');
 				$(window).off('.desktop');

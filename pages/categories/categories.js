@@ -74,13 +74,13 @@
 
 
 			function enableListeners() {
-				Notifications.on('category-added.categories', function(category) {
+				Model.Categories.on('added.categories', function(category) {
 					addItem(category);
 					refreshListView();
 
 				});
 
-				Notifications.on('category-updated.categories', function(category) {
+				Model.Categories.on('updated.categories', function(category) {
 
 					_elements.listview.find('li').each(function() {
 						var item = $(this).data('item');
@@ -92,7 +92,7 @@
 					});
 				});
 
-				Notifications.on('category-removed.categories', function(category) {
+				Model.Categories.on('removed.categories', function(category) {
 
 					_elements.listview.find('li').each(function() {
 
@@ -114,7 +114,7 @@
 				});
 
 				_element.on('remove', function() {
-					Notifications.off('.categories');
+					Model.Categories.off('.categories');
 				});
 			}
 

@@ -37,6 +37,7 @@
 		
 		tbody {
 			tr {
+
 				&:nth-child(even) {
 				  background-color: lighten(@bookioBlue, 20%);
 				}
@@ -44,6 +45,12 @@
 				
 				&:nth-child(odd) {
 				  background-color: lighten(@bookioBlue, 25%);
+				}
+				&.selected {
+				  background-color: lighten(@bookioBlue, 15%);
+				  outline: 1px solid lighten(@bookioBlue, 10%);
+				  outline-offset: -1px;
+					
 				}
 
 

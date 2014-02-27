@@ -65,8 +65,7 @@ CORE_JS_FILES = \
 	js/tools.js \
 	js/gopher.js \
 	js/date.js \
-	js/model.js \
-	js/notifications.js
+	js/model.js
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \

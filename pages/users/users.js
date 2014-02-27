@@ -69,7 +69,7 @@
 
 				_elements.listview.empty();
 
-				var request = Gopher.request('GET', 'users');
+				var request = Model.Users.fetch();
 
 				request.done(function(users) {
 

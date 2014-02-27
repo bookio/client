@@ -8,108 +8,8 @@
 	define(dependencies, function(template) {
 
 		
-		var Foo = function() {
-		
-			var _startDate = new Date();
-			var _endDate = new Date();
-	
-			var _reservations = {};
-			var _customers = {};
-			var _rentals = {};
-			var _icons = {};
-
-			this.load = function() {
-				var rentals = Model.Rentals.fetch();
-				var reservations = Model.Reservations.fetch();
-				var customers = Model.Customers.fetch();
-				var icons = Model.Icons.fetch();
-
-				_rentals = {};
-				_customers = {};
-				_icons = {};
-				_reservations = {};
-				
-				rentals.done(function(rentals){
-					
-					$.each(rentals, function(i, rental) {
-						_rentals[rental.id] = rental;
-					});
-					
-				});
-				
-				reservations.done(function(reservations){
-					$.each(reservations, function(i, reservation) {
-						// Make into Date objects
-						reservation.begin_at = new Date(reservation.begin_at);
-						reservation.end_at = new Date(reservation.end_at);
-		
-						if (_reservations[reservation.rental_id] == undefined)
-							_reservations[reservation.rental_id] = [];
-		
-						_reservations[reservation.rental_id].push(reservation);
-		
-					});
-					
-					// Sort by reservation by start time
-					for (var key in _reservations) {
-						var reservations = _reservations[key];
-						
-						reservations.sort(function(a, b) {
-							var delta = a.valueOf() - b.valueOf();
-							
-							if (delta < 0)
-								return -1;
-							if (delta > 0)
-								return 1;
-							
-							return 0;
-						});
-						 
-					}
-						
-				});
-				
-				customers.done(function(customers) {
-					$.each(customers, function(i, customer) {
-						_customers[customer.id] = customer;
-					});
-					
-				});
-
-				icons.done(function(icons) {
-					$.each(icons, function(i, icon) {
-						_icons[icon.id] = icon;
-					});
-					
-				});
-				
-				var defer = $.Deferred();
-	
-				function failure() {
-					defer.reject();					
-				}
-				
-				function success() {
-					defer.resolve();	
-				}
-				
-				$.when(rentals, reservations, customers, icons).then(success, failure);
-
-				return defer;
-			}
-	
-			this.getReservationsForRental = function(rental) {
-				var reservations = _reservations[rental.id];
-	
-				if (reservations == undefined)
-					reservations = [];
-					
-				return reservations;
-			}
 			
 
-		};
-		
 		
 		var Widget = function(widget) {
 	
@@ -130,6 +30,90 @@
 			var _rentals = {};
 			var _icons = {};
 	
+	
+			function load() {
+
+				var request = {};
+				request.rentals = Model.Rentals.fetch();
+				request.reservations = Model.Reservations.fetch();
+				request.customers = Model.Customers.fetch();
+				request.icons = Model.Icons.fetch();
+	
+				var result = {};
+				result.rentals = {};
+				result.customers = {};
+				result.icons = {};
+				result.reservations = {};
+				
+				request.rentals.done(function(rentals) {
+					
+					$.each(rentals, function(i, rental) {
+						result.rentals[rental.id] = rental;
+					});
+					
+				});
+				
+				request.reservations.done(function(reservations) {
+					$.each(reservations, function(i, reservation) {
+						// Make into Date objects
+						reservation.begin_at = new Date(reservation.begin_at);
+						reservation.end_at = new Date(reservation.end_at);
+		
+						if (result.reservations[reservation.rental_id] == undefined)
+							result.reservations[reservation.rental_id] = [];
+		
+						result.reservations[reservation.rental_id].push(reservation);
+		
+					});
+					
+					// Sort by reservation by start time
+					for (var key in result.reservations) {
+						var reservations = result.reservations[key];
+						
+						reservations.sort(function(a, b) {
+							var delta = a.valueOf() - b.valueOf();
+							
+							if (delta < 0)
+								return -1;
+							if (delta > 0)
+								return 1;
+							
+							return 0;
+						});
+						 
+					}
+						
+				});
+				
+				request.customers.done(function(customers) {
+					$.each(customers, function(i, customer) {
+						result.customers[customer.id] = customer;
+					});
+					
+				});
+	
+				request.icons.done(function(icons) {
+					$.each(icons, function(i, icon) {
+						result.icons[icon.id] = icon;
+					});
+					
+				});
+				
+				var defer = $.Deferred();
+	
+				function failure() {
+					defer.reject();					
+				}
+				
+				function success() {
+					defer.resolve(result);
+				}
+				
+				$.when(request.rentals, request.reservations, request.customers, request.icons).then(success, failure);
+	
+				return defer;
+			}
+	
 			function isReservationInThePast(reservation) {
 				return reservation.end_at <= _startDate;				
 			}
@@ -149,86 +133,6 @@
 					return true;
 			}
 
-			function getReservationForRental(rental) {
-				var reservations = _reservations[rental.id];
-	
-				if (reservations == undefined)
-					return null;
-
-				for (var key in reservations) {
-					var reservation = reservations[key];
-					
-					if (isReservationActive(reservation))
-						return reservation;
-				}
-	
-				return null;
-			}
-	
-			function isRentalAvailable(rental) {
-				return getReservationForRental(rental) == null ? true : false;
-			}
-	
-			function gotCustomers(customers) {
-	
-				_customers = {};
-	
-				$.each(customers, function(i, customer) {
-					_customers[customer.id] = customer;
-				});
-	
-			}
-	
-			function gotIcons(icons) {
-				_icons = {};
-	
-				$.each(icons, function(i, icon) {
-					_icons[icon.id] = icon;
-				});
-	
-			}
-	
-			function gotRentals(rentals) {
-			
-				_rentals = {}
-				
-				$.each(rentals, function(i, rental) {
-					_rentals[rental.id] = rental;
-				});
-			}
-	
-			function gotReservations(reservations) {
-				_reservations = {};
-
-				$.each(reservations, function(i, reservation) {
-					// Make into Date objects
-					reservation.begin_at = new Date(reservation.begin_at);
-					reservation.end_at = new Date(reservation.end_at);
-	
-					if (_reservations[reservation.rental_id] == undefined)
-						_reservations[reservation.rental_id] = [];
-	
-					_reservations[reservation.rental_id].push(reservation);
-	
-				});
-				
-				// Sort by reservation by start time
-				for (var key in _reservations) {
-					var reservations = _reservations[key];
-					
-					reservations.sort(function(a, b) {
-						var delta = a.valueOf() - b.valueOf();
-						
-						if (delta < 0)
-							return -1;
-						if (delta > 0)
-							return 1;
-						
-						return 0;
-					});
-					 
-				}
-			}
 	
 			function updateRow(row) {
 	
@@ -274,6 +178,15 @@
 				row.toggleClass("disabled", isReservationActive(reservation));
 				
 			}
+
+			function enableRowSelection(row) {
+
+				row.on('tap', function(event) {
+
+					_elements.table.body.find('tr').removeClass('selected');
+					$(this).addClass('selected');	
+				});
+			}
 	
 			function createRow(rental) {
 				var template = 
@@ -293,10 +206,12 @@
 	
 				row.data('rental', rental);
 				
+				enableRowSelection(row);				
 				updateRow(row);
 				
 				return row;
 			}
+			
 			
 			function updateRentalAvailability() {
 				var rows = _element.find('tbody tr');
@@ -306,53 +221,50 @@
 				});
 			}
 			
-			
 			function refresh() {
-				var rentals = Model.Rentals.fetch();
-				var reservations = Model.Reservations.fetch();
-				var customers = Model.Customers.fetch();
-				var icons = Model.Icons.fetch();
+
+				$.spin(true);
 	
-				rentals.done(gotRentals);
-				reservations.done(gotReservations);
-				customers.done(gotCustomers);
-				icons.done(gotIcons);
-	
-				$('body').spin("large");
-	
-				$.when(rentals, reservations, customers, icons).then(function() {
-	
+				var request = load();
+
+				request.always(function() {
+					$.spin(false);
+				});
+
+
+				request.done(function(data) {
+
+					_customers = data.customers;
+					_reservations = data.reservations;
+					_icons = data.icons;
+					_rentals = data.rentals; 
+
 					_elements.table.body.empty();
 				
-					var keys = [];
+					var rentals = [];
 					
 					for (var key in _rentals) {
-						if (_rentals.hasOwnProperty(key))
-							keys.push(key);
-						
+						rentals.push(_rentals[key]);
 					}
 					
-					keys.sort();
+					rentals.sort(function(a, b) {
+						return a.name.localeCompare(b.name);
+					});
 	
-					for (var index in keys) {
-						var key = keys[index];
-						var rental = _rentals[key];
-									
+					$.each(rentals, function(index, rental) {
 						_elements.table.body.append(createRow(rental));
-					}
-	
-					$('body').spin(false);
+					});
+
 	
 				});
 	
 				
 			}
-	
 			function init() {
 	
 				_element.append($(template));
 				_element.hookup(_elements, 'data-id');
-	
+
 				_element.define('set', function(data) {
 					var changed = false;
 	
@@ -379,7 +291,6 @@
 	
 				// Remove all my notifications when the element is destroyed
 				_element.on('removed.desktop', function() {
-					Notifications.off('.desktop');
 					$(document).off('.desktop');
 					$(window).off('.desktop');
 				});

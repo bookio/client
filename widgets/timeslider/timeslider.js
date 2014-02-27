@@ -60,9 +60,6 @@
 
 				_elements.root.on('removed', function() {
 
-					// Clean up notifications
-					Notifications.off('.timeslider');
-
 					// And some more...   
 					$(window).off('.timeslider');
 					$(document).off('.timeslider');

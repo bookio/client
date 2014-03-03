@@ -40,13 +40,7 @@
 		}
 
 		console.log(sprintf('Request failed. %s', message));
-		
-		MsgBox.show({
-			icon:'error',
-			message:message,
-			buttons: [{text: 'Skit också'}]
-		});
-			
+					
 	}
 
 	Gopher.signup = function(username, password) {

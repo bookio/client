@@ -23,7 +23,6 @@
 			var _startDate = new Date();
 			var _endDate = new Date();
 
-
 			$(window).smartresize(function() {
 				redrawForResize();
 			});
@@ -52,7 +51,12 @@
 				_elements.enddate.year.text(sprintf("%04d", displayEndDate.getFullYear()));
 				_elements.enddate.day.text(displayEndDate.getDate() + ' ' + displayEndDate.getShortMonthName());
 				_elements.enddate.weekday.text(displayEndDate.getShortDayName());
+				
+				var sDate = moment(startDate);
+				var eDate = moment(endDate);
 
+				_elements.dateinput.val(sDate.format('L') + " - " + eDate.subtract('days', 1).format('L'));
+				
 				_startDate = startDate;
 				_endDate = endDate;
 
@@ -185,6 +189,63 @@
 						transition: 'fade'
 					});
 				});
+				
+				_elements.dateinput.on('tap', function(event) {
+					var caretPos = _elements.dateinput.textrange('get', 'position');
+					var lengthOfDate = moment(_startDate).format('L').length;
+					var dateStr;
+					var showIt = false;
+					
+					event.stopPropagation();
+					event.preventDefault();
+					
+					// Tap on start date?
+					if (caretPos && (caretPos < lengthOfDate)) {
+					
+						dateStr = _elements.dateinput.val().substring(0, lengthOfDate);
+						
+						// If valid date, select and show mobiscroll
+						if (moment(dateStr).isValid()) {
+							_elements.dateinput.textrange('set', 0, lengthOfDate);
+							showIt = true;
+						}
+						
+					}
+					 // Tap on end date?
+					else if (caretPos > lengthOfDate+3 && caretPos < 2*lengthOfDate+3) {
+					
+						dateStr = _elements.dateinput.val().substring(lengthOfDate+3);
+						
+						// If valid date, select and show mobiscroll						
+						if (moment(dateStr).isValid()) {
+							_elements.dateinput.textrange('set', lengthOfDate+3, lengthOfDate);
+							showIt = true;
+						}
+						
+					}
+
+					if (showIt) {
+
+						function dateChanged(value, instance) {							
+							if (caretPos < lengthOfDate) {
+								_startDate = new Date(value);
+								startDateChanged();									
+							}
+							else {
+								_endDate = new Date(value);
+								endDateChanged();									
+							}
+						}
+
+						var d = new Date(dateStr);				
+						_elements.dateinput.mobiscroll('setDate', d, false);						
+						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
+
+						_elements.dateinput.mobiscroll('show');
+						
+					}
+
+				});
 
 
 				_elements.iconviewcalendar.on('tap', function() {
@@ -194,6 +255,7 @@
 				_elements.iconviewlist.on('tap', function() {
 					setListViewMode();
 				});
+
 				_elements.iconviewicon.on('tap', function() {
 					setIconViewMode();
 				});
@@ -287,15 +349,13 @@
 							
 						}
 					}
-					_elements.startdate.button.mobiscroll().date({ 
-						onClose: dateChanged
-					});
-					
+
 					_elements.startdate.button.mobiscroll('setDate', _startDate); 
 
+					/*_elements.startdate.button.mobiscroll().date({ 
+						onClose: dateChanged
+					});*/
 					
-					event.preventDefault();
-
 				});
 
 				_elements.enddate.button.on('tap', function(event) {
@@ -313,7 +373,7 @@
 						onClose: dateChanged
 					});
 					
-					_elements.enddate.button.mobiscroll('setDate', _endDate.addDays(-1)); 
+					//_elements.enddate.button.mobiscroll('setDate', _endDate.addDays(-1)); 
 					
 					event.preventDefault();
 
@@ -339,6 +399,15 @@
 
 				});
 				
+				_elements.startdate.button.mobiscroll().date({
+					showOnTap: false,
+					showOnFocus: false
+				});
+
+				_elements.dateinput.mobiscroll().date({
+					//showOnTap: false,
+					//showOnFocus: false
+				});
 				
 				setSliderInStartPosition();
 				redrawForResize();

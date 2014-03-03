@@ -60,7 +60,7 @@ requirejs.config({
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
 			$.mobiscroll.defaults.theme = 'jqm';
-
+ 
 			// Use 'sv' instead of 'sv-se' for mobiscroll
 			switch ($.mobiscroll.defaults.lang) {
 				case 'sv-se':

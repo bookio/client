@@ -155,11 +155,8 @@
 			this.init = function() {
 				_element.hookup(_elements, 'data-id');
 				
-				_elements.desktop.desktop();
 				_elements.slider.timeslider();
 				_elements.scale.timescale();
-
-				_elements.desktop.invoke('set', {editMode:false});
   
 				_elements.editmode.on('tap', function() {
 					var options = {};

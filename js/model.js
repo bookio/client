@@ -30,7 +30,7 @@
 		}
 
 
-		model.fetch = function(options) {
+		model.fetch = function() {
 
 			function fetchOne(id) {
 				var request = gopher.request('GET', sprintf('%s/%d', name, id));

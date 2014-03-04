@@ -7,10 +7,6 @@
 
 	define(dependencies, function(template) {
 
-		
-			
-
-		
 		var Widget = function(widget) {
 	
 			var self = this;

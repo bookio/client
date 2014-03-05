@@ -193,8 +193,8 @@
 					var dateStr;
 					var showIt = false;
 					
-					event.stopPropagation();
-					event.preventDefault();
+//					event.stopPropagation();
+//					event.preventDefault();
 					
 					// Tap on start date?
 					if (caretPos && (caretPos < lengthOfDate)) {
@@ -234,9 +234,9 @@
 							}
 						}
 
-						var d = new Date(dateStr);				
-						_elements.dateinput.mobiscroll('setDate', d, false);						
-						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
+//						var d = new Date(dateStr);				
+//						_elements.dateinput.mobiscroll('setDate', d, false);						
+//						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
 
 						_elements.dateinput.mobiscroll('show');
 						
@@ -402,8 +402,8 @@
 				});
 
 				_elements.dateinput.mobiscroll().date({
-					//showOnTap: false,
-					//showOnFocus: false
+					showOnTap: false,
+					showOnFocus: false
 				});
 				
 				setSliderInStartPosition();

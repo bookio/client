@@ -137,20 +137,20 @@
   padding: 0px;
   margin: 0px;
 }
-[data-role="desktop"] .desktop .item.disabled {
-  opacity: 0.3;
-}
-[data-role="desktop"] .desktop .item .title.selected {
+[data-role="desktop"] .desktop .item.selected .title {
   color: white;
   background-color: #87ace7;
   text-shadow: none;
 }
+[data-role="desktop"] .desktop .item.disabled {
+  opacity: 0.3;
+}
 [data-role="desktop"] .desktop .item .title {
-  margin-left: 5px;
-  margin-right: 5px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
   max-width: 82px;
   display: inline-block;
   font-size: 11px;
@@ -187,6 +187,9 @@
   margin: 5px;
   width: 40px;
   height: 40px;
+}
+[data-role="desktop"] .desktop .item .icon img:hover {
+  -webkit-filter: hue-rotate(240deg);
 }
 [data-role="desktop"] .desktop .item .icon:hover {
   cursor: pointer;

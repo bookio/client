@@ -1,9 +1,31 @@
+@keyframes fadeIn,
+@-moz-keyframes fadeIn,
+@-webkit-keyframes fadeIn,
+@-o-keyframes fadeIn {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: blue;
+  }
+}
+@keyframes fadeOut,
+@-moz-keyframes fadeOut,
+@-webkit-keyframes fadeOut,
+@-o-keyframes fadeOut {
+  0% {
+    background-color: #b2c9f0;
+  }
+  100% {
+    background-color: #f1f5fc;
+  }
+}
 [data-role="desktoplist"] {
   width: 100%;
   height: 100%;
   display: block;
   overflow-y: scroll;
-  background-color: #fafbfe;
+  background-color: #ffffff;
   font-size: smaller;
 }
 [data-role="desktoplist"] table {
@@ -27,16 +49,48 @@
 [data-role="desktoplist"] table tbody tr:nth-child(even) {
   background-color: #dce7f8;
 }
+[data-role="desktoplist"] table tbody tr:nth-child(even).selected {
+  -webkit-transition: background-color 100ms;
+  -moz-transition: background-color 100ms;
+  -o-transition: background-color 100ms;
+  transition: background-color 100ms;
+  background-color: #b2c9f0;
+}
+[data-role="desktoplist"] table tbody tr:nth-child(even) :not(&.selected) {
+  -webkit-transition: background-color 100ms;
+  -moz-transition: background-color 100ms;
+  -o-transition: background-color 100ms;
+  transition: background-color 100ms;
+  background-color: #dce7f8;
+}
 [data-role="desktoplist"] table tbody tr:nth-child(odd) {
   background-color: #f1f5fc;
 }
+[data-role="desktoplist"] table tbody tr:nth-child(odd).selected {
+  -webkit-transition: background-color 100ms;
+  -moz-transition: background-color 100ms;
+  -o-transition: background-color 100ms;
+  transition: background-color 100ms;
+  background-color: #b2c9f0;
+}
+[data-role="desktoplist"] table tbody tr:nth-child(odd) :not(&.selected) {
+  -webkit-transition: background-color 100ms;
+  -moz-transition: background-color 100ms;
+  -o-transition: background-color 100ms;
+  transition: background-color 100ms;
+  background-color: #f1f5fc;
+}
 [data-role="desktoplist"] table tbody tr.selected {
-  background-color: #c7d8f4;
-  outline: 1px solid #b2c9f0;
+  -webkit-transition: outline 100ms;
+  -moz-transition: outline 100ms;
+  -o-transition: outline 100ms;
+  transition: outline 100ms;
+  outline: 1px solid #9cbbeb;
   outline-offset: -1px;
 }
 [data-role="desktoplist"] table tbody tr.disabled {
-  color: #cdcdcd;
+  color: #b3b3b3;
+  text-shadow: none;
 }
 [data-role="desktoplist"] table tbody tr td {
   text-align: left;

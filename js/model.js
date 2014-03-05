@@ -1,266 +1,263 @@
-
 (function() {
-	
 
 
-    Model = {};
-    
-    var gopher = Gopher;
 
-    ////////////////////////////////////////////////////////////////////////////
-    
-	
+	Model = {};
+
+	var gopher = Gopher;
+
+	////////////////////////////////////////////////////////////////////////////
+
+
 	function requests(name) {
 
 		var model = {};
 
 		model.cache = null;
-		
+
 		model.trigger = function(event, param) {
 			$(model).trigger(event, param);
 		}
-		
+
 		model.on = function(event, callback) {
-		    $(model).on(event, function(event, param) {
-		        callback(param);
-		    });
+			$(model).on(event, function(event, param) {
+				callback(param);
+			});
 		}
-		
+
 		model.off = function(event) {
 			$(model).off(event);
 		}
-		
 
-		model.fetch = function(options) {
+
+		model.fetch = function() {
 
 			function fetchOne(id) {
-	            var request = gopher.request('GET', sprintf('%s/%d', name, id));
+				var request = gopher.request('GET', sprintf('%s/%d', name, id));
 
 				if (model.cache != null) {
 					request.done(function(item) {
 						model.cache[item.id] = item;
 					});
 				}
-				
-	            return request;
-				
+
+				return request;
+
 			}
-			
+
 			function fetchAll() {
 				if (model.cache == null) {
-		            var request = gopher.request('GET', sprintf('%s', name));
+					var request = gopher.request('GET', sprintf('%s', name));
 
 					request.done(function(items) {
 						model.cache = {};
-						
+
 						$.each(items, function(index, item) {
 							model.cache[item.id] = item;
 						});
 					});
-					
-		            return request;
-					
+
+					return request;
+
 				}
 				else {
 					var defer = $.Deferred();
 					var items = [];
-					
+
 					for (key in model.cache) {
-						items.push(model.cache[key]);	
+						items.push(model.cache[key]);
 					}
-					
+
 					defer.resolve(items);
-					
+
 					return defer;
 				}
-				
-				
+
+
 			}
-			
+
 			if (arguments.length == 1 && isNumeric(arguments[0]))
 				return fetchOne(arguments[0]);
-				
+
 			return fetchAll();
 		}
-		
-		
-        model.add = function(item) {
+
+
+		model.add = function(item) {
 
 			var request = gopher.request('POST', name, item);
-			
+
 			request.done(function(item) {
 				model.cache[item.id] = item;
-                model.trigger('added', item);
-    		});
-    		
-    		return request;
-        };
+				model.trigger('added', item);
+			});
 
-        model.update = function(item) {
+			return request;
+		};
+
+		model.update = function(item) {
 
 			var request = gopher.request('PUT', sprintf('%s/%d', name, item.id), item);
-			
+
 			request.done(function(item) {
 				model.cache[item.id] = item;
-                model.trigger('updated', item);
-    		});
-    		
-    		return request;
-        };
+				model.trigger('updated', item);
+			});
 
-        model.remove = function(item) {
+			return request;
+		};
+
+		model.remove = function(item) {
 
 			var request = gopher.request('DELETE', sprintf('%s/%d', name, item.id), item);
-			
+
 			request.done(function() {
 				delete model.cache[item.id];
 				model.trigger('removed', item);
-    		});
+			});
 
-    		return request;
-        };
+			return request;
+		};
 
-        model.save = function(item) {
-            return item.id ? model.update(item) : model.add(item);
-        }
-		
-		
+		model.save = function(item) {
+			return item.id ? model.update(item) : model.add(item);
+		}
+
+
 		return model;
-		
+
 	}
 
 
 
-    ////////////////////////////////////////////////////////////////////////////
-
-    
-    (function() {
-        
-	    Model.Icons = {};	
-        $.extend(Model.Icons, requests('icons'));	
+	////////////////////////////////////////////////////////////////////////////
 
 
-    })();    
+	(function() {
 
-    ////////////////////////////////////////////////////////////////////////////
-
-
-
-    (function() {
-        
-        Model.Rentals = {};
-        $.extend(Model.Rentals, requests('rentals'));	
+		Model.Icons = {};
+		$.extend(Model.Icons, requests('icons'));
 
 
-    })();    
+	})();
 
-    ////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 
-    (function() {
-        Model.Customers = {};	
+
+
+	(function() {
+
+		Model.Rentals = {};
+		$.extend(Model.Rentals, requests('rentals'));
+
+
+	})();
+
+	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+		Model.Customers = {};
 
 		$.extend(Model.Customers, requests('customers'));
-		
 
-        Model.Customers.search = function(text) {
-        
+
+		Model.Customers.search = function(text) {
+
 			var request = gopher.request('GET', sprintf('customers/search/%s', text));
 
 			return request;
-        }
-        
+		}
 
-    })();    
 
-    ////////////////////////////////////////////////////////////////////////////
+	})();
 
-    (function() {
-        
-        Model.Reservations = {};	
+	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+
+		Model.Reservations = {};
 
 		$.extend(Model.Reservations, requests('reservations'));
-        
-
-    })();    
-
-    ////////////////////////////////////////////////////////////////////////////
 
 
-    (function() {
-        
-        Model.Settings = {};	
-        
-        Model.Settings.fetch = function(section, name) {
-        	var request = gopher.request('GET', sprintf('settings/%s/%s', section, name));
-        	return request;
-        }
-        
-        Model.Settings.save = function(section, name, value) {
-        	var request = gopher.request('PUT', sprintf('settings/%s/%s', section, name), value);
+	})();
+
+	////////////////////////////////////////////////////////////////////////////
+
+
+	(function() {
+
+		Model.Settings = {};
+
+		Model.Settings.fetch = function(section, name) {
+			var request = gopher.request('GET', sprintf('settings/%s/%s', section, name));
 			return request;
-        };
+		}
 
-    })();    
+		Model.Settings.save = function(section, name, value) {
+			var request = gopher.request('PUT', sprintf('settings/%s/%s', section, name), value);
+			return request;
+		};
+
+	})();
 
 
-    ////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 
-    (function() {
-        
-        Model.Categories = {};	
+	(function() {
+
+		Model.Categories = {};
 
 		$.extend(Model.Categories, requests('categories'));
-        
 
 
-    })();    
 
-    ////////////////////////////////////////////////////////////////////////////
+	})();
 
-    (function() {
-        
-        Model.Users = {};	
+	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+
+		Model.Users = {};
 
 		$.extend(Model.Users, requests('users'));
-        
-        
-    })();    
 
-    ////////////////////////////////////////////////////////////////////////////
 
-    (function() {
-        
-        Model.Client = {};	
-        
-        Model.Client.fetch = function() {
-        
-            var request = gopher.request('GET', sprintf('clients/%d', gopher.client.id));
+	})();
+
+	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+
+		Model.Client = {};
+
+		Model.Client.fetch = function() {
+
+			var request = gopher.request('GET', sprintf('clients/%d', gopher.client.id));
 
 			request.done(function(client) {
-    			gopher.client = client;
+				gopher.client = client;
 			});
-			
+
 			return request;
-        }
-        
-        Model.Client.save = function(client) {
+		}
+
+		Model.Client.save = function(client) {
 
 			var request = gopher.request('PUT', sprintf('clients/%d', gopher.client.id), client);
-			
+
 			request.done(function(client) {
-    			gopher.client = client;
+				gopher.client = client;
 			});
-			
+
 			return request;
-        };
-        
+		};
 
 
-    })();    
+
+	})();
 
 	console.log('model.js loaded...');
 
 
 })();
-
-

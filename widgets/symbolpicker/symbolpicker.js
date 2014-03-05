@@ -52,19 +52,20 @@
 				// Fill container with symbols
 				for (var i = 0; i < widget.options.symbols.length; i++) {
 					var icon = widget.options.symbols[i];
-					var div = $('<div class="symbol ' + icon.tag + '"></div>').appendTo(isotope);
-					var image = sprintf('../../images/symbols/%s', icon.image);
-					var img = $('<img/>').attr('src', image).appendTo(div);
+					var symbol = $('<div class="symbol ' + icon.tag + '"></div>').appendTo(isotope);
+					var border = $('<div class="border"/>').appendTo(symbol);
+					var image = $('<div class="image"/>').appendTo(border);
 
+					image.addClass(sprintf('symbol-%04d', icon.id));
 
-					img.data('symbol', icon);
+					symbol.data('symbol', icon);
 
 					if (widget.options.selection && widget.options.selection.id == icon.id) {
-						img.addClass('selected');
+						symbol.addClass('selected');
 					}
 
-					img.on('tap', function(event) {
-						isotope.find('img').removeClass('selected');
+					symbol.on('tap', function(event) {
+						isotope.find('.symbol').removeClass('selected');
 						$(this).addClass('selected');
 						widget.element.trigger('symbolselected', $(this).data('symbol'));
 					});

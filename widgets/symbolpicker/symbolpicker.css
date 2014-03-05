@@ -692,29 +692,36 @@
   -o-transition-duration: 0s;
   transition-duration: 0s;
 }
-[data-role="symbolpicker"] .isotope-item img {
-  padding: 0.5em;
+[data-role="symbolpicker"] .isotope-item.symbol {
+  padding: 10px;
+  width: 60px;
+  height: 60px;
 }
-[data-role="symbolpicker"] .isotope-item img:hover {
-  background-color: #c8d9f4;
+[data-role="symbolpicker"] .isotope-item.symbol .border {
+  padding: 5px;
+  width: 100%;
+  height: 100%;
 }
-[data-role="symbolpicker"] .isotope-item img.selected {
-  background-color: #e6e6e6;
+[data-role="symbolpicker"] .isotope-item.symbol .border .image {
+  background: #5d8fdf;
+  width: 100%;
+  height: 100%;
 }
-[data-role="symbolpicker"] .isotope-item img.selected:hover {
-  background-color: #c8d9f4;
+[data-role="symbolpicker"] .isotope-item.symbol.selected .border {
+  background-color: #e9f0fb;
+}
+[data-role="symbolpicker"] .isotope-item.symbol.selected:hover .border {
+  background-color: #dce7f8;
+}
+[data-role="symbolpicker"] .isotope-item.symbol:not(selected):hover .border {
+  background-color: #e9f0fb;
 }
 [data-role="symbolpicker"] [data-role="controlgroup"] {
   text-align: center;
 }
 [data-role="symbolpicker"] .supercontainer {
   padding: 0.5em;
-  border: 1px solid #e6e6e6;
+  outline: 1px solid #e6e6e6;
   overflow: scroll;
   height: 400px;
-}
-[data-role="symbolpicker"] .symbol {
-  padding: 10px;
-  width: 60px;
-  height: 60px;
 }

@@ -744,4 +744,5 @@
 }
 [data-role="desktoplist"] table tbody tr td.icon img {
   width: 30px;
+  height: 30px;
 }

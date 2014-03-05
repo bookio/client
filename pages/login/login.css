@@ -1,1 +1,24 @@
-#login-page p{color:#9a9a9a;font-size:14px}#login-page [data-role="content"]{max-width:300px;margin-left:auto;margin-right:auto;text-align:center}#login-page [data-id="logo"]{text-align:center}#login-page [data-id="popup.content"]{max-width:400px}#login-page [data-id="popup.content"] [data-id="popup.message"]{white-space:normal;font-weight:normal}
+.symbol-0056 {
+  background: blue;
+  -webkit-mask-box-image: url(../../images/symbols/0056.png);
+}
+#login-page p {
+  color: #9a9a9a;
+  font-size: 14px;
+}
+#login-page [data-role="content"] {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#login-page [data-id="logo"] {
+  text-align: center;
+}
+#login-page [data-id="popup.content"] {
+  max-width: 400px;
+}
+#login-page [data-id="popup.content"] [data-id="popup.message"] {
+  white-space: normal;
+  font-weight: normal;
+}

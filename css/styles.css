@@ -1,3 +1,7 @@
+.symbol-0056 {
+  background: blue;
+  -webkit-mask-box-image: url(../../images/symbols/0056.png);
+}
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;

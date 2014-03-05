@@ -1,3 +1,7 @@
+.symbol-0056 {
+  background: blue;
+  -webkit-mask-box-image: url(../../images/symbols/0056.png);
+}
 [data-role="imagepicker"] {
   border: 4px dashed #b3b3b3;
   height: 100px;

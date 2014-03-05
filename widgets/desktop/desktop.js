@@ -304,6 +304,7 @@ define(['module', 'css!./desktop'], function(module) {
 			});
 
 
+
 			widget.element.define('set', function(data) {
 				var changed = false;
 
@@ -466,9 +467,11 @@ define(['module', 'css!./desktop'], function(module) {
 					var image = item.find('img');
 
 					if (rental.icon_id && _icons[rental.icon_id])
-						image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
+						image.addClass(sprintf('symbol-%04d', rental.icon_id));
+						//image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
 					else
-						image.attr('src', '../../images/symbols/0000.png');
+						image.addClass(sprintf('symbol-%04d', 0));
+						//image.attr('src', '../../images/symbols/0000.png');
 
 					title.text(rental.name);
 
@@ -491,9 +494,11 @@ define(['module', 'css!./desktop'], function(module) {
 			var image = item.find('img');
 
 			if (rental.icon_id && _icons[rental.icon_id])
-				image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
+				image.addClass(sprintf('symbol-%04d', rental.icon_id));
+				//image.css('-webkit-mask-image', 'url(../../images/symbols/' + _icons[rental.icon_id].image + ')');
 			else
-				image.attr('src', '../../images/symbols/0000.png');
+				image.addClass(sprintf('symbol-%04d', 0));
+				//image.css('-webkit-mask-image', 'url(../../images/symbols/0000.png)');
 
 			_element.append(item);
 

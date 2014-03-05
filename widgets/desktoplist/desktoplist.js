@@ -166,10 +166,7 @@
 				else
 					customerName.text('-');
 					
-				if (rental.icon_id && _icons[rental.icon_id])
-					image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
-				else
-					image.attr('src', '../../images/symbols/0000.png');
+				image.addClass(sprintf('symbol-%04d', rental.icon_id == undefined ? : rental.icon_id);
 	
 				row.toggleClass("disabled", isReservationActive(reservation));
 				

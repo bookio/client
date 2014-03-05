@@ -1,3 +1,7 @@
+.symbol-0056 {
+  background: blue;
+  -webkit-mask-box-image: url(../../images/symbols/0056.png);
+}
 #category-page [data-role="content"] .ui-block-a,
 #category-page [data-role="content"] .ui-block-b,
 #category-page [data-role="content"] .ui-block-c,

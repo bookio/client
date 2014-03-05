@@ -1,6 +1,7 @@
 @import "../../css/bookio.less";
 
 
+
 [data-role="desktop"] {
 	width:100%;
 	height:100%;
@@ -176,8 +177,14 @@
 			    .border-radius(8px);
 			    
 				img {
+					//background: @bookioBlue;
+					//.vertical-gradient(red, blue);
+			    //.vertical-gradient(@bookioBlue, darken(saturate(@bookioBlue, 100%), 50%));
+
+					//-webkit-mask-size: 40px 40px;
 					&:hover {
-						-webkit-filter: hue-rotate(240deg); 
+						background: darken(saturate(@bookioBlue, 100%), 10%);
+						//-webkit-filter: hue-rotate(140deg)  ; 
 					}
 			    	margin: 5px;
 			        width: 40px;

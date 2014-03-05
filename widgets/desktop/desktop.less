@@ -5,6 +5,8 @@
 	width:100%;
 	height:100%;
 
+
+
 	.desktop {
 	    position: absolute;
 	    top:0px;left:0px;right:0px;bottom:0px;
@@ -132,21 +134,24 @@
 		    padding: 0px;          
 		    margin: 0px;
 	
+			&.selected .title {
+			    color: white;
+			    background-color: @bookioBlue;
+			    text-shadow: none;
+				
+			}
+
+			&.selected .title {
+			}
+
 			&.disabled {
 				opacity: 0.3;
 			}		
 			
-			.title.selected {    
-			    color: white;
-			    background-color: @bookioBlue;
-			    text-shadow: none;
-			
-			}
-			
 			.title {
+			    .border-radius(8px);
 			    margin-left: 5px;
 			    margin-right: 5px;
-			    .border-radius(8px);
 			    max-width: 82px;
 			    display: inline-block;
 				font-size: 11px;
@@ -157,7 +162,6 @@
 				max-height: 26px;
 				text-overflow: ellipsis;
 				overflow:hidden; 
-				
 			}
 	
 			.icon {
@@ -166,11 +170,15 @@
 			    width:50px;
 			    height:50px;
 			    border: 2px solid white;
+			    
 			    .drop-shadow(1px, 1px, 4px, 1px, hsla(0, 0, 0, 20%));
 			    .vertical-gradient(@xxxx-lightGrayColor, @xxx-lightGrayColor);
 			    .border-radius(8px);
 			    
 				img {
+					&:hover {
+						-webkit-filter: hue-rotate(240deg); 
+					}
 			    	margin: 5px;
 			        width: 40px;
 			        height:40px;

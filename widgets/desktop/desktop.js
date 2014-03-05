@@ -23,7 +23,6 @@ define(['module', 'css!./desktop'], function(module) {
 		var _reservations = {};
 		var _customers = {};
 		var _rentals = {};
-		var _settings = {};
 		var _icons = {};
 		var _desktopSize = {};
 
@@ -33,28 +32,13 @@ define(['module', 'css!./desktop'], function(module) {
 
 		Model.Rentals.on('added.desktop', function(rental) {
 
-			var cols = computeMaxCols();
-			var rows = computeMaxRows();
-			var cells = cols * rows;
-			var row = 0;
-			var col = 0;
-
-			for (var i = 0; i < cells; i++) {
-				var y = Math.floor(i / cols);
-				var x = i % rows;
-
-				if (isPositionAvailable(x, y)) {
-					col = x;
-					row = y;
-					break;
-				}
-			}
 
 			_rentals[rental.id] = rental;
 
 			// Everything is full, add on top others
-			addRentalToScene(rental, col, row);
-			saveSettings();
+			addRentalToScene(rental);
+
+			savePositions();
 		});
 
 		Model.Rentals.on('updated.desktop', function(rental) {
@@ -72,7 +56,6 @@ define(['module', 'css!./desktop'], function(module) {
 			$.when(rentals, reservations).then(function() {
 				placeRentals();
 				updateRentalAvailability();
-				saveSettings();
 			});
 
 		});
@@ -181,51 +164,26 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_element.find('.item').remove();
 
-			if (!_settings.positions)
-				_settings.positions = {};
-
 			for (var rental_id in _rentals) {
 				var rental = _rentals[rental_id];
-				var position = _settings.positions[rental_id];
-
-				if (!isObject(position)) {
-					position = {};
-					position.y = Math.floor(index / maxCols);
-					position.x = index % maxCols;
-
-					index++;
-				}
-
-				addRentalToScene(rental, position.x, position.y);
+				addRentalToScene(rental);
 			}
 		}
 
 
-		function gotSettings(settings) {
-			var defaults = {
-				positions: {},
-				orderAutomatically: false,
-				background: 'linen.png'
-			};
 
-			_settings = {};
-			_settings = $.extend({}, defaults, settings);
-		}
-
-
-		function saveSettings() {
-
-			// Regenerate positions
-			_settings.positions = {};
+		function savePositions() {
 
 			_element.find('.item').each(function() {
-				var position = $(this).data('position');
 				var rental = $(this).data('rental')
 
-				_settings.positions[rental.id] = position;
+				if (rental.dirty === true) {
+					console.log("saving", rental);
+					Model.Rentals.save(rental);
+					delete rental.dirty;
+				}
 			});
 
-			Model.Settings.save('desktop', 'layout', _settings);
 		}
 
 		function gotCustomers(customers) {
@@ -397,23 +355,22 @@ define(['module', 'css!./desktop'], function(module) {
 				var rentals = Model.Rentals.fetch();
 				var reservations = Model.Reservations.fetch();
 				var customers = Model.Customers.fetch();
-				var settings = Model.Settings.fetch('desktop', 'layout');
 				var icons = Model.Icons.fetch();
 	
 				rentals.done(gotRentals);
 				reservations.done(gotReservations);
 				customers.done(gotCustomers);
-				settings.done(gotSettings);
 				icons.done(gotIcons);
 	
 				$('body').spin("large");
 	
-				$.when(rentals, reservations, customers, settings, icons).then(function() {
+				$.when(rentals, reservations, customers, icons).then(function() {
 					$('body').spin(false);
 	
 					placeRentals();
 					updateRentalAvailability();
-	
+					savePositions();
+					
 					if (Object.keys(_rentals).length == 0) {
 						// No objects created, enter edit mode so user can add objects
 						_element.invoke('set', {editMode:true});
@@ -459,12 +416,12 @@ define(['module', 'css!./desktop'], function(module) {
 			var x = _options.iconMargin + (col * (_options.iconSize + _options.iconSpacing));
 			var y = _options.iconMargin + (row * (_options.iconSize + _options.iconSpacing));
 
-			// Store the position
-			item.data('position', {
-				x: col,
-				y: row
-			});
-
+			if (rental.data.position.x != col || rental.data.position.y != row) {
+				rental.data.position.x = col;
+				rental.data.position.y = row;
+				rental.dirty = true;
+			}
+			
 			if (isNumeric(speed))
 				item.transition({
 					left: x,
@@ -478,16 +435,20 @@ define(['module', 'css!./desktop'], function(module) {
 
 		}
 
-		function isPositionAvailable(col, row) {
+		function isPositionAvailable(x, y) {
 
 			var available = true;
 
 			_element.find('.item').each(function() {
-				var position = $(this).data('position');
-
-				if (position.x == col && position.y == row) {
-					available = false;
-					return false;
+				var rental = $(this).data('rental');
+				
+				if (isObject(rental.data) && isObject(rental.data.position)) {
+					var position = rental.data.position;
+	
+					if (position.x == x && position.y == y) {
+						available = false;
+						return false;
+					}
 				}
 			});
 
@@ -518,10 +479,10 @@ define(['module', 'css!./desktop'], function(module) {
 			});
 		}
 
-		function addRentalToScene(rental, col, row) {
+		function addRentalToScene(rental) {
 			var template =
 				'<div class="item">' +
-				'<div class="icon"><img/></div>' +
+				'<div class="icon"><img class="tint"/></div>' +
 				'<br>' +
 				'<div class="title"></div>' +
 				'</div>'
@@ -549,8 +510,35 @@ define(['module', 'css!./desktop'], function(module) {
 					event.stopPropagation();
 				});
 			}
+			
+			if (!isObject(rental.data))
+				rental.data = {};
+				
+			if (rental.data.position == undefined) {
+				rental.data.position = {};
 
-			positionItem(item, col, row);
+				var cols = computeMaxCols();
+				var rows = computeMaxRows();
+				var cells = cols * rows;
+	
+				console.log("rows", rows, "cols", cols);
+				
+				for (var i = 0; i < cells; i++) {
+					var y = Math.floor(i / cols);
+					var x = i % cols;
+	
+					if (isPositionAvailable(x, y)) {
+						
+						rental.data.position.x = x;
+						rental.data.position.y = y;
+						
+						rental.dirty = true;
+						break;
+					}
+				}
+			}			
+
+			positionItem(item, rental.data.position.x, rental.data.position.y);
 			enableMouseActions(item);
 
 			return item;
@@ -740,10 +728,10 @@ define(['module', 'css!./desktop'], function(module) {
 			item.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
 
 				if (!event.shiftKey) {
-					_element.find('.title.selected').removeClass('selected');
+					_element.find('.selected').removeClass('selected');
 				}
 
-				item.find('.title').addClass('selected');
+				item.addClass('selected');
 
 				bringItemToTop(item);
 
@@ -796,12 +784,11 @@ define(['module', 'css!./desktop'], function(module) {
 				var moved = false;
 
 				if (!event.shiftKey) {
-					_element.find('.title.selected').removeClass('selected');
+					_element.find('.selected').removeClass('selected');
 
 				}
 
-				title.addClass('selected');
-
+				item.addClass('selected');
 
 				$(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event) {
 
@@ -851,7 +838,7 @@ define(['module', 'css!./desktop'], function(module) {
 
 					if (moved) {
 						positionItem(item, col, row, 300);
-						saveSettings();
+						savePositions();
 					}
 
 				});

@@ -43,6 +43,7 @@ CORE_JS_FILES = \
 	lib/jquery/jquery-2.0.3.js \
 	lib/jquery-mobile/jquery.mobile.config.js \
 	lib/jquery-mobile/jquery.mobile-1.4.0.js \
+	lib/jquery/plugins/jquery.extensions.js \
 	lib/jquery/plugins/jquery.cookie.js \
 	lib/jquery/plugins/jquery.hookup.js \
 	lib/jquery/plugins/jquery.debounce.js \
@@ -56,6 +57,7 @@ CORE_JS_FILES = \
 	lib/jquery/plugins/jquery.pubsub.js \
 	lib/jquery/plugins/jquery.devoke.js \
 	lib/jquery/plugins/jquery.textrange.js \
+	lib/jquery/plugins/jquery.keyframes.js \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
 	lib/mobiscroll/mobiscroll.2.9.2.min.js \
 	lib/moment/moment-2.5.1.js \

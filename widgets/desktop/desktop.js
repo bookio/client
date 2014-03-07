@@ -26,15 +26,14 @@ define(['module', 'css!./desktop'], function(module) {
 		var _icons = {};
 		var _desktopSize = {};
 
-		var _timerForIntroBlob;
-
-
 
 		Model.Rentals.on('added.desktop', function(rental) {
 
+			// Turn of intro mode
+			setIntroMode(false);
 
 			_rentals[rental.id] = rental;
-
+			
 			// Everything is full, add on top others
 			addRentalToScene(rental);
 
@@ -56,6 +55,9 @@ define(['module', 'css!./desktop'], function(module) {
 			$.when(rentals, reservations).then(function() {
 				placeRentals();
 				updateRentalAvailability();
+				
+				if ($.isEmpty(_rentals))
+					setIntroMode(true);
 			});
 
 		});
@@ -256,11 +258,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 		};
 
-		function clearIntroBlob() {
-			// Clear intro blob
-			clearTimeout(_timerForIntroBlob);
-			_element.removeClass("intromode");
-		}
 
 
 		function init() {
@@ -287,9 +284,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
 				_element.find('.title').removeClass('selected');
-
-				clearIntroBlob();
-
 			});
 
 			_elements.buttons.add.on("mousedown touchstart", function(event) {
@@ -315,13 +309,7 @@ define(['module', 'css!./desktop'], function(module) {
 					_endDate = data.endDate, changed = true;
 					
 				if (data.editMode != undefined) {
-					_editMode = data.editMode;
-
-					if (_editMode)
-						SetupEditMode();
-					else
-						CloseEditMode();
-						
+					setEditMode(data.editMode);
 					disableMouseActions();
 		
 					_element.find('.item').each(function(index) {
@@ -373,10 +361,8 @@ define(['module', 'css!./desktop'], function(module) {
 					savePositions();
 					
 					if (Object.keys(_rentals).length == 0) {
-						// No objects created, enter edit mode so user can add objects
-						_element.invoke('set', {editMode:true});
-						
-						ShowIntroBlob();
+						setEditMode(true);
+						setIntroMode(true);
 					}
 	
 					_initialRefreshDone = true;
@@ -575,130 +561,31 @@ define(['module', 'css!./desktop'], function(module) {
 			});
 		}
 
-		function ShowIntroBlob() {
 
-			_element.addClass('intromode');
+		function setEditMode(mode) {
 
-			_timerForIntroBlob = setInterval(function() {
-				_elements.intro.house.transition({
-					y: '-=15',
-					duration: 200,
-					easing: 'easeOutQuart',
-					delay: 500
-				}).transition({
-					y: '+=15',
-					duration: 200,
-					easing: 'easeInQuint'
-				});
-				_elements.intro.man.transition({
-					y: '-=15',
-					duration: 200,
-					easing: 'easeOutQuart',
-					delay: 600
-				}).transition({
-					y: '+=15',
-					duration: 200,
-					easing: 'easeInQuint'
-				});
-				_elements.intro.squash.transition({
-					y: '-=15',
-					duration: 200,
-					easing: 'easeOutQuart',
-					delay: 700
-				}).transition({
-					y: '+=15',
-					duration: 200,
-					easing: 'easeInQuint'
-				});
-				_elements.intro.bike.transition({
-					y: '-=15',
-					duration: 200,
-					easing: 'easeOutQuart',
-					delay: 800
-				}).transition({
-					y: '+=15',
-					duration: 200,
-					easing: 'easeInQuint'
-				});
-				_elements.intro.car.transition({
-					y: '-=15',
-					duration: 200,
-					easing: 'easeOutQuart',
-					delay: 900
-				}).transition({
-					y: '+=15',
-					duration: 200,
-					easing: 'easeInQuint'
-				});
-
-				_elements.intro.arrow.transition({
-					x: '+=3',
-					y: '-=4',
-					duration: 200,
-					delay: 1000
-				}).transition({
-					x: '-=3',
-					y: '+=4',
-					duration: 200
-				});
-				_elements.intro.arrow.transition({
-					x: '+=3',
-					y: '-=4',
-					duration: 200,
-					delay: 0
-				}).transition({
-					x: '-=3',
-					y: '+=4',
-					duration: 200
-				});
-				_elements.intro.arrow.transition({
-					x: '+=3',
-					y: '-=4',
-					duration: 200,
-					delay: 0
-				}).transition({
-					x: '-=3',
-					y: '+=4',
-					duration: 200
-				});
-
-			}, 3000);
-
+			if (mode) {
+				_element.addClass('editmode');
+			}
+			else {
+				_element.removeClass('editmode');
+				_element.removeClass('intromode');
+			}
+			
+			_editMode = mode;
+			
 		}
-
-		function BounceButtons() {
-
-			_elements.buttons.close.transition({
-				scale: 2
-			}, 300);
-			_elements.buttons.close.transition({
-				scale: 1
-			}, 400);
-
-			_elements.buttons.add.transition({
-				scale: 2
-			}, 300);
-			_elements.buttons.add.transition({
-				scale: 1
-			}, 400);
-
-		}
-
-		function SetupEditMode() {
-
-			_element.addClass('editmode');
-
-			BounceButtons();
-
+		
+		function setIntroMode(mode) {
+			if (mode) {
+				_element.addClass('intromode');				
+			}
+			else {
+				_element.removeClass('intromode');
+			}
 		}
 
 
-		function CloseEditMode() {
-			clearIntroBlob();
-
-			_element.removeClass('editmode');
-
-		}
 
 
 		function disableMouseActions() {

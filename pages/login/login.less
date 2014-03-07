@@ -1,5 +1,42 @@
 @import "../../css/bookio.less";
 
+
+.shake(@size:10px) {
+	0%, 100% {
+		.transform(translateX(0));
+	}
+
+	10% {
+		.transform(translateX(1.00 * @size));
+		
+	}
+	20% {
+		.transform(translateX(-0.95 * @size));
+		
+	}
+	40% {
+		.transform(translateX(0.85 * @size));
+		
+	}
+	60% {
+		.transform(translateX(-0.65 * @size));
+		
+	}
+	80% {
+		.transform(translateX(0.15 * @size));
+	}
+}
+
+
+@keyframes shake {.shake(10px);}
+@-o-keyframes shake {.shake(10px);}
+@-ms-keyframes shake {.shake(10px);}
+@-moz-keyframes shake {.shake(10px);}
+@-webkit-keyframes shake {.shake(10px);}
+
+
+
+
 #login-page {
     
     
@@ -14,20 +51,32 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+/*
+		.shake {
+			-webkit-animation-name: shake;
+			.animation-duration(0.5s);
+		}
+		.flash {
+			.animation-name(flash);
+			.animation-duration(2s);
+		}
+*/		
+	    [data-id="logo"] {
+	        text-align: center;
+	    }
+	
+	    [data-id="popup.content"] {
+	        max-width: 400px;
+	        
+	        [data-id="popup.message"] {
+	            white-space: normal;
+	            font-weight: normal;
+	            
+	        }
+	    }
+
+
     }
     
-    [data-id="logo"] {
-        text-align: center;
-    }
-
-    [data-id="popup.content"] {
-        max-width: 400px;
-        
-        [data-id="popup.message"] {
-            white-space: normal;
-            font-weight: normal;
-            
-        }
-    }
 	
 }

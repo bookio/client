@@ -2,11 +2,76 @@
 
 
 
+@keyframes animate-arrow {.animate-arrow();}
+@-o-keyframes animate-arrow {.animate-arrow();}
+@-ms-keyframes animate-arrow {.animate-arrow();}
+@-moz-keyframes animate-arrow {.animate-arrow();}
+@-webkit-keyframes animate-arrow {.animate-arrow();}
+
+.animate-arrow() {
+	0%, 100% {
+		.transform(translate(0px, 0px));
+	}
+
+	50% {
+		.transform(translate(3px, -4px));
+	}
+
+}
+
+@keyframes animate-button {.animate-button();}
+@-o-keyframes animate-button {.animate-button();}
+@-ms-keyframes animate-button {.animate-button();}
+@-moz-keyframes animate-button {.animate-button();}
+@-webkit-keyframes animate-button {.animate-button();}
+
+.animate-button() {
+	0% {
+		.transform(scale(1));
+	}
+
+	50% {
+		.transform(scale(1.5));
+	}
+
+	100% {
+		.transform(scale(1));
+	}
+}
+
+@keyframes animate-symbol {.bounce-symbol();}
+@-o-keyframes bounce-symbol {.bounce-symbol();}
+@-ms-keyframes bounce-symbol {.bounce-symbol();}
+@-moz-keyframes bounce-symbol {.bounce-symbol();}
+@-webkit-keyframes bounce-symbol {.bounce-symbol();}
+
+.bounce-symbol(@height:10px) {
+	0%, 100% {
+		.transform(translateY(0.0 * @height));
+	}
+
+	5% {
+		.transform(translateY(0.2 * @height));
+	}
+	8% {
+		.transform(translateY(-1.0 * @height));
+	}
+	15% {
+		.transform(translateY(0.4 * @height));
+	}
+	
+	20% {
+		.transform(translateY(0.0 * @height));
+	}
+}
+
+
+
 [data-role="desktop"] {
+
+
 	width:100%;
 	height:100%;
-
-
 
 	.desktop {
 	    position: absolute;
@@ -23,13 +88,36 @@
 			
 			.button {
 				display: block;
+				.animation(animate-button 0.5s ease-in-out);
 			}
 		}
-		
+
 		&.intromode {
 			.intro {
 				display: block;
+				
+				.arrow {
+					.animation(animate-arrow 1s infinite);
+				}
+				
+				.house {
+					.animation(bounce-symbol 5s 1.0s infinite);
+				}
+				.man {
+					.animation(bounce-symbol 5s 2.0s infinite);
+				}
+				.squash {
+					.animation(bounce-symbol 5s 3.0s infinite);
+				}
+				.bike {
+					.animation(bounce-symbol 5s 4.0s infinite);
+				}
+				.car {
+					.animation(bounce-symbol 5s 5.0s infinite);
+				}
+
 			}
+			
 		}
 	
 	

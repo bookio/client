@@ -8,6 +8,7 @@
 	
 	define(dependencies, function(i18n) {
 		
+
 		function Module(page) {
 
 			var _element = page.element;
@@ -23,6 +24,7 @@
 				var password = _elements.login.password.val();
 
 				if (email != '') {
+					
 					_elements.login.button.transition({
 						opacity: 0.5
 					}, 200);
@@ -32,17 +34,13 @@
 					var request = Gopher.login(email, password);
 
 					request.fail(function() {
-						_elements.login.button.transition({
-							x: -5
-						}, 75).transition({
-							x: 10
-						}, 75).transition({
-							x: 0
-						}, 75);
+						_elements.login.button.keyframes("shake 0.5s", function() {
+						});
 					});
 
 					request.always(function() {
 						$.spin(false);
+						
 						_elements.login.button.transition({
 							opacity: 1.0
 						}, 100);
@@ -70,18 +68,12 @@
 					var request = Gopher.signup(email, '');
 
 					request.fail(function() {
-						_elements.signup.button.transition({
-							x: -5
-						}, 75).transition({
-							x: 10
-						}, 75).transition({
-							x: 0
-						}, 75);
-
+						_elements.signup.button.keyframes("shake 0.5s");
 					});
 
 					request.always(function() {
 						$.spin(false);
+						
 						_elements.signup.button.transition({
 							opacity: 1.0
 						}, 100);

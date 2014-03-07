@@ -139,7 +139,24 @@
           transition-duration: @transition-duration;
 }
 
+
 // Transformations
+.transform(@args) {
+  -webkit-transform: @args;
+     -moz-transform: @args;
+      -ms-transform: @args;
+       -o-transform: @args;
+          transform: @args;
+	
+}
+.translateX(@args) {
+  -webkit-transform: translateX(@args);
+     -moz-transform: translateX(@args);
+      -ms-transform: translateX(@args);
+       -o-transform: translateX(@args);
+          transform: translateX(@args);
+}
+
 .rotate(@degrees) {
   -webkit-transform: rotate(@degrees);
      -moz-transform: rotate(@degrees);

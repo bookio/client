@@ -3070,16 +3070,6 @@ strong {
   background-color: #87ace7;
   border-color: #3271d6;
 }
-.ui-input-text,
-.ui-input-search {
-  -webkit-border-radius: 1.2em;
-  -moz-border-radius: 1.2em;
-  border-radius: 1.2em;
-  padding-left: 0.5em !important;
-  padding-right: 0.5em !important;
-  border: 1px solid #b3b3b3 !important;
-  background: rgba(255, 255, 255, 0.4) !important;
-}
 .ui-input-search input {
   padding-left: 1em !important;
   padding-right: 0.5em !important;

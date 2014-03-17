@@ -43,14 +43,14 @@
 				}
 
 
-				_elements.startdate.year.text(sprintf("%04d", startDate.getFullYear()));
+				/*_elements.startdate.year.text(sprintf("%04d", startDate.getFullYear()));
 				_elements.startdate.day.text(startDate.getDate() + ' ' + startDate.getShortMonthName());
 				_elements.startdate.weekday.text(startDate.getShortDayName());
 
 				var displayEndDate = endDate.addDays(-1);
 				_elements.enddate.year.text(sprintf("%04d", displayEndDate.getFullYear()));
 				_elements.enddate.day.text(displayEndDate.getDate() + ' ' + displayEndDate.getShortMonthName());
-				_elements.enddate.weekday.text(displayEndDate.getShortDayName());
+				_elements.enddate.weekday.text(displayEndDate.getShortDayName());*/
 				
 				var sDate = moment(startDate);
 				var eDate = moment(endDate);
@@ -234,9 +234,9 @@
 							}
 						}
 
-//						var d = new Date(dateStr);				
-//						_elements.dateinput.mobiscroll('setDate', d, false);						
-//						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
+						var d = new Date(dateStr);				
+						_elements.dateinput.mobiscroll('setDate', d, false);						
+						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
 
 						_elements.dateinput.mobiscroll('show');
 						
@@ -337,7 +337,7 @@
 				});
 								
 				
-				_elements.startdate.button.on('tap', function(event) {
+/*				_elements.startdate.button.on('tap', function(event) {
 
 					function dateChanged(value, button, instance) {
 						if (button == "set") {
@@ -349,9 +349,9 @@
 
 					_elements.startdate.button.mobiscroll('setDate', _startDate); 
 
-					/*_elements.startdate.button.mobiscroll().date({ 
-						onClose: dateChanged
-					});*/
+//					_elements.startdate.button.mobiscroll().date({ 
+//						onClose: dateChanged
+//					});
 					
 				});
 
@@ -375,7 +375,7 @@
 					event.preventDefault();
 
 				});
-
+*/
 				_element.one("pageshow", function(event) {
 					redrawForResize();
 
@@ -396,10 +396,10 @@
 
 				});
 				
-				_elements.startdate.button.mobiscroll().date({
+/*				_elements.startdate.button.mobiscroll().date({
 					showOnTap: false,
 					showOnFocus: false
-				});
+				});*/
 
 				_elements.dateinput.mobiscroll().date({
 					showOnTap: false,

@@ -180,7 +180,6 @@ define(['module', 'css!./desktop'], function(module) {
 				var rental = $(this).data('rental')
 
 				if (rental.dirty === true) {
-					console.log("saving", rental);
 					Model.Rentals.save(rental);
 					delete rental.dirty;
 				}

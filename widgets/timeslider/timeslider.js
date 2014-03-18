@@ -16,7 +16,6 @@
 			var _length = widget.options.length; // Default width is one 'time slot'
 			var _range = widget.options.range;
 			var _scrollTimer = null;
-			var _setNeedsLayout = true;
 			var _busy = false;
 			var _page = widget.element.parents("[data-role='page']");
 
@@ -74,8 +73,6 @@
 					if (data.range != undefined)
 						_range = data.range;
 
-					_setNeedsLayout = true;
-					
 					updateLayout();
 				});
 
@@ -108,10 +105,7 @@
 			}
 
 			function updateLayout() {
-				if (_setNeedsLayout)
-					positionSlider();
-
-				_setNeedsLayout = false;
+				positionSlider();
 
 			}
 
@@ -121,7 +115,7 @@
 				var css = {};
 				css.left = sprintf('%f%%', _position * 100 / _range);
 				css.width = sprintf('%f%%', _length * 100 / _range);
-
+				
 				if (animationSpeed != undefined && animationSpeed)
 					slider.transition(css, animationSpeed, 'easeInOutBack' /*'ease-in-out'*/ );
 				else

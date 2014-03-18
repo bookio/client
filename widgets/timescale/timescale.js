@@ -18,9 +18,6 @@
 	        _startDate.clearTime();
 	        _endDate.clearTime();
 	
-	        console.log('Creating widget timescale...');
-	        
-	        
 	        _element.define('set', function(params) {
 		        
 		        var changed = false;
@@ -79,8 +76,8 @@
 	
 	            cells.empty();
 	            
-	            var days = Math.floor((_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
-	
+	            var days = Math.ceil(Math.abs(_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
+
 	            for (var i = 0; i < days; i++) {
 	                var cell = $(template).appendTo(cells);
 	                var date = cell.find('.date');
@@ -102,7 +99,6 @@
 	            }
 	            
 	        }
-	
 	
 	        init();
 	

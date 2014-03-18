@@ -24,6 +24,7 @@
 			var _endDate = new Date();
 
 			$(window).smartresize(function() {
+				console.log('resize event');
 				redrawForResize();
 			});
 

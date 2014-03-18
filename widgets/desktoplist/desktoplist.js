@@ -167,7 +167,6 @@
 					customerName.text('-');
 					
 				image.addClass(sprintf('symbol-%04d', rental.icon_id == undefined ? 0 : rental.icon_id));
-	console.log(sprintf('symbol-%04d', rental.icon_id == undefined ? 0 : rental.icon_id));
 				row.toggleClass("disabled", isReservationActive(reservation));
 				
 			}

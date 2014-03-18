@@ -58,7 +58,6 @@
 						_elements.url.val(url);
 						_elements.urlTrial.attr('href', url);
 	
-						console.log(_elements.urlTrial.attr('href'));
 						var qrcode = new QRCode(_elements.qrcanvas[0], {
 							text: url,
 							width: 120,

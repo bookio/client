@@ -37,5 +37,5 @@ Available:	mon-sat 10-18
 
 ##Segway
 Duration:	30 min, 60 min, 90 min, 120 min, 5 hours  
-When:		Varje jämn halvtimma  
+When:		Every half hour  
 Available:	mon-sat 11-18  

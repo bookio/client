@@ -16,7 +16,7 @@ When:		Even intervals of 45 minutes, (08:00, 08:45, 09:30, 10:15, ..)
 Available:	mon-fri 8-22, sat 9-17, sun 9-21  
 
 ##Trailer
-Duration:	0-4 timmar, 1 dygn, 1 vecka  
+Duration:	0-4 hors, 1 day, 1 week  
 When:		Every half hour, (08:00, 08:30, 09:00, ..)   
 Available:	24/7  
 

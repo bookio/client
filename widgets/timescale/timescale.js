@@ -14,6 +14,11 @@
 	        var _endDate = _startDate.addDays(10);
 	        var _page = widget.element.parents("[data-role='page']");
 	        var _element = widget.element;
+	        
+	        var _ticks = new RRule({
+				freq: RRule.DAILY,
+				dtstart: _startDate
+			})
 	
 	        _startDate.clearTime();
 	        _endDate.clearTime();
@@ -27,6 +32,12 @@
 		        	 
 		        if (params.endDate != undefined)
 		        	_endDate = params.endDate, changed = true;
+		        	
+		        _ticks = new RRule({
+					freq: RRule.DAILY,
+					dtstart: _startDate,
+					byweekday: [RRule.MO, RRule.TU, RRule.WE, RRule.TH, RRule.FR]
+				});
 		        	
 		        if (changed)
 		        	buildDOM(); 
@@ -95,7 +106,8 @@
 	                month.text(calendar.getShortMonthName());
 	                weekday.text(calendar.getShortDayName());
 	
-	                calendar = calendar.addDays(1);
+					calendar = _ticks.after(calendar, false);
+	                //calendar = calendar.addDays(1);
 	            }
 	            
 	        }

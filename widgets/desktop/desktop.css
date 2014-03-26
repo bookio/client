@@ -576,7 +576,7 @@
 }
 [data-role="desktop"] .desktop .item.selected .title {
   color: white;
-  background-color: #87ace7;
+  background-color: #099dde;
   text-shadow: none;
 }
 [data-role="desktop"] .desktop .item.disabled {
@@ -616,9 +616,6 @@
   background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
 }
 [data-role="desktop"] .desktop .item .icon img {
   margin: 5px;
@@ -626,7 +623,7 @@
   height: 40px;
 }
 [data-role="desktop"] .desktop .item .icon img:hover {
-  background: #3c87ff;
+  background: #007db4;
 }
 [data-role="desktop"] .desktop .item .icon:hover {
   cursor: pointer;

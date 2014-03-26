@@ -15,7 +15,7 @@
 
 			function addItem(item) {
 				var template =
-					'<li>' +
+					'<li class="user">' +
 					'<a href="">' +
 					'<h2></h2>' +
 					'<p></p>' +
@@ -67,7 +67,7 @@
 
 				$.spin(true);
 
-				_elements.listview.empty();
+				_elements.listview.find('.user').remove();
 
 				var request = Model.Users.fetch();
 

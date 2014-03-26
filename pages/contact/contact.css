@@ -1,16 +1,22 @@
 #contact-page .center {
   text-align: center;
 }
-#contact-page [data-role="content"] li .ui-block-a,
-#contact-page [data-role="content"] li .ui-block-b,
-#contact-page [data-role="content"] li .ui-block-c,
-#contact-page [data-role="content"] li .ui-grid-solo {
+#contact-page [data-role="content"] li .ui-grid-a .ui-block-a {
   padding-right: 8px;
+}
+#contact-page [data-role="content"] li .ui-grid-a .ui-block-b {
+  padding-left: 8px;
+}
+#contact-page [data-role="content"] li .ui-grid-b .ui-block-a {
+  padding-right: 8px;
+}
+#contact-page [data-role="content"] li .ui-grid-b .ui-block-b {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+#contact-page [data-role="content"] li .ui-grid-b .ui-block-c {
   padding-left: 8px;
 }
 #contact-page [data-role="content"] [data-id="address"] {
   height: 6em !important;
-}
-#contact-page [data-role="button-row"] [data-role="button"] {
-  min-width: 8em;
 }

@@ -18,7 +18,7 @@
 
 			function addCategory(category) {
 				var template =
-					'<li>' +
+					'<li class="category">' +
 						'<a data-id="link" href="">' +
 							'<img data-id="image" class="ui-li-thumb">' +
 							'<h2 data-id="name"></h2>' +
@@ -52,7 +52,7 @@
 			}
 
 			function addCategories(categories) {
-				_elements.listview.empty();
+				_elements.listview.find('.category').remove();
 
 				$.each(categories, function(index, category) {
 					addCategory(category);

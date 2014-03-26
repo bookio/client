@@ -61,6 +61,8 @@ CORE_JS_FILES = \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
 	lib/mobiscroll/mobiscroll.2.9.2.min.js \
 	lib/moment/moment-2.5.1.js \
+	lib/underscore/underscore.js \
+	lib/rrule/rrule.js \
 	js/base64.js \
 	js/sprintf.js \
 	js/sha1.js \

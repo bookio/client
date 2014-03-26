@@ -16,7 +16,7 @@
 			
 			function addEmpty() {
 				var template =
-					'<li>' +
+					'<li class="category">' +
 					'<br>' +
 					'<label class="helptext"></label>' +
 					'</li>';
@@ -31,7 +31,7 @@
 			
 			function addItem(item) {
 				var template =
-					'<li>' +
+					'<li class="category">' +
 					'<a href="">' +
 					'<img class="ui-li-thumb">' +
 					'<h2></h2>' +
@@ -128,7 +128,7 @@
 					_categories = categories;
 
 					if (categories.length > 0) {
-						_elements.listview.empty();
+						_elements.listview.find('.category').remove();
 
 						$.each(categories, function(index, category) {
 							addItem(category);

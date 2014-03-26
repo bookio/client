@@ -10,9 +10,29 @@
 	
 	[data-role="content"] {
 	
-		li .ui-block-a, li .ui-block-b, li .ui-block-c, li .ui-grid-solo {
-			padding-right: 8px;
-			padding-left: 8px;
+		li {
+			.ui-grid-a {
+				.ui-block-a {
+					padding-right:8px;
+				}
+				.ui-block-b {
+					padding-left:8px;
+				}
+			}
+			
+			.ui-grid-b {
+				.ui-block-a {
+					padding-right:8px;
+				}
+				.ui-block-b {
+					padding-right:8px;
+					padding-left:8px;
+				}
+				.ui-block-c {
+					padding-left:8px;
+				}
+				
+			}
 		}
 
 		[data-id="address"] {
@@ -21,9 +41,4 @@
 
 	}
 	
-	[data-role="button-row"] {
-		[data-role="button"] {
-			min-width: 8em;
-		}
-	}    
 }

@@ -4,12 +4,15 @@
         <div data-role="pagelogo">
         </div>
 
-        <h2 data-id="title" data-i18n="settings-title">
-            Settings
-        </h2>
         
         <ul data-id="listview" data-role="listview" data-inset="true">
 
+			<li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+				<h1>
+					Settings
+				</h1>
+			</li>
+			
 	        <li>
 	        	<a data-id="contact" href="#">
 		        	<h2 data-i18n="settings-choice-info">
@@ -42,41 +45,37 @@
 	        	</a>
 	        </li>
 
-        </ul>  
+
+        </ul>
         
-        <br>
-        		
-		<h3 data-id="title" data-i18n="settings-url-title">Path to Booking Page</h3>
-		
-		<div class="ui-body ui-body-a ui-grid-a ui-corner-all">
-
-	        <div class="ui-block-a" style="padding-top:5%">
-		        <input data-id="url" type="text" onClick="this.select();" readonly>
-	        </div>
-		    
-		    <div data-id=qrcontainer class="ui-block-b">
-		    	<div data-id=qrcontainer>
-					<div data-id="qrcanvas"></div>
-				</div>
-		    </div>
-
-	        <div class="ui-block-a">
-			    <p class="helptext" data-i18n="settings-url-help">
+		<ul data-role="listview" data-inset="true">
+			<li data-role="list-devider"  data-theme="b" data-i18n="settings-url-title">
+				Path to Booking Page
+			</li>
+			<li>
+				<p data-i18n="settings-url-help">
 			    	Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy.
 			    	To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
-			    </p>
-	        </div>
-		    
-		    <div class="ui-block-b">
-			    <p class="helptext" data-i18n="settings-url-help-qr">Copy the QR-code above and use in your promotional material.</p>
-		    </div>
-    
-        </div>
-        
+				</p>
+
+				 <input data-id="url" type="text" onClick="this.select();" readonly>
+
+				<div class="center">
+				    <div data-id=qrcontainer class="center">
+				    	<div data-id=qrcontainer>
+							<div data-id="qrcanvas"></div>
+						</div>
+					    <p data-i18n="settings-url-help-qr">
+					    	Copy the QR-code above and use in your promotional material.
+					    </p>
+				    </div>
+				</div>
+			</li>
 		</ul>
+		
         
 	    <div data-role="button-row">
-        	<a data-id="back" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="settings-button-back">Back</a>
+        	<a class="width-1" data-id="back" data-role="button" data-inline="true" data-i18n="settings-button-back" data-theme="c">Back</a>
 	    </div>
         
     </div>

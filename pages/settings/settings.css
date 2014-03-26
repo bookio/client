@@ -1,13 +1,4 @@
-#settings-page [data-id='url'] {
-  font-size: smaller;
-}
-#settings-page [data-id='qrcontainer'] {
-  text-align: center;
-}
 #settings-page [data-id='qrcontainer'] [data-id='qrcanvas'] {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
   border: 2px solid #cdcdcd;
   padding: 8px;
   display: inline-block;

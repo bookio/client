@@ -316,7 +316,6 @@
 
 					var options = {
 						dismissible: true,
-						theme: "c",
 						transition: "pop",
 						positionTo: $(this)
 					};

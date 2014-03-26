@@ -1,15 +1,15 @@
 @import "bookio.less";
 @import "symbols.less";
 @import "animations.less";
- 
 
+ 
 * {
 	-webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
 }
 
-body {
-	.user-select(none);
+* {
+//	.user-select(none);
 	cursor: default;
 }
 
@@ -33,12 +33,8 @@ strong {
     opacity: 0 !important;
 }
 
-.helptext {
-	color: @lightGrayColor;
-	font-size: smaller !important;
-	font-style: normal;
-	font-weight: 100 !important;
-	padding-left: 1em;
+.center {
+	text-align: center;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,67 +64,11 @@ strong {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//
-// jQuery Mobile fixes
-//
 
-// Remove the border and set background color
-[data-role="popup"] {
-	background-color: white;
-	border:none !important;
-}
-
-// Make sliders have Bookio blue background
-.ui-page-theme-a .ui-slider-track .ui-btn-active {
-	background-color: @bookioBlue;
-	border-color: darken(@bookioBlue, 20%);
-}
-
-// Rounded corners on text-input
-//.ui-input-text, .ui-input-search {
-//	.border-radius(1.2em);
-//	padding-left: 0.5em !important;
-//	padding-right: 0.5em !important;
-//	border: 1px solid @x-lightGrayColor !important; //;
-//	background: rgba(255, 255, 255, 0.4) !important;
-//}
-
-// Some more padding on search inputs
-.ui-input-search input {
-	padding-left: 1em !important;
-	padding-right: 0.5em !important;
-	
-}
-
-// Make the focus less focused
 .ui-focus {
-	-webkit-box-shadow: 0 0 6px @x-lightGrayColor !important; //	
-	-moz-box-shadow: 0 0 6px @x-lightGrayColor !important; // 	
-	box-shadow: 0 0 6px @x-lightGrayColor !important;// 			
-}
-
-// Make margins tighter to avoid ellipsis in headers/titles
-.ui-header .ui-title {
-    margin-right: 5%;
-    margin-left: 5%;
-}
-
-// Default background
-.ui-mobile-viewport {
-    background-image: url(../images/backgrounds/linen.png);  
-}
-
-// Page is transparent
-.ui-page {
-	background: none;
-}
-
-
-// Rounded corners on buttons
-.ui-btn-corner-all, .ui-btn.ui-corner-all, .ui-slider-track.ui-corner-all,
-.ui-flipswitch.ui-corner-all, .ui-li-count {
-	.border-radius(2em);
+	-webkit-box-shadow: 0 0 1px #80cc19 !important;
+	-moz-box-shadow: 0 0 1px #80cc19 !important;
+	box-shadow: 0 0 1px #80cc19 !important ;
 }
 
 
@@ -147,24 +87,32 @@ strong {
 	    margin-right:auto;
 
 	    [data-role="listview"] {
-    	    li p {
-    		    white-space: normal;
-    	    }
-	    }
 
-	    [data-role="button"]  {
-			min-width: 8em;
+
+	  	    li {
+		  		
+		    	p {
+			    	white-space: normal;
+		    	    opacity: 0.60;
+				}
+	    	    label {
+		    	    opacity: 0.30;
+	    	    }
+		    }
 		}
-	
-	    [data-role=button-row] {
+			
+	    [data-role="button-row"] {
 		    text-align: center;
-		    [data-role="button"]  {
-				min-width: 8em;
+
+			[data-role="button"] {
+			    min-width: 6em;
+				
 			}
 
 	    }
 	}    
 }
+
 
 // Center a logo on the initial page	
 #index-page {

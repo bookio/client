@@ -10,13 +10,24 @@
             </div>
 
             <ul data-role="listview" data-inset="true">
+            	<li data-role="list-devider" data-theme="b">
+            		Kontaktinformation
+            	</li>
+	        	<li data-role="list-devider">
+					<p data-i18n="categories-help">
+						A booking category groups symbols under one name. <strong>Sample: 
+						</strong>You have the symbols <strong>Court 1</strong>, <strong>Court 2</strong> and <strong>Court 3</strong>, 
+						you want your customers to book these as <strong>Tennis</strong>. 
+						Then you create a category <strong>Tennis</strong> and add your symbols to this category.
+					</p>
+	        
+	        	</li>
                 <li>
-                    <div class="ui-grid-solo">
+                    <div>
                         <label data-i18n="company">Company name</label>
                         <input data-id="name" type="text" value="" placeholder="" title="">
                     </div>
-                </li>
-                <li>
+
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
                             <label data-i18n="email">E-mail</label>
@@ -27,8 +38,7 @@
                             <input data-id="phone" type="text" value="" placeholder="" title="">
                         </div>
                     </div>
-                </li>
-                <li>
+
                     <div class="ui-grid-b">
                         <div class="ui-block-a">
                             <label data-i18n="website">Website</label>
@@ -43,32 +53,31 @@
                             <input data-id="twitter" type="text" value="" placeholder="" title="">
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="ui-grid-solo">
+
+                    <div>
                         <label data-i18n="adress">Address</label>
                         <textarea data-id="address" type="text" value="" placeholder="" title=""></textarea>
                     </div>
                 </li>
-            </ul>
-
-
-            <ul data-id="listview" data-role="listview" data-inset="true">
-
-                <li>
-                    <label data-i18n="logo">
-                        Logo
-                    </label>
+				<li data-role="list-devider" data-theme="b" data-i18n="logo">
+					Logo
+				</li>
+                <li >
                     <div style="text-align:center">
                         <div data-id="dropzone" data-role="imagepicker">
                         </div>
                     </div>
                 </li>
+
+
             </ul>
+            
+
+
 
             <div data-role="button-row">
-                <a data-id="back" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Back</a>
-                <a data-id="save" data-i18n="save" data-role="button" data-inline="true" data-theme="g">Save</a>
+                <a class="width-2" data-id="back" data-i18n="back" data-role="button" data-theme="b" data-inline="true" data-icon="carat-l">Back</a>
+                <a class="width-2" data-id="save" data-i18n="save" data-role="button" data-theme="c" data-inline="true" data-theme="g">Save</a>
             </div>
 
 

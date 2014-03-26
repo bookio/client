@@ -246,14 +246,13 @@
 				});
 
 
+				// View menu
 				_elements.iconviewcalendar.on('tap', function() {
 					setCalendarViewMode();
 				});
-
 				_elements.iconviewlist.on('tap', function() {
 					setListViewMode();
 				});
-
 				_elements.iconviewicon.on('tap', function() {
 					setIconViewMode();
 				});
@@ -307,12 +306,11 @@
 					_elements.desktop.desktoplist();
 					_elements.desktop.invoke('set', {startDate:_startDate, endDate:_endDate});
 					_elements.desktop.invoke('refresh');
-
 					
 				}
 
-
-				_elements.popup.menu.on('tap', function() {
+//				_elements.popup.menu.on('tap', function() {
+				_elements.popup.icon.on('tap', function() {
 
 					var options = {
 						dismissible: true,
@@ -337,45 +335,6 @@
 				});
 								
 				
-/*				_elements.startdate.button.on('tap', function(event) {
-
-					function dateChanged(value, button, instance) {
-						if (button == "set") {
-							_startDate = new Date(value);
-							startDateChanged();
-							
-						}
-					}
-
-					_elements.startdate.button.mobiscroll('setDate', _startDate); 
-
-//					_elements.startdate.button.mobiscroll().date({ 
-//						onClose: dateChanged
-//					});
-					
-				});
-
-				_elements.enddate.button.on('tap', function(event) {
-
-					function dateChanged(value, button, instance) {
-						if (button == "set") {
-							_endDate = new Date(value);
-							_endDate = _endDate.addDays(1);
-							endDateChanged();
-						}
-					}
-
-					_elements.enddate.button.mobiscroll().date({ 
-						minDate: _startDate,
-						onClose: dateChanged
-					});
-					
-					//_elements.enddate.button.mobiscroll('setDate', _endDate.addDays(-1)); 
-					
-					event.preventDefault();
-
-				});
-*/
 				_element.one("pageshow", function(event) {
 					redrawForResize();
 
@@ -396,11 +355,6 @@
 
 				});
 				
-/*				_elements.startdate.button.mobiscroll().date({
-					showOnTap: false,
-					showOnFocus: false
-				});*/
-
 				_elements.dateinput.mobiscroll().date({
 					showOnTap: false,
 					showOnFocus: false

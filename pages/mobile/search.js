@@ -17,7 +17,7 @@
 
                 var popup = $('<div data-role="popup"></div>').popup({
                     dismissible: true,
-                    theme: "c",
+                    theme: "a",
                     transition: "pop",
                     positionTo: button
                 });

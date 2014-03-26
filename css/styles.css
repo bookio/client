@@ -3041,22 +3041,16 @@ strong {
 .center {
   text-align: center;
 }
-.dw-calendar .dwbc {
-  padding: 5px;
-}
-.dw-calendar .dw-dr-t {
-  padding: 5px;
-}
-.dw-calendar .dw-cal-header {
-  line-height: 20px;
-}
-.dw-bubble-top .dwbc {
-  padding: 5px;
+.dwo {
+  background: transparent !important;
 }
 .ui-focus {
   -webkit-box-shadow: 0 0 1px #80cc19 !important;
   -moz-box-shadow: 0 0 1px #80cc19 !important;
   box-shadow: 0 0 1px #80cc19 !important ;
+}
+[data-role="popup"] {
+  background: rgba(255, 255, 255, 0.95);
 }
 [data-role="page"] [data-role="content"] {
   max-width: 800px;

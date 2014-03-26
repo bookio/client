@@ -42,35 +42,48 @@ strong {
 // Fix for mobiscroll
 //
 
-.dw-calendar {
-	
-	.dwbc {
-		padding: 5px;
-	}
-	
-	.dw-dr-t {
-		padding:5px;
-	}
-
-	.dw-cal-header {
-		line-height: 20px;
-	}
-	
+// Backdrop is transparent
+.dwo {
+	background: transparent !important;
+	//.box-shadow(0px 0px 17px 0px rgba(50, 50, 50, 0.75));	
 }
 
-.dw-bubble-top {
-	.dwbc {
-		padding: 5px;
-	}
+.dw-bubble-bottom .dw-arr {
+	 //border-color: transparent transparent @x-lightGrayColor transparent;
+}
+.dw-bubble-top .dw-arr {
+	//border-color: @x-lightGrayColor transparent transparent transparent;
+	//.box-shadow(0px 0px 17px 0px rgba(50, 50, 50, 0.75));	
+}
+
+.dwbg .dwwr {
+	//background: @x-lightGrayColor;
 }
 
 
+.dwbg .dwb {
+	//background: @bookioBlue;
+	//.border-radius(0px);
+	//text-shadow: 0px 0px 2px darken(@bookioBlue, 10%);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Fix for jQuery Mobile
+
+
+// Reduce the jQuery Mobile focus
 .ui-focus {
 	-webkit-box-shadow: 0 0 1px #80cc19 !important;
 	-moz-box-shadow: 0 0 1px #80cc19 !important;
 	box-shadow: 0 0 1px #80cc19 !important ;
 }
 
+
+// Popups have white background with a slight opacity
+[data-role="popup"] {
+	background: hsla(0, 0, 1.0, 0.95);
+}
 
 [data-role="page"] {
 
@@ -90,7 +103,6 @@ strong {
 
 
 	  	    li {
-		  		
 		    	p {
 			    	white-space: normal;
 		    	    opacity: 0.60;

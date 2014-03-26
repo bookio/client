@@ -710,8 +710,8 @@ html head + body .ui-body-c.ui-focus {
 html .ui-bar-d .ui-bar-inherit,
 html .ui-body-d .ui-bar-inherit,
 html body .ui-group-theme-d .ui-bar-inherit {
-	background-color: #9e1f24 /*{d-bar-background-color}*/;
-	border-color: #80191d /*{d-bar-border}*/;
+	background-color: #e65d65 /*{d-bar-background-color}*/;
+	border-color: #df4952 /*{d-bar-border}*/;
 	color: #ffffff /*{d-bar-color}*/;
 	text-shadow: 0 /*{d-bar-shadow-x}*/ 0 /*{d-bar-shadow-y}*/ 2px /*{d-bar-shadow-radius}*/ #000000 /*{d-bar-shadow-color}*/;
 	font-weight: bold;
@@ -724,7 +724,7 @@ html body .ui-group-theme-d .ui-bar-inherit {
 .ui-overlay-d,
 .ui-page-theme-d,
 .ui-page-theme-d .ui-panel-wrapper {
-	background-color: #9e1f24 /*{d-page-background-color}*/;
+	background-color: #e65d65 /*{d-page-background-color}*/;
 	border-color: #bbbbbb /*{d-page-border}*/;
 	color: #333333 /*{d-page-color}*/;
 	text-shadow: 0 /*{d-page-shadow-x}*/ 1px /*{d-page-shadow-y}*/ 0 /*{d-page-shadow-radius}*/ #f3f3f3 /*{d-page-shadow-color}*/;
@@ -736,8 +736,8 @@ html .ui-bar-d .ui-body-inherit,
 html .ui-body-d .ui-body-inherit,
 html body .ui-group-theme-d .ui-body-inherit,
 html .ui-panel-page-container-d {
-	background-color: #9e1f24 /*{d-body-background-color}*/;
-	border-color: #6a1518 /*{d-body-border}*/;
+	background-color: #e65d65 /*{d-body-background-color}*/;
+	border-color: #df4952 /*{d-body-border}*/;
 	color: #ffffff /*{d-body-color}*/;
 	text-shadow: 0 /*{d-body-shadow-x}*/ 0 /*{d-body-shadow-y}*/ 2px /*{d-body-shadow-radius}*/ #000000 /*{d-body-shadow-color}*/;
 }
@@ -750,7 +750,7 @@ html .ui-panel-page-container-d {
 html .ui-bar-d a,
 html .ui-body-d a,
 html body .ui-group-theme-d a {
-	color: #3388cc /*{d-link-color}*/;
+	color: #ffffff /*{d-link-color}*/;
 	font-weight: bold;
 }
 .ui-page-theme-d a:visited,
@@ -783,8 +783,8 @@ html .ui-bar-d .ui-btn:visited,
 html .ui-body-d .ui-btn:visited,
 html body .ui-group-theme-d .ui-btn:visited,
 html head + body .ui-btn.ui-btn-d:visited {
-	background-color: #9e1f24 /*{d-bup-background-color}*/;
-	border-color: #80191d /*{d-bup-border}*/;
+	background-color: #e65d65 /*{d-bup-background-color}*/;
+	border-color: #df4952 /*{d-bup-border}*/;
 	color: #ffffff /*{d-bup-color}*/;
 	text-shadow: 0 /*{d-bup-shadow-x}*/ 0 /*{d-bup-shadow-y}*/ 2px /*{d-bup-shadow-radius}*/ #000000 /*{d-bup-shadow-color}*/;
 }
@@ -835,9 +835,9 @@ html .ui-body-d .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-d .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-d .ui-btn-active {
 	background-color: #3388cc /*{d-active-background-color}*/;
-	border-color: #1c4a70 /*{d-active-border}*/;
+	border-color: #df4952 /*{d-active-border}*/;
 	color: #ffffff /*{d-active-color}*/;
-	text-shadow: 0 /*{d-active-shadow-x}*/ 1px /*{d-active-shadow-y}*/ 0 /*{d-active-shadow-radius}*/ #005599 /*{d-active-shadow-color}*/;
+	text-shadow: 0 /*{d-active-shadow-x}*/ 0 /*{d-active-shadow-y}*/ 2px /*{d-active-shadow-radius}*/ #005599 /*{d-active-shadow-color}*/;
 }
 /* Active radio button icon */
 .ui-page-theme-d .ui-radio-on:after,

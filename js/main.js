@@ -59,8 +59,9 @@ requirejs.config({
 			moment.lang(lang);
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
-			$.mobiscroll.defaults.theme = 'jqm';
- 
+			$.mobiscroll.defaults.theme = 'android-ics';
+
+
 			// Use 'sv' instead of 'sv-se' for mobiscroll
 			switch ($.mobiscroll.defaults.lang) {
 				case 'sv-se':

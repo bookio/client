@@ -59,7 +59,7 @@ CORE_JS_FILES = \
 	lib/jquery/plugins/jquery.textrange.js \
 	lib/jquery/plugins/jquery.keyframes.js \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
-	lib/mobiscroll/mobiscroll.2.9.2.min.js \
+	lib/mobiscroll/mobiscroll.2.9.5.min.js \
 	lib/moment/moment-2.5.1.js \
 	lib/underscore/underscore.js \
 	lib/rrule/rrule.js \
@@ -73,7 +73,7 @@ CORE_JS_FILES = \
 
 CORE_CSS_FILES = \
 	lib/jquery-mobile/jquery.mobile-1.4.0.css \
-	lib/mobiscroll/mobiscroll.2.9.2.min.css
+	lib/mobiscroll/mobiscroll.2.9.5.min.css
 
 all:
 	@echo "usage: make www   - Deploys to web site"

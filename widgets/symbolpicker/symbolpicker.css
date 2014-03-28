@@ -59,18 +59,18 @@
   height: 100%;
 }
 [data-role="symbolpicker"] .isotope-item.symbol .border .image {
-  background: #5d8fdf;
+  background: #077aad;
   width: 100%;
   height: 100%;
 }
 [data-role="symbolpicker"] .isotope-item.symbol.selected .border {
-  background-color: #e9f0fb;
+  background-color: #64cbf9;
 }
 [data-role="symbolpicker"] .isotope-item.symbol.selected:hover .border {
-  background-color: #dce7f8;
+  background-color: #55c6f8;
 }
 [data-role="symbolpicker"] .isotope-item.symbol:not(selected):hover .border {
-  background-color: #e9f0fb;
+  background-color: #64cbf9;
 }
 [data-role="symbolpicker"] [data-role="controlgroup"] {
   text-align: center;

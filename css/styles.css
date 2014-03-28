@@ -3067,7 +3067,7 @@ strong {
   opacity: 0.60;
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li label {
-  opacity: 0.30;
+  opacity: 0.60;
 }
 [data-role="page"] [data-role="content"] [data-role="button-row"] {
   text-align: center;

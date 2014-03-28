@@ -15,12 +15,6 @@
         	<li data-role="list-devider" data-theme="b">
         		Bokningsgrupp
         	</li>
-        	<li>
-				<p >
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore 
-					magna aliqua. Ut enim ad minim veniam
-				</p>
-        	</li>
 
 	        <li>
                 <label data-i18n="name">Name</label>
@@ -28,52 +22,14 @@
                 <label data-i18n="description">Description</label>
                 <textarea data-id="description" type="text"></textarea>
 	        </li>
-        
 
-            
             <li>
-            	<div class="ui-grid-c">
+				<label style="display:block" data-i18n="available">Available</label>
 
-
-                	<div class="ui-block-a">
-						<label style="display:block" data-i18n="available">Available</label>
-                	</div>
-
-                	<div class="ui-block-b">
-						<label style="display:block" data-id="label_between" data-i18n="label-limit">Between Hours</label>
-                	</div>
-
-                	<div class="ui-block-c">
-                	</div>
-
-                	<div class="ui-block-d">
-                	</div>
-
-
-                	<div class="ui-block-a">
-						<select data-id="available" data-role="flipswitch">
-							<option value="off" data-i18n="no">No</option>
-							<option value="on" data-i18n="yes" selected>Yes</option>
-						</select>
-                	</div>
-
-                	<div class="ui-block-b">
-						<select data-id="limit_time" data-role="flipswitch">
-							<option value="off" data-i18n="24h" selected>24h</option>
-							<option value="on" data-i18n="limit">Limit</option>
-						</select>
-                	</div>
-
-                	<div class="ui-block-c">
-						<input data-i18n="from" data-id="limit_from" placeholder="From" disabled>
-                	</div>
-
-                	<div class="ui-block-d">
-						<input data-i18n="to" data-id="limit_to" placeholder="To" disabled>
-                	</div>
-
-            	</div>
-				
+				<select data-id="available" data-role="flipswitch">
+					<option value="off" data-i18n="no">No</option>
+					<option value="on" data-i18n="yes" selected>Yes</option>
+				</select>				
             </li>
 
             <li>

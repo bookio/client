@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-
-<body>
 
 <div id="reservation-page" data-role="page">
     
@@ -15,23 +10,24 @@
 
 
         <ul data-id="listview" data-role="listview" data-inset="true">
+        	<li data-role="list-devider" data-theme="b" data-i18n="reservation-who">
+        		Who
+        	</li>
             <li>
-                <label data-i18n="reservation-who">
-                    Who
-                </label>
-                    <textarea data-id="contact" type="text" value="" placeholder="" title="">
-	                    
-                    </textarea>
-            	    <div data-role="button-row">
-                    	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="reservation-pick-customer">Select Customer</a>
-            	    </div>
+                <textarea data-id="contact" type="text" value="" placeholder="" title="">
+                </textarea>
+        	    <div data-role="button-row">
+                	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="reservation-pick-customer">Select Customer</a>
+        	    </div>
             </li>
+        </ul>
+        <ul data-role="listview" data-inset="true">
+
+        	<li data-role="list-devider" data-theme="b" data-i18n="reservation-when">
+        		When
+        	</li>
 
             <li>
-                <label data-i18n="reservation-when">
-                    When
-                </label>
-
                 <div class="ui-grid-a">
                 	<div class="ui-block-a">
                         <a data-id="startdate.button" data-role="button" class="Xui-disabled">
@@ -113,7 +109,3 @@
 
 
 </div>
-
-
-
-</body></html>

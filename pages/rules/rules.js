@@ -38,12 +38,14 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
+/*
     _elements.demo.mobiscroll().select({
         mode: 'scroller',
         minWidth: 200,
 					showOnTap: false,
 					showOnFocus: false        
     });
+*/
 				_elements.back.on('tap', function(event) {
 
 					$.spin(true);

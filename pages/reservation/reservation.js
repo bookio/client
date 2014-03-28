@@ -204,14 +204,14 @@
 						return;
 
 					var popup;
-					var listview = $('<ul data-role="listview" data-inset="true" data-theme="c"></ul>');
+					var listview = $('<ul data-role="listview" data-inset="true" data-theme="a"></ul>');
 
 					$.each(_customers, function(index, customer) {
 
 						var li = $('<li data-icon="false"></li>');
 						var a = $('<a href="#"></a>');
 						var p = $('<p></p>')
-						var h3 = $('<h3></h3>')
+						var h3 = $('<h1></h1>')
 
 						h3.text(customer.name);
 						p.text(customer.email);
@@ -236,8 +236,8 @@
 
 					var options = {
 						dismissible: true,
-						theme: "c",
-						overlyaTheme: "a",
+						//theme: "d",
+						//overlyaTheme: "a",
 						transition: "pop",
 						positionTo: _elements.selectcustomer
 					};

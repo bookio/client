@@ -1,3 +1,9 @@
+#settings-page [data-id='url'] {
+  font-size: smaller;
+}
+#settings-page [data-id='qrcontainer'] {
+  text-align: center;
+}
 #settings-page [data-id='qrcontainer'] [data-id='qrcanvas'] {
   border: 2px solid #cdcdcd;
   padding: 8px;

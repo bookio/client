@@ -284,7 +284,6 @@
 
 
 				_elements.remove.on("tap", function() {
-
 					Model.Reservations.remove(_reservation).done(function() {
 						$.mobile.pages.pop();
 					});

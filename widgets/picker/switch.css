@@ -1,0 +1,32 @@
+[data-role="switch"] {
+  position: relative;
+  height: 22px;
+}
+[data-role="switch"] [data-id="frame"] {
+  height: 100%;
+}
+[data-role="switch"] [data-id="left"] {
+  position: absolute;
+  display: block;
+  width: 50%;
+  height: 100%;
+  left: 0%;
+  outline-offset: -1px;
+}
+[data-role="switch"] [data-id="right"] {
+  position: absolute;
+  display: block;
+  width: 50%;
+  height: 100%;
+  left: 50%;
+  outline-offset: -1px;
+}
+[data-role="switch"] [data-id="slider"] {
+  position: absolute;
+  display: block;
+  width: 50%;
+  left: 0%;
+  height: 100%;
+  background: rgba(255, 0, 0, 0.5);
+  outline-offset: -1px;
+}

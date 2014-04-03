@@ -35,8 +35,8 @@
 		        	
 		        _ticks = new RRule({
 					freq: RRule.DAILY,
-					dtstart: _startDate,
-					byweekday: [RRule.MO, RRule.TU, RRule.WE, RRule.TH, RRule.FR]
+					dtstart: _startDate
+					//byweekday: [RRule.MO, RRule.TU, RRule.WE, RRule.TH, RRule.FR]
 				});
 		        	
 		        if (changed)

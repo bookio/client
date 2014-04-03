@@ -45,7 +45,6 @@
                 </li>
 
                 <li>
-                    <div data-id="category.container">
                         <label data-i18n="category">
                             Category
                         </label>
@@ -54,17 +53,18 @@
                         </ul>
 
                         <label data-i18n="category-help-text" class="helptext">Example 'Tennis', 'Hairdresser', 'Car (small)'</label>
-                    </div>
                 </li>
 
                 <li>
-                    <div data-id="icon.container" data-role="none">
+                    <div data-id="icon.container">
                         <label data-i18n="symbol">
                             Symbol
                         </label>
-                        <button data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
-                            <img data-id="icon.image" style="border-bottom-left-radius:0px">
-                        </button>
+                        <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
+                            <div>
+	                            <img data-id="icon.image">
+                            </div>
+                        </a>
                     </div>
                 </li>
 
@@ -74,9 +74,9 @@
 
 
             <div data-role="button-row">
-                <a data-id="back" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Back</a>
-                <a data-id="save" data-i18n="save" data-role="button" data-inline="true" data-theme="g">Save</a>
-                <a data-id="remove" data-i18n="remove" data-role="button" data-inline="true" data-theme="r">Remove</a>
+                <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+                <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
+                <a data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Remove</a>
             </div>
         </div>
 

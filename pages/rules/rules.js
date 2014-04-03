@@ -1,7 +1,9 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./rules.json'
+		'i18n!./rules.json',
+		'../../widgets/picker/picker',
+		'../../widgets/picker/switch'
 	];
 
 	define(dependencies, function(i18n) {
@@ -14,9 +16,9 @@
 			var _info = {};
 
 			function fill() {
-				_elements.demandPhone.val(_info.demandPhone ? '1' : '0').slider("refresh");
-				_elements.demandEmail.val(_info.demandEmail ? '1' : '0').slider("refresh");
-				_elements.demandAddress.val(_info.demandAddress ? '1' : '0').slider("refresh");
+				_elements.demandPhone.val(_info.demandPhone ? '1' : '0').picker("refresh");
+				_elements.demandEmail.val(_info.demandEmail ? '1' : '0').picker("refresh");
+				_elements.demandAddress.val(_info.demandAddress ? '1' : '0').picker("refresh");
 
 			}
 
@@ -30,22 +32,12 @@
 			this.init = function() {
 
 				_element.enhanceWithin();
-
-//				_elements.demandPhone.flipswitch();
-//				_elements.demandEmail.flipswitch();
-//				_elements.demandAddress.flipswitch();
 				
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
-/*
-    _elements.demo.mobiscroll().select({
-        mode: 'scroller',
-        minWidth: 200,
-					showOnTap: false,
-					showOnFocus: false        
-    });
-*/
+				_elements.demo.picker();
+
 				_elements.back.on('tap', function(event) {
 
 					$.spin(true);

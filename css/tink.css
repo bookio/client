@@ -247,7 +247,7 @@ html .ui-body-a .ui-body-inherit,
 html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
 	background-color: #ffffff /*{a-body-background-color}*/;
-	border-color: #f2f2f2 /*{a-body-border}*/;
+	border-color: #cccccc /*{a-body-border}*/;
 	color: #6e6e6e /*{a-body-color}*/;
 	text-shadow: 0 /*{a-body-shadow-x}*/ 0 /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #eeeeee /*{a-body-shadow-color}*/;
 }
@@ -304,7 +304,7 @@ html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
 html body .ui-group-theme-a .ui-btn:hover,
 html head + body .ui-btn.ui-btn-a:hover {
-	background-color: #fdfdfd /*{a-bhover-background-color}*/;
+	background-color: #f2f2f2 /*{a-bhover-background-color}*/;
 	border-color: #f2f2f2 /*{a-bhover-border}*/;
 	color: #525252 /*{a-bhover-color}*/;
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ #eeeeee /*{a-bhover-shadow-color}*/;
@@ -835,7 +835,7 @@ html .ui-body-d .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-d .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-d .ui-btn-active {
 	background-color: #e02e39 /*{d-active-background-color}*/;
-	border-color: #e02e39 /*{d-active-border}*/;
+	border-color: #7b191f /*{d-active-border}*/;
 	color: #ffffff /*{d-active-color}*/;
 	text-shadow: 0 /*{d-active-shadow-x}*/ 0 /*{d-active-shadow-y}*/ 2px /*{d-active-shadow-radius}*/ #e02e39 /*{d-active-shadow-color}*/;
 }

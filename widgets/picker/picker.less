@@ -1,0 +1,37 @@
+@import "../../css/bookio.less";
+
+
+
+[data-role="popup"].picker {
+	
+	ul {
+
+		li {
+			div {
+				min-width: 5em;
+
+				&.ui-nodisc-icon:after {
+					background-color: transparent !important;
+				}
+				&.ui-icon-check:after {
+					background-color: lighten(@bookioBlue, 10%) !important;
+				}
+			}
+		}
+		
+	}
+}
+
+[class*="ui-block-"] > [data-role="picker"].ui-btn {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+[data-role="picker"] {
+	text-align: left;
+
+	span:after {
+		content: "\0000a0";
+	}
+
+}

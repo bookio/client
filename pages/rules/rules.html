@@ -1,66 +1,80 @@
 <div id="rules-page" data-role="page">
-    
+
     <div data-role="content">
         <div data-role="pagelogo">
         </div>
-        
+
         <ul data-role="listview" data-inset="true">
 
-			<li data-role="list-devider" data-theme="b" data-i18n="rules-titles">
-				Required Info from customer
-			</li>
-        	<li data-role="list-devider">
-				<p >
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore 
-					magna aliqua. Ut enim ad minim veniam
-				</p>
-        
-        	
-        	</li>
-			
-			<li>
-	        <label style="display:block" data-i18n="rules-phone">Phone</label>
-			<select name="flipDemandPhone" data-role="slider" data-id="demandPhone">
-				<option value="0" data-i18n="rules-no">No</option>
-				<option value="1" data-i18n="rules-yes">Yes</option>
-			</select>
-        	</li>
-        	
-        	<li>
-	        <label style="display:block" data-i18n="rules-email">E-mail</label>
-			<select name="flipDemandEmail" data-role="slider" data-id="demandEmail">
-				<option value="0" data-i18n="rules-no">No</option>
-				<option value="1" data-i18n="rules-yes">Yes</option>
-			</select>
-        	</li>
-        	
-        	<li>
-	        <label style="display:block" data-i18n="rules-address">Address</label>
-			<select name="flipDemandAddress" data-role="slider" data-id="demandAddress">
-				<option value="0" data-i18n="rules-no">No</option>
-				<option value="1" data-i18n="rules-yes">Yes</option>
-			</select>
-        	</li>
+            <li data-role="list-devider" data-theme="b" data-i18n="rules-titles">
+                Required Info from customer
+            </li>
+            <li data-role="list-devider">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                </p>
+            </li>
 
-        	<li>
-				 <select name="City" data-id="demo">
-				    <option value="1">Atlanta</option>
-				    <option value="2">Berlin</option>
-				    <option value="3">Boston</option>
-				    <option value="4">Chicago</option>
-				    <option value="5">London</option>
-				    <option value="6">Los Angeles</option>
-				    <option value="7">New York</option>
-				    <option value="8">Paris</option>
-				    <option value="9">San Francisco</option>
-				</select>       	
-        	</li>
+            <li>
+
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <label style="display:block" data-i18n="rules-phone">Phone</label>
+                        <div name="flipDemandPhone" data-role="picker" data-id="demandPhone">
+                            <option value="1" data-i18n="rules-yes">Yes</option>
+                            <option value="0" data-i18n="rules-no">No</option>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <label style="display:block" data-i18n="rules-email">E-mail</label>
+                        <div name="flipDemandEmail" data-role="picker" data-id="demandEmail">
+                            <option value="1" data-i18n="rules-yes">Yes</option>
+                            <option value="0" data-i18n="rules-no">No</option>
+                        </div>
+                    </div>
+                    <div class="ui-block-c">
+                        <label style="display:block" data-i18n="rules-address">Address</label>
+                        <div name="flipDemandAddress" data-role="picker" data-id="demandAddress">
+                            <option value="1" data-i18n="rules-yes">Yes</option>
+                            <option value="0" data-i18n="rules-no">No</option>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+            <li>
+                <label>Stad</label>
+                <div data-role="picker" data-id="demo">
+                    <option value="1">Atlanta</option>
+                    <option value="2">Berlin</option>
+                    <option value="3">Boston</option>
+                    <option value="4">Chicago</option>
+                    <option value="5">London</option>
+                    <option value="6">Los Angeles</option>
+                    <option value="7">New York</option>
+                    <option value="8">Paris</option>
+                    <option value="9">San Francisco</option>
+                </div>
+
+                <label>Switch</label>
+                <div data-role="switch">
+
+                </div>
+
+
+
+
+
+            </li>
+
+
         </ul>
-        
-	    <div data-role="button-row">
-        	<a class="width-1" data-id="back" data-theme="b" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="rules-button-back">Back</a>
-	    </div>
-	    
-    </div>
 
-</div>
+        <div data-role="button-row">
+            <a class="width-1" data-id="back" data-theme="b" data-role="button" data-inline="true" data-icon="carat-l" data-i18n="rules-button-back">Back</a>
+        </div>
+
+        </div>
+
+    </div>

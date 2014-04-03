@@ -4,80 +4,81 @@
         <div data-role="pagelogo">
         </div>
 
-        
+
         <ul data-id="listview" data-role="listview" data-inset="true">
 
-			<li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
-				<h1>
+            <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+                <h1>
 					Settings
 				</h1>
-			</li>
-			
-	        <li>
-	        	<a data-id="contact" href="#">
-		        	<h2 data-i18n="settings-choice-info">
+            </li>
+
+            <li>
+                <a data-id="contact" href="#">
+                    <h2 data-i18n="settings-choice-info">
 						About your Business	        		
 		        	</h2>
-	        	</a>
-	        </li>
+                </a>
+            </li>
 
-	        <li>
-	        	<a data-id="users" href="#">
-		        	<h2 data-i18n="settings-choice-users">
+            <li>
+                <a data-id="users" href="#">
+                    <h2 data-i18n="settings-choice-users">
 						Users	        		
 		        	</h2>
-	        	</a>
-	        </li>
+                </a>
+            </li>
 
-	        <li>
-	        	<a data-id="categories" href="#">
-		        	<h2 data-i18n="settings-choice-categories">
+            <li>
+                <a data-id="categories" href="#">
+                    <h2 data-i18n="settings-choice-categories">
 						Booking Categories	        		
 		        	</h2>
-	        	</a>
-	        </li>
+                </a>
+            </li>
 
-	        <li>
-	        	<a data-id="rules" href="#">
-		        	<h2 data-i18n="settings-choice-rules">
+            <li>
+                <a data-id="rules" href="#">
+                    <h2 data-i18n="settings-choice-rules">
 						Rules for Booking        		
 		        	</h2>
-	        	</a>
-	        </li>
+                </a>
+            </li>
 
 
         </ul>
-        
-		<ul data-role="listview" data-inset="true">
-			<li data-role="list-devider"  data-theme="b" data-i18n="settings-url-title">
-				Path to Booking Page
-			</li>
-			<li>
-				<p data-i18n="settings-url-help">
-			    	Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy.
-			    	To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
-				</p>
 
-				 <input data-id="url" type="text" onClick="this.select();" readonly>
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-devider" data-theme="b" data-i18n="settings-url-title">
+                Path to Booking Page
+            </li>
+            <li>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <input data-id="url" type="text" onClick="this.select();" readonly>
+                        <p data-i18n="settings-url-help">
+                            Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy. To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
+                        </p>
+                    </div>
+                    <div class="ui-block-b">
+                        <div data-id="qrcontainer">
+                            <div data-id="qrcanvas"></div>
+                        </div>
+                        <p data-i18n="settings-url-help-qr">
+                            Copy the QR-code above and use in your promotional material.
+                        </p>
+                    </div>
+                </div>
 
-				<div class="center">
-				    <div data-id=qrcontainer class="center">
-				    	<div data-id=qrcontainer>
-							<div data-id="qrcanvas"></div>
-						</div>
-					    <p data-i18n="settings-url-help-qr">
-					    	Copy the QR-code above and use in your promotional material.
-					    </p>
-				    </div>
-				</div>
-			</li>
-		</ul>
-		
-        
-	    <div data-role="button-row">
-        	<a class="width-1" data-id="back" data-role="button" data-inline="true" data-i18n="settings-button-back" data-theme="c">Back</a>
-	    </div>
-        
+
+            </li>
+        </ul>
+
+
+        <div data-role="button-row">
+            <a data-id="back" data-icon="back" data-role="button" data-inline="true" data-i18n="settings-button-back" data-theme="c">Back</a>
+        </div>
+
     </div>
 
 </div>

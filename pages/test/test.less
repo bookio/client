@@ -1,56 +1,79 @@
 @import "../../css/bookio.less";
 
 
-#rental-page {
+@baseColor: red; //fadeout(@bookioBlue, 30%);
+
+#test-page {
 	
-	[data-id="description"] {
-		height:5em;
+	table {
+		
+		width:100%;		
+		table-layout: fixed;
+		border-collapse:collapse;
 	}
 	
-	[data-role="button"] {
-    	.border-radius(1.2em);
+
+
+	tr, td {
+		text-align: center;
+		border: 1px solid @xxxx-lightGrayColor;
+
+		.selected {
+			background-color: @baseColor;
+		}
+		.selecting {
+			background-color: darken(@baseColor, 5%);
+			
+		}
+
 	}
-
-	[data-role="content"] {
-
-            	
-    	.opacity(0);
-
-		[data-id="icon.container"] {
-    		span {
-        		//text-align: left;
-    		}
-    		
-		}		
-
-		[data-id="category.container"] {
-    		[data-id="category.button"] {
-        		span {
-            		text-align: left;
-        		}
-    		}		
+	
+	.inline {
+		display: inline-block;
+	}
+	.small-icon {
+		opacity: 0.7;
+		width:16px;
+		height: 16px;
+		font-size:16px;
+		padding: 2px;
+		display: inline-block;
+				visibility: hidden;
+	}
+	
+	tr:first-child {
+		td:first-child {
+			.small-icon {
+				visibility:visible;
+				cursor: pointer;
+			}
 		}
 		
 	}
-		
-	[data-role="button-row"] {
-		[data-role="button"] {
-			min-width: 8em;
+	tr:last-child {
+		td:first-child {
+			.small-icon {
+				visibility:visible;
+				cursor: pointer;
+			}
+			
 		}
+		
 	}
 	
-    [data-id="popup"] {
-        [data-role=listview] {
-            min-width:300px;
-        }
-    }
-    
-    .ui-block-a, .ui-block-b {
-        padding: 5px;
-    }
+	.marquee {
+		background-color: green ; //!important; //fadeout(black, 95%);
+		border: 10px solid blue; // !important;		
+	}
 
-	.ui-listview-filter-inset {
-		margin-top: 0;
+	.cell {
+		font-size: small;
 	}
 	
+	
+	tdX {
+		text-align: center;
+		
+		outline: 1px solid @xxx-lightGrayColor;
+	}
 }

@@ -263,17 +263,18 @@ define(['module', 'css!./desktop'], function(module) {
 
 			var template =
 				'<div class="desktop">' +
-				'<div class="intro">' +
-				'<div data-id="intro.text" class="text"></div>' +
-				'<div data-id="intro.arrow" class="arrow"></div>' +
-				'<div data-id="intro.house" class="house"></div>' +
-				'<div data-id="intro.man" class="man"></div>' +
-				'<div data-id="intro.squash" class="squash"></div>' +
-				'<div data-id="intro.bike" class="bike"></div>' +
-				'<div data-id="intro.car" class="car"></div>' +
-				'</div>' +
-				'<div data-id="buttons.add" class="add button"></div>' +
-				'<div data-id="buttons.close" class="close button"></div>' +
+					'<div class="intro">' +
+						'<div data-id="intro.text" class="text"></div>' +
+						'<div data-id="intro.arrow" class="arrow"></div>' +
+						'<div data-id="intro.house" class="house"></div>' +
+						'<div data-id="intro.man" class="man"></div>' +
+						'<div data-id="intro.squash" class="squash"></div>' +
+						'<div data-id="intro.bike" class="bike"></div>' +
+						'<div data-id="intro.car" class="car"></div>' +
+					'</div>' +
+					'<div class="watermark icon-tools"></div>'+
+					'<div data-id="buttons.add" class="add button icon-plus"></div>' +
+					'<div data-id="buttons.close" class="close button icon-close"></div>' +
 				'</div>';
 
 			_element = $(template).appendTo(widget.element);

@@ -3,105 +3,147 @@
 (function() {
 
     var dependencies = [
-        'css!./rental',
-        '../../components/imagepicker/imagepicker'
+    	'../../lib/jquery/plugins/jquery.selectable.js'
     ];
 
-    define(dependencies, function(html) {
+
+    define(dependencies, function() {
         
         function Module(page) {
             
-            var _page = page;
+            var _element = page.element;
             var _elements = {};
             var _rental = {};
-            var _icons = [];
-            var _iconsByID = {};
-            var _categories = [];
-            var _categoriesByID = {};
             
-            _page.hookup(_elements, 'data-id');
+            _element.hookup(_elements, 'data-id');
             
             function fill() {
             }
             
             function chill() {
             }
+
+            function addHeader(items) {
+	            
+				var row = $('<tr></tr>');
+	            
+	            for (var index in items) {
+		            var data = $('<th></th>').text(items[index]);
+		            row.append(data);
+	            }
+	            
+	            _elements.table.header.append(row);
+            }
             
-            
-            function init() {
-                
-               _elements.content.transition({opacity:1}, 1000);
-               
+            function addRow(items, prepend) {
+	            
+				var row = $('<tr></tr>');
+	            
+	            for (var index in items) {
+	            	var item = items[index];
+	            	
+		            var cell = $('<td></td>');
+		            
+		            if (item.text != undefined)
+		            	cell.text(item.text);
+		            	
+		            if (item.class != undefined)
+		            	cell.addClass(item.class);
 
-               _elements.symbolpicker.symbolpicker('symbols', _icons);
-               
-               _elements.symbolpicker.on('symbolselected', function(event, symbol) {
-	               console.log(symbol);
-               });
-               /*
-               _elements.icon.button.on('tap', function(event) {
+					if (item.click != undefined)
+			            cell.on('tap', item.click);
 
-                    var options = {
-                        dismissible : true,
-                        //theme : "a",
-                        //overlyaTheme : "a",
-                        transition : "pop",
-                        positionTo: $(this)
-                    };
+					if (item.content != undefined)
+			            cell.append(item.content);
+					
+		            row.append(cell);
+		            
+	            }
+	            
+	            if (prepend)
+	            	_elements.table.body.prepend(row);
+	            else 
+	            	_elements.table.body.append(row);
+            }
+
+			function initializeEvents() {
+				
+			}
+	
+			
+            this.init = function() {
 
 
-                   var click = function(index) {
+            	addHeader(['', 'MÅ','TI','ON','TO','FR','LÖ','SÖ']);
 
-                        _elements.popup.popup('close');
+//				_elements.table.body.on('tap', '.cell', function(){
+//					$(this).toggleClass('selected');
 
-                        _rental.icon_id = _icons[index].id;
-                        _elements.icon.image.attr('src', sprintf('../../images/symbols/%s', _iconsByID[_rental.icon_id].image));
-                        
-                    };
-                    
-                    var picker = new ImagePicker({
-                        icons: _icons,
-                        click: click
-                    }); 
-                                        
-                    var html = picker.html();
+//				});
 
-                    _elements.popup.empty();
-                    _elements.popup.append(picker.html());
-                    _elements.popup.trigger('create');
-                    _elements.popup.popup(options);
-                    _elements.popup.popup('open');
-                    
-                    picker.isotope({ filter: '*' });
+				
+				$('[data-role=page]').selectable({
+					showMarquee: false
+				});
 
-               });
-               */
-               
+				
+				_elements.table.body.on('tap', 'tr:last-child td:first-child .icon-plus', function(){
+
+					var foo = $(this).text().split(':')[0];
+					foo = parseInt(foo);
+					foo = foo + 1;
+					addOne(sprintf('%02d:00', foo));
+				});
+
+				_elements.table.body.on('tap', 'tr:first-child td:first-child .icon-plus', function(){
+
+					var foo = $(this).text().split(':')[0];
+					foo = parseInt(foo);
+					foo = foo - 1;
+					addOne(sprintf('%02d:00', foo), true);
+				});
+
+				function addOne(text, prepend) {
+					var items = [];
+					
+					var div = $('<div></div>');
+					var div1 = $('<div class="icon-plus small-icon"></div>');
+					var div2 = $('<div class="inline"></div>');
+					var div3 = $('<div class="icon-minus small-icon"></div>');
+					
+					div2.text(text);
+
+					div.append(div1);
+					div.append(div2);
+					div.append(div3);
+					
+					items.push({
+						content: div
+					});
+					
+					
+					for (var index = 0; index < 7; index++) {
+						items.push({
+							class: 'cell selectable'
+						});
+					}
+					
+					addRow(items, prepend);
+				}                
+
+                for (var i = 8; i < 18; i++) {
+
+					addOne(sprintf('%02d:00', i));
+				}
+
+          
+				
             }     
 
-            if (true) {
-            
-                var icons = Model.Icons.fetch();
-                
-                icons.done(function(icons) {
-                    _icons = icons;
-                    
-                    $.each(icons, function(index, icon) {
-                        _iconsByID[icon.id] = icon;
-                    });
-                    
-                    init();
-                    
-                });
-                
-                
-            }
         }
 
-        $(document).delegate("#test-page", "pageinit", function(event) {
-            new Module($(event.currentTarget));
-        });
         
+        return Module;
     
     });
 

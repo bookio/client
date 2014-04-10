@@ -14,6 +14,18 @@
 			var _element = page.element;
 			var _elements = {};
 			
+/*
+			{
+				months: '1,2,3,4',
+				weeks: '1-53',
+				days: '1-31',
+				weekdays: 'MON,TUE',
+				hours: '8,9,10,11,12,13,14,15',
+				minutes: '10',
+				duration: '30 minutes'
+			}
+2014-01-01T08:00
+*/
 			function main() {
 				$.mobile.pages.go('../main/main.html');
 			}

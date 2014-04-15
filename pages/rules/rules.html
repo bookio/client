@@ -7,11 +7,11 @@
         <ul data-role="listview" data-inset="true">
 
             <li data-role="list-devider" data-theme="b" data-i18n="rules-titles">
-                Required info from customer
+                Required Contact Information
             </li>
             <li data-role="list-devider">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    Checked items will be mandatory at reservation
                 </p>
             </li>
 
@@ -19,24 +19,24 @@
                 <div class="ui-grid-b">
                     <div class="ui-block-a">
                         <label style="display:block" data-i18n="rules-phone">Phone</label>
-                        <div name="flipDemandPhone" data-role="picker" data-id="demandPhone">
-                            <option value="1" data-i18n="rules-yes">Yes</option>
+                        <select name="flipDemandPhone" data-role="slider" data-id="demandPhone">
                             <option value="0" data-i18n="rules-no">No</option>
-                        </div>
+                            <option value="1" data-i18n="rules-yes">Yes</option>
+                        </select>
                     </div>
                     <div class="ui-block-b">
                         <label style="display:block" data-i18n="rules-email">E-mail</label>
-                        <div name="flipDemandEmail" data-role="picker" data-id="demandEmail">
-                            <option value="1" data-i18n="rules-yes">Yes</option>
+                        <select name="flipDemandEmail" data-role="slider" data-id="demandEmail">
                             <option value="0" data-i18n="rules-no">No</option>
-                        </div>
+                            <option value="1" data-i18n="rules-yes">Yes</option>
+                        </select>
                     </div>
                     <div class="ui-block-c">
                         <label style="display:block" data-i18n="rules-address">Address</label>
-                        <div name="flipDemandAddress" data-role="picker" data-id="demandAddress">
-                            <option value="1" data-i18n="rules-yes">Yes</option>
+                        <select name="flipDemandAddress" data-role="slider" data-id="demandAddress">
                             <option value="0" data-i18n="rules-no">No</option>
-                        </div>
+                            <option value="1" data-i18n="rules-yes">Yes</option>                            
+                        </select>
                     </div>
                 </div>
             </li>

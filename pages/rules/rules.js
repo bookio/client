@@ -1,9 +1,7 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./rules.json',
-		'../../widgets/picker/picker',
-		'../../widgets/picker/switch'
+		'i18n!./rules.json'
 	];
 
 	define(dependencies, function(i18n) {
@@ -16,9 +14,9 @@
 			var _info = {};
 
 			function fill() {
-				_elements.demandPhone.val(_info.demandPhone ? '1' : '0').picker("refresh");
-				_elements.demandEmail.val(_info.demandEmail ? '1' : '0').picker("refresh");
-				_elements.demandAddress.val(_info.demandAddress ? '1' : '0').picker("refresh");
+				_elements.demandPhone.val(_info.demandPhone ? '1' : '0').slider("refresh");
+				_elements.demandEmail.val(_info.demandEmail ? '1' : '0').slider("refresh");
+				_elements.demandAddress.val(_info.demandAddress ? '1' : '0').slider("refresh");
 
 			}
 
@@ -36,7 +34,6 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
-				_elements.demo.picker();
 
 				_elements.back.on('tap', function(event) {
 

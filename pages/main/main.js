@@ -236,10 +236,10 @@
 						}
 
 						var d = new Date(dateStr);				
-						_elements.dateinput.mobiscroll('setDate', d, false);						
-						_elements.dateinput.mobiscroll('option', {onSelect: dateChanged});
+						_elements.divformobiscroll.mobiscroll('setDate', d, false);						
+						_elements.divformobiscroll.mobiscroll('option', {onSelect: dateChanged});
 
-						_elements.dateinput.mobiscroll('show');
+						_elements.divformobiscroll.mobiscroll('show');
 						
 					}
 
@@ -355,7 +355,9 @@
 
 				});
 				
-				_elements.dateinput.mobiscroll().date({
+				_elements.divformobiscroll.mobiscroll().date({
+					display: 'bubble',
+					anchor: _elements.dateinput,
 					showOnTap: false,
 					showOnFocus: false
 				});

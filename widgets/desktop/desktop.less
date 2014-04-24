@@ -234,22 +234,19 @@
 		    padding: 0px;          
 		    margin: 0px;
 
-			&.selected {
-			}
-	
-			&.selected .title {
-			    color: white;
-			    background-color: @bookioBlue;
-			    text-shadow: none;
-			    padding: 5px;
-				
-			}
-
-			&.selected .title {
-				    outline: 1px solid fade(@bookioBlue, 50%);
-			}
-			&.selected .icon {
-				    outline: 2px solid fade(@bookioBlue, 90%);
+			
+//			border:1px solid black;
+			&.selected, &.selecting {
+				.title {
+					outline: 1px solid fade(@bookioBlue, 50%);
+				    color: white;
+				    background-color: @bookioBlue;
+				    text-shadow: none;
+				    padding: 5px;
+				}
+				.icon {
+					outline: 2px solid fade(@bookioBlue, 90%);
+				}
 			}
 
 			&.disabled {

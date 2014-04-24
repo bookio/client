@@ -2,7 +2,8 @@
 
 	var dependencies = [
 		'i18n!./login.json',
-		'css!./login'
+		'css!./login',
+		'../../lib/jquery/plugins/jquery.selectable.js'
 	];
 
 	
@@ -135,6 +136,10 @@
 				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
 				
+				/*_element.selectable({
+					//selectables: '*'
+				});
+				*/
 				enableDisable();
 			}
 			

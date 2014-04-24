@@ -23704,9 +23704,9 @@ $.widget( "ui.tabs", {
 		
 	    return this.each(function () {
 	
-	        $(this).find('[' + attribute + ']').each(function() {
 	
-	            var names = $(this).attr(attribute).split('.');
+			function build(element) {
+	            var names = element.attr(attribute).split('.');
 	            var object = elements;
 	
 	            for (var i = 1; i < names.length; i++) {
@@ -23718,7 +23718,14 @@ $.widget( "ui.tabs", {
 	                object = object[name];
 	            }
 	            
-	            object[names[names.length - 1]] = $(this);
+	            object[names[names.length - 1]] = element;
+			}
+
+			if ($(this).attr(attribute) != undefined)
+				build($(this));
+			
+	        $(this).find('[' + attribute + ']').each(function() {
+				build($(this));
 	        });
 	
 	    });

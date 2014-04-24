@@ -585,16 +585,16 @@
   padding: 0px;
   margin: 0px;
 }
-[data-role="desktop"] .desktop .item.selected .title {
+[data-role="desktop"] .desktop .item.selected .title,
+[data-role="desktop"] .desktop .item.selecting .title {
+  outline: 1px solid rgba(9, 157, 222, 0.5);
   color: white;
   background-color: #099dde;
   text-shadow: none;
   padding: 5px;
 }
-[data-role="desktop"] .desktop .item.selected .title {
-  outline: 1px solid rgba(9, 157, 222, 0.5);
-}
-[data-role="desktop"] .desktop .item.selected .icon {
+[data-role="desktop"] .desktop .item.selected .icon,
+[data-role="desktop"] .desktop .item.selecting .icon {
   outline: 2px solid rgba(9, 157, 222, 0.9);
 }
 [data-role="desktop"] .desktop .item.disabled {

@@ -4,13 +4,15 @@
 
  
 * {
+	.user-select(none);
+	cursor: default;
+
 	-webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
 }
 
-* {
-	.user-select(none);
-	cursor: default;
+input, textarea {
+	.user-select(text)
 }
 
 strong {
@@ -36,7 +38,6 @@ strong {
 .center {
 	text-align: center;
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //

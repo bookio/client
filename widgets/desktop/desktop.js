@@ -1,4 +1,4 @@
-define(['module', 'css!./desktop'], function(module) {
+define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.js'], function(module) {
 
 
 	var Widget = function(widget) {
@@ -281,7 +281,6 @@ define(['module', 'css!./desktop'], function(module) {
 
 			_element.hookup(_elements, 'data-id');
 
-
 			_element.on(isTouch() ? 'touchstart' : 'mousedown', function(event) {
 				_element.find('.title').removeClass('selected');
 			});
@@ -379,6 +378,19 @@ define(['module', 'css!./desktop'], function(module) {
 				_page.off('.desktop');
 				$(document).off('.desktop');
 				$(window).off('.desktop');
+			});
+
+
+			widget.element.selectable({
+				selectables: '.item',
+				selectionMode: 'single'
+			});
+			
+			widget.element.on('selection-end', function(){
+				/*widget.element.selectable({
+					selectables: '.item',
+					selectionMode: 'paint'
+				});*/
 			});
 
 
@@ -680,7 +692,8 @@ define(['module', 'css!./desktop'], function(module) {
 
 				}
 
-				item.addClass('selected');
+
+				//item.addClass('selected');
 
 				$(document).on(isTouch() ? 'touchmove.desktop-dragdrop' : 'mousemove.desktop-dragdrop', function(event) {
 

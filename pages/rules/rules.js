@@ -36,7 +36,7 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
-				_elements.demo.picker();
+				//_elements.demo.picker();
 
 				_elements.back.on('tap', function(event) {
 

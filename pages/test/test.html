@@ -1,0 +1,182 @@
+<div id="test-page" data-role="page" data-id="page" step="1">
+
+    <div data-role="content" data-id="content">
+        <div data-role="pagelogo">
+        </div>
+
+        <ul data-role="listview" data-inset="true">
+
+        </ul>
+
+        <ul data-role="listview" data-inset="true">
+
+            <li data-id="header">
+                <div data-id="slider">
+                </div>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a slider">
+                        <h1 style="display:inline-block">
+                        	1
+                        </h1>
+                        <h2 style="display:inline-block">
+                        	Resurs
+                        </h2>
+                        <p>Grundläggande information och tillgänglighet</p>
+                    </div>
+                    <div class="ui-block-b slider">
+                        <h1 style="display:inline-block">
+                        	2
+                        </h1>
+                        <h2 style="display:inline-block">
+                        	Typ av reservation
+                        </h2>
+                        <p>Beskrivningar, "time slots" och prisuppgifter</p>
+                    </div>
+                    <div class="ui-block-c slider">
+                        <h1 style="display:inline-block">
+                        	3
+                        </h1>
+                        <h2 style="display:inline-block">
+                        	Gruppering
+                        </h2>
+                        <p>Gruppera resurser under samma namn</p>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+
+        <div class="step" data-id="step1" step="1">
+            <ul data-role="listview" data-inset="true">
+
+                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+                    <h1>
+						Ny resurs
+					</h1>
+                </li>
+
+                <li>
+                    <div>
+                        <label>Namn</label>
+                        <input type="text" />
+                    </div>
+                    <div>
+                        <label>Beskrivning</label>
+                        <textarea type="text" />
+                    </div>
+
+                    <div>
+                        <label>
+                            Tillgänglig
+                        </label>
+                        <div data-id="meg" data-role="radiobuttons" data-mini="true">
+                            <option>Alltid</option>
+                            <option>Enligt schema</option>
+                            <option>Enstaka tillfällen</option>
+                        </div>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+        <div style="display:none" class="step" step="2">
+
+            <ul data-id="listview" data-role="listview" data-inset="true">
+
+                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+                    <h1>
+						Reservationsyp
+					</h1>
+                </li>
+                
+                <li>
+                    <label>
+                        Välj reservationstyp
+                    </label>
+                    <div data-role="checkboxes" data-mini="true">
+                        <option>Veckovis</option>
+                        <option>Månadsvis</option>
+                    </div>
+                </li>
+
+                <li class="test ui-li-has-thumbX">
+                	<div class="container">
+                        <div class="checkmark icon-plus">
+                        </div>
+
+						<div class="text">
+		                        Detta är en ikon
+						</div>
+                	</div>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <div style="display:none" class="step" step="4">
+
+            <ul data-id="listview" data-role="listview" data-inset="true">
+
+                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+                    <h1>
+						Schema
+					</h1>
+                </li>
+
+                <li>
+                    <div data-id="table.container">
+                        <table>
+                            <thead data-id="table.header">
+                            </thead>
+                            <tbody data-id="table.body">
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <div style="display:none" class="step" step="3">
+
+            <ul data-id="listview" data-role="listview" data-inset="true">
+
+                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
+                    <h1>
+						Reservationstyper
+					</h1>
+                </li>
+
+                <li>
+                    <label>
+                        Tillgänglig
+                    </label>
+                    <div data-role="radiobuttons" data-mini="true">
+                        <option>Endast en slot kan bokas</option>
+                        <option>Flera slots kan bokas samtidigt</option>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+
+        <div data-role="button-row" data-id="buttons">
+            <button data-id="back" data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Föregående</button>
+            <button data-id="next" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="carat-r" data-iconpos="right">Nästa</button>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+

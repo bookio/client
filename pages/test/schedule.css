@@ -1,0 +1,82 @@
+/*
+
+@keyframes fadeIn,
+@-moz-keyframes fadeIn,
+@-webkit-keyframes fadeIn,
+@-o-keyframes fadeIn {
+	0% {
+		background-color: red; //lighten(@bookioBlue, 25%);
+		
+	}
+	100% {
+		background-color: blue; //lighten(@bookioBlue, 10%);
+		
+	}
+}
+
+@keyframes fadeOut,
+@-moz-keyframes fadeOut,
+@-webkit-keyframes fadeOut,
+@-o-keyframes fadeOut {
+	0% {
+		background-color: lighten(@bookioBlue, 10%);
+		
+	}
+	100% {
+		background-color: lighten(@bookioBlue, 25%);
+		
+	}
+}
+*/
+#schedule-page table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+#schedule-page .ui-block-a,
+#schedule-page .ui-block-b,
+#schedule-page .ui-block-c {
+  padding: 0.5em;
+}
+#schedule-page tr,
+#schedule-page td {
+  text-align: center;
+  border: 1px solid #f3f3f3;
+  padding: 0px 0px 0px 0px;
+}
+#schedule-page tr .selected,
+#schedule-page td .selected {
+  background-color: rgba(9, 157, 222, 0.7);
+}
+#schedule-page tr .tracking,
+#schedule-page td .tracking {
+  background-color: rgba(8, 140, 197, 0.7);
+}
+#schedule-page .label {
+  display: inline-block;
+}
+#schedule-page .icon {
+  opacity: 0.7;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  padding: 2px;
+  display: inline-block;
+  visibility: hidden;
+}
+#schedule-page tr:first-child td:first-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+#schedule-page tr:last-child td:first-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+#schedule-page .marquee {
+  background-color: green ;
+  border: 10px solid blue;
+}
+#schedule-page .selectable {
+  width: 100%;
+  height: 0.7em;
+}

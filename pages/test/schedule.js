@@ -7,7 +7,8 @@
     	'../../lib/jquery/plugins/jquery.selectable.js',
     	'../../widgets/common/radiobuttons.js',
     	'../../widgets/common/checkboxes.js',
-    	'../../widgets/imagepicker/imagepicker.js'
+    	'../../widgets/imagepicker/imagepicker.js',
+    	'css!./schedule.css'
     ];
 
 
@@ -79,57 +80,11 @@
 	            return row; 
             }
             
-            function setStep(step) {
-				var thisStep = parseInt(_elements.page.attr('step'));
-				var nextStep = step;
-				
-				var thisPage = _elements.page.find(sprintf('[step=%d]', thisStep));
-				var nextPage = _elements.page.find(sprintf('[step=%d]', nextStep));
-				
-				_elements.buttons.fadeOut(200);
-
-				var css = {};
-				
-				var blocks = _elements.header.find('.slider');
-
-				var block = $(blocks[step - 1]);
-				
-				
-				css.left = block.offset().left - _elements.header.offset().left - 1 + 'px';
-				css.top = block.offset().top - _elements.header.offset().top - 1 + 'px';
-				css.width = block.outerWidth() + 1 + 'px';
-				css.height = _elements.header.outerHeight() + 1 + 'px';
-				
-					_elements.page.attr('step', nextStep);
-				
-				console.log(css);
-				//_elements.slider.transition(css);
-
-				thisPage.fadeOut(200, function(){
-					nextPage.fadeIn(200);	
-					_elements.buttons.fadeIn(200);
-					
-				});
-	            
-            }
 
 			function initializeEvents() {
-				_elements.next.on('tap', function(event) {
-
-					var step = parseInt(_elements.page.attr('step'));
-					
-					setStep(step + 1);
-				});
 				_elements.back.on('tap', function(event) {
 
-					var step = parseInt(_elements.page.attr('step'));
-
-					setStep(step - 1);
-
-				});
-				
-				_elements.schedule.on('tap', function(event) {
-					$.mobile.pages.push("./schedule.html");
+					$.mobile.pages.pop();
 				});
 				
 			}
@@ -149,8 +104,6 @@
 					selectionThreshold: 0
 				});
 
-				_elements.meg.val(2);
-				
 				_elements.table.body.on('tap', 'tr:last-child td:first-child .icon-plus', function(){
 
 					var row = $(this).closest('tr'); 

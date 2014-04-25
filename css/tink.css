@@ -247,7 +247,7 @@ html .ui-body-a .ui-body-inherit,
 html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
 	background-color: #ffffff /*{a-body-background-color}*/;
-	border-color: #cccccc /*{a-body-border}*/;
+	border-color: #f0f0f0 /*{a-body-border}*/;
 	color: #6e6e6e /*{a-body-color}*/;
 	text-shadow: 0 /*{a-body-shadow-x}*/ 0 /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #eeeeee /*{a-body-shadow-color}*/;
 }
@@ -294,7 +294,7 @@ html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited,
 html head + body .ui-btn.ui-btn-a:visited {
 	background-color: #ffffff /*{a-bup-background-color}*/;
-	border-color: #f2f2f2 /*{a-bup-border}*/;
+	border-color: #f0f0f0 /*{a-bup-border}*/;
 	color: #6e6e6e /*{a-bup-color}*/;
 	text-shadow: 0 /*{a-bup-shadow-x}*/ 0 /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #eeeeee /*{a-bup-shadow-color}*/;
 }
@@ -304,7 +304,7 @@ html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
 html body .ui-group-theme-a .ui-btn:hover,
 html head + body .ui-btn.ui-btn-a:hover {
-	background-color: #f2f2f2 /*{a-bhover-background-color}*/;
+	background-color: #f6f6f6 /*{a-bhover-background-color}*/;
 	border-color: #f2f2f2 /*{a-bhover-border}*/;
 	color: #525252 /*{a-bhover-color}*/;
 	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0px /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ #eeeeee /*{a-bhover-shadow-color}*/;

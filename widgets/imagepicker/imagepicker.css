@@ -1,5 +1,5 @@
 [data-role="imagepicker"] {
-  border: 2px solid #b8e4f6;
+  border: 2px solid #cdcdcd;
   height: 100px;
   width: 100px;
   display: inline-block;
@@ -10,9 +10,10 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  background-image: url(./images/dropzone.png);
+  background-image: url(./images/dropzone.svg);
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 80px auto;
 }
 [data-role="imagepicker"] div.background-image-none {
   background-image: none;

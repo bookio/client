@@ -33,14 +33,9 @@
 @baseColor: fadeout(@bookioBlue, 30%);
 
 
-#test-page {
+#schedule-page {
 
-	ul li .ui-btn {
-		* {
-			cursor: inherit;
-			
-		}
-	}
+
 	
 	table {
 		
@@ -54,47 +49,6 @@
 		padding: 0.5em;
 	}	
 
-	[data-id="header"] {
-		padding: 0px;
-		position: relative;
-	}	
-	
-	[data-id="slider"] {	
-		position: absolute;
-		padding: 0px;
-		background: black;
-		opacity: 0.1;
-		height:100%;
-		top:0px;
-		width:33.333%;
-	}	
-
-	&[step="1"] {
-		[data-id="slider"] {
-			left:0%;
-			.transition(left 0.5s);
-		}	
-	}
-
-	&[step="2"] {
-		[data-id="slider"] {
-			left:33.333%;
-			.transition(left 0.5s);
-		}	
-	}
-
-	&[step="3"] {
-		[data-id="slider"] {
-			left:67%;
-			.transition(left 0.5s);
-		}	
-	}
-	
-
-
-	textarea {
-		height:6em !important;
-	}
 
 	tr, td {
 		text-align: center;
@@ -154,6 +108,6 @@
 		//outline: 1px solid green;
 		//outline-offset: -2px;
 	}
-	
+
 	
 }

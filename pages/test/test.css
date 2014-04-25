@@ -28,39 +28,8 @@
 	}
 }
 */
-#test-page li.test .container {
-  display: inline-block;
-}
-#test-page li.test .container .checkmark {
-  display: inline-block;
-  font-size: 30px;
-  text-align: center;
-  background: red;
-}
-#test-page li.test .container .text {
-  display: inline-block;
-}
-#test-page li.ui-li-has-thumb > .ui-li-thumb {
-  width: 6em;
-  height: 6em;
-  padding: 0.5em;
-  display: table;
-}
-#test-page .meg {
-  border-collapse: collapse;
-}
-#test-page .foo {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 2em !important;
-}
-#test-page .bar {
-  display: inline-block;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
+#test-page ul li .ui-btn * {
+  cursor: inherit;
 }
 #test-page table {
   width: 100%;

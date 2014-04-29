@@ -54,6 +54,10 @@ The user should be able to define the time slots in which the rental objects are
 Here is a draft/sketch of how rental periods and price lists can be handled:
 https://cacoo.com/diagrams/1YMHGARTs2lx4636-EAB88.png
 
+EDIT:
+This has been a bit more complicated than we thougth, here is a new sketch:
+https://cacoo.com/diagrams/1YMHGARTs2lx4636#D58EF
+
 ###Make a Reservation
 Both the user and the customer should be able to make a reservation. The user through the Desktop and the customer through the Mobile interface. To make a reservation as a customer no registration should be required. A customer database should be built in the background, adding more data about the customer when new data gets known (https://cacoo.com/diagrams/1YMHGARTs2lx4636#E07C1).  
 

@@ -4,6 +4,7 @@ This documentation covers the client side of Bookio which is completely written 
 
 To get a quick understanding of how the client software works from a user perspective, check out <a href="https://github.com/bookio/client/wiki/Introduction-to-the-client-from-a-user-perspective">this wiki-page</a>.  
 To see how the service is going to be presented to the customer, <a href="https://joakimbson.wix.com/bookio">see this mockup</a>.
+To see the background and idea behind the project, <a href="www.bookio.com">see this web-page.
 
 <h3>Project Goal</h3>
 Build a cloud based reservation system with the following goals:

@@ -3,43 +3,54 @@
   table-layout: fixed;
   border-collapse: collapse;
 }
-[data-role="scheduleweek"] .ui-block-a,
-[data-role="scheduleweek"] .ui-block-b,
-[data-role="scheduleweek"] .ui-block-c {
-  padding: 0.5em;
-}
-[data-role="scheduleweek"] tr,
-[data-role="scheduleweek"] td {
+[data-role="scheduleweek"] table tr,
+[data-role="scheduleweek"] table td {
   text-align: center;
   border: 1px solid #f3f3f3;
   padding: 0px 0px 0px 0px;
 }
-[data-role="scheduleweek"] tr .selected,
-[data-role="scheduleweek"] td .selected {
+[data-role="scheduleweek"] table tbody tr:first-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+[data-role="scheduleweek"] table tbody tr:last-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+[data-role="scheduleweek"] table tbody td .selected {
   background-color: rgba(9, 157, 222, 0.7);
 }
-[data-role="scheduleweek"] tr .tracking,
-[data-role="scheduleweek"] td .tracking {
+[data-role="scheduleweek"] table tbody td .tracking {
   background-color: rgba(8, 140, 197, 0.7);
   border-color: rgba(8, 140, 197, 0.7);
 }
-[data-role="scheduleweek"] .label {
-  display: inline-block;
-}
-[data-role="scheduleweek"] .icon {
-  font-size: 30px;
-  padding: 2em;
-  display: inline-block;
-  color: #61bc46;
-}
-[data-role="scheduleweek"] tr:first-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-[data-role="scheduleweek"] tr:last-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-[data-role="scheduleweek"] .selectable {
+[data-role="scheduleweek"] table tbody td .selectable {
   width: 100%;
+  height: 0.8em;
+}
+[data-role="scheduleweek"] table tbody th {
+  text-align: center;
+  position: relative;
+}
+[data-role="scheduleweek"] table tbody th .label {
+  width: 100%;
+}
+[data-role="scheduleweek"] table tbody th .icon {
+  position: absolute;
+  font-size: 150%;
+  color: #61bc46;
+  padding: 0.1em;
+  visibility: hidden;
+}
+[data-role="scheduleweek"] table tbody th .icon-chevron-up {
+  top: 0px;
+  bottom: auto;
+  right: 0px;
+  left: auto;
+}
+[data-role="scheduleweek"] table tbody th .icon-chevron-down {
+  bottom: 0px;
+  top: auto;
+  right: 0px;
+  left: auto;
 }

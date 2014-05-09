@@ -33,49 +33,87 @@
 	            return row;
             }
 
-            function createRow(items) {
+            function createRow(time) {
 	            
-				var row = $('<tr class="ui-mini"></tr>');
-	            
-	            for (var index in items) {
-	            	var item = items[index];
-		            var cell = $('<td></td>');
-		            
-		            if (item.text != undefined)
-		            	cell.text(item.text);
-		            	
-		            if (item.class != undefined)
-		            	cell.addClass(item.class);
+				var row = $('<tr></tr>');
 
-					if (item.click != undefined)
-			            cell.on('tap', item.click);
+				var template = 
+					'<th class="row-header">'+
+						'<div class="label"></div>'+
+						'<div class="icon icon-chevron-up"></div>'+
+						'<div class="icon icon-chevron-down"></div>'+
+					'</th>';
+				
 
-					if (item.content != undefined)
-			            cell.append(item.content);
+				row.append($(template));
+				row.find('.label').text(sprintf('%02d:%02d', time.getHours(), time.getMinutes()));
+				
+				for (var index = 0; index < 7; index++) {
+					var template = 
+						'<td class="cell">'+
+							'<div class="selectable"></div>'+
+							'<div class="selectable"></div>'+
+							'<div class="selectable"></div>'+
+							'<div class="selectable"></div>'+
+						'</td>';
+					row.append($(template));
+				}	      
+				
+				row.val(time);      
 
-					if (item.data != undefined)
-			            cell.data('data', item.data);
-					
-		            row.append(cell);
-		            
-	            }
-	            
 	            return row; 
             }
             
-	
+            function enableEvents() {
+			
+				_elements.tbody.on('tap', 'tr:first-child .icon-chevron-up', function(){
+					var row = $(this).closest('tr'); 
+					var time = row.val();
+
+					if (time.getHours() > 0)
+						_elements.tbody.prepend(createRow(time.addHours(-1)));
+				});
+
+				_elements.tbody.on('tap', 'tr:last-child .icon-chevron-down', function(){
+					var row = $(this).closest('tr'); 
+					var time = row.val();
+
+					if (time.getHours() < 23)
+						_elements.tbody.append(createRow(time.addHours(1)));
+				});
+
+				_elements.tbody.on('tap', 'tr:first-child .icon-chevron-down, tr:last-child .icon-chevron-up', function(){
+					var row = $(this).closest('tr');
+					
+					if (_elements.tbody.find('tr').length > 2) 
+						row.remove();
+				});
+
+
+            }
 	
 	        function init() {
 	
 				_elements.container.addClass('');
 				
 	            //_elements.container.append($(template));
-				_elements.table = $('<table></table>').appendTo(_elements.container);
+				_elements.table = $('<table class="ui-mini"></table>').appendTo(_elements.container);
 				_elements.thead = $('<thead></thead>').appendTo(_elements.table);
 				_elements.tbody = $('<tbody></tbody>').appendTo(_elements.table);
 
 				
-				//createHeader(['', 'MÅ', 'TI', 'ON', 'TO', 'FR', 'LÖ', 'SÖ']));
+				_elements.thead.append(createHeader(['', 'MÅ', 'TI', 'ON', 'TO', 'FR', 'LÖ', 'SÖ']));
+				
+				var time = new Date();
+				
+				time.clearTime();
+				time = time.addHours(8);
+				
+                for (var i = 0; i < 8; i++, time = time.addHours(1)) {
+                	var row = createRow(time);
+					_elements.tbody.append(row);
+				}
+				
 				
 				_elements.container.hookup(_elements, 'data-id');
 	            
@@ -83,7 +121,11 @@
 					_elements.container.addClass('ui-mini');
 				}	            
 
-				_elements.container.selectable();
+				_elements.container.selectable({
+					
+				});
+
+				enableEvents();
 	        };
 	
 	        init();

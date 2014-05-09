@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<path id="video-camera-5-icon" d="M462,204.43l-113,68.5v61l113,68.5V204.43z M281.084,204.43H87.916
+	C66.976,204.43,50,221.405,50,242.346v122.168c0,20.94,16.976,37.916,37.916,37.916h193.168c20.94,0,37.916-16.976,37.916-37.916
+	V242.346C319,221.405,302.024,204.43,281.084,204.43z M270.333,283.097H98.667v-27.333h171.666V283.097z M247.417,162.93h-58.432
+	c-7.933,0-15.369,3.859-19.936,10.346l-4.509,6.404H103.25l30.68-48.08c5.832-9.139,15.924-14.67,26.765-14.67h86.722V162.93z
+	 M323.994,109.57h-56.224v60.721h56.224c16.768,0,30.36-13.594,30.36-30.36C354.354,123.163,340.762,109.57,323.994,109.57z"/>
+</svg>

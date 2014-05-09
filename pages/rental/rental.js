@@ -36,16 +36,7 @@
 						_rental.category_id = null;
 				}
 
-				if (_rental.icon_id) {
-					var icon = _iconsByID[_rental.icon_id];
-
-					if (icon)
-						_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', icon.image));
-				}
-				else {
-					// Default 'generic square box' symbol
-					_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', '0000.png'));
-				}
+				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 			}
 
 			function chill() {
@@ -220,7 +211,7 @@
 					symbolpicker.on("symbolselected", function(event, icon) {
 						popup.popup('close');
 						_rental.icon_id = icon.id;
-						_elements.icon.image.attr('src', sprintf('../../images/symbols/%s', _iconsByID[_rental.icon_id].image));
+						_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental.icon_id));
 					});
 
 					popup.popup('open');

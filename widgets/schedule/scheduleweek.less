@@ -1,80 +1,83 @@
 @import "../../css/bookio.less";
-
-
 @baseColor: fadeout(@bookioBlue, 30%);
-
+ 
 [data-role="scheduleweek"] {
+    table {
+        width:100%;
+        table-layout: fixed;
+        border-collapse:collapse;
 
+	    tr, td {
+	        text-align: center;
+	        border: 1px solid @xxxx-lightGrayColor;
+	        padding: 0px 0px 0px 0px;
 
-	
-	table {
+	    }
 		
-		width:100%;		
-		table-layout: fixed;
-		border-collapse:collapse;
-//		border-color: green;
-	}
-	.ui-block-a, .ui-block-b, .ui-block-c {
-		//height:6em;
-		padding: 0.5em;
-	}	
+		tbody {
 
+			tr {
+			    &:first-child .icon {
+		            visibility:visible;
+		            cursor: pointer;
+			    }
+				
+				&:last-child .icon {
+		            visibility:visible;
+		            cursor: pointer;
+				}
+			}		
 
-	tr, td {
-		text-align: center;
-		border: 1px solid @xxxx-lightGrayColor;
-		padding: 0px 0px 0px 0px;
-		.selected {
-			background-color: @baseColor;
-		}
-		.tracking {
-			background-color: darken(@baseColor, 5%);
-			border-color: darken(@baseColor, 5%);
+			td {
+		        .selected {
+		            background-color: @baseColor;
+		        }
+		        .tracking {
+		            background-color: darken(@baseColor, 5%);
+		            border-color: darken(@baseColor, 5%);
+		        }
+				.selectable {
+				    width:100%;
+					height:0.8em;
+				}
+							
+			}			
+		
+		    th {
+		        text-align: center;
+		        position: relative;
+		        
+		        .label {
+					width:100%;
+		        }
+		        .icon {
+		            position: absolute;
+		            font-size: 150%;
+		            color: @bookioGreen;
+		            padding: 0.1em;
+					visibility:hidden;
+		        }
+		        .icon-chevron-up {
+		            top:0px;
+		            bottom: auto;
+		            right:0px;
+		            left:auto;
+		        }
+		        .icon-chevron-down {
+		            bottom:0px;
+		            top:auto;
+		            right:0px;
+		            left:auto;
+		        }
+		    }
+		
 			
 		}
 
-	}
-	
-	.label {
-		display: inline-block;
-	}
-	.icon {
-	//	opacity: 0.7;
-//		width:3em;
-//		height:3em;
-		font-size:30px;
-		padding: 2em;
-		display: inline-block;
-		//visibility: hidden;
-		color: @bookioGreen;
-	}
-	
-	tr:first-child {
-		td:first-child {
-			.icon {
-				visibility:visible;
-				cursor: pointer;
-			}
-		}
-		
-	}
-	tr:last-child {
-		td:first-child {
-			.icon {
-				visibility:visible;
-				cursor: pointer;
-			}
-			
-		}
-		
-	}
 
-	.selectable {
-		width:100%;
-		//height:0.7em;
-		//outline: 1px solid green;
-		//outline-offset: -2px;
-	}
+    }
 
-	
+
+
+
 }

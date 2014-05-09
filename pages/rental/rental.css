@@ -1,13 +1,14 @@
 #rental-page [data-id="description"] {
   height: 6em !important;
 }
-#rental-page [role="application"] {
-  margin: 0px;
-  margin-top: 4px;
+#rental-page [data-id="icon.image"] {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
 }
-#rental-page [data-role="content"] [data-id="category.container"] [data-id="category.button"] span {
+#rental-page [data-id="category.container"] [data-id="category.button"] span {
   text-align: left;
 }
-#rental-page [data-id="popup"] [data-role=listview] {
+#rental-page [data-id="popup"] [data-role="listview"] {
   min-width: 300px;
 }

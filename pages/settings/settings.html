@@ -1,6 +1,7 @@
 <div id="settings-page" data-role="page" data-dom-cache="false">
 
     <div data-role="content">
+        
         <div data-role="pagelogo">
         </div>
 
@@ -55,19 +56,31 @@
             <li>
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
-                        <input data-id="url" type="text" onClick="this.select();" readonly>
-                        <p data-i18n="settings-url-help">
+                        <input data-id="url" type="text" onClick="this.select();" style="vertical-align:middle" readonly>
+<!--                        <p data-i18n="settings-url-help">
                             Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy. To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
-                        </p>
+                        </p>-->
                     </div>
                     <div class="ui-block-b">
                         <div data-id="qrcontainer">
                             <div data-id="qrcanvas"></div>
                         </div>
+                 <!--       <p data-i18n="settings-url-help-qr">
+                            Copy the QR-code above and use in your promotional material.
+                        </p>-->
+                    </div>
+
+                    <div class="ui-block-a">
+                        <p data-i18n="settings-url-help">
+                            Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy. To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
+                        </p>
+                    </div>
+                    <div class="ui-block-b">
                         <p data-i18n="settings-url-help-qr">
                             Copy the QR-code above and use in your promotional material.
                         </p>
                     </div>
+
                 </div>
 
 

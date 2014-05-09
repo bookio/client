@@ -117,7 +117,7 @@
 				var slider = {};
 				_elements.slider.invoke('get', slider);
 
-				var selectionStartDate = _startDate.clone(); //_picker.startDate().clone();
+				var selectionStartDate = _startDate.clone();
 				var selectionEndDate = selectionStartDate.addDays(slider.length);
 
 				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
@@ -134,7 +134,7 @@
 				var slider = {};
 				_elements.slider.invoke('get', slider);
 
-				var selectionEndDate = _endDate.addDays(1); //_picker.endDate().addDays(1);
+				var selectionEndDate = _endDate.addDays(1);
 				var selectionStartDate = selectionEndDate.addDays(-1 * slider.length);
 
 				var rangeStartDate = selectionStartDate.addDays(-1 * slider.position);
@@ -163,6 +163,15 @@
 				_elements.slider.timeslider();
 				_elements.scale.timescale();
   
+  
+				// MENU
+				// Settings
+				_elements.settings.on('tap', function() {
+					$.mobile.pages.push('../settings/settings.html', {
+						transition: 'fade'
+					});
+				});
+				// Edit Mode
 				_elements.editmode.on('tap', function() {
 					var options = {};
 					_elements.desktop.invoke('get', options);
@@ -172,21 +181,14 @@
 	
 					_elements.popup.content.popup('close');
 				});
-
-
+				// Log Out
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
-
 					$.mobile.pages.go('../login/login.html', {
 						transition: 'fade'
 					});
 				});
-
-				_elements.settings.on('tap', function() {
-					$.mobile.pages.push('../settings/settings.html', {
-						transition: 'fade'
-					});
-				});
+				
 				
 				_elements.dateinput.on('tap', function(event) {
 					var caretPos = _elements.dateinput.textrange('get', 'position');

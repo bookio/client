@@ -21,7 +21,7 @@
                         <h2 style="display:inline-block">
                         	Resurs
                         </h2>
-                        <p>Grundläggande information och tillgänglighet</p>
+                        <p>Grundläggande information och tillgänglighet.</p>
                     </div>
                     <div class="ui-block-b slider">
                         <h1 style="display:inline-block">
@@ -30,7 +30,7 @@
                         <h2 style="display:inline-block">
                         	Typ av reservation
                         </h2>
-                        <p>Beskrivningar, "time slots" och prisuppgifter</p>
+                        <p>Pris och beskrivning på erbjudanden resursen har.</p>
                     </div>
                     <div class="ui-block-c slider">
                         <h1 style="display:inline-block">
@@ -39,7 +39,7 @@
                         <h2 style="display:inline-block">
                         	Gruppering
                         </h2>
-                        <p>Gruppera resurser under samma namn</p>
+                        <p>Samla resurser under ett gemensamt namn.</p>
                     </div>
                 </div>
 
@@ -71,14 +71,14 @@
                             Tillgänglig
                         </label>
                         <div data-id="meg" data-role="radiobuttons" data-mini="true">
-                            <option>Alltid</option>
+                            <option selected="on">Alltid</option>
                             <option>
                             	<a href="schedule">
                             	Enligt schema
                             	</a>
                             </option>
-                            <option>Enstaka tillfällen</option>
-                            <option>Ur bruk</option>
+                            <option>Vissa datum</option>
+                            <option>Ej tillgänglig</option>
                         </div>
                     </div>
                 </li>
@@ -88,7 +88,7 @@
                         <label>Symbol</label>
                         <a data-id="symbol.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
                             <div>
-	                            <img data-id="symbol.image" src="../../images/symbols/0001.png" />
+	                            <img data-id="symbol.image" src="../../images/symbols/0000.png" />
                             </div>
                         </a>
                         
@@ -107,7 +107,7 @@
 
                 <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
                     <h1>
-						Reservationsyp
+						Reservationstyper
 					</h1>
                 </li>
 
@@ -115,7 +115,7 @@
 				<li >
 						<a class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left"> 
 					    	<h1>Veckovis</h1>
-					    	<div class="ui-mini">1 vecka, 1/6-31/8 (8900 SEK), 1/9-31/12 (6000SEK)</div>
+					    	<div class="ui-mini">1 vecka, 1/6-31/8 (8 900 SEK), 1/9-31/12 (6 000SEK)</div>
 					    </a>
 				</li>
 				<li >
@@ -126,7 +126,7 @@
 				</li>
 
                 <li>
-                    <a data-id="product.add" href="#">Skapa en ny</a>
+                    <a data-id="product.add" href="#">Skapa ny</a>
                 </li>
 
 
@@ -165,17 +165,17 @@
 
                 <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
                     <h1>
-						Reservationstyper
+						Grupper
 					</h1>
                 </li>
 
                 <li>
                     <label>
-                        Tillgänglig
+                        Kunden får 
                     </label>
                     <div data-role="radiobuttons" data-mini="true">
-                        <option>Endast en slot kan bokas</option>
-                        <option>Flera slots kan bokas samtidigt</option>
+                        <option>själv välja resurs ur gruppen</option>
+                        <option selected="on">en ledig resurs från gruppen automatiskt</option>
                     </div>
                 </li>
 
@@ -185,7 +185,7 @@
 
 
         <div data-role="button-row" data-id="buttons">
-            <button data-id="back" data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Föregående</button>
+            <button data-id="back" data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="carat-l">Tillbaka</button>
             <button data-id="next" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="carat-r" data-iconpos="right">Nästa</button>
         </div>
 

@@ -33,7 +33,7 @@
 
 					label.addClass(horizontal ? '' : 'ui-btn-icon-left');
 					label.addClass(value == option.attr('value') ? 'ui-checkbox-on': 'ui-checkbox-off');
-					label.text($(this).text());
+					label.html($(this).html());
 
 					if (index == 0)
 						label.addClass('ui-first-child');
@@ -44,18 +44,40 @@
 					button.on('tap', function() {
 						var buttons = _element.find('label');
 
+						if (label.hasClass('ui-checkbox-on'))
+							label.removeClass('ui-checkbox-on').addClass('ui-checkbox-off');
+						else if (label.hasClass('ui-checkbox-off'))
+							label.removeClass('ui-checkbox-off').addClass('ui-checkbox-on');
+						else
+							label.addClass('ui-checkbox-on');
+						
+						/*
 						buttons.removeClass('ui-checkbox-on'); 
 						buttons.removeClass('ui-btn-active'); 
 						buttons.addClass('ui-checkbox-off');
 						 
 						label.addClass('ui-checkbox-on').removeClass('ui-checkbox-off');
-						
+
+						*/
 						if (horizontal)
 							label.addClass('ui-btn-active');
 						
 						_element.val(option.attr('value'));
 						_element.trigger('change');
 					});
+					
+					label.find('a').each(function(index) {
+						var link = $(this);
+						var href = link.attr('href');
+						
+						if ($.isString(href)) {
+							link.attr('href', '');
+
+							link.on('tap', function(event) {
+								_element.trigger(href);
+							});						
+						}
+					});					
 					
 					button.append(label);
 					buttons.append(button);

@@ -1528,7 +1528,7 @@ div.ui-mobile-viewport {
 	white-space: nowrap !important;
 }
 .ui-mini {
-	font-size: 12.5px;
+	font-size: 12.5px !important;
 }
 .ui-mini .ui-btn {
 	font-size: inherit;

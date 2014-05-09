@@ -91,9 +91,72 @@ strong {
 	.border-radius(0px);
 }
 
-.ui-mobile-viewport, .ui-page {
-	// background: red !important;
+// !important must be used
+.ui-mini {
+	font-size: 12.5px !important;
 }
+
+.ui-btn-inline {
+	margin-right: .625/2 em !important;
+	margin-left: .625/2 em !important;
+}
+
+.ui-center {
+	text-align: center;
+}
+
+.ui-left {
+	text-align: left;
+}
+
+.ui-right {
+	text-align: right;
+}
+
+
+.ui-inline {
+	display:inline-block !important;
+	vertical-align: middle;
+	width: auto;
+	
+	// Fix the inserted div 
+	& > .ui-input-text {
+		padding-top: 0.2em;
+		padding-bottom: 0.2em;
+	}	
+
+	// Correct some margins
+	&.ui-btn {
+		padding-bottom: 0.7em;
+		padding-top:0.7em;
+		margin-top:0.3em;
+		margin-bottom:0.3em;
+	}		
+}
+
+// Used for inline labels	
+label.ui-btn.ui-inline  {
+	padding-left:0.2em;		
+	padding-right:0.2em;	
+	border:1px transparent !important;
+	cursor: default;
+	color: inherit;
+	text-align: left;
+	opacity: 0.8;
+	
+	&:hover {
+		background-color: inherit !important;
+		color: inherit !important;
+	}
+}
+
+// Make all elements inside a ui-btn have the ui-btn cursor
+ul li .ui-btn {
+	* {
+		cursor: inherit;
+	}
+}	
+
 
 // Popups have white background with a slight opacity
 [data-role="popup"] {
@@ -155,11 +218,6 @@ strong {
 			
 	    [data-role="button-row"] {
 		    text-align: center;
-
-			[data-role="button"] {
-			    //min-width: 6em;
-			}
-
 	    }
 	}    
 }

@@ -7,7 +7,9 @@
     	'../../lib/jquery/plugins/jquery.selectable.js',
     	'../../widgets/common/radiobuttons.js',
     	'../../widgets/common/checkboxes.js',
-    	'../../widgets/imagepicker/imagepicker.js'
+    	'../../widgets/imagepicker/imagepicker.js',
+    	'../../widgets/picker/picker.js',
+    	'../../widgets/symbolpicker/symbolpicker.js'
     ];
 
 
@@ -19,6 +21,7 @@
             var _elements = {};
 			var _options = {};
 			var _schedule = {};
+			var _icons = [];
 			
 			_schedule.startTime = new Date();
 			_schedule.startTime.clearTime();
@@ -29,7 +32,6 @@
 			_schedule.slots = [1, 2, 3];
             
             _element.hookup(_elements, 'data-id');
-            
             
             function fill() {
             }
@@ -128,10 +130,64 @@
 
 				});
 				
-				_elements.schedule.on('tap', function(event) {
+				_elements.product.add.on('tap', function() {
+					$.mobile.pages.push("./product.html");
+					
+				});
+				
+				_elements.meg.on('schedule', function(event) {
 					$.mobile.pages.push("./schedule.html");
 				});
 				
+				_elements.symbol.button.on('tap', function() {
+
+					function showPopup() {
+						var popup = $('<div data-role="popup"></div>').popup({
+							dismissible: true,
+							transition: "pop",
+							positionTo: _elements.symbol.button
+						});
+	
+						var options = {};
+	
+						options.symbols = _icons;
+	
+						var symbolpicker = $('<div data-role="symbolpicker"></div>').appendTo(popup).symbolpicker(options);
+	
+						popup.on("popupafterclose", function() {
+							$(this).remove();
+						});
+	
+						popup.on('popupbeforeposition', function() {
+							symbolpicker.symbolpicker('filter', '*');
+						});
+	
+						symbolpicker.on("symbolselected", function(event, icon) {
+							popup.popup('close');
+							_elements.symbol.image.attr('src', sprintf('../../images/symbols/%s', icon.image));
+						});
+	
+						popup.popup('open');						
+					}
+
+					if (_icons.length == 0) {
+						_elements.page.spin(true);
+						
+						var icons = Model.Icons.fetch();
+		
+						icons.done(function(icons) {
+							_icons = icons;
+							
+							_elements.page.spin(false);
+							showPopup();
+						});
+						
+					}
+					else {
+						showPopup();
+					}
+
+				});
 			}
 	
 			

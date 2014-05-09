@@ -46,6 +46,7 @@
             </li>
         </ul>
 
+
         <div class="step" data-id="step1" step="1">
             <ul data-role="listview" data-inset="true">
 
@@ -71,8 +72,13 @@
                         </label>
                         <div data-id="meg" data-role="radiobuttons" data-mini="true">
                             <option>Alltid</option>
-                            <option>Enligt schema</option>
+                            <option>
+                            	<a href="schedule">
+                            	Enligt schema
+                            	</a>
+                            </option>
                             <option>Enstaka tillfällen</option>
+                            <option>Ur bruk</option>
                         </div>
                     </div>
                 </li>
@@ -80,9 +86,12 @@
                 <li>
                     <div>
                         <label>Symbol</label>
-                        <div style="text-align:center">
-                            <div data-role="imagepicker" />
-                        </div>
+                        <a data-id="symbol.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
+                            <div>
+	                            <img data-id="symbol.image" src="../../images/symbols/0001.png" />
+                            </div>
+                        </a>
+                        
                     </div>
 
                 </li>
@@ -117,7 +126,7 @@
 				</li>
 
                 <li>
-                    <a data-id="schedule" href="#">Skapa en ny</a>
+                    <a data-id="product.add" href="#">Skapa en ny</a>
                 </li>
 
 

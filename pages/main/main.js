@@ -159,7 +159,7 @@
 
 			this.init = function() {
 				_element.hookup(_elements, 'data-id');
-				
+
 				_elements.slider.timeslider();
 				_elements.scale.timescale();
   

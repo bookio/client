@@ -106,7 +106,7 @@
 
 			this.init = function() {
 
-				var username = isString($.cookie('username')) ? $.cookie('username') : '';
+				var username = $.isString($.cookie('username')) ? $.cookie('username') : '';
 
 				// Logout
 				Gopher.logout();

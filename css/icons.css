@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'glyphs';
-	src:url('../fonts/glyphs/glyphs.eot?h4r1zh');
-	src:url('../fonts/glyphs/glyphs.eot?#iefixh4r1zh') format('embedded-opentype'),
-		url('../fonts/glyphs/glyphs.woff?h4r1zh') format('woff'),
-		url('../fonts/glyphs/glyphs.ttf?h4r1zh') format('truetype'),
-		url('../fonts/glyphs/glyphs.svg?h4r1zh#glyphs') format('svg');
+	src:url('../fonts/glyphs/glyphs.eot?8gvlj');
+	src:url('../fonts/glyphs/glyphs.eot?#iefix8gvlj') format('embedded-opentype'),
+		url('../fonts/glyphs/glyphs.woff?8gvlj') format('woff'),
+		url('../fonts/glyphs/glyphs.ttf?8gvlj') format('truetype'),
+		url('../fonts/glyphs/glyphs.svg?8gvlj#glyphs') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,42 +23,51 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tools:before {
+.icon-view-list:before {
 	content: "\e600";
 }
-.icon-question:before {
+.icon-view-grid:before {
 	content: "\e601";
 }
-.icon-plus:before {
+.icon-tools:before {
 	content: "\e602";
 }
-.icon-pen:before {
+.icon-question:before {
 	content: "\e603";
 }
-.icon-on-off:before {
+.icon-plus:before {
 	content: "\e604";
 }
-.icon-minus:before {
+.icon-pen:before {
 	content: "\e605";
 }
-.icon-information:before {
+.icon-on-off:before {
 	content: "\e606";
 }
-.icon-grid-view:before {
+.icon-money:before {
 	content: "\e607";
 }
-.icon-gears:before {
+.icon-minus:before {
 	content: "\e608";
 }
-.icon-gear:before {
+.icon-information:before {
 	content: "\e609";
 }
-.icon-details-view:before {
+.icon-gears:before {
 	content: "\e60a";
 }
-.icon-close:before {
+.icon-gear:before {
 	content: "\e60b";
 }
-.icon-calendar:before {
+.icon-close:before {
 	content: "\e60c";
+}
+.icon-chevron-up:before {
+	content: "\e60d";
+}
+.icon-chevron-down:before {
+	content: "\e60e";
+}
+.icon-calendar:before {
+	content: "\e60f";
 }

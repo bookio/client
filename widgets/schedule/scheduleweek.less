@@ -1,39 +1,9 @@
 @import "../../css/bookio.less";
-/*
 
-@keyframes fadeIn,
-@-moz-keyframes fadeIn,
-@-webkit-keyframes fadeIn,
-@-o-keyframes fadeIn {
-	0% {
-		background-color: red; //lighten(@bookioBlue, 25%);
-		
-	}
-	100% {
-		background-color: blue; //lighten(@bookioBlue, 10%);
-		
-	}
-}
-
-@keyframes fadeOut,
-@-moz-keyframes fadeOut,
-@-webkit-keyframes fadeOut,
-@-o-keyframes fadeOut {
-	0% {
-		background-color: lighten(@bookioBlue, 10%);
-		
-	}
-	100% {
-		background-color: lighten(@bookioBlue, 25%);
-		
-	}
-}
-*/
 
 @baseColor: fadeout(@bookioBlue, 30%);
 
-
-#schedule-page {
+[data-role="scheduleweek"] {
 
 
 	
@@ -69,13 +39,14 @@
 		display: inline-block;
 	}
 	.icon {
-		opacity: 0.7;
-		width:16px;
-		height: 16px;
-		font-size:16px;
-		padding: 2px;
+	//	opacity: 0.7;
+//		width:3em;
+//		height:3em;
+		font-size:30px;
+		padding: 2em;
 		display: inline-block;
-		visibility: hidden;
+		//visibility: hidden;
+		color: @bookioGreen;
 	}
 	
 	tr:first-child {
@@ -100,7 +71,7 @@
 
 	.selectable {
 		width:100%;
-		height:0.7em;
+		//height:0.7em;
 		//outline: 1px solid green;
 		//outline-offset: -2px;
 	}

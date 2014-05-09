@@ -128,9 +128,11 @@
 	
 			$.widget("mobile.timescale", $.mobile.widget, widget);
 	
+			/*
 			$(document).bind("pagecreate", function(event) {
-				//$(":jqmData(role=timescale)", event.target).timescale();
+				$(":jqmData(role=timescale)", event.target).timescale();
 			});
+			*/
 		}
 
 		defineWidget();

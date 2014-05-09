@@ -1,0 +1,45 @@
+[data-role="scheduleweek"] table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+[data-role="scheduleweek"] .ui-block-a,
+[data-role="scheduleweek"] .ui-block-b,
+[data-role="scheduleweek"] .ui-block-c {
+  padding: 0.5em;
+}
+[data-role="scheduleweek"] tr,
+[data-role="scheduleweek"] td {
+  text-align: center;
+  border: 1px solid #f3f3f3;
+  padding: 0px 0px 0px 0px;
+}
+[data-role="scheduleweek"] tr .selected,
+[data-role="scheduleweek"] td .selected {
+  background-color: rgba(9, 157, 222, 0.7);
+}
+[data-role="scheduleweek"] tr .tracking,
+[data-role="scheduleweek"] td .tracking {
+  background-color: rgba(8, 140, 197, 0.7);
+  border-color: rgba(8, 140, 197, 0.7);
+}
+[data-role="scheduleweek"] .label {
+  display: inline-block;
+}
+[data-role="scheduleweek"] .icon {
+  font-size: 30px;
+  padding: 2em;
+  display: inline-block;
+  color: #61bc46;
+}
+[data-role="scheduleweek"] tr:first-child td:first-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+[data-role="scheduleweek"] tr:last-child td:first-child .icon {
+  visibility: visible;
+  cursor: pointer;
+}
+[data-role="scheduleweek"] .selectable {
+  width: 100%;
+}

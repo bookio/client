@@ -8,6 +8,7 @@
     	'../../widgets/common/radiobuttons.js',
     	'../../widgets/common/checkboxes.js',
     	'../../widgets/imagepicker/imagepicker.js',
+    	'../../widgets/schedule/scheduleweek.js',
     	'css!./schedule.css'
     ];
 
@@ -52,7 +53,7 @@
 
             function createRow(items) {
 	            
-				var row = $('<tr></tr>');
+				var row = $('<tr class="ui-mini"></tr>');
 	            
 	            for (var index in items) {
 	            	var item = items[index];
@@ -98,10 +99,10 @@
             	addHeader(['', 'MÅ','TI','ON','TO','FR','LÖ','SÖ']);
 
 				
-				_elements.table.body.selectable({
-					showMarquee: false,
-					autoselect: true,
-					selectionThreshold: 0
+				_elements.table.container.selectable({
+//					showMarquee: true,
+//					autoselect: false,
+//					selectionThreshold: 0
 				});
 
 				_elements.table.body.on('tap', 'tr:last-child td:first-child .icon-plus', function(){

@@ -11,7 +11,7 @@
 
 	Gopher.user = null;
 	Gopher.client = null;
-	Gopher.sessionID = isString($.cookie('sid')) ? $.cookie('sid') : '';
+	Gopher.sessionID = $.isString($.cookie('sid')) ? $.cookie('sid') : '';
 
 	var loginComplete = function(data) {
 		Gopher.client = data.client;

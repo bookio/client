@@ -23607,6 +23607,11 @@ $.widget( "ui.tabs", {
 	
 	    return true;
 	}
+	
+	$.isString = function(obj) {
+    	return Object.prototype.toString.call(obj) == '[object String]';
+	}
+	
 })(jQuery);/*!
  * jQuery Cookie Plugin v1.3
  * https://github.com/carhartl/jquery-cookie
@@ -27572,6 +27577,9 @@ $.widget( "ui.tabs", {
 				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
 				page.element.appendTo($.mobile.pageContainer);
 				page.params = (options != undefined && options.params != undefined) ? options.params : {};
+				
+				// Initialize the page (this will create the widgets)
+				//page.element.trigger('create');
 				
 				// Execute the page script
 				var module = new script(page);
@@ -39286,7 +39294,7 @@ sha1 = function(msg) {
 
 	Gopher.user = null;
 	Gopher.client = null;
-	Gopher.sessionID = isString($.cookie('sid')) ? $.cookie('sid') : '';
+	Gopher.sessionID = $.isString($.cookie('sid')) ? $.cookie('sid') : '';
 
 	var loginComplete = function(data) {
 		Gopher.client = data.client;

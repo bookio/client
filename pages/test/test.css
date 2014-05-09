@@ -28,6 +28,9 @@
 	}
 }
 */
+#test-page [data-role="button-row"] .ui-btn {
+  min-width: 10em;
+}
 #test-page ul li .ui-btn * {
   cursor: inherit;
 }

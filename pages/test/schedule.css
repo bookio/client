@@ -51,6 +51,7 @@
 #schedule-page tr .tracking,
 #schedule-page td .tracking {
   background-color: rgba(8, 140, 197, 0.7);
+  border-color: rgba(8, 140, 197, 0.7);
 }
 #schedule-page .label {
   display: inline-block;
@@ -71,10 +72,6 @@
 #schedule-page tr:last-child td:first-child .icon {
   visibility: visible;
   cursor: pointer;
-}
-#schedule-page .marquee {
-  background-color: green ;
-  border: 10px solid blue;
 }
 #schedule-page .selectable {
   width: 100%;

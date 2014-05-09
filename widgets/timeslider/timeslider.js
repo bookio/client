@@ -268,9 +268,11 @@
 	
 			$.widget("mobile.timeslider", $.mobile.widget, widget);
 	
+			/*
 			$(document).bind("pagecreate create", function(e) {
-				//$(":jqmData(role=timeslider)", e.target).timeslider();
+				$(":jqmData(role=timeslider)", e.target).timeslider();
 			});
+			*/
 	
 			
 		})();

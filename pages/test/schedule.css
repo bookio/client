@@ -28,51 +28,14 @@
 	}
 }
 */
-#schedule-page .foo table {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
+#schedule-page h2 {
+  background: #e6e6e6;
+  opacity: 0.5;
+  padding: 0.3em;
 }
-#schedule-page .foo .ui-block-a,
-#schedule-page .foo .ui-block-b,
-#schedule-page .foo .ui-block-c {
-  padding: 0.5em;
+#schedule-page [data-id="buttons.container"] [data-theme] {
+  width: 7em;
 }
-#schedule-page .foo tr,
-#schedule-page .foo td {
+#schedule-page ui-center {
   text-align: center;
-  border: 1px solid #f3f3f3;
-  padding: 0px 0px 0px 0px;
-}
-#schedule-page .foo tr .selected,
-#schedule-page .foo td .selected {
-  background-color: rgba(9, 157, 222, 0.7);
-}
-#schedule-page .foo tr .tracking,
-#schedule-page .foo td .tracking {
-  background-color: rgba(8, 140, 197, 0.7);
-  border-color: rgba(8, 140, 197, 0.7);
-}
-#schedule-page .foo .label {
-  display: inline-block;
-}
-#schedule-page .foo .icon {
-  opacity: 0.7;
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-  padding: 2px;
-  display: inline-block;
-  visibility: hidden;
-}
-#schedule-page .foo tr:first-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-#schedule-page .foo tr:last-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-#schedule-page .foo .selectable {
-  width: 100%;
 }

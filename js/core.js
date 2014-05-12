@@ -23611,6 +23611,32 @@ $.widget( "ui.tabs", {
 	$.isString = function(obj) {
     	return Object.prototype.toString.call(obj) == '[object String]';
 	}
+
+
+	$.fn.removeClassMatching = function(match) {
+	    return this.each(function () {
+	
+			$(this).removeClass (function (index, css) {
+				var classNames = css.split(' ');
+				var removeables = [];
+				
+				$.each(classNames, function(index, className) {
+					if (className.match(match)) {
+						removeables.push(className);	
+						
+					}
+				});
+				
+				return removeables.join(' ');			
+			});									
+
+	
+	    });
+
+	}
+	
+	
+	
 	
 })(jQuery);/*!
  * jQuery Cookie Plugin v1.3

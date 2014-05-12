@@ -79,7 +79,6 @@
  
 
 				_element.on('tap', function(event) {
-
 	                var options = _element.find('option');
 		                
 	                var popup = $('<div data-role="popup" data-theme="a" data-transition="pop" data-dismissible="true" class="picker ui-controlgroup ui-controlgroup-vertical"></div>').popup({
@@ -98,6 +97,7 @@
 					}	            
 					
 	                options.each(function(index) {
+
 	                	var option = $(this);
 	                	var checkbox = $('<div class="ui-checkbox"></div>').appendTo(checkboxes);
 	                	var label = $('<label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left"></label>').appendTo(checkbox);

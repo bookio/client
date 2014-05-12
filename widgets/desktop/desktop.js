@@ -381,18 +381,16 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 			});
 
 
-			widget.element.selectable({
-				selectables: '.item',
-				selectionMode: 'single'
+			_element.on('selection-end', function(index, selection) {
+				_element.find('.item').removeClass('selected');
+				selection.addClass('selected');
 			});
 			
-			widget.element.on('selection-end', function(){
-				/*widget.element.selectable({
-					selectables: '.item',
-					selectionMode: 'paint'
-				});*/
+			_element.selectable({
+				selectables: '.item',
+				selectionThreshold: 0.3
 			});
-
+			
 
 			enableEscKey();
 

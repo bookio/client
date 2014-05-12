@@ -51,10 +51,10 @@
 				for (var index = 0; index < 7; index++) {
 					var template = 
 						'<td class="cell">'+
-							'<div class="selectable"></div>'+
-							'<div class="selectable"></div>'+
-							'<div class="selectable"></div>'+
-							'<div class="selectable"></div>'+
+							'<div></div>'+
+							'<div></div>'+
+							'<div></div>'+
+							'<div></div>'+
 						'</td>';
 					row.append($(template));
 				}	      
@@ -95,9 +95,13 @@
 	        function init() {
 	
 				_elements.container.addClass('');
+
+				if (_elements.container.attr('data-mini') == "true") {
+					_elements.container.addClass('ui-mini');
+				}	            
 				
 	            //_elements.container.append($(template));
-				_elements.table = $('<table class="ui-mini"></table>').appendTo(_elements.container);
+				_elements.table = $('<table></table>').appendTo(_elements.container);
 				_elements.thead = $('<thead></thead>').appendTo(_elements.table);
 				_elements.tbody = $('<tbody></tbody>').appendTo(_elements.table);
 
@@ -109,22 +113,13 @@
 				time.clearTime();
 				time = time.addHours(8);
 				
-                for (var i = 0; i < 8; i++, time = time.addHours(1)) {
-                	var row = createRow(time);
-					_elements.tbody.append(row);
+                for (var i = 0; i < 10; i++, time = time.addHours(1)) {
+					_elements.tbody.append(createRow(time));
 				}
 				
 				
 				_elements.container.hookup(_elements, 'data-id');
 	            
-				if (_elements.container.attr('data-mini') == "true") {
-					_elements.container.addClass('ui-mini');
-				}	            
-
-				_elements.container.selectable({
-					
-				});
-
 				enableEvents();
 	        };
 	

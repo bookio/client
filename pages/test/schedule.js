@@ -65,7 +65,7 @@
 	            
             }
 
-			function initializeEvents() {
+			function init() {
 				_elements.back.on('tap', function(event) {
 
 					$.mobile.pages.pop();
@@ -75,13 +75,13 @@
 					selectTheme($(this).attr('data-theme')); 
 				});
 				
-				_elements.popup.button.on('tap', function(event) {
+				_elements.buttons.add.on('tap', function(event) {
 					_elements.popup.content.popup('close');
 					
-					addButton(_elements.popup.price.val());
+					addButton(_elements.price.val() + ' ' + _elements.currency.val());
 				});
 				
-				
+				/*
 				_elements.buttons.add.on('tap', function(event) {
 					var options = {
 						dismissible: true,
@@ -93,7 +93,11 @@
 					_elements.popup.content.popup('open');
 					
 				});
-
+				*/
+				
+				_elements.currency.on('change', function() {
+					_elements.price.attr('placeholder', _elements.currency.val());
+				});
 				
 				_elements.schedule.on('selection-end', function(event, selection) {
 
@@ -110,31 +114,25 @@
 
 					
 				});
+
+				_element.on("pageinit", function(event) {
+					_elements.currency.trigger('change');
+
+					_elements.schedule.selectable({
+						showMarquee: true,
+						marqueeOpacity: 0.1,
+						selectionThreshold: 0,
+						selectables: 'table tbody td div'
+						
+					});
+
+				});				
+
+
 			}
 	
-			
-            this.init = function() {
-
-
-				initializeEvents();
-
-				//selectTheme('b'); 
-				
-
-				_elements.schedule.selectable({
-					showMarquee: true,
-					marqueeOpacity: 0.1,
-					selectionThreshold: 0,
-					selectables: 'table tbody td div'
-					
-				});
-
-          
-				
-            }     
-
+			init();
         }
-
         
         return Module;
     

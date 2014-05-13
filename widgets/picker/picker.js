@@ -13,7 +13,6 @@
 	        var _element = widget.element;
 			var _elements = {};
 
-	
 			self.refresh = function() {
 				var val = _element.val();	
 	            var options = _element.find('option');
@@ -49,7 +48,6 @@
 			}
 	
 	        function init() {
-	
 				_element.addClass('ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow');
 	            _element.append($('<span data-id="text"></span>'));
 	            
@@ -73,7 +71,7 @@
 
 					if (option.attr('selected')) {
 						_element.val(option.attr('value'));
-						_elements.text.text(option.text());						
+						_elements.text.text(option.text());		
 					}
 				});
  
@@ -141,11 +139,13 @@
 	        };
 	
 	        init();
+	        
+	        console.log("Initializing picker...");
 	
 	    };
 
-
-		function defineWidget() {
+		(function() {
+		
 			var widget = {};
 	
 			widget.options = {};
@@ -163,109 +163,14 @@
 			}
 				
 			$.widget("mobile.picker", $.mobile.widget, widget);
-	
+
 			$(document).bind("pagecreate create", function(event) {
 				$(":jqmData(role=picker)", event.target).picker();
 			});
-		}
 
-		defineWidget();
-	});
+		
+		})();
 
-
-})();
-
-
-
-
-(function() {
-
-	var dependencies = [
-		'text!./switch.html',
-		'css!./switch'
-	];
-
-	define(dependencies, function(template) {
-
-	    var Widget = function(widget) {
-
-	        var self = this;
-	        var _element = widget.element;
-			var _elements = {};
-
-			
-	        function init() {
-	
-				_element.addClass('ui-btn ui-icon-carat-d ui-btn-icon-right ui-corner-all ui-shadow');
-	            _element.append($(template));
-	            
-				_element.hookup(_elements, 'data-id');
-                
-
-				_element.on('tap', function(event) {
-
-	                var options = _element.find('option');
-		                
-	                var popup = $('<div data-role="popup" class="picker"></div>').popup({
-	                    dismissible: true,
-	                    theme: "a",
-	                    transition: "pop",
-	                    positionTo: _element
-	                });
-
-					var listview = $('<ul data-role="listview" data-inset="true"></div>').appendTo(popup);
-					
-	                popup.on("popupafterclose", function () {
-	                    $(this).remove();
-	                });
-	
-
-	                options.each(function(index) {
-		                var li = $('<li></li>');
-		                var div = $('<div></div>') 
-		                
-		                div.text($(this).text());
-
-		                li.append(div);
-		                if (index % 2)
-			                li.attr('data-theme', 'a');
-		                
-		                div.on('tap', function(){
-			                _elements.span.text($(this).text());
-			                popup.popup('close');
-		                });
-		                
-		                listview.append(li);
-	                });
-	                
-	                listview.listview();
-					popup.popup('open');
-				});
-	        };
-	
-	        init();
-	
-	    };
-
-
-		function defineWidget() {
-			var widget = {};
-	
-			widget.options = {};
-	
-			widget._create = function() {
-				this.widget = new Widget(this);
-			}
-
-	
-			$.widget("mobile.switch", $.mobile.widget, widget);
-	
-			$(document).bind("pagecreate create", function(event) {
-				$(":jqmData(role=switch)", event.target).picker();
-			});
-		}
-
-		defineWidget();
 	});
 
 

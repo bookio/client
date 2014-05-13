@@ -12,7 +12,6 @@
 	
 	        var _startDate = new Date();
 	        var _endDate = _startDate.addDays(10);
-	        var _page = widget.element.parents("[data-role='page']");
 	        var _element = widget.element;
 	        
 	        var _ticks = new RRule({
@@ -112,14 +111,14 @@
 	            
 	        }
 	
-	        init();
+	       init();
 	
 	    };
 
 
-		function defineWidget() {
+		(function() {
 			var widget = {};
-	
+
 			widget.options = {};
 	
 			widget._create = function() {
@@ -127,15 +126,12 @@
 			}
 	
 			$.widget("mobile.timescale", $.mobile.widget, widget);
-	
-			/*
-			$(document).bind("pagecreate", function(event) {
+			
+			$(document).bind("create pagecreate", function(event) {
 				$(":jqmData(role=timescale)", event.target).timescale();
 			});
-			*/
-		}
-
-		defineWidget();
+			
+		})();
 	});
 
 

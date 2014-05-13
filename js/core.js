@@ -27604,9 +27604,6 @@ $.widget( "ui.tabs", {
 				page.element.appendTo($.mobile.pageContainer);
 				page.params = (options != undefined && options.params != undefined) ? options.params : {};
 				
-				// Initialize the page (this will create the widgets)
-				//page.element.trigger('create');
-				
 				// Execute the page script
 				var module = new script(page);
 				

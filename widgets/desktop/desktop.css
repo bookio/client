@@ -391,6 +391,7 @@
 [data-role="desktop"] {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 [data-role="desktop"] .desktop {
   position: absolute;

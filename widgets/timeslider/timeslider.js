@@ -251,7 +251,7 @@
 		};
 
 
-		(function(){
+		(function() {
 			// Define the widget
 			var widget = {};
 	
@@ -268,13 +268,10 @@
 	
 			$.widget("mobile.timeslider", $.mobile.widget, widget);
 	
-			/*
+			
 			$(document).bind("pagecreate create", function(e) {
 				$(":jqmData(role=timeslider)", e.target).timeslider();
 			});
-			*/
-	
-			
 		})();
 
 	});

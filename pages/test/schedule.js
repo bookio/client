@@ -76,7 +76,6 @@
 				});
 				
 				_elements.buttons.add.on('tap', function(event) {
-					_elements.popup.content.popup('close');
 					
 					addButton(_elements.price.val() + ' ' + _elements.currency.val());
 				});

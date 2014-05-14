@@ -3120,6 +3120,13 @@ ul li .ui-btn * {
 [data-role="popup"] {
   background: rgba(255, 255, 255, 0.95);
 }
+[data-role="page"] {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+}
 [data-role="page"] [data-role="content"] {
   max-width: 800px;
   margin-left: auto;
@@ -3130,11 +3137,11 @@ ul li .ui-btn * {
   height: 100px;
   max-width: 800;
 }
-[data-role="page"] [data-role="content"] [data-role="listview"] li p {
+[data-role="page"] [data-role="content"] [data-role="listview"] li > p {
   white-space: normal;
   opacity: 0.60;
 }
-[data-role="page"] [data-role="content"] [data-role="listview"] li label:not(.ui-btn) {
+[data-role="page"] [data-role="content"] [data-role="listview"] li > label:not(.ui-btn) {
   opacity: 0.60;
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li .ui-grid-a .ui-block-a {

@@ -165,6 +165,12 @@ ul li .ui-btn {
 
 [data-role="page"] {
 
+		position: absolute;
+		left:0px;
+		top:0px;
+		right:0px;
+		bottom:0px;
+
 	[data-role="content"] {
 	
 		[data-role="logo"] {
@@ -181,11 +187,11 @@ ul li .ui-btn {
 
 
 	  	    li {
-		    	p {
+		    	& > p {
 			    	white-space: normal;
 		    	    opacity: 0.60;
 				}
-	    	    label:not(.ui-btn) {
+	    	    & > label:not(.ui-btn) {
 		    	    opacity: 0.60;
 	    	    }
 

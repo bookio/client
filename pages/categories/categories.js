@@ -32,16 +32,16 @@
 			function addItem(item) {
 				var template =
 					'<li class="category">' +
-					'<a href="">' +
-					'<img class="ui-li-thumb">' +
-					'<h2></h2>' +
-					'<p></p>' +
-					'</a>' +
+						'<a href="">' +
+							'<img class="ui-li-thumb">' +
+							'<h2></h2>' +
+							'<p></p>' +
+						'</a>' +
 					'</li>';
 
 				var row = $(template);
 
-				row.data('item', item);
+				row.data('category', item);
 
 				updateRow(row);
 
@@ -62,7 +62,7 @@
 			}
 
 			function updateRow(row) {
-				var item = row.data('item');
+				var item = row.data('category');
 				row.find('h2').text(item.name);
 				row.find('p').text(item.description);
 				row.find('img').attr('src', item.image ? item.image : '../../images/icons/bookio.png');
@@ -81,9 +81,8 @@
 				});
 
 				Model.Categories.on('updated.categories', function(category) {
-
-					_elements.listview.find('li').each(function() {
-						var item = $(this).data('item');
+					_elements.listview.find('li.category').each(function() {
+						var item = $(this).data('category');
 
 						if (item.id == category.id) {
 							updateRow($(this));
@@ -121,6 +120,7 @@
 
 
 			function loadCategories() {
+
 				var request = Model.Categories.fetch();
 
 				request.done(function(categories) {

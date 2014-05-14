@@ -33,6 +33,8 @@
 				_category.available = (_elements.available.val() == 'on') ? 1 : 0;
 			
 				_category.image = _elements.dropzone.imagepicker('getImage');
+				
+				_category.limit_from = new Date();
 			}
 
 			this.init = function() {

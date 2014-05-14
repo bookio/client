@@ -102,9 +102,9 @@
 				css.width = block.outerWidth() + 1 + 'px';
 				css.height = _elements.header.outerHeight() + 1 + 'px';
 				
-					_elements.page.attr('step', nextStep);
+				_elements.page.attr('step', nextStep);
 				
-				console.log(css);
+				//console.log(css);
 				//_elements.slider.transition(css);
 
 				thisPage.fadeOut(200, function(){

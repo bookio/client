@@ -51,11 +51,13 @@
 #test-page [data-id="slider"] {
   position: absolute;
   padding: 0px;
-  background: black;
-  opacity: 0.1;
+  background: #099dde;
   height: 100%;
   top: 0px;
   width: 33.333%;
+}
+#test-page .slider {
+  opacity: 0.99;
 }
 #test-page[step="1"] [data-id="slider"] {
   left: 0%;
@@ -64,6 +66,10 @@
   -o-transition: left 0.5s;
   transition: left 0.5s;
 }
+#test-page[step="1"] h1,
+#test-page[step="1"] p {
+  color: #fff !important;
+}
 #test-page[step="2"] [data-id="slider"] {
   left: 33.333%;
   -webkit-transition: left 0.5s;
@@ -71,12 +77,20 @@
   -o-transition: left 0.5s;
   transition: left 0.5s;
 }
+#test-page[step="2"] h1,
+#test-page[step="2"] p {
+  color: #fff !important;
+}
 #test-page[step="3"] [data-id="slider"] {
   left: 67%;
   -webkit-transition: left 0.5s;
   -moz-transition: left 0.5s;
   -o-transition: left 0.5s;
   transition: left 0.5s;
+}
+#test-page[step="3"] h1,
+#test-page[step="3"] p {
+  color: #fff !important;
 }
 #test-page textarea {
   height: 6em !important;

@@ -67,11 +67,14 @@
 	[data-id="slider"] {	
 		position: absolute;
 		padding: 0px;
-		background: black;
-		opacity: 0.1;
+		background: @bookioBlue;
 		height:100%;
 		top:0px;
 		width:33.333%;
+	}
+	
+	.slider {
+		opacity: 0.99;
 	}	
 
 	&[step="1"] {
@@ -79,6 +82,10 @@
 			left:0%;
 			.transition(left 0.5s);
 		}	
+		h1,p {
+			color: #fff !important;
+		}
+	
 	}
 
 	&[step="2"] {
@@ -86,6 +93,10 @@
 			left:33.333%;
 			.transition(left 0.5s);
 		}	
+		h1,p {
+			color: #fff !important;
+		}
+
 	}
 
 	&[step="3"] {
@@ -93,8 +104,11 @@
 			left:67%;
 			.transition(left 0.5s);
 		}	
-	}
-	
+		h1,p {
+			color: #fff !important;
+		}
+
+	}	
 
 
 	textarea {

@@ -93,9 +93,9 @@
 
 				Model.Categories.on('removed.categories', function(category) {
 
-					_elements.listview.find('li').each(function() {
+					_elements.listview.find('li.category').each(function() {
 
-						var item = $(this).data('item');
+						var item = $(this).data('category');
 
 						if (item.id == category.id) {
 							$(this).remove();

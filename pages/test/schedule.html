@@ -16,38 +16,22 @@
 					</h1>
                 </li>
 
-				<li>
-					<div class="">
-
-	                    <h2 class="">
-	                		Lägg till nytt pris
-	                	</h2>
-	                	
-						<div class="ui-inline" style="width:4em">
-	                        <input data-id="price" type="text" data-mini="true" class="ui-mini" placeholder="SEK"/>
-						</div>
-						
-
-                        <div data-role="picker" data-id="currency" class="ui-inline ui-mini" style="width:4em">
-                            <option value="SEK" selected="true">SEK</option>
-                            <option value="EUR">EUR</option>
-                            <option value="USD">USD</option>
-                        </div>
-						
-						<button data-id="buttons.add" data-role="button" data-inline="true" data-icon="plus" data-mini="true">Lägg till</button>
-					</div>
-				</li>
+                <li>
+                    <div class="">
+                    </div>
+                </li>
 
                 <li>
                     <h2>
-                		Befintliga priser
+                		Priser
                 	</h2>
                     <div data-id="buttons.container" class="ui-inline buttons">
                     </div>
+                        <button data-id="buttons.add" data-role="button" data-inline="true" data-icon="plus" data-mini="true">Lägg till</button>
                 </li>
                 <li>
                     <h2>
-                			Schema
+                		Schema
                 	</h3>
                     <div data-role="scheduleweek" data-id="schedule" data-mini="true">
                     </div>
@@ -60,6 +44,33 @@
         <div class="ui-center">
             <button data-id="back" data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Klar</button>
         </div>
+    </div>
+    
+    <div data-id="popup.container" data-role="popup">
+
+        <ul data-role="listview" data-inset="true">
+
+			<li>
+				<label class="ui-inline ui-mini ui-btn">
+					Ange pris
+				</label>
+                <div class="ui-inline" style="width:4em">
+                    <input data-id="popup.price" type="text" data-mini="true" class="ui-mini" placeholder="SEK" />
+                </div>
+			</li>
+			<li>
+                <div data-role="options" data-id="popup.currency" class="ui-mini">
+                    <option value="SEK" selected="true">SEK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </div>
+		        <div class="ui-center">
+			        <button data-id="popup.button" data-theme="a" data-i18n="back" data-role="button" data-inline="true"  data-mini="true">Lägg till</button>
+		        </div>
+			</li>
+
+        </ul>
+
     </div>
 
 

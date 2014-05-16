@@ -3139,10 +3139,10 @@ ul li .ui-btn * {
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li > p {
   white-space: normal;
-  opacity: 0.60;
+  opacity: 0.80;
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li > label:not(.ui-btn) {
-  opacity: 0.60;
+  opacity: 0.20;
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li .ui-grid-a .ui-block-a {
   padding-right: 8px;

@@ -75,12 +75,15 @@
 					selectTheme($(this).attr('data-theme')); 
 				});
 				
-				_elements.buttons.add.on('tap', function(event) {
+				
+				_elements.popup.button.on('tap', function(event) {
 					
-					addButton(_elements.price.val() + ' ' + _elements.currency.val());
+					addButton(_elements.popup.price.val() + ' ' + _elements.popup.currency.val());
+					_elements.popup.container.popup('close');
 				});
 				
-				/*
+				
+				
 				_elements.buttons.add.on('tap', function(event) {
 					var options = {
 						dismissible: true,
@@ -88,14 +91,14 @@
 						positionTo: $(this)
 					};
 
-					_elements.popup.content.popup(options);
-					_elements.popup.content.popup('open');
+					_elements.popup.container.popup(options);
+					_elements.popup.container.popup('open');
 					
 				});
-				*/
 				
-				_elements.currency.on('change', function() {
-					_elements.price.attr('placeholder', _elements.currency.val());
+				
+				_elements.popup.currency.on('change', function() {
+					_elements.popup.price.attr('placeholder', _elements.popup.currency.val());
 				});
 				
 				_elements.schedule.on('selection-end', function(event, selection) {
@@ -115,8 +118,9 @@
 				});
 
 				_element.on("pageinit", function(event) {
-					_elements.currency.trigger('change');
-
+					_elements.popup.currency.trigger('change');
+					addButton('100 SEK');
+					
 					_elements.schedule.selectable({
 						showMarquee: true,
 						marqueeOpacity: 0.1,

@@ -93,6 +93,8 @@
 				var css = {};
 				
 				var blocks = _elements.header.find('.slider');
+				
+				blocks.removeClass("selectedSlider");
 
 				var block = $(blocks[step - 1]);
 				
@@ -102,11 +104,10 @@
 				css.width = block.outerWidth() + 1 + 'px';
 				css.height = _elements.header.outerHeight() + 1 + 'px';
 				
+				block.addClass("selectedSlider");
+				
 				_elements.page.attr('step', nextStep);
 				
-				//console.log(css);
-				//_elements.slider.transition(css);
-
 				thisPage.fadeOut(200, function(){
 					nextPage.fadeIn(200);	
 					_elements.buttons.fadeIn(200);

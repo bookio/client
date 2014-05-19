@@ -63,6 +63,10 @@
 #test-page .slider p {
   white-space: normal;
 }
+#test-page .slider img {
+  display: block;
+  margin: 0 auto;
+}
 #test-page[step="1"] [data-id="slider"] {
   left: 0%;
   -webkit-transition: left 0.5s;
@@ -98,10 +102,11 @@
   /* Chrome, Safari, Opera */
 
   transform: rotate(45deg);
-  background: #099dde;
+  background: red;
   height: 60px;
   width: 60px;
   position: absolute;
+  top: 100%;
   left: 50%;
 }
 #test-page textarea {

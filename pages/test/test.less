@@ -55,7 +55,7 @@
 //		border-color: green;
 	}
 	.ui-block-a, .ui-block-b, .ui-block-c {
-		//height:6em;
+		//height:6em; 
 		padding: 0.5em;
 	}	
 
@@ -75,8 +75,14 @@
 	
 	.slider {
 		opacity: 0.99;
+		
 		h1,p {
 			white-space: normal;
+		}
+		
+		img {
+			display: block;
+			margin:0 auto;
 		}
 	}	
 
@@ -117,11 +123,13 @@
 		-ms-transform: rotate(45deg); /* IE 9 */
 		-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
 		transform: rotate(45deg);
-		background: @bookioBlue;		
+		background: red; //@bookioBlue;		
 		height:60px;
 		width:60px;
 		position:absolute;
+		top:100%;
 		left:50%;
+		//margin-top: 90%;
 	}
 
 	textarea {

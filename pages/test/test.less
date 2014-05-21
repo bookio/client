@@ -67,7 +67,10 @@
 	[data-id="slider"] {	
 		position: absolute;
 		padding: 0px;
-		background: @bookioBlue;
+		background-image:url("./images/progress-box.svg");
+		background-size: cover;
+		background-position: center top;		
+		background-repeat: no-repeat;
 		height:100%;
 		top:0px;
 		width:33.333%;
@@ -80,11 +83,17 @@
 			white-space: normal;
 		}
 		
-		img {
+		img, svg {
 			display: block;
 			margin:0 auto;
 		}
+
+		.path-svg {
+			fill: @bookioBlue;						
+		}
+
 	}	
+
 
 	&[step="1"] {
 		[data-id="slider"] {
@@ -117,21 +126,13 @@
 			white-space: normal;
 			text-shadow: none;
 		}
+
+		.path-svg {
+			fill: white;						
+		}
+
 	}
 	
-	.progressArrow {
-		-ms-transform: rotate(45deg); /* IE 9 */
-		-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
-		transform: rotate(45deg);
-		background: red; //@bookioBlue;		
-		height:60px;
-		width:60px;
-		position:absolute;
-		top:100%;
-		left:50%;
-		//margin-top: 90%;
-	}
-
 	textarea {
 		height:6em !important;
 	}

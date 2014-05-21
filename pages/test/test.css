@@ -51,7 +51,10 @@
 #test-page [data-id="slider"] {
   position: absolute;
   padding: 0px;
-  background: #099dde;
+  background-image: url("./images/progress-box.svg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   height: 100%;
   top: 0px;
   width: 33.333%;
@@ -63,9 +66,13 @@
 #test-page .slider p {
   white-space: normal;
 }
-#test-page .slider img {
+#test-page .slider img,
+#test-page .slider svg {
   display: block;
   margin: 0 auto;
+}
+#test-page .slider .path-svg {
+  fill: #099dde;
 }
 #test-page[step="1"] [data-id="slider"] {
   left: 0%;
@@ -94,20 +101,8 @@
   white-space: normal;
   text-shadow: none;
 }
-#test-page .progressArrow {
-  -ms-transform: rotate(45deg);
-  /* IE 9 */
-
-  -webkit-transform: rotate(45deg);
-  /* Chrome, Safari, Opera */
-
-  transform: rotate(45deg);
-  background: red;
-  height: 60px;
-  width: 60px;
-  position: absolute;
-  top: 100%;
-  left: 50%;
+#test-page .selectedSlider .path-svg {
+  fill: white;
 }
 #test-page textarea {
   height: 6em !important;

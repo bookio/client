@@ -247,7 +247,6 @@
 					}
 
 				}	      
-				console.log(selection);
 
 				return selection;
             }
@@ -288,8 +287,6 @@
 						else {
 							selection.removeClassMatching('ui-page-theme-*').addClass(tagClass);
 						}
-						
-						getSelection();
 					}
 				});
 				

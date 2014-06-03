@@ -98,6 +98,10 @@
 				_elements.schedule.scheduleweek();
 				_elements.schedule.scheduleweek('select', selection);
 
+				_elements.schedule.on('selection-end', function(event, selection) {
+					console.log(_elements.schedule.scheduleweek('select'));
+				});
+
 				_elements.buttons.container.on('tap', '[data-tag]', function (event) {
 					selectTag($(this).attr('data-tag')); 
 				});

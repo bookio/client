@@ -22,8 +22,6 @@
             var _element = page.element;
             var _elements = {};
 			var _options = {};
-			var _schedule = {};
-			var _activeTheme = '';
 			
             _element.hookup(_elements, 'data-id');
             
@@ -34,16 +32,15 @@
             function chill() {
             }
 
-            function selectTheme(theme) {
+            function selectTag(tag) {
 
-				var button = _elements.buttons.container.find(sprintf('.ui-btn-%s', theme));
-				var buttons = _elements.buttons.container.find('.ui-btn');
+				var button = _elements.buttons.container.find(sprintf('[data-tag="%s"]', tag));
+				var buttons = _elements.buttons.container.find('[data-tag]');
 				
 				buttons.removeClassMatching('ui-icon-*').addClass('ui-icon-none');
 				button.removeClass('ui-icon-none').addClass('ui-icon-check');
 
-				_activeTheme = theme; 
-	            
+				_elements.schedule.attr('data-tag', button.attr('data-tag'));
             }
             
             
@@ -51,17 +48,32 @@
 				var buttons = _elements.buttons.container.find('.ui-btn');
 				
 				if (buttons.length < 4) {
-	            	var theme = String.fromCharCode(98 + buttons.length)
-		            var button = $('<button class="ui-btn ui-icon-none ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all ui-mini"></button>');
-	
+
+	            	var theme  = String.fromCharCode(65 + 1 + buttons.length).toLowerCase();
+	            	var tag    = String.fromCharCode(65 + buttons.length).toUpperCase();
+		            var button = $('<div class="ui-btn ui-icon-none ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all ui-mini ui-left"></div>');
+					var input  = $('<input class="ui-inline" data-mini="true" type="text" maxlength="4" placeholder="SEK"/>').appendTo(button);
+					var label  = $('<label class="ui-mini ui-inline">SEK</label>').appendTo(button);
+
 					button.addClass('ui-btn-' + theme);
 					button.attr('data-theme', theme);
+					button.attr('data-tag', tag);
 	
-					button.text(text);
 		            button.appendTo(_elements.buttons.container);
+					button.trigger('create');
+
+					input.val(text);
+					input.focus();
+					input.textrange('set');
 		            
-		            selectTheme(theme);
+		            input.on('tap', function() {
+						input.textrange('set');			            
+		            });
+		            
+		            selectTag(tag);
 				}
+				
+				_elements.buttons.add.toggleClass('ui-state-disabled', buttons.length >= 3);
 	            
             }
 
@@ -71,64 +83,33 @@
 					$.mobile.pages.pop();
 				});
 
-				_elements.buttons.container.on('tap', '.ui-btn', function (event) {
-					selectTheme($(this).attr('data-theme')); 
+	            var selection = {
+		            'saturday': {
+			          //  'A': '8:00-15:00,  15:30-16:00',
+			            'B': '16:00-18:00'			           
+		            }
+		            /*,
+		            'monday': {
+			            'C': '8:00-12:00,13:00-17:00'
+		            }
+		            */
+	            };
+	            
+				_elements.schedule.scheduleweek();
+				_elements.schedule.scheduleweek('select', selection);
+
+				_elements.buttons.container.on('tap', '[data-tag]', function (event) {
+					selectTag($(this).attr('data-tag')); 
 				});
-				
-				
-				_elements.popup.button.on('tap', function(event) {
-					
-					addButton(_elements.popup.price.val() + ' ' + _elements.popup.currency.val());
-					_elements.popup.container.popup('close');
-				});
-				
 				
 				
 				_elements.buttons.add.on('tap', function(event) {
-					var options = {
-						dismissible: true,
-						transition: "pop",
-						positionTo: $(this)
-					};
-
-					_elements.popup.container.popup(options);
-					_elements.popup.container.popup('open');
+					addButton('100');
 					
 				});
 				
-				
-				_elements.popup.currency.on('change', function() {
-					_elements.popup.price.attr('placeholder', _elements.popup.currency.val());
-				});
-				
-				_elements.schedule.on('selection-end', function(event, selection) {
-
-					if (selection.length > 0) {
-						var first = $(selection[0]);
-						var themeClass = sprintf('ui-page-theme-%s', _activeTheme);
-
-						if (first.hasClass(themeClass))
-							selection.removeClass(themeClass);
-						else {
-							selection.removeClassMatching('ui-page-theme-*').addClass(themeClass);
-						}
-					}
-
-					
-				});
-
 				_element.on("pageinit", function(event) {
-					_elements.popup.currency.trigger('change');
-					addButton('100 SEK');
-					
-					_elements.schedule.selectable({
-						showMarquee: true,
-						marqueeOpacity: 0.1,
-						selectionThreshold: 0,
-						selectables: 'table tbody td div'
-						
-					});
-
+					addButton('100');
 				});				
 
 

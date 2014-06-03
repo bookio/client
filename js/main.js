@@ -94,15 +94,22 @@ requirejs.config({
 			var user = params['user'];
 			var sessionID = Gopher.sessionID;
 			
-			var request = Gopher.login(user, password);
-
-			request.fail(function() {
-				debugger;
-			});
-
-			request.done(function(data) {
+			if ($.isString(user)) {
+				var request = Gopher.login(user, password);
+	
+				request.fail(function() {
+					debugger;
+				});
+	
+				request.done(function(data) {
+					$.mobile.pages.go(page);
+				});
+				
+			}
+			else {
 				$.mobile.pages.go(page);
-			});
+				
+			}
 			
 		}
 		

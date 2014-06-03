@@ -35,22 +35,42 @@
 
 #schedule-page {
 
+
+	.buttons .ui-btn {
+		width: auto;
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-right:0.5em;
+		margin: 0em 0.5em 0em 0em;
+		
+		* {
+			font:inherit;
+			color: inherit;
+			
+		}
+
+		label {
+			margin: 0px;
+		}
+		
+		.ui-input-text {
+			background: transparent;
+			display: inline-block;
+			vertical-align: middle;
+			width:3.5em;
+			border:0em;
+			margin:0.2em 0.2em 0.2em 0.2em;
+		
+			input {
+				cursor: text;
+				text-align:center;
+			}
+		}
+	}
+
 	h2 {
 		background: @xxx-lightGrayColor;
 		opacity: 0.5;
 		padding: 0.3em;
 	}
-	
-	[data-id="buttons.container"] {
-		[data-theme] {
-			width:8em;
-		}
-	}
-	
-
-	ui-center {
-		text-align: center;
-	}	
-	
-		
 }

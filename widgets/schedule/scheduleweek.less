@@ -2,6 +2,7 @@
 @baseColor: fadeout(@bookioBlue, 30%);
  
 [data-role="scheduleweek"] {
+    
     table {
         width:100%;
         table-layout: fixed;
@@ -16,7 +17,6 @@
 		
 		thead {
 			th {
-				//width:3em;
 			}
 		}
 		tbody {
@@ -38,12 +38,17 @@
 				    width:100%;
 					height:0.8em;
 
-			        .selected {
-			            background-color: @baseColor;
+					&.tag-A {
+			            background-color: @bookioBlue;
+					}
+					&.tag-B {
+			            background-color: @bookioGreen;
+					}
+			        &.tag-C {
+			            background-color: @bookioRed;
 			        }
-			        .tracking {
-			            background-color: darken(@baseColor, 5%);
-			            border-color: darken(@baseColor, 5%);
+			        &.tag-D {
+			            background-color: @bookioYellow;
 			        }
 
 				}
@@ -53,7 +58,6 @@
 		    th {
 		        text-align: center;
 		        position: relative;
-				//width:6em;		        
 		        
 		        .label {
 					width:100%;

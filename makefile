@@ -60,7 +60,8 @@ CORE_JS_FILES = \
 	lib/jquery/plugins/jquery.keyframes.js \
 	lib/jquery-mobile/plugins/jquery.mobile.pages.js \
 	lib/mobiscroll/mobiscroll.2.9.5.min.js \
-	lib/moment/moment-2.5.1.js \
+	lib/moment/moment.js \
+	lib/moment/moment-range.js \
 	lib/underscore/underscore.js \
 	lib/rrule/rrule.js \
 	js/base64.js \

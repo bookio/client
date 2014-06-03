@@ -32,7 +32,7 @@
 			_schedule.slots = [1, 2, 3];
             
             _element.hookup(_elements, 'data-id');
-            
+
             function fill() {
             }
             
@@ -117,12 +117,14 @@
             }
 
 			function initializeEvents() {
+			
 				_elements.next.on('tap', function(event) {
 
 					var step = parseInt(_elements.page.attr('step'));
 					
 					setStep(step + 1);
 				});
+				
 				_elements.back.on('tap', function(event) {
 
 					var step = parseInt(_elements.page.attr('step'));
@@ -189,11 +191,29 @@
 					}
 
 				});
+				
+				_elements.groupname.on('input', function() {
+					_elements.addgroupbutton.toggleClass('ui-disabled', _elements.groupname.val() == '');
+				});
+				
+				_elements.addgroupbutton.on('tap', function() {
+					var newLi = document.createElement('li');
+					newLi.innerHTML = "<a class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-left'><h1>" + _elements.groupname.val() + "</h1><div class='ui-mini'>" + _elements.groupinfo.val() + "</div></a>";
+					_elements.listviewgroups.append(newLi);
+					
+					// Blank out values
+					_elements.addgroupbutton.toggleClass('ui-disabled');
+					_elements.groupname.val('');
+					_elements.groupinfo.val('');
+					
+					_elements.collapse.slideToggle();
+					
+          		});
+				
 			}
 	
 			
             this.init = function() {
-
 
 				initializeEvents();
 
@@ -241,7 +261,6 @@
 						row.remove();
 				});
 				
-
 				function addOne(time, prepend) {
 					var row = $('<tr></tr>');
 

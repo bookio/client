@@ -124,6 +124,11 @@
 #test-page .label {
   display: inline-block;
 }
+#test-page h2 {
+  background: #e6e6e6;
+  opacity: 0.5;
+  padding: 0.3em;
+}
 #test-page .icon {
   opacity: 0.7;
   width: 16px;

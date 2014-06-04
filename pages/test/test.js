@@ -98,7 +98,6 @@
 
 				var block = $(blocks[step - 1]);
 				
-				
 				css.left = block.offset().left - _elements.header.offset().left - 1 + 'px';
 				css.top = block.offset().top - _elements.header.offset().top - 1 + 'px';
 				css.width = block.outerWidth() + 1 + 'px';

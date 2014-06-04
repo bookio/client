@@ -171,7 +171,6 @@
                             	</a>
                             </option>
                             <option>Vissa datum</option>
-                            <option>Ej tillgänglig</option>
                         </div>
                     </div>
                 </li>
@@ -253,13 +252,11 @@
 
         <div style="display:none" class="step" step="3">
 
-            <ul data-id="listviewgroups" data-role="listview" data-inset="true">
+			<h3 class="ui-bar ui-bar-b">
+				Markera den grupp du vill att resursen ska tillhöra
+			</h3>
 
-				<li>
-					<h2>
-						Bocka för den grupp du vill att resursen ska tillhöra
-					</h2>
-				</li>
+            <ul data-id="listviewgroups" data-role="listview" data-inset="true">
 
 				<li>
 					<a class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left"> 
@@ -277,7 +274,7 @@
             </ul>
 				
 			<div data-id="addgroupcontainer" data-role="collapsible" data-mini="true" data-theme="b">
-		    	<h1>Ny grupp</h1>
+		    	<h1>Lägg till grupp</h1>
 			    <div>
 					<input data-id="groupname" id="groupname" placeholder="Namn"></input>    	
 			    
@@ -291,7 +288,7 @@
 					</fieldset>	
 				
 					<div class="center">	
-						<button data-id="addgroupbutton" data-theme="c" data-icon="check" data-inline="true" class="ui-disabled">Lägg till grupp</button>
+						<button data-id="addgroupbutton" data-theme="c" data-icon="check" data-inline="true" class="ui-disabled">Spara</button>
 					</div>
 			      
 			    </div>

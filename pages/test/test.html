@@ -194,14 +194,12 @@
         </div>
 
         <div style="display:none" class="step" step="2">
+        
+        	<h3 class="ui-bar ui-bar-b">
+				Markera de erbjudanden resursen har
+			</h3>
 
             <ul data-id="listview" data-role="listview" data-inset="true">
-
-<!--                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
-                    <h1>
-						Erbjudanden
-					</h1>
-                </li>-->
 
 				<li >
 					<a class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left"> 
@@ -215,11 +213,63 @@
 				    	<div class="ui-mini">Torsdag varje vecka</div>
 				    </a>
 				</li>
-
-                <li>
-                    <a data-id="product.add" href="#">Nytt erbjudande</a>
-                </li>
-
+                
+				<div data-id="addproductcontainer" data-role="collapsible" data-mini="true" data-theme="b">
+			    	<h1>Lägg till erbjudande</h1>
+			        <div>
+			
+			            <ul data-id="listview" data-role="listview" data-inset="true">
+					
+			                <li>
+			                    <div>
+			                        <label>Namn</label>
+			                        <input data-id="productname" type="text" />
+			                    </div>
+			
+			                    <div>
+			                        <label>Beskrivning</label>
+			                        <textarea data-id="productinfo" type="text" />
+			                    </div>
+			
+			                    <div>
+									<h2>Enheter</h2>
+			
+			                        <label class="ui-btn ui-inline ui-mini">
+			                        	Kunden bokar
+			                        </label>
+			
+			                        <div data-role="picker" class="ui-inline ui-mini" style="width:14em">
+			                            <option value="0" selected>en enhet i taget</option>
+			                            <option value="1">valfritt antal enheter</option>
+			                        </div>
+			
+			                        <label class="ui-btn ui-inline ui-mini">
+			                        	om
+			                        </label>
+			
+									<div class="ui-inline" style="width:3em">
+				                        <input data-id="productunits" type="text" data-mini="true" class="ui-mini"/>
+									</div>
+			
+			                        <div data-role="picker" data-id="unit" class="ui-inline ui-mini" style="width:10em">
+			                            <option value="minutes">minuter</option>
+			                            <option value="hours">timmar</option>
+			                            <option value="days">dagar</option>
+			                            <option value="weeks">veckor</option>
+			                            <option value="months">månader</option>
+			                        </div>
+			                    </div>
+	
+								<div class="center">	
+									<button data-id="addproductbutton" data-theme="c" data-icon="check" data-inline="true" class="ui-disabled">Spara</button>
+								</div>
+	
+			                </li>
+			
+			
+			            </ul>
+			        </div>
+				</div>
 
             </ul>
             

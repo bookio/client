@@ -131,12 +131,7 @@
 					setStep(step - 1);
 
 				});
-				
-				_elements.product.add.on('tap', function() {
-					$.mobile.pages.push("./product.html");
-					
-				});
-				
+								
 				_elements.meg.on('schedule', function(event) {
 					$.mobile.pages.push("./schedule.html");
 				});
@@ -190,10 +185,11 @@
 					}
 
 				});
+
 				
 				_elements.groupname.on('input', function() {
 					_elements.addgroupbutton.toggleClass('ui-disabled', _elements.groupname.val() == '');
-				});
+				});				
 				
 				_elements.addgroupbutton.on('tap', function() {
 					var newLi = document.createElement('li');
@@ -207,6 +203,26 @@
 					
 					_elements.addgroupcontainer.collapsible("collapse");					
           		});
+
+
+				_elements.productname.on('input', function() {
+					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || _elements.productunits.val() == '');
+				});
+				
+				_elements.productunits.on('input', function() {
+					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || _elements.productunits.val() == '');
+				});				
+
+				_elements.addproductbutton.on('tap', function() {
+
+					// Blank out values
+					_elements.addproductbutton.toggleClass('ui-disabled');
+					_elements.addproductcontainer.collapsible("collapse");					
+					_elements.productname.val('');
+					_elements.productinfo.val('');
+					
+          		});
+
 				
 			}
 	
@@ -216,8 +232,7 @@
 				initializeEvents();
 
             	addHeader(['', 'MÅ','TI','ON','TO','FR','LÖ','SÖ']);
-
-				
+            					
 				_elements.table.body.selectable({
 					showMarquee: false,
 					autoselect: true,
@@ -257,6 +272,10 @@
 					
 					if (body.find('tr').length > 2) 
 						row.remove();
+				});
+				
+				_elements.page.on('pageinit', function() {
+					_elements.unit.picker('select', 'minutes');	
 				});
 				
 				function addOne(time, prepend) {

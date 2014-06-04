@@ -35,10 +35,6 @@
 					
 				});
 				
-				_elements.price.on('tap', function(event) {
-					$.mobile.pages.push('./schedule.html');
-				});
-				
 				_elements.back.on('tap', function(event) {
 
 					$.mobile.pages.pop();

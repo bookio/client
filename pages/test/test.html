@@ -276,30 +276,26 @@
 				</li>
             </ul>
 				
-            <ul data-id="listaddgroup" data-role="listview" data-inset="true">
-				
-				<li data-id="collapse" data-role="collapsible" data-iconpos="right" data-inset="true">
-			    	<h2>Lägg till en ny grupp</h2>
-				    <div>
-						<input data-id="groupname" id="groupname" placeholder="Namn"></input>    	
-				    
-						<textarea data-id="groupinfo" id="groupinfo" placeholder="Beskrivning"></textarea>
-						
-						<fieldset data-role="controlgroup">
-					        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
-					        <label class="ui-mini" for="radio-choice-v-2a">Kunden får automatiskt en ledig resurs ur gruppen</label>
-					        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
-					        <label class="ui-mini" for="radio-choice-v-2b">Kunden väljer själv bland lediga resurser i gruppen</label>
-						</fieldset>	
+			<div data-id="addgroupcontainer" data-role="collapsible" data-mini="true" data-theme="b">
+		    	<h1>Ny grupp</h1>
+			    <div>
+					<input data-id="groupname" id="groupname" placeholder="Namn"></input>    	
+			    
+					<textarea data-id="groupinfo" id="groupinfo" placeholder="Beskrivning"></textarea>
 					
-						<div class="center">	
-							<button data-id="addgroupbutton" data-theme="c" class="ui-disabled">Lägg till grupp</button>
-						</div>
-				      
-				    </div>
-				</li>
-								
-            </ul>
+					<fieldset data-role="controlgroup">
+				        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
+				        <label class="ui-mini" for="radio-choice-v-2a">Kunden får automatiskt en ledig resurs ur gruppen</label>
+				        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
+				        <label class="ui-mini" for="radio-choice-v-2b">Kunden väljer själv bland lediga resurser i gruppen</label>
+					</fieldset>	
+				
+					<div class="center">	
+						<button data-id="addgroupbutton" data-theme="c" data-icon="check" data-inline="true" class="ui-disabled">Lägg till grupp</button>
+					</div>
+			      
+			    </div>
+			</div>
             
         </div>
 

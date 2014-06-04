@@ -206,8 +206,7 @@
 					_elements.groupname.val('');
 					_elements.groupinfo.val('');
 					
-					_elements.collapse.slideToggle();
-					
+					_elements.addgroupcontainer.collapsible("collapse");					
           		});
 				
 			}

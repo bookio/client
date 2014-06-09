@@ -286,7 +286,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 			});
 
 			_elements.buttons.add.on("mousedown touchstart", function(event) {
-				$.mobile.pages.push('../rental/rental.html', {
+				$.mobile.pages.push('../guide/guide.html', {
 					transition: 'fade'
 				});
 			});

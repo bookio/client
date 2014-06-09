@@ -206,11 +206,11 @@
 
 
 				_elements.productname.on('input', function() {
-					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || _elements.productunits.val() == '');
+					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || !$.isNumeric(_elements.productunits.val()));
 				});
 				
 				_elements.productunits.on('input', function() {
-					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || _elements.productunits.val() == '');
+					_elements.addproductbutton.toggleClass('ui-disabled', _elements.productname.val() == '' || !$.isNumeric(_elements.productunits.val()));
 				});				
 
 				_elements.addproductbutton.on('tap', function() {
@@ -275,6 +275,7 @@
 				});
 				
 				_elements.page.on('pageinit', function() {
+					// Set unit picker to default 'Minutes'
 					_elements.unit.picker('select', 'minutes');	
 				});
 				

@@ -117,38 +117,6 @@
 					addButton('100');
 				});				
 
-				_elements.list.list();
-
-				_elements.list.list('api', function(list) {
-					this.add({
-						title:'Veckovis',
-						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
-						icon:'check'
-					});
-					this.add({
-						title:'Veckovis',
-						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
-						icon:'check'
-					});
-					this.add({
-						title:'Veckovis',
-						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
-						icon:'check'
-					});
-					this.add({
-						title:'Veckovis',
-						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
-						icon:'check'
-					});
-				});
-
-				_elements.list.list('add', {
-					title:'Årsvis',
-					description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk'
-//					icon:'k'
-				});
-				
-				_elements.list.list('refresh');
 
 
 			}

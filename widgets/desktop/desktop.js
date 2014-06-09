@@ -461,12 +461,12 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 					var title = item.find('.title');
 					var image = item.find('img');
 
+					image.removeClassMatching('symbol-*');
+					
 					if (rental.icon_id && _icons[rental.icon_id])
 						image.addClass(sprintf('symbol-%04d', rental.icon_id));
-						//image.attr('src', '../../images/symbols/' + _icons[rental.icon_id].image);
 					else
 						image.addClass(sprintf('symbol-%04d', 0));
-						//image.attr('src', '../../images/symbols/0000.png');
 
 					title.text(rental.name);
 
@@ -490,10 +490,8 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 
 			if (rental.icon_id && _icons[rental.icon_id])
 				image.addClass(sprintf('symbol-%04d', rental.icon_id));
-				//image.css('-webkit-mask-image', 'url(../../images/symbols/' + _icons[rental.icon_id].image + ')');
 			else
 				image.addClass(sprintf('symbol-%04d', 0));
-				//image.css('-webkit-mask-image', 'url(../../images/symbols/0000.png)');
 
 			_element.append(item);
 

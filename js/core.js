@@ -27568,7 +27568,7 @@ $.widget( "ui.tabs", {
 
 		var defaults = {
 			changeHash: false,
-			transition: _pages.length == 0 ? 'fade' : 'slide',
+			transition: 'fade', //_pages.length == 0 ? 'fade' : 'slide',
 			showLoadMsg: false
 		};
 

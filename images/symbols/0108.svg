@@ -3,29 +3,10 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<polygon points="360.8,472.6 360.8,94.9 386.9,94.9 386.9,89.6 255,11.5 123.1,89.6 123.1,89.6 123.1,94.9 149.2,94.9 149.2,472.6 
-	109.6,472.6 109.6,498.5 400.4,498.5 400.4,472.6 "/>
-<g>
-	<rect x="175.3" y="118.6" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="238.2" y="118.6" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="301.1" y="118.6" fill="#FFFFFF" width="33.6" height="42.3"/>
-</g>
-<g>
-	<rect x="175.3" y="187.5" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="238.2" y="187.5" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="301.1" y="187.5" fill="#FFFFFF" width="33.6" height="42.3"/>
-</g>
-<g>
-	<rect x="175.3" y="256.4" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="238.2" y="256.4" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="301.1" y="256.4" fill="#FFFFFF" width="33.6" height="42.3"/>
-</g>
-<rect x="223.9" y="402.4" fill="#FFFFFF" width="62.3" height="73.5"/>
-<g>
-	<rect x="175.3" y="325.3" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="238.2" y="325.3" fill="#FFFFFF" width="33.6" height="42.3"/>
-	<rect x="301.1" y="325.3" fill="#FFFFFF" width="33.6" height="42.3"/>
-</g>
-<rect x="240.1" y="49.2" fill="#FFFFFF" width="29.9" height="29.9"/>
-<rect x="191.6" y="91.5" fill="#FFFFFF" width="126.7" height="3.1"/>
+<path d="M360.8,472.6V94.9H386.9v-5.3L255,11.5L123.1,89.6l0,0v5.3h26.1v377.7h-39.6v25.9h290.8v-25.9H360.8z M175.3,118.6h33.6
+	v42.3h-33.6V118.6z M238.2,118.6h33.6v42.3h-33.6V118.6z M301.1,118.6H334.7v42.3H301.1V118.6z M175.3,187.5h33.6v42.3h-33.6V187.5z
+	 M238.2,187.5h33.6v42.3h-33.6V187.5z M301.1,187.5H334.7v42.3H301.1V187.5z M175.3,256.4h33.6v42.3h-33.6V256.4z M238.2,256.4h33.6
+	v42.3h-33.6V256.4z M301.1,256.4H334.7v42.3H301.1V256.4z M223.9,402.4h62.3v73.5h-62.3V402.4z M175.3,325.3h33.6v42.3h-33.6V325.3z
+	 M238.2,325.3h33.6v42.3h-33.6V325.3z M301.1,325.3H334.7v42.3H301.1V325.3z M240.1,49.2H270v29.9h-29.9V49.2z M191.6,91.5h126.7
+	v3.1H191.6V91.5z"/>
 </svg>

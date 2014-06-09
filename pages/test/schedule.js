@@ -8,6 +8,7 @@
     	'../../widgets/common/radiobuttons.js',
     	'../../widgets/common/checkboxes.js',
     	'../../widgets/common/options.js',
+    	'../../widgets/common/checklist.js',
     	'../../widgets/picker/picker.js',
     	'../../widgets/imagepicker/imagepicker.js',
     	'../../widgets/schedule/scheduleweek.js',
@@ -115,6 +116,39 @@
 				_element.on("pageinit", function(event) {
 					addButton('100');
 				});				
+
+				_elements.list.checklist();
+
+				_elements.list.checklist('api', function(list) {
+					this.add({
+						title:'Veckovis',
+						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
+						icon:'check'
+					});
+					this.add({
+						title:'Veckovis',
+						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
+						icon:'check'
+					});
+					this.add({
+						title:'Veckovis',
+						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
+						icon:'check'
+					});
+					this.add({
+						title:'Veckovis',
+						description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk',
+						icon:'check'
+					});
+				});
+
+				_elements.list.checklist('add', {
+					title:'Årsvis',
+					description:'Varje torsdag kl 15:00 sdfg  ödfgsd,fg ösdf ösdf glök adsfk adsfg aldskfa agsdlkjag adfglkjafg afölga g ölkafg afgölasfgöl kajf afgölk'
+//					icon:'k'
+				});
+				
+				_elements.list.checklist('refresh');
 
 
 			}

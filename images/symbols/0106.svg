@@ -3,18 +3,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<polygon points="425.4,479.3 425.4,106.8 446,106.8 446,102.1 379.5,45.9 358.5,45.9 358.5,6.4 322,6.4 322,45.9 130.5,45.9 
-	64,102.1 64,106.8 84.6,106.8 84.6,479.3 52.5,479.3 52.5,503.6 457.5,503.6 457.5,479.3 "/>
-<g>
-	<rect x="137.5" y="130.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="229.7" y="130.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="322" y="130.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="137.5" y="248.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="229.7" y="248.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="322" y="248.2" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="137.5" y="374.6" fill="#FFFFFF" width="50.6" height="74.9"/>
-	<rect x="229.7" y="374.6" fill="#FFFFFF" width="50.6" height="90.8"/>
-	<rect x="322" y="374.6" fill="#FFFFFF" width="50.6" height="74.9"/>
-</g>
-<rect x="159.2" y="104" fill="#FFFFFF" width="191.6" height="2.9"/>
+<path d="M425.4,479.3V106.8H446v-4.7l-66.5-56.2h-21V6.4H322v39.5H130.5L64,102.1v4.7h20.6v372.5H52.5v24.3h405v-24.3H425.4z
+	 M137.5,130.2h50.6v74.9h-50.6V130.2z M229.7,130.2h50.6v74.9h-50.6V130.2z M322,130.2h50.6v74.9H322V130.2z M137.5,248.2h50.6
+	V323.1h-50.6V248.2z M229.7,248.2h50.6V323.1h-50.6V248.2z M322,248.2h50.6V323.1H322V248.2z M137.5,374.6h50.6v74.9h-50.6V374.6z
+	 M229.7,374.6h50.6V465.4h-50.6V374.6z M322,374.6h50.6v74.9H322V374.6z M159.2,104h191.6v2.9H159.2V104z"/>
 </svg>

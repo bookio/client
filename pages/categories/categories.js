@@ -1,7 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./categories.json'
+		'i18n!./categories.json',
+		'../../widgets/common/list.js'
 	];
 
 	define(dependencies, function(i18n) {
@@ -14,62 +15,24 @@
 			var _elements = {};
 
 			
-			function addEmpty() {
-				var template =
-					'<li class="category">' +
-					'<br>' +
-					'<label class="helptext"></label>' +
-					'</li>';
-
-				var row = $(template);
-
-				row.find('label').text("..."); 
-
-				_elements.listview.append(row);
-				
-			}
 			
-			function addItem(item) {
-				var template =
-					'<li class="category">' +
-						'<a href="">' +
-							'<img class="ui-li-thumb">' +
-							'<h2></h2>' +
-							'<p></p>' +
-						'</a>' +
-					'</li>';
-
-				var row = $(template);
-
-				row.data('category', item);
-
-				updateRow(row);
-
-				row.find('a').on('tap', function(event) {
-
+			function addItem(category) {
+				var item = {};
+				
+				item.id       = category.id;
+				item.style    = 'disclosure';
+				item.title    = category.name;
+				item.subtitle = category.description;
+				item.image    = category.image ? category.image : '../../images/icons/bookio.png'
+				item.select   = function() {
 					$.mobile.pages.push("../category/category.html", {
 						params: {
-							category: item
+							category: category
 						}
 					});
+				}
 
-					event.preventDefault();
-					event.stopPropagation();
-				});
-
-				_elements.listview.append(row);
-
-			}
-
-			function updateRow(row) {
-				var item = row.data('category');
-				row.find('h2').text(item.name);
-				row.find('p').text(item.description);
-				row.find('img').attr('src', item.image ? item.image : '../../images/icons/bookio.png');
-			}
-
-			function refreshListView() {
-				_elements.listview.listview('refresh');
+				_elements.list.list('add', item);
 			}
 
 
@@ -81,27 +44,10 @@
 				});
 
 				Model.Categories.on('updated.categories', function(category) {
-					_elements.listview.find('li.category').each(function() {
-						var item = $(this).data('category');
-
-						if (item.id == category.id) {
-							updateRow($(this));
-							refreshListView();
-						}
-					});
 				});
 
 				Model.Categories.on('removed.categories', function(category) {
 
-					_elements.listview.find('li.category').each(function() {
-
-						var item = $(this).data('category');
-
-						if (item.id == category.id) {
-							$(this).remove();
-							refreshListView();
-						}
-					});
 				});
 
 				_elements.back.on('tap', function(event) {
@@ -126,16 +72,13 @@
 				request.done(function(categories) {
 
 					_categories = categories;
+					_elements.list.list('reset');
 
-					if (categories.length > 0) {
-						_elements.listview.find('.category').remove();
+					$.each(categories, function(index, category) {
+						addItem(category);
+					});
 
-						$.each(categories, function(index, category) {
-							addItem(category);
-						});
-					}
-
-					_elements.listview.listview('refresh');
+					_elements.list.list('refresh');
 
 				});
 
@@ -157,10 +100,6 @@
 				$.spin(true);
 				
 				$.when(loadCategories()).then(function() {
-					if (_categories.length == 0)  {
-						addEmpty();						
-					}
-					
 					callback();
 					$.spin(false);
 				});

@@ -68,6 +68,7 @@
 					switch (files[0].type) {
 						case 'image/jpeg':
 						case 'image/png':
+						case 'image/svg':
 						case 'image/gif':
 							event.originalEvent.dataTransfer.dropEffect = 'copy';
 							break;

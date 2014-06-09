@@ -67,7 +67,10 @@
 					
 				if (item.subtitle != undefined)
 					$('<p class="subtitle"></p>').appendTo(link).text(item.subtitle);
-				
+
+				item.refresh = function() {
+					update(row);
+				}
 			}
 			
 			self.refresh = function() {
@@ -84,6 +87,10 @@
 
 			}
 
+			self.items = function() {
+				return _items;
+				
+			}
 			self.reset = function() {
 				_elements.list.empty();
 			}
@@ -92,36 +99,29 @@
 					
 			}
 
-			self.add = function(item) {
-				var line = $('<li></li>').appendTo(_elements.list).data('item', item);		
-				return;		
-				var link  = $('<a></a>').appendTo(line).addClass('ui-btn ui-corner-all');
+			self.add = function(options) {
+/*
+				var item = {};
 
-				if (item.style == 'disclosure') {
-					link.addClass('ui-btn-icon-right ui-icon-carat-r');
-				}
+				item.element = $('<li></li>');				
 
-				if (item.style == 'unchecked') {
-					link.addClass('ui-btn-icon-left');
-				}
-
-				if (item.style == 'checked') {
-					link.addClass('ui-btn-icon-left ui-icon-check');
-				}
+				item.title    = options.title;
+				item.subtitle = options.subtitle;
+				item.style    = options.style; 
+				item.select   = options.select;
+				item.image    = options.image;
 				
-				if ($.isFunction(item.select)) {
-					link.on('tap', function(event) {
-						item.select.call(item, item); //_elements.container.trigger('click', item);
-					});
+				item.refresh = function() {
+					update(
+				}
+				_items.push(item);
+				item.refresh = function() {
 					
 				}
+				*/
 				
-				if (item.title != undefined)
-					$('<h2 class="title"></h2>').appendTo(link).text(item.title);
-					
-				if (item.subtitle != undefined)
-					$('<p class="subtitle"></p>').appendTo(link).text(item.subtitle);
 				
+				var line = $('<li></li>').appendTo(_elements.list).data('item', options);		
 			}
 	
 	        init();

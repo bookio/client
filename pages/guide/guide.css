@@ -28,6 +28,16 @@
 	}
 }
 */
+#test-page {
+  /*
+	h2 {
+		background: @xxx-lightGrayColor;
+		opacity: 0.5;
+		padding: 0.3em;
+	}
+	*/
+
+}
 #test-page [data-role="button-row"] .ui-btn {
   min-width: 10em;
 }
@@ -124,11 +134,6 @@
 #test-page .label {
   display: inline-block;
 }
-#test-page h2 {
-  background: #e6e6e6;
-  opacity: 0.5;
-  padding: 0.3em;
-}
 #test-page .icon {
   opacity: 0.7;
   width: 16px;
@@ -137,14 +142,6 @@
   padding: 2px;
   display: inline-block;
   visibility: hidden;
-}
-#test-page tr:first-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-#test-page tr:last-child td:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
 }
 #test-page .marquee {
   background-color: green ;

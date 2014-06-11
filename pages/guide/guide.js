@@ -180,25 +180,12 @@
 			}
 
 			function byggUppMinaErbjudanden() {
-				_elements.list.list('add', {
-					style: 'checked',
-					title: 'Månadsvis',
-					subtitle: 'Varje tredje fredag',
-					select: function() {
-						alert(1);
-					}
-				});
-
-
-				_elements.list.list('add', {
-					style: 'unchecked',
-					title: 'Veckovis',
-					subtitle: 'Varje dag mellan 11:00-15:00',
-					select: function(item) {
-						item.title = 'MEG';
-						item.refresh();
-					}
-				});
+				var item = _elements.list.list('add', 'icon-left subtitle');
+				item.title('Månadsvis').icon('check').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-left subtitle').title('Månadsvis').icon('notext').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-left subtitle').title('Månadsvis').icon('none').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-right subtitle').title('Månadsvis').icon('plus').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-right subtitle image').title('Månadsvis').icon('plus').subtitle('Varje fredag');
 				
 				_elements.list.list('refresh');
 

@@ -31,56 +31,11 @@
 				self.reset();
 	        };
 
-			function update(row) {
-				var item = row.data('item');
-				
-				row.empty();
-
-				var link = $('<a></a>').appendTo(row).addClass('ui-btn ui-corner-all');
-
-				if (item.style == 'disclosure') {
-					link.addClass('ui-btn-icon-right ui-icon-carat-r');
-				}
-
-				if (item.style == 'unchecked') {
-					link.addClass('ui-btn-icon-left');
-				}
-
-				if (item.style == 'checked') {
-					link.addClass('ui-btn-icon-left ui-icon-check');
-				}
-				
-				if ($.isFunction(item.select)) {
-					link.on('tap', function(event) {
-						item.select.call(item, item); //_elements.container.trigger('click', item);
-					});
-					
-				}
-				
-				if (item.image != undefined) {
-					row.addClass('ui-li-has-thumb');
-					$('<img class="ui-li-thumb ui-li-icon">').appendTo(link).attr('src', item.image);
-				}
-
-				if (item.title != undefined)
-					$('<h2 class="title"></h2>').appendTo(link).text(item.title);
-					
-				if (item.subtitle != undefined)
-					$('<p class="subtitle"></p>').appendTo(link).text(item.subtitle);
-
-				item.refresh = function() {
-					update(row);
-				}
-			}
 			
 			self.refresh = function() {
 				var rows = _elements.list.find('li');
-
 				rows.removeClass('ui-first-child ui-last-child');
 
-				rows.each(function(index) {
-					update($(this));
-				});			
 				
 				$(rows[0]).addClass('ui-first-child');
 				$(rows[rows.length - 1]).addClass('ui-last-child');
@@ -91,37 +46,123 @@
 				return _items;
 				
 			}
+			
 			self.reset = function() {
 				_elements.list.empty();
+				_items = [];
 			}
 
 			self.remove = function(index) {
 					
 			}
 
-			self.add = function(options) {
-/*
-				var item = {};
-
-				item.element = $('<li></li>');				
-
-				item.title    = options.title;
-				item.subtitle = options.subtitle;
-				item.style    = options.style; 
-				item.select   = options.select;
-				item.image    = options.image;
+			var ListItem = function(options) {
+			
+				var self = this;
 				
-				item.refresh = function() {
-					update(
+				var _elements = {};
+				
+				function hasStyle(style) {
+					return options[style] == undefined ? false : options[style];
 				}
-				_items.push(item);
-				item.refresh = function() {
+				
+				function init() {
+					self.element = _elements.container = $('<li></li>');
+					
+					_elements.link = $('<a></a>').appendTo(_elements.container).addClass('ui-btn ui-corner-all');
+					
+
+					_elements.link.on('tap', function(event) {
+						//_elements.container.trigger('selected', self);
+					});
+
+					
+					if (hasStyle('icon-right')) {
+						_elements.link.addClass('ui-btn-icon-right');
+					}
+					else if (hasStyle('icon-left')) {
+						_elements.link.addClass('ui-btn-icon-left');
+					}
+
+					if (hasStyle('image')) {
+						_elements.container.addClass('ui-li-has-thumb');
+						_elements.image = $('<img class="ui-li-thumb ui-li-icon">').appendTo(_elements.link);
+					}
+
+					_elements.title = $('<h2 class="title"></h2>').appendTo(_elements.link);
+						
+					if (hasStyle('subtitle')) {
+						_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
+						
+					}
+				}
+				
+				self.icon = function(icon) {
+					if (arguments.length == 0)
+						return _elements.link.attr('data-icon');
+						
+					
+					_elements.link.removeClassMatching('ui-icon-*').addClass(sprintf('ui-icon-%s', icon)).attr('data-icon', icon);
+					
+					return this;
 					
 				}
-				*/
+
+				self.image = function(image) {
+					if (arguments.length == 0)
+						return _elements.image != undefined ? _elements.image.attr('src') : '';
+						
+					if (_elements.image != undefined) {
+						_elements.image.attr('src', image);
+					}
+					
+					return this;
+				}
+				
+				self.title = function(text) {
+
+					if (arguments.length == 0)
+						return _elements.title != undefined ? _elements.title.text(text) : '';
+						  					
+					if (_elements.title != undefined) {	
+						_elements.title.text(text);
+					}
+					
+					return this;
+					
+				}
+
+				self.subtitle = function(text) {
+					if (arguments.length == 0)
+						return _elements.subtitle != undefined ? _elements.subtitle.text(text) : '';
+						
+					if (_elements.subtitle != undefined) {
+						_elements.subtitle.text(text);
+					}
+					
+					return this;
+				}
 				
 				
-				var line = $('<li></li>').appendTo(_elements.list).data('item', options);		
+				init();
+					
+			}
+			
+			self.add = function(options) {
+
+				var attrs = {};
+				
+				$.each(options.split(' '), function(index, item) {
+					attrs[item] = true;
+				});
+
+				var item = new ListItem(attrs);
+
+				_items.push(item);		
+				item.element.data('item', item);
+				_elements.list.append(item.element);
+				
+				return item;
 			}
 	
 	        init();
@@ -133,7 +174,6 @@
 			var widget = {};
 	
 			widget.options = {
-				iconpos:'left'
 			};
 	
 			widget._create = function() {
@@ -145,11 +185,15 @@
 			}
 
 			widget.add = function() {
-				this.widget.add.apply(undefined, arguments);
+				return this.widget.add.apply(undefined, arguments);
+			}
+
+			widget.items = function() {
+				return this.widget.items.apply(undefined, arguments);
 			}
 			
 			widget.reset = function() {
-				this.widget.reset();
+				return this.widget.reset.apply(undefined, arguments);
 			}
 			
 			widget.remove = function(index) {

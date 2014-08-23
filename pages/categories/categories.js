@@ -7,7 +7,6 @@
 
 	define(dependencies, function(i18n) {
 
-
 		function Module(page) {
 
 			var _element = page.element;

@@ -3,10 +3,8 @@
 
 	var dependencies = [
 		'i18n!./select-category.json',
-		'../../widgets/pagelogo/pagelogo',
-		'../../widgets/common/list.js'
+		'../../widgets/pagelogo/pagelogo'
 	];
-
 
 
 	define(dependencies, function(i18n) {
@@ -20,14 +18,26 @@
 
 
 			function addCategory(category) {
+				var template =
+					'<li class="category">' +
+						'<a data-id="link" href="">' +
+							'<img data-id="image" class="ui-li-thumb">' +
+							'<h2 data-id="name"></h2>' +
+							'<p data-id="description"></p>' +
+						'</a>' +
+					'</li>';
 
-				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
-				
-				item.title(category.name);
-				item.subtitle(category.description);
-				item.image(category.image ? category.image : '../../images/icons/bookio.png');
+				var li = $(template);
 
-				item.element.on('tap', function(event) {
+				var elements = {};
+				li.hookup(elements, 'data-id');
+
+				elements.name.text(category.name);
+				elements.description.text(category.description);
+
+				elements.image.attr('src', category.image ? category.image : '../../images/icons/bookio.png');
+
+				elements.link.on('tap', function(event) {
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -38,27 +48,28 @@
 					});
 				});
 
+				_elements.listview.append(li);
+
 			}
 
+
 			function addCategories(categories) {
-				_elements.list.list('reset');
+				_elements.listview.find('.category').remove();
 
 				$.each(categories, function(index, category) {
 					addCategory(category);
 				});
 
-				_elements.list.list('refresh');
+				_elements.listview.listview('refresh');
 				
 			}
 
-			function init() {
-			
+			this.init = function() {
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				_elements.listview.listview();
 				_elements.title.text(Gopher.client.name);
 
-				_elements.list.list();
 			}
 			
 			this.refresh = function(callback) {
@@ -82,9 +93,7 @@
 					addCategories(_categories);
 					callback();
 				}
-			}	
-			
-			init();			
+			}				
 		}
 		
 		return Module;

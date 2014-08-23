@@ -45,23 +45,22 @@
 
 					$.each(users, function(index, user) {
 
-						var item = _elements.list.list('add', 'title subtitle icon-disclosure');
-						
-						item.subtitle(user.email);
-						item.title(user.name);
+						var item = {};
 
-						item.element.on('tap', function(event) {
-
+						item.id = user.id;
+						item.title = user.name;
+						item.style = 'disclosure';
+						item.subtitle = user.email;
+						item.select = function() {
 							$.mobile.pages.push('../user/user.html', {
 								params: {
 									user: user
 								}
 							});
-						});
+						}
+						
+						_elements.list.list('add', item);
 					});
-
-					var item = _elements.list.list('add', 'title subtitle icon-left').title('Vare måndag').subtitle('Detta innebär en gång i veckan').icon('check');
-				
 
 					_elements.list.list('refresh');
 				});

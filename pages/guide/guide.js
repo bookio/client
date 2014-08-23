@@ -180,12 +180,12 @@
 			}
 
 			function byggUppMinaErbjudanden() {
-				var item = _elements.list.list('add', 'icon-left subtitle');
+				var item = _elements.list.list('add', 'icon-left title subtitle');
 				item.title('Månadsvis').icon('check').subtitle('Varje fredag');
-				_elements.list.list('add', 'icon-left subtitle').title('Månadsvis').icon('notext').subtitle('Varje fredag');
-				_elements.list.list('add', 'icon-left subtitle').title('Månadsvis').icon('none').subtitle('Varje fredag');
-				_elements.list.list('add', 'icon-right subtitle').title('Månadsvis').icon('plus').subtitle('Varje fredag');
-				_elements.list.list('add', 'icon-right subtitle image').title('Månadsvis').icon('plus').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-left subtitle title').title('Månadsvis').icon('notext').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-left subtitle title').title('Månadsvis').icon('none').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-right subtitle title').title('Månadsvis').icon('plus').subtitle('Varje fredag');
+				_elements.list.list('add', 'icon-right subtitle title image').title('Månadsvis').icon('plus').subtitle('Varje fredag');
 				
 				_elements.list.list('refresh');
 

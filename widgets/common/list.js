@@ -72,76 +72,71 @@
 					_elements.link = $('<a></a>').appendTo(_elements.container).addClass('ui-btn ui-corner-all');
 					
 
-					_elements.link.on('tap', function(event) {
-						//_elements.container.trigger('selected', self);
-					});
-
+					if (hasStyle('icon-disclosure')) {
+						_elements.link.addClass('ui-btn-icon-right ui-icon-carat-r');
+					}
 					
-					if (hasStyle('icon-right')) {
-						_elements.link.addClass('ui-btn-icon-right');
+					if (hasStyle('icon-right') || hasStyle('icon-left')) {
+						self.icon = function(icon) {
+							if (arguments.length == 0)
+								return _elements.link.attr('data-icon');
+								
+							
+							_elements.link.removeClassMatching('ui-icon-*').addClass(sprintf('ui-icon-%s', icon)).attr('data-icon', icon);							
+							return this;
+							
+						}
+						
+						if (hasStyle('icon-right')) {
+							_elements.link.addClass('ui-btn-icon-right');
+						}
+						else if (hasStyle('icon-left')) {
+							_elements.link.addClass('ui-btn-icon-left');
+						}
 					}
-					else if (hasStyle('icon-left')) {
-						_elements.link.addClass('ui-btn-icon-left');
-					}
+					
 
 					if (hasStyle('image')) {
-						_elements.container.addClass('ui-li-has-thumb');
-						_elements.image = $('<img class="ui-li-thumb ui-li-icon">').appendTo(_elements.link);
+						_elements.container.addClass('ui-li-has-thumb');						
+						_elements.image = $('<img class="image">').appendTo(_elements.link);
+
+						self.image = function(image) {
+							if (arguments.length == 0)
+								return _elements.image.attr('src');
+								
+							_elements.image.attr('src', image);
+							return this;
+						}
+
 					}
 
-					_elements.title = $('<h2 class="title"></h2>').appendTo(_elements.link);
+					if (hasStyle('title')) {
+						_elements.title = $('<h2 class="title"></h2>').appendTo(_elements.link);
+
+						self.title = function(text) {
+		
+							if (arguments.length == 0)
+								return _elements.title.text(text);
+								  					
+							_elements.title.text(text);
+							return this;
+							
+						}
+					}
 						
 					if (hasStyle('subtitle')) {
 						_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
-						
+
+						self.subtitle = function(text) {
+							if (arguments.length == 0)
+								return _elements.subtitle.text(text);
+								
+							_elements.subtitle.text(text);
+							return this;
+						}
 					}
 				}
 				
-				self.icon = function(icon) {
-					if (arguments.length == 0)
-						return _elements.link.attr('data-icon');
-						
-					
-					_elements.link.removeClassMatching('ui-icon-*').addClass(sprintf('ui-icon-%s', icon)).attr('data-icon', icon);
-					
-					return this;
-					
-				}
-
-				self.image = function(image) {
-					if (arguments.length == 0)
-						return _elements.image != undefined ? _elements.image.attr('src') : '';
-						
-					if (_elements.image != undefined) {
-						_elements.image.attr('src', image);
-					}
-					
-					return this;
-				}
-				
-				self.title = function(text) {
-
-					if (arguments.length == 0)
-						return _elements.title != undefined ? _elements.title.text(text) : '';
-						  					
-					if (_elements.title != undefined) {	
-						_elements.title.text(text);
-					}
-					
-					return this;
-					
-				}
-
-				self.subtitle = function(text) {
-					if (arguments.length == 0)
-						return _elements.subtitle != undefined ? _elements.subtitle.text(text) : '';
-						
-					if (_elements.subtitle != undefined) {
-						_elements.subtitle.text(text);
-					}
-					
-					return this;
-				}
 				
 				
 				init();

@@ -1,11 +1,11 @@
-[data-role="list"] li img.ui-li-thumb {
+[data-role="list"] .image {
   padding: 0.5em;
-  max-width: 4em !important;
-  max-height: 4em !important;
+  max-width: 5em !important;
+  max-height: 5em !important;
   top: 0px;
   bottom: 0px;
   margin: auto;
 }
-[data-role="list"] li .subtitle {
+[data-role="list"] .subtitle {
   white-space: normal;
 }

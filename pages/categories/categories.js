@@ -13,40 +13,33 @@
 			var _categories = {};
 			var _elements = {};
 
-			
-			
 			function addItem(category) {
-				var item = {};
+				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
 				
-				item.id       = category.id;
-				item.style    = 'disclosure';
-				item.title    = category.name;
-				item.subtitle = category.description;
-				item.image    = category.image ? category.image : '../../images/icons/bookio.png'
-				item.select   = function() {
+				item.title(category.name);
+				item.subtitle(category.description);
+				item.image(category.image ? category.image : '../../images/icons/bookio.png');
+				
+				item.element.on('tap', function() {
 					$.mobile.pages.push("../category/category.html", {
 						params: {
 							category: category
 						}
 					});
-				}
-
-				_elements.list.list('add', item);
+				});
 			}
+
 
 
 			function enableListeners() {
 				Model.Categories.on('added.categories', function(category) {
 					addItem(category);
-					refreshListView();
-
 				});
 
 				Model.Categories.on('updated.categories', function(category) {
 				});
 
 				Model.Categories.on('removed.categories', function(category) {
-
 				});
 
 				_elements.back.on('tap', function(event) {

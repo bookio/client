@@ -1,6 +1,6 @@
 {
 	"sv": {
-		"categories-title": "Bokningsgrupper",
+		"categories-title": "BokningsgrupperXXX",
 		"categories-help": "En bokningsgrupp samlar symboler under det namn de ska bokas som. Exempelvis har du symbolerna <strong>Bana 1</strong>, <strong>Bana 2</strong> och <strong>Bana 3</strong>, dessa vill du att dina kunder ska boka som <strong>Tennis</strong>. Då skapar du bokningsgruppen <strong>Tennis</strong> och kopplar dina symboler till denna bokningsgrupp.",
 		"categories-button-back": "Tillbaka",
 		"categories-button-add": "Lägg till"
@@ -14,5 +14,6 @@
 	}
 
 }
+
 
 

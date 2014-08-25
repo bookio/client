@@ -180,6 +180,30 @@
 			}
 
 			function byggUppMinaErbjudanden() {
+			
+				function add(title, subtitle) {
+					var item = _elements.list.list('add', 'icon-left title subtitle');
+					
+					item.title(title);
+					item.subtitle(subtitle);
+					item.icon('none');
+					
+					item.element.on('tap', function() {
+						
+						var items = _elements.list.list('items');
+						
+						$.each(items, function(index, foo) {
+							foo.icon('none');
+						});
+
+						item.icon('check');
+					});
+				}
+				
+				add('Månadsvis', 'Varje fredag');
+				add('Varje dag', 'Kl 13:30');
+				add('Två gånger i veckan', 'Måndag och Onsdag');
+/*
 				var item = _elements.list.list('add', 'icon-left title subtitle');
 				item.title('Månadsvis').icon('check').subtitle('Varje fredag');
 				item = _elements.list.list('add', 'icon-left subtitle title').title('Månadsvis').icon('notext').subtitle('Varje fredag');
@@ -192,6 +216,7 @@
 					
 					
 				});
+				*/
 				_elements.list.list('refresh');
 
 			}

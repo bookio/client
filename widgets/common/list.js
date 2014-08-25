@@ -13,48 +13,6 @@
 	        var self = this;
 			var _elements = {};
 			var _items = [];
-			
-	        function init() {
-
-				_elements.container = widget.element;
-
-				if (_elements.container.attr('data-mini') == "true") {
-					_elements.container.addClass('ui-mini');
-				}
-				
-				_elements.list = $('<ul></ul>').appendTo(_elements.container).addClass('ui-listview ui-corner-all ui-shadow');
-				
-				if (_elements.container.attr('data-inset') == "true") {
-					_elements.list.addClass('ui-listview-inset');	
-				}
-
-				self.reset();
-	        };
-
-			
-			self.refresh = function() {
-				var rows = _elements.list.find('li');
-				rows.removeClass('ui-first-child ui-last-child');
-
-				
-				$(rows[0]).addClass('ui-first-child');
-				$(rows[rows.length - 1]).addClass('ui-last-child');
-
-			}
-
-			self.items = function() {
-				return _items;
-				
-			}
-			
-			self.reset = function() {
-				_elements.list.empty();
-				_items = [];
-			}
-
-			self.remove = function(index) {
-					
-			}
 
 			var ListItem = function(options) {
 			
@@ -71,7 +29,6 @@
 					
 					_elements.link = $('<a></a>').appendTo(_elements.container).addClass('ui-btn ui-corner-all');
 					
-
 					if (hasStyle('icon-disclosure')) {
 						_elements.link.addClass('ui-btn-icon-right ui-icon-carat-r');
 					}
@@ -123,6 +80,9 @@
 							
 						}
 					}
+
+//					$('<div class="ui-li-count ui-body-inherit>33</p>').appendTo(_elements.link);
+
 						
 					if (hasStyle('subtitle')) {
 						_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
@@ -135,6 +95,7 @@
 							return this;
 						}
 					}
+
 				}
 				
 				
@@ -142,6 +103,48 @@
 				init();
 					
 			}
+			
+	        function init() {
+
+				_elements.container = widget.element;
+
+				if (_elements.container.attr('data-mini') == "true") {
+					_elements.container.addClass('ui-mini');
+				}
+				
+				_elements.list = $('<ul></ul>').appendTo(_elements.container).addClass('ui-listview ui-corner-all ui-shadow');
+				
+				if (_elements.container.attr('data-inset') == "true") {
+					_elements.list.addClass('ui-listview-inset');	
+				}
+
+				self.reset();
+	        };
+
+			
+			self.refresh = function() {
+				var rows = _elements.list.find('li');
+				rows.removeClass('ui-first-child ui-last-child');
+
+				
+				$(rows[0]).addClass('ui-first-child');
+				$(rows[rows.length - 1]).addClass('ui-last-child');
+
+			}
+
+			self.items = function() {
+				return _items;				
+			}
+			
+			self.reset = function() {
+				_elements.list.empty();
+				_items = [];
+			}
+
+			self.remove = function(index) {
+					
+			}
+
 			
 			self.add = function(options) {
 

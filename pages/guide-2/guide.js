@@ -21,6 +21,7 @@
             var _element = page.element;
             var _elements = {};
 			var _stack = [];
+			var _cache = {};
 			var self = this;
 			
             _element.hookup(_elements, 'data-id');
@@ -48,12 +49,23 @@
 						_elements.content.fadeIn(200);	
 						_elements.buttons.fadeIn(200);
 						
+						/*
+						_cache[step] = {
+							code: module,
+							html: html
+						};
+						*/
+						
 					});
 					
 					
 				});
 			}
 
+			self.nextStep = function() {
+				back();
+			}
+			
 			function back() {
 				if (_stack.length > 1) {
 					_stack.pop();
@@ -68,7 +80,6 @@
             }
 
 
-
 			function initializeEvents() {
 			
 				_elements.next.on('tap', function(event) {
@@ -78,7 +89,6 @@
 				
 				_elements.back.on('tap', function(event) {
 					back();
-
 				});
 								
 

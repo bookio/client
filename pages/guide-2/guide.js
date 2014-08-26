@@ -20,18 +20,12 @@
             
             var _element = page.element;
             var _elements = {};
-            var _steps = ['welcome', 'test'];
-			var _step = 0;			
-
+			var _stack = [];
+			var self = this;
+			
             _element.hookup(_elements, 'data-id');
 
-            function fill() {
-            }
-            
-            function chill() {
-            }
 
-            
             function loadStep(step) {
 				var jsPath   = sprintf('steps/%s.js', step);
 				var htmlPath = sprintf('text!steps/%s.html', step);
@@ -59,22 +53,31 @@
 					
 				});
 			}
-			
-			function nextStep() {
-				_step = (_step + 1) % _steps.length;
-				loadStep(_steps[_step]);
+
+			function back() {
+				if (_stack.length > 1) {
+					_stack.pop();
+					
+					loadStep(_stack[_stack.length - 1]);
+				}
 			}
+			
+            function next(step) {
+            	loadStep(step);
+            	_stack.push(step);
+            }
+
 
 
 			function initializeEvents() {
 			
 				_elements.next.on('tap', function(event) {
-					nextStep();
+					next('test');
 
 				});
 				
 				_elements.back.on('tap', function(event) {
-
+					back();
 
 				});
 								
@@ -89,7 +92,7 @@
 				
 				
 				initializeEvents();
-				loadStep(_steps[_step]);
+				next('welcome');
 				
             }     
 

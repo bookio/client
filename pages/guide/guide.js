@@ -202,7 +202,7 @@
 				
 				add('Månadsvis', 'Varje fredag');
 				add('Varje dag', 'Kl 13:30');
-				add('Två gånger i veckan', 'Måndag och Onsdag');
+				add('Två gånger i veckan', 'Måndag och onsdag kl 12:00');
 /*
 				var item = _elements.list.list('add', 'icon-left title subtitle');
 				item.title('Månadsvis').icon('check').subtitle('Varje fredag');

@@ -1,0 +1,190 @@
+@import "../../css/bookio.less";
+/*
+
+@keyframes fadeIn,
+@-moz-keyframes fadeIn,
+@-webkit-keyframes fadeIn,
+@-o-keyframes fadeIn {
+	0% {
+		background-color: red; //lighten(@bookioBlue, 25%);
+		
+	}
+	100% {
+		background-color: blue; //lighten(@bookioBlue, 10%);
+		
+	}
+}
+
+@keyframes fadeOut,
+@-moz-keyframes fadeOut,
+@-webkit-keyframes fadeOut,
+@-o-keyframes fadeOut {
+	0% {
+		background-color: lighten(@bookioBlue, 10%);
+		
+	}
+	100% {
+		background-color: lighten(@bookioBlue, 25%);
+		
+	}
+}
+*/
+
+@baseColor: fadeout(@bookioBlue, 30%);
+
+
+#guide-page {
+
+	[data-role="button-row"] {
+		.ui-btn {
+			min-width: 10em;
+		}
+	}
+	ul li .ui-btn {
+		* {
+			cursor: inherit;
+			
+		}
+	}
+	
+	table {
+		
+		width:100%;		
+		table-layout: fixed;
+		border-collapse:collapse;
+//		border-color: green;
+	}
+	.ui-block-a, .ui-block-b, .ui-block-c {
+		//height:6em; 
+		padding: 0.5em;
+	}	
+
+	[data-id="header"] {
+		padding: 0px;  
+		position: relative;
+	}	
+	
+	[data-id="slider"] {	
+		position: absolute;
+		padding: 0px;
+		background-image:url("./images/progress-box.svg");
+		background-size: cover;
+		background-position: center top;		
+		background-repeat: no-repeat;
+		height:100%;
+		top:0px;
+		width:33.333%;
+	}
+	
+	.slider {
+		opacity: 0.99;
+		
+		h1,p {
+			white-space: normal;
+		}
+		
+		img, svg {
+			display: block;
+			margin:0 auto;
+		}
+
+		.path-svg {
+			fill: @bookioBlue;						
+		}
+
+	}	
+
+
+	&[step="1"] {
+		[data-id="slider"] {
+			left:0%;
+			.transition(left 0.5s);
+		}	
+	
+	}
+
+	&[step="2"] {
+		[data-id="slider"] {
+			left:33.333%;
+			.transition(left 0.5s);
+		}	
+
+	}
+
+	&[step="3"] {
+		[data-id="slider"] {
+			left:67%;
+			.transition(left 0.5s);
+		}	
+
+	}	
+
+	.selectedSlider {
+	
+		h1,p {
+			color: #fff !important;
+			white-space: normal;
+			text-shadow: none;
+		}
+
+		.path-svg {
+			fill: white;						
+		}
+
+	}
+	
+	textarea {
+		height:6em !important;
+	}
+
+	tr, td {
+		text-align: center;
+		border: 1px solid @xxxx-lightGrayColor;
+		padding: 0px 0px 0px 0px;
+		.selected {
+			background-color: @baseColor;
+		}
+		.tracking {
+			background-color: darken(@baseColor, 5%);
+			
+		}
+
+	}
+	
+	.label {
+		display: inline-block;
+	}
+	/*
+	h2 {
+		background: @xxx-lightGrayColor;
+		opacity: 0.5;
+		padding: 0.3em;
+	}
+	*/
+	
+	.icon {
+		opacity: 0.7;
+		width:16px;
+		height: 16px;
+		font-size:16px;
+		padding: 2px;
+		display: inline-block;
+		visibility: hidden;
+	}
+	
+
+	
+	.marquee {
+		background-color: green ; //!important; //fadeout(black, 95%);
+		border: 10px solid blue; // !important;		
+	}
+
+	.selectable {
+		width:100%;
+		height:0.7em;
+		//outline: 1px solid green;
+		//outline-offset: -2px;
+	}
+	
+	
+}

@@ -1,0 +1,153 @@
+/*
+
+@keyframes fadeIn,
+@-moz-keyframes fadeIn,
+@-webkit-keyframes fadeIn,
+@-o-keyframes fadeIn {
+	0% {
+		background-color: red; //lighten(@bookioBlue, 25%);
+		
+	}
+	100% {
+		background-color: blue; //lighten(@bookioBlue, 10%);
+		
+	}
+}
+
+@keyframes fadeOut,
+@-moz-keyframes fadeOut,
+@-webkit-keyframes fadeOut,
+@-o-keyframes fadeOut {
+	0% {
+		background-color: lighten(@bookioBlue, 10%);
+		
+	}
+	100% {
+		background-color: lighten(@bookioBlue, 25%);
+		
+	}
+}
+*/
+#guide-page {
+  /*
+	h2 {
+		background: @xxx-lightGrayColor;
+		opacity: 0.5;
+		padding: 0.3em;
+	}
+	*/
+
+}
+#guide-page [data-role="button-row"] .ui-btn {
+  min-width: 10em;
+}
+#guide-page ul li .ui-btn * {
+  cursor: inherit;
+}
+#guide-page table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+#guide-page .ui-block-a,
+#guide-page .ui-block-b,
+#guide-page .ui-block-c {
+  padding: 0.5em;
+}
+#guide-page [data-id="header"] {
+  padding: 0px;
+  position: relative;
+}
+#guide-page [data-id="slider"] {
+  position: absolute;
+  padding: 0px;
+  background-image: url("./images/progress-box.svg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 100%;
+  top: 0px;
+  width: 33.333%;
+}
+#guide-page .slider {
+  opacity: 0.99;
+}
+#guide-page .slider h1,
+#guide-page .slider p {
+  white-space: normal;
+}
+#guide-page .slider img,
+#guide-page .slider svg {
+  display: block;
+  margin: 0 auto;
+}
+#guide-page .slider .path-svg {
+  fill: #099dde;
+}
+#guide-page[step="1"] [data-id="slider"] {
+  left: 0%;
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
+}
+#guide-page[step="2"] [data-id="slider"] {
+  left: 33.333%;
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
+}
+#guide-page[step="3"] [data-id="slider"] {
+  left: 67%;
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
+}
+#guide-page .selectedSlider h1,
+#guide-page .selectedSlider p {
+  color: #fff !important;
+  white-space: normal;
+  text-shadow: none;
+}
+#guide-page .selectedSlider .path-svg {
+  fill: white;
+}
+#guide-page textarea {
+  height: 6em !important;
+}
+#guide-page tr,
+#guide-page td {
+  text-align: center;
+  border: 1px solid #f3f3f3;
+  padding: 0px 0px 0px 0px;
+}
+#guide-page tr .selected,
+#guide-page td .selected {
+  background-color: rgba(9, 157, 222, 0.7);
+}
+#guide-page tr .tracking,
+#guide-page td .tracking {
+  background-color: rgba(8, 140, 197, 0.7);
+}
+#guide-page .label {
+  display: inline-block;
+}
+#guide-page .icon {
+  opacity: 0.7;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  padding: 2px;
+  display: inline-block;
+  visibility: hidden;
+}
+#guide-page .marquee {
+  background-color: green ;
+  border: 10px solid blue;
+}
+#guide-page .selectable {
+  width: 100%;
+  height: 0.7em;
+}

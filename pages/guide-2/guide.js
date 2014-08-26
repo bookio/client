@@ -44,7 +44,7 @@
 						_elements.content.append(html);      
 						_elements.content.trigger('create');   
 
-						var module = new script(html);				
+						var module = new script(html, self);				
 						
 						_elements.content.fadeIn(200);	
 						_elements.buttons.fadeIn(200);
@@ -62,7 +62,11 @@
 				});
 			}
 
-			self.nextStep = function() {
+			self.nextStep = function(step) {
+				next(step);
+			}
+			
+			self.backStep = function() {
 				back();
 			}
 			
@@ -83,12 +87,14 @@
 			function initializeEvents() {
 			
 				_elements.next.on('tap', function(event) {
+					//_elements.content.first().trigger('next');
 					next('test');
 
 				});
 				
 				_elements.back.on('tap', function(event) {
 					back();
+					//_elements.content.first().trigger('back');
 				});
 								
 

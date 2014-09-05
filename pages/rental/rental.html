@@ -3,74 +3,98 @@
     <div id="rental-page" data-role="page">
 
         <div data-role="content" data-id="content">
+
+
+
             <div data-role="pagelogo">
             </div>
 
 
-            <ul data-id="listview" data-role="listview" data-inset="true">
 
-                <li>
-                    <label data-i18n="name">
-                        Name
-                    </label>
-                    <input data-id="name" type="text" value="" title="">
-                    <label data-i18n="name-help-text" class="helptext">
-                        Example 'Court 3', 'Jenny', 'Mini Cooper (234 ADE)'
-                    </label>
-                </li>
-
-                <li>
-                    <label data-i18n="notes">
-                        Notes
-                    </label>
-                    <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
-                </li>
-
-                <li>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <label data-i18n="depth">
-                            	Booking depth
-                            </label>
-                            <input data-id="depth" type="text" value="1" title="" />
-                        </div>
-                        <div class="ui-block-b">
-                            <label data-i18n="available" style="display:block">Available</label>
-                            <select data-id="available" data-role="slider">
-                                <option data-i18n="no" value="off">No</option>
-                                <option data-i18n="yes" value="on" selected>Yes</option>
-                            </select>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                        <label data-i18n="category">
-                            Category
-                        </label>
-
-                        <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="" data-theme="a">
-                        </ul>
-
-                        <label data-i18n="category-help-text" class="helptext">Example 'Tennis', 'Hairdresser', 'Car (small)'</label>
-                </li>
-
-                <li>
-                    <div data-id="icon.container">
-                        <label data-i18n="symbol">
-                            Symbol
-                        </label>
-                        <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
-                            <div>
-                            	<img data-id="icon.image"/>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-
-            </ul>
-
+			<div data-role="navbar">
+			<ul>
+			  <li><a href="#" data-id="tab1">One</a></li>
+			  <li><a href="#" data-id="tab2">Two</a></li>
+			  <li><a href="#" data-id="tab3">Three</a></li>
+			</ul>
+			</div>
+			
+			<div data-id="page2">
+			    <ul data-role="listview" data-inset="true">
+			
+			        <li>
+			        	öklfalfaölskdf
+			        
+			        </li>
+			    </ul>
+				
+			</div>
+			<div data-id="page1">
+	
+			    <ul data-id="listview" data-role="listview" data-inset="true">
+			
+			        <li>
+			            <label data-i18n="name">
+			                Name
+			            </label>
+			            <input data-id="name" type="text" value="" title="">
+			            <label data-i18n="name-help-text" class="helptext">
+			                Example 'Court 3', 'Jenny', 'Mini Cooper (234 ADE)'
+			            </label>
+			        </li>
+			
+			        <li>
+			            <label data-i18n="notes">
+			                Notes
+			            </label>
+			            <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+			        </li>
+			
+			        <li>
+			            <div class="ui-grid-a">
+			                <div class="ui-block-a">
+			                    <label data-i18n="depth">
+			                    	Booking depth
+			                    </label>
+			                    <input data-id="depth" type="text" value="1" title="" />
+			                </div>
+			                <div class="ui-block-b">
+			                    <label data-i18n="available" style="display:block">Available</label>
+			                    <select data-id="available" data-role="slider">
+			                        <option data-i18n="no" value="off">No</option>
+			                        <option data-i18n="yes" value="on" selected>Yes</option>
+			                    </select>
+			                </div>
+			            </div>
+			        </li>
+			
+			        <li>
+			                <label data-i18n="category">
+			                    Category
+			                </label>
+			
+			                <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="" data-theme="a">
+			                </ul>
+			
+			                <label data-i18n="category-help-text" class="helptext">Example 'Tennis', 'Hairdresser', 'Car (small)'</label>
+			        </li>
+			
+			        <li>
+			            <div data-id="icon.container">
+			                <label data-i18n="symbol">
+			                    Symbol
+			                </label>
+			                <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
+			                    <div>
+			                    	<img data-id="icon.image"/>
+			                    </div>
+			                </a>
+			            </div>
+			        </li>
+			
+			
+			    </ul>
+			</div>
 
 
             <div data-role="button-row">

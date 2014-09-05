@@ -1,8 +1,11 @@
 (function() {
 
+
+
 	var dependencies = [
 		'i18n!./rental.json',
-		'../../widgets/symbolpicker/symbolpicker'
+		'../../widgets/symbolpicker/symbolpicker.js',
+		'../../widgets/pagelogo/pagelogo.js'
 	];
 
 	define(dependencies, function(i18n) {
@@ -59,6 +62,21 @@
 
 			this.init = function() {
 
+				page.element.trigger('create');
+//				_elements.tabs.tabs();
+
+_elements.page1.css({'display': 'none'});
+
+				_elements.tab1.on('tap', function(){
+					_elements.page1.css({'display': 'block'});
+					_elements.page2.css({'display': 'none'});
+					
+				});
+				_elements.tab2.on('tap', function(){
+					_elements.page2.css({'display': 'block'});
+					_elements.page1.css({'display': 'none'});
+					
+				});
 				_elements.content.transition({
 					opacity: 1
 				}, 1000);

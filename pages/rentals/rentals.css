@@ -1,4 +1,4 @@
-#categories-page {
+#rentals-page {
   /*
     ul {
         
@@ -22,7 +22,7 @@
     } 
     */
 }
-#categories-page [data-id="url"] {
+#rentals-page [data-id="url"] {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;

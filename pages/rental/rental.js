@@ -5,7 +5,8 @@
 	var dependencies = [
 		'i18n!./rental.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
-		'../../widgets/pagelogo/pagelogo.js'
+		'../../widgets/pagelogo/pagelogo.js',
+		'../../widgets/common/list.js'
 	];
 
 	define(dependencies, function(i18n) {
@@ -17,8 +18,6 @@
 			var _rental = {};
 			var _icons = [];
 			var _iconsByID = {};
-			var _categories = [];
-			var _categoriesByID = {};
 
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
@@ -27,17 +26,7 @@
 			function fill() {
 				_elements.name.val(_rental.name);
 				_elements.description.val(_rental.description);
-				_elements.depth.val(_rental.depth && _rental.depth > 1 ? _rental.depth : '1');
-				_elements.available.val((_rental.available == 1 || _rental.available == undefined) ? 'on' : 'off').slider("refresh");
 
-				if (_rental.category_id) {
-					var category = _categoriesByID[_rental.category_id];
-
-					if (category)
-						$("div.ui-input-search").find("input").val(category.name);
-					else
-						_rental.category_id = null;
-				}
 
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 			}
@@ -45,41 +34,76 @@
 			function chill() {
 				_rental.name = _elements.name.val();
 				_rental.description = _elements.description.val();
-				_rental.depth = _elements.depth.val();
-				_rental.available = (_elements.available.val() == 'on') ? 1 : 0;
-
-				var categoryName = $("div.ui-input-search").find("input").val();
 
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)
 					_rental.icon_id = 1;
 
-				if (!_rental.depth)
-					_rental.depth = 1;
 
+			}
+			
+			function loadOptions() {
+				var request = Gopher.request('GET', sprintf('rentals/%d/options', _rental.id));
+			
+				_elements.options.list('reset');
+				
+				request.done(function(options) {
+
+					
+					$.each(options, function(index, option) {
+
+						var item = _elements.options.list('add', 'title subtitle icon-disclosure');
+						item.title(option.name);
+						item.subtitle(option.description);
+						
+					});
+					
+					_elements.options.list('refresh');
+
+				});
+
+				return request;				
+			}
+
+			function loadIcons() {
+
+				var request = Model.Icons.fetch();
+
+				request.done(function(icons) {
+					_icons = icons;
+
+					$.each(icons, function(index, icon) {
+						_iconsByID[icon.id] = icon;
+					});
+				});
+				
+				return request;
 			}
 
 
 			this.init = function() {
 
-				page.element.trigger('create');
-//				_elements.tabs.tabs();
+				
+				_element.trigger('create');
 
-_elements.page1.css({'display': 'none'});
+				_elements.options.list();
+				_elements.content.find('.tab-header').on('tap', function() {
 
-				_elements.tab1.on('tap', function(){
-					_elements.page1.css({'display': 'block'});
-					_elements.page2.css({'display': 'none'});
-					
+					var tab = $(this).attr('data-tab');
+
+					_elements.content.find('.tab-container').fadeOut(200, function(){
+	
+							
+							$(this).find('.tab').hide();
+							$(this).find(sprintf('.%s', tab)).show();
+							
+							$(this).fadeIn(200);	
+						});				
 				});
-				_elements.tab2.on('tap', function(){
-					_elements.page2.css({'display': 'block'});
-					_elements.page1.css({'display': 'none'});
-					
-				});
-				_elements.content.transition({
-					opacity: 1
-				}, 1000);
+				
+				
+				_elements.content.find('.tab-container .tab').hide();
+				_elements.content.find('.tab-container .tab-1').show();
 
 				if (page.params && page.params.rental) {
 					$.extend(_rental, page.params.rental);
@@ -91,7 +115,6 @@ _elements.page1.css({'display': 'none'});
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
-
 
 				_elements.remove.on('tap', function(event) {
 
@@ -133,73 +156,19 @@ _elements.page1.css({'display': 'none'});
 
 					$('body').spin('large');
 
-					var requestCategory;
-					var requestRentals;
-					var categoryName = $("div.ui-input-search").find("input").val();
-					var existingCategory = false;
+					var request = Model.Rentals.save(_rental);
 
-					// Check if category exists, if not we should create a new one
-					if (categoryName.length > 0) {
-						_elements.category.listview.find("li").each(function() {
-							if (categoryName.toLowerCase() == $(this).text().toLowerCase()) {
-								_rental.category_id = $(this).find('a').attr("id");
-								existingCategory = true;
-								return false;
-							}
-						});
-					}
-					else {
-						// Avoid saving 'empty string'
-						_rental.category_id = null;
-						existingCategory = true;
-					}
+					request.always(function() {
+						$('body').spin(false);
+					});
 
-
-					if (existingCategory) {
-						requestRentals = Model.Rentals.save(_rental);
-
-						requestRentals.always(function() {
-							$('body').spin(false);
-						});
-
-						requestRentals.done(function() {
-							$.mobile.pages.pop();
-						});
-					}
-					else {
-						var category = {};
-
-						category.name = categoryName;
-
-						requestCategory = Model.Categories.save(category);
-
-						requestCategory.done(function(category) {
-							_rental.category_id = category.id;
-							requestRentals = Model.Rentals.save(_rental);
-
-							requestRentals.always(function() {
-								$('body').spin(false);
-							});
-
-							requestRentals.done(function() {
-								$.mobile.pages.pop();
-							});
-						});
-
-					}
+					request.done(function() {
+						$.mobile.pages.pop();
+					});
 
 				});
 
 
-				_elements.category.listview.on('tap', 'li', function() {
-					event.preventDefault();
-					_rental.category_id = $(this).find('a').attr("id");
-					var that = this;
-
-					$("div.ui-input-search").find("input").val(function(i, currentValue) {
-						return $(that).find('a').html();
-					}).trigger('keyup');
-				});
 
 				_elements.icon.button.on('tap', function(event) {
 
@@ -236,52 +205,19 @@ _elements.page1.css({'display': 'none'});
 				});
 
 			}
+			
 
 			this.refresh = function(callback) {
 
 				$.spin(true);
 
-				var icons = Model.Icons.fetch();
-				var categories = Model.Categories.fetch();
-
-				icons.done(function(icons) {
-					_icons = icons;
-
-					$.each(icons, function(index, icon) {
-						_iconsByID[icon.id] = icon;
-					});
-
-				});
-
-				_elements.category.listview.html("");
-
-				categories.done(function(categories) {
-					_categories = categories;
-
-					var html = "";
-					
-					$.each(categories, function(index, category) {
-						_categoriesByID[category.id] = category;
-
-						// Build listview drop down with 'categories'
-						html += "<li class='ui-screen-hidden' data-icon='false'><a id='" + category.id + "' href='#'>" + category.name + "</a></li>";
-						
-
-					});
-					
-					_elements.category.listview.html(html);
-					_elements.category.listview.listview("refresh");
-
-				});
-
-
-				$.when(icons, categories).then(function() {
+				$.when(loadIcons(), loadOptions()).then(function() {
 				
 					fill();
 					callback();
 
 					$.spin(false);
-				});
+				});				
 					
 			}
 		}

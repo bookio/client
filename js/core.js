@@ -39558,8 +39558,8 @@ sha1 = function(msg) {
 
 	//$.cookie('sid', 'jc22cczytxhq4h1ko4a2j7nm6d17zxan');
 
-	Gopher.baseURL = 'http://bookio.herokuapp.com';
-	//Gopher.baseURL = 'http://localhost:3000';
+	//Gopher.baseURL = 'http://bookio.herokuapp.com';
+	Gopher.baseURL = 'http://localhost:3000';
 
 	Gopher.user = null;
 	Gopher.client = null;
@@ -39898,6 +39898,10 @@ sha1 = function(msg) {
 			var request = gopher.request('POST', name, item);
 
 			request.done(function(item) {
+
+				if (model.cache == null)
+					model.cache = {};
+
 				model.cache[item.id] = item;
 				model.trigger('added', item);
 			});
@@ -39906,10 +39910,13 @@ sha1 = function(msg) {
 		};
 
 		model.update = function(item) {
-
 			var request = gopher.request('PUT', sprintf('%s/%d', name, item.id), item);
 
 			request.done(function(item) {
+
+				if (model.cache == null)
+					model.cache = {};
+					
 				model.cache[item.id] = item;
 				model.trigger('updated', item);
 			});
@@ -39922,7 +39929,9 @@ sha1 = function(msg) {
 			var request = gopher.request('DELETE', sprintf('%s/%d', name, item.id), item);
 
 			request.done(function() {
-				delete model.cache[item.id];
+				if (model.cache != null)
+					delete model.cache[item.id];
+				
 				model.trigger('removed', item);
 			});
 
@@ -39959,6 +39968,8 @@ sha1 = function(msg) {
 
 		Model.Rentals = {};
 		$.extend(Model.Rentals, requests('rentals'));
+		
+
 
 
 	})();
@@ -40036,6 +40047,19 @@ sha1 = function(msg) {
 	})();
 
 	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+
+		Model.Options = {};
+
+		$.extend(Model.Options, requests('options'));
+		
+
+
+	})();
+
+	////////////////////////////////////////////////////////////////////////////
+
 
 	(function() {
 

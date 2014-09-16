@@ -43,7 +43,7 @@
 			}
 			
 			function loadOptions() {
-				var request = Gopher.request('GET', sprintf('rentals/%d/options', _rental.id));
+				var request = Gopher.request('GET', sprintf('options/rental/%d', _rental.id));
 			
 				_elements.options.list('reset');
 				
@@ -55,9 +55,33 @@
 						var item = _elements.options.list('add', 'title subtitle icon-disclosure');
 						item.title(option.name);
 						item.subtitle(option.description);
+
+						item.element.on('tap', function() {
+		                    $.mobile.pages.push('../option/option.html', {
+		                        params: {option: option}
+		                    });					
+	                    });
+
 						
 					});
 					
+					
+					var item = _elements.options.list('add', 'title icon-left');
+					
+					item.title("Lägg till");
+					item.icon("plus");
+					
+					item.element.on('tap', function() {
+					
+						// Create a new empty option connected to this rental
+	                    var option = {};
+	                    option.rental_id = _rental.id;
+	                    
+	                    $.mobile.pages.push('../option/option.html', {
+	                        params: {option:option}
+	                    });					
+                    });
+                    
 					_elements.options.list('refresh');
 
 				});
@@ -91,7 +115,7 @@
 
 					var tab = $(this).attr('data-tab');
 
-					_elements.content.find('.tab-container').fadeOut(200, function(){
+					_elements.content.find('.tab-container').fadeOut(200, function() {
 	
 							
 							$(this).find('.tab').hide();

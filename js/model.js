@@ -88,6 +88,10 @@
 			var request = gopher.request('POST', name, item);
 
 			request.done(function(item) {
+
+				if (model.cache == null)
+					model.cache = {};
+
 				model.cache[item.id] = item;
 				model.trigger('added', item);
 			});
@@ -96,10 +100,13 @@
 		};
 
 		model.update = function(item) {
-
 			var request = gopher.request('PUT', sprintf('%s/%d', name, item.id), item);
 
 			request.done(function(item) {
+
+				if (model.cache == null)
+					model.cache = {};
+					
 				model.cache[item.id] = item;
 				model.trigger('updated', item);
 			});
@@ -112,7 +119,9 @@
 			var request = gopher.request('DELETE', sprintf('%s/%d', name, item.id), item);
 
 			request.done(function() {
-				delete model.cache[item.id];
+				if (model.cache != null)
+					delete model.cache[item.id];
+				
 				model.trigger('removed', item);
 			});
 
@@ -149,6 +158,8 @@
 
 		Model.Rentals = {};
 		$.extend(Model.Rentals, requests('rentals'));
+		
+
 
 
 	})();
@@ -226,6 +237,19 @@
 	})();
 
 	////////////////////////////////////////////////////////////////////////////
+
+	(function() {
+
+		Model.Options = {};
+
+		$.extend(Model.Options, requests('options'));
+		
+
+
+	})();
+
+	////////////////////////////////////////////////////////////////////////////
+
 
 	(function() {
 

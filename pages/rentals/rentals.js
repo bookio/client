@@ -19,7 +19,8 @@
 				
 				item.title(rental.name);
 				item.subtitle(rental.description);
-				item.image(sprintf('../../images/symbols/%04d.svg', rental.icon_id));
+
+				item.image(sprintf('../../images/symbols/%04d.svg', rental.icon_id == null ? 0 : rental.icon_id));
 //				category.image ? category.image : '../../images/icons/bookio.png');
 				
 				item.element.on('tap', function() {

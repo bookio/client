@@ -39558,8 +39558,8 @@ sha1 = function(msg) {
 
 	//$.cookie('sid', 'jc22cczytxhq4h1ko4a2j7nm6d17zxan');
 
-	//Gopher.baseURL = 'http://bookio.herokuapp.com';
-	Gopher.baseURL = 'http://localhost:3000';
+	Gopher.baseURL = 'http://bookio.herokuapp.com';
+	//Gopher.baseURL = 'http://localhost:3000';
 
 	Gopher.user = null;
 	Gopher.client = null;

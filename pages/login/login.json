@@ -3,16 +3,79 @@
 		"help-text":"Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!",
 		"try-button": "Prova på",
 		"login-button": "Logga in",
-		"email": "E-post",
-		"password": "Lösenord"
+		"email": "Din e-postadress?",
+		"email-placeholder": "lisa@hyrfirman.se",
+		"email-safe": "Din e-postadress stannar hos oss",
+		"password": "Lösenord",
+		"what": "Vad hyr du ut?",
+		"what-placeholder": "Segway, Squash, Partytält, Vinprovning, Massage",
+		"count": "Hur många?",
+		"tagline": "Enkelt och snabbt<br/>bokningssystem",
+		
+		"things": "Saker",
+		"humans": "Människor",
+		"events": "Aktiviteter",		
+		
+		"things-tagline": "du hyr ut något",
+		"humans-tagline": "du hyr ut någon",
+		"events-tagline": "du anordnar aktiviter",
+		
+		"things-samples": "Det kan vara bilar, sportutrustning, boende, båtar, verktyg, segway, skjutbiograf eller oljetanker.",
+		"humans-samples": "Det kan vara hårfrisör, massör, PT, stå-upp komiker, lärare, hantverkare, ledarhund eller dig själv.",
+		"events-samples": "Vinprovning, seminarium, forsränning, matlagningskurs, rundtur, utbildning eller konsert.",
+
+		"teaser": "Fyll i och prova",
+		"teaser-learn-more": "eller läs mer nedan...",
+		
+		"business-what-heading": "Vad är <i>Bookio</i>?",
+		"business-what-p1": "<i>Bookio</i> är för dig som vill hantera uthyrning och bokning. Det kan vara saker, logi, människor eller aktiviteter. Du kan boka själv eller låta kunderna göra det via hemsida, mobil och sociala medier.",
+		
+		"business-online-heading": "Du är i gång på 10 minuter",
+		"business-online-p1": "Du beskriver din verksamhet och kan sen erbjuda alla dina kunder online-bokning.",
+		"business-online-p2": "<strong>På mobila enheter</strong><br/>Dina kunder bokar med mobil, padda, Twitter, SMS eller dator.",
+		"business-online-p3": "<strong>På din hemsida</strong><br/>Med hjälp av vår <i>widget</i> får du bokning på din hemsida eller Facebook-sida.",
+		"business-online-p4": "<strong>Som vanligt...</strong><br/>Förfrågningar via e-post, telefon eller reception bokar du enkelt själv via översikten i <i>Bookio</i>.",
+
+		"business-mobile-heading": "Dina kunder är mobila",
+		"business-mobile-p1": "En genomsnittlig mobilanvändare tittar på sin mobil mer än 150 (!) gånger per dag. Med <i>Bookio</i> kan du komma närmare kunden och finnas tillgänglig för bokning var kunden än är.",
+		"business-mobile-p2": "Du kan kolla både bokningsläge och göra bokningar på den mobila enhet du har närmast dig. Gör en kampanj via <i>Twitter</i> för att snabbt fylla på bokningar om det skulle behövas.",
+
+		"business-reminder-heading": "Påminnelser = pengar",
+		"business-reminder-p1": "En kund som inte dyker upp kostar tid och pengar. Med <i>Bookio</i> kan du skicka en (eller flera) påminnelser. Allt sker automagiskt i bakgrunden.",
+		"business-reminder-p2": "Förutom påminnelser kan du automagiskt skicka information om inställda aktiviteter, 'Välkommen'- och 'Tack'-meddelanden eller annan information du vill nå kunden med innan (eller efter) en bokning.",
+		"business-reminder-p3": "Vana mobilanvändare når du gratis då meddelanden kan skickas som <i>Tweets</i>.<br/><br/><br/>",
+
+		"business-things-heading": "Du har 'något' som ska hyras ut",
+		"business-things-p1": "Du driver ett Bed & Breakfast, har 12 Segways, äger en Limousine-service eller har ett hundpensionat.",
+		"business-things-p2": "Du börjar med att beskriva det som ska kunna bokas med text, bilder, pris och bokningsregler. När detta är klart kan du direkt erbjuda dina kunder bokning via din hemsida, mobil, SMS, Twitter eller Facebook.",
+		"business-things-p3": "<i>Bookios</i> visuella sätt att visa det du hyr ut ger dig en oöverträffad överblick och komplicerade önskemål blir lätta att boka.",
+
+		"business-resources-heading": "Du hyr ut 'någon'",
+		"business-resources-p1": "Du driver en frisörsalong, ger massage, är en av 3 personliga tränare som jobbar ihop eller har en talarförmedling.",
+		"business-resources-p2": "Du beskriver de resurser som finns, tjänster dessa erbjuder, sätter ett pris och tidsåtgång. Nu är alla resurser direkt bokningsbara via hemsida eller mobil. Dina kunder kan bläddra mellan de tjänster som finns och boka var de än är.",
+		"business-resources-p3": "Bokningarna hamnar dessutom i din egen kalender, och du kan själv ‘låsa’ tider du inte vill bli bokad på. Om du vill kan du varskos med e-post eller SMS när någon bokat just dig.",
+
+		"business-activities-heading": "Du arrangerar aktiviteter",
+		"business-activities-p1": "Du kanske anordnar provsmakningar, håller i en segelskola eller ska ansvara för ett seminarium på ditt jobb.",
+		"business-activities-p2": "Såväl engångstillfällen som större utbud av aktiviteter hanteras enkelt i Bookio.",
+		"business-activities-p3": "Du skapar de aktiviteter du vill ha. Sen lägger du till foton, beskrivning, adress, antal platser, tid och pris. Aktiviteterna syns på din hemsida, och kan bokas därifrån.",
+		"business-activities-p4": "Låt aktiviteten ha en kö, denna sköter sig självt och om någon avbokar erbjuds platsen automatiskt till 'först i kön'.",
+		"business-activities-p5": "Du ser bokningsläge på aktiviteter och bokar enkelt in deltagare själv (det finns fortfarande folk som ringer och skickar e-post). Går det trögt, pusha på <i>Twitter</i> eller <i>Facebook</i> och låt deltagarna boka där."
+
 	},
-	
+		
 	"hu": {
 		"help-text": "Érdekel a Bookio? Add meg az e-mail címed és próbáld ki még most!",
 		"try-button": "Kipróbálom",
 		"login-button": "Belépés",
-		"email": "E-mail",
-		"password": "Jelszó"
+		"email": "***",
+		"email-placeholder": "E-mail",
+		"email-safe": "***",
+		"password": "Jelszó",
+		"what": "***",
+		"what-placeholder": "***",
+		"count": "***"
+		
 	}
 
 }

@@ -9,6 +9,10 @@
 
 	-webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    
+	 font-weight: 300;	 
+	 -webkit-font-smoothing: antialiased;
+	 -moz-osx-font-smoothing: grayscale;	     
 }
 
 input, textarea {
@@ -16,7 +20,7 @@ input, textarea {
 }
 
 strong {
-	font-weight: 800;
+	font-weight: 600; 
 }
 
 .absolute {
@@ -38,6 +42,8 @@ strong {
 .center {
 	text-align: center;
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -76,9 +82,9 @@ strong {
 
 // Reduce the jQuery Mobile focus
 .ui-focus {
-	-webkit-box-shadow: 0 0 1px #80cc19 !important;
-	-moz-box-shadow: 0 0 1px #80cc19 !important;
-	box-shadow: 0 0 1px #80cc19 !important ;
+	-webkit-box-shadow: 0 0 2px #051C33 !important;
+	-moz-box-shadow: 0 0 2px #051C33 !important;
+	box-shadow: 0 0 2px #051C33 !important;
 }
 
 // Hide radiobutton/checkbox
@@ -166,6 +172,24 @@ ul li .ui-btn {
 	background: hsla(0, 0, 1.0, 0.95);
 }
 
+
+// Change placeholder color
+::-webkit-input-placeholder {
+   color: @xxx-lightGrayColor;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: @xxx-lightGrayColor;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: @xxx-lightGrayColor;  
+}
+
+:-ms-input-placeholder {  
+   color: @xxx-lightGrayColor;  
+}
+
 [data-role="page"] {
 
 		position: absolute;
@@ -176,13 +200,13 @@ ul li .ui-btn {
 
 	[data-role="content"] {
 	
-		[data-role="logo"] {
+/*		[data-role="logo"] {
 			width:auto;
 			height:100px;
 			max-width:800;
-		}
+		}*/
 
-	    max-width: 800px;
+	    //max-width: 800px;
 	    margin-left: auto;
 	    margin-right:auto;
 

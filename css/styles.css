@@ -3025,6 +3025,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   cursor: default;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 input,
 textarea {
@@ -3035,7 +3038,7 @@ textarea {
   user-select: text;
 }
 strong {
-  font-weight: 800;
+  font-weight: 600;
 }
 .absolute {
   position: absolute;
@@ -3056,9 +3059,9 @@ strong {
   background: transparent !important;
 }
 .ui-focus {
-  -webkit-box-shadow: 0 0 1px #80cc19 !important;
-  -moz-box-shadow: 0 0 1px #80cc19 !important;
-  box-shadow: 0 0 1px #80cc19 !important ;
+  -webkit-box-shadow: 0 0 2px #051C33 !important;
+  -moz-box-shadow: 0 0 2px #051C33 !important;
+  box-shadow: 0 0 2px #051C33 !important;
 }
 .ui-checkbox input,
 .ui-radio input {
@@ -3120,6 +3123,22 @@ ul li .ui-btn * {
 [data-role="popup"] {
   background: rgba(255, 255, 255, 0.95);
 }
+::-webkit-input-placeholder {
+  color: #e6e6e6;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+
+  color: #e6e6e6;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+
+  color: #e6e6e6;
+}
+:-ms-input-placeholder {
+  color: #e6e6e6;
+}
 [data-role="page"] {
   position: absolute;
   left: 0px;
@@ -3128,14 +3147,14 @@ ul li .ui-btn * {
   bottom: 0px;
 }
 [data-role="page"] [data-role="content"] {
-  max-width: 800px;
+  /*		[data-role="logo"] {
+			width:auto;
+			height:100px;
+			max-width:800;
+		}*/
+
   margin-left: auto;
   margin-right: auto;
-}
-[data-role="page"] [data-role="content"] [data-role="logo"] {
-  width: auto;
-  height: 100px;
-  max-width: 800;
 }
 [data-role="page"] [data-role="content"] [data-role="listview"] li p {
   white-space: normal;

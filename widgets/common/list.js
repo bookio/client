@@ -33,6 +33,20 @@
 						_elements.link.addClass('ui-btn-icon-right ui-icon-carat-r');
 					}
 					
+					if (hasStyle('glyph')) {
+						_elements.container.addClass('ui-li-has-thumb');						
+						_elements.image = $('<div class="glyph glyph-plus"></div>').appendTo(_elements.link);
+
+/*
+						self.glyph = function(glyph) {
+							if (arguments.length == 0)
+								return _elements.image.attr('src');
+								
+							_elements.image.attr('src', image);
+							return this;
+						}
+*/						
+					}
 					if (hasStyle('icon-right') || hasStyle('icon-left')) {
 						self.icon = function(icon) {
 							if (arguments.length == 0)

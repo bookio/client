@@ -16,6 +16,7 @@
 			var _element = page.element;
 			var _elements = {};
 			var _rental = {};
+			var _options = [];
 			var _icons = [];
 			var _iconsByID = {};
 
@@ -43,8 +44,8 @@
 			}
 			
 			function loadOptions() {
-				var request = Gopher.request('GET', sprintf('options/rental/%d', _rental.id));
-			
+				var request = Gopher.request('GET', 'options');
+			console.log("loading options");
 				_elements.options.list('reset');
 				
 				request.done(function(options) {
@@ -52,35 +53,51 @@
 					
 					$.each(options, function(index, option) {
 
-						var item = _elements.options.list('add', 'title subtitle icon-disclosure');
+						var item = _elements.options.list('add', 'title subtitle icon-left');
 						item.title(option.name);
 						item.subtitle(option.description);
-
+						
+						if (_rental.option_ids.indexOf(option.id) >= 0)
+							item.icon('check');
+							
 						item.element.on('tap', function() {
-		                    $.mobile.pages.push('../option/option.html', {
-		                        params: {option: option}
-		                    });					
+
+							var index = _rental.option_ids.indexOf(option.id);
+							
+							if (index >= 0) {
+								_rental.option_ids.splice(index, 1);
+								item.icon('');
+							}
+							else {
+								_rental.option_ids.push(option.id);
+								item.icon('check');
+								
+							}
+
+		                    //$.mobile.pages.push('../option/option.html', {
+		                      //  params: {option: option}
+		                    //});					
 	                    });
 
 						
 					});
 					
 					
-					var item = _elements.options.list('add', 'title icon-left');
-					
-					item.title("Lägg till");
-					item.icon("plus");
-					
-					item.element.on('tap', function() {
-					
-						// Create a new empty option connected to this rental
-	                    var option = {};
-	                    option.rental_id = _rental.id;
-	                    
-	                    $.mobile.pages.push('../option/option.html', {
-	                        params: {option:option}
-	                    });					
-                    });
+					with (_elements.options.list('add', 'title icon-left')) {
+						title("Lägg till");
+						icon("plus");
+						
+						element.on('tap', function() {
+		                    function callback(option) {
+			                    // Add the created option to the option id:s array
+								_rental.option_ids.push(option.id);
+			                    
+		                    }
+		                    $.mobile.pages.push('../option/option.html', {
+		                        params: {callback:callback}
+		                    });
+		                });
+		            }
                     
 					_elements.options.list('refresh');
 

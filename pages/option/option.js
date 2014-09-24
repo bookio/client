@@ -83,7 +83,11 @@
 						$.spin(false);
 					});
 
-					request.done(function() {
+					request.done(function(option) {
+						if ($.isFunction(page.params.callback)) {
+						debugger;
+							page.params.callback(option);
+						}
 						$.mobile.pages.pop();
 					});
 

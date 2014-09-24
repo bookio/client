@@ -1,0 +1,31 @@
+#rentals-page {
+  /*
+    ul {
+        
+        li {
+            
+            p {
+                display: inline;
+            }
+            
+            img {
+                .border-radius(8px);
+			    position:absolute;
+			    top:0;
+			    bottom:0;
+			    margin:auto;
+			    left:10px;
+                max-width:80px;
+                max-height:80px;
+            }  
+        } 
+    } 
+    */
+}
+#rentals-page [data-id="url"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}

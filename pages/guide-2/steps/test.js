@@ -10,7 +10,7 @@
 
     define(dependencies, function() {
         
-        function Module(html) {
+        function Module(html, guide) {
             
             var _elements = {};
             
@@ -18,7 +18,10 @@
 
 			
             function init() {
-				//alert(1);
+            	html.on('next', function(){
+	            	alert(1);
+            	});
+				alert(12);
 				
             }     
 

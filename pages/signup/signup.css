@@ -238,8 +238,7 @@
   height: 1px;
   background-color: #C4DBF2;
 }
-#signup-page p,
-#signup-page ul {
+#signup-page p {
   color: #6B8299;
   font-size: 18px;
   text-align: left;
@@ -272,8 +271,8 @@
   color: #9EB5CC;
   font-size: 16px;
   font-style: italic;
-  text-align: center;
   margin: 0px;
+  text-align: center;
 }
 #signup-page h5 {
   color: #859CB3;
@@ -282,6 +281,19 @@
   padding-left: 4em;
   padding-right: 3em;
   margin: 0px;
+  line-height: 1.2em;
+}
+#signup-page a {
+  color: #859CB3;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left;
+  text-decoration: none;
+}
+#signup-page a:hover {
+  color: #526980;
+  cursor: pointer;
+  text-decoration: underline;
 }
 #signup-page p.txt {
   font-family: 'Indie Flower', cursive;

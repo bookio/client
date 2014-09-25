@@ -22,13 +22,12 @@
     
 			function isEmail(text) {
 				var regexp = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
-				debugger;
-				return text.match(regexp);
+				return text.match(regexp) != null;
 			}
 			
 			function isNumeric(text) {
 				var regexp = /^[0-9]{1,3}$/g;
-				return text.match(regexp);
+				return text.match(regexp) != null;
 			}
 
 			function signup() {
@@ -75,13 +74,12 @@
 
 			function enableDisable() {
 				var valid = true;
-				debugger;				
-				
+
 				valid = valid && _elements.signup.what.val() != '';
 				valid = valid && isEmail(_elements.signup.email.val());
 				valid = valid && isNumeric(_elements.signup.count.val());
 
-				_elements.signup.button.toggleClass('ui-disabled', valid);
+				_elements.signup.button.toggleClass('ui-disabled', !valid);
 			}
 
 

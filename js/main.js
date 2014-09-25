@@ -145,7 +145,7 @@ requirejs.config({
 
 		}
 		else
-			login();
+			signup();
 	});
 
 

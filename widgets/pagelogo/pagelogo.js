@@ -22,7 +22,6 @@
 			this.elements.container = this.element.find('div');
 			this.elements.image = this.elements.container.find('img');
 			
-			
 			if (Gopher.client.logo) {
 				this.elements.image.attr('src', Gopher.client.logo); 	
 				this.elements.container.addClass('background-image-none');

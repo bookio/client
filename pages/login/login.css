@@ -223,152 +223,12 @@
     transform: translateX(1.5px);
   }
 }
-#login-page {
-  background-color: #D1E8FF;
-}
-#login-page .logo {
-  position: absolute;
-}
-#login-page img {
-  display: block;
-  margin: auto auto;
-}
-#login-page hr {
-  border: none;
-  height: 1px;
-  background-color: #C4DBF2;
-}
-#login-page p,
-#login-page ul {
-  color: #6B8299;
-  font-size: 18px;
-  text-align: left;
-  line-height: 1.4em;
-  font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
-}
-#login-page p.first {
-  margin-top: 0px;
-}
-#login-page h1 {
-  color: #526980;
-  font-size: 50px;
-  text-align: center;
-  line-height: 1.1em;
-  clear: left;
-}
-#login-page h1.heading {
-  font-size: 35px;
-  text-align: left;
-  margin-bottom: 0px;
-}
-#login-page h3 {
-  color: #526980;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin: 0px;
-}
-#login-page h4 {
-  color: #9EB5CC;
-  font-size: 16px;
-  font-style: italic;
-  text-align: center;
-  margin: 0px;
-}
-#login-page h5 {
-  color: #859CB3;
-  font-size: 16px;
-  text-align: left;
-  padding-left: 4em;
-  padding-right: 3em;
-  margin: 0px;
-}
-#login-page p.txt {
-  font-family: 'Indie Flower', cursive;
-  color: #094581;
-  font-size: 28px;
-  text-align: left;
-  margin: 0;
-  margin-left: 2em;
-  line-height: 1.1em;
-}
-#login-page .container {
-  display: table;
-}
-#login-page .text {
-  vertical-align: middle;
-  display: table-cell;
-}
-#login-page .image {
-  vertical-align: middle;
-  display: table-cell;
-  padding-left: 8px;
-}
-#login-page .white {
-  color: white;
-}
-#login-page img.left {
-  float: left;
-  vertical-align: middle;
-}
-#login-page section.picture-reminder {
-  background-image: url('images/usp-text-reminder.png');
-  background-repeat: no-repeat;
-  background-position: right top;
-  overflow: auto;
-}
-#login-page section.picture-macbook {
-  background-image: url('images/usp-macbook.png');
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  overflow: auto;
-}
-#login-page section.right {
-  max-width: 34em !important;
-  margin-left: auto;
-  margin-right: 0px;
-  padding: 0 1em !important;
-}
-#login-page .more-margin {
-  margin-left: 43em !important;
-}
-#login-page .more-margin-right {
-  margin-right: 35em !important;
-}
-#login-page .push-text-down {
-  position: relative;
-  top: 100px;
-}
-#login-page section.left {
-  max-width: 34em !important;
-  margin-left: 0px;
-  margin-right: auto;
-  padding: 0 1em !important;
-}
-#login-page div.fullwidth {
-  width: 100%;
-  background-image: url('images/bg-black-phone.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-#login-page label {
-  color: #859CB3;
-  font-size: 20px;
-  white-space: nowrap;
-}
-#login-page label.gentle-text {
-  color: #B8CFE6;
-  font-size: 12px;
-  text-align: right;
-  font-weight: bold;
-  margin-top: -1em;
-}
 #login-page [data-role="content"] {
-  max-width: 1200px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  text-align: right;
   border-width: 0px;
+  text-align: center;
   font-size: 20px;
   /*
 		.shake {
@@ -380,11 +240,4 @@
 			.animation-duration(2s);
 		}
 */
-}
-#login-page [data-role="content"] [data-id="popup.content"] {
-  max-width: 400px;
-}
-#login-page [data-role="content"] [data-id="popup.content"] [data-id="popup.message"] {
-  white-space: normal;
-  font-weight: normal;
 }

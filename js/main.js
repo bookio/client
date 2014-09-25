@@ -76,6 +76,10 @@ requirejs.config({
 			$.mobile.pages.go('pages/login/login.html');
 		}
 
+		function signup() {
+			$.mobile.pages.go('pages/signup/signup.html');
+		}
+
 		function main() {
 			$.mobile.pages.go('pages/main/main.html');
 				

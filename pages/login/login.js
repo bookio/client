@@ -70,9 +70,7 @@
 			function signup() {
 
 				var email = _elements.signup.email.val();
-				var what = _elements.signup.what.val();
-				var count = parseInt(_elements.signup.count.val());
-				
+
 				if (email != '') {
 					_elements.signup.button.transition({
 						opacity: 0.5
@@ -95,26 +93,14 @@
 					});
 
 					request.done(function(data) {
-					
-						if ($.isNumeric(count) && $.isString(what)) {
-							request = Gopher.request('post', sprintf('rentals/generate/%s/%d', what, count));
-
-							request.done(function() {
-								main();
-							});							
-							request.fail(function() {
-								debugger;
-							});							
-						}
-						else
-							main();
+						main();
 					});
 				}
 			}
 
 			function enableDisable() {
 				_elements.signup.button.toggleClass('ui-disabled', _elements.signup.email.val() == '');
-//				_elements.login.button.toggleClass('ui-disabled', _elements.login.email.val() == '');
+				_elements.login.button.toggleClass('ui-disabled', _elements.login.email.val() == '');
 			}
 
 
@@ -128,29 +114,28 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				
-				//_elements.login.email.val(username);
+				_elements.login.email.val(username);
 
-//				_elements.login.button.on('tap', function() {
-//					login();
-//				});
+				_elements.login.button.on('tap', function() {
+					login();
+				});
 
 				_elements.signup.button.on('tap', function() {
 					signup();
 				});
 
-//				_elements.login.email.on('input', function() {
-//					enableDisable();
-//				});
+				_elements.login.email.on('input', function() {
+					enableDisable();
+				});
 
 				_elements.signup.email.on('input', function() {
 					enableDisable();
 				});
 				
-//				_elements.login.password.attr('placeholder', i18n.text('password', 'Password'));
-//				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
-				_elements.signup.what.attr('placeholder', i18n.text('what-placeholder', 'Segway, Squash, Party Tent, Wine Tasting, Massage'));
-				_elements.signup.email.attr('placeholder', i18n.text('email-placeholder', 'jane@rentapartytent.com'));
-
+				_elements.login.password.attr('placeholder', i18n.text('password', 'Password'));
+				_elements.login.email.attr('placeholder', i18n.text('email', 'E-mail'));
+				_elements.signup.email.attr('placeholder', i18n.text('email', 'E-mail'));
+				
 				/*_element.selectable({
 					//selectables: '*'
 				});

@@ -19,6 +19,18 @@
 			}
 			
 
+    
+			function isEmail(text) {
+				var regexp = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
+				debugger;
+				return text.match(regexp);
+			}
+			
+			function isNumeric(text) {
+				var regexp = /^[0-9]{1,3}$/g;
+				return text.match(regexp);
+			}
+
 			function signup() {
 
 				var email = _elements.signup.email.val();
@@ -62,8 +74,16 @@
 			}
 
 			function enableDisable() {
-				_elements.signup.button.toggleClass('ui-disabled', _elements.signup.email.val() == '');
+				var valid = true;
+				debugger;				
+				
+				valid = valid && _elements.signup.what.val() != '';
+				valid = valid && isEmail(_elements.signup.email.val());
+				valid = valid && isNumeric(_elements.signup.count.val());
+
+				_elements.signup.button.toggleClass('ui-disabled', valid);
 			}
+
 
 
 			this.init = function() {
@@ -80,6 +100,12 @@
 				});
 
 				_elements.signup.email.on('input', function() {
+					enableDisable();
+				});
+				_elements.signup.what.on('input', function() {
+					enableDisable();
+				});
+				_elements.signup.count.on('input', function() {
 					enableDisable();
 				});
 				

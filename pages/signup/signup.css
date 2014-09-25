@@ -283,14 +283,14 @@
   margin: 0px;
   line-height: 1.2em;
 }
-#signup-page a {
+#signup-page a.login {
   color: #859CB3;
   font-size: 12px;
   font-weight: normal;
   text-align: left;
   text-decoration: none;
 }
-#signup-page a:hover {
+#signup-page a.login:hover {
   color: #526980;
   cursor: pointer;
   text-decoration: underline;
@@ -369,10 +369,10 @@
   white-space: nowrap;
 }
 #signup-page label.gentle-text {
-  color: #B8CFE6;
+  color: #9EB5CC;
   font-size: 12px;
   text-align: right;
-  font-weight: bold;
+  font-weight: normal;
   margin-top: -1em;
 }
 #signup-page [data-role="content"] {

@@ -70,7 +70,9 @@
 			function signup() {
 
 				var email = _elements.signup.email.val();
-
+				var what = _elements.signup.what.val();
+				var count = parseInt(_elements.signup.count.val());
+				
 				if (email != '') {
 					_elements.signup.button.transition({
 						opacity: 0.5
@@ -93,7 +95,19 @@
 					});
 
 					request.done(function(data) {
-						main();
+					
+						if ($.isNumeric(count) && $.isString(what)) {
+							request = Gopher.request('post', sprintf('rentals/generate/%s/%d', what, count));
+
+							request.done(function() {
+								main();
+							});							
+							request.fail(function() {
+								debugger;
+							});							
+						}
+						else
+							main();
 					});
 				}
 			}

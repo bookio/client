@@ -1,87 +1,127 @@
+<div id="rental-page" data-role="page">
+
+    <div data-role="content" data-id="content">
 
 
-    <div id="rental-page" data-role="page">
 
-        <div data-role="content" data-id="content">
-            <div data-role="pagelogo">
+        <div data-role="pagelogo">
+        </div>
+
+
+
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#" class="tab-header ui-btn-active" data-tab="tab-1">Namn och symbol</a>
+                </li>
+                <li><a href="#" class="tab-header" data-tab="tab-2">Bokningsalternativ</a>
+                </li>
+                <li><a href="#" class="tab-header" data-tab="tab-3">Övriga uppgifter</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab tab-1">
+
+                <ul data-id="listview" data-role="listview" data-inset="true">
+
+                    <li>
+                        <label data-i18n="name">
+                            Name
+                        </label>
+                        <input data-id="name" type="text" value="" title="">
+                        <label data-i18n="name-help-text" class="helptext">
+                            Example 'Court 3', 'Jenny', 'Mini Cooper (234 ADE)'
+                        </label>
+
+                        <label data-i18n="notes">
+                            Notes
+                        </label>
+                        <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
+
+                        <div data-id="icon.container">
+                            <label data-i18n="symbol">
+                                Symbol
+                            </label>
+                            <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
+                                <div>
+                                    <img data-id="icon.image" />
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+
+                </ul>
             </div>
 
+            <div class="tab tab-2">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-devider" data-theme="b">
+                        <h1 data-i18n="title">
+		        		Bokningsalternativ
+	        		</h1>
+                    </li>
+                    <li data-role="list-devider">
+                        <p data-i18n="help">
+                            Lorem ipsum dolor sit amet, utamur pertinax sed an, utinam efficiantur an mei. Vix libris civibus eu. Ne vel legimus.
+                        </p>
 
-            <ul data-id="listview" data-role="listview" data-inset="true">
-
-                <li>
-                    <label data-i18n="name">
-                        Name
-                    </label>
-                    <input data-id="name" type="text" value="" title="">
-                    <label data-i18n="name-help-text">
-                        Example 'Court 3', 'Jenny', 'Mini Cooper (234 ADE)'
-                    </label>
-                </li>
-
-                <li>
-                    <label data-i18n="notes">
-                        Notes
-                    </label>
-                    <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
-                </li>
-
-                <li>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <label data-i18n="depth">
-                            	Booking depth
-                            </label>
-                            <input data-id="depth" type="text" value="1" title="" />
+                    </li>
+                    <li>
+                        <div data-role="list" data-id="options" data-inset="false">
                         </div>
-                        <div class="ui-block-b">
-                            <label data-i18n="available" style="display:block">Available</label>
-                            <select data-id="available" data-role="slider">
-                                <option data-i18n="no" value="off">No</option>
-                                <option data-i18n="yes" value="on" selected>Yes</option>
-                            </select>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                </ul>
+            </div>
 
-                <li>
-                        <label data-i18n="category">
-                            Category
-                        </label>
+            <div class="tab tab-3">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-devider" data-theme="b">
+                        <h1 data-i18n="title">
+		        		Fler alternativ
+						</h1>
+                    </li>
+                    <li data-role="list-devider">
+                        <p data-i18n="help">
+                            Lorem ipsum dolor sit amet, utamur pertinax sed an, utinam efficiantur an mei. Vix libris civibus eu. Ne vel legimus.
+                        </p>
 
-                        <ul data-id="category.listview" data-filter="true" data-filter-reveal="true" data-role="listview" data-inset="true" data-filter-placeholder="" data-theme="a">
+                    </li>
+                    <li>
+                        <ul data-role="listview" data-inset="false">
+                            <li>
+                                <h1 data-i18n="title">
+				        		Fler alternativ
+								</h1>
+                                <p data-i18n="help">
+                                    Lorem ipsum dolor sit amet, utamur pertinax sed an, utinam efficiantur an mei. Vix libris civibus eu. Ne vel legimus.
+                                </p>
+                            </li>
                         </ul>
+                    </li>
 
-                        <label data-i18n="category-help-text">Example 'Tennis', 'Hairdresser', 'Car (small)'</label>
-                </li>
-
-                <li>
-                    <div data-id="icon.container">
-                        <label data-i18n="symbol">
-                            Symbol
-                        </label>
-                        <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
-                            <div>
-                            	<img data-id="icon.image"/>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-
-            </ul>
-
-
+                    </li>
+                    <li>
+                        <div data-role="list" data-id="more" data-inset="true">
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
             <div data-role="button-row">
                 <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
                 <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
                 <a data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Remove</a>
             </div>
-        </div>
 
-        <div data-id="popup" data-role="popup">
+
         </div>
 
     </div>
+
+    <div data-id="popup" data-role="popup">
+    </div>
+
+</div>
 

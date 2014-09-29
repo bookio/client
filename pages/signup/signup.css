@@ -323,12 +323,6 @@
   float: left;
   vertical-align: middle;
 }
-#signup-page section.picture-reminder {
-  background-image: url('images/usp-text-reminder.png');
-  background-repeat: no-repeat;
-  background-position: right top;
-  overflow: auto;
-}
 #signup-page section.picture-macbook {
   background-image: url('images/usp-macbook.png');
   background-repeat: no-repeat;

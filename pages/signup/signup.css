@@ -224,7 +224,7 @@
   }
 }
 #signup-page {
-  background-color: #D1E8FF;
+  background-color: #d1e8ff;
 }
 #signup-page .logo {
   position: absolute;
@@ -236,10 +236,10 @@
 #signup-page hr {
   border: none;
   height: 1px;
-  background-color: #C4DBF2;
+  background-color: #c4dbf2;
 }
 #signup-page p {
-  color: #6B8299;
+  color: #6b8299;
   font-size: 18px;
   text-align: left;
   line-height: 1.4em;
@@ -268,14 +268,14 @@
   margin: 0px;
 }
 #signup-page h4 {
-  color: #9EB5CC;
+  color: #9eb5cc;
   font-size: 16px;
   font-style: italic;
   margin: 0px;
   text-align: center;
 }
 #signup-page h5 {
-  color: #859CB3;
+  color: #859cb3;
   font-size: 16px;
   text-align: left;
   padding-left: 4em;
@@ -284,7 +284,7 @@
   line-height: 1.2em;
 }
 #signup-page a.login {
-  color: #859CB3;
+  color: #859cb3;
   font-size: 12px;
   font-weight: normal;
   text-align: left;
@@ -351,19 +351,13 @@
   margin-right: auto;
   padding: 0 1em !important;
 }
-#signup-page div.fullwidth {
-  width: 100%;
-  background-image: url('images/bg-black-phone.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
 #signup-page label {
-  color: #859CB3;
+  color: #859cb3;
   font-size: 20px;
   white-space: nowrap;
 }
 #signup-page label.gentle-text {
-  color: #9EB5CC;
+  color: #9eb5cc;
   font-size: 12px;
   text-align: right;
   font-weight: normal;
@@ -376,21 +370,4 @@
   text-align: right;
   border-width: 0px;
   font-size: 20px;
-  /*
-		.shake {
-			-webkit-animation-name: shake;
-			.animation-duration(0.5s);
-		}
-		.flash {
-			.animation-name(flash);
-			.animation-duration(2s);
-		}
-*/
-}
-#signup-page [data-role="content"] [data-id="popup.content"] {
-  max-width: 400px;
-}
-#signup-page [data-role="content"] [data-id="popup.content"] [data-id="popup.message"] {
-  white-space: normal;
-  font-weight: normal;
 }

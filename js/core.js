@@ -39577,12 +39577,16 @@ sha1 = function(msg) {
 		console.log('Session ID:%s', data.sid);
 	}
 
-
+	var requestSucceeded = function(data) {
+		console.log('Data recieved: ', data);
+	}
+	
 	var requestFailed = function(xhr) {
 
 		var message = '#ERROR#';
 
 		try {
+			debugger;
 			var json = JSON.parse(xhr.responseText);
 			message = json && json.error ? json.error : xhr.responseText;
 		}
@@ -39666,6 +39670,8 @@ sha1 = function(msg) {
 			xhr.setRequestHeader("Accept", "application/json");
 		}
 
+		console.log("Request %s/%s -> '%s'", method, url, data ? JSON.stringify(data) : '');
+		
 		var request = $.ajax({
 			type: method,
 			url: Gopher.baseURL + '/' + url,
@@ -39674,6 +39680,7 @@ sha1 = function(msg) {
 			beforeSend: beforeSend
 		});
 
+		request.done(requestSucceeded);
 		request.fail(requestFailed);
 
 		return request;

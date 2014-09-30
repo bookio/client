@@ -180,6 +180,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 				var rental = $(this).data('rental')
 
 				if (rental.dirty === true) {
+
 					Model.Rentals.save(rental);
 					delete rental.dirty;
 				}
@@ -286,7 +287,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 			});
 
 			_elements.buttons.add.on("mousedown touchstart", function(event) {
-				$.mobile.pages.push('../guide/guide.html', {
+				$.mobile.pages.push('../rental/rental.html', {
 					transition: 'fade'
 				});
 			});
@@ -353,6 +354,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 				$('body').spin("large");
 	
 				$.when(rentals, reservations, customers, icons).then(function() {
+
 					$('body').spin(false);
 	
 					placeRentals();

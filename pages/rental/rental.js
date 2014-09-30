@@ -150,6 +150,9 @@
 					$.extend(_rental, page.params.rental);
 				}
 
+				if (_rental.option_ids == null)
+					_rental.option_ids = [];
+					
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');
 

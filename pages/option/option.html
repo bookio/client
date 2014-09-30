@@ -5,7 +5,14 @@
 
         <ul data-id="listview" data-role="listview" data-inset="true">
 
+            <li data-role="list-devider" data-id="title" data-theme="b">
+                <h1 data-i18n="booking-option">
+					Booking Option
+				</h1>
+            </li>
+
             <li>
+            
                 <label data-i18n="name">
                     Name
                 </label>
@@ -16,42 +23,39 @@
                 </label>
                 <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
 
-            <div class="ui-field-contain" style="border-bottom-width:0px;">
-                
-                <label data-i18n="customer-books">
-                    Customer books
+                <label class="ui-btn ui-inline" data-i18n="customer-books">
+                	Customer books
                 </label>
-                <select>
-					<option value="one-by-one">one unit at a time</option>
-					<option value="any-number">any number of units</option>
-				</select>
-            </div>
 
-            <div data-role="controlgroup" data-type="horizontal" style="border-bottom-width:0px;">
+                <div data-role="picker" class="ui-inline" style="width:14em">
+                    <option value="0" data-i18n="one-by-one" selected>one unit at a time</option>
+                    <option value="1" data-i18n="any-number">any number of units</option>
+                </div>
 
-                <label data-i18n="of">of</label>
-                <input type="text" value="1" />
-                <select>
-					<option value="minute" data-i18n="minute">minute</option>
-					<option value="hour" data-i18n="hour">hour</option>
+                <label class="ui-btn ui-inline" data-i18n="of">
+                	of
+                </label>
+
+				<div class="ui-inline" style="width:3em">
+                    <input type="text" value="1"/>
+				</div>
+				
+                <div data-role="picker" data-id="unit" class="ui-inline" style="width:10em">
+					<option value="minute" data-i18n="minute">minutes</option>
+					<option value="hour" data-i18n="hour" selected>hours</option>
 					<option value="day" data-i18n="day">day</option>
 					<option value="week" data-i18n="week">week</option>
 					<option value="month" data-i18n="month">month</option>
-				</select>
-				
-            </div>
-            
+                </div>
+                            
             </li>
 
         </ul>
-
 
         <div data-role="button-row">
             <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
             <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
             <a class="button-delete" data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Delete</a>
         </div>
-
-
 
     </div>

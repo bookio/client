@@ -1,3 +1,6 @@
+#option-page .ui-btn {
+  font-weight: normal;
+}
 #option-page [data-id="description"] {
   height: 6em !important;
 }

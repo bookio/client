@@ -562,6 +562,7 @@
   cursor: pointer;
   font-size: 48px;
   color: #61bc46;
+  opacity: 0.8;
 }
 [data-role="desktop"] .desktop .button:hover {
   opacity: 1.0;

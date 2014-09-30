@@ -1,7 +1,18 @@
 {
 	"sv": {
+		"booking-option": "Bokningsalternativ",
 		"name": "Namn",
 		"description": "Beskrivning",
+		"customer-books": "Kunden bokar",
+		"one-by-one": "en enhet i taget",
+        "any-number": "valfritt antal enheter",
+        "of": "om",
+		"minute": "minuter",
+		"hour": "timmar",
+		"day": "dag",
+		"week": "vecka",
+		"month": "månad",
+		
 		"back": "Tillbaka",
 		"save": "Spara",
 		"remove": "Radera"

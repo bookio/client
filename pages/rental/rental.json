@@ -1,16 +1,23 @@
 {
 	"sv": {
+		"description": "Beskrivning",
+		"options": "Bokningsalternativ",
 		"name": "Namn",
-		"name-help-text":"Exempel 'Bana 1', 'Lisa', 'Mini Cooper (ADE 234)'",
+		"name-help":"Bana 1, Lisa, Mini Cooper (ADE 234)",
 		"notes": "Anteckning",
+		"symbol": "Symbol",
+		"help": "Markera ett befintligt bokningsalternativ eller skapa ett nytt.",
+		"back": "Tillbaka",
+		"save": "Spara",
+		"remove": "Radera",
+		"add": "Lägg till",
+		
+
+		
 		"depth": "Antal som kan boka samtidigt",
 		"available": "Tillgänglig för bokning",
 		"category": "Bokningsgrupp",
 		"category-help-text": "Exempel 'Squash', 'Klippning', 'Bil (liten)'",
-		"symbol": "Symbol",
-		"back": "Tillbaka",
-		"save": "Spara",
-		"remove": "Radera",
 		"yes": "Ja",
 		"no": "Nej",
 		"confirm-remove": "Är du säker på att du vill ta bort detta objekt?",

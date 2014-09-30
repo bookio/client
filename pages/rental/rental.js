@@ -84,7 +84,7 @@
 					
 					
 					with (_elements.options.list('add', 'title icon-left')) {
-						title("Lägg till");
+						title(i18n.text('add', 'Add'));
 						icon("plus");
 						
 						element.on('tap', function() {
@@ -156,6 +156,9 @@
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
+				
+				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper (234 ADE)'));
+
 
 				_elements.remove.on('tap', function(event) {
 

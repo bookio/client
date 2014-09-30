@@ -3,38 +3,55 @@
     <div data-role="content" data-id="content">
 
 
-        <div data-role="pagelogo">
-        </div>
-
         <ul data-id="listview" data-role="listview" data-inset="true">
 
             <li>
                 <label data-i18n="name">
-                    Namn
+                    Name
                 </label>
                 <input data-id="name" type="text" value="" title="">
 
-                <label data-i18n="notes">
-                    Beskrivning
+                <label data-i18n="description">
+                    Description
                 </label>
                 <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
 
-            </li>
+            <div class="ui-field-contain" style="border-bottom-width:0px;">
+                
+                <label data-i18n="customer-books">
+                    Customer books
+                </label>
+                <select>
+					<option value="one-by-one">one unit at a time</option>
+					<option value="any-number">any number of units</option>
+				</select>
+            </div>
 
+            <div data-role="controlgroup" data-type="horizontal" style="border-bottom-width:0px;">
+
+                <label data-i18n="of">of</label>
+                <input type="text" value="1" />
+                <select>
+					<option value="minute" data-i18n="minute">minute</option>
+					<option value="hour" data-i18n="hour">hour</option>
+					<option value="day" data-i18n="day">day</option>
+					<option value="week" data-i18n="week">week</option>
+					<option value="month" data-i18n="month">month</option>
+				</select>
+				
+            </div>
+            
+            </li>
 
         </ul>
 
 
         <div data-role="button-row">
-            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Tillbaka</a>
-            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Spara</a>
-            <a data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Ta bort</a>
+            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
+            <a class="button-delete" data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Delete</a>
         </div>
 
 
 
     </div>
-
-
-</div>
-

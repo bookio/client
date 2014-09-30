@@ -4,12 +4,12 @@
 
         <div data-role="navbar">
             <ul>
-                <li><a href="#" class="tab-header ui-btn-active" data-tab="tab-1">Description</a>
+                <li><a href="#" class="tab-header ui-btn-active" data-tab="tab-1" data-i18n="description"><h2>Description</h2></a>
                 </li>
-                <li><a href="#" class="tab-header" data-tab="tab-2">Booking Options</a>
+                <li><a href="#" class="tab-header" data-tab="tab-2" data-i18n="options"><h2>Booking Options</h2></a>
                 </li>
-                <li><a href="#" class="tab-header" data-tab="tab-3">More</a>
-                </li>
+<!--                <li><a href="#" class="tab-header" data-tab="tab-3">More</a>
+                </li>-->
             </ul>
         </div>
 
@@ -23,9 +23,6 @@
                             Name
                         </label>
                         <input data-id="name" type="text" value="" title="">
-                        <label data-i18n="name-help-text" class="helptext">
-                            Example 'Court 3', 'Jenny', 'Mini Cooper (234 ADE)'
-                        </label>
 
                         <label data-i18n="notes">
                             Notes
@@ -50,14 +47,9 @@
 
             <div class="tab tab-2">
                 <ul data-role="listview" data-inset="true">
-<!--                    <li data-role="list-devider" data-theme="b">
-                    <h1 data-i18n="title">
-		        		Bokningsalternativ
-	        		</h1>
-                    </li>-->
                     <li data-role="list-devider">
                         <p data-i18n="help">
-                            Lorem ipsum dolor sit amet, utamur pertinax sed an, utinam efficiantur an mei. Vix libris civibus eu. Ne vel legimus.
+                            Select the booking options that applies to this resource or add a new.
                         </p>
 
                     </li>
@@ -68,7 +60,7 @@
                 </ul>
             </div>
 
-            <div class="tab tab-3">
+<!--            <div class="tab tab-3">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-devider" data-theme="b">
                         <h1 data-i18n="title">
@@ -101,11 +93,11 @@
                     </li>
                 </ul>
             </div>
-
+-->
             <div data-role="button-row">
                 <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
                 <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
-                <a data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Remove</a>
+                <a class="button-delete" data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Delete</a>
             </div>
 
 

@@ -21,7 +21,7 @@
 			_element.hookup(_elements, 'data-id');
 			_element.i18n(i18n);
 
-			function fill() {
+			function fill() {			
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
 

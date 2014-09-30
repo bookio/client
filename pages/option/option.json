@@ -1,7 +1,11 @@
 {
 	"sv": {
+		"name": "Namn",
+		"description": "Beskrivning",
+		"back": "Tillbaka",
+		"save": "Spara",
+		"remove": "Radera"
 
-		"specify-icon": "Ange en symbol."
 	},
 	
 	"hu": {

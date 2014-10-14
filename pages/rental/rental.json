@@ -3,7 +3,7 @@
 		"description": "Beskrivning",
 		"options": "Bokningsalternativ",
 		"name": "Namn",
-		"name-help":"Bana 1, Lisa, Mini Cooper (ADE 234)",
+		"name-help": "Bana 1, Lisa, Mini Cooper (ADE 234)",
 		"notes": "Anteckning",
 		"symbol": "Symbol",
 		"help": "Markera ett befintligt bokningsalternativ eller skapa ett nytt.",

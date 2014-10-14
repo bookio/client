@@ -14,8 +14,13 @@
 			var _element = page.element;
 			var _elements = {};
 
+
 			function main() {
-				$.mobile.pages.go('../main/main.html');
+				$.mobile.pages.go("../main/main.html", {
+					params: {
+						editmode: true
+					}
+				});
 			}
 			
 

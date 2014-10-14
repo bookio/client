@@ -42,16 +42,6 @@
 
 					}
 				}
-
-
-				/*_elements.startdate.year.text(sprintf("%04d", startDate.getFullYear()));
-				_elements.startdate.day.text(startDate.getDate() + ' ' + startDate.getShortMonthName());
-				_elements.startdate.weekday.text(startDate.getShortDayName());
-
-				var displayEndDate = endDate.addDays(-1);
-				_elements.enddate.year.text(sprintf("%04d", displayEndDate.getFullYear()));
-				_elements.enddate.day.text(displayEndDate.getDate() + ' ' + displayEndDate.getShortMonthName());
-				_elements.enddate.weekday.text(displayEndDate.getShortDayName());*/
 				
 				var sDate = moment(startDate);
 				var eDate = moment(endDate);
@@ -171,6 +161,7 @@
 						transition: 'fade'
 					});
 				});
+				
 				// Edit Mode
 				_elements.editmode.on('tap', function() {
 					var options = {};
@@ -181,6 +172,7 @@
 	
 					_elements.popup.content.popup('close');
 				});
+				
 				// Log Out
 				_elements.logout.on('tap', function() {
 					// Make sure to remove this page when leaving it...
@@ -196,8 +188,6 @@
 					var dateStr;
 					var showIt = false;
 					
-//					event.stopPropagation();
-//					event.preventDefault();
 					
 					// Tap on start date?
 					if (caretPos && (caretPos < lengthOfDate)) {
@@ -353,6 +343,12 @@
 					
 						default:
 							setIconViewMode();
+					}
+					
+					if (page.params != undefined && page.params.editmode != undefined) {
+						_elements.desktop.invoke('set', {editMode:page.params.editmode});
+						_elements.desktop.invoke('refresh');
+	
 					}
 
 				});

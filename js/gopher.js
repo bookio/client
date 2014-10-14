@@ -26,7 +26,6 @@
 	}
 
 	var requestSucceeded = function(data) {
-		console.log('Data recieved: ', data);
 	}
 	
 	var requestFailed = function(xhr) {

@@ -92,6 +92,9 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				
+				_elements.login.on('tap', function() {
+					$.mobile.pages.go('../login/login.html');
+				});
 
 				_elements.signup.button.on('tap', function() {
 					signup();

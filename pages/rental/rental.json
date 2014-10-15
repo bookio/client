@@ -11,16 +11,15 @@
 		"save": "Spara",
 		"remove": "Radera",
 		"add": "Lägg till",
-		
+		"confirm-remove": "Är du säker på att du vill ta bort detta objekt?",
+		"yes": "Ja",
+		"no": "Nej",
 
 		
 		"depth": "Antal som kan boka samtidigt",
 		"available": "Tillgänglig för bokning",
 		"category": "Bokningsgrupp",
 		"category-help-text": "Exempel 'Squash', 'Klippning', 'Bil (liten)'",
-		"yes": "Ja",
-		"no": "Nej",
-		"confirm-remove": "Är du säker på att du vill ta bort detta objekt?",
 		"specify-name": "Ange ett namn.",
 		"specify-icon": "Ange en symbol."
 	},

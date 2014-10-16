@@ -174,16 +174,7 @@
 						});
 					}
 
-					MsgBox.show({
-						message: i18n.text('confirm-remove', 'Are you sure you want to remove this rental?'),
-						icon: 'warning',
-						buttons: [{
-							text: i18n.text('yes', 'Yes'),
-							click: remove
-						}, {
-							text: i18n.text('no', 'No')
-						}]
-					});
+					remove();
 
 				});
 

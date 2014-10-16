@@ -19,6 +19,48 @@ requirejs.config({
 		}
 	],
 
+	paths: {
+        'jquery'              : 'lib/jquery/jquery-2.0.3',
+        'jquery-mobile'       : 'lib/jquery-mobile/jquery.mobile-1.4.0',
+        'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
+        'moment'              : 'lib/moment/moment',
+        'underscore'          : 'lib/underscore/underscore',
+        'rrule'               : 'lib/rrule/rrule',
+        'mobiscroll'          : 'lib/mobiscroll/mobiscroll.2.9.5.min', 
+        'moment-range'        : 'lib/moment/moment-range'
+    },
+    
+    // Declare dependencies
+	shim: {
+		'jquery-mobile': ['jquery', 'jquery-mobile-config'],
+		'rrule': ['underscore'],
+		'moment-range' : ['moment'],
+		'mobiscroll' : ['jquery-mobile'],
+		'lib/jquery-mobile/plugins/jquery.mobile.pages': ['jquery-mobile'],
+		'lib/jquery/plugins/jquery.extensions.js': ['jquery'],
+		'lib/jquery/plugins/jquery.cookie.js': ['jquery'],
+		'lib/jquery/plugins/jquery.hookup.js': ['jquery'],
+		'lib/jquery/plugins/jquery.debounce.js': ['jquery'],
+		'lib/jquery/plugins/jquery.hittest.js': ['jquery'],
+		'lib/jquery/plugins/jquery.isotope.js': ['jquery'],
+		'lib/jquery/plugins/jquery.mobile-events.js': ['jquery'],
+		'lib/jquery/plugins/jquery.special-events.js': ['jquery'],
+		'lib/jquery/plugins/jquery.spin.js': ['jquery'],
+		'lib/jquery/plugins/jquery.transit.js': ['jquery'],
+		'lib/jquery/plugins/jquery.i18n.js': ['jquery'],
+		'lib/jquery/plugins/jquery.pubsub.js': ['jquery'],
+		'lib/jquery/plugins/jquery.devoke.js': ['jquery'],
+		'lib/jquery/plugins/jquery.textrange.js': ['jquery'],
+		'lib/jquery/plugins/jquery.keyframes.js': ['jquery'],
+		'js/base64.js'  : ['jquery'],
+		'js/sprintf.js' : ['jquery'],
+		'js/sha1.js'    : ['jquery'],
+		'js/tools.js'   : ['jquery'],
+		'js/gopher.js'  : ['jquery'],
+		'js/date.js'    : ['jquery'],
+		'js/model.js'   : ['js/gopher.js']
+	},
+	
 	waitSeconds: 30
 });
 
@@ -27,7 +69,37 @@ requirejs.config({
 (function() {
 
 	var modules = [
-		'components/msgbox/msgbox'
+		'jquery',
+		'jquery-mobile',
+		'lib/jquery/plugins/jquery.extensions.js',
+		'lib/jquery/plugins/jquery.cookie.js',
+		'lib/jquery/plugins/jquery.hookup.js',
+		'lib/jquery/plugins/jquery.debounce.js',
+		'lib/jquery/plugins/jquery.hittest.js',
+		'lib/jquery/plugins/jquery.isotope.js',
+		'lib/jquery/plugins/jquery.mobile-events.js',
+		'lib/jquery/plugins/jquery.special-events.js',
+		'lib/jquery/plugins/jquery.spin.js',
+		'lib/jquery/plugins/jquery.transit.js',
+		'lib/jquery/plugins/jquery.i18n.js',
+		'lib/jquery/plugins/jquery.pubsub.js',
+		'lib/jquery/plugins/jquery.devoke.js',
+		'lib/jquery/plugins/jquery.textrange.js',
+		'lib/jquery/plugins/jquery.keyframes.js',
+		'lib/jquery-mobile/plugins/jquery.mobile.pages',
+		'mobiscroll',
+		'moment',
+		'moment-range',
+		'underscore',
+		'rrule',
+
+		'js/base64.js',
+		'js/sprintf.js',
+		'js/sha1.js',
+		'js/tools.js',
+		'js/gopher.js',
+		'js/date.js',
+		'js/model.js'
 	];
 	
 	require(modules, function() {
@@ -55,8 +127,8 @@ requirejs.config({
 		function init() {
 		
 			var lang = params['lang'] ? params['lang'] : $.i18n.lang;
-			
-			moment.lang(lang);
+			var moment = require("moment");
+			moment().lang(lang);
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
 			$.mobiscroll.defaults.theme = 'android-ics';

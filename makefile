@@ -92,8 +92,8 @@ css: $(CSS_FILES)
 site: $(MAKE_FILES)
 	$(ECHO) Done.
 
-core: js/core.js css/core.css
-	$(ECHO) Done.
+#core: js/core.js css/core.css
+#	$(ECHO) Done.
 
 safari: $(MAKE_FILES)
 	open -a Safari $(SITE_PATH)/index.html

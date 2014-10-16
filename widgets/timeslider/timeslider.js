@@ -189,6 +189,7 @@
 
 						}
 						else {
+
 							width = event.originalEvent.pageX - parent.offset().left - slider.position().left + offsetFromRight;
 							width = Math.max(width, slider.innerHeight() * 1.5);
 							width = Math.min(width, parent.innerWidth() - slider.position().left + rightMargin);

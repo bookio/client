@@ -17,7 +17,6 @@
   background-image: -o-linear-gradient(top, #cdcdcd, #e6e6e6);
   background-image: linear-gradient(to bottom, #cdcdcd, #e6e6e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffcdcdcd', endColorstr='#ffe6e6e6', GradientType=0);
   border: 1px solid #cdcdcd;
 }
 [data-role="timeslider"] .container .slider-container {
@@ -53,7 +52,6 @@
   background-image: -o-linear-gradient(top, #0baef5, #099dde);
   background-image: linear-gradient(to bottom, #0baef5, #099dde);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0baef5', endColorstr='#ff099dde', GradientType=0);
   -webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15000000000000002);
   -moz-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15000000000000002);
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.15000000000000002);
@@ -81,7 +79,6 @@
   background-image: -o-linear-gradient(top, #099dde, #0baef5);
   background-image: linear-gradient(to bottom, #099dde, #0baef5);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff099dde', endColorstr='#ff0baef5', GradientType=0);
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;

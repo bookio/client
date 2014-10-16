@@ -86,7 +86,7 @@
 	
 	            cells.empty();
 	            
-	            var days = Math.ceil(Math.abs(_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
+	            var days = Math.floor(Math.abs(_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
 
 	            for (var i = 0; i < days; i++) {
 	                var cell = $(template).appendTo(cells);
@@ -105,8 +105,7 @@
 	                month.text(calendar.getShortMonthName());
 	                weekday.text(calendar.getShortDayName());
 	
-					calendar = _ticks.after(calendar, false);
-	                //calendar = calendar.addDays(1);
+	                calendar = calendar.addDays(1);
 	            }
 	            
 	        }

@@ -24,7 +24,6 @@
 			var _endDate = new Date();
 
 			$(window).smartresize(function() {
-				console.log('resize event');
 				redrawForResize();
 			});
 
@@ -59,8 +58,9 @@
 				var scale = {};
 				_elements.scale.invoke('get', scale);
 
-				var range = Math.floor(_elements.slider.innerWidth() / 80);				
-				
+
+				var range = Math.floor(_elements.slider.find('.slider-container').innerWidth() / 80);				
+
 				_elements.slider.invoke('set', {range:range});
 				_elements.scale.invoke('set', {startDate: scale.startDate, endDate: scale.startDate.addDays(range)});
 

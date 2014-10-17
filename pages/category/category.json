@@ -3,11 +3,13 @@
         "group": "Grupp",		        
 		"name": "Namn",		
 		"description": "Beskrivning",		
+		"help": "Hur ska kunden tilldelas en resurs?",
 		"automatic": "Kunden väljer en resurs själv",
 		"choose": "Kunden får en ledig resurs automatiskt",
 		"available": "Tillgänglig för bokning",
 		"back": "Tillbaka",
-		"save": "Spara"
+		"save": "Spara",
+		"remove": "Radera"
 	},
 	
 	"hu": {

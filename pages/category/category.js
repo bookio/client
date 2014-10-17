@@ -69,6 +69,21 @@
 					});
 
 				});
+				
+				_elements.remove.on('tap', function(event) {
+
+					function remove() {
+						var request = Model.Categories.remove(_category);
+
+						request.done(function() {
+							$.mobile.pages.pop();
+						});
+					}
+					
+					remove();
+
+				});
+
 
 				fill();
 

@@ -51,10 +51,6 @@
 					$.mobile.pages.pop();
 				});
 
-				_elements.remove.on('tap', function(event) {
-
-				});
-				
 				
 				_elements.remove.on('tap', function(event) {
 

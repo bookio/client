@@ -46,7 +46,7 @@
 			
 			function loadOptions() {
 				var request = Gopher.request('GET', 'options');
-			console.log("loading options");
+
 				_elements.options.list('reset');
 				
 				request.done(function(options) {
@@ -109,7 +109,7 @@
 
 			function loadCategories() {
 				var request = Gopher.request('GET', 'categories');
-			console.log("loading categories");
+
 				_elements.categories.list('reset');
 				
 				request.done(function(categories) {
@@ -240,6 +240,11 @@
 
 					remove();
 
+				});
+
+
+				_element.on("pageshow", function(event) {
+					console.log("PAGESHOW!!!");
 				});
 
 				_elements.save.on('tap', function(event) {

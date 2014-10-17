@@ -3151,6 +3151,11 @@ ul li .ui-btn * {
   margin-left: auto;
   margin-right: auto;
 }
+[data-role="page"] [data-role="content"] .ui-bar h1 {
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 [data-role="page"] [data-role="content"] p {
   color: #6b8299;
   font-size: 16px;

@@ -223,6 +223,9 @@
     transform: translateX(1.5px);
   }
 }
+#login-page {
+  background-color: #d1e8ff;
+}
 #login-page [data-role="content"] {
   max-width: 400px;
   margin-left: auto;

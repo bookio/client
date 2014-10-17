@@ -17,6 +17,7 @@
 			var _elements = {};
 			var _rental = {};
 			var _options = [];
+			var _categories = [];
 			var _icons = [];
 			var _iconsByID = {};
 
@@ -106,6 +107,66 @@
 				return request;				
 			}
 
+			function loadCategories() {
+				var request = Gopher.request('GET', 'categories');
+			console.log("loading categories");
+				_elements.categories.list('reset');
+				
+				request.done(function(categories) {
+
+					
+					$.each(categories, function(index, category) {
+
+						var item = _elements.categories.list('add', 'title subtitle icon-left');
+						item.title(category.name);
+						item.subtitle(category.description);
+						
+						if (_rental.category_ids.indexOf(category.id) >= 0)
+							item.icon('check');
+							
+						item.element.on('tap', function() {
+
+							var index = _rental.category_ids.indexOf(category.id);
+							
+							if (index >= 0) {
+								_rental.category_ids.splice(index, 1);
+								item.icon('');
+							}
+							else {
+								_rental.category_ids.push(category.id);
+								item.icon('check');
+								
+							}
+
+	                    });
+						
+					});
+					
+					
+					with (_elements.categories.list('add', 'title icon-left')) {
+						title(i18n.text('add', 'Add'));
+						icon("plus");
+						
+						element.on('tap', function() {
+		                    function callback(category) {
+			                    // Add the created category to the category id:s array
+								_rental.categories_ids.push(category.id);
+			                    
+		                    }
+		                    $.mobile.pages.push('../category/category.html', {
+		                        params: {callback:callback}
+		                    });
+		                });
+		            }
+                    
+					_elements.categories.list('refresh');
+
+				});
+
+				return request;				
+			}
+
+
 			function loadIcons() {
 
 				var request = Model.Icons.fetch();
@@ -152,6 +213,9 @@
 
 				if (_rental.option_ids == null)
 					_rental.option_ids = [];
+
+				if (_rental.category_ids == null)
+					_rental.category_ids = [];
 					
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');
@@ -184,11 +248,6 @@
 
 					if (!_rental.name) {
 						Notify.show(i18n.text('specify-name', 'Please enter a name.'));
-						return;
-					}
-
-					if (!_rental.icon_id) {
-						Notify.show(i18n.text('specify-symbol', 'Please select a symbol.'));
 						return;
 					}
 
@@ -249,7 +308,7 @@
 
 				$.spin(true);
 
-				$.when(loadIcons(), loadOptions()).then(function() {
+				$.when(loadIcons(), loadOptions(), loadCategories()).then(function() {
 				
 					fill();
 					callback();

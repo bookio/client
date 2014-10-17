@@ -60,9 +60,6 @@
 						});
 					});
 
-					var item = _elements.list.list('add', 'title subtitle icon-left').title('Vare måndag').subtitle('Detta innebär en gång i veckan').icon('check');
-				
-
 					_elements.list.list('refresh');
 				});
 				

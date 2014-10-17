@@ -189,23 +189,24 @@
 				_element.trigger('create');
 
 				_elements.options.list();
-				_elements.content.find('.tab-header').on('tap', function() {
+				_elements.content.find('.tab-header [data-tab]').on('tap', function() {
 
 					var tab = $(this).attr('data-tab');
 
 					_elements.content.find('.tab-container').fadeOut(200, function() {
 	
 							
-							$(this).find('.tab').hide();
-							$(this).find(sprintf('.%s', tab)).show();
+							$(this).find('[data-tab]').hide();
+							$(this).find(sprintf('[data-tab="%s"]', tab)).show();
 							
 							$(this).fadeIn(200);	
 						});				
 				});
 				
 				
-				_elements.content.find('.tab-container .tab').hide();
-				_elements.content.find('.tab-container .tab-1').show();
+				_elements.content.find('.tab-container [data-tab]').hide();
+				_elements.content.find('.tab-container [data-tab]:first').show();
+				_elements.content.find('.tab-header [data-tab]:first').addClass('ui-btn-active');
 
 				if (page.params && page.params.rental) {
 					$.extend(_rental, page.params.rental);
@@ -244,7 +245,12 @@
 
 
 				_element.on("pageshow", function(event) {
-					console.log("PAGESHOW!!!");
+					// Select the appropriate tab
+					
+					//_element.find('.tab:visible');
+					var activeTab = _element.find('.tab-container [data-tab]:visible:first').attr('data-tab');
+					_element.find(sprintf('.tab-header [data-tab="%s"]', activeTab)).addClass('ui-btn-active');
+
 				});
 
 				_elements.save.on('tap', function(event) {

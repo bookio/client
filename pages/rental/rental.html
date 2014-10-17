@@ -2,19 +2,19 @@
 
     <div data-role="content" data-id="content">
 
-        <div data-role="navbar">
+        <div data-role="navbar" class="tab-header">
             <ul>
-                <li><a href="#" class="tab-header" data-tab="tab-1" data-i18n="description"><h1>Description</h1></a>
+                <li><a href="#" class="tab" data-tab="misc" data-i18n="description"><h1>Description</h1></a>
                 </li>
-                <li><a href="#" class="tab-header" data-tab="tab-2" data-i18n="options"><h1>Booking Options</h1></a>
+                <li><a href="#" class="tab" data-tab="options" data-i18n="options"><h1>Booking Options</h1></a>
                 </li>
-                <li><a href="#" class="tab-header" data-tab="tab-3" data-i18n="group"><h1>Group</h1></a>
+                <li><a href="#" class="tab" data-tab="group" data-i18n="group"><h1>Group</h1></a>
                 </li>
             </ul>
         </div>
 
         <div class="tab-container">
-            <div class="tab tab-1">
+            <div class="tab" data-tab="misc">
 
                 <ul data-id="listview" data-role="listview" data-inset="true">
 
@@ -45,7 +45,7 @@
                 </ul>
             </div>
 
-            <div class="tab tab-2">
+            <div class="tab" data-tab="options">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-devider">
                         <p data-i18n="help-options">
@@ -59,7 +59,7 @@
                 </ul>
             </div>
 
-            <div class="tab tab-3">
+            <div class="tab" data-tab="group">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-devider">
                         <p data-i18n="help-groups">

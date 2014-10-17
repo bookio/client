@@ -32,7 +32,8 @@ requirejs.config({
     
     // Declare dependencies
 	shim: {
-		'jquery-mobile': ['jquery', 'jquery-mobile-config'],
+		'jquery-mobile': ['jquery-mobile-config'],
+		'jquery-mobile-config' : ['jquery'],
 		'rrule': ['underscore'],
 		'moment-range' : ['moment'],
 		'mobiscroll' : ['jquery-mobile'],

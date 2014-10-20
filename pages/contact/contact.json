@@ -1,6 +1,6 @@
 {
 	"sv": {
-		"back": "Tillbaka",
+		"header": "Om ditt företag",
 		"company": "Företag",
 		"email": "E-post",
 		"phone": "Telefon",
@@ -9,11 +9,12 @@
 		"twitter": "Twitter",
 		"adress": "Adress",
 		"logo": "Logotyp",
+		"back": "Tillbaka",
 		"save": "Spara"
 	},
 
 	"hu": {
-		"back": "Vissza",
+		"header": "***",
 		"company": "Cégnév",
 		"email": "E-mail",
 		"phone": "Telefon",
@@ -22,6 +23,7 @@
 		"twitter": "Twitter",
 		"adress": "Cím",
 		"logo": "Logó",
+		"back": "Vissza",
 		"save": "Mentés"
 	}
 }

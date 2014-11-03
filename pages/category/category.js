@@ -19,8 +19,10 @@
 			function fill() {			
 				_elements.name.val(_category.name);
 				_elements.description.val(_category.description);
+				
 				_elements.automatic.attr('checked', _category.automatic ? true : undefined);
 				_elements.choose.attr('checked', _category.automatic ? undefined : true);				
+				
 				_elements.available.attr('checked', _category.available ? true : undefined);
 
 			}
@@ -28,8 +30,9 @@
 			function chill() {
 				_category.name = _elements.name.val();
 				_category.description = _elements.description.val();
-				_category.automatic = _elements.automatic.is(':checked');
+				_category.automatic = _elements.automatic.is(':checked');				
 				_category.available = _elements.available.is(':checked');
+
 			}
 
 			this.init = function() {

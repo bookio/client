@@ -14,7 +14,13 @@
 			var _elements = {};
 
 			function addItem(category) {
-				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
+				var item;
+				
+				// If group unavailable show this by 'line-through' on text
+				if (category.available)
+					item = _elements.list.list('add', 'icon-disclosure subtitle title image');
+				else
+					item = _elements.list.list('add', 'icon-disclosure subtitle title image lineThrough');
 				
 				item.title(category.name);
 				item.subtitle(category.description);

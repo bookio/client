@@ -1,4 +1,18 @@
 {
+	"sv": {
+		"title": "Bokningsalternativ",
+		"back": "Tillbaka",
+		"add": "Lägg till"
+		
+	},
+	
+	"hu": {
+		"title": "***",
+		"back": "***",
+		"add": "***"
+
+	}
+	
 
 }
 

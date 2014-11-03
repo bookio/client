@@ -82,7 +82,10 @@
 					}
 
 					if (hasStyle('title')) {
-						_elements.title = $('<h2 class="title"></h2>').appendTo(_elements.link);
+						if (hasStyle('lineThrough'))
+							_elements.title = $('<h2 class="title" style="text-decoration: line-through;"></h2>').appendTo(_elements.link);
+						else
+							_elements.title = $('<h2 class="title"></h2>').appendTo(_elements.link);						
 
 						self.title = function(text) {
 		
@@ -99,7 +102,10 @@
 
 						
 					if (hasStyle('subtitle')) {
-						_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
+						if (hasStyle('lineThrough'))
+							_elements.subtitle = $('<p class="subtitle" style="text-decoration: line-through;"></p>').appendTo(_elements.link);
+						else
+							_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
 
 						self.subtitle = function(text) {
 							if (arguments.length == 0)

@@ -6,6 +6,9 @@
   height: 50px;
   width: 50px;
 }
+#rental-page .icon {
+  fill: #6b8299;
+}
 #rental-page [data-id="category.container"] [data-id="category.button"] span {
   text-align: left;
 }

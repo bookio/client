@@ -36,6 +36,10 @@
 					$.mobile.pages.push('../categories/categories.html');
 				});
 
+				_elements.options.on('tap', function() {
+					$.mobile.pages.push('../options/options.html');
+				});
+
 				_elements.rules.on('tap', function() {
 					$.mobile.pages.push('../rules/rules.html');
 				});

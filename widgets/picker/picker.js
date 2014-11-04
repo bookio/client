@@ -12,14 +12,14 @@
 	        var self = this;
 	        var _element = widget.element;
 			var _elements = {};
+			var _options = {};
 
 			self.refresh = function() {
 				var val = _element.val();	
-	            var options = _element.find('option');
 
 				_elements.text.text('');
 
-                options.each(function(index) {
+                _options.each(function(index) {
 					if (val == $(this).val()) {
 						_elements.span.text($(this).text());
 						return false;
@@ -28,9 +28,8 @@
 			}
 			
 			self.select = function(value) {
-            	var options = _element.find('option');
             	
-            	options.each(function(index) {
+            	_options.each(function(index) {
  					
  					var option = $(this);
 					
@@ -39,7 +38,7 @@
 						_element.val(value);
 						_elements.text.text(option.text());						
 
-						options.removeAttr('selected');
+						_options.removeAttr('selected');
 		            	option.attr('selected', true);
 		            	
 		            	return false;
@@ -61,9 +60,9 @@
 				}	            
 
 
-				var options = _element.find('option');
+				_options = _element.find('option');
 
-				options.each(function(index) {
+				_options.each(function(index) {
 					var option = $(this);
 
 					if (option.attr('value') == undefined)
@@ -74,10 +73,13 @@
 						_elements.text.text(option.text());		
 					}
 				});
+				
+				// Remove from DOM
+				_options.remove();
+				
  
 
 				_element.on('tap', function(event) {
-	                var options = _element.find('option');
 		                
 	                var popup = $('<div data-role="popup" data-theme="a" data-transition="pop" data-dismissible="true" class="picker ui-controlgroup ui-controlgroup-vertical"></div>').popup({
 	                    x:event.pageX,
@@ -94,7 +96,7 @@
 						checkboxes.addClass('ui-mini');
 					}	            
 					
-	                options.each(function(index) {
+	                _options.each(function(index) {
 
 	                	var option = $(this);
 	                	var checkbox = $('<div class="ui-checkbox"></div>').appendTo(checkboxes);
@@ -106,7 +108,7 @@
 		                if (index == 0)
 		                	label.addClass('ui-first-child');
 
-		                if (index == options.length - 1)
+		                if (index == _options.length - 1)
 		                	label.addClass('ui-last-child');
 
 						label.addClass(_element.val() == option.attr('value') ? 'ui-checkbox-on': 'ui-checkbox-off');
@@ -116,7 +118,6 @@
 
 						// Select on click
 		                checkbox.on('tap', function() {
-							var options = _element.find('option');
 							var option  = $(this).data('option');
 		                	var value   = option.attr('value');
 		                	
@@ -124,7 +125,7 @@
 			                _element.trigger('change', value);
 							_elements.text.text(option.text());
 			                
-							options.removeAttr('selected');
+							_options.removeAttr('selected');
 			            	option.attr('selected', true);
 			                
 							checkboxes.find('.ui-btn').removeClass('ui-checkbox-on').addClass('ui-checkbox-off');

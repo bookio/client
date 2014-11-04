@@ -1,6 +1,18 @@
 #settings-page [data-id='url'] {
   font-size: smaller;
 }
+#settings-page .ui-mini {
+  color: #cdcdcd;
+  margin-top: 0;
+}
+#settings-page .ui-grid-a {
+  border: 1px solid;
+  border-color: #e6e6e6;
+  padding: 1em;
+}
+#settings-page .icon {
+  fill: #6b8299;
+}
 #settings-page [data-id='qrcontainer'] {
   text-align: center;
 }

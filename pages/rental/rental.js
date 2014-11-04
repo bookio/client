@@ -29,17 +29,28 @@
 				_elements.name.val(_rental.name);
 				_elements.description.val(_rental.description);
 
+				_elements.thing.removeAttr('checked');
+				_elements.human.removeAttr('checked');
+				_elements.event.removeAttr('checked');
 
+				if (_rental.style == 'human')
+					_elements.human.attr('checked', 'checked');
+
+				if (_rental.style == 'event')
+					_elements.event.attr('checked', 'checked');
+
+				if (_rental.style == 'resource')
+					_elements.thing.attr('checked', 'checked');
+
+				_elements.thing.checkboxradio("refresh");
+				_elements.event.checkboxradio("refresh");
+				_elements.human.checkboxradio("refresh");
+				
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 			}
 
 			function chill() {
-				_rental.name = _elements.name.val();
-				_rental.description = _elements.description.val();
-
-				// Set to generic 'cube' if no icon chosen
-				if (!_rental.icon_id)
-					_rental.icon_id = 1;
+				
 
 
 			}
@@ -217,6 +228,11 @@
 
 				if (_rental.category_ids == null)
 					_rental.category_ids = [];
+
+				// Set to generic 'cube' if no icon chosen
+				if (!_rental.icon_id)
+					_rental.icon_id = 1;
+
 					
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');
@@ -228,6 +244,26 @@
 				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
 
 
+				_elements.name.on('change', function(event, ui) {
+					_rental.name = $(this).val();
+				});
+
+				_elements.description.on('change', function(event, ui) {
+					_rental.description = $(this).val();
+				});
+
+				_elements.human.on('change', function(event, ui) {
+					_rental.style = 'human';
+				});
+
+				_elements.thing.on('change', function(event, ui) {
+					_rental.style = 'resource';
+				});
+
+				_elements.event.on('change', function(event, ui) {
+					_rental.style = 'event';
+				});
+				
 				_elements.remove.on('tap', function(event) {
 
 
@@ -326,6 +362,7 @@
 
 					$.spin(false);
 				});				
+				
 					
 			}
 		}

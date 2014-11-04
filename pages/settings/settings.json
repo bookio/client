@@ -7,7 +7,8 @@
 		"settings-choice-options": "Bokningsalternativ",
 		"settings-choice-rules": "Regler för bokning",
 		"settings-url-title": "Kundernas ingång till bokning",
-		"settings-url-help": "Klicka på sökvägen ovan och tryck sen tangenterna 'cmd+C' (Mac) <strong>eller</strong> 'ctrl+C' (PC) för att kopiera. För att se hur bokningssidan ser ut hos dina kunder <a data-id='urlTrial' href='#' target='_blank'>klicka här</a>.",
+		"settings-url-intro": "Sökvägen och QR-koden nedan leder till den sida där dina kunder gör sina bokningar.",
+		"settings-url-help": "Klicka på sökvägen ovan och tryck tangenterna 'cmd+C' (Mac) <strong>eller</strong> 'ctrl+C' (PC) för att kopiera. För att se hur bokningssidan ser ut hos dina kunder <a data-id='urlTrial' href='#' target='_blank'>klicka här</a>.",
 		"settings-url-help-qr": "Kopiera QR-koden ovan (höger musknapp) och använd i ditt marknadsarbete.",
 		"settings-button-back": "Klar"
 	},

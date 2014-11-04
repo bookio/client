@@ -225,7 +225,7 @@
 					$.mobile.pages.pop();
 				});
 				
-				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper (234 ADE)'));
+				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
 
 
 				_elements.remove.on('tap', function(event) {

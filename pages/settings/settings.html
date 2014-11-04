@@ -54,10 +54,15 @@
         </ul>
 
         <ul data-role="listview" data-inset="true">
-            <li data-role="list-devider" data-theme="b" data-i18n="settings-url-title">
-                Path to Booking Page
+            <li data-role="list-devider" data-theme="d" data-i18n="settings-url-title">
+            	<h1>
+	                How your customers reach the booking page
+            	</h1>
             </li>
             <li>
+            	<p data-i18n="settings-url-intro" style="text-align: center;">
+            		The path and QR-code below leads to the booking page for your customers. 
+            	</p>
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
                         <input data-id="url" type="text" onClick="this.select();" style="vertical-align:middle" readonly>
@@ -69,12 +74,12 @@
                     </div>
 
                     <div class="ui-block-a">
-                        <p data-i18n="settings-url-help">
-                            Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy. To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
+                        <p class="ui-mini" data-i18n="settings-url-help">
+                            Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy.<br/>To see a preview <a data-id="urlTrial" href="" target="_blank">click here.</a>
                         </p>
                     </div>
                     <div class="ui-block-b">
-                        <p data-i18n="settings-url-help-qr">
+                        <p class="ui-mini" data-i18n="settings-url-help-qr">
                             Copy the QR-code above and use in your promotional material.
                         </p>
                     </div>

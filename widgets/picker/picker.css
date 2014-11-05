@@ -5,7 +5,7 @@
   background-color: transparent !important;
 }
 [data-role="popup"].picker ul li div.ui-icon-check:after {
-  background-color: #24b6f6 !important;
+  background-color: #b2c9f0 !important;
 }
 [class*="ui-block-"] > [data-role="picker"].ui-btn {
   margin-left: 0px !important;

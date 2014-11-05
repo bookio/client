@@ -33,7 +33,7 @@
   height: 100%;
   display: block;
   overflow-y: scroll;
-  background-color: #86d7fa;
+  background-color: #ffffff;
   font-size: smaller;
 }
 [data-role="desktoplist"] table {
@@ -41,7 +41,7 @@
   border-collapse: collapse;
 }
 [data-role="desktoplist"] table thead th {
-  background-color: #55c6f8;
+  background-color: #dce7f8;
   text-align: left;
   font-size: smaller;
 }
@@ -55,45 +55,45 @@
   width: 50px;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(even) {
-  background-color: #55c6f8;
+  background-color: #dce7f8;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(even).selected {
   -webkit-transition: background-color 100ms;
   -moz-transition: background-color 100ms;
   -o-transition: background-color 100ms;
   transition: background-color 100ms;
-  background-color: #24b6f6;
+  background-color: #b2c9f0;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(even) :not(&.selected) {
   -webkit-transition: background-color 100ms;
   -moz-transition: background-color 100ms;
   -o-transition: background-color 100ms;
   transition: background-color 100ms;
-  background-color: #55c6f8;
+  background-color: #dce7f8;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(odd) {
-  background-color: #6dcef9;
+  background-color: #f1f5fc;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(odd).selected {
   -webkit-transition: background-color 100ms;
   -moz-transition: background-color 100ms;
   -o-transition: background-color 100ms;
   transition: background-color 100ms;
-  background-color: #24b6f6;
+  background-color: #b2c9f0;
 }
 [data-role="desktoplist"] table tbody tr:nth-child(odd) :not(&.selected) {
   -webkit-transition: background-color 100ms;
   -moz-transition: background-color 100ms;
   -o-transition: background-color 100ms;
   transition: background-color 100ms;
-  background-color: #6dcef9;
+  background-color: #f1f5fc;
 }
 [data-role="desktoplist"] table tbody tr.selected {
   -webkit-transition: outline 100ms;
   -moz-transition: outline 100ms;
   -o-transition: outline 100ms;
   transition: outline 100ms;
-  outline: 1px solid #0baef5;
+  outline: 1px solid #9cbbeb;
   outline-offset: -1px;
 }
 [data-role="desktoplist"] table tbody tr.disabled {

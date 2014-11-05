@@ -232,7 +232,7 @@
 
 
 					function remove() {
-						var request = Model.Rentals.remove(_rental);
+						var request = Model.Rentals.remove(_rental); 
 
 						request.done(function() {
 							$.mobile.pages.pop();

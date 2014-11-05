@@ -82,7 +82,7 @@
   margin: 0 auto;
 }
 #guide-page .slider .path-svg {
-  fill: #099dde;
+  fill: #87ace7;
 }
 #guide-page[step="1"] [data-id="slider"] {
   left: 0%;
@@ -125,11 +125,11 @@
 }
 #guide-page tr .selected,
 #guide-page td .selected {
-  background-color: rgba(9, 157, 222, 0.7);
+  background-color: rgba(135, 172, 231, 0.7);
 }
 #guide-page tr .tracking,
 #guide-page td .tracking {
-  background-color: rgba(8, 140, 197, 0.7);
+  background-color: rgba(114, 157, 227, 0.7);
 }
 #guide-page .label {
   display: inline-block;

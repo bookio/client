@@ -18,13 +18,13 @@
 				
 				// If group unavailable show this by 'line-through' on text
 				if (category.available)
-					item = _elements.list.list('add', 'icon-disclosure subtitle title image');
+					item = _elements.list.list('add', 'icon-disclosure subtitle title ');
 				else
-					item = _elements.list.list('add', 'icon-disclosure subtitle title image lineThrough');
+					item = _elements.list.list('add', 'icon-disclosure subtitle title lineThrough');
 				
 				item.title(category.name);
 				item.subtitle(category.description);
-				item.image(category.image ? category.image : '../../images/icons/bookio.png');
+				//item.image(category.image ? category.image : '../../images/icons/bookio.png');
 				
 				item.element.on('tap', function() {
 					$.mobile.pages.push("../category/category.html", {

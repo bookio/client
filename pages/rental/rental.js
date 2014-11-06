@@ -90,10 +90,6 @@
 								item.icon('check');
 								
 							}
-
-		                    //$.mobile.pages.push('../option/option.html', {
-		                      //  params: {option: option}
-		                    //});					
 	                    });
 
 						
@@ -130,30 +126,31 @@
 				
 				request.done(function(categories) {
 
-					
+
+					function selectCategory(id) {
+						$.each(_elements.categories.list('items'), function(index, item) {
+
+							var category = item.element.data('category');
+							
+							if (category != undefined) {
+								item.icon(category.id == id ? 'check' : '');
+							}
+						});
+					}					
+
 					$.each(categories, function(index, category) {
 
 						var item = _elements.categories.list('add', 'title subtitle icon-left');
+						
 						item.title(category.name);
 						item.subtitle(category.description);
+						item.element.data('category', category);
 						
-						if (_rental.category_ids.indexOf(category.id) >= 0)
+						if (_rental.category_id != undefined && _rental.category_id == category.id)
 							item.icon('check');
 							
 						item.element.on('tap', function() {
-
-							var index = _rental.category_ids.indexOf(category.id);
-							
-							if (index >= 0) {
-								_rental.category_ids.splice(index, 1);
-								item.icon('');
-							}
-							else {
-								_rental.category_ids.push(category.id);
-								item.icon('check');
-								
-							}
-
+							selectCategory(_rental.category_id = $(this).data('category').id);
 	                    });
 						
 					});
@@ -165,9 +162,7 @@
 						
 						element.on('tap', function() {
 		                    function callback(category) {
-			                    // Add the created category to the category id:s array
-								_rental.categories_ids.push(category.id);
-			                    
+								selectCategory(_rental.category_id = category.id);
 		                    }
 		                    $.mobile.pages.push('../category/category.html', {
 		                        params: {callback:callback}
@@ -230,9 +225,6 @@
 
 				if (_rental.option_ids == null)
 					_rental.option_ids = [];
-
-				if (_rental.category_ids == null)
-					_rental.category_ids = [];
 
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)

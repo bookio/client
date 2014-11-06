@@ -5,7 +5,6 @@
 	var dependencies = [
 		'i18n!./rental.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
-		'../../widgets/pagelogo/pagelogo.js',
 		'../../widgets/common/list.js'
 	];
 
@@ -33,15 +32,21 @@
 				_elements.human.removeAttr('checked');
 				_elements.event.removeAttr('checked');
 
-				if (_rental.style == 'human')
-					_elements.human.attr('checked', 'checked');
-
-				if (_rental.style == 'event')
-					_elements.event.attr('checked', 'checked');
-
-				if (_rental.style == 'resource')
+				if (_rental.style == 'thing') {
 					_elements.thing.attr('checked', 'checked');
-
+				}
+				else if (_rental.style == 'human') {
+					_elements.human.attr('checked', 'checked');
+				} 
+				else if (_rental.style == 'event') {
+					_elements.event.attr('checked', 'checked');
+				}
+				else {
+					// default to 'thing'
+					_elements.thing.attr('checked', 'checked');
+					_rental.style = 'thing';
+				}
+				
 				_elements.thing.checkboxradio("refresh");
 				_elements.event.checkboxradio("refresh");
 				_elements.human.checkboxradio("refresh");
@@ -231,7 +236,7 @@
 
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)
-					_rental.icon_id = 1;
+					_rental.icon_id = 0;
 
 					
 				if (!_rental.id)
@@ -240,7 +245,7 @@
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
-				
+
 				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
 
 
@@ -252,16 +257,22 @@
 					_rental.description = $(this).val();
 				});
 
-				_elements.human.on('change', function(event, ui) {
-					_rental.style = 'human';
+				_elements.thing.on('change', function(event, ui) {
+					_rental.style = 'thing';
+					_elements.section.human.hide("fast");
+					_elements.section.event.hide("fast");					
 				});
 
-				_elements.thing.on('change', function(event, ui) {
-					_rental.style = 'resource';
+				_elements.human.on('change', function(event, ui) {
+					_rental.style = 'human';
+					_elements.section.human.show("fast");
+					_elements.section.event.hide("fast");					
 				});
 
 				_elements.event.on('change', function(event, ui) {
 					_rental.style = 'event';
+					_elements.section.event.show("fast");
+					_elements.section.human.hide("fast");					
 				});
 				
 				_elements.remove.on('tap', function(event) {

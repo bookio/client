@@ -26,7 +26,8 @@ requirejs.config({
         'moment'              : 'lib/moment/moment',
         'underscore'          : 'lib/underscore/underscore',
         'rrule'               : 'lib/rrule/rrule',
-        'mobiscroll'          : 'lib/mobiscroll/mobiscroll.2.9.5.min', 
+        'mobiscroll'          : 'lib/mobiscroll/mobiscroll.2.9.5.min',
+        'latlon-picker'		  : 'lib/latlon-picker/jquery-gmaps-latlon-picker', 
         'moment-range'        : 'lib/moment/moment-range'
     },
     
@@ -37,6 +38,7 @@ requirejs.config({
 		'rrule': ['underscore'],
 		'moment-range' : ['moment'],
 		'mobiscroll' : ['jquery-mobile'],
+		'latlon-picker' : ['jquery'],
 		'lib/jquery-mobile/plugins/jquery.mobile.pages': ['jquery-mobile'],
 		'lib/jquery/plugins/jquery.extensions.js': ['jquery'],
 		'lib/jquery/plugins/jquery.cookie.js': ['jquery'],
@@ -93,6 +95,7 @@ requirejs.config({
 		'moment-range',
 		'underscore',
 		'rrule',
+		'latlon-picker',
 
 		'js/base64.js',
 		'js/sprintf.js',

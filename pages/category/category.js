@@ -20,10 +20,10 @@
 				_elements.name.val(_category.name);
 				_elements.description.val(_category.description);
 				
-				_elements.automatic.attr('checked', _category.automatic ? true : undefined);
-				_elements.choose.attr('checked', _category.automatic ? undefined : true);				
+				_elements.automatic.attr('checked', _category.automatic ? true : undefined).checkboxradio('refresh');
+				_elements.choose.attr('checked', _category.automatic ? undefined : true).checkboxradio('refresh');				
 				
-				_elements.available.attr('checked', _category.available ? true : undefined);
+				_elements.available.prop('checked', _category.available).checkboxradio('refresh');
 
 			}
 
@@ -65,6 +65,9 @@
 					});
 
 					request.done(function(category) {
+					
+						console.log(_category);
+						
 						if ($.isFunction(page.params.callback)) {
 							page.params.callback(category);
 						}

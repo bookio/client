@@ -350,7 +350,10 @@
 
 					popup.popup('open');
 				});
-
+				
+				$(".gllpLatlonPicker").each(function() {
+					(new GMapsLatLonPicker()).init( $(this) );
+				});
 			}
 			
 

@@ -5,7 +5,6 @@
 	var dependencies = [
 		'i18n!./option.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
-		'../../widgets/pagelogo/pagelogo.js',
 		'../../widgets/common/list.js',
 		'../../widgets/picker/picker.js'
 	];

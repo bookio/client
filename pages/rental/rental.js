@@ -1,7 +1,5 @@
 (function() {
 
-
-
 	var dependencies = [
 		'i18n!./rental.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
@@ -238,6 +236,16 @@
 					$.mobile.pages.pop();
 				});
 
+				_elements.setLocation.on('tap', function() {
+					$.mobile.pages.push('../locationpicker/locationpicker.html', {
+						transition: 'flip',
+						params: {
+							lat: '55.7046601',
+							lon: '13.191007300000024'
+						}
+					});
+				});
+
 				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
 
 
@@ -351,9 +359,6 @@
 					popup.popup('open');
 				});
 				
-				$(".gllpLatlonPicker").each(function() {
-					(new GMapsLatLonPicker()).init( $(this) );
-				});
 			}
 			
 

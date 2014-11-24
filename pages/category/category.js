@@ -19,9 +19,9 @@
 			function fill() {			
 				_elements.name.val(_category.name);
 				_elements.description.val(_category.description);
-				
-				_elements.automatic.attr('checked', _category.automatic ? true : undefined).checkboxradio('refresh');
-				_elements.choose.attr('checked', _category.automatic ? undefined : true).checkboxradio('refresh');				
+
+				_elements.automatic.attr('checked', _category.automatic ? 'checked' : false).checkboxradio('refresh');
+				_elements.choose.attr('checked', _category.automatic ? false : 'checked').checkboxradio('refresh');				
 				
 				_elements.available.prop('checked', _category.available).checkboxradio('refresh');
 
@@ -39,14 +39,17 @@
 				
 				if (page.params && page.params.category) {
 					$.extend(_category, page.params.category);
-					
-					if (_category.automatic == undefined)
-						_category.automatic = true;
-
-					if (_category.available == undefined)
-						_category.available = true;						
-						
 				}
+
+				if (_category.automatic == undefined)
+					_category.automatic = true;
+
+				if (_category.available == undefined)
+					_category.available = true;						
+				
+				// Hide the remove button if a new category
+				if (_category.id == undefined)
+					_elements.remove.hide();
 
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();

@@ -19,12 +19,16 @@
 
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
+			
+			
+			console.log("Translating page...");
 			_element.i18n(i18n);
 
 			function fill() {			
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
 
+				_elements.selection.picker('refresh');
 
 			}
 
@@ -38,7 +42,8 @@
 
 			this.init = function() {
 
-				
+				_elements.selection.picker();
+								
 				if (page.params && page.params.option) {
 					$.extend(_option, page.params.option);
 				}

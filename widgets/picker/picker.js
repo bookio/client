@@ -21,7 +21,7 @@
 
                 _options.each(function(index) {
 					if (val == $(this).val()) {
-						_elements.span.text($(this).text());
+						_elements.text.text($(this).text());
 						return false;
 					}
                 });
@@ -59,7 +59,6 @@
 					_elements.text.addClass('ui-mini');
 				}	            
 
-
 				_options = _element.find('option');
 
 				_options.each(function(index) {
@@ -75,9 +74,8 @@
 				});
 				
 				// Remove from DOM
-				_options.remove();
+				//_options.remove();
 				
- 
 
 				_element.on('tap', function(event) {
 		                

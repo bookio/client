@@ -109,6 +109,9 @@ requirejs.config({
 	require(modules, function() {
 
 
+		// Quick fix, pollute global name space with moment()
+		moment = require("moment");
+
 		function parseUrlParams() {
 			var params = {};
 			
@@ -131,7 +134,7 @@ requirejs.config({
 		function init() {
 		
 			var lang = params['lang'] ? params['lang'] : $.i18n.lang;
-			var moment = require("moment");
+			
 			moment().lang(lang);
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';

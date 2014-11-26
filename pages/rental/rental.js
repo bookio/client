@@ -263,11 +263,18 @@
 							location: _rental.location
 						};
 
-					$.mobile.pages.push('../locationpicker/locationpicker.html', {
+					var locationPickerCall = $.mobile.pages.push('../locationpicker/locationpicker.html', {
 						transition: 'flip',
 						params: params
 					});
-					
+
+					locationPickerCall.done(function(params,jbn) {						
+						debugger;
+						_rental.lat = params.lat;
+						_rental.lon = params.lon;
+						_rental.location = params.location;
+					});
+
 				});
 				
 				$.mobile.pages.ready

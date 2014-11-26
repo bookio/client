@@ -35,7 +35,6 @@
 				page.params.location = _elements.location.val();		
 			}
 			
-
 			this.init = function() {
 
 				if (page.params && page.params.option) {
@@ -44,7 +43,7 @@
 
 				_elements.done.on('tap', function(event) {
 					chill();
-					$.mobile.pages.pop();
+					$.mobile.pages.pop(page.params, "jbn");
 				});
 				
 				_element.on('pageshow', function() {

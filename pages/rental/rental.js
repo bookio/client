@@ -268,8 +268,7 @@
 						params: params
 					});
 
-					locationPickerCall.done(function(params,jbn) {						
-						debugger;
+					locationPickerCall.done(function(params) {						
 						_rental.lat = params.lat;
 						_rental.lon = params.lon;
 						_rental.location = params.location;

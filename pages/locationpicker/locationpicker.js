@@ -43,7 +43,7 @@
 
 				_elements.done.on('tap', function(event) {
 					chill();
-					$.mobile.pages.pop(page.params, "jbn");
+					$.mobile.pages.pop(page.params);
 				});
 				
 				_element.on('pageshow', function() {

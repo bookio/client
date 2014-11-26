@@ -29,6 +29,7 @@
 				_elements.description.val(_option.description);
 
 				_elements.selection.picker('refresh');
+				_elements.unit.picker('refresh');
 
 			}
 
@@ -47,14 +48,14 @@
 				if (page.params && page.params.option) {
 					$.extend(_option, page.params.option);
 				}
-
+				
 				if (!_option.id)
 					_elements.remove.addClass('hidden');
 
 				_elements.back.on('tap', function(event) {
-					$.mobile.pages.pop();
+					$.mobile.pages.pop(null);
 				});
-
+				
 				
 				_elements.remove.on('tap', function(event) {
 
@@ -63,7 +64,7 @@
 						var request = Model.Options.remove(_option);
 
 						request.done(function() {
-							$.mobile.pages.pop();
+							$.mobile.pages.pop(null);
 						});
 					}
 					
@@ -88,7 +89,7 @@
 						if ($.isFunction(page.params.callback)) {
 							page.params.callback(option);
 						}
-						$.mobile.pages.pop();
+						$.mobile.pages.pop(_option);
 					});
 
 				});

@@ -101,6 +101,7 @@
 						icon("plus");
 						
 						element.on('tap', function() {
+		                    /*
 		                    function callback(option) {
 			                    // Add the created option to the option id:s array
 								_rental.option_ids.push(option.id);
@@ -109,6 +110,19 @@
 		                    $.mobile.pages.push('../option/option.html', {
 		                        params: {callback:callback}
 		                    });
+		                    */
+		                    
+		                     
+		                    var request = $.mobile.pages.push('../option/option.html');
+
+		                    request.done(function(option) {
+
+		                    	if (option != null)
+									_rental.option_ids.push(option.id);
+			                    
+		                    });
+		                    
+		                    
 		                });
 		            }
                     

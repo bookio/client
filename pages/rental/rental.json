@@ -10,7 +10,7 @@
 		"type-resource": "En person",
 		"type-event": "Aktiviteter vid angivna datum",
 		"symbol": "Symbol",
-		"help-options": "Markera ett befintligt bokningsalternativ eller skapa ett nytt.",
+		"help-options": "Markera de bokningsalternativ resursen erbjuder (eller skapa nytt).",
 		"back": "Tillbaka",
 		"save": "Spara",
 		"remove": "Radera",
@@ -20,10 +20,10 @@
 		"no": "Nej",
 		"group": "Grupp",
 		"help-groups": "Markera gruppen resursen ska tillhöra. Du kan samla resurser i en grupp, dina kunder ser sen gruppen när de bokar, inte de enskilda resurserna. <br/><br/>Ett exempel: du har 4 tennisbanor döpta till 'Bana 1', 'Bana 2', osv. Du vill att dina kunder ska boka 'Tennis', inte enskilda banor. Då skapar du en grupp 'Tennis' och kopplar dina banor till denna grupp.",
-		
-		"depth": "Antal som kan boka samtidigt",
-		"available": "Tillgänglig för bokning",
-		"specify-name": "Ange ett namn."
+		"dates": "Datum",
+		"seats": "Platser",
+		"set-location": "Ange plats",
+		"location": "Plats: "
 	},
 	
 	"hu": {

@@ -35,9 +35,11 @@
 				}
 				else if (_rental.style == 'human') {
 					_elements.human.attr('checked', 'checked');
+					_elements.section.human.show("fast");
 				} 
 				else if (_rental.style == 'event') {
 					_elements.event.attr('checked', 'checked');
+					_elements.section.event.show("fast");
 				}
 				else {
 					// default to 'thing'
@@ -216,7 +218,8 @@
 				_elements.content.find('.tab-container [data-tab]').hide();
 				_elements.content.find('.tab-container [data-tab]:first').show();
 				_elements.content.find('.tab-header [data-tab]:first').addClass('ui-btn-active');
-
+				
+					
 				if (page.params && page.params.rental) {
 					$.extend(_rental, page.params.rental);
 				}
@@ -228,23 +231,32 @@
 				if (!_rental.icon_id)
 					_rental.icon_id = 0;
 
+				// If location set, show it on the button
+				if (_rental.location != undefined)
+					_elements.setlocation.text(i18n.text('location', 'Location: ')+_rental.location);
 					
 				if (!_rental.id)
-					_elements.remove.addClass('hidden');
+					_elements.remove.addClass('hidden');					
 
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
 
-				_elements.setLocation.on('tap', function() {
+				_elements.setlocation.on('tap', function() {
+					var params  = {
+							lat: _rental.lat,
+							lon: _rental.lon,
+							location: _rental.location
+						};
+
 					$.mobile.pages.push('../locationpicker/locationpicker.html', {
 						transition: 'flip',
-						params: {
-							lat: '55.7046601',
-							lon: '13.191007300000024'
-						}
+						params: params
 					});
+					
 				});
+				
+				$.mobile.pages.ready
 
 				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
 
@@ -297,9 +309,10 @@
 					//_element.find('.tab:visible');
 					var activeTab = _element.find('.tab-container [data-tab]:visible:first').attr('data-tab');
 					_element.find(sprintf('.tab-header [data-tab="%s"]', activeTab)).addClass('ui-btn-active');
-
+					
 				});
 
+				
 				_elements.save.on('tap', function(event) {
 
 					chill();
@@ -367,7 +380,7 @@
 				$.spin(true);
 
 				$.when(loadIcons(), loadOptions(), loadCategories()).then(function() {
-				
+								
 					fill();
 					callback();
 

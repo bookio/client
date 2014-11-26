@@ -1,5 +1,8 @@
 {
 	"sv": {
+		"default-lat": "59.3268215",
+		"default-lon": "18.071719400000006",
+		"default-location": "Kungliga slottet",
 		"save": "Spara",
 		"remove": "Radera"
 

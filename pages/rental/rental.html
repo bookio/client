@@ -128,9 +128,20 @@
 		                </div>
 		                
 		                <div data-id="section.event" style="display: none;">
+			                			          
 		                	<label i18n="eventdates">Event Dates</label>
 							<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
-							<button data-id="setLocation" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
+
+							<div class="ui-inline">
+				                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
+							</div>
+	                        <div class="ui-inline">
+								<input type="text" placeholder="6"/>
+	                        </div>
+	                        <div class="ui-inline">							
+								<button data-i18n="set-location" data-id="setlocation" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
+	                        </div>
+
 		                </div>
 		                
                         <div data-id="icon.container">

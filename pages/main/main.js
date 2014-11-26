@@ -24,7 +24,7 @@
 			var _endDate = new Date();
 
 			$(window).smartresize(function() {
-				//redrawForResize();
+				redrawForResize();
 			});
 
 			function NotifyUpdate(startDate, endDate) {

@@ -61,6 +61,7 @@
 					_params.endDate = _params.endDate.addDays(1);
 					
                     var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
+                    //var url = sprintf('rentals/query?begin_at=%s&end_at=%s', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
                     var request = Gopher.request('GET', url);
 
 					console.log('Searching for empty slot', url);

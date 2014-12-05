@@ -86,7 +86,8 @@
             
             function enableEvents() {
 			
-				_elements.tbody.on('tap', 'tr:first-child .icon-chevron-up', function(){
+				_elements.tbody.on('tap', 'tr:first-child .icon-chevron-up', function() {
+
 					var row = $(this).closest('tr'); 
 					var time = row.val();
 
@@ -94,7 +95,8 @@
 						_elements.tbody.prepend(createRow(time.addHours(-1)));
 				});
 
-				_elements.tbody.on('tap', 'tr:last-child .icon-chevron-down', function(){
+				_elements.tbody.on('tap', 'tr:last-child .icon-chevron-down', function() {
+					
 					var row = $(this).closest('tr'); 
 					var time = row.val();
 
@@ -285,7 +287,7 @@
 						if (first.hasClass(tagClass))
 							selection.removeClass(tagClass);
 						else {
-							selection.removeClassMatching('ui-page-theme-*').addClass(tagClass);
+							selection.removeClassMatching('tag-*').addClass(tagClass);
 						}
 					}
 				});
@@ -294,7 +296,7 @@
 					showMarquee: true,
 					marqueeOpacity: 0.1,
 					selectionThreshold: 0,
-					selectables: 'table tbody td div'
+					selectables: 'table tbody td.cell div'
 					
 				});				
 	            

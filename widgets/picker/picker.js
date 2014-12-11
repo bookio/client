@@ -74,7 +74,7 @@
 				});
 				
 				// Remove from DOM
-				//_options.remove();
+				_options.remove();
 				
 
 				_element.on('tap', function(event) {

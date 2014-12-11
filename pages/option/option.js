@@ -17,12 +17,13 @@
 			var _elements = {};
 			var _option = {};
 
+			_element.i18n(i18n);
+
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
 			
 			
 			console.log("Translating page...");
-			_element.i18n(i18n);
 
 			function fill() {			
 				_elements.name.val(_option.name);

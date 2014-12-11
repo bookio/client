@@ -1,6 +1,7 @@
 {
 	"sv": {
-			"rules-titles": "Tvinga kund att ange",
+			"rules-titles": "Kunden måste ange",
+			"help": "Förkryssade fält måste kunden ange vid bokning.",
 			"rules-phone": "Telefon",
 			"rules-no": "Nej",
 			"rules-yes": "Ja",
@@ -11,6 +12,7 @@
 	
 	"hu": {
 			"rules-titles": "Mit kell megadni egy foglaláshoz?",
+			"help": "***",
 			"rules-phone": "Telefon",
 			"rules-no": "Nem",
 			"rules-yes": "Igen",

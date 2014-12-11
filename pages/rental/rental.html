@@ -4,11 +4,11 @@
 
         <div data-role="navbar" class="tab-header">
             <ul>
-                <li><a href="#" class="tab" data-tab="misc" data-i18n="description">Description</a>
+                <li><a href="#" class="tab style-header" data-tab="misc" data-i18n="description">Description</a>
                 </li>
-                <li><a href="#" class="tab" data-tab="options" data-i18n="options">Booking Options</a>
+                <li><a href="#" class="tab style-header" data-tab="options" data-i18n="options">Booking Options</a>
                 </li>
-                <li><a href="#" class="tab" data-tab="group" data-i18n="group">Group</a>
+                <li><a href="#" class="tab style-header" data-tab="group" data-i18n="group">Group</a>
                 </li>
             </ul>
         </div>
@@ -93,7 +93,7 @@
 		                
 		                <div data-id="section.human" style="display: none;">
 	                        <label data-i18n="alert" style="margin-bottom:0;">
-	                            Alert resource of new reservations?
+	                            Alert person of new bookings?
 	                        </label>
 			                
 			                <div class="ui-btn" style="margin: 5px; padding: 10px;">
@@ -136,10 +136,10 @@
 				                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
 							</div>
 	                        <div class="ui-inline">
-								<input type="text" placeholder="6"/>
+								<input data-id="seats" type="text" placeholder="6"/>
 	                        </div>
 	                        <div class="ui-inline">							
-								<button data-i18n="set-location" data-id="setlocation" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
+								<button data-id="setlocation" data-i18n="set-location" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
 	                        </div>
 
 		                </div>
@@ -175,9 +175,12 @@
             <div class="tab" data-tab="group">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-devider">
-                        <p data-i18n="help-groups">
-                            You can gather resources in a group. Check a group below or add a new group. <br/><br/>Why may I need a group? Assume you have 4 tennis courts, they are named 'Court 1', 'Court 2' and so on. But you want your customers to book 'Tennis', not separate courts. Then create a group 'Tennis' and add the courts to this group.
+                        <p data-i18n="help-groups-header">
+                            You can gather resources in a group. Check a group below or add a new group. 
                         </p>
+                        <p data-i18n="help-groups-body" class="style-help-body">
+	                        Why may I need a group? Assume you have 4 tennis courts, they are named 'Court 1', 'Court 2' and so on. But you want your customers to book 'Tennis', not separate courts. Then create a group 'Tennis' and add the courts to this group.
+                        </p>    
                     </li>
                     <li>
                         <div data-role="list" data-id="categories" data-inset="false">

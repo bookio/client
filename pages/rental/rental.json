@@ -9,6 +9,7 @@
 		"type-thing": "Ett föremål eller boende",
 		"type-resource": "En person",
 		"type-event": "Aktiviteter vid angivna datum",
+		"alert": "Varsko personen om nya bokningar?",
 		"symbol": "Symbol",
 		"help-options": "Markera de bokningsalternativ resursen erbjuder (eller skapa nytt).",
 		"back": "Tillbaka",
@@ -19,11 +20,11 @@
 		"yes": "Ja",
 		"no": "Nej",
 		"group": "Grupp",
-		"help-groups": "Markera gruppen resursen ska tillhöra. Du kan samla resurser i en grupp, dina kunder ser sen gruppen när de bokar, inte de enskilda resurserna. <br/><br/>Ett exempel: du har 4 tennisbanor döpta till 'Bana 1', 'Bana 2', osv. Du vill att dina kunder ska boka 'Tennis', inte enskilda banor. Då skapar du en grupp 'Tennis' och kopplar dina banor till denna grupp.",
+		"help-groups-header": "Markera gruppen resursen ska tillhöra. Du kan samla resurser i en grupp, dina kunder ser sen gruppen när de bokar, inte de enskilda resurserna.",
+		"help-groups-body": "Exempel: du har 4 tennisbanor döpta till 'Bana 1', 'Bana 2', osv. Du vill att dina kunder ska boka 'Tennis', inte enskilda banor. Då skapar du en grupp 'Tennis' och kopplar dina banor till denna grupp.",
 		"dates": "Datum",
 		"seats": "Platser",
-		"set-location": "Ange plats",
-		"location": "Plats: "
+		"set-location": "Ange plats"
 	},
 	
 	"hu": {

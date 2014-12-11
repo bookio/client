@@ -199,60 +199,82 @@ ul li .ui-btn {
 	bottom:0px;
 
 	[data-role="content"] {
-	
-		.ui-bar h1 {
+
+		label {
+			color: #999999;			
+		}
+		
+		.style-header {
+			font-size: large !important;
+			font-weight: normal; 
+						
+			&.ui-btn-active {
+				font-weight: bold;
+			}
+		}
+		
+		.style-bold {
+			font-weight: bold;
+		}
+		
+		.style-help-body {
+			font-size: small;
+		}
+		
+		.style-label {
+			font-weight: normal;
+			font-size: normal;
+		}
+				
+/*		.ui-bar h1 {
 	    	color: white;
 	    	font-size: 1.5em;
 			font-weight: bold;			
-		}
+		}*/
 	
 	    p {
 	    	color: @blue-medium;
-	    	font-size: 16px;
+	    	text-size: normal;
 		    text-align: left;	 
 		    line-height: 1.4em;   
 		    font-family: 'Open Sans', sans-serif;	    	    
 	    }
+	    
+	    textarea.ui-input-text { height: inherit !important};
 	
 	    max-width: 800px;
 	    margin-left: auto;
 	    margin-right:auto;
 
-	    [data-role="listview"] {
-
-
-	  	    li {
-	  	    
-		    	p {
-			    	white-space: normal;
+	    li, .ui-body {
+  	    
+	    	p {
+		    	white-space: normal;
+			}
+			
+			.ui-grid-a {
+				.ui-block-a {
+					padding-right:8px;
+				}
+				.ui-block-b {
+					padding-left:8px;
+				}
+			}
+			
+			.ui-grid-b {
+				.ui-block-a {
+					padding-right:8px;
+				}
+				.ui-block-b {
+					padding-right:8px;
+					padding-left:8px;
+				}
+				.ui-block-c {
+					padding-left:8px;
 				}
 				
-				// Add some padding in grids
-				.ui-grid-a {
-					.ui-block-a {
-						padding-right:8px;
-					}
-					.ui-block-b {
-						padding-left:8px;
-					}
-				}
-				
-				// Add some padding in grids
-				.ui-grid-b {
-					.ui-block-a {
-						padding-right:8px;
-					}
-					.ui-block-b {
-						padding-right:8px;
-						padding-left:8px;
-					}
-					.ui-block-c {
-						padding-left:8px;
-					}
-					
-				}
-		    }
-		}
+			}
+	    }
 			
 	    [data-role="button-row"] {
 		    text-align: center;

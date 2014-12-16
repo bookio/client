@@ -1,11 +1,11 @@
 [data-role="imagepicker"] {
-  border: 2px solid #cdcdcd;
+  border: 1px dashed #b2c9f0;
   height: 100px;
   width: 100px;
   display: inline-block;
   cursor: pointer;
 }
-[data-role="imagepicker"] div {
+[data-role="imagepicker"] div:not(.clearbutton) {
   position: relative;
   width: 100%;
   height: 100%;
@@ -15,10 +15,10 @@
   background-repeat: no-repeat;
   background-size: 80px auto;
 }
-[data-role="imagepicker"] div.background-image-none {
+[data-role="imagepicker"] div:not(.clearbutton).background-image-none {
   background-image: none;
 }
-[data-role="imagepicker"] div img {
+[data-role="imagepicker"] div:not(.clearbutton) img {
   position: absolute;
   max-height: 90%;
   max-width: 90%;
@@ -31,6 +31,16 @@
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+[data-role="imagepicker"] .clearbutton {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-image: none;
+  cursor: pointer;
+}
+[data-role="imagepicker"] .clearbutton.background-image-none {
+  display: none;
 }
 [data-role="imagepicker"] input {
   display: none;

@@ -57,6 +57,9 @@
 					$.mobile.pages.pop(null);
 				});
 				
+				_elements.schedule.on('tap', function(event) {
+					var request = $.mobile.pages.push('../schedule/schedule.html');
+				});
 				
 				_elements.remove.on('tap', function(event) {
 

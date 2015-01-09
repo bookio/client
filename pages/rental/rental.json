@@ -10,6 +10,8 @@
 		"type-resource": "En person",
 		"type-event": "Aktiviteter vid angivna datum",
 		"alert": "Varsko personen om nya bokningar?",
+		"mobile": "med SMS",
+		"email": "med e-post",
 		"symbol": "Symbol",
 		"help-options": "Markera de bokningsalternativ resursen erbjuder (eller skapa nytt).",
 		"back": "Tillbaka",
@@ -24,6 +26,7 @@
 		"help-groups-body": "Exempel: du har 4 tennisbanor döpta till 'Bana 1', 'Bana 2', osv. Du vill att dina kunder ska boka 'Tennis', inte enskilda banor. Då skapar du en grupp 'Tennis' och kopplar dina banor till denna grupp.",
 		"dates": "Datum",
 		"seats": "Platser",
+		"eventdates": "Tider och datum för aktiviteter",
 		"set-location": "Ange plats"
 	},
 	

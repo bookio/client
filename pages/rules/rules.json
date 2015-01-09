@@ -1,23 +1,25 @@
 {
 	"sv": {
-			"rules-titles": "Kunden måste ange",
-			"help": "Förkryssade fält måste kunden ange vid bokning.",
+			"rules-titles": "Obligatoriska uppgifter vid bokning",
+			"help": "Förkryssade uppgifter måste kunden ange vid bokning.",
+			"rules-name": "Namn",
+			"rules-address": "Adress",
 			"rules-phone": "Telefon",
+			"rules-email": "E-post",
 			"rules-no": "Nej",
 			"rules-yes": "Ja",
-			"rules-email": "E-post",
-			"rules-address": "Adress",
-			"rules-button-back": "Tillbaka"
+			"rules-button-back": "Tillbaka" 
 	},
 	
 	"hu": {
 			"rules-titles": "Mit kell megadni egy foglaláshoz?",
 			"help": "***",
+			"rules-name": "***",
+			"rules-address": "Cím",
 			"rules-phone": "Telefon",
+			"rules-email": "E-mail",
 			"rules-no": "Nem",
 			"rules-yes": "Igen",
-			"rules-email": "E-mail",
-			"rules-address": "Cím",
 			"rules-button-back": "Vissza"
 	}
 

@@ -3172,6 +3172,7 @@ ul li .ui-btn * {
 }
 [data-role="page"] [data-role="content"] .style-help-body {
   font-size: small;
+  color: #9eb5cc;
 }
 [data-role="page"] [data-role="content"] .style-label {
   font-weight: normal;
@@ -3179,7 +3180,7 @@ ul li .ui-btn * {
 }
 [data-role="page"] [data-role="content"] p {
   color: #6b8299;
-  text-size: normal;
+  font-size: 1em;
   text-align: left;
   line-height: 1.4em;
   font-family: 'Open Sans', sans-serif;

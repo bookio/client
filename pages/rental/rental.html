@@ -96,8 +96,37 @@
 	                            Alert person of new bookings?
 	                        </label>
 			                
-			                <div class="ui-btn" style="margin: 5px; padding: 10px;">
+			                <!--<div class="ui-btn" style="margin: 5px; padding: 10px;">-->
 		                        
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">with text message</label>
+			                        <div class="ui-inline ui-mini">
+				                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
+				                            <option value="0" data-i18n="no">No</option>
+				                            <option value="1" data-i18n="yes">Yes</option>
+				                        </select>
+			                        </div>
+			                        <div class="ui-inline ui-mini">
+										<input type="text" placeholder="703 555 876"/>
+			                        </div>
+								</div>
+	
+								<div class="ui-block-b">
+			                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">with email</label>
+			                        <div class="ui-inline ui-mini">
+				                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
+				                            <option value="0" data-i18n="no">No</option>
+				                            <option value="1" data-i18n="yes">Yes</option>
+				                        </select>
+			                        </div>
+			                        <div class="ui-inline ui-mini">
+										<input type="text" placeholder="jane@rentalstuff.com"/>
+			                        </div>
+								</div>							
+		                        
+		                        
+		                        <!--
 								<div style="float:left;">
 			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">with text message</label>
 			                        <div class="ui-inline ui-mini">
@@ -107,7 +136,7 @@
 				                        </select>
 			                        </div>
 			                        <div class="ui-inline ui-mini">
-										<input type="text" placeholder="Mobile Phone"/>
+										<input type="text" placeholder="703 555 876"/>
 			                        </div>
 								</div>
 	
@@ -120,16 +149,16 @@
 				                        </select>
 			                        </div>
 			                        <div class="ui-inline ui-mini">
-										<input type="text" placeholder="Email"/>
+										<input type="text" placeholder="jane@rentalstuff.com"/>
 			                        </div>
 								</div>							
-								
+								-->
 			                </div>
 		                </div>
 		                
 		                <div data-id="section.event" style="display: none;">
 			                			          
-		                	<label i18n="eventdates">Event Dates</label>
+		                	<label data-i18n="eventdates">Event Dates</label>
 							<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
 
 							<div class="ui-inline">

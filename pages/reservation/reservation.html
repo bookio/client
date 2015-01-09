@@ -1,102 +1,81 @@
 
 <div id="reservation-page" data-role="page">
-    
 
-    <div data-role="content">
-    	
-    	
-        <ul data-id="listview" data-role="listview" data-inset="true">
-        	<li data-role="list-devider" data-theme="b" data-i18n="reservation-who">
-        		<h1>
-	        		Who
-        		</h1>
-        	</li>
-            <li>
-                <textarea data-id="contact" type="text" value="" placeholder="" title="" autofocus="autofocus">
-                </textarea>
-        	    <div data-role="button-row">
-                	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="reservation-pick-customer">Select Customer</a>
-        	    </div>
-            </li>
-        </ul>
-        <ul data-role="listview" data-inset="true">
-
-        	<li data-role="list-devider" data-theme="b" data-i18n="reservation-when">
-        		<h1>
-	        		When
-        		</h1>
-        	</li>
-
-            <li>
-                <div class="ui-grid-a">
-                	<div class="ui-block-a">
-                        <a data-id="startdate.button" data-role="button" class="Xui-disabled">
-                            <span data-id="startdate.text" data-i18n="reservation-from">From</span>
-                            <span data-id="startdate.date"></span>
-                        </a>
-                	</div>
-                	<div class="ui-block-b">
-                        <a data-id="enddate.button" data-role="button" class="Xui-disabled">
-                            <span data-id="enddate.text" data-i18n="reservation-to">To</span>
-                            <span data-id="enddate.date"></span>
-                        </a>
-                	</div>
-                </div>
-
-            </li>
-
-            <li>
-                <label  data-i18n="reservation-price">
-                    Price
-                </label>
-                <input data-id="price" type="text" value="" placeholder="" title="">
-            </li>
-
-
-            <li>
-                <label  data-i18n="reservation-status">
-                    Status
-                </label>
-
-                <div class="ui-grid-a">
-                	<div class="ui-block-a">
-                		<label  data-i18n="reservation-status-arrived">Arrived
-                    		<input data-id="arrived" type="checkbox"/>
-                		</label>
-                		<label data-i18n="reservation-status-paid">Paid
-                    		<input data-id="payed" type="checkbox"/>
-                		</label>
-                	</div>
-                	
-                	<div class="ui-block-b">
-                		<label data-i18n="reservation-status-left">Left
-                    		<input data-id="delivered" type="checkbox"/>
-                		</label>
-                		<label data-i18n="reservation-status-transferred">Transferred
-                    		<input data-id="transferred" type="checkbox"/>
-                		</label>	
-                	</div>
-                </div> 
-
-            </li>
-        </ul>        
-        
-        <div data-role=button-row>
-	        <h3>
-	        </h3>
+    <div data-role="content">  
+    	    	
+		<div class="ui-bar ui-bar-b">
+    		<h1 data-i18n="reservation-who" class="style-header style-bold">
+        		Who
+    		</h1>
+		</div>
+		
+		<div class="ui-body ui-body-a">		
+            <textarea rows="4" data-id="contact" type="text" autofocus="autofocus">
+            </textarea>
+    	    <div data-role="button-row">
+            	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="reservation-pick-customer">Select Customer</a>
+    	    </div>
         </div>
+        
+		<div class="ui-bar ui-bar-b">
+    		<h1 data-i18n="reservation-when" class="style-header style-bold">
+        		When
+    		</h1>
+    	</div>
 
+		<div class="ui-body ui-body-a">		
+            <div class="ui-grid-a">
+            	<div class="ui-block-a">
+                    <a data-id="startdate.button" data-role="button" class="Xui-disabled">
+                        <span data-id="startdate.text" data-i18n="reservation-from">From</span>
+                        <span data-id="startdate.date"></span>
+                    </a>
+            	</div>
+            	<div class="ui-block-b">
+                    <a data-id="enddate.button" data-role="button" class="Xui-disabled">
+                        <span data-id="enddate.text" data-i18n="reservation-to">To</span>
+                        <span data-id="enddate.date"></span>
+                    </a>
+            	</div>
+            </div>
+
+            <label  data-i18n="reservation-price">
+                Price
+            </label>
+            <input data-id="price" type="text" value="" placeholder="" title="">
+
+            <label  data-i18n="reservation-status">
+                Status
+            </label>
+
+            <div class="ui-grid-a">
+            	<div class="ui-block-a">
+            		<label  data-i18n="reservation-status-arrived">Arrived
+                		<input data-id="arrived" type="checkbox"/>
+            		</label>
+            		<label data-i18n="reservation-status-paid">Paid
+                		<input data-id="payed" type="checkbox"/>
+            		</label>
+            	</div>
+            	
+            	<div class="ui-block-b">
+            		<label data-i18n="reservation-status-left">Left
+                		<input data-id="delivered" type="checkbox"/>
+            		</label>
+            		<label data-i18n="reservation-status-transferred">Transferred
+                		<input data-id="transferred" type="checkbox"/>
+            		</label>	
+            	</div>
+            </div> 
+
+        </div>
+        
 	    <div data-role="button-row">
         	<a data-id="back" data-theme="b" data-role="button" data-inline="true" data-icon="back" data-i18n="reservation-button-back">Back</a>
         	<a data-id="save" data-theme="c" data-role="button" data-icon="check" data-inline="true" data-i18n="reservation-button-save">Save</a>
         	<a data-id="remove" data-theme="d" data-icon="delete" data-role="button" data-inline="true" data-i18n="reservation-button-cancel-reservation">Cancel Reservation</a> 
 	    </div>
-
         
     </div>
-
-
-
-
-
+    
 </div>

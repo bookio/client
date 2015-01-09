@@ -4,15 +4,13 @@
         
         <ul data-id="listview" data-role="listview" data-inset="true">
 
-            <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
-                <h1>
-					Settings
-				</h1>
+            <li data-role="list-devider" data-id="title" data-theme="b">
+                <h1 data-i18n="settings-title" class="style-header style-bold">Settings</h1>
             </li>
 
-            <li>
+			<li>
                 <a data-id="contact" href="#">
-                    <h2 data-i18n="settings-choice-info">
+                    <h2 data-i18n="settings-choice-info" class="style-header">
 						About your Business	        		
 		        	</h2>
                 </a>
@@ -20,7 +18,7 @@
 
             <li>
                 <a data-id="users" href="#">
-                    <h2 data-i18n="settings-choice-users">
+                    <h2 data-i18n="settings-choice-users" class="style-header">
 						Users	        		
 		        	</h2>
                 </a>
@@ -28,7 +26,7 @@
 
             <li>
                 <a data-id="categories" href="#">
-                    <h2 data-i18n="settings-choice-categories">
+                    <h2 data-i18n="settings-choice-categories" class="style-header">
 						Groups	        		
 		        	</h2>
                 </a>
@@ -36,31 +34,31 @@
 
             <li>
                 <a data-id="options" href="#">
-                    <h2 data-i18n="settings-choice-options">
-						Options	        		
+                    <h2 data-i18n="settings-choice-options" class="style-header">
+						Offerings and services
 		        	</h2>
                 </a>
             </li>
 
             <li>
                 <a data-id="rules" href="#">
-                    <h2 data-i18n="settings-choice-rules">
+                    <h2 data-i18n="settings-choice-rules" class="style-header">
 						Rules for Booking        		
 		        	</h2>
                 </a>
-            </li>
+            </li> 
 
 
         </ul>
 
-        <ul data-role="listview" data-inset="true">
-            <li data-role="list-devider" data-theme="d" data-i18n="settings-url-title">
-            	<h1>
-	                How your customers reach the booking page
-            	</h1>
-            </li>
-            <li>
-            	<p data-i18n="settings-url-intro" style="text-align: center;">
+	    <div class="ui-corner-all custom-corners">
+
+			<div class="ui-bar ui-bar-d">
+            	<h1 class="style-header style-bold" data-i18n="settings-url-title">How your customers reach the booking page</h1>
+            </div>
+            
+			<div class="ui-body ui-body-a">
+            	<p data-i18n="settings-url-intro">
             		The path and QR-code below takes your customers to the booking page. To see a preview of what your customers see <a data-id="urlTrial" href="" target="_blank">click here.</a>
             	</p>
                 <div class="ui-grid-a">
@@ -121,21 +119,20 @@
                     </div>
 
                     <div class="ui-block-a">
-                        <p class="ui-mini" data-i18n="settings-url-help">
+                        <p class="ui-mini" data-i18n="settings-url-help" style="text-align:center">
                             Click on the path above and press 'cmd+C' (Mac) <strong>or</strong> 'ctrl+C' (PC) to copy.
                         </p>
                     </div>
                     <div class="ui-block-b">
-                        <p class="ui-mini" data-i18n="settings-url-help-qr">
+                        <p class="ui-mini" data-i18n="settings-url-help-qr" style="text-align:center">
                             Copy the QR-code above and use in your promotional material.
                         </p>
                     </div>
 
                 </div>
 
-
-            </li>
-        </ul>
+            </div>
+        </div>
 
 
         <div data-role="button-row">

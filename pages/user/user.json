@@ -1,5 +1,6 @@
 {
 	"sv": {
+			"title": "Användare",
 			"user-name": "Namn",
 			"user-email": "E-post",
 			"user-pw": "Lösenord",
@@ -9,6 +10,7 @@
 	},
 	
 	"hu": {
+			"title": "***",
 			"user-name": "Név",
 			"user-email": "Email",
 			"user-pw": "Jelszó",

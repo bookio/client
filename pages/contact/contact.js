@@ -77,13 +77,10 @@
 				_elements.dropzone.on('imagechanged', function(event, image) {
 				});
 
-				_elements.flip.on('tap', function(event) {
-					$(this).toggleClass('flipped');
-				});
-
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
+
 
 				_elements.save.on('tap', function(event) {
 					chill();

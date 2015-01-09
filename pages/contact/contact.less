@@ -6,40 +6,6 @@
 	
 	[data-role="content"] {
 	
-		[data-id="flip"] {
-
-
-			position:relative;
-			display: inline-block;
-			
-			&:after {
-				content: "\0000a0";
-			}
-
-			.front, .back {
-				display: block;
-				position: absolute;
-				left:0px;
-				top:0px;
-				right:0px;
-				bottom:0px;
-				-webkit-backface-visibility: hidden;
-			}
-			.front {
-				
-			}			
-			.back {
-				.transform(rotateY(180deg));
-				
-			}
-			&.flipped {
-				.transform(rotateY(180deg));
-				-webkit-transition-duration: 500ms;
-//				-webkit-backface-visibility:hidden;
-	
-			}
-		}
-
 		[data-id="address"] {
 			height:6em !important;
 		}

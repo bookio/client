@@ -1,6 +1,6 @@
 <div id="locationpicker-page" data-role="page" data-dialog="true" data-close-btn="none" data-dom-cache="true">
-	
-	<div data-role="header" data-theme="b">
+		
+	<div data-i18n="title" class="ui-bar ui-bar-b style-header style-bold">
 		Set Location of Event
 	</div>
 
@@ -9,28 +9,24 @@
 		<fieldset class="gllpLatlonPicker">
 			
 			<input type="search" class="gllpSearchField" autofocus="autofocus"/>
-			
-			<!--<button class="gllpSearchButton ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all"></button>-->
-			
+						
 			<div class="gllpMap">Google Maps</div>
 			
 			<div class="ui-inline">
-				<label>Latitude</label><input data-id="latitude" type="text" class="gllpLatitude" value="59.32932349999999"/>
+				<label data-i18n="lat">Latitude</label><input data-id="latitude" type="text" class="gllpLatitude" value="59.32932349999999"/>
 			</div>
 
 			<div class="ui-inline">			
-				<label>Longitude</label><input data-id="longitude" type="text" class="gllpLongitude" value="18.068580800000063"/>
+				<label data-i18n="lon">Longitude</label><input data-id="longitude" type="text" class="gllpLongitude" value="18.068580800000063"/>
 			</div>			
 
-			<label>Name</label><input data-id="location" type="text" class="gllpLocationName"/>
+			<label data-i18n="name">Name</label><input data-id="location" type="text" class="gllpLocationName"/>
 			
 			<input type="hidden" class="gllpZoom" value="6"/>
 			
 		</fieldset>
 		
-		<a data-id="done" data-theme="b" data-role="button">Done</a>
-
-		<!--<button class="ui-btn" data-id="done" data-theme="b">Done</button>-->
+		<a  data-i18n="done" data-id="done" data-theme="b" data-role="button">Done</a>
 		
     </div>
 </div>

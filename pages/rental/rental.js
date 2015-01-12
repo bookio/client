@@ -18,9 +18,9 @@
 			var _icons = [];
 			var _iconsByID = {};
 
+			_element.i18n(i18n);
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
-			_element.i18n(i18n);
 
 			function fill() {
 				_elements.name.val(_rental.name);

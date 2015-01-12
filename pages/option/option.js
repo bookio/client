@@ -22,23 +22,24 @@
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
 			
-			
-			console.log("Translating page...");
-
 			function fill() {			
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
+				_elements.units.select((_option.units == undefined) ? 1 : _options.units);
+				_elements.selection.select((_option.selection == undefined) ? 'hour' : _option.selection);
+				_elements.unit.select((_option.unit == undefined) ? 0 : _option.unit);
 
-				_elements.selection.picker('refresh');
-				_elements.unit.picker('refresh');
+				//_elements.selection.picker('refresh');
+				//_elements.unit.picker('refresh');
 
 			}
 
 			function chill() {
 				_option.name = _elements.name.val();
 				_option.description = _elements.description.val();
-
-
+				_option.units = _elements.units.val();
+				_option.selection = _elements.selection.val();
+				_option.unit = _elements.unit.val();
 			}
 			
 

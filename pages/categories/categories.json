@@ -2,7 +2,7 @@
 	"sv": {
 		"categories-title": "Bokningsgrupper",
 		"categories-help": "En bokningsgrupp samlar symboler under det namn de ska bokas som.",
-		"categories-help-sample": "Exempel: Du har 'Bana 1', 'Bana 2' och 'Bana 3', dessa vill du att dina kunder ska boka som 'Tennis'. Då skapar du bokningsgruppen 'Tennis' och kopplar dina resurser till denna bokningsgrupp.",
+		"categories-help-sample": "Exempel: Du har 'Bana 1', 'Bana 2' och 'Bana 3', dessa vill du att dina kunder ska boka som 'Tennis'. Då skapar du bokningsgruppen 'Tennis' och kopplar dina banor till denna bokningsgrupp.",
 		"categories-button-back": "Tillbaka",
 		"categories-button-add": "Lägg till"
 	},

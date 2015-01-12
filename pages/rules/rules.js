@@ -29,11 +29,11 @@
 
 
 			this.init = function() {
+				
+				_element.i18n(i18n);
 
 				_element.enhanceWithin();
-				
 				_element.hookup(_elements, 'data-id');
-				_element.i18n(i18n);
 
 
 				_elements.back.on('tap', function(event) {

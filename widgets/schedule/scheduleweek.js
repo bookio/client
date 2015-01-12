@@ -14,10 +14,18 @@
 	        var self         = this;
 			var _elements    = {};
 			var _container   = widget.element;
-			var _weekdays    = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-			var _tags        = ['A', 'B', 'C', 'D'];
+			var _weekdays    = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+			var _date        = new Date();
+			
 
 			_elements.container = widget.element;
+			
+			// Move to beginning of week
+			_date = _date.addDays(-(_date.getDay() + 6) % 7);
+			_date.setHours(0);
+			_date.setMinutes(0);
+			_date.setSeconds(0);
+			_date.setMilliseconds(0);
 			
 			self.refresh = function() {
 			}
@@ -58,24 +66,35 @@
 					'</th>';
 				
 
-				row.attr('data-hour', time.getHours());
 				row.append($(template));
 				row.find('.label').text(sprintf('%02d:%02d', time.getHours(), time.getMinutes()));
 				
-				for (var index in _weekdays) {
-					var cell = $('<td class="cell"></td>').addClass(_weekdays[index]);
+				var date = _date.clone();
+				
+				for (var index = 0; index < 7; index++) {
+					var weekday = date.getDay();
+					var weekdayName = _weekdays[weekday];	
+
+					var cell = $('<td></td>').addClass(weekdayName);
 
 					for (var minutes = 0; minutes < 60; minutes += 15) {
 						
 						var range = {};
 						
-						range.start = moment({hour:time.getHours(), minute:minutes}).toDate();
-						range.end   = moment({hour:time.getHours(), minute:minutes + 15}).toDate();
+						range.start = new Date(date);
+						range.start.setHours(time.getHours());
+						range.start.setMinutes(minutes);
+						
+						range.end = new Date(date);
+						range.end.setHours(time.getHours());
+						range.end.setMinutes(minutes + 15);
 
-						$('<div></div>').val(range).appendTo(cell);
+
+						$('<div></div>').val(range).appendTo(cell).addClass("cell");
 												
 					}
-
+					
+					date = date.addDays(1);
 					row.append(cell);
 				}	      
 				
@@ -114,47 +133,6 @@
 
             }
             
-            function formatRange(range) {
-	            return sprintf('%02d:%02d-%02d%02d', range.start.getHours(), range.start.getMinutes(), range.end.getHours(), range.end.getMinutes());
-            }
-            
-            function formatRanges(ranges) {
-	        
-	        	var array = [];
-	        	
-	        	$.each(ranges, function(index, range) {
-		        	array.push(formatRange(range));
-	        	});    
-	        	
-	        	return array.join(',');
-            }
-            
-            function parseRange(text) {
-	            var components = text.split('-');
-	            
-	            var startComponents = components[0].split(':');
-	            var endComponents = components[1].split(':');
-	            
-	            var start = moment({hour:parseInt(startComponents[0]), minute:parseInt(startComponents[1])}).toDate();
-	            var end   = moment({hour:parseInt(endComponents[0]), minute:parseInt(endComponents[1])}).toDate();
-	            
-	            return moment().range(start, end);
-            }
-            
-            
-            function parseRanges(text) {
-	            var components = text.split(',');
-	            var ranges = [];
-
-	            for (var index in components) {
-	            	var range = parseRange(components[index]);
-	            	
-	            	if (range != undefined)
-			            ranges.push(range);
-	            }
-	            
-	            return ranges;
-            }
 
 			self.select = function() {
 			
@@ -166,92 +144,93 @@
 				return undefined;
 			}
 			
+			
             function setSelection(selection) {
 	            
-	            for (var weekday in selection) {
-		            var cells = _elements.tbody.find(sprintf('.%s div', weekday));
+	            // Clear selection
+	            _elements.tbody.find('.cell').removeAttr('tag');
+
+	            for (var tag in selection) {
+		            var items = selection[tag];
 		            
-		            if (cells.length > 0) {
-
-						
-		            	for (var tag in selection[weekday]) {
-
-							var ranges = parseRanges(selection[weekday][tag]);
+		            for (var index in items) {
+		            	var item = items[index];
+		            	
+		            	if (item.start == undefined || item.end == undefined)
+		            		continue;
+		            		
+		            	var start = item.start;
+		            	var end = item.end;
+		            		
+			            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[start.getDay()]));
+		            	var range = moment().range(start, end);
 							
-							cells.each(function(index) {
-								var cell = $(this);
-								var cellValue = cell.val();
-								var cellRange = moment().range(cellValue.start, cellValue.end);
-								
-								$.each(ranges, function(index, range) {																		
-									if (range.contains(cellRange)) {
-										cell.addClass(sprintf('tag-%s', tag));
-										return false;											
-									}
-								});
-							});
-			            	
-		            	}
-		            }
-	            }
-            }
-
-            function getSelection() {
-	            var selection = {};
-
-				for (var weekdayIndex in _weekdays) {
-					var weekday = _weekdays[weekdayIndex];
-										
-					for (var tagIndex in _tags) {
-						var tag = _tags[tagIndex];
-			            var cells = _elements.tbody.find(sprintf('.%s div.tag-%s', weekday, tag));
-	
-						var ranges = [];
-
 						cells.each(function(index) {
 							var cell = $(this);
 							var cellValue = cell.val();
 							var cellRange = moment().range(cellValue.start, cellValue.end);
 
-							if (ranges.length == 0) {
-								// Add first value
-								ranges.push({
-									start:cellValue.start,
-									end:cellValue.end
-								});
+							if (range.contains(cellRange)) {
+								cell.attr('tag', tag);
 							}
-							else {
-								var last = ranges[ranges.length - 1];
-								
-								if (last.end.valueOf() == cellValue.start.valueOf()) {
-									// Append to previous is end date is the same as this start date
-									last.end = cellValue.end;
-								}
-								else {
-									// Otherwise make add another entry
-									ranges.push({
-										start:cellValue.start,
-										end:cellValue.end
-									});
-								}
-								
-							}	
 						});
-						
-						if (ranges.length > 0) {
+		            }
+		            
+	            }
+            }
+			
+            
+            function getSelection() {
+	            var selection = {};
 
-							if (selection[weekday] == undefined)
-								selection[weekday] = {};
-							
-							selection[weekday][tag] = ranges;
+	            var cells = _elements.tbody.find(sprintf('.cell[tag]'));
+	            
+				cells.each(function(index) {
+					var cell = $(this);
+					var cellValue = cell.val();
+					var cellRange = moment().range(cellValue.start, cellValue.end);
+					var tag = cell.attr('tag');
+					var range = selection[tag];
+					
+					if (range == undefined)
+						selection[tag] = range = [];
+
+					if (range.length == 0) {
+						// Add first value
+						range.push({
+							start:cellValue.start,
+							end:cellValue.end
+						});
+					}
+					else {
+						var last = range[range.length - 1];
+						
+						if (last.end.valueOf() == cellValue.start.valueOf()) {
+							// Append to previous is end date is the same as this start date
+							last.end = cellValue.end;
+						}
+						else {
+							// Otherwise make add another entry
+							range.push({
+								start:cellValue.start,
+								end:cellValue.end
+							});
 						}
 						
 					}
+				});
 
-				}	      
+				for (var tag in selection) {
+					selection[tag].sort(function(a, b) {
+						return a.start.getDate() - b.start.getDate();
+					});
+				}				
+
 
 				return selection;
             }
+
+
 
             
 	
@@ -263,12 +242,11 @@
 				
 				$(html).appendTo(_elements.container);
 				
-				_elements.table = _elements.container.find('table'); //$('<table></table>').appendTo(_elements.container);
-				_elements.thead = _elements.container.find('thead'); //$('<thead></thead>').appendTo(_elements.table);
-				_elements.tbody = _elements.container.find('tbody'); //$('<tbody></tbody>').appendTo(_elements.table);
+				_elements.table = _elements.container.find('table');
+				_elements.thead = _elements.container.find('thead'); 
+				_elements.tbody = _elements.container.find('tbody'); 
 
-				var time = new Date();
-				
+				var time = _date.clone();
 				time.clearTime();
 				time = time.addHours(8);
 				
@@ -276,19 +254,18 @@
 					_elements.tbody.append(createRow(time));
 				}
 				
-				
 				_elements.container.hookup(_elements, 'data-id');
 				
 				_elements.container.on('selection-end', function(event, selection) {
 					if (selection.length > 0) {
 						var first = $(selection[0]);
-						var tagClass = activeTagClass();
-
-						if (first.hasClass(tagClass))
-							selection.removeClass(tagClass);
-						else {
-							selection.removeClassMatching('tag-*').addClass(tagClass);
-						}
+						var currentTag = activeTag()
+						var firstTag = first.attr('tag');
+						
+						if (firstTag == currentTag)
+							selection.removeAttr('tag');
+						else
+							selection.attr('tag', currentTag);
 					}
 				});
 				
@@ -296,7 +273,7 @@
 					showMarquee: true,
 					marqueeOpacity: 0.1,
 					selectionThreshold: 0,
-					selectables: 'table tbody td.cell div'
+					selectables: '.cell'
 					
 				});				
 	            

@@ -1,14 +1,16 @@
 {
 	"sv": {
 		"categories-title": "Bokningsgrupper",
-		"categories-help": "En bokningsgrupp samlar symboler under det namn de ska bokas som. Exempelvis har du symbolerna <strong>Bana 1</strong>, <strong>Bana 2</strong> och <strong>Bana 3</strong>, dessa vill du att dina kunder ska boka som <strong>Tennis</strong>. Då skapar du bokningsgruppen <strong>Tennis</strong> och kopplar dina symboler till denna bokningsgrupp.",
+		"categories-help": "En bokningsgrupp samlar symboler under det namn de ska bokas som.",
+		"categories-help-sample": "Exempel: Du har 'Bana 1', 'Bana 2' och 'Bana 3', dessa vill du att dina kunder ska boka som 'Tennis'. Då skapar du bokningsgruppen 'Tennis' och kopplar dina banor till denna bokningsgrupp.",
 		"categories-button-back": "Tillbaka",
 		"categories-button-add": "Lägg till"
 	},
 	
 	"hu": {
 		"categories-title": "Foglalható kategóriák",
-		"categories-help": "Egy foglalható kategória alá lehet összegyűjteni az oda tartozó szimbólumo(ka)t. Ha például létrehoznál három sportpályát jelző 'szimbólumot' (<strong>1-es</strong>, <strong>2-es</strong> és <strong>3-as pályákat</strong>), amiket szeretnél strong>teniszezésre</strong> kiadni), akkor először hozz létre egy <strong>tenisz<strong> kategóriát. Ezután add hozzá a pályákat jelző szimbólumokat.",
+		"categories-help": "Egy foglalható kategória alá lehet összegyűjteni az oda tartozó szimbólumo(ka)t.",
+		"categories-help-sample": " Ha például létrehoznál három sportpályát jelző 'szimbólumot' ('1-es', '2-es' és '3-as pályákat'), amiket szeretnél 'teniszezésre' kiadni), akkor először hozz létre egy 'tenisz' kategóriát. Ezután add hozzá a pályákat jelző szimbólumokat.",
 		"categories-button-back": "Vissza",
 		"categories-button-add": "Hozzáadás"
 	}

@@ -16,7 +16,7 @@
 			_element.i18n(i18n);
 
 			function fill() {
-				
+
 				// If no values set default
 				if (page.params.lat == undefined) {
 					page.params.lat = i18n.text('default-lat', '48.85837009999999');

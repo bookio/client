@@ -1,8 +1,5 @@
 [data-id="notify"] {
   font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
   background-color: #87ace7;
   display: none;
   color: white;
@@ -13,7 +10,7 @@
   margin: 0 auto;
   padding: 10px;
   font-size: large;
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
   z-index: 99999999;
   text-align: center;

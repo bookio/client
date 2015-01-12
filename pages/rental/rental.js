@@ -18,13 +18,17 @@
 			var _icons = [];
 			var _iconsByID = {};
 
+			_element.i18n(i18n);
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
-			_element.i18n(i18n);
 
 			function fill() {
 				_elements.name.val(_rental.name);
 				_elements.description.val(_rental.description);
+
+				// Set location button to name of location
+				if (_rental.location != undefined && _rental.location != "")
+					_elements.setlocation.text(_rental.location);
 
 				_elements.thing.removeAttr('checked');
 				_elements.human.removeAttr('checked');
@@ -54,11 +58,6 @@
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 			}
 
-			function chill() {
-				
-
-
-			}
 			
 			function loadOptions() {
 				var request = Gopher.request('GET', 'options');
@@ -244,10 +243,6 @@
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)
 					_rental.icon_id = 0;
-
-				// If location set, show it on the button
-				if (_rental.location != undefined)
-					_elements.setlocation.text(i18n.text('location', 'Location: ')+_rental.location);
 					
 				if (!_rental.id)
 					_elements.remove.addClass('hidden');					
@@ -258,8 +253,8 @@
 
 				_elements.setlocation.on('tap', function() {
 					var params  = {
-							lat: _rental.lat,
-							lon: _rental.lon,
+							lat: _rental.latitude,
+							lon: _rental.longitude,
 							location: _rental.location
 						};
 
@@ -268,9 +263,9 @@
 						params: params
 					});
 
-					locationPickerCall.done(function(params) {						
-						_rental.lat = params.lat;
-						_rental.lon = params.lon;
+					locationPickerCall.done(function(params) {	
+						_rental.latitude = params.lat;
+						_rental.longitude = params.lon;
 						_rental.location = params.location;
 					});
 
@@ -287,6 +282,10 @@
 
 				_elements.description.on('change', function(event, ui) {
 					_rental.description = $(this).val();
+				});
+
+				_elements.seats.on('change', function(event, ui) {
+					_rental.seats = $(this).val();
 				});
 
 				_elements.thing.on('change', function(event, ui) {
@@ -334,8 +333,6 @@
 
 				
 				_elements.save.on('tap', function(event) {
-
-					chill();
 
 					if (!_rental.name) {
 						Notify.show(i18n.text('specify-name', 'Please enter a name.'));

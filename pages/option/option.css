@@ -1,3 +1,6 @@
 #option-page [data-id="description"] {
   height: 6em !important;
 }
+#option-page option {
+  display: none;
+}

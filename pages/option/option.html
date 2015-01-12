@@ -2,15 +2,13 @@
 
     <div data-role="content" data-id="content">
 
-        <ul data-id="listview" data-role="listview" data-inset="true">
+	    <div class="ui-corner-all custom-corners">
 
-            <li data-role="list-devider" data-id="title" data-theme="b">
-                <h1 data-i18n="booking-option">
-					Booking Option
-				</h1>
-            </li>
+			<div class="ui-bar ui-bar-b">
+                <h1 data-i18n="booking-option" class="style-header style-bold">Offering or Service</h1>
+            </div>
 
-            <li>
+			<div class="ui-body ui-body-a">
             
                 <label data-i18n="name">
                     Name
@@ -23,7 +21,7 @@
                 </label>
                 <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
 
-                <label class="ui-btn ui-inline" data-i18n="customer-books">
+                <label class="ui-btn ui-inline" data-i18n="customer-books" style="font-weight:normal">
                 	Customer books
                 </label> 
 
@@ -32,12 +30,12 @@
                     <option value="1" data-i18n="any-number">any number of units</option>
                 </div>
 
-                <label class="ui-btn ui-inline" data-i18n="of">
+                <label class="ui-btn ui-inline" data-i18n="of" style="font-weight:normal">
                 	of
                 </label>
 
 				<div class="ui-inline" style="width:3em">
-                    <input type="text" value="1"/>
+                    <input data-id="units" type="text" value="1"/>
 				</div>
 				
                 <div data-role="picker" data-id="unit" class="ui-inline" style="width:10em">
@@ -47,15 +45,19 @@
 					<option value="week" data-i18n="week">week</option>
 					<option value="month" data-i18n="month">month</option>
                 </div>
+  
+  				<div>
+					<a data-id="schedule" data-theme="b" data-i18n="price" data-role="button" data-inline="true" data-icon="none" class="ui-btn ui-inline">Price and availability</a>
+  				</div>                          
+                
+		        <div data-role="button-row">
+		            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+		            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
+		            <a class="button-delete" data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Delete</a>
+		        </div>                
                             
-            </li>
+            </div>
 
-        </ul>
-
-        <div data-role="button-row">
-            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
-            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
-            <a class="button-delete" data-id="remove" data-theme="d" data-icon="delete" data-i18n="remove" data-role="button" data-inline="true">Delete</a>
         </div>
 
     </div>

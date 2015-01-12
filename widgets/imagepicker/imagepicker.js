@@ -19,6 +19,7 @@
 		widget.setImage = function(src) {
 			this.elements.image.attr("src", src);
 			this.elements.container.toggleClass('background-image-none', src != '');
+			this.elements.clearbutton.toggleClass('background-image-none', src == '');
 		}
 
 		widget.getImage = function() {
@@ -46,17 +47,30 @@
 			self.element.append($(html));	
 
 			self.elements = {};
-			self.elements.container = self.element.find('div');
+			self.elements.container = self.element.find('.container');
 			self.elements.image = self.element.find('img');
 			self.elements.file = self.element.find('input');
-
+			self.elements.clearbutton = self.element.find('.clearbutton');
+			
 			var elements = self.elements;
 			
 			elements.container.on('tap', function(event) {
+				event.stopPropagation();
+				event.preventDefault();
+
 				elements.file.click();
 			});
+			
+			elements.clearbutton.on('tap', function(event) {
+				event.stopPropagation();
+				event.preventDefault();
 
+				elements.image.attr("src", '');
+				elements.container.toggleClass('background-image-none', false);				
+				elements.clearbutton.toggleClass('background-image-none', true);				
 
+			});
+			
 			elements.container.on('dragover', function(event) {
 
 				event.stopPropagation();

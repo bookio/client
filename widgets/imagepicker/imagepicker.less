@@ -2,19 +2,19 @@
 
 [data-role="imagepicker"] { 
 
-    border: 2px solid @xx-lightGrayColor;
-    height:100px; 
-    width:100px;           
+    border: 1px dashed @lightBookioBlue;
+    height: 100px; 
+    width: 100px;           
     display: inline-block; 
     cursor: pointer;
 	
-	div {
+	div:not(.clearbutton) {
 		position: relative;
 		width:100%;
 		height:100%;
 		
 		cursor: pointer;
-
+		
 		background-image: url(./images/dropzone.svg);
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -34,8 +34,20 @@
 			
 		    .border-radius(8px);
 		}
-
-
+		
+	}
+	
+	.clearbutton {
+		position: absolute;
+		top: -8px;
+		right: -8px;
+		background-image: none;
+		cursor: pointer;
+		
+		&.background-image-none {
+			display: none;
+		}
+		
 	}
 	
 	input {

@@ -172,6 +172,7 @@
 
 							if (range.contains(cellRange)) {
 								cell.attr('tag', tag);
+
 							}
 						});
 		            }
@@ -183,41 +184,44 @@
             function getSelection() {
 	            var selection = {};
 
-	            var cells = _elements.tbody.find(sprintf('.cell[tag]'));
-	            
-				cells.each(function(index) {
-					var cell = $(this);
-					var cellValue = cell.val();
-					var cellRange = moment().range(cellValue.start, cellValue.end);
-					var tag = cell.attr('tag');
-					var range = selection[tag];
-					
-					if (range == undefined)
-						selection[tag] = range = [];
-
-					if (range.length == 0) {
-						// Add first value
-						range.push({
-							start:cellValue.start,
-							end:cellValue.end
-						});
-					}
-					else {
-						var last = range[range.length - 1];
+				$.each(_weekdays, function(weekday, weekdayName) {
+		            var cells = _elements.tbody.find(sprintf('.%s .cell[tag]', weekdayName));
+		            
+					cells.each(function(index) {
+						var cell = $(this);
+						var cellValue = cell.val();
+						var cellRange = moment().range(cellValue.start, cellValue.end);
+						var tag = cell.attr('tag');
+						var range = selection[tag];
 						
-						if (last.end.valueOf() == cellValue.start.valueOf()) {
-							// Append to previous is end date is the same as this start date
-							last.end = cellValue.end;
-						}
-						else {
-							// Otherwise make add another entry
+						if (range == undefined)
+							selection[tag] = range = [];
+	
+						if (range.length == 0) {
+							// Add first value
 							range.push({
 								start:cellValue.start,
 								end:cellValue.end
 							});
 						}
-						
-					}
+						else {
+							var last = range[range.length - 1];
+							
+							if (last.end.valueOf() == cellValue.start.valueOf()) {
+								// Append to previous is end date is the same as this start date
+								last.end = cellValue.end;
+							}
+							else {
+								// Otherwise make add another entry
+								range.push({
+									start:cellValue.start,
+									end:cellValue.end
+								});
+							}
+							
+						}
+					});
+					
 				});
 
 				for (var tag in selection) {

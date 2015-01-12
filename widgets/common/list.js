@@ -103,9 +103,9 @@
 						
 					if (hasStyle('subtitle')) {
 						if (hasStyle('lineThrough'))
-							_elements.subtitle = $('<p class="subtitle" style="text-decoration: line-through;"></p>').appendTo(_elements.link);
+							_elements.subtitle = $('<p class="subtitle style-help-body" style="text-decoration: line-through;"></p>').appendTo(_elements.link);
 						else
-							_elements.subtitle = $('<p class="subtitle"></p>').appendTo(_elements.link);
+							_elements.subtitle = $('<p class="subtitle style-help-body"></p>').appendTo(_elements.link);
 
 						self.subtitle = function(text) {
 							if (arguments.length == 0)

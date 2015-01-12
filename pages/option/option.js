@@ -28,10 +28,6 @@
 				_elements.units.select((_option.units == undefined) ? 1 : _options.units);
 				_elements.selection.select((_option.selection == undefined) ? 'hour' : _option.selection);
 				_elements.unit.select((_option.unit == undefined) ? 0 : _option.unit);
-
-				//_elements.selection.picker('refresh');
-				//_elements.unit.picker('refresh');
-
 			}
 
 			function chill() {

@@ -27,6 +27,16 @@
                 });
 			}
 			
+			self.add = function(value, text) {
+				
+				var option = $('<option></option>');
+				
+				option.attr('value', value);
+				option.text(text);
+				
+				_options.append(option);
+			}
+
 			self.select = function(value) {
             	
             	_options.each(function(index) {
@@ -151,6 +161,10 @@
 	
 			widget._create = function() {
 				this.widget = new Widget(this);
+			}
+
+			widget.add = function() {
+				this.widget.add();
 			}
 			
 			widget.refresh = function() {

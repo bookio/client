@@ -25,9 +25,9 @@
 			function fill() {			
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
-				_elements.selection.select((_option.selection == undefined) ? 'hour' : _option.selection);
 				_elements.units.val((_option.units == undefined) ? 1 : _option.units);
-				_elements.unit.select((_option.unit == undefined) ? 0 : _option.unit);
+				_elements.selection.picker('select', ((_option.selection == undefined) ? 'hour' : _option.selection));
+				_elements.unit.picker('select', ((_option.unit == undefined) ? 0 : _option.unit));
 			}
 
 			function chill() {

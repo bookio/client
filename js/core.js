@@ -27566,11 +27566,14 @@ $.widget( "ui.tabs", {
 
 	$.mobile.pages.push = function(url, options) {
 
+		var request = $.Deferred();
+		
 		var defaults = {
 			changeHash: false,
 			transition: 'fade', //_pages.length == 0 ? 'fade' : 'slide',
 			showLoadMsg: false
 		};
+
 
 		options = $.extend({}, defaults, options);
 
@@ -27603,6 +27606,18 @@ $.widget( "ui.tabs", {
 				page.element = page.element.length == 3 ? $(page.element[1]) : page.element;
 				page.element.appendTo($.mobile.pageContainer);
 				page.params = (options != undefined && options.params != undefined) ? options.params : {};
+				/*
+				
+				page.visible = false;
+				
+				page.show = function() {
+					if (!page.visible) {
+						$.mobile.changePage(page.element, options);
+						page.visible = true;						
+					}
+				}
+				
+				*/
 				
 				// Execute the page script
 				var module = new script(page);
@@ -27627,10 +27642,14 @@ $.widget( "ui.tabs", {
 				_pages.push({
 					page: page,
 					module: module,
-					options: options
+					options: options,
+					request : request
 				});
 			}
+			
 		});
+		
+		return request;
 
 	}
 
@@ -27672,8 +27691,13 @@ $.widget( "ui.tabs", {
 		
 				// Remove this page when it is hidden
 				thisPage.page.element.on('pagehide', function(event, params) {
+				
 					$(this).remove();
+
 				});
+
+				thisPage.request.resolve.apply(undefined, arguments);
+
 
 				$('head base').attr('href', nextPage.page.url);
 				console.log('Base changed to ', $('head base').attr('href'));
@@ -27686,6 +27710,7 @@ $.widget( "ui.tabs", {
 					nextPage.module.refresh(callback);	
 				else
 					callback();
+					
 				
 			}
 		}

@@ -83,11 +83,15 @@
 
 
 				_elements.save.on('tap', function(event) {
+					
+					$('body').spin("large");
+
 					chill();
 
 					var request = Model.Client.save(_client);
 
 					request.done(function() {
+						$('body').spin(false);
 						$.mobile.pages.pop();
 					});
 				});

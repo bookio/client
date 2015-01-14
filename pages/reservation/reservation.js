@@ -2,6 +2,7 @@
 
 	var dependencies = [
 		'i18n!./reservation.json',
+		'../../widgets/picker/picker.js',
 		'../../js/parser'
 	];
 
@@ -310,6 +311,7 @@
 			}
 			
 			this.refresh = function(callback) {
+				
 				$.spin(true);
 				
 				var requests = [];
@@ -335,7 +337,21 @@
 						_customer = customer;
 					});
 				}
-
+				
+				// Load options
+				if (true) {
+					var request = Model.Options.fetch();
+					
+					requests.push(request);
+	
+					request.done(function(options) {
+	
+						$.each(options, function(index, option) {
+							_elements.options.append("<option value='"+index+ "'>" + option.name + "</option>");
+						});
+		
+					});
+				}
 
 				$.when.apply(this, requests).then(function() {
 

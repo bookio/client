@@ -300,7 +300,7 @@
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
-
+				
 				if (!_reservation.id)
 					_elements.remove.addClass('hidden');
 
@@ -347,10 +347,13 @@
 					request.done(function(options) {
 	
 						$.each(options, function(index, option) {
-							_elements.options.append("<option value='"+index+ "'>" + option.name + "</option>");
+							_elements.options.append("<option value='"+index+ "'>" + option.name + " (" + option.description + ")</option>");
 						});
 		
 					});
+					
+					_elements.options.picker();
+
 				}
 
 				$.when.apply(this, requests).then(function() {

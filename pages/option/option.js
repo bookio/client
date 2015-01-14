@@ -75,10 +75,9 @@
 				
 				_elements.save.on('tap', function(event) {
 
-					chill();
-
-
 					$.spin(true);
+					
+					chill();
 
 					var request = Model.Options.save(_option);
 

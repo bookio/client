@@ -354,6 +354,8 @@
 		
 					});
 					
+					_elements.options.picker('refresh');
+					
 				}
 
 				$.when.apply(this, requests).then(function() {

@@ -10,48 +10,36 @@
 	    var Widget = function(widget) {
 
 	        var self = this;
+	        
 	        var _element = widget.element;
 			var _elements = {};
-			var _options = {};
+			var _options = [];
 
 			self.refresh = function() {
 				var val = _element.val();	
 
 				_elements.text.text('');
 
-                _options.each(function(index) {
-					if (val == $(this).val()) {
-						_elements.text.text($(this).text());
+				$.each(_options, function(index, option) {
+					if (option.value == val) {
+						_elements.text.text(option.text);
 						return false;
 					}
-                });
+				});
+
 			}
 			
 			self.add = function(value, text) {
-				
-				var option = $('<option></option>');
-				
-				option.attr('value', value);
-				option.text(text);
-				
-				_options.append(option);
+				_options.push({value: value, text:text});
 			}
 
 			self.select = function(value) {
             	
-            	_options.each(function(index) {
+            	$.each(_options, function(index, option) {
  					
- 					var option = $(this);
-					
-	            	if (option.attr('value') == value) {
-					
-						_element.val(value);
-						_elements.text.text(option.text());						
-
-						_options.removeAttr('selected');
-		            	option.attr('selected', true);
-		            	
-		            	return false;
+	            	if (option.value == value) {
+						_element.val(option.value);
+						_elements.text.text(option.text);						
 	            	}	
             	});
 			}
@@ -69,26 +57,27 @@
 					_elements.text.addClass('ui-mini');
 				}	            
 
-				_options = _element.find('option');
+				var options = _element.find('option');
 
-				_options.each(function(index) {
-					var option = $(this);
+				options.each(function(index) {
+					var option = {};
 
-					if (option.attr('value') == undefined)
-						option.attr('value', index);
-
+					option.text = $(this).text();
+					option.value = $(this).attr('value') == undefined ? index : $(this).attr('value');
+					
 					if (option.attr('selected')) {
-						_element.val(option.attr('value'));
-						_elements.text.text(option.text());		
+						_element.val(option.value);
+						_elements.text.text(option.text);		
 					}
+					
+					_options.push(option);
 				});
 				
 				// Remove from DOM
-				_options.remove();
+				options.remove();
 				
-
 				_element.on('tap', function(event) {
-		                
+
 	                var popup = $('<div data-role="popup" data-theme="a" data-transition="pop" data-dismissible="true" class="picker ui-controlgroup ui-controlgroup-vertical"></div>').popup({
 	                    x:event.pageX,
 	                    y:event.pageY
@@ -104,37 +93,29 @@
 						checkboxes.addClass('ui-mini');
 					}	            
 					
-	                _options.each(function(index) {
+	                $.each(_options, function(index, option) {
 
-	                	var option = $(this);
 	                	var checkbox = $('<div class="ui-checkbox"></div>').appendTo(checkboxes);
 	                	var label = $('<label class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left"></label>').appendTo(checkbox);
 
-						if (option.attr('value') == undefined)
-							option.attr('value', index);
-		                
 		                if (index == 0)
 		                	label.addClass('ui-first-child');
 
 		                if (index == _options.length - 1)
 		                	label.addClass('ui-last-child');
 
-						label.addClass(_element.val() == option.attr('value') ? 'ui-checkbox-on': 'ui-checkbox-off');
-		                label.text(option.text());
+						label.addClass(_element.val() == option.value ? 'ui-checkbox-on': 'ui-checkbox-off');
+		                label.text(option.text);
 		                
-						checkbox.data('option', $(this));
+						checkbox.data('option', option);
 
 						// Select on click
 		                checkbox.on('tap', function() {
-							var option  = $(this).data('option');
-		                	var value   = option.attr('value');
+							var option = $(this).data('option');
 		                	
-			                _element.val(value);
-			                _element.trigger('change', value);
-							_elements.text.text(option.text());
-			                
-							_options.removeAttr('selected');
-			            	option.attr('selected', true);
+			                _element.val(option.value);
+							_elements.text.text(option.text);
+			                _element.trigger('change', option.value);
 			                
 							checkboxes.find('.ui-btn').removeClass('ui-checkbox-on').addClass('ui-checkbox-off');
 							checkbox.find('.ui-btn').removeClass('ui-checkbox-off').addClass('ui-checkbox-on');
@@ -163,8 +144,8 @@
 				this.widget = new Widget(this);
 			}
 
-			widget.add = function() {
-				this.widget.add();
+			widget.add = function(value, text) {
+				this.widget.add(value, text);
 			}
 			
 			widget.refresh = function() {

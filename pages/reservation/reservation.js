@@ -344,16 +344,16 @@
 					
 					requests.push(request);
 	
-					request.done(function(options) {
-	
+ 					request.done(function(options) {
+	 					
+						_elements.options.picker();
+
 						$.each(options, function(index, option) {
-							_elements.options.append("<option value='"+index+ "'>" + option.name + " (" + option.description + ")</option>");
+							_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
 						});
 		
 					});
 					
-					_elements.options.picker();
-
 				}
 
 				$.when.apply(this, requests).then(function() {

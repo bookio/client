@@ -58,14 +58,15 @@
 				}	            
 
 				var options = _element.find('option');
-
+				var value = _element.val();
+				
 				options.each(function(index) {
 					var option = {};
 
 					option.text = $(this).text();
 					option.value = $(this).attr('value') == undefined ? index : $(this).attr('value');
 					
-					if (option.attr('selected')) {
+					if (value != undefined && value == option.value) {
 						_element.val(option.value);
 						_elements.text.text(option.text);		
 					}

@@ -18,6 +18,8 @@
 			var _customer = {};
 			var _reservation = page.params.reservation;
 			var _customers = [];
+			var _startDate = _reservation.begin_at;
+			var _endDate = _reservation.end_at;
 
 
 			function search() {
@@ -50,7 +52,13 @@
 
 				}
 			}
+			
+			function updateDates() {
+				var sDate = moment(_startDate);
+				var eDate = moment(_endDate);
 
+				_elements.dateinput.val(sDate.format('L') + " - " + eDate.format('L'));				
+			}
 
 			function updateContactFromCustomer(customer) {
 				var text = '';
@@ -120,10 +128,10 @@
 				var beginAt = new Date(_reservation.begin_at);
 				var endAt = new Date(_reservation.end_at);
 
-				_elements.startdate.date.text(beginAt.yyyymmdd());
+/*				_elements.startdate.date.text(beginAt.yyyymmdd());
 				_elements.enddate.date.text(endAt.yyyymmdd());
 
-				_elements.price.val(_reservation.price);
+				_elements.price.val(_reservation.price);*/
 				_elements.arrived.attr('checked', _reservation.arrived ? true : undefined);
 				_elements.transferred.attr('checked', _reservation.transferred ? true : undefined);
 				_elements.payed.attr('checked', _reservation.payed ? true : undefined);
@@ -186,7 +194,7 @@
 					return popup;
 				}
 
-				_elements.startdate.button.on('tap', function() {
+				/*_elements.startdate.button.on('tap', function() {
 
 				});
 
@@ -250,7 +258,7 @@
 					popup.trigger('create');
 					popup.popup(options);
 					popup.popup('open');
-				});
+				});*/
 
 				_elements.save.on("tap", function() {
 
@@ -283,7 +291,6 @@
 
 				});
 
-
 				_elements.remove.on("tap", function() {
 					Model.Reservations.remove(_reservation).done(function() {
 						$.mobile.pages.pop();
@@ -292,20 +299,79 @@
 
 			}
 
-
-
-
 			this.init = function() {
 
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				
+				_elements.dateinput.on('tap', function(event) {
+					var caretPos = _elements.dateinput.textrange('get', 'position');
+					var lengthOfDate = moment(_startDate).format('L').length;
+					var dateStr;
+					var showIt = false;
+					
+					
+					// Tap on start date?
+					if (caretPos && (caretPos < lengthOfDate)) {
+					
+						dateStr = _elements.dateinput.val().substring(0, lengthOfDate);
+						
+						// If valid date, select and show mobiscroll
+						if (moment(dateStr).isValid()) {
+							_elements.dateinput.textrange('set', 0, lengthOfDate);
+							showIt = true;
+						}
+						
+					}
+					 // Tap on end date?
+					else if (caretPos > lengthOfDate+3 && caretPos < 2*lengthOfDate+3) {
+					
+						dateStr = _elements.dateinput.val().substring(lengthOfDate+3);
+						
+						// If valid date, select and show mobiscroll						
+						if (moment(dateStr).isValid()) {
+							_elements.dateinput.textrange('set', lengthOfDate+3, lengthOfDate);
+							showIt = true;
+						}
+						
+					}
+
+					if (showIt) {
+
+						function dateChanged(value, instance) {							
+							if (caretPos < lengthOfDate) {
+								_startDate = new Date(value);
+								updateDates();									
+							}
+							else {
+								_endDate = new Date(value);
+								updateDates();									
+							}
+						}
+
+						var d = new Date(dateStr);				
+						_elements.divformobiscroll.mobiscroll('setDate', d, false);						
+						_elements.divformobiscroll.mobiscroll('option', {onSelect: dateChanged});
+
+						_elements.divformobiscroll.mobiscroll('show');
+						
+					}
+
+				});
+				
 				if (!_reservation.id)
 					_elements.remove.addClass('hidden');
 
-				if (_reservation.customer_id)
-					_elements.selectcustomer.addClass('hidden');
+				//if (_reservation.customer_id)
+					//_elements.selectcustomer.addClass('hidden');
+					
+				_elements.divformobiscroll.mobiscroll().date({
+					display: 'bubble',
+					anchor: _elements.dateinput,
+					showOnTap: false,
+					showOnFocus: false
+				});
 
 				_elements.save.find('.ui-btn-text').text(_reservation.id ? 'Spara' : 'Boka');
 			}
@@ -313,6 +379,8 @@
 			this.refresh = function(callback) {
 				
 				$.spin(true);
+				
+				updateDates();				
 				
 				var requests = [];
 

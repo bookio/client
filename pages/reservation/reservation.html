@@ -12,9 +12,9 @@
 		<div class="ui-body ui-body-a">		
             <textarea rows="4" data-id="contact" type="text" autofocus="autofocus">
             </textarea>
-    	    <div data-role="button-row">
+    	    <!--<div data-role="button-row">
             	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="pick-customer">Select Customer</a>
-    	    </div>
+    	    </div>-->
         </div>
 
 		<div class="ui-bar ui-bar-b">
@@ -23,7 +23,7 @@
     		</h1>
 		</div>
 		<div class="ui-body ui-body-a">
-			<div data-role="picker" data-id="options" class="ui-inline">
+			<div data-role="picker" data-id="options" class="ui-btn">
             </div>
         </div>
         
@@ -34,6 +34,25 @@
     	</div>
 
 		<div class="ui-body ui-body-a">		
+			
+			<div data-id="divformobiscroll" style="display: none;"></div>
+			
+            <div class="ui-grid-a">
+            	<div class="ui-block-a">
+		            <label  data-i18n="date">
+		                Date and Time
+		            </label>
+		            <input data-id="dateinput" type="text" value="" placeholder="" title="">
+            	</div>
+            	<div class="ui-block-b">
+		            <label  data-i18n="price">
+		                Price
+		            </label>
+		            <input data-id="price" type="text" value="" placeholder="" title="">
+            	</div>
+            </div>
+		
+			<!--
             <div class="ui-grid-a">
             	<div class="ui-block-a">
                     <a data-id="startdate.button" data-role="button" class="Xui-disabled">
@@ -53,6 +72,7 @@
                 Price
             </label>
             <input data-id="price" type="text" value="" placeholder="" title="">
+			-->
 
             <label  data-i18n="status">
                 Status

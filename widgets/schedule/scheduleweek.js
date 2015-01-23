@@ -15,8 +15,7 @@
 			var _elements    = {};
 			var _container   = widget.element;
 			var _weekdays    = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-			var _date        = new Date();
-			
+			var _date        = new Date(); //2000, 0, 1, 0, 0, 0);
 
 			_elements.container = widget.element;
 			
@@ -134,7 +133,7 @@
             }
             
 
-			self.select = function() {
+			self.selection = function() {
 			
 				if (arguments.length == 0)
 					return getSelection();
@@ -159,9 +158,18 @@
 		            	if (item.start == undefined || item.end == undefined)
 		            		continue;
 		            		
-		            	var start = item.start;
-		            	var end = item.end;
-		            		
+		            	var start = item.start.clone();
+		            	var end = item.end.clone();
+
+		            	start = _date.addDays((item.start.getDay() + 6) % 7);
+		            	end = _date.addDays((item.end.getDay() + 6) % 7);
+
+						start.setHours(item.start.getHours());
+						start.setMinutes(item.start.getMinutes());
+
+						end.setHours(item.end.getHours());
+						end.setMinutes(item.end.getMinutes());
+						
 			            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[start.getDay()]));
 		            	var range = moment().range(start, end);
 							
@@ -169,7 +177,7 @@
 							var cell = $(this);
 							var cellValue = cell.val();
 							var cellRange = moment().range(cellValue.start, cellValue.end);
-
+//debugger;
 							if (range.contains(cellRange)) {
 								cell.attr('tag', tag);
 
@@ -299,8 +307,8 @@
 			this.widget = new Widget(this);
 		}
 		
-		widget.select = function() {
-			return this.widget.select.apply(undefined, arguments);
+		widget.selection = function() {
+			return this.widget.selection.apply(undefined, arguments);
 		}
 
 		widget.refresh = function() {

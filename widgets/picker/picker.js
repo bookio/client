@@ -39,7 +39,8 @@
  					
 	            	if (option.value == value) {
 						_element.val(option.value);
-						_elements.text.text(option.text);						
+						_elements.text.text(option.text);
+						return false;						
 	            	}	
             	});
 			}

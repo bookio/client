@@ -22,6 +22,7 @@
             var _element = page.element;
             var _elements = {};
 			var _options = {};
+			var _schedule = {};
 			
             _element.hookup(_elements, 'data-id');
             
@@ -46,26 +47,40 @@
             
 
 			function init() {
+			
+				if (page.params && page.params.schedule) {
+					_schedule = page.params.schedule;
+				}			
+
 				_elements.back.on('tap', function(event) {
 
-					$.mobile.pages.pop();
+					$.mobile.pages.pop(_schedule);
 				});
 
-	            var selection = {};
-	            
 				
-	            selection.A = [];
-	            selection.A.push({
+				_element.find('.button').on('tap', function() {
+					_element.find('.button').removeClass('selected');
+					$(this).addClass('selected');	
+					
+					_elements.schedule.attr('data-tag', $(this).text());
+				});
+
+				/*
+	            _schedule.A = [];
+	            _schedule.A.push({
 	            	start: new Date(2014, 11, 11, 10, 30),
 	            	end:new Date(2014, 11, 11, 11, 30)
 		            
 	            });
+	            */
 	            
 				_elements.schedule.scheduleweek();
-				_elements.schedule.scheduleweek('select', selection);
+				_elements.schedule.scheduleweek('selection', _schedule);
 
 				_elements.schedule.on('selection-end', function(event, selection) {
-					console.log(_elements.schedule.scheduleweek('select'));
+					_schedule = _elements.schedule.scheduleweek('selection');
+
+					console.log(_schedule);
 				});
 
 				

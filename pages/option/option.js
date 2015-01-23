@@ -16,6 +16,7 @@
 			var _element = page.element;
 			var _elements = {};
 			var _option = {};
+			var _schedule = {};
 
 			_element.i18n(i18n);
 
@@ -47,6 +48,11 @@
 					$.extend(_option, page.params.option);
 				}
 				
+				if (_option.id != undefined) {
+					var request = Gopher.request('GET', sprintf('schedule/option/%d', _option.id));
+					
+				}
+				
 				if (!_option.id)
 					_elements.remove.addClass('hidden');
 
@@ -55,7 +61,15 @@
 				});
 				
 				_elements.schedule.on('tap', function(event) {
-					var request = $.mobile.pages.push('../schedule/schedule.html');
+					var request = $.mobile.pages.push('../schedule/schedule.html', {
+						params: {schedule:_schedule}
+					});
+					
+					request.done(function(schedule) {
+
+						_schedule = schedule;
+						console.log(schedule);
+					});
 				});
 				
 				_elements.remove.on('tap', function(event) {

@@ -28,6 +28,8 @@ requirejs.config({
         'rrule'               : 'lib/rrule/rrule',
         'mobiscroll'          : 'lib/mobiscroll/mobiscroll.2.9.5.min',
         'latlon-picker'		  : 'lib/latlon-picker/jquery-gmaps-latlon-picker', 
+        'fullcalendar'        : 'lib/fullcalendar/fullcalendar.min',
+        'fullcalendar-lang'   : 'lib/fullcalendar/lang-all',
         'moment-range'        : 'lib/moment/moment-range'
     },
     
@@ -39,6 +41,8 @@ requirejs.config({
 		'moment-range' : ['moment'],
 		'mobiscroll' : ['jquery-mobile'],
 		'latlon-picker' : ['jquery'],
+		'fullcalendar' :  ['jquery'],
+		'fullcalendar-lang' : ['jquery'], 
 		'lib/jquery-mobile/plugins/jquery.mobile.pages': ['jquery-mobile'],
 		'lib/jquery/plugins/jquery.extensions.js': ['jquery'],
 		'lib/jquery/plugins/jquery.cookie.js': ['jquery'],
@@ -96,6 +100,7 @@ requirejs.config({
 		'underscore',
 		'rrule',
 		'latlon-picker',
+		'fullcalendar',
 
 		'js/base64.js',
 		'js/sprintf.js',

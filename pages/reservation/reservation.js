@@ -23,7 +23,7 @@
 
 
 			function search() {
-				var query = _elements.contact.val().trim();
+/*				var query = _elements.contact.val().trim();
 
 				if (_timer != null) {
 					clearTimeout(_timer);
@@ -50,7 +50,7 @@
 
 					});
 
-				}
+				}*/
 			}
 			
 			function updateDates() {
@@ -129,9 +129,9 @@
 				var endAt = new Date(_reservation.end_at);
 
 /*				_elements.startdate.date.text(beginAt.yyyymmdd());
-				_elements.enddate.date.text(endAt.yyyymmdd());
+				_elements.enddate.date.text(endAt.yyyymmdd());*/
 
-				_elements.price.val(_reservation.price);*/
+				_elements.price.val(_reservation.price);
 				_elements.arrived.attr('checked', _reservation.arrived ? true : undefined);
 				_elements.transferred.attr('checked', _reservation.transferred ? true : undefined);
 				_elements.payed.attr('checked', _reservation.payed ? true : undefined);
@@ -409,6 +409,7 @@
 				// Load options
 				if (true) {
 					var request = Model.Options.fetch();
+					var firstID;
 					
 					requests.push(request);
 	
@@ -417,11 +418,17 @@
 						_elements.options.picker();
 
 						$.each(options, function(index, option) {
+							if (index == 0)
+								firstID = option.id;
 							_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
 						});
+
+						// If only one option, show this as default
+						if (options.length == 1)
+							_elements.options.picker('select', firstID);
 		
 					});
-					
+
 					_elements.options.picker('refresh');
 					
 				}

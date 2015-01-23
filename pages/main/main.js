@@ -258,7 +258,7 @@
 
 					_elements.desktopcontainer.empty();
 
-					_elements.desktop = $('<div data-role="desktopcalendar"></div>');
+					_elements.desktop = $('<div id="desktopcalendar" data-role="desktopcalendar"></div>');
 					_elements.desktop.appendTo(_elements.desktopcontainer);
 
 					_elements.desktop.desktopcalendar();

@@ -26,8 +26,8 @@
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
 				_elements.units.val((_option.units == undefined) ? 1 : _option.units);
-				_elements.selection.picker('select', ((_option.selection == undefined) ? 'hour' : _option.selection));
-				_elements.unit.picker('select', ((_option.unit == undefined) ? 0 : _option.unit));
+				_elements.selection.picker('select', ((_option.selection == undefined) ? '0' : _option.selection));
+				_elements.unit.picker('select', ((_option.unit == undefined) ? 'hour' : _option.unit));				
 			}
 
 			function chill() {
@@ -36,12 +36,12 @@
 				_option.selection = _elements.selection.val();
 				_option.units = _elements.units.val();
 				_option.unit = _elements.unit.val();
-			}
-			
+			}			
 
 			this.init = function() {
 
 				_elements.selection.picker();
+				_elements.unit.picker();
 								
 				if (page.params && page.params.option) {
 					$.extend(_option, page.params.option);
@@ -59,7 +59,6 @@
 				});
 				
 				_elements.remove.on('tap', function(event) {
-
 
 					function remove() {
 						var request = Model.Options.remove(_option);

@@ -273,7 +273,7 @@
 				
 				$.mobile.pages.ready
 
-				_elements.name.attr('placeholder', i18n.text('name-help', 'Court 3, Jenny, Mini Cooper, Wine Tasting'));
+				_elements.name.attr('placeholder', i18n.text('name-help-thing', 'Court 3, Room 101, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337'));
 
 
 				_elements.name.on('change', function(event, ui) {
@@ -292,18 +292,21 @@
 					_rental.style = 'thing';
 					_elements.section.human.hide("fast");
 					_elements.section.event.hide("fast");					
+					_elements.name.attr('placeholder', i18n.text('name-help-thing', 'Court 3, Room 101, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337'));
 				});
 
 				_elements.human.on('change', function(event, ui) {
 					_rental.style = 'human';
 					_elements.section.human.show("fast");
 					_elements.section.event.hide("fast");					
+					_elements.name.attr('placeholder', i18n.text('name-help-human', 'Jane, Joe, Max, Therapist 1, Dentist A'));
 				});
 
 				_elements.event.on('change', function(event, ui) {
 					_rental.style = 'event';
 					_elements.section.event.show("fast");
-					_elements.section.human.hide("fast");					
+					_elements.section.human.hide("fast");
+					_elements.name.attr('placeholder', i18n.text('name-help-event', 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course'));					
 				});
 				
 				_elements.remove.on('tap', function(event) {

@@ -17,6 +17,7 @@
 			var _element = page.element;
 			var _elements = {};
 			var _categories = null;
+			var _options = null;
 
 
 			function addCategory(category) {
@@ -25,7 +26,7 @@
 				
 				item.title(category.name);
 				item.subtitle(category.description);
-				item.image(category.image ? category.image : '../../images/icons/bookio.png');
+				item.image(category.image ? category.image : '');
 
 				item.element.on('tap', function(event) {
 					event.preventDefault();
@@ -44,6 +45,7 @@
 				_elements.list.list('reset');
 
 				$.each(categories, function(index, category) {
+					console.log(category.name);
 					addCategory(category);
 				});
 
@@ -69,9 +71,19 @@
 					
 					var request = Gopher.request('GET', 'categories');
 	
-					request.done(function(categories) {
+					request.done(function(categories) {						
 						addCategories(_categories = categories);
 					});
+
+					if (_categories == null) {
+						// If no groups found, show available options
+						var request = Gopher.request('GET', 'options');
+		
+						request.done(function(options) {						
+							addCategories(_options = options);
+						});						
+						
+					}
 					
 					request.always(function() {
 						$.spin(false);
@@ -79,7 +91,8 @@
 					});
 				}
 				else {
-					addCategories(_categories);
+					// If no groups found, show available options
+					addCategories((_categories.length == 0) ? _options : _categories);
 					callback();
 				}
 			}	

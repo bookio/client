@@ -5,6 +5,20 @@ body {
 #main-page {
   height: 100%;
 }
+#main-page .agenda {
+  float: left;
+  width: 25em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f3f3f3;
+}
+#main-page .fc-toolbar {
+  /*	    background-position: left top;
+	    background-repeat: no-repeat;
+	    background-size: 40px 40px;
+	    margin-left: 1em;*/
+
+}
 #main-page [data-role=footer] {
   position: absolute;
   bottom: 0px;

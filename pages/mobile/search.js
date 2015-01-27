@@ -60,7 +60,7 @@
 					
 					_params.endDate = _params.endDate.addDays(1);
 					
-                    var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
+                    var url = sprintf('rentals/query?begin_at=%s&end_at=%s&category_id=%d', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.option.id);
                     //var url = sprintf('rentals/query?begin_at=%s&end_at=%s', _params.startDate.toJSON(), _params.endDate.toJSON(), _params.category.id);
                     var request = Gopher.request('GET', url);
 
@@ -82,6 +82,7 @@
 
                             $.mobile.pages.push('enter-name.html', {
                                 params: _params,
+                                transition: 'slide'
                             });
 
                             event.preventDefault();
@@ -104,9 +105,10 @@
                 _element.hookup(_elements, 'data-id');
                 _element.i18n(i18n);
 
-                _elements.name.text(_params.category.name);
-                _elements.description.text(_params.category.description);
-                _elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/icons/bookio.png');
+                _elements.name.text(_params.option.name);
+                _elements.description.text(_params.option.description);
+                //_elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/icons/bookio.png');
+                _elements.image.attr('src', '../../images/icons/bookio.png');
 
 				var startDate = new Date();
 				startDate.clearTime();

@@ -77,7 +77,8 @@
                             request.done(function (reservation) {
 
                                 $.mobile.pages.push('./thank-you.html', {
-                                    params: _params
+                                    params: _params,
+                                    transition: 'slide'
                                 });
 
                             });
@@ -98,7 +99,6 @@
                         $.spin(false);
                     });
 
-
                 });
 
 
@@ -110,8 +110,15 @@
 
                 _element.hookup(_elements, 'data-id');
 
-                _elements.category.name.text(_params.category.name);
-                _elements.category.description.text(_params.category.description);
+                _elements.category.name.text(_params.option.name);
+                _elements.category.description.text(_params.option.description);
+                
+                _elements.price.text("160 SEK");
+                
+                var from = moment(_params.startDate).format("l");  
+                var to = moment(_params.endDate).format("l");  
+                
+                _elements.when.text(sprintf("%s - %s", from, to));
 
                 enableEventsHandlers();
                 enableDisable();

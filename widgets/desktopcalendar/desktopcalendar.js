@@ -10,9 +10,17 @@ define(['css!./desktopcalendar'], function() {
 		var _options = $.extend({}, _defaults, {});
 		var _element = null;
 		var _page = widget.element.parents("[data-role='page']");
+		var _lastDateUpdated = "1961-10-02";
 
 		widget.element.define('set', function(params) {
-			$("#calendar-0").fullCalendar('gotoDate', params.startDate);		        
+															
+			if (params.startDate.valueOf() != _lastDateUpdated.valueOf()) {						
+				$("[id^=calendar-]").each(function(index) {				
+					$(this).fullCalendar('gotoDate', params.startDate);
+				});
+				_lastDateUpdated = params.startDate;
+			}
+	        
         });
 
 		function init() {
@@ -35,7 +43,7 @@ define(['css!./desktopcalendar'], function() {
 				height: 'auto'
 			};
 			
-			var request = Model.Rentals.fetch();
+			var request = Model.Rentals.fetch(); 
 			var calendars = [];
 
 			$('body').spin("large");

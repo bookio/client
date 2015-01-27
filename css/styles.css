@@ -3146,6 +3146,9 @@ ul li .ui-btn * {
   right: 0px;
   bottom: 0px;
 }
+[data-role="page"] .style-bold {
+  font-weight: bold;
+}
 [data-role="page"] [data-role="content"] {
   /*		.ui-bar h1 {
 	    	color: white;
@@ -3165,9 +3168,6 @@ ul li .ui-btn * {
   font-weight: normal;
 }
 [data-role="page"] [data-role="content"] .style-header.ui-btn-active {
-  font-weight: bold;
-}
-[data-role="page"] [data-role="content"] .style-bold {
   font-weight: bold;
 }
 [data-role="page"] [data-role="content"] .style-help-body {

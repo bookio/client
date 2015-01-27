@@ -2,10 +2,11 @@
 
 
 	var dependencies = [
-		'i18n!./select-category.json',
+		'i18n!./select-option.json',
 		'../../widgets/pagelogo/pagelogo',
 		'../../widgets/common/list.js'
 	];
+
 
 
 	define(dependencies, function(i18n) {
@@ -16,21 +17,21 @@
 			var _elements = {};
 
 
-			function addCategory(category) {
+			function addOption(option) {
 
 				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
 				
-				item.title(category.name);
-				item.subtitle(category.description);
-				item.image(category.image ? category.image : '');
+				item.title(option.name);
+				item.subtitle(option.description);
+				item.image(option.image ? option.image : '');
 
 				item.element.on('tap', function(event) {
 					event.preventDefault();
 					event.stopPropagation();
 
-					$.mobile.pages.push('./select-option.html', {
+					$.mobile.pages.push('./search.html', {
 						params: {
-							category: category
+							option: option
 						},
 						transition: 'slide'
 					});
@@ -38,11 +39,11 @@
 
 			}
 
-			function addCategories(categories) {
+			function addOptions(options) {
 				_elements.list.list('reset');
 
-				$.each(categories, function(index, category) {
-					addCategory(category);
+				$.each(options, function(index, option) {
+					addOption(option);
 				});
 
 				_elements.list.list('refresh');
@@ -57,16 +58,27 @@
 				_elements.title.text(Gopher.client.name);
 
 				_elements.list.list();
+
+				// Hide Back-button if Categories is missing (no parent page)
+				if ($.mobile.pages.length() == 0) {
+					_elements.back.hide();	
+				}
+				else {
+					_elements.back.on('tap', function (event) {
+	                    $.mobile.pages.pop();
+	                });					
+				}
+
 			}
 
 			this.refresh = function(callback) {
 			
 				$.spin(true);
 				
-				var request = Gopher.request('GET', 'categories');
+				var request = Gopher.request('GET', 'options');
 
-				request.done(function(categories) {
-					addCategories(categories);
+				request.done(function(options) {
+					addOptions(options);
 				});
 
 				request.always(function() {

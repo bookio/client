@@ -3,7 +3,7 @@
 
         <div data-role="header" data-theme="b">
             <a href='#' data-id="back" data-icon='carat-l' data-theme="b" data-i18n="back">Back</a>
-            <h1 data-id="title" data-i18n="your-info">Your Information</h1>
+            <h1 data-id="title" data-i18n="your-info" class="style-bold">Your information</h1>
         </div>
 
         <div data-role="content">
@@ -20,8 +20,29 @@
 
             <ul data-role="listview" data-inset="true">
                 <li>
-                	<label data-i18n="contact-info">Your Contact Information</label>
-                    <textarea cols="40" rows="6" data-id="info"></textarea>
+                
+                	<div class="ui-grid-a">		    
+		            	<div class="ui-block-a">
+							<label data-i18n="price">Price</label>
+		            	</div>
+		            	<div class="ui-block-b">
+			            	<label data-i18n="when">When</label>
+		            	</div>
+		            	<div class="ui-block-a">
+							<h1 data-id="price"></h1>
+		            	</div>
+		            	<div class="ui-block-b">
+			            	<h1 data-id="when"></h1>
+		            	</div>		            	
+                	</div>		            
+
+                </li>
+            </ul>
+
+            <ul data-role="listview" data-inset="true">
+                <li>
+                	<label data-i18n="contact-info">Your contact information</label>
+                    <textarea cols="40" rows="6" data-id="info" autofocus="autofocus"></textarea>
                 </li>
             </ul>
 
@@ -29,7 +50,7 @@
             <p/>
 
             <div data-role="button-row">
-                <a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="a">Boka</a>
+                <a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="b">Make reservation</a>
             </div>
 
 

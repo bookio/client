@@ -7,52 +7,32 @@
         </div>
 
         <div data-role="content">
-
-            <div data-role="pagelogo">
-            </div>
-
             <ul data-role="listview" data-inset="true">
                 <li>
                     <h1 data-id="category.name"></h1>
                     <p data-id="category.description"></p>
-                </li>
-            </ul>
 
-            <ul data-role="listview" data-inset="true">
-                <li>
-                
-                	<div class="ui-grid-a">		    
-		            	<div class="ui-block-a">
-							<label data-i18n="price">Price</label>
-		            	</div>
-		            	<div class="ui-block-b">
-			            	<label data-i18n="when">When</label>
-		            	</div>
-		            	<div class="ui-block-a">
-							<h1 data-id="price"></h1>
-		            	</div>
-		            	<div class="ui-block-b">
-			            	<h1 data-id="when"></h1>
-		            	</div>		            	
-                	</div>		            
+					<label data-i18n="price">Price</label>
+					<h1 data-id="price"></h1>
+
+			        <label data-i18n="when">When</label>
+			        <h1 data-id="when"></h1>
 
                 </li>
             </ul>
 
             <ul data-role="listview" data-inset="true">
                 <li>
-                	<label data-i18n="contact-info">Your contact information</label>
-                    <textarea cols="40" rows="6" data-id="info" autofocus="autofocus"></textarea>
+            	<label data-i18n="contact-info">Your contact information</label>
+                <textarea cols="40" rows="6" data-id="info" autofocus="autofocus"></textarea>
+				<div data-role="button-row">
+	            	<a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="b">Make reservation</a>
+	            </div>
                 </li>
             </ul>
 
-            <p/>
-            <p/>
-
-            <div data-role="button-row">
-                <a href='#' data-id="submit" data-role="button" data-inline="true" data-theme="b">Make reservation</a>
+            <div data-role="pagelogo">
             </div>
-
 
         </div>
 

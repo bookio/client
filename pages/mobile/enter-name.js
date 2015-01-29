@@ -13,7 +13,7 @@
 
 
             function enableDisable() {
-                //_elements.search.toggleClass('ui-disabled', _startDate == null || _endDate == null || _startDate >= _endDate);
+                _elements.submit.toggleClass('ui-disabled', _elements.info.val().length < 5);
             }
 
             function findCustomer(email) {
@@ -41,6 +41,10 @@
                     });
 
                 });
+                
+                _elements.info.on('keydown', function (event) {
+	                	enableDisable();
+                });	                
 
                 _elements.submit.on('tap', function (event) {
 

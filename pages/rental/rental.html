@@ -17,7 +17,7 @@
             <div class="tab" data-tab="misc">
 
                 <ul data-id="listview" data-role="listview" data-inset="true">
-
+	                
                     <li>
                         <label data-i18n="name">
                             Name
@@ -98,7 +98,7 @@
 			                		                        
 							<div class="ui-grid-a">
 								<div class="ui-block-a">
-			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">with text message</label>
+			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">text message</label>
 			                        <div class="ui-inline ui-mini">
 				                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
 				                            <option value="0" data-i18n="no">No</option>
@@ -111,7 +111,7 @@
 								</div>
 	
 								<div class="ui-block-b">
-			                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">with email</label>
+			                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">email</label>
 			                        <div class="ui-inline ui-mini">
 				                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
 				                            <option value="0" data-i18n="no">No</option>
@@ -163,6 +163,7 @@
                         <p data-i18n="help-options">
                             Select the booking options that applies to this resource (or add a new).
                         </p>
+                        <label hidden data-id="warning" data-i18n="warning" class="warning-text">At least one option has to be checked</label>
                     </li>
                     <li>
                         <div data-role="list" data-id="options" data-inset="false">

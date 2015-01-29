@@ -2,7 +2,8 @@
 	"sv": {
         "group": "Grupp",		        
 		"name": "Namn",		
-		"description": "Beskrivning",		
+		"description": "Beskrivning",	
+		"picture": "Bild",	
 		"help": "Hur ska kunden tilldelas en resurs?",
 		"automatic": "Kunden får en ledig resurs automatiskt",
 		"choose": "Kunden väljer en resurs själv",

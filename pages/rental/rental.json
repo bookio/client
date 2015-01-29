@@ -3,7 +3,7 @@
 		"description": "Beskrivning",
 		"options": "Bokningsalternativ",
 		"name": "Namn",
-		"name-help-thing": "Bana 1, Rum 101, Segway A, Partytält XL",
+		"name-help-thing": "Bana 1, Rum 101, Segway A, Partytält stort, Bastu",
 		"name-help-human": "Bengt, Lisa, Fido, Terapeut 1",
 		"name-help-event": "Vinprovning, Rundtur på Slottet, Forsränning, Skepparexamen II, Frukostseminarium",
 		"notes": "Anteckning",
@@ -16,6 +16,7 @@
 		"email": "med e-post",
 		"symbol": "Symbol",
 		"help-options": "Markera de bokningsalternativ resursen erbjuder (eller skapa nytt).",
+		"warning": "Markera minst ett bokningsalternativ",
 		"back": "Tillbaka",
 		"save": "Spara",
 		"remove": "Radera",
@@ -46,8 +47,7 @@
 		"remove": "Törlés",
 		"yes": "Igen",
 		"no": "Nem",
-		"confirm-remove": "Biztos, hogy törölni szeretnéd?",
-		"specify-name": "Adj meg egy nevet."
+		"confirm-remove": "Biztos, hogy törölni szeretnéd?"
 	}
 
 }

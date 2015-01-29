@@ -1,7 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./category.json'
+		'i18n!./category.json',
+		'../../widgets/imagepicker/imagepicker'
 	];
 
 	define(dependencies, function(i18n) {
@@ -19,7 +20,9 @@
 			function fill() {			
 				_elements.name.val(_category.name);
 				_elements.description.val(_category.description);
-
+				
+				if (_category.image)
+					_elements.dropzone.imagepicker('setImage', _category.image);
 				_elements.automatic.attr('checked', _category.automatic ? 'checked' : false).checkboxradio('refresh');
 				_elements.choose.attr('checked', _category.automatic ? false : 'checked').checkboxradio('refresh');				
 				
@@ -30,10 +33,15 @@
 			function chill() {
 				_category.name = _elements.name.val();
 				_category.description = _elements.description.val();
+				_category.image = _elements.dropzone.imagepicker('getImage');
 				_category.automatic = _elements.automatic.is(':checked');				
 				_category.available = _elements.available.is(':checked');
 
 			}
+
+			function enableDisable() {				
+				((_elements.name.val().length == 0) ? _elements.save.addClass('ui-disabled') : _elements.save.removeClass('ui-disabled'));				
+			}			
 
 			this.init = function() {
 				
@@ -54,6 +62,10 @@
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
+				
+				_elements.name.on('keyup', function(event, ui) {
+					enableDisable();
+				});				
 								
 				_elements.save.on('tap', function(event) {
 
@@ -95,6 +107,8 @@
 
 
 				fill();
+				
+				enableDisable();
 
 			}
 

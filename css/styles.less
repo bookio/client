@@ -193,10 +193,14 @@ ul li .ui-btn {
 [data-role="page"] {
 
 	position: absolute;
-	left:0px;
+	left:0px; 
 	top:0px;
 	right:0px;
 	bottom:0px;
+
+	.style-bold {
+		font-weight: bold;
+	}
 
 	[data-role="content"] {
 
@@ -212,11 +216,11 @@ ul li .ui-btn {
 				font-weight: bold;
 			}
 		}
-		
+
 		.style-bold {
 			font-weight: bold;
-		}
-		
+		} 
+				
 		.style-help-body {
 			font-size: small;
 			color: @blue-lighter;
@@ -225,6 +229,18 @@ ul li .ui-btn {
 		.style-label {
 			font-weight: normal;
 			font-size: normal;
+		}
+				
+		.warning-text {
+			font-size: small;
+			background-color: #FEEEA0;
+			padding-left: 5px;
+			padding-right: 3px;
+			margin-bottom: 0px;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			color: black;
 		}
 				
 /*		.ui-bar h1 {

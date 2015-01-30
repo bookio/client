@@ -6,7 +6,8 @@
 		'i18n!./option.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
 		'../../widgets/common/list.js',
-		'../../widgets/picker/picker.js'
+		'../../widgets/picker/picker.js',
+		'../../widgets/imagepicker/imagepicker'
 	];
 
 	define(dependencies, function(i18n) {
@@ -26,6 +27,8 @@
 			function fill() {			
 				_elements.name.val(_option.name);
 				_elements.description.val(_option.description);
+				if (_option.image)
+					_elements.dropzone.imagepicker('setImage', _option.image);				
 				_elements.units.val((_option.units == undefined) ? 1 : _option.units);
 				_elements.selection.picker('select', ((_option.selection == undefined) ? '0' : _option.selection));
 				_elements.unit.picker('select', ((_option.unit == undefined) ? 'hour' : _option.unit));				
@@ -34,10 +37,15 @@
 			function chill() {
 				_option.name = _elements.name.val();
 				_option.description = _elements.description.val();
+				_option.image = _elements.dropzone.imagepicker('getImage');
 				_option.selection = _elements.selection.val();
 				_option.units = _elements.units.val();
 				_option.unit = _elements.unit.val();
-			}			
+			}
+			
+			function enableDisable() {				
+				((_elements.name.val().length == 0) ? _elements.save.addClass('ui-disabled') : _elements.save.removeClass('ui-disabled'));				
+			}
 
 			this.init = function() {
 
@@ -86,6 +94,10 @@
 
 				});
 				
+				_elements.name.on('keyup', function(event, ui) {
+					enableDisable();
+				});				
+				
 				_elements.save.on('tap', function(event) {
 
 					$.spin(true);
@@ -108,7 +120,8 @@
 				});
 
 				fill();
-
+				
+				enableDisable();
 
 			}
 			

@@ -89,8 +89,8 @@
 								item.icon('check');
 								
 							}
+							enableDisable();
 	                    });
-
 						
 					});
 					
@@ -140,13 +140,21 @@
 				request.done(function(categories) {
 
 
-					function selectCategory(id) {
+					function selectCategory(oldID, newID) {
+						
+						_rental.category_id = newID;
+						
 						$.each(_elements.categories.list('items'), function(index, item) {
 
 							var category = item.element.data('category');
 							
 							if (category != undefined) {
-								item.icon(category.id == id ? 'check' : '');
+								if (oldID != newID)
+									item.icon(category.id == newID ? 'check' : '');
+								else {
+									item.icon('');
+									_rental.category_id = null;
+								}
 							}
 						});
 					}					
@@ -163,7 +171,7 @@
 							item.icon('check');
 							
 						item.element.on('tap', function() {
-							selectCategory(_rental.category_id = $(this).data('category').id);
+							selectCategory(_rental.category_id, $(this).data('category').id);
 	                    });
 						
 					});
@@ -189,7 +197,19 @@
 
 				return request;				
 			}
-
+			
+			function enableDisable() {				
+				// To enable Save, a name must be given and at least one option has to be checked
+				((_elements.name.val().length == 0 || _rental.option_ids.length == 0) ? _elements.save.addClass('ui-disabled') : _elements.save.removeClass('ui-disabled'));
+				
+				if (_rental.option_ids.length == 0) {
+					_elements.warning.removeClass("hidden");
+				}
+				else {
+					_elements.warning.addClass("hidden");
+				}				
+								
+			}
 
 			function loadIcons() {
 
@@ -272,9 +292,15 @@
 				});
 				
 				$.mobile.pages.ready
+				
+				// Used two times, so define it once
+				var helpStr = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, Rose Cottage';
 
-				_elements.name.attr('placeholder', i18n.text('name-help-thing', 'Court 3, Room 101, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337'));
+				_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
 
+				_elements.name.on('keyup', function(event, ui) {
+					enableDisable();
+				});
 
 				_elements.name.on('change', function(event, ui) {
 					_rental.name = $(this).val();
@@ -292,7 +318,7 @@
 					_rental.style = 'thing';
 					_elements.section.human.hide("fast");
 					_elements.section.event.hide("fast");					
-					_elements.name.attr('placeholder', i18n.text('name-help-thing', 'Court 3, Room 101, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337'));
+					_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
 				});
 
 				_elements.human.on('change', function(event, ui) {
@@ -311,7 +337,6 @@
 				
 				_elements.remove.on('tap', function(event) {
 
-
 					function remove() {
 						var request = Model.Rentals.remove(_rental); 
 
@@ -324,7 +349,6 @@
 
 				});
 
-
 				_element.on("pageshow", function(event) {
 					// Select the appropriate tab
 					
@@ -333,14 +357,8 @@
 					_element.find(sprintf('.tab-header [data-tab="%s"]', activeTab)).addClass('ui-btn-active');
 					
 				});
-
 				
 				_elements.save.on('tap', function(event) {
-
-					if (!_rental.name) {
-						Notify.show(i18n.text('specify-name', 'Please enter a name.'));
-						return;
-					}
 
 					$('body').spin('large');
 
@@ -403,6 +421,8 @@
 								
 					fill();
 					callback();
+					
+					enableDisable();
 
 					$.spin(false);
 				});				

@@ -1,7 +1,7 @@
 {
 	"sv": {
 		"back": "Bakåt",
-		"book": "Boka",
+		"when": "När?",
 		"date-interval": "När vill du boka?",
 		"search": "Sök",
 		"fail": "Fullbokat. Prova med annat datum."
@@ -9,7 +9,7 @@
 	
 	"hu": {
 		"back": "Vissza",
-		"book": "Foglal",
+		"when": "Foglal",
 		"date-interval": "Mikorra foglalnád?",
 		"search": "Keresés",
 		"fail": "Tele van. Adj meg másik időpontot!"

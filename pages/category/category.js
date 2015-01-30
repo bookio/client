@@ -30,8 +30,8 @@
 			function chill() {
 				_category.name = _elements.name.val();
 				_category.description = _elements.description.val();
-				_category.automatic = _elements.automatic.is(':checked');				
-				_category.available = _elements.available.is(':checked');
+				_category.automatic = _elements.automatic.is(':checked') ? 1 : 0;				
+				_category.available = _elements.available.is(':checked') ? 1 : 0;
 
 			}
 

@@ -15,14 +15,13 @@
 
 			function fill() {
 				_elements.name.val(_user.name);
-				_elements.email.val(_user.email);
+				_elements.username.val(_user.username);
 				_elements.password.val(_user.password);
 			}
 
 			function chill() {
 				_user.name = _elements.name.val();
-				_user.email = _elements.email.val();
-				_user.username = _elements.email.val();
+				_user.username = _elements.username.val();
 				_user.password = _elements.password.val();
 			}
 

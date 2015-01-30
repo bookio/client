@@ -141,6 +141,8 @@
 				_elements.transferred.checkboxradio('refresh');
 				_elements.payed.checkboxradio('refresh');
 				_elements.delivered.checkboxradio('refresh');
+				
+				_elements.resourcename.text(_rental.name);
 			}
 
 
@@ -164,8 +166,6 @@
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
-
-
 
 				function popupHTML(html, options) {
 
@@ -418,13 +418,14 @@
 						_elements.options.picker();
 
 						$.each(options, function(index, option) {
-							if (index == 0)
-								firstID = option.id;
-							_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
+							if ($.inArray(option.id, _rental.option_ids) != -1) {
+								if (firstID == undefined)
+									firstID = option.id;
+								_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
+							}
 						});
 
-						// If only one option, show this as default
-						if (options.length == 1)
+						if (firstID != undefined)
 							_elements.options.picker('select', firstID);
 		
 					});

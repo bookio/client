@@ -152,6 +152,7 @@
 								if (oldID != newID)
 									item.icon(category.id == newID ? 'check' : '');
 								else {
+									// Allow unchecking a category 
 									item.icon('');
 									_rental.category_id = null;
 								}

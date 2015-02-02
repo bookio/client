@@ -68,13 +68,11 @@
 					});
 
 					request.done(function(category) {
-					
-						console.log(_category);
-						
+										
 						if ($.isFunction(page.params.callback)) {
 							page.params.callback(category);
 						}
-						$.mobile.pages.pop();
+						$.mobile.pages.pop(category);
 					});
 
 				});

@@ -38,7 +38,7 @@ define(['css!./desktopcalendar'], function() {
 				  center: 'title',
 				  right: ''
 				},
-				selectable: true,
+				selectable: true, 
 				selectHelper: true,
 				height: 'auto'
 			};
@@ -57,7 +57,7 @@ define(['css!./desktopcalendar'], function() {
 
 					// Set name of resource in title					
 					divForCalendar.fullCalendar($.extend({}, defaultValues, {titleFormat: "[" + rental.name + "]"}));
-					
+
 					// Set background to resource symbol
 					var symbol = $('<img class="headersymbol ' + sprintf('symbol-%04d">', rental.icon_id));
 					divForCalendar.prepend(symbol);

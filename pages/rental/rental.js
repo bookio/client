@@ -65,14 +65,13 @@
 				_elements.options.list('reset');
 				
 				request.done(function(options) {
-
 					
 					$.each(options, function(index, option) {
 
 						var item = _elements.options.list('add', 'title subtitle icon-left');
 						item.title(option.name);
 						item.subtitle(option.description);
-						
+
 						if (_rental.option_ids.indexOf(option.id) >= 0)
 							item.icon('check');
 							
@@ -100,24 +99,14 @@
 						icon("plus");
 						
 						element.on('tap', function() {
-		                    /*
-		                    function callback(option) {
-			                    // Add the created option to the option id:s array
-								_rental.option_ids.push(option.id);
-			                    
-		                    }
-		                    $.mobile.pages.push('../option/option.html', {
-		                        params: {callback:callback}
-		                    });
-		                    */
-		                    
 		                     
 		                    var request = $.mobile.pages.push('../option/option.html');
 
 		                    request.done(function(option) {
 
-		                    	if (option != null)
+		                    	if (option != null) {
 									_rental.option_ids.push(option.id);
+								}
 			                    
 		                    });
 		                    
@@ -138,7 +127,6 @@
 				_elements.categories.list('reset');
 				
 				request.done(function(categories) {
-
 
 					function selectCategory(oldID, newID) {
 						
@@ -258,8 +246,12 @@
 					$.extend(_rental, page.params.rental);
 				}
 
-				if (_rental.option_ids == null)
+				if (_rental.option_ids == null || _rental.option_ids == undefined)
 					_rental.option_ids = [];
+
+				// Make sure _rental exists, even if not saved yet
+				if (_rental.category_id == undefined)
+					_rental.category_id = null;
 
 				// Set to generic 'cube' if no icon chosen
 				if (!_rental.icon_id)

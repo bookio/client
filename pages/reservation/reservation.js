@@ -298,6 +298,25 @@
 				});
 
 			}
+			
+			function fillOptionPicker() {
+				var firstID;
+							
+				_elements.options.picker();
+
+				$.each(_options, function(index, option) {
+					if ($.inArray(option.id, _rental.option_ids) != -1) {
+						if (firstID == undefined)
+							firstID = option.id;
+						_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
+					}
+				});
+
+				if (firstID != undefined)
+					_elements.options.picker('select', firstID);
+
+				_elements.options.picker('refresh');
+			}
 
 			this.init = function() {
 
@@ -409,36 +428,20 @@
 				// Load options
 				if (true) {
 					var request = Model.Options.fetch();
-					var firstID;
-					
+
 					requests.push(request);
 	
  					request.done(function(options) {
-	 					
-						_elements.options.picker();
-
-						$.each(options, function(index, option) {
-							if ($.inArray(option.id, _rental.option_ids) != -1) {
-								if (firstID == undefined)
-									firstID = option.id;
-								_elements.options.picker('add', option.id, option.name + " (" + option.description + ")");
-							}
-						});
-
-						if (firstID != undefined)
-							_elements.options.picker('select', firstID);
-		
-					});
-
-					_elements.options.picker('refresh');
-					
+	 					_options = options;
+					});					
 				}
 
 				$.when.apply(this, requests).then(function() {
 
 					if (_customer)
 						updateContactFromCustomer(_customer);
-
+						
+					fillOptionPicker();						
 					updateDOM();
 					enableButtonActions();
 

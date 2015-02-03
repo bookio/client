@@ -1,5 +1,6 @@
 {
 	"sv": {
+		"login": "Redan användare? Logga in här.",
 		"help-text":"Har du inga inloggningsuppgifter? Fyll bara i din e-postadress nedan och prova på!",
 		"try-button": "Prova på",
 		"login-button": "Logga in",

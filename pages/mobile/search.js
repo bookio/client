@@ -107,8 +107,8 @@
 
                 _elements.name.text(_params.option.name);
                 _elements.description.text(_params.option.description);
-                //_elements.image.attr('src', _params.category.image ? _params.category.image : '../../images/icons/bookio.png');
-                _elements.image.attr('src', '../../images/icons/bookio.png');
+                
+                _elements.dateInterval.attr('placeholder', i18n.text('when', "When?"));
 
 				var startDate = new Date();
 				startDate.clearTime();

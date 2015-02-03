@@ -2,15 +2,18 @@
 	"sv": {
 		"title": "Bokningsalternativ",
 		"back": "Tillbaka",
-		"add": "Lägg till"
+		"add": "Lägg till",
+		"help": "Här finns alla tjänster, alternativ och erbjudanden som kan hyras eller bokas.",
+		"sample": "Exempel: '1 timmas massage', 'Skepparexamen', 'Veckohyra', 'Segway 30 minuter', 'Squash'"
 		
 	},
 	
 	"hu": {
 		"title": "***",
 		"back": "***",
-		"add": "***"
-
+		"add": "***",
+		"help": "***",
+		"sample": "***"
 	}
 	
 

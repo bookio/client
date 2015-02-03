@@ -1,7 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./category.json'
+		'i18n!./category.json',
+		'../../widgets/imagepicker/imagepicker'
 	];
 
 	define(dependencies, function(i18n) {
@@ -19,10 +20,10 @@
 			function fill() {			
 				_elements.name.val(_category.name);
 				_elements.description.val(_category.description);
-
+				if (_category.image)
+					_elements.dropzone.imagepicker('setImage', _category.image);				
 				_elements.automatic.attr('checked', _category.automatic ? 'checked' : false).checkboxradio('refresh');
-				_elements.choose.attr('checked', _category.automatic ? false : 'checked').checkboxradio('refresh');				
-				
+				_elements.choose.attr('checked', _category.automatic ? false : 'checked').checkboxradio('refresh');								
 				_elements.available.prop('checked', _category.available).checkboxradio('refresh');
 
 			}
@@ -30,6 +31,7 @@
 			function chill() {
 				_category.name = _elements.name.val();
 				_category.description = _elements.description.val();
+				_category.image = _elements.dropzone.imagepicker('getImage');
 				_category.automatic = _elements.automatic.is(':checked') ? 1 : 0;				
 				_category.available = _elements.available.is(':checked') ? 1 : 0;
 

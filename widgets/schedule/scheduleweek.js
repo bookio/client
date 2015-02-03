@@ -80,13 +80,13 @@
 						
 						var range = {};
 						
-						range.start = new Date(date);
-						range.start.setHours(time.getHours());
-						range.start.setMinutes(minutes);
+						range.begin_at = new Date(date);
+						range.begin_at.setHours(time.getHours());
+						range.begin_at.setMinutes(minutes);
 						
-						range.end = new Date(date);
-						range.end.setHours(time.getHours());
-						range.end.setMinutes(minutes + 15);
+						range.end_at = new Date(date);
+						range.end_at.setHours(time.getHours());
+						range.end_at.setMinutes(minutes + 15);
 
 
 						$('<div></div>').val(range).appendTo(cell).addClass("cell");
@@ -155,29 +155,32 @@
 		            for (var index in items) {
 		            	var item = items[index];
 		            	
-		            	if (item.start == undefined || item.end == undefined)
+		            	if (item.begin_at == undefined || item.end_at == undefined)
 		            		continue;
-		            		
-		            	var start = item.start.clone();
-		            	var end = item.end.clone();
 
-		            	start = _date.addDays((item.start.getDay() + 6) % 7);
-		            	end = _date.addDays((item.end.getDay() + 6) % 7);
-
-						start.setHours(item.start.getHours());
-						start.setMinutes(item.start.getMinutes());
-
-						end.setHours(item.end.getHours());
-						end.setMinutes(item.end.getMinutes());
+						item.begin_at = new Date(item.begin_at);
+						item.end_at = new Date(item.end_at);
 						
-			            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[start.getDay()]));
-		            	var range = moment().range(start, end);
+		            	var begin_at = item.begin_at.clone();
+		            	var end_at = item.end_at.clone();
+
+		            	begin_at = _date.addDays((item.begin_at.getDay() + 6) % 7);
+		            	end_at = _date.addDays((item.end_at.getDay() + 6) % 7);
+
+						begin_at.setHours(item.begin_at.getHours());
+						begin_at.setMinutes(item.begin_at.getMinutes());
+
+						end_at.setHours(item.end_at.getHours());
+						end_at.setMinutes(item.end_at.getMinutes());
+						
+			            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[begin_at.getDay()]));
+		            	var range = moment().range(begin_at, end_at);
 							
 						cells.each(function(index) {
 							var cell = $(this);
 							var cellValue = cell.val();
-							var cellRange = moment().range(cellValue.start, cellValue.end);
-//debugger;
+							var cellRange = moment().range(cellValue.begin_at, cellValue.end_at);
+
 							if (range.contains(cellRange)) {
 								cell.attr('tag', tag);
 
@@ -198,7 +201,7 @@
 					cells.each(function(index) {
 						var cell = $(this);
 						var cellValue = cell.val();
-						var cellRange = moment().range(cellValue.start, cellValue.end);
+						var cellRange = moment().range(cellValue.begin_at, cellValue.end_at);
 						var tag = cell.attr('tag');
 						var range = selection[tag];
 						
@@ -208,22 +211,22 @@
 						if (range.length == 0) {
 							// Add first value
 							range.push({
-								start:cellValue.start,
-								end:cellValue.end
+								begin_at:cellValue.begin_at,
+								end_at:cellValue.end_at
 							});
 						}
 						else {
 							var last = range[range.length - 1];
 							
-							if (last.end.valueOf() == cellValue.start.valueOf()) {
+							if (last.end_at.valueOf() == cellValue.begin_at.valueOf()) {
 								// Append to previous is end date is the same as this start date
-								last.end = cellValue.end;
+								last.end_at = cellValue.end_at;
 							}
 							else {
 								// Otherwise make add another entry
 								range.push({
-									start:cellValue.start,
-									end:cellValue.end
+									begin_at:cellValue.begin_at,
+									end_at:cellValue.end_at
 								});
 							}
 							
@@ -234,7 +237,7 @@
 
 				for (var tag in selection) {
 					selection[tag].sort(function(a, b) {
-						return a.start.getDate() - b.start.getDate();
+						return a.begin_at.getDate() - b.begin_at.getDate();
 					});
 				}				
 

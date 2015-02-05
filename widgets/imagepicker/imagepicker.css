@@ -1,7 +1,7 @@
 [data-role="imagepicker"] {
   border: 1px dashed #b2c9f0;
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   display: inline-block;
   cursor: pointer;
 }
@@ -13,7 +13,7 @@
   background-image: url(./images/dropzone.svg);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 80px auto;
+  background-size: 60px auto;
 }
 [data-role="imagepicker"] div:not(.clearbutton).background-image-none {
   background-image: none;

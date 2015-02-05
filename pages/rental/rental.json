@@ -15,6 +15,7 @@
 		"mobile": "med SMS",
 		"email": "med e-post",
 		"symbol": "Symbol",
+		"picture": "Bild",
 		"help-options": "Markera de bokningsalternativ resursen erbjuder (eller skapa nytt).",
 		"warning": "Markera minst ett bokningsalternativ",
 		"back": "Tillbaka",

@@ -104,6 +104,8 @@
 
                 _element.hookup(_elements, 'data-id');
                 _element.i18n(i18n);
+                
+                _elements.title.text(Gopher.client.name);
 
                 _elements.name.text(_params.option.name);
                 _elements.description.text(_params.option.description);

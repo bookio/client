@@ -2,10 +2,11 @@
 
 
 	var dependencies = [
-		'i18n!./select-category.json',
+		'i18n!./select-option.json',
 		'../../widgets/pagelogo/pagelogo',
 		'../../widgets/common/list.js'
 	];
+
 
 
 	define(dependencies, function(i18n) {
@@ -16,41 +17,33 @@
 			var _elements = {};
 
 
-			function addCategory(category) {
+			function addResource(resource) {
 
 				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
 				
-				item.title(category.name);
-				item.subtitle(category.description);
-				item.image(category.image ? category.image : '');
+				item.title(resource.name);
+				item.subtitle(resource.description);
+				item.image(resource.image ? resource.image : '');
 
 				item.element.on('tap', function(event) {
 					event.preventDefault();
 					event.stopPropagation();
 
-					if (category.automatic) {
-						$.mobile.pages.push('./select-option.html', {
-							params: {
-								category: category
-							},
-							transition: 'slide'
-						});
-					}
-					// The user should chose a resource
-					else {
-						$.mobile.pages.push('./select-resource.html', {
-							transition: 'slide'
-						});
-					}
+					$.mobile.pages.push('./select-option.html', {
+						params: {
+							resource: resource
+						},
+						transition: 'slide'
+					});
 				});
 
 			}
 
-			function addCategories(categories) {
+			function addResources(resources) {
 				_elements.list.list('reset');
 
-				$.each(categories, function(index, category) {
-					addCategory(category);
+				$.each(resources, function(index, resource) {
+					addResource(resource);
 				});
 
 				_elements.list.list('refresh');
@@ -65,16 +58,27 @@
 				_elements.title.text(Gopher.client.name);
 
 				_elements.list.list();
+
+				// Hide Back-button if Categories is missing (no parent page)
+				if ($.mobile.pages.length() == 0) {
+					_elements.back.hide();	
+				}
+				else {
+					_elements.back.on('tap', function (event) {
+	                    $.mobile.pages.pop();
+	                });					
+				}
+
 			}
 
 			this.refresh = function(callback) {
 			
 				$.spin(true);
 				
-				var request = Gopher.request('GET', 'categories');
+				var request = Gopher.request('GET', 'rentals');
 
-				request.done(function(categories) {
-					addCategories(categories);
+				request.done(function(resources) {
+					addResources(resources);
 				});
 
 				request.always(function() {

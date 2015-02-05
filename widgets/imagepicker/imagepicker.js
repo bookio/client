@@ -68,7 +68,7 @@
 				elements.image.attr("src", '');
 				elements.container.toggleClass('background-image-none', false);				
 				elements.clearbutton.toggleClass('background-image-none', true);				
-
+				self.element.trigger('imagechanged', '');
 			});
 			
 			elements.container.on('dragover', function(event) {

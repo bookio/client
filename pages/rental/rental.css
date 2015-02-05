@@ -6,6 +6,10 @@
   height: 50px;
   width: 50px;
 }
+#rental-page [data-id="icon.button"] {
+  margin-top: 0px;
+  height: 77px;
+}
 #rental-page .icon {
   fill: #b2c9f0;
 }

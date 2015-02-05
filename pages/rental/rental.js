@@ -3,7 +3,8 @@
 	var dependencies = [
 		'i18n!./rental.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
-		'../../widgets/common/list.js'
+		'../../widgets/common/list.js',
+		'../../widgets/imagepicker/imagepicker'
 	];
 
 	define(dependencies, function(i18n) {
@@ -56,6 +57,10 @@
 				_elements.human.checkboxradio("refresh");
 				
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
+				
+				if (_rental.image)
+					_elements.dropzone.imagepicker('setImage', _rental.image);				
+
 			}
 
 			
@@ -326,6 +331,11 @@
 					_elements.section.event.show("fast");
 					_elements.section.human.hide("fast");
 					_elements.name.attr('placeholder', i18n.text('name-help-event', 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course'));					
+				});
+				
+				_elements.dropzone.on('imagechanged', function(event, ui) {				
+					console.log("DROPZONE");
+					_rental.image = _elements.dropzone.imagepicker('getImage');
 				});
 				
 				_elements.remove.on('tap', function(event) {

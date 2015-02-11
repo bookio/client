@@ -27563,6 +27563,10 @@ $.widget( "ui.tabs", {
 
 
 	$.mobile.pages = {};
+	
+	$.mobile.pages.length = function() {
+		return _pages.length;
+	}
 
 	$.mobile.pages.push = function(url, options) {
 
@@ -39581,8 +39585,8 @@ sha1 = function(msg) {
 	
 	Gopher = {};
 
-	Gopher.baseURL = 'http://bookio.herokuapp.com';
-	//Gopher.baseURL = 'http://localhost:3000';
+	//Gopher.baseURL = 'http://bookio-node.herokuapp.com';
+	Gopher.baseURL = 'http://localhost:5000';
 
 	Gopher.user = null;
 	Gopher.client = null;
@@ -39613,7 +39617,7 @@ sha1 = function(msg) {
 		}
 
 		catch (error) {
-			message = error.message;
+			message = xhr.responseText;
 		}
 
 		console.log(sprintf('Request failed. %s', message));
@@ -39976,149 +39980,154 @@ sha1 = function(msg) {
 	}
 
 
-
-	////////////////////////////////////////////////////////////////////////////
-
-
-	(function() {
-
-		Model.Icons = {};
-		$.extend(Model.Icons, requests('icons'));
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-
-
-	(function() {
-
-		Model.Rentals = {};
-		$.extend(Model.Rentals, requests('rentals'));
+	Model.initialize = function() {
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+	
+		(function() {
+	
+			Model.Icons = {};
+			$.extend(Model.Icons, requests('icons'));
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+		(function() {
+	
+			Model.Rentals = {};
+			$.extend(Model.Rentals, requests('rentals'));
+			
+	
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+		(function() {
+			Model.Customers = {};
+	
+			$.extend(Model.Customers, requests('customers'));
+	
+	
+			Model.Customers.search = function(text) {
+	
+				var request = gopher.request('GET', sprintf('customers/search/%s', text));
+	
+				return request;
+			}
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+		(function() {
+	
+			Model.Reservations = {};
+	
+			$.extend(Model.Reservations, requests('reservations'));
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+	
+		(function() {
+	
+			Model.Settings = {};
+	
+			Model.Settings.fetch = function(section, name) {
+				var request = gopher.request('GET', sprintf('settings/%s/%s', section, name));
+				return request;
+			}
+	
+			Model.Settings.save = function(section, name, value) {
+				var request = gopher.request('PUT', sprintf('settings/%s/%s', section, name), value);
+				return request;
+			};
+	
+		})();
+	
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+		(function() {
+	
+			Model.Categories = {};
+	
+			$.extend(Model.Categories, requests('categories'));
+	
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+		(function() {
+	
+			Model.Users = {};
+	
+			$.extend(Model.Users, requests('users'));
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+		(function() {
+	
+			Model.Options = {};
+	
+			$.extend(Model.Options, requests('options'));
+			
+	
+	
+		})();
+	
+		////////////////////////////////////////////////////////////////////////////
+	
+	
+		(function() {
+	
+			Model.Client = {};
+	
+			Model.Client.fetch = function() {
+	
+				var request = gopher.request('GET', sprintf('clients/%d', gopher.client.id));
+	
+				request.done(function(client) {
+					gopher.client = client;
+				});
+	
+				return request;
+			}
+	
+			Model.Client.save = function(client) {
+	
+				var request = gopher.request('PUT', sprintf('clients/%d', gopher.client.id), client);
+	
+				request.done(function(client) {
+					gopher.client = client;
+				});
+	
+				return request;
+			};
+	
+	
+	
+		})();
 		
+	}
 
 
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-	(function() {
-		Model.Customers = {};
-
-		$.extend(Model.Customers, requests('customers'));
-
-
-		Model.Customers.search = function(text) {
-
-			var request = gopher.request('GET', sprintf('customers/search/%s', text));
-
-			return request;
-		}
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-	(function() {
-
-		Model.Reservations = {};
-
-		$.extend(Model.Reservations, requests('reservations'));
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-
-	(function() {
-
-		Model.Settings = {};
-
-		Model.Settings.fetch = function(section, name) {
-			var request = gopher.request('GET', sprintf('settings/%s/%s', section, name));
-			return request;
-		}
-
-		Model.Settings.save = function(section, name, value) {
-			var request = gopher.request('PUT', sprintf('settings/%s/%s', section, name), value);
-			return request;
-		};
-
-	})();
-
-
-	////////////////////////////////////////////////////////////////////////////
-
-	(function() {
-
-		Model.Categories = {};
-
-		$.extend(Model.Categories, requests('categories'));
-
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-	(function() {
-
-		Model.Users = {};
-
-		$.extend(Model.Users, requests('users'));
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-	(function() {
-
-		Model.Options = {};
-
-		$.extend(Model.Options, requests('options'));
-		
-
-
-	})();
-
-	////////////////////////////////////////////////////////////////////////////
-
-
-	(function() {
-
-		Model.Client = {};
-
-		Model.Client.fetch = function() {
-
-			var request = gopher.request('GET', sprintf('clients/%d', gopher.client.id));
-
-			request.done(function(client) {
-				gopher.client = client;
-			});
-
-			return request;
-		}
-
-		Model.Client.save = function(client) {
-
-			var request = gopher.request('PUT', sprintf('clients/%d', gopher.client.id), client);
-
-			request.done(function(client) {
-				gopher.client = client;
-			});
-
-			return request;
-		};
-
-
-
-	})();
-
+	Model.initialize();
 	console.log('model.js loaded...');
 
 

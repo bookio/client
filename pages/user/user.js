@@ -16,7 +16,7 @@
 			function fill() {
 				_elements.name.val(_user.name);
 				_elements.username.val(_user.username);
-				_elements.password.val(_user.password);
+				_elements.password.val('');
 			}
 
 			function chill() {

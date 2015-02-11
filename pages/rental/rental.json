@@ -31,7 +31,8 @@
 		"dates": "Datum",
 		"seats": "Platser",
 		"eventdates": "Tider och datum för aktiviteter",
-		"set-location": "Ange plats"
+		"set-location": "Ange plats",
+		"available": "Tillgänglig och bokningsbar"
 	},
 	
 	"hu": {

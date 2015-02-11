@@ -15,6 +15,27 @@
 			var _element = page.element;
 			var _elements = {};
 
+			function addRental(rental) {
+
+				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
+				
+				item.title(rental.name);
+				item.subtitle(rental.description);
+				item.image(rental.image ? rental.image : '');
+
+				item.element.on('tap', function(event) {
+					event.preventDefault();
+					event.stopPropagation();
+
+					$.mobile.pages.push('./select-option.html', {
+						params: {
+							rental: rental
+						},
+						transition: 'slide'
+					});
+
+				});
+			}
 
 			function addCategory(category) {
 
@@ -39,6 +60,9 @@
 					// The user should chose a resource
 					else {
 						$.mobile.pages.push('./select-resource.html', {
+							params: {
+								category: category
+							},
 							transition: 'slide'
 						});
 					}
@@ -46,14 +70,20 @@
 
 			}
 
+			function addRentals(rentals) {
+				// Add rentals not belonging to any group
+				$.each(rentals, function(index, rental) {
+					addRental(rental);
+				});
+				
+			}
+
 			function addCategories(categories) {
-				_elements.list.list('reset');
 
 				$.each(categories, function(index, category) {
-					addCategory(category);
+					if (category.available)
+						addCategory(category);
 				});
-
-				_elements.list.list('refresh');
 				
 			}
 
@@ -69,15 +99,31 @@
 
 			this.refresh = function(callback) {
 			
+				var requests = [];
+			
 				$.spin(true);
+				_elements.list.list('reset');
 				
-				var request = Gopher.request('GET', 'categories');
+				// Get categories that is available and has linked rentals 
+				var requestCategories = Gopher.request('GET', 'categories/active');
+				
+				requests.push(requestCategories);
 
-				request.done(function(categories) {
+				requestCategories.done(function(categories) {
 					addCategories(categories);
 				});
 
-				request.always(function() {
+				// Get rentals that is available and not linked to any category
+				var requestRentals = Gopher.request('GET', 'rentals/no_category');
+
+				requests.push(requestRentals);
+
+				requestRentals.done(function(rentals) {
+					addRentals(rentals);
+				});
+
+				$.when.apply(this, requests).then(function() {
+					_elements.list.list('refresh');
 					$.spin(false);
 					callback();
 				});

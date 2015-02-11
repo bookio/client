@@ -59,7 +59,9 @@
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 				
 				if (_rental.image)
-					_elements.dropzone.imagepicker('setImage', _rental.image);				
+					_elements.dropzone.imagepicker('setImage', _rental.image);			
+					
+				_elements.available.prop('checked', _rental.available).checkboxradio('refresh');
 
 			}
 
@@ -72,7 +74,6 @@
 				request.done(function(options) {
 					
 					$.each(options, function(index, option) {
-
 						var item = _elements.options.list('add', 'title subtitle icon-left');
 						item.title(option.name);
 						item.subtitle(option.description);
@@ -334,8 +335,11 @@
 				});
 				
 				_elements.dropzone.on('imagechanged', function(event, ui) {				
-					console.log("DROPZONE");
 					_rental.image = _elements.dropzone.imagepicker('getImage');
+				});
+				
+				_elements.available.on('change', function(event, ui) {
+					_rental.available = _elements.available.is(':checked') ? 1 : 0;
 				});
 				
 				_elements.remove.on('tap', function(event) {

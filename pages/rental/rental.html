@@ -91,57 +91,61 @@
 		                    
 		                </div>
 		                
-		                <div data-id="section.human" style="display: none;" class="ui-body ui-body-a">
-	                        <label data-i18n="alert" style="margin-bottom:0;">
-	                            Alert person of new bookings?
-	                        </label>
-			                		                        
-							<div class="ui-grid-a">
-								<div class="ui-block-a">
-			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">text message</label>
-			                        <div class="ui-inline ui-mini">
-				                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
-				                            <option value="0" data-i18n="no">No</option>
-				                            <option value="1" data-i18n="yes">Yes</option>
-				                        </select>
-			                        </div>
-			                        <div class="ui-inline ui-mini">
-										<input type="text" placeholder="703 555 876"/>
-			                        </div>
-								</div>
+		                <div data-id="section.human" style="display: none;">
+			                <div class="ui-body ui-body-a">
+		                        <label data-i18n="alert" style="margin-bottom:0;">
+		                            Alert person of new bookings?
+		                        </label>
+				                		                        
+								<div class="ui-grid-a">
+									<div class="ui-block-a">
+				                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">text message</label>
+				                        <div class="ui-inline ui-mini">
+					                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
+					                            <option value="0" data-i18n="no">No</option>
+					                            <option value="1" data-i18n="yes">Yes</option>
+					                        </select>
+				                        </div>
+				                        <div class="ui-inline ui-mini">
+											<input type="text" placeholder="703 555 876"/>
+				                        </div>
+									</div>
+		
+									<div class="ui-block-b">
+				                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">email</label>
+				                        <div class="ui-inline ui-mini">
+					                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
+					                            <option value="0" data-i18n="no">No</option>
+					                            <option value="1" data-i18n="yes">Yes</option>
+					                        </select>
+				                        </div>
+				                        <div class="ui-inline ui-mini">
+											<input type="text" placeholder="jane@rentstuff.com"/>
+				                        </div>
+									</div>							
+				                </div>
+			                </div>
+							</br>
+		                </div>
+		                
+		                <div data-id="section.event" style="display: none;">
+			                <div class="ui-body ui-body-a">
+			                	<label data-i18n="eventdates">Event Dates</label>
+								<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
 	
-								<div class="ui-block-b">
-			                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">email</label>
-			                        <div class="ui-inline ui-mini">
-				                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
-				                            <option value="0" data-i18n="no">No</option>
-				                            <option value="1" data-i18n="yes">Yes</option>
-				                        </select>
-			                        </div>
-			                        <div class="ui-inline ui-mini">
-										<input type="text" placeholder="jane@rentstuff.com"/>
-			                        </div>
-								</div>							
-			                </div>			                
+								<div class="ui-inline">
+					                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
+								</div>
+		                        <div class="ui-inline">
+									<input data-id="seats" type="text" placeholder="6"/>
+		                        </div>
+		                        <div class="ui-inline">							
+									<button data-id="setlocation" data-i18n="set-location" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
+		                        </div>	
+			                </div>
+			                <br/>
 		                </div>
-		                
-		                <div data-id="section.event" style="display: none;" class="ui-body ui-body-a">
-		                	<label data-i18n="eventdates">Event Dates</label>
-							<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
-
-							<div class="ui-inline">
-				                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
-							</div>
-	                        <div class="ui-inline">
-								<input data-id="seats" type="text" placeholder="6"/>
-	                        </div>
-	                        <div class="ui-inline">							
-								<button data-id="setlocation" data-i18n="set-location" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
-	                        </div>
-		                </div>
-		                
-		                <br/>
-		                
+		                		                
 						<div class="ui-grid-a">
 							<div class="ui-block-a">
 	                            <label data-i18n="symbol">
@@ -168,20 +172,9 @@
 						            </div>
 						        </div>
 							</div>
-							
-						</div>		                
+						</div>
 						
-<!--                        <div data-id="icon.container" style="padding-top: 6px">
-                            <label data-i18n="symbol">
-                                Symbol
-                            </label>
-                            <a data-id="icon.button" data-role="button" data-icon="carat-d" data-iconpos="right" data-theme="a">
-                                <div>
-                                    <img data-id="icon.image" />
-                                </div>
-                            </a>
-                        </div>-->
-                        
+						<label data-i18n="available" class="style-label"><input type="checkbox" data-id="available" checked="checked">Available for booking</label>                    
                         
                     </li>
                 </ul>

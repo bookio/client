@@ -14,8 +14,9 @@
 		function Module(page) {
 
 			var _element = page.element;
+			var _params = page.params;
 			var _elements = {};
-
+			var _parentIsRental;
 
 			function addOption(option) {
 
@@ -23,7 +24,7 @@
 				
 				item.title(option.name);
 				item.subtitle(option.description);
-				item.image(option.image ? option.image : '');
+				item.image(option.image ? option.image : (_parentIsRental ? _params.rental.image : _params.category.image));
 
 				item.element.on('tap', function(event) {
 					event.preventDefault();
@@ -51,23 +52,20 @@
 			}
 
 			function init() {
+
+				_parentIsRental = (_params.rental != undefined);
 			
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				_elements.listview.listview();
 				_elements.title.text(Gopher.client.name);
+				_elements.header.text(_parentIsRental ? _params.rental.name : _params.category.name);
 
 				_elements.list.list();
 
-				// Hide Back-button if Categories is missing (no parent page)
-				if ($.mobile.pages.length() == 0) {
-					_elements.back.hide();	
-				}
-				else {
-					_elements.back.on('tap', function (event) {
-	                    $.mobile.pages.pop();
-	                });					
-				}
+				_elements.back.on('tap', function (event) {
+                    $.mobile.pages.pop();
+                });					
 
 			}
 
@@ -75,8 +73,11 @@
 			
 				$.spin(true);
 				
-				var request = Gopher.request('GET', 'options');
-
+				if (_parentIsRental)
+					var request = Gopher.request('GET', sprintf('options/rental/%d', _params.rental.id));
+				else
+					var request = Gopher.request('GET', sprintf('options/category/%d', _params.category.id));
+				
 				request.done(function(options) {
 					addOptions(options);
 				});
@@ -87,6 +88,7 @@
 				});
 				
 			}	
+
 			
 			init();			
 		}

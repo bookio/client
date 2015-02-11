@@ -112,7 +112,7 @@
 						if ($.isFunction(page.params.callback)) {
 							page.params.callback(option);
 						}
-						$.mobile.pages.pop(_option);
+						$.mobile.pages.pop(option);
 					});
 
 				});

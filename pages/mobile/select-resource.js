@@ -14,16 +14,17 @@
 		function Module(page) {
 
 			var _element = page.element;
+			var _params = page.params;
 			var _elements = {};
 
 
-			function addResource(resource) {
+			function addRental(rental) {
 
 				var item = _elements.list.list('add', 'icon-disclosure subtitle title image');
 				
-				item.title(resource.name);
-				item.subtitle(resource.description);
-				item.image(resource.image ? resource.image : '');
+				item.title(rental.name);
+				item.subtitle(rental.description);
+				item.image(rental.image ? rental.image : '');
 
 				item.element.on('tap', function(event) {
 					event.preventDefault();
@@ -31,7 +32,7 @@
 
 					$.mobile.pages.push('./select-option.html', {
 						params: {
-							resource: resource
+							rental: rental
 						},
 						transition: 'slide'
 					});
@@ -39,11 +40,11 @@
 
 			}
 
-			function addResources(resources) {
+			function addRentals(rentals) {
 				_elements.list.list('reset');
 
-				$.each(resources, function(index, resource) {
-					addResource(resource);
+				$.each(rentals, function(index, rental) {
+					addRental(rental);
 				});
 
 				_elements.list.list('refresh');
@@ -56,6 +57,7 @@
 				_element.i18n(i18n);
 				_elements.listview.listview();
 				_elements.title.text(Gopher.client.name);
+				_elements.header.text(_params.category.name);				
 
 				_elements.list.list();
 
@@ -75,10 +77,13 @@
 			
 				$.spin(true);
 				
-				var request = Gopher.request('GET', 'rentals');
-
-				request.done(function(resources) {
-					addResources(resources);
+				var query = {};
+				
+				query.category_id = _params.category.id;
+				var request = Gopher.request('POST', 'rentals/query', query);								
+				
+				request.done(function(rentals) {
+					addRentals(rentals);
 				});
 
 				request.always(function() {

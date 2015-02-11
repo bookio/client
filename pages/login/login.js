@@ -69,6 +69,9 @@
 
 				// Logout
 				Gopher.logout();
+				
+				// Make sure to clear cache
+				Model.initialize();
 			
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);

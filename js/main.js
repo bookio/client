@@ -174,12 +174,7 @@ requirejs.config({
 			var request = Gopher.request('GET', 'categories');
 	
 			request.done(function(categories) {
-				if (categories.length == 0) {
-					$.mobile.pages.go('pages/mobile/select-option.html');
-				}
-				else {
-					$.mobile.pages.go('pages/mobile/select-category.html');
-				}
+				$.mobile.pages.go('pages/mobile/select-category.html');
 			});
 
 		}

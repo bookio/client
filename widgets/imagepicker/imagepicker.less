@@ -7,6 +7,7 @@
     width: 80px;           
     display: inline-block; 
     cursor: pointer;
+
 	
 	div:not(.clearbutton) {
 		position: relative;
@@ -43,6 +44,7 @@
 		right: -8px;
 		background-image: none;
 		cursor: pointer;
+		z-index: 999;
 		
 		&.background-image-none {
 			display: none;
@@ -55,4 +57,8 @@
 	}
 	
 	
+}
+
+.over {
+	background: @lightBookioBlue;
 }

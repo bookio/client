@@ -5,6 +5,7 @@
   top: 0px;
   bottom: 0px;
   margin: auto;
+  border-radius: 20px !important;
 }
 [data-role="list"] .glyph {
   outline: 1px solid red;

@@ -38,10 +38,14 @@
   right: -8px;
   background-image: none;
   cursor: pointer;
+  z-index: 999;
 }
 [data-role="imagepicker"] .clearbutton.background-image-none {
   display: none;
 }
 [data-role="imagepicker"] input {
   display: none;
+}
+.over {
+  background: #b2c9f0;
 }

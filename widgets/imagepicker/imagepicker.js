@@ -67,7 +67,8 @@
 
 				elements.image.attr("src", '');
 				elements.container.toggleClass('background-image-none', false);				
-				elements.clearbutton.toggleClass('background-image-none', true);				
+				elements.clearbutton.toggleClass('background-image-none', true);
+				elements.file.val('');
 				self.element.trigger('imagechanged', '');
 			});
 			
@@ -76,8 +77,8 @@
 				event.stopPropagation();
 				event.preventDefault();
 
-				var files = event.originalEvent.dataTransfer.files;
-
+				var files = event.originalEvent.dataTransfer.items;
+				
 				if (files.length > 0) {
 					switch (files[0].type) {
 						case 'image/jpeg':
@@ -90,28 +91,43 @@
 							event.originalEvent.dataTransfer.dropEffect = 'none';
 					}
 				}
-
+				
 			});
 
 			elements.container.on('drop', function(event) {
 				event.stopPropagation();
 				event.preventDefault();
+				self.element.removeClass('over');				
 				self.setFile(event.originalEvent.dataTransfer.files[0]);
 			});
+			
+			elements.container.on('dragenter', function(event) {
+				self.element.addClass('over');
+			});
+
+			elements.container.on('dragleave', function(event) {
+				self.element.removeClass('over');
+			});			
 
 			elements.file.on('change', function(event) {
 				event.stopPropagation();
 				event.preventDefault();
 				self.setFile(event.target.files[0]);
 			});
+			
+			$(document).on('drop', function(event) {
+				event.preventDefault();
+			});			
 
-		
+			$(document).on('dragover', function(event) {
+				event.preventDefault();
+			});			
 	
 		}		
 		
 		// Define the widget
 		$.widget("mobile.imagepicker", $.mobile.widget, widget);
-
+		
 		// taking into account of the component when creating the window
 		// or at the create event
 		$(document).bind("pagecreate create", function(e) {

@@ -11,6 +11,7 @@
 
 
 		var widget = {};
+		var _counter = 0;
 		
 		widget.options = {
 			image:''
@@ -47,6 +48,7 @@
 			self.element.append($(html));	
 
 			self.elements = {};
+			
 			self.elements.container = self.element.find('.container');
 			self.elements.image = self.element.find('img');
 			self.elements.file = self.element.find('input');
@@ -97,18 +99,23 @@
 			elements.container.on('drop', function(event) {
 				event.stopPropagation();
 				event.preventDefault();
-				self.element.removeClass('over');				
 				self.setFile(event.originalEvent.dataTransfer.files[0]);
+				__counter = 0;
+				elements.container.removeClass('over');
 			});
 			
 			elements.container.on('dragenter', function(event) {
-				self.element.addClass('over');
+				elements.container.addClass('over');
+				++_counter;
 			});
 
 			elements.container.on('dragleave', function(event) {
-				self.element.removeClass('over');
+				--_counter;
+				if (_counter == 0) {
+					elements.container.removeClass('over');
+				}
 			});			
-
+			
 			elements.file.on('change', function(event) {
 				event.stopPropagation();
 				event.preventDefault();

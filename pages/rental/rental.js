@@ -31,31 +31,31 @@
 				if (_rental.location != undefined && _rental.location != "")
 					_elements.setlocation.text(_rental.location);
 
-				_elements.thing.removeAttr('checked');
-				_elements.human.removeAttr('checked');
-				_elements.event.removeAttr('checked');
+				_elements.thing.prop('checked', false);
+				_elements.human.prop('checked', false);
+				_elements.event.prop('checked', false);
 
 				if (_rental.style == 'thing') {
-					_elements.thing.attr('checked', 'checked');
+					_elements.thing.prop('checked', true).checkboxradio("refresh");
 				}
 				else if (_rental.style == 'human') {
-					_elements.human.attr('checked', 'checked');
+					_elements.human.prop('checked', true).checkboxradio("refresh");
 					_elements.section.human.show("fast");
 				} 
 				else if (_rental.style == 'event') {
-					_elements.event.attr('checked', 'checked');
+					_elements.event.prop('checked', true).checkboxradio("refresh");
 					_elements.section.event.show("fast");
 				}
 				else {
 					// default to 'thing'
-					_elements.thing.attr('checked', 'checked');
+					_elements.thing.prop('checked', true);
 					_rental.style = 'thing';
 				}
-				
+				/*
 				_elements.thing.checkboxradio("refresh");
 				_elements.event.checkboxradio("refresh");
 				_elements.human.checkboxradio("refresh");
-				
+				*/
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 				
 				if (_rental.image)
@@ -362,7 +362,7 @@
 					//_element.find('.tab:visible');
 					var activeTab = _element.find('.tab-container [data-tab]:visible:first').attr('data-tab');
 					_element.find(sprintf('.tab-header [data-tab="%s"]', activeTab)).addClass('ui-btn-active');
-					
+
 				});
 				
 				_elements.save.on('tap', function(event) {

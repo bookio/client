@@ -1,0 +1,58 @@
+[data-role="deletebutton"] {
+  /* The two faces of the cube */
+
+  /* Position the faces */
+
+}
+[data-role="deletebutton"] .ui-btn {
+  min-width: 100px !important;
+}
+[data-role="deletebutton"] body {
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  -ms-perspective: 1000px;
+  perspective: 1000px;
+}
+[data-role="deletebutton"] .cube {
+  height: 46px;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+[data-role="deletebutton"] .default-state,
+[data-role="deletebutton"] .active-state {
+  height: 46px;
+}
+[data-role="deletebutton"] .default-state {
+  -webkit-transform: translateZ(23px);
+  -moz-transform: translateZ(23px);
+  -ms-transform: translateZ(23px);
+  -o-transform: translateZ(23px);
+  transform: translateZ(23px);
+}
+[data-role="deletebutton"] .flip-to-top .active-state {
+  -webkit-transform: rotateX(90deg) translateZ(69px);
+  -moz-transform: rotateX(90deg) translateZ(69px);
+  -ms-transform: rotateX(90deg) translateZ(69px);
+  -o-transform: rotateX(90deg) translateZ(69px);
+  transform: rotateX(90deg) translateZ(69px);
+}
+[data-role="deletebutton"] .flip {
+  -webkit-transform: rotateX(-89deg);
+  -moz-transform: rotateX(-89deg);
+  -ms-transform: rotateX(-89deg);
+  -o-transform: rotateX(-89deg);
+  transform: rotateX(-89deg);
+}
+[data-role="deletebutton"] .default-state,
+[data-role="deletebutton"] .active-state {
+  -webkit-transition: background 250ms ease;
+  -moz-transition: background 250ms ease;
+  -o-transition: background 250ms ease;
+  transition: background 250ms ease;
+}

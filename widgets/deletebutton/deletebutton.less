@@ -1,0 +1,44 @@
+@import "../../css/bookio.less";
+@import "../../css/mixins.less";
+
+[data-role="deletebutton"] { 
+
+	@cube-height: 46px;
+	
+	.ui-btn {
+		min-width: 100px !important;
+	}
+	
+	body {
+		.perspective(1000px);
+	}
+	
+	.cube {
+		height: @cube-height;
+		.transition(all 250ms ease);
+		.transform-style(preserve-3d);
+	}
+	
+	/* The two faces of the cube */
+	.default-state, .active-state {
+		height: @cube-height;
+	}
+	
+	/* Position the faces */
+	.default-state {
+		.translateZ(@cube-height/2);
+	}
+	
+	.flip-to-top .active-state {
+		.transform(rotateX(90deg) translateZ(@cube-height*1.5));
+	}
+	
+	.flip {
+		.rotateX(-89deg);
+	}
+	
+	.default-state, .active-state {
+		.transition(background 250ms ease);
+	}
+	 
+}

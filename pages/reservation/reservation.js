@@ -3,6 +3,7 @@
 	var dependencies = [
 		'i18n!./reservation.json',
 		'../../widgets/picker/picker.js',
+		'../../widgets/deletebutton/deletebutton.js',
 		'../../js/parser'
 	];
 
@@ -291,12 +292,19 @@
 
 				});
 
-				_elements.remove.on("tap", function() {
+				_elements.remove.on("delete", function() { 
+					console.log("DELETE");
+					/*Model.Reservations.remove(_reservation).done(function() {
+						$.mobile.pages.pop();
+					});*/
+				});
+
+/*				_elements.remove.on("tap", function() {
 					Model.Reservations.remove(_reservation).done(function() {
 						$.mobile.pages.pop();
 					});
 				});
-
+*/
 			}
 			
 			function fillOptionPicker() {
@@ -379,6 +387,8 @@
 
 				});
 				
+				_elements.remove.deletebutton('setCaption', i18n.text('button-cancel-reservation', 'Cancel'));
+				
 				if (!_reservation.id)
 					_elements.remove.addClass('hidden');
 
@@ -392,7 +402,7 @@
 					showOnFocus: false
 				});
 
-				_elements.save.find('.ui-btn-text').text(_reservation.id ? 'Spara' : 'Boka');
+				_elements.save.text(_reservation.id == undefined ? i18n.text('button-book', 'Book') : i18n.text('button-save', 'Save'));
 			}
 			
 			this.refresh = function(callback) {

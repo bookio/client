@@ -3,6 +3,7 @@
 		"who": "Vem",
 		"pick-customer": "Välj kund",
 		"when": "När",
+		"date": "Datum och tid",
 		"from": "Från",
 		"to": "Till",
 		"price": "Pris",
@@ -13,6 +14,7 @@
 		"status-transferred": "Överförd",
 		"button-back": "Tillbaka",
 		"button-save": "Spara",
+		"button-book": "Boka",
 		"button-cancel-reservation": "Avboka"
 	},
 	
@@ -20,6 +22,7 @@
 		"who": "Ki",
 		"pick-customer": "Válassz ügyfelet",
 		"when": "Mikor",
+		"date": "***",
 		"from": "Mettől",
 		"to": "Meddig",
 		"price": "Ár",
@@ -30,6 +33,7 @@
 		"status-transferred": "Átvéve",
 		"button-back": "Vissza",
 		"button-save": "Mentés",
+		"button-book": "***",
 		"button-cancel-reservation": "Mégse"
 	}
 }

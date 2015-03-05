@@ -3199,6 +3199,9 @@ ul li .ui-btn * {
   line-height: 1.4em;
   font-family: 'Open Sans', sans-serif;
 }
+[data-role="page"] [data-role="content"] .floatright {
+  float: right;
+}
 [data-role="page"] [data-role="content"] textarea.ui-input-text {
   height: inherit !important;
 }

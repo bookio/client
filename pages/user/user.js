@@ -132,15 +132,15 @@
 					_elements.oldpassword.focus();
 				});
 
-				_elements.oldpassword.email.on('input', function() {
+				_elements.oldpassword.on('input', function() {
 					enableDisableOldPassword();
 				});
 				
-				_elements.newpassword.email.on('input', function() {
+				_elements.newpassword.on('input', function() {
 					enableDisablePasswordChange();
 				});
 				
-				_elements.newpassword2.email.on('input', function() {
+				_elements.newpassword2.on('input', function() {
 					enableDisablePasswordChange();
 				});
 

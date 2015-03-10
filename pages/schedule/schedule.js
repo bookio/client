@@ -64,15 +64,6 @@
 					
 					_elements.schedule.attr('data-tag', $(this).text());
 				});
-
-				/*
-	            _schedule.A = [];
-	            _schedule.A.push({
-	            	start: new Date(2014, 11, 11, 10, 30),
-	            	end:new Date(2014, 11, 11, 11, 30)
-		            
-	            });
-	            */
 	            
 				_elements.schedule.scheduleweek();
 				_elements.schedule.scheduleweek('selection', _schedule);

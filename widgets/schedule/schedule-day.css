@@ -1,0 +1,35 @@
+[data-role="scheduleday"] table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+[data-role="scheduleday"] table tr,
+[data-role="scheduleday"] table td {
+  text-align: center;
+  padding: 0px 0px 0px 0px;
+}
+[data-role="scheduleday"] table tbody td {
+  border: 1px solid #f3f3f3;
+  width: 3em;
+  text-align: center;
+}
+[data-role="scheduleday"] table tbody td div {
+  width: 100%;
+  height: 0.8em;
+}
+[data-role="scheduleday"] table tbody td div[tag="A"] {
+  background-color: #87ace7;
+}
+[data-role="scheduleday"] table tbody td div[tag="B"] {
+  background-color: #61bc46;
+}
+[data-role="scheduleday"] table tbody td div[tag="C"] {
+  background-color: #e34a53;
+}
+[data-role="scheduleday"] table tbody td div[tag="D"] {
+  background-color: #fcbe3b;
+}
+[data-role="scheduleday"] table tbody th {
+  text-align: left;
+  font-weight: bold;
+}

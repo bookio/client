@@ -59,7 +59,7 @@
 					_elements.remove.addClass('hidden');
 
 				if (!_option.schedules)
-					_option.schedules = {};
+					_option.schedules = [];
 					
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop(null);
@@ -82,7 +82,7 @@
 					function remove() {
 						var request = Model.Options.remove(_option);
 
-						request.done(function() {
+						request.always(function() {
 							$.mobile.pages.pop(null);
 						});
 					}

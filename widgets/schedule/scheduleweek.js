@@ -148,46 +148,41 @@
 	            
 	            // Clear selection
 	            _elements.tbody.find('.cell').removeAttr('tag');
+	            
+	            for (var index in selection) {
+	            	var item = selection[index];
+	            	
+	            	if (item.tag == undefined || item.begin_at == undefined || item.end_at == undefined)
+	            		continue;
 
-	            for (var tag in selection) {
-		            var items = selection[tag];
-		            
-		            for (var index in items) {
-		            	var item = items[index];
-		            	
-		            	if (item.begin_at == undefined || item.end_at == undefined)
-		            		continue;
+					item.begin_at = new Date(item.begin_at);
+					item.end_at = new Date(item.end_at);
+					
+	            	var begin_at = item.begin_at.clone();
+	            	var end_at = item.end_at.clone();
 
-						item.begin_at = new Date(item.begin_at);
-						item.end_at = new Date(item.end_at);
+	            	begin_at = _date.addDays((item.begin_at.getDay() + 6) % 7);
+	            	end_at = _date.addDays((item.end_at.getDay() + 6) % 7);
+
+					begin_at.setHours(item.begin_at.getHours());
+					begin_at.setMinutes(item.begin_at.getMinutes());
+
+					end_at.setHours(item.end_at.getHours());
+					end_at.setMinutes(item.end_at.getMinutes());
+					
+		            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[begin_at.getDay()]));
+	            	var range = moment().range(begin_at, end_at);
 						
-		            	var begin_at = item.begin_at.clone();
-		            	var end_at = item.end_at.clone();
+					cells.each(function(index) {
+						var cell = $(this);
+						var cellValue = cell.val();
+						var cellRange = moment().range(cellValue.begin_at, cellValue.end_at);
 
-		            	begin_at = _date.addDays((item.begin_at.getDay() + 6) % 7);
-		            	end_at = _date.addDays((item.end_at.getDay() + 6) % 7);
+						if (range.contains(cellRange)) {
+							cell.attr('tag', item.tag);
 
-						begin_at.setHours(item.begin_at.getHours());
-						begin_at.setMinutes(item.begin_at.getMinutes());
-
-						end_at.setHours(item.end_at.getHours());
-						end_at.setMinutes(item.end_at.getMinutes());
-						
-			            var cells = _elements.tbody.find(sprintf('.%s .cell', _weekdays[begin_at.getDay()]));
-		            	var range = moment().range(begin_at, end_at);
-							
-						cells.each(function(index) {
-							var cell = $(this);
-							var cellValue = cell.val();
-							var cellRange = moment().range(cellValue.begin_at, cellValue.end_at);
-
-							if (range.contains(cellRange)) {
-								cell.attr('tag', tag);
-
-							}
-						});
-		            }
-		            
+						}
+					});
 	            }
             }
 			
@@ -235,14 +230,23 @@
 					
 				});
 
+				var result = [];
+				
 				for (var tag in selection) {
+				
+					
 					selection[tag].sort(function(a, b) {
 						return a.begin_at.getDate() - b.begin_at.getDate();
 					});
-				}				
+					
+					selection[tag].forEach(function(item){
+						item.tag = tag;
+						result.push(item);
+					});
 
-
-				return selection;
+				}	
+				
+				return result;
             }
 
 

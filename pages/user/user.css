@@ -1,0 +1,12 @@
+#user-page .changepassword {
+  font-size: small;
+}
+#user-page .changepassword:hover {
+  text-decoration: underline;
+}
+#user-page .red {
+  background-color: red;
+}
+#user-page .green {
+  background-color: green;
+}

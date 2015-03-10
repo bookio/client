@@ -13,11 +13,15 @@
 			var _element = page.element;
 			var _elements = {};
 			var _user = {};
+			var _passwordexists = false;
 
 			function fill() {
 				_elements.name.val(_user.name);
 				_elements.username.val(_user.username);
-				_elements.password.val('');
+				if (_user.password.length > 0) {
+					_passwordexists = true;
+					_elements.passworddisplayed.val(_user.password);
+				}
 			}
 
 			function chill() {
@@ -26,6 +30,43 @@
 				_user.password = _elements.password.val();
 			}
 
+			function enableDisableOldPassword() {
+				if (_elements.oldpassword.val() == '') {
+					_elements.oldpassword.removeClass('red');
+					_elements.oldpassword.removeClass('green');					
+				}
+				else if (_elements.oldpassword.val() ==	'potatis') {
+					_elements.oldpassword.removeClass('red');
+					_elements.oldpassword.addClass('green');						
+				}
+				else {
+					_elements.newpassword.removeClass('green');
+					_elements.newpassword2.addClass('red');						
+				}
+			}
+
+			function enableDisablePasswordChange() {
+				if (_elements.newpassword.val() == '' && _elements.newpassword2.val() == '') {
+					_elements.newpassword.removeClass('red');
+					_elements.newpassword2.removeClass('red');											
+					_elements.newpassword.removeClass('green');
+					_elements.newpassword2.removeClass('green');																
+				}
+				else if (_elements.newpassword.val() ==	_elements.newpassword2.val()) {
+					_elements.newpassword.removeClass('red');
+					_elements.newpassword2.removeClass('red');											
+
+					_elements.newpassword.addClass('green');
+					_elements.newpassword2.addClass('green');						
+				}
+				else {
+					_elements.newpassword.removeClass('green');
+					_elements.newpassword2.removeClass('green');											
+
+					_elements.newpassword.addClass('red');
+					_elements.newpassword2.addClass('red');						
+				}
+			}
 
 			this.init = function() {
 				_user = page.params && page.params.user ? page.params.user : {};
@@ -33,6 +74,8 @@
 				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
+				
+				_elements.passwordchange.hide();						
 
 				fill();
 
@@ -82,9 +125,27 @@
 					request.fail(function() {
 					});
 					
-					
-
 				});
+				
+				_elements.changepassword.on('tap', function(event) {
+					_elements.passwordchange.toggle("fast");
+					_elements.oldpassword.focus();
+				});
+
+				_elements.oldpassword.email.on('input', function() {
+					enableDisableOldPassword();
+				});
+				
+				_elements.newpassword.email.on('input', function() {
+					enableDisablePasswordChange();
+				});
+				
+				_elements.newpassword2.email.on('input', function() {
+					enableDisablePasswordChange();
+				});
+
+
+
 			}
 		}
 

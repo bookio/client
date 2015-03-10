@@ -4,6 +4,7 @@
 		'i18n!./rental.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
 		'../../widgets/common/list.js',
+		'../../widgets/deletebutton/deletebutton.js',
 		'../../widgets/imagepicker/imagepicker'
 	];
 
@@ -342,7 +343,7 @@
 					_rental.available = _elements.available.is(':checked') ? 1 : 0;
 				});
 				
-				_elements.remove.on('tap', function(event) {
+				_elements.remove.on('delete', function(event) {
 
 					function remove() {
 						var request = Model.Rentals.remove(_rental); 

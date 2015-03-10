@@ -2,6 +2,7 @@
 
 	var dependencies = [
 		'i18n!./category.json',
+		'../../widgets/deletebutton/deletebutton.js',		
 		'../../widgets/imagepicker/imagepicker'
 	];
 
@@ -79,7 +80,7 @@
 
 				});
 				
-				_elements.remove.on('tap', function(event) {
+				_elements.remove.on('delete', function(event) {
 
 					function remove() {
 						var request = Model.Categories.remove(_category);

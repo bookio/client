@@ -1,7 +1,8 @@
 (function() {
 
 	var dependencies = [
-		'i18n!./user.json'
+		'i18n!./user.json',
+		'../../widgets/deletebutton/deletebutton'
 	];
 
 	define(dependencies, function(i18n) {
@@ -29,6 +30,7 @@
 			this.init = function() {
 				_user = page.params && page.params.user ? page.params.user : {};
 				
+				_element.trigger('create');
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 
@@ -60,14 +62,13 @@
 						$.mobile.pages.pop();
 				});
 
-				_elements.remove.on('tap', function(event) {
+				_elements.remove.on('delete', function(event) {
 					var request = Model.Users.remove(_user);
 
 					request.done(function() {
 						$.mobile.pages.pop();
 					});
 				});
-
 
 				_elements.save.on('tap', function(event) {
 					chill();

@@ -1,12 +1,11 @@
 (function() {
 
-
-
 	var dependencies = [
 		'i18n!./option.json',
 		'../../widgets/symbolpicker/symbolpicker.js',
 		'../../widgets/common/list.js',
 		'../../widgets/picker/picker.js',
+		'../../widgets/deletebutton/deletebutton.js',		
 		'../../widgets/imagepicker/imagepicker'
 	];
 
@@ -78,7 +77,7 @@
 					});
 				});
 				
-				_elements.remove.on('tap', function(event) {
+				_elements.remove.on('delete', function(event) {
 
 					function remove() {
 						var request = Model.Options.remove(_option);

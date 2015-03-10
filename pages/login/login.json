@@ -1,13 +1,11 @@
 {
 	"sv": {
-		"login-button": "Logga in",
 		"email": "Din e-postadress?",
 		"password": "Lösenord"
 
 	},
 		
 	"hu": {
-		"login-button": "Belépés",
 		"email": "***",
 		"password": "Jelszó"
 	}

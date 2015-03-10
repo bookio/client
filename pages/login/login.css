@@ -244,3 +244,15 @@
 		}
 */
 }
+#login-page [data-role="content"] .pict {
+  cursor: inherit;
+}
+#login-page [data-role="content"] .icon {
+  fill: white;
+  cursor: inherit;
+}
+#login-page [data-role="content"] .button-login {
+  height: 60px;
+  background-color: #7ca5db;
+  padding: 0px;
+}

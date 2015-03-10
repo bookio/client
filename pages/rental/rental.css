@@ -13,6 +13,10 @@
 #rental-page .icon {
   fill: #b2c9f0;
 }
+#rental-page .login-button {
+  width: 200px;
+  height: 46px;
+}
 #rental-page [data-id="category.container"] [data-id="category.button"] span {
   text-align: left;
 }

@@ -293,18 +293,11 @@
 				});
 
 				_elements.remove.on("delete", function() { 
-					console.log("DELETE");
-					/*Model.Reservations.remove(_reservation).done(function() {
-						$.mobile.pages.pop();
-					});*/
-				});
-
-/*				_elements.remove.on("tap", function() {
 					Model.Reservations.remove(_reservation).done(function() {
 						$.mobile.pages.pop();
 					});
 				});
-*/
+
 			}
 			
 			function fillOptionPicker() {

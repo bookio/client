@@ -37,6 +37,10 @@
 				event.stopPropagation();
 				event.preventDefault();
 				
+				setTimeout(function() {
+					theCube.removeClass('flip');
+				}, 3000);
+				
 				theCube.addClass('flip');				
 			});
 

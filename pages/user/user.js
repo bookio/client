@@ -18,8 +18,10 @@
 			function fill() {
 				_elements.name.val(_user.name);
 				_elements.username.val(_user.username);
-				if (_user.password.length > 0) {
+				if (_user.password != undefined && _user.password.length > 0) {
 					_passwordexists = true;
+					_elements.section.pw.missing.hide();
+					_elements.section.pw.exists.removeClass('hidden');					
 					_elements.passworddisplayed.val(_user.password);
 				}
 			}
@@ -27,37 +29,25 @@
 			function chill() {
 				_user.name = _elements.name.val();
 				_user.username = _elements.username.val();
-				_user.password = _elements.password.val();
-			}
-
-			function enableDisableOldPassword() {
-				if (_elements.oldpassword.val() == '') {
-					_elements.oldpassword.removeClass('red');
-					_elements.oldpassword.removeClass('green');					
-				}
-				else if (_elements.oldpassword.val() ==	'potatis') {
-					_elements.oldpassword.removeClass('red');
-					_elements.oldpassword.addClass('green');						
+				if (_passwordexists) {
+					_user.password = _elements.oldpassword.val();
+					_user.newpassword = _elements.newpassword.val();					
 				}
 				else {
-					_elements.newpassword.removeClass('green');
-					_elements.newpassword2.addClass('red');						
+					_user.password = "";
+					_user.newpassword = _elements.password.val();					
 				}
+								
 			}
 
 			function enableDisablePasswordChange() {
-				if (_elements.newpassword.val() == '' && _elements.newpassword2.val() == '') {
-					_elements.newpassword.removeClass('red');
-					_elements.newpassword2.removeClass('red');											
-					_elements.newpassword.removeClass('green');
-					_elements.newpassword2.removeClass('green');																
-				}
-				else if (_elements.newpassword.val() ==	_elements.newpassword2.val()) {
+				// empty or equal is OK
+				if ((_elements.newpassword.val() ==	_elements.newpassword2.val()) || (_elements.newpassword.val() == '' && _elements.newpassword2.val() == '')) {
 					_elements.newpassword.removeClass('red');
 					_elements.newpassword2.removeClass('red');											
 
 					_elements.newpassword.addClass('green');
-					_elements.newpassword2.addClass('green');						
+					_elements.newpassword2.addClass('green');	 					
 				}
 				else {
 					_elements.newpassword.removeClass('green');
@@ -66,6 +56,9 @@
 					_elements.newpassword.addClass('red');
 					_elements.newpassword2.addClass('red');						
 				}
+				
+				(_elements.newpassword.hasClass('red')) ? _elements.back.addClass('ui-disabled') : _elements.back.removeClass('ui-disabled');
+
 			}
 
 			this.init = function() {
@@ -75,7 +68,7 @@
 				_element.hookup(_elements, 'data-id');
 				_element.i18n(i18n);
 				
-				_elements.passwordchange.hide();						
+				_elements.section.pw.change.hide();						
 
 				fill();
 
@@ -90,7 +83,6 @@
 					_elements.remove.addClass('hidden');
 				}
 
-
 				_elements.back.on('tap', function(event) {
 					if (_user.id) {
 						chill();
@@ -100,6 +92,12 @@
 						request.done(function() {
 							$.mobile.pages.pop();
 						});
+						
+						request.fail(function() {
+							_elements.oldpassword.keyframes("shake 0.5s", function() {
+							});	
+						});						
+						
 					}
 					else
 						$.mobile.pages.pop();
@@ -128,14 +126,18 @@
 				});
 				
 				_elements.changepassword.on('tap', function(event) {
-					_elements.passwordchange.toggle("fast");
+					if (_elements.section.pw.change.css('display') == 'block') {
+						_elements.oldpassword.val('');
+						_elements.newpassword.val('');
+						_elements.newpassword2.val('');
+						_elements.newpassword.removeClass('red green');
+						_elements.newpassword2.removeClass('red green');											
+						_elements.back.removeClass('ui-disabled');										
+					}
+					_elements.section.pw.change.toggle("fast");
 					_elements.oldpassword.focus();
 				});
 
-				_elements.oldpassword.on('input', function() {
-					enableDisableOldPassword();
-				});
-				
 				_elements.newpassword.on('input', function() {
 					enableDisablePasswordChange();
 				});

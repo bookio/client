@@ -3,6 +3,40 @@
 
 #user-page {
 
+.shake(@size:10px) {
+	0%, 100% {
+		.transform(translateX(0));
+		background-color: #FFFFFF;
+	}
+
+	10% {
+		.transform(translateX(1.00 * @size));
+		
+	}
+	20% {
+		.transform(translateX(-0.95 * @size));
+		
+	}
+	40% {
+		.transform(translateX(0.85 * @size));
+		
+	}
+	60% {
+		.transform(translateX(-0.65 * @size));
+		background-color: rgba(255,0,0,0.06);
+		
+	}
+	80% {
+		.transform(translateX(0.15 * @size));   
+	}
+}
+
+@keyframes shake {.shake(10px);}
+@-o-keyframes shake {.shake(10px);}
+@-ms-keyframes shake {.shake(10px);}
+@-moz-keyframes shake {.shake(10px);}
+@-webkit-keyframes shake {.shake(10px);}
+
 	.changepassword {
 		font-size: small;
 		&:hover {
@@ -11,11 +45,11 @@
 	}
 	
 	.red {
-		background-color: red;
+		background-color: rgba(255,0,0,0.06);
 	}
 	
 	.green {
-		background-color: green;
+		background-color: rgba(0,255,0,0.06);        
 	}
 	
-}
+} 

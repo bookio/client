@@ -1,9 +1,11 @@
 {
 	"sv": {
+		"delete": "Radera",		
 		"sure": "Säker?"
 	},
 	
 	"hu": {
+		"delete": "***",		
 		"sure": "***"
 	}
 }

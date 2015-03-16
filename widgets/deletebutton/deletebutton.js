@@ -17,13 +17,11 @@
 		}
 		
 		widget._create = function() {
-			var element = this.element;
 			var self = this;
 
-				
-			element.i18n(i18n);
-
 			self.element.append($(html));	
+
+			self.element.i18n(i18n);
 
 			self.elements = {};
 

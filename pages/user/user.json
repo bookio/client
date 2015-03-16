@@ -6,7 +6,11 @@
 			"user-pw": "Lösenord",
 			"user-button-back": "Tillbaka",
 			"user-button-save": "Spara",
-			"user-button-delete": "Radera"
+			"user-button-delete": "Radera",
+			"changepw": "Ändra lösenord",
+			"old-pw": "Ditt gamla lösenord",
+			"new-pw": "Nytt lösenord",
+			"retype-pw": "Nytt löseord (igen)"
 	},
 	
 	"hu": {
@@ -16,6 +20,10 @@
 			"user-pw": "Jelszó",
 			"user-button-back": "Vissza",
 			"user-button-save": "Mentés",
-			"user-button-delete": "Törlés"
+			"user-button-delete": "Törlés",
+			"changepw": "***",
+			"old-pw": "***",
+			"new-pw": "***",
+			"retype-pw": "***"
 	}
 }

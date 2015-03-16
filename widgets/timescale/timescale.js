@@ -86,7 +86,7 @@
 	
 	            cells.empty();
 	            
-	            var days = Math.floor(Math.abs(_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
+	            var days = Math.round(Math.abs(_endDate.getTime() - _startDate.getTime()) / (24*60*60*1000));
 
 	            for (var i = 0; i < days; i++) {
 	                var cell = $(template).appendTo(cells);

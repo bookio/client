@@ -1,21 +1,17 @@
 #rental-page [data-id="description"] {
   height: 6em !important;
 }
+#rental-page [data-id="icon.button"] {
+  margin-top: 0px;
+  height: 56px;
+}
 #rental-page [data-id="icon.image"] {
   font-size: 50px;
   height: 50px;
   width: 50px;
 }
-#rental-page [data-id="icon.button"] {
-  margin-top: 0px;
-  height: 77px;
-}
 #rental-page .icon {
   fill: #b2c9f0;
-}
-#rental-page .login-button {
-  width: 200px;
-  height: 46px;
 }
 #rental-page [data-id="category.container"] [data-id="category.button"] span {
   text-align: left;

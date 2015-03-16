@@ -19,10 +19,21 @@
 			var _categories = [];
 			var _icons = [];
 			var _iconsByID = {};
-
+			
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
 			_element.i18n(i18n);
+
+
+			// Alternative help and header texts
+			var strHelpThingName = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, The Rose Cottage';
+			var strHelpHumanName = 'Jane, Joe, Max, Therapist 1, Dentist A';
+			var strHelpEventName = 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course';
+			var strHelpServices = 'Select the services offered by this resource (or add a new).';
+			var strHelpOptions = _elements.optionshelp.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
+			var strHeaderServices = 'Services';
+			var strHeaderOptions = _elements.optionsheader.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
+
 
 			function fill() {
 				_elements.name.val(_rental.name);
@@ -49,14 +60,10 @@
 				}
 				else {
 					// default to 'thing'
-					_elements.thing.prop('checked', true);
+					_elements.thing.prop('checked', true).checkboxradio("refresh");
 					_rental.style = 'thing';
 				}
-				/*
-				_elements.thing.checkboxradio("refresh");
-				_elements.event.checkboxradio("refresh");
-				_elements.human.checkboxradio("refresh");
-				*/
+
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 				
 				if (_rental.image)
@@ -293,10 +300,7 @@
 				
 				$.mobile.pages.ready
 				
-				// Used two times, so define it once
-				var helpStr = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, Rose Cottage';
-
-				_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
+				_elements.name.attr('placeholder', i18n.text('name-help-thing', strHelpThingName));
 
 				_elements.name.on('keyup', function(event, ui) {
 					enableDisable();
@@ -318,21 +322,27 @@
 					_rental.style = 'thing';
 					_elements.section.human.hide("fast");
 					_elements.section.event.hide("fast");					
-					_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
+					_elements.name.attr('placeholder', i18n.text('name-help-thing', strHelpThingName));
+					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
+					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
 				});
 
 				_elements.human.on('change', function(event, ui) {
 					_rental.style = 'human';
 					_elements.section.human.show("fast");
 					_elements.section.event.hide("fast");					
-					_elements.name.attr('placeholder', i18n.text('name-help-human', 'Jane, Joe, Max, Therapist 1, Dentist A'));
+					_elements.name.attr('placeholder', i18n.text('name-help-human', strHelpHumanName));
+					_elements.optionsheader.text(i18n.text('services', strHeaderServices));
+					_elements.optionshelp.text(i18n.text('help-services', strHelpServices));
 				});
 
 				_elements.event.on('change', function(event, ui) {
 					_rental.style = 'event';
 					_elements.section.event.show("fast");
 					_elements.section.human.hide("fast");
-					_elements.name.attr('placeholder', i18n.text('name-help-event', 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course'));					
+					_elements.name.attr('placeholder', i18n.text('name-help-event', strHelpEventName));					
+					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
+					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
 				});
 				
 				_elements.dropzone.on('imagechanged', function(event, ui) {				

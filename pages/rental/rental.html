@@ -4,12 +4,9 @@
 
         <div data-role="navbar" class="tab-header">
             <ul>
-                <li><a href="#" class="tab style-header" data-tab="misc" data-i18n="description">Description</a>
-                </li>
-                <li><a href="#" class="tab style-header" data-tab="options" data-i18n="options">Booking Options</a>
-                </li>
-                <li><a href="#" class="tab style-header" data-tab="group" data-i18n="group">Group</a>
-                </li>
+                <li><a href="#" class="tab style-header" data-tab="misc" data-i18n="description">Description</a></li>
+                <li><a href="#" class="tab style-header" data-tab="options" data-i18n="options" data-id="optionsheader">Booking options</a></li>
+                <li><a href="#" class="tab style-header" data-tab="group" data-i18n="group">Group</a></li>
             </ul>
         </div>
 
@@ -183,7 +180,7 @@
             <div class="tab" data-tab="options">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-devider">
-                        <p data-i18n="help-options">
+                        <p data-i18n="help-options" data-id="optionshelp">
                             Select the booking options that applies to this resource (or add a new).
                         </p>
                         <label hidden data-id="warning" data-i18n="warning" class="warning-text">At least one option has to be checked</label>

@@ -19,11 +19,10 @@
 			var _categories = [];
 			var _icons = [];
 			var _iconsByID = {};
-			
+
+			_element.i18n(i18n);
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
-			_element.i18n(i18n);
-
 
 			// Alternative help and header texts
 			var strHelpThingName = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, The Rose Cottage';
@@ -33,6 +32,8 @@
 			var strHelpOptions = _elements.optionshelp.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
 			var strHeaderServices = 'Services';
 			var strHeaderOptions = _elements.optionsheader.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
+			
+			var strHeaderSetLocation = _elements.setlocation.text();
 
 
 			function fill() {
@@ -291,6 +292,11 @@
 					});
 
 					locationPickerCall.done(function(params) {	
+						if (params.location == "")
+							_elements.setlocation.text(strHeaderSetLocation);
+						else
+							_elements.setlocation.text(_rental.location);
+						
 						_rental.latitude = params.lat;
 						_rental.longitude = params.lon;
 						_rental.location = params.location;

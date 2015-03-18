@@ -44,6 +44,14 @@
   cursor: inherit;
   color: white;
 }
+#rental-page .redstar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #e34a53;
+  font-weight: bold;
+  font-size: large;
+}
 #rental-page .icon {
   fill: #b2c9f0;
 }

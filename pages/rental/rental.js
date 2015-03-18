@@ -201,13 +201,17 @@
 			function enableDisable() {				
 				// To enable Save, a name must be given and at least one option has to be checked
 				((_elements.name.val().length == 0 || _rental.option_ids.length == 0) ? _elements.save.addClass('ui-disabled') : _elements.save.removeClass('ui-disabled'));
-				
+
 				if (_rental.option_ids.length == 0) {
 					_elements.warning.removeClass("hidden");
+					_elements.warningtab.removeClass("hidden");					
 				}
 				else {
 					_elements.warning.addClass("hidden");
+					_elements.warningtab.addClass("hidden");					
 				}				
+
+				console.log(_elements.warningtab.hasClass('hidden'));
 								
 			}
 

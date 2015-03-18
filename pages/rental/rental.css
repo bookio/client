@@ -10,6 +10,40 @@
   height: 50px;
   width: 50px;
 }
+#rental-page .bigradiobutton {
+  text-align: center;
+  white-space: normal;
+  background-color: #ebebeb;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  min-height: 3em;
+  padding: 6px;
+}
+#rental-page .bigradiobutton label,
+#rental-page .bigradiobutton svg,
+#rental-page .bigradiobutton path {
+  cursor: inherit;
+}
+#rental-page .bigradiobutton .icon {
+  fill: white;
+}
+#rental-page .bigradiobutton:hover {
+  background-color: #e3e3e3;
+  cursor: pointer;
+}
+#rental-page .bigradiobutton.activestate {
+  background-color: #a2bbee;
+  -webkit-transition: background-color 0.5s ease;
+  -moz-transition: background-color 0.5s ease;
+  -o-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+#rental-page .bigradiobutton.activestate label {
+  cursor: inherit;
+  color: white;
+}
 #rental-page .icon {
   fill: #b2c9f0;
 }

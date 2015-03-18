@@ -44,24 +44,20 @@
 				if (_rental.location != undefined && _rental.location != "")
 					_elements.setlocation.text(_rental.location);
 
-				_elements.thing.prop('checked', false);
-				_elements.human.prop('checked', false);
-				_elements.event.prop('checked', false);
-
 				if (_rental.style == 'thing') {
-					_elements.thing.prop('checked', true).checkboxradio("refresh");
+					_elements.thing.addClass('activestate');
 				}
 				else if (_rental.style == 'human') {
-					_elements.human.prop('checked', true).checkboxradio("refresh");
+					_elements.human.addClass('activestate');
 					_elements.section.human.show("fast");
 				} 
 				else if (_rental.style == 'event') {
-					_elements.event.prop('checked', true).checkboxradio("refresh");
+					_elements.event.addClass('activestate');
 					_elements.section.event.show("fast");
 				}
 				else {
 					// default to 'thing'
-					_elements.thing.prop('checked', true).checkboxradio("refresh");
+					_elements.thing.addClass('activestate');
 					_rental.style = 'thing';
 				}
 
@@ -233,7 +229,6 @@
 
 			this.init = function() {
 
-				
 				_element.trigger('create');
 
 				_elements.options.list();
@@ -324,33 +319,39 @@
 					_rental.seats = $(this).val();
 				});
 
-				_elements.thing.on('change', function(event, ui) {
+				_elements.thing.on('tap', function(event, ui) {
 					_rental.style = 'thing';
 					_elements.section.human.hide("fast");
 					_elements.section.event.hide("fast");					
 					_elements.name.attr('placeholder', i18n.text('name-help-thing', strHelpThingName));
 					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
 					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');
 				});
 
-				_elements.human.on('change', function(event, ui) {
+				_elements.human.on('tap', function(event, ui) {
 					_rental.style = 'human';
 					_elements.section.human.show("fast");
 					_elements.section.event.hide("fast");					
 					_elements.name.attr('placeholder', i18n.text('name-help-human', strHelpHumanName));
 					_elements.optionsheader.text(i18n.text('services', strHeaderServices));
 					_elements.optionshelp.text(i18n.text('help-services', strHelpServices));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');					
 				});
 
-				_elements.event.on('change', function(event, ui) {
+				_elements.event.on('tap', function(event, ui) {
 					_rental.style = 'event';
 					_elements.section.event.show("fast");
 					_elements.section.human.hide("fast");
 					_elements.name.attr('placeholder', i18n.text('name-help-event', strHelpEventName));					
 					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
 					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');					
 				});
-				
+								
 				_elements.dropzone.on('imagechanged', function(event, ui) {				
 					_rental.image = _elements.dropzone.imagepicker('getImage');
 				});

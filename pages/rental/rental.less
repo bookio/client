@@ -17,6 +17,41 @@
 		height:50px;
 		width:50px;
 	}
+	
+	.bigradiobutton {
+		text-align: center;
+		white-space: normal;
+		
+		background-color: #ebebeb;
+		.transition(background-color 0.5s ease);
+		
+		min-height: 3em;
+		//.border-radius(3px);
+		padding: 6px;
+
+		label, svg, path {
+			cursor: inherit;
+		}
+		
+		.icon {
+			fill: white; 			
+		}
+		
+		&:hover {
+			background-color: #e3e3e3;
+			cursor: pointer;
+		}
+		
+		&.activestate {
+			background-color: #a2bbee;
+			.transition(background-color 0.5s ease);	
+			label {
+				cursor: inherit;
+				color: white;
+			}
+		}
+
+	}
 
 	.icon {
 		fill:@lightBookioBlue; 

@@ -10,7 +10,7 @@
 		"notes": "Anteckning",
 		"resource": "Vad ska hyras ut eller bokas?",
 		"type-thing": "Ett föremål eller boende",
-		"type-resource": "En person",
+		"type-human": "En person",
 		"type-event": "Aktiviteter vid angivna datum",
 		"alert": "Varsko personen om nya bokningar?",
 		"mobile": "med SMS",

@@ -16,6 +16,58 @@
                 <ul data-id="listview" data-role="listview" data-inset="true">
 	                
                     <li>
+                    
+                        <label data-i18n="resource">
+                            What should be rented out or booked?
+                        </label>
+
+						<div class="ui-grid-b">
+
+							<div class="ui-block-a">
+						        <div data-id="thing" class="bigradiobutton">
+							        <svg style="float:left;" version="1.1" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+										<path class="icon" id="icon-thing" fill="#000000" d="M256,50L67.166,153v208.246L256,462l188.834-100.754V154.123L256,50z M391.791,164.09
+										l-135.707,72.405l-135.139-73.712l134.971-73.621L391.791,164.09z M101.5,191.281l137.333,74.902V413.92L101.5,340.66V191.281z
+										 M273.166,413.92V266.302L410.5,193.025V340.66L273.166,413.92z"/>
+									</svg>
+									<label data-i18n="type-thing">A physical thing or accommodation</label>
+						        </div>
+							</div>
+
+							<div class="ui-block-b">
+						        <div data-id="human" class="bigradiobutton">
+									<svg style="float:left;" version="1.1"x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+										<path class="icon" id="icon-resource" fill="#000000" d="M407.448,360.475c-59.036-13.617-113.988-25.541-87.375-75.718c81.01-152.729,21.474-234.406-64.071-234.406
+											c-87.231,0-145.303,84.812-64.072,234.406c27.412,50.481-29.608,62.394-87.375,75.718c-59.012,13.608-54.473,44.723-54.473,101.176
+											h411.838C461.919,405.195,466.457,374.083,407.448,360.475z"/>
+									</svg>							        
+							        <label data-i18n="type-human">A bookable person</label>
+						        </div>
+							</div>
+
+							<div class="ui-block-c">
+						        <div data-id="event" class="bigradiobutton">
+									<svg style="float:left;" version="1.1" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+										<path class="icon" id="icon-event" fill="#000000" d="M397.389,118.131c0,10.035-8.135,18.171-18.17,18.171s-18.171-8.136-18.171-18.171V72.402
+										c0-10.034,8.136-18.17,18.171-18.17s18.17,8.136,18.17,18.17V118.131z M151.889,72.32c0-10.035-8.136-18.171-18.17-18.171
+										c-10.036,0-18.171,8.136-18.171,18.171v45.728c0,10.035,8.135,18.171,18.171,18.171c10.034,0,18.17-8.136,18.17-18.171V72.32z
+										 M419.352,98.851v18.616c0,22.13-18.004,40.134-40.133,40.134c-22.13,0-40.134-18.004-40.134-40.134V98.851H173.852v18.533
+										c0,22.13-18.004,40.134-40.133,40.134c-22.13,0-40.134-18.004-40.134-40.134V98.851H50v359h412v-359H419.352z M422,417.852H90
+										V195.38h332V417.852z M266.161,335.177c0-14.731-7.682-26.239-20.388-31.124c9.717-4.852,15.363-14.818,15.363-27.609
+										c0-24.714-24.103-39.482-47.404-39.482c-27.116,0-47.591,16.986-48.831,50.757h30.196c-0.26-13.972,4.987-24.149,18.828-24.149
+										c8.249,0,17.128,4.996,17.128,15.967c0,13.849-14.992,15.833-28.788,14.627v23.504c19.606,0,31.3,1.244,31.3,18.093
+										c0,13.3-10.058,19.253-20.023,19.253c-15.118,0-21.29-11.277-21.835-26.662h-29.981c-0.567,34.746,20.488,53.075,52.201,53.075
+										C242.262,381.423,266.161,364.104,266.161,335.177z M345.377,378.909V239.665h-25.557c-3.17,21.188-18.278,27.386-39.884,26.801
+										v24.729h34.004v87.714H345.377z"/>
+									</svg>							        
+							        <label  data-i18n="type-event">An event at specific dates</label>
+						        </div>
+							</div>
+
+						</div>
+                    
+						<br/>
+						
                         <label data-i18n="name">
                             Name
                         </label>
@@ -26,120 +78,54 @@
                         </label>
                         <textarea data-id="description" type="text" value="" placeholder="" title=""></textarea>
 
-                        <label data-i18n="resource" style="margin-bottom:0;">
-                            What should be rented out or booked?
-                        </label>
-
-		                <div class="ui-grid-b">
-		                
-		                    <div class="ui-block-a">
-		                    	<input type="radio" data-id="thing" id="radio-1" value="radio-1" name="reservation-type"/>
-		                    	<label for="radio-1" style="text-align: center;min-height:100px;">
-									<svg version="1.1" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-										<path class="icon" id="icon-thing" fill="#000000" d="M256,50L67.166,153v208.246L256,462l188.834-100.754V154.123L256,50z M391.791,164.09
-										l-135.707,72.405l-135.139-73.712l134.971-73.621L391.791,164.09z M101.5,191.281l137.333,74.902V413.92L101.5,340.66V191.281z
-										 M273.166,413.92V266.302L410.5,193.025V340.66L273.166,413.92z"/>
-									</svg>
-								<div>
-		                    	<label data-i18n="type-thing">
-		                    		A physical thing or accommodation
-		                    	</label>
-								</div>								
-		                    	</label>
-		                    </div>
-		                    <div class="ui-block-b">
-		                    	<input type="radio" data-id="human" id="radio-2" value="radio-2" name="reservation-type"/>
-		                    	<label for="radio-2" style="text-align: center;min-height:100px;">
-									<svg version="1.1"x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-										<path class="icon" id="icon-resource" fill="#000000" d="M407.448,360.475c-59.036-13.617-113.988-25.541-87.375-75.718c81.01-152.729,21.474-234.406-64.071-234.406
-											c-87.231,0-145.303,84.812-64.072,234.406c27.412,50.481-29.608,62.394-87.375,75.718c-59.012,13.608-54.473,44.723-54.473,101.176
-											h411.838C461.919,405.195,466.457,374.083,407.448,360.475z"/>
-									</svg>
-								<div>
-		                    	<label data-i18n="type-resource">
-		                    		A bookable person
-		                    	</label>
-								</div>								
-		                    	</label>             	
-		                    </div>
-		                    <div class="ui-block-c">
-		                    	<input type="radio" data-id="event" id="radio-3" value="radio-3" name="reservation-type"/>
-								<label for="radio-3" style="text-align: center;min-height:100px;">
-								<svg version="1.1" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-									<path class="icon" id="icon-event" fill="#000000" d="M397.389,118.131c0,10.035-8.135,18.171-18.17,18.171s-18.171-8.136-18.171-18.171V72.402
-									c0-10.034,8.136-18.17,18.171-18.17s18.17,8.136,18.17,18.17V118.131z M151.889,72.32c0-10.035-8.136-18.171-18.17-18.171
-									c-10.036,0-18.171,8.136-18.171,18.171v45.728c0,10.035,8.135,18.171,18.171,18.171c10.034,0,18.17-8.136,18.17-18.171V72.32z
-									 M419.352,98.851v18.616c0,22.13-18.004,40.134-40.133,40.134c-22.13,0-40.134-18.004-40.134-40.134V98.851H173.852v18.533
-									c0,22.13-18.004,40.134-40.133,40.134c-22.13,0-40.134-18.004-40.134-40.134V98.851H50v359h412v-359H419.352z M422,417.852H90
-									V195.38h332V417.852z M266.161,335.177c0-14.731-7.682-26.239-20.388-31.124c9.717-4.852,15.363-14.818,15.363-27.609
-									c0-24.714-24.103-39.482-47.404-39.482c-27.116,0-47.591,16.986-48.831,50.757h30.196c-0.26-13.972,4.987-24.149,18.828-24.149
-									c8.249,0,17.128,4.996,17.128,15.967c0,13.849-14.992,15.833-28.788,14.627v23.504c19.606,0,31.3,1.244,31.3,18.093
-									c0,13.3-10.058,19.253-20.023,19.253c-15.118,0-21.29-11.277-21.835-26.662h-29.981c-0.567,34.746,20.488,53.075,52.201,53.075
-									C242.262,381.423,266.161,364.104,266.161,335.177z M345.377,378.909V239.665h-25.557c-3.17,21.188-18.278,27.386-39.884,26.801
-									v24.729h34.004v87.714H345.377z"/>
-								</svg>
-								<div>
-		                    	<label data-i18n="type-event">
-		                    		An event at specific dates
-		                    	</label>
-								</div>
-								</label>             	
-		                    </div>
-		                    
-		                </div>
-		                
 		                <div data-id="section.human" style="display: none;">
-			                <div class="ui-body ui-body-a">
-		                        <label data-i18n="alert" style="margin-bottom:0;">
-		                            Alert person of new bookings?
-		                        </label>
-				                		                        
-								<div class="ui-grid-a">
-									<div class="ui-block-a">
-				                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">text message</label>
-				                        <div class="ui-inline ui-mini">
-					                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
-					                            <option value="0" data-i18n="no">No</option>
-					                            <option value="1" data-i18n="yes">Yes</option>
-					                        </select>
-				                        </div>
-				                        <div class="ui-inline ui-mini">
-											<input type="text" placeholder="703 555 876"/>
-				                        </div>
-									</div>
-		
-									<div class="ui-block-b">
-				                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">email</label>
-				                        <div class="ui-inline ui-mini">
-					                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
-					                            <option value="0" data-i18n="no">No</option>
-					                            <option value="1" data-i18n="yes">Yes</option>
-					                        </select>
-				                        </div>
-				                        <div class="ui-inline ui-mini">
-											<input type="text" placeholder="jane@rentstuff.com"/>
-				                        </div>
-									</div>							
-				                </div>
+	                        <label data-i18n="alert" style="margin-bottom:0;">
+	                            Alert person of new bookings?
+	                        </label>
+			                		                        
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+			                        <label data-i18n="mobile" class="ui-inline" style="margin-bottom: 0;">text message</label>
+			                        <div class="ui-inline ui-mini">
+				                        <select name="flipAlertText" data-role="slider" data-id="alertText" class="ui-inline ui-mini">
+				                            <option value="0" data-i18n="no">No</option>
+				                            <option value="1" data-i18n="yes">Yes</option>
+				                        </select>
+			                        </div>
+			                        <div class="ui-inline ui-mini">
+										<input type="text" placeholder="703 555 876"/>
+			                        </div>
+								</div>
+	
+								<div class="ui-block-b">
+			                        <label data-i18n="email" class="ui-inline" style="margin-bottom: 0;">email</label>
+			                        <div class="ui-inline ui-mini">
+				                        <select name="flipAlertEmail" data-role="slider" data-id="alertEmail" class="ui-inline ui-mini">
+				                            <option value="0" data-i18n="no">No</option>
+				                            <option value="1" data-i18n="yes">Yes</option>
+				                        </select>
+			                        </div>
+			                        <div class="ui-inline ui-mini">
+										<input type="text" placeholder="jane@rentstuff.com"/>
+			                        </div>
+								</div>							
 			                </div>
 							</br>
 		                </div>
 		                
 		                <div data-id="section.event" style="display: none;">
-			                <div class="ui-body ui-body-a">
-			                	<label data-i18n="eventdates">Event Dates</label>
-								<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
-	
-								<div class="ui-inline">
-					                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
-								</div>
-		                        <div class="ui-inline">
-									<input data-id="seats" type="text" placeholder="6"/>
-		                        </div>
-		                        <div class="ui-inline">							
-									<button data-id="setlocation" data-i18n="set-location" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
-		                        </div>	
-			                </div>
+		                	<label data-i18n="eventdates">Event Dates</label>
+							<textarea data-id="dates" type="text" value="" placeholder="yymmddhhmm;yymmddhhmm (Sample: 1411191400;1411261700)" title=""></textarea>
+
+							<div class="ui-inline">
+				                <label data-i18n="seats" style="margin-bottom: 0;">Number of Seats</label>
+							</div>
+	                        <div class="ui-inline">
+								<input data-id="seats" type="text" placeholder="6"/>
+	                        </div>
+	                        <div class="ui-inline">							
+								<button data-id="setlocation" data-i18n="set-location" class="ui-btn ui-icon-location ui-btn-icon-left">Click to Set Location of Event</button>
+	                        </div>	
 			                <br/>
 		                </div>
 

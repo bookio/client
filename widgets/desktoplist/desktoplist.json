@@ -1,0 +1,13 @@
+{
+	"sv": {
+		"name": "Namn",
+		"description": "Beskrivning",
+		"status": "Status"
+	},
+
+	"hu": {
+		"name": "Név",
+		"description": "Megjegyzés",
+		"status": "Állapot"
+	}
+}

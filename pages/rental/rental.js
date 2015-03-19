@@ -322,6 +322,14 @@
 				_elements.seats.on('change', function(event, ui) {
 					_rental.seats = $(this).val();
 				});
+				
+				_elements.alertText.on('change', function(event, ui) {
+					_elements.alertTextInput.focus();
+				});
+
+				_elements.alertEmail.on('change', function(event, ui) {
+					_elements.alertEmailInput.focus();
+				});
 
 				_elements.thing.on('tap', function(event, ui) {
 					_rental.style = 'thing';
@@ -332,6 +340,7 @@
 					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
 					$(".bigradiobutton").removeClass('activestate');
 					$(this).addClass('activestate');
+					_elements.name.focus();
 				});
 
 				_elements.human.on('tap', function(event, ui) {
@@ -343,6 +352,7 @@
 					_elements.optionshelp.text(i18n.text('help-services', strHelpServices));
 					$(".bigradiobutton").removeClass('activestate');
 					$(this).addClass('activestate');					
+					_elements.name.focus();
 				});
 
 				_elements.event.on('tap', function(event, ui) {
@@ -354,6 +364,7 @@
 					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
 					$(".bigradiobutton").removeClass('activestate');
 					$(this).addClass('activestate');					
+					_elements.name.focus();
 				});
 								
 				_elements.dropzone.on('imagechanged', function(event, ui) {				

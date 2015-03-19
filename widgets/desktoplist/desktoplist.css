@@ -43,7 +43,7 @@
 [data-role="desktoplist"] table thead th {
   background-color: #dce7f8;
   text-align: left;
-  font-size: smaller;
+  font-size: medium;
 }
 [data-role="desktoplist"] table thead th.name {
   width: 20%;

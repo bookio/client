@@ -1,11 +1,12 @@
 (function() {
 
 	var dependencies = [
+		'i18n!./desktoplist.json',		
 		'text!./desktoplist.html',
 		'css!./desktoplist.css'
 	];
 
-	define(dependencies, function(template) {
+	define(dependencies, function(i18n, template) {
 
 		var Widget = function(widget) {
 	
@@ -25,9 +26,11 @@
 			var _customers = {};
 			var _rentals = {};
 			var _icons = {};
-	
+
 	
 			function load() {
+
+				widget.element.i18n(i18n);
 
 				var request = {};
 				request.rentals = Model.Rentals.fetch();
@@ -252,6 +255,7 @@
 	
 				
 			}
+			
 			function init() {
 	
 				_element.append($(template));

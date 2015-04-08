@@ -83,7 +83,7 @@
 		"humans": "Személy",
 		"events": "Esemény/Helyszín",		
 		
-		"things-tagline": "kölcsönadnál valamit"
+		"things-tagline": "kölcsönadnál valamit",
 		"humans-tagline": "kölcsönvennél valakit",
 		"events-tagline": "rendezvényt szerveznél",
 		
@@ -129,7 +129,7 @@
 		"business-activities-p4": "Låt aktiviteten ha en kö, denna sköter sig självt och om någon avbokar erbjuds platsen automatiskt till 'först i kön'.",
 		"business-activities-p5": "Du ser bokningsläge på aktiviteter och bokar enkelt in deltagare själv (det finns fortfarande folk som ringer och skickar e-post). Går det trögt, pusha på <i>Twitter</i> eller <i>Facebook</i> och låt deltagarna boka där."
 
-	},
+	}
 	
 
 }

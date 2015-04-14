@@ -1,7 +1,6 @@
 {
 	"sv": {
-		"who": "Vem",
-		"pick-customer": "Välj kund",
+		"who": "Vem bokar",
 		"when": "När",
 		"date": "Datum och tid",
 		"from": "Från",
@@ -20,7 +19,6 @@
 	
 	"hu": {
 		"who": "Ki",
-		"pick-customer": "Válassz ügyfelet",
 		"when": "Mikor",
 		"date": "***",
 		"from": "Mettől",

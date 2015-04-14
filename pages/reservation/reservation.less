@@ -3,8 +3,54 @@
 #reservation-page {
 
     [data-id="contact"] {
-        height: 8em !important;
+       // height: 8em !important;
+       padding-right: 22px;
+       resize: none;
+    }
+     
+    .iconContainer {
+	}
+	
+	.iconwrapper {
+		position: absolute;
+		right: 20px;
+		cursor: pointer;
+	}
+	            
+    .icontextarea {
+	    cursor: inherit;
     }
     
+    path {
+	    cursor: inherit;	    
+    }
+    
+    svg {
+	    cursor: inherit;	    	    
+    }
+    
+    .softgreen {
+	    fill: #C0D890;
+    }
 
+    .hardgreen {
+	    fill: #90A860; 
+    }
+
+}
+
+[data-id="popup.reservation.content"] {
+	text-align: right;
+
+	div {
+		padding-left: 20px;
+		padding-right: 20px;
+		font-size: large;
+		color: @bookioBlue;
+		
+		&:hover {
+			color: white;
+			background-color: @bookioBlue;
+		}			
+	}			
 }

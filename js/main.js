@@ -20,8 +20,8 @@ requirejs.config({
 	],
 
 	paths: {
-        'jquery'              : 'lib/jquery/jquery-2.0.3',
-        'jquery-mobile'       : 'lib/jquery-mobile/jquery.mobile-1.4.0',
+        'jquery'              : 'lib/jquery/jquery-2.1.3',
+        'jquery-mobile'       : 'lib/jquery-mobile/jquery.mobile-1.4.5',
         'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
         'moment'              : 'lib/moment/moment',
         'underscore'          : 'lib/underscore/underscore',

@@ -1,5 +1,25 @@
 
 <div id="reservation-page" data-role="page">
+	
+    <div data-id="popup.reservation.content" data-role="popup" class="ui-content">
+
+        <div data-id="popupname">
+			Name
+        </div>
+        
+        <div data-id="popuplocation"> 
+			Address
+        </div>
+        
+        <div data-id="popupmobile">
+			Mobile
+        </div>
+        
+        <div data-id="popupinfo">
+			Info
+        </div>
+            
+    </div>	
 
     <div data-role="content">  
     	    	
@@ -9,12 +29,13 @@
     		</h1>
 		</div>
 		
-		<div class="ui-body ui-body-a">		
-            <textarea rows="4" data-id="contact" type="text" autofocus="autofocus">
+		<div class="ui-body ui-body-a" style="position: relative;">		
+            <textarea data-id="contact" type="text" rows="1" autofocus="autofocus">
             </textarea>
-    	    <!--<div data-role="button-row">
-            	<a data-id="selectcustomer" href="#" data-role="button" data-inline="true" class="ui-disabled" data-i18n="pick-customer">Select Customer</a>
-    	    </div>-->
+            
+            <div data-id="iconarray" class="iconContainer">
+            </div>
+
         </div>
 
 		<div class="ui-bar ui-bar-b">
@@ -50,6 +71,7 @@
 		            </label>
 		            <input data-id="price" type="text" value="" placeholder="" title="">
             	</div>
+            	
             </div>
 		
 			<!--
@@ -104,7 +126,7 @@
         	<a data-id="back" data-theme="b" data-role="button" data-icon="back" data-inline="true" data-i18n="button-back">Back</a>
         	<a data-id="save" data-theme="c" data-role="button" data-icon="check" data-inline="true" data-i18n="button-save">Save</a>
         	<div data-id="remove" data-role="deletebutton" data-inline="true" class="floatright"></div>
-	    </div>
+	    </div>	    
         
     </div>
     

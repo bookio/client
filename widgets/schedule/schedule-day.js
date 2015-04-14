@@ -57,12 +57,17 @@
 					
 					var tr = $('<tr></tr>').appendTo(_elements.tbody);
 					var th = $('<th></th>').appendTo(tr);
+					
 					th.text(month);
 					
-					for (var i = 0; i < days; i++) {
+					for (var i = 0; i < 31; i++) {
+				
 						var td = $('<td></td>').appendTo(tr);
-						td.text(sprintf('%02d', i + 1));
-						td.addClass('cell');
+						
+						if (i < days) {
+							td.text(sprintf('%02d', i + 1));
+							td.addClass('cell');
+						}
 					}
 					
 					
@@ -78,7 +83,7 @@
 					showMarquee: true,
 					marqueeOpacity: 0.1,
 					selectionThreshold: 0,
-					selectables: 'td'
+					selectables: '.cell'
 					
 				});				
 	            

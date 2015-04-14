@@ -1,7 +1,7 @@
 @import "../../css/bookio.less";
 @baseColor: fadeout(@bookioBlue, 30%);
  
-[data-role="scheduleday"] {
+[data-role="schedule-day"] {
     
     table {
         width:100%;
@@ -9,9 +9,11 @@
         border-collapse:collapse;
         //font-size: 11pt;
 
-	    tr, td {
+	    tr, td, th {
 	        text-align: center;
 	        //padding: 0px 0px 0px 0px;
+		        border: 1px solid @xxxx-lightGrayColor;
+				text-align: center;
 
 	    }
 		
@@ -26,13 +28,10 @@
 
 			td {
 
-		        border: 1px solid @xxxx-lightGrayColor;
-				text-align: center;
 							
 			}			
 		
 		    th {
-		        text-align: left;
 		        font-weight: bold;
 		        //position: relative;
 		        

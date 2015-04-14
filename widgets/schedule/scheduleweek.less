@@ -1,95 +1,136 @@
 @import "../../css/bookio.less";
 @baseColor: fadeout(@bookioBlue, 30%);
- 
+
+
 [data-role="scheduleweek"] {
-    
-    table {
-        width:100%;
-        table-layout: fixed;
-        border-collapse:collapse;
 
-	    tr, td {
-	        text-align: center;
-	        border: 1px solid @xxxx-lightGrayColor;
-	        padding: 0px 0px 0px 0px;
+    & > div {
+		outline: 1px solid @xxxx-lightGrayColor;
 
-	    }
-		
-		thead {
-			th {
+		.cell {
+			&[tag="A"] {
+	            background-color: @bookioBlue;
 			}
+			&[tag="B"] {
+	            background-color: @bookioGreen;
+			}
+	        &[tag="C"] {
+	            background-color: @bookioRed;
+	        }
+	        &[tag="D"] {
+	            background-color: @bookioYellow;
+	        }
 		}
-		tbody {
 
-			tr {
-			    &:first-child .icon {
-		            visibility:visible;
-		            cursor: pointer;
-			    }
-				
-				&:last-child .icon {
-		            visibility:visible;
-		            cursor: pointer;
+	}	    
+
+	
+} 
+
+[data-role="scheduleweek"][data-style="day"] {
+    
+    & > div {
+	    table {
+	        width:100%;
+	        table-layout: fixed;
+	        border-collapse:collapse;
+
+			thead {
+				th {
+			        text-align: center;
 				}
-			}		
-
-			td {
-				div {
-				    width:100%;
-					height:0.8em;
-
-					&[tag="A"] {
-			            background-color: @bookioBlue;
-					}
-					&[tag="B"] {
-			            background-color: @bookioGreen;
-					}
-			        &[tag="C"] {
-			            background-color: @bookioRed;
-			        }
-			        &[tag="D"] {
-			            background-color: @bookioYellow;
-			        }
-
-				}
-							
-			}			
-		
-		    th {
-		        text-align: center;
-		        position: relative;
-		        
-		        .label {
-					width:100%;
-		        }
-		        
-		        .icon {
-		            position: absolute;
-		            font-size: 150%;
-		            color: @bookioGreen;
-		            padding: 0.1em;
-					visibility:hidden;
-		        }
-		        .icon-chevron-up {
-		            top:0px;
-		            bottom: auto;
-		            right:0px;
-		            left:auto;
-		        }
-		        .icon-chevron-down {
-		            bottom:0px;
-		            top:auto;
-		            right:0px;
-		            left:auto;
-		        }
-		    }
-		
+			}
 			
-		}
+			tbody {
+				th {
+					text-align: left;
+				}
+				
+			}
+			tr {
+				th {
+					width: 2.5em;
+			        text-align: left;
+			        padding: 0.2em;
+				}
+				
+				td {
+			        text-align: center;
+					
+				}
 
+			    th, td {
+			    	font-size: smaller;
+			        border: 1px solid @xxxx-lightGrayColor;
+			        //padding: 0px 0px 0px 0px;
+		
+			    }
+		    	
+			}
 
+	
+	    }
     }
-
+}
+    
+[data-role="scheduleweek"][data-style="week"] {
+    
+    & > div {
+	    overflow: hidden;
+	    
+	    .container {
+		    height:20em;
+		    overflow: auto;
+	//	    outline: 1px solid @xxxx-lightGrayColor;
+	    }
+	    
+	    table {
+	        width:100%;
+	        table-layout: fixed;
+	        border-collapse:collapse;
+	
+		    tr, td {
+		        text-align: center;
+		        border: 1px solid @xxxx-lightGrayColor;
+		        padding: 0px 0px 0px 0px;
+	
+		    }
+		    
+		    tr {
+		        text-align: center;		    
+		    }
+	
+			
+			tbody {
+	
+				td {
+					div {
+					    width:100%;
+						height:0.8em;
+					}
+								
+				}			
+			
+			    th {
+			        text-align: center;
+			        padding-left: 1em;
+			        padding-right: 1em;
+	
+			        .label {
+						width:100%;
+			        }
+			        
+			    }
+			
+				
+			}
+	
+	
+	    }
+	
+	    
+    }
+    
 
 
 

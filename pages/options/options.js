@@ -21,6 +21,8 @@
 				item.subtitle(option.description);
 
 				item.element.on('tap', function() {
+					console.log(option);
+
 					$.mobile.pages.push("../option/option.html", {
 						params: {
 							option: option

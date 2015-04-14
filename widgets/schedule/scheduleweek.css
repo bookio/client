@@ -1,61 +1,72 @@
-[data-role="scheduleweek"] table {
+[data-role="scheduleweek"] > div {
+  outline: 1px solid #f3f3f3;
+}
+[data-role="scheduleweek"] > div .cell[tag="A"] {
+  background-color: #87ace7;
+}
+[data-role="scheduleweek"] > div .cell[tag="B"] {
+  background-color: #61bc46;
+}
+[data-role="scheduleweek"] > div .cell[tag="C"] {
+  background-color: #e34a53;
+}
+[data-role="scheduleweek"] > div .cell[tag="D"] {
+  background-color: #fcbe3b;
+}
+[data-role="scheduleweek"][data-style="day"] > div table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
 }
-[data-role="scheduleweek"] table tr,
-[data-role="scheduleweek"] table td {
+[data-role="scheduleweek"][data-style="day"] > div table thead th {
+  text-align: center;
+}
+[data-role="scheduleweek"][data-style="day"] > div table tbody th {
+  text-align: left;
+}
+[data-role="scheduleweek"][data-style="day"] > div table tr th {
+  width: 2.5em;
+  text-align: left;
+  padding: 0.2em;
+}
+[data-role="scheduleweek"][data-style="day"] > div table tr td {
+  text-align: center;
+}
+[data-role="scheduleweek"][data-style="day"] > div table tr th,
+[data-role="scheduleweek"][data-style="day"] > div table tr td {
+  font-size: smaller;
+  border: 1px solid #f3f3f3;
+}
+[data-role="scheduleweek"][data-style="week"] > div {
+  overflow: hidden;
+}
+[data-role="scheduleweek"][data-style="week"] > div .container {
+  height: 20em;
+  overflow: auto;
+}
+[data-role="scheduleweek"][data-style="week"] > div table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+[data-role="scheduleweek"][data-style="week"] > div table tr,
+[data-role="scheduleweek"][data-style="week"] > div table td {
   text-align: center;
   border: 1px solid #f3f3f3;
   padding: 0px 0px 0px 0px;
 }
-[data-role="scheduleweek"] table tbody tr:first-child .icon {
-  visibility: visible;
-  cursor: pointer;
+[data-role="scheduleweek"][data-style="week"] > div table tr {
+  text-align: center;
 }
-[data-role="scheduleweek"] table tbody tr:last-child .icon {
-  visibility: visible;
-  cursor: pointer;
-}
-[data-role="scheduleweek"] table tbody td div {
+[data-role="scheduleweek"][data-style="week"] > div table tbody td div {
   width: 100%;
   height: 0.8em;
 }
-[data-role="scheduleweek"] table tbody td div[tag="A"] {
-  background-color: #87ace7;
-}
-[data-role="scheduleweek"] table tbody td div[tag="B"] {
-  background-color: #61bc46;
-}
-[data-role="scheduleweek"] table tbody td div[tag="C"] {
-  background-color: #e34a53;
-}
-[data-role="scheduleweek"] table tbody td div[tag="D"] {
-  background-color: #fcbe3b;
-}
-[data-role="scheduleweek"] table tbody th {
+[data-role="scheduleweek"][data-style="week"] > div table tbody th {
   text-align: center;
-  position: relative;
+  padding-left: 1em;
+  padding-right: 1em;
 }
-[data-role="scheduleweek"] table tbody th .label {
+[data-role="scheduleweek"][data-style="week"] > div table tbody th .label {
   width: 100%;
-}
-[data-role="scheduleweek"] table tbody th .icon {
-  position: absolute;
-  font-size: 150%;
-  color: #61bc46;
-  padding: 0.1em;
-  visibility: hidden;
-}
-[data-role="scheduleweek"] table tbody th .icon-chevron-up {
-  top: 0px;
-  bottom: auto;
-  right: 0px;
-  left: auto;
-}
-[data-role="scheduleweek"] table tbody th .icon-chevron-down {
-  bottom: 0px;
-  top: auto;
-  right: 0px;
-  left: auto;
 }

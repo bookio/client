@@ -1,16 +1,13 @@
-[data-role="scheduleday"] table {
+[data-role="schedule-day"] table {
   width: 100%;
   border-collapse: collapse;
 }
-[data-role="scheduleday"] table tr,
-[data-role="scheduleday"] table td {
-  text-align: center;
-}
-[data-role="scheduleday"] table tbody td {
+[data-role="schedule-day"] table tr,
+[data-role="schedule-day"] table td,
+[data-role="schedule-day"] table th {
   border: 1px solid #f3f3f3;
   text-align: center;
 }
-[data-role="scheduleday"] table tbody th {
-  text-align: left;
+[data-role="schedule-day"] table tbody th {
   font-weight: bold;
 }

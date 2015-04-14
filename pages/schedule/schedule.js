@@ -44,7 +44,6 @@
 				_elements.schedule.attr('data-tag', button.attr('data-tag'));
             }
             
-            
 
 			function init() {
 			
@@ -65,13 +64,28 @@
 					_elements.schedule.attr('data-tag', $(this).text());
 				});
 	            
+	            var slots = {};
+	            
+	            $.each(_schedule, function(index, item){
+		            slots[item.tag] = item.slots;
+		            
+	            });
+
 				_elements.schedule.scheduleweek();
-				_elements.schedule.scheduleweek('selection', _schedule);
+				_elements.schedule.scheduleweek('selection', slots);
 
 				_elements.schedule.on('selection-end', function(event, selection) {
-					_schedule = _elements.schedule.scheduleweek('selection');
+					_elements.schedule.scheduleweek('select', selection, _elements.schedule.attr('data-tag'));
 
+					var slots = _elements.schedule.scheduleweek('selection');
+
+					_schedule = [];
+					
+					for (var tag in slots) {
+						_schedule.push({'tag':tag, 'slots':slots[tag]});	
+					}
 					console.log(_schedule);
+				
 				});
 
 				

@@ -20,9 +20,21 @@
 			var _icons = [];
 			var _iconsByID = {};
 
+			_element.i18n(i18n);
 			_element.trigger('create');
 			_element.hookup(_elements, 'data-id');
-			_element.i18n(i18n);
+
+			// Alternative help and header texts
+			var strHelpThingName = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, The Rose Cottage';
+			var strHelpHumanName = 'Jane, Joe, Max, Therapist 1, Dentist A';
+			var strHelpEventName = 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course';
+			var strHelpServices = 'Select the services offered by this resource (or add a new).';
+			var strHelpOptions = _elements.optionshelp.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
+			var strHeaderServices = 'Services';
+			var strHeaderOptions = _elements.optionsheader.text(); // This text is temporarly changed to the text above, so we save it from the HTML-file
+			
+			var strHeaderSetLocation = _elements.setlocation.text();
+
 
 			function fill() {
 				_elements.name.val(_rental.name);
@@ -32,31 +44,23 @@
 				if (_rental.location != undefined && _rental.location != "")
 					_elements.setlocation.text(_rental.location);
 
-				_elements.thing.prop('checked', false);
-				_elements.human.prop('checked', false);
-				_elements.event.prop('checked', false);
-
 				if (_rental.style == 'thing') {
-					_elements.thing.prop('checked', true).checkboxradio("refresh");
+					_elements.thing.addClass('activestate');
 				}
 				else if (_rental.style == 'human') {
-					_elements.human.prop('checked', true).checkboxradio("refresh");
+					_elements.human.addClass('activestate');
 					_elements.section.human.show("fast");
 				} 
 				else if (_rental.style == 'event') {
-					_elements.event.prop('checked', true).checkboxradio("refresh");
+					_elements.event.addClass('activestate');
 					_elements.section.event.show("fast");
 				}
 				else {
 					// default to 'thing'
-					_elements.thing.prop('checked', true);
+					_elements.thing.addClass('activestate');
 					_rental.style = 'thing';
 				}
-				/*
-				_elements.thing.checkboxradio("refresh");
-				_elements.event.checkboxradio("refresh");
-				_elements.human.checkboxradio("refresh");
-				*/
+
 				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
 				
 				if (_rental.image)
@@ -197,13 +201,17 @@
 			function enableDisable() {				
 				// To enable Save, a name must be given and at least one option has to be checked
 				((_elements.name.val().length == 0 || _rental.option_ids.length == 0) ? _elements.save.addClass('ui-disabled') : _elements.save.removeClass('ui-disabled'));
-				
+
 				if (_rental.option_ids.length == 0) {
 					_elements.warning.removeClass("hidden");
+					_elements.warningtab.removeClass("hidden");					
 				}
 				else {
 					_elements.warning.addClass("hidden");
+					_elements.warningtab.addClass("hidden");					
 				}				
+
+				console.log(_elements.warningtab.hasClass('hidden'));
 								
 			}
 
@@ -225,7 +233,6 @@
 
 			this.init = function() {
 
-				
 				_element.trigger('create');
 
 				_elements.options.list();
@@ -284,6 +291,11 @@
 					});
 
 					locationPickerCall.done(function(params) {	
+						if (params.location == "")
+							_elements.setlocation.text(strHeaderSetLocation);
+						else
+							_elements.setlocation.text(_rental.location);
+						
 						_rental.latitude = params.lat;
 						_rental.longitude = params.lon;
 						_rental.location = params.location;
@@ -293,10 +305,7 @@
 				
 				$.mobile.pages.ready
 				
-				// Used two times, so define it once
-				var helpStr = 'Court 3, Room 100, Segway A, Bouncy Castle XL, Hyundai Accent 6JIV337, Rose Cottage';
-
-				_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
+				_elements.name.attr('placeholder', i18n.text('name-help-thing', strHelpThingName));
 
 				_elements.name.on('keyup', function(event, ui) {
 					enableDisable();
@@ -313,28 +322,51 @@
 				_elements.seats.on('change', function(event, ui) {
 					_rental.seats = $(this).val();
 				});
+				
+				_elements.alertText.on('change', function(event, ui) {
+					_elements.alertTextInput.focus();
+				});
 
-				_elements.thing.on('change', function(event, ui) {
+				_elements.alertEmail.on('change', function(event, ui) {
+					_elements.alertEmailInput.focus();
+				});
+
+				_elements.thing.on('tap', function(event, ui) {
 					_rental.style = 'thing';
 					_elements.section.human.hide("fast");
 					_elements.section.event.hide("fast");					
-					_elements.name.attr('placeholder', i18n.text('name-help-thing', helpStr));
+					_elements.name.attr('placeholder', i18n.text('name-help-thing', strHelpThingName));
+					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
+					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');
+					_elements.name.focus();
 				});
 
-				_elements.human.on('change', function(event, ui) {
+				_elements.human.on('tap', function(event, ui) {
 					_rental.style = 'human';
 					_elements.section.human.show("fast");
 					_elements.section.event.hide("fast");					
-					_elements.name.attr('placeholder', i18n.text('name-help-human', 'Jane, Joe, Max, Therapist 1, Dentist A'));
+					_elements.name.attr('placeholder', i18n.text('name-help-human', strHelpHumanName));
+					_elements.optionsheader.text(i18n.text('services', strHeaderServices));
+					_elements.optionshelp.text(i18n.text('help-services', strHelpServices));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');					
+					_elements.name.focus();
 				});
 
-				_elements.event.on('change', function(event, ui) {
+				_elements.event.on('tap', function(event, ui) {
 					_rental.style = 'event';
 					_elements.section.event.show("fast");
 					_elements.section.human.hide("fast");
-					_elements.name.attr('placeholder', i18n.text('name-help-event', 'Wine Tasting, Seminar, Great Falls Round Trip, Boating Safety Course'));					
+					_elements.name.attr('placeholder', i18n.text('name-help-event', strHelpEventName));					
+					_elements.optionsheader.text(i18n.text('options', strHeaderOptions));
+					_elements.optionshelp.text(i18n.text('help-options', strHelpOptions));
+					$(".bigradiobutton").removeClass('activestate');
+					$(this).addClass('activestate');					
+					_elements.name.focus();
 				});
-				
+								
 				_elements.dropzone.on('imagechanged', function(event, ui) {				
 					_rental.image = _elements.dropzone.imagepicker('getImage');
 				});

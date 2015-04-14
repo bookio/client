@@ -7,27 +7,65 @@
 		height:6em !important;
 	}
 	
+	[data-id="icon.button"] { 
+		margin-top:0px;
+		height: 56px;
+	}	
 	
 	[data-id="icon.image"] {
 		font-size:50px;
 		height:50px;
 		width:50px;
 	}
+	
+	.bigradiobutton {
+		text-align: center;
+		white-space: normal;
+		
+		background-color: #ebebeb;
+		.transition(background-color 0.5s ease);
+		
+		min-height: 3em;
+		//.border-radius(3px);
+		padding: 6px;
 
-	[data-id="icon.button"] { 
-		margin-top:0px;
-		height: 77px;
+		label, svg, path {
+			cursor: inherit;
+		}
+		
+		.icon {
+			fill: white; 			
+		}
+		
+		&:hover {
+			background-color: #e3e3e3;
+			cursor: pointer;
+		}
+		
+		&.activestate {
+			background-color: #a2bbee;
+			.transition(background-color 0.5s ease);	
+			label {
+				cursor: inherit;
+				color: white;
+			}
+		}
+
 	}
 	
+	.redstar {
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	  color: #e34a53;
+	  font-weight: bold;
+	  font-size: large;		
+	}
+
 	.icon {
 		fill:@lightBookioBlue; 
 	}
 	
-	.login-button {
-		width: 200px;
-		height: 46px;
-	}
-
 	[data-id="category.container"] {
 		[data-id="category.button"] {
     		span {

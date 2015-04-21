@@ -21,8 +21,9 @@
 			var _customers = [];
 			var _startDate = _reservation.begin_at;
 			var _endDate = _reservation.end_at;
-			var _iconArray = [];
-			
+			var _chosenSymbol = [];
+			var _lastLineCount = -1;
+						
 			var lineIsTwitter = 1;
 			var lineIsMail = 2;
 			var lineIsMobile = 3;
@@ -181,22 +182,89 @@
 				else if (Parser.isAddress(str))
 					return lineIsLocation;
 				else 
-					return -1;
+					return -1; 
 				
 			}
+			
+			function replaceSymbolAndCloseMenu(element, symbol) {
+				// Replace svg in clicked DIV
+				$(element).children().remove();
+				$(element).append(symbol).find('path').attr("class", "hardgreen");	
+				_elements.popup.reservation.content.popup('close');				
+			}
+			
+			function getLineCount(textarea) {
+				return textarea[0].value.split("\n").length;			 	
+			}
+			
+			function getLineNumber(textarea) {
+				return textarea[0].value.substr(0, textarea[0].selectionStart).split("\n").length;
+    		}
 
-			function enableButtonActions() {
+			function enableButtonActions() { 
 
 				_elements.contact.on('keyup', function(event) {
 					var hasName = false;
-					var lines = _elements.contact.val().split('\n');
+					var lines = _elements.contact.val().split('\n'); 
+					var chosenSymbol = false;
+					var newLineCount = getLineCount(_elements.contact);
+					
+					if (event.keyCode == 8) {
+						if (lines[0].length == 0) {
+							// Erase first line sticky symbol
+							_chosenSymbol[0] = 0;							
+						}
+							
+						if (_elements.contact.val().length == 0) {
+							// No text, clear all
+							_chosenSymbol.length = 1;
+							_chosenSymbol[0] = 0;
+						}
+					}
+
+					if (_lastLineCount != newLineCount) {
+						var txt = _elements.contact.val();
+						var lastOnLine = (txt.charAt(_elements.contact.prop("selectionStart")) == '\n') || (_elements.contact.prop("selectionStart") == _elements.contact.val().length);
+
+						// Line count has changed, fix sticky symbol array
+						if (lastOnLine)
+							(_lastLineCount < newLineCount) ? _chosenSymbol.splice(getLineNumber(_elements.contact) - 1, 0, 0) : _chosenSymbol.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
+						else	
+							(_lastLineCount < newLineCount) ? _chosenSymbol.splice(getLineNumber(_elements.contact) - 2, 0, 0) : _chosenSymbol.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);
+
+/*						if (_lastLineCount < newLineCount) {
+							// Added line
+							if (lastOnLine)
+								_chosenSymbol.splice(getLineNumber(_elements.contact) - 1, 0, 0);
+							else	
+								_chosenSymbol.splice(getLineNumber(_elements.contact) - 2, 0, 0);
+						}
+						else {
+							// Line is removed
+							if (lastOnLine)
+								_chosenSymbol.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
+							else
+								_chosenSymbol.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);															
+						}*/
+					}
+					
+					_lastLineCount = getLineCount(_elements.contact);	
 
 					_elements.iconarray.empty();
 					
 					for(var i in lines) {
 						if (lines[i].length > 0) {
 							
-							switch(identifyLine(lines[i])) {
+							if (_chosenSymbol[i] != undefined && _chosenSymbol[i] != 0) {
+								lineID = _chosenSymbol[i];
+								chosenSymbol = true;
+							}
+							else {
+								lineID = identifyLine(lines[i]);
+								chosenSymbol = false;
+							}
+							
+							switch(lineID) {
 								
 							    case lineIsTwitter:
 							    	chosenIcon = iconTwitter;
@@ -211,7 +279,7 @@
 							        break;
 							        
 							    case lineIsName:
-							    	if (hasName) // If we already have a name, its probably an address
+							    	if (hasName && !chosenSymbol) // If we already have a name, its probably an address
 								    	chosenIcon = iconLocation;	
 							    	else {
 							    		chosenIcon = iconName;
@@ -235,35 +303,38 @@
 							var tag = $(intro + chosenIcon + outro);
 							
 							tag.appendTo(_elements.iconarray).css('top', i * 22 + 23).attr('id', 'row' + i);
-														
+							
+							// Show 'sticky' symbol with darker color
+							if (chosenSymbol)
+								tag.find('path').attr("class", "hardgreen");
+						
 							tag.on('tap', function(event) {
 								
 								var tappedElement = this;
 
 								_elements.popupname.one('tap', function(event) {
-									console.log("Namn klickat");
-									$(tappedElement).children().remove();
-									$(tappedElement).append(iconName).find('path').attr("class", "hardgreen");									
+									var i = tappedElement.id.replace( /^\D+/g, '');
+									_chosenSymbol[i] = lineIsName;
+									replaceSymbolAndCloseMenu(tappedElement, iconName);
 								});	
 
 								_elements.popuplocation.one('tap', function(event) {
-									console.log("Adress klickat");
-									$(tappedElement).children().remove();
-									$(tappedElement).append(iconLocation).find('path').attr("class", "hardgreen");
-									console.log("clicked at location");									
+									var i = tappedElement.id.replace( /^\D+/g, '');
+									_chosenSymbol[i] = lineIsLocation;
+									replaceSymbolAndCloseMenu(tappedElement, iconLocation);
 								});	
 
 								_elements.popupmobile.one('tap', function(event) {
-									console.log("Mobil klickat");
-									$(tappedElement).children().remove();
-									$(tappedElement).append(iconMobile).find('path').attr("class", "hardgreen");									
+									var i = tappedElement.id.replace( /^\D+/g, '');
+									_chosenSymbol[i] = lineIsMobile;
+									replaceSymbolAndCloseMenu(tappedElement, iconMobile);
 								});	
 
 								_elements.popupinfo.one('tap', function(event) {
-									console.log("Info klickat");
-									$(tappedElement).children().remove();
-									$(tappedElement).append(iconInfo).find('path').attr("class", "hardgreen");									
-								});	
+									var i = tappedElement.id.replace( /^\D+/g, '');
+									_chosenSymbol[i] = lineIsInfo;
+									replaceSymbolAndCloseMenu(tappedElement, iconInfo);										
+								});
 								
 								var options = {
 									dismissible: true,
@@ -474,8 +545,11 @@
 				_element.trigger('create');
 				_element.i18n(i18n);
 				
-				_elements.popup.reservation.content.on("tap", function() {
-					_elements.popup.reservation.content.popup('close');
+				_elements.popup.reservation.content.on("popupafterclose", function() {
+					_elements.popupname.off();
+					_elements.popuplocation.off();
+					_elements.popupmobile.off();
+					_elements.popupinfo.off();
 				});
 				
 				_elements.dateinput.on('tap', function(event) {
@@ -556,9 +630,7 @@
 				$.spin(true);
 				
 				updateDates();		
-				
-				$('textarea').height($('textarea').prop('scrollHeight'));
-				
+								
 				var requests = [];
 
 				// Load rental if ID specified

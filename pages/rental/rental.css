@@ -13,7 +13,7 @@
 #rental-page .bigradiobutton {
   text-align: center;
   white-space: normal;
-  background-color: #ebebeb;
+  background-color: #f9f9f9;
   -webkit-transition: background-color 0.5s ease;
   -moz-transition: background-color 0.5s ease;
   -o-transition: background-color 0.5s ease;
@@ -25,6 +25,11 @@
 #rental-page .bigradiobutton svg,
 #rental-page .bigradiobutton path {
   cursor: inherit;
+  color: #dadada;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -o-transition: color 1s ease;
+  transition: color 1s ease;
 }
 #rental-page .bigradiobutton .icon {
   fill: white;
@@ -33,8 +38,16 @@
   background-color: #e3e3e3;
   cursor: pointer;
 }
+#rental-page .bigradiobutton:hover label {
+  cursor: inherit;
+  color: white;
+  -webkit-transition: color 1s ease;
+  -moz-transition: color 1s ease;
+  -o-transition: color 1s ease;
+  transition: color 1s ease;
+}
 #rental-page .bigradiobutton.activestate {
-  background-color: #a2bbee;
+  background-color: #87ace7;
   -webkit-transition: background-color 0.5s ease;
   -moz-transition: background-color 0.5s ease;
   -o-transition: background-color 0.5s ease;

@@ -210,8 +210,6 @@
 					_elements.warning.addClass("hidden");
 					_elements.warningtab.addClass("hidden");					
 				}				
-
-				console.log(_elements.warningtab.hasClass('hidden'));
 								
 			}
 

@@ -22,7 +22,7 @@
 		text-align: center;
 		white-space: normal;
 		
-		background-color: #ebebeb;
+		background-color: #f9f9f9;
 		.transition(background-color 0.5s ease);
 		
 		min-height: 3em;
@@ -31,6 +31,8 @@
 
 		label, svg, path {
 			cursor: inherit;
+			color: #dadada;
+			.transition(color 1s ease);
 		}
 		
 		.icon {
@@ -40,10 +42,16 @@
 		&:hover {
 			background-color: #e3e3e3;
 			cursor: pointer;
+
+			label {
+				cursor: inherit;
+				color: white;
+				.transition(color 1s ease);	
+			}			
 		}
 		
 		&.activestate {
-			background-color: #a2bbee;
+			background-color: @bookioBlue;
 			.transition(background-color 0.5s ease);	
 			label {
 				cursor: inherit;

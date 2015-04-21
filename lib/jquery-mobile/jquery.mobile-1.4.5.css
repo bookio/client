@@ -4060,11 +4060,11 @@ html .ui-popup .ui-field-contain div.ui-slider-switch {
 	height: 0;
 }
 /* this makes ie6 and ie7 set height to 0 to fix z-index problem */
-html >/**/body .ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {
+html > body .ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {
 	height: 15px;
 	border-width: 1px;
 }
-html >/**/body .ui-rangeslider.ui-mini .ui-rangeslider-sliders .ui-slider-track:first-child {
+html > body .ui-rangeslider.ui-mini .ui-rangeslider-sliders .ui-slider-track:first-child {
 	height: 12px;
 }
 /* Hide the second label (the first is moved outside the div) */

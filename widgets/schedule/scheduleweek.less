@@ -1,10 +1,11 @@
 @import "../../css/bookio.less";
-@baseColor: fadeout(@bookioBlue, 30%);
+
 
 
 [data-role="scheduleweek"] {
 
     & > div {
+    	font-size: smaller;
 		outline: 1px solid @xxxx-lightGrayColor;
 
 		.cell {
@@ -88,13 +89,16 @@
 	        width:100%;
 	        table-layout: fixed;
 	        border-collapse:collapse;
-	
-		    tr, td {
-		        text-align: center;
-		        border: 1px solid @xxxx-lightGrayColor;
-		        padding: 0px 0px 0px 0px;
-	
-		    }
+
+			tbody {
+			    tr, td {
+			        text-align: center;
+			        border: 1px solid @xxxx-lightGrayColor;
+			        padding: 0px 0px 0px 0px;
+		
+			    }
+				
+			}
 		    
 		    tr {
 		        text-align: center;		    

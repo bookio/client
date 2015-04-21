@@ -40,9 +40,9 @@ SITE_FILES = $(addprefix $(SITE_PATH)/,$(CSS_FILES)) $(addprefix $(SITE_PATH)/,$
 MAKE_FILES = $(CSS_FILES) $(SITE_PATH) $(SITE_FILES)
 
 CORE_JS_FILES = \
-	lib/jquery/jquery-2.0.3.js \
+	lib/jquery/jquery-2.1.3.js \
 	lib/jquery-mobile/jquery.mobile.config.js \
-	lib/jquery-mobile/jquery.mobile-1.4.0.js \
+	lib/jquery-mobile/jquery.mobile-1.4.5.js \
 	lib/jquery/plugins/jquery.extensions.js \
 	lib/jquery/plugins/jquery.cookie.js \
 	lib/jquery/plugins/jquery.hookup.js \
@@ -73,7 +73,7 @@ CORE_JS_FILES = \
 	js/model.js
 
 CORE_CSS_FILES = \
-	lib/jquery-mobile/jquery.mobile-1.4.0.css \
+	lib/jquery-mobile/jquery.mobile-1.4.5.css \
 	lib/mobiscroll/mobiscroll.2.9.5.min.css
 
 all:
@@ -92,8 +92,8 @@ css: $(CSS_FILES)
 site: $(MAKE_FILES)
 	$(ECHO) Done.
 
-#core: js/core.js css/core.css
-#	$(ECHO) Done.
+core: js/core.js css/core.css
+	$(ECHO) Done.
 
 safari: $(MAKE_FILES)
 	open -a Safari $(SITE_PATH)/index.html

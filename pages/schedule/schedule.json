@@ -6,15 +6,11 @@
         "of": "om",
 		"minute": "minuter",
 		"hour": "timmar",
-		"day": "dag",
-		"week": "vecka",
-		"month": "månad",
-		"price": "Pris och tillgänglighet",
+		"day": "dagar",
+		"week": "veckor",
+		"month": "månader",
 		
-		"back": "Tillbaka",
-		"save": "Spara",
-		"remove": "Radera"
-
+		"back": "Tillbaka"
 	},
 	
 	"hu": {

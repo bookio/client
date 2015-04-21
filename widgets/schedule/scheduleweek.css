@@ -1,4 +1,5 @@
 [data-role="scheduleweek"] > div {
+  font-size: smaller;
   outline: 1px solid #f3f3f3;
 }
 [data-role="scheduleweek"] > div .cell[tag="A"] {
@@ -44,8 +45,8 @@
   table-layout: fixed;
   border-collapse: collapse;
 }
-[data-role="scheduleweek"][data-style="week"] > div table tr,
-[data-role="scheduleweek"][data-style="week"] > div table td {
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr,
+[data-role="scheduleweek"][data-style="week"] > div table tbody td {
   text-align: center;
   border: 1px solid #f3f3f3;
   padding: 0px 0px 0px 0px;

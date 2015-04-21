@@ -138,7 +138,7 @@
 				var html = 	'';
 				
 				html = 	'<div>' + 
-							'<table class="header ui-mini">' + 
+							'<table class="header">' + 
 								'<thead>' +
 							        '<tr>' + 
 							            '<th></th>' +
@@ -153,7 +153,7 @@
 								'</thead>' +
 							'</table>' +
 							'<div class="container selectable"> ' +
-								'<table class="schedule ui-mini">' +
+								'<table class="schedule">' +
 								    '<tbody>' +
 								    '</tbody>' +
 								'</table>' +

@@ -27,18 +27,12 @@
 				_elements.description.val(_option.description);
 				if (_option.image)
 					_elements.dropzone.imagepicker('setImage', _option.image);				
-				_elements.units.val((_option.units == undefined) ? 1 : _option.units);
-				_elements.selection.picker('select', ((_option.selection == undefined) ? '0' : _option.selection));
-				_elements.unit.picker('select', ((_option.unit == undefined) ? 'hour' : _option.unit));				
 			}
 
 			function chill() {
 				_option.name = _elements.name.val();
 				_option.description = _elements.description.val();
 				_option.image = _elements.dropzone.imagepicker('getImage');
-				_option.selection = _elements.selection.val();
-				_option.units = _elements.units.val();
-				_option.unit = _elements.unit.val();
 			}
 			
 			function enableDisable() {				
@@ -47,8 +41,6 @@
 
 			this.init = function() {
 
-				_elements.selection.picker();
-				_elements.unit.picker();
 								
 				if (page.params && page.params.option) {
 					$.extend(_option, page.params.option);
@@ -67,13 +59,13 @@
 				
 				_elements.schedule.on('tap', function(event) {
 					var request = $.mobile.pages.push('../schedule/schedule.html', {
-						params: {schedule:_option.schedules}
+						params: {option:_option}
 					});
 					
-					request.done(function(schedule) {
+					request.done(function(option) {
 
-						_option.schedules = schedule;
-						console.log(schedule);
+						//_option = option;
+						console.log(_option);
 					});
 				});
 				

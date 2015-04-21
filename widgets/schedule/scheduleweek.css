@@ -34,15 +34,10 @@
 }
 [data-role="scheduleweek"][data-style="day"] > div table tr th,
 [data-role="scheduleweek"][data-style="day"] > div table tr td {
-  font-size: smaller;
   border: 1px solid #f3f3f3;
 }
 [data-role="scheduleweek"][data-style="week"] > div {
   overflow: hidden;
-}
-[data-role="scheduleweek"][data-style="week"] > div .container {
-  height: 20em;
-  overflow: auto;
 }
 [data-role="scheduleweek"][data-style="week"] > div table {
   width: 100%;

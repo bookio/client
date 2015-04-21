@@ -28,6 +28,39 @@
 	}
 }
 */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#schedule-page .schedule {
+  padding: 0.5em;
+}
+#schedule-page .schedule.active {
+  display: block;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+#schedule-page .schedule.week:not(.active) {
+  display: none;
+}
+#schedule-page .schedule.day:not(.active) {
+  display: none;
+}
 #schedule-page .buttons .button {
   margin: 0.5em;
 }

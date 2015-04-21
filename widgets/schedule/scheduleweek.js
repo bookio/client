@@ -95,7 +95,7 @@
             }
 			
             function setSelection(selection) {
-	            
+
 	            // Clear selection
 	            _elements.tbody.find('.cell').removeAttr('tag');
 	            
@@ -104,7 +104,8 @@
 
 	            	for (var index in items) {
 	            		var cell = _cells[items[index]]; 
-		            	cell.attr('tag', tag);
+	            		if (cell != undefined)
+			            	cell.attr('tag', tag);
 	            	}
 	            }
             }
@@ -151,7 +152,7 @@
 							        '</tr>' +
 								'</thead>' +
 							'</table>' +
-							'<div class="container"> ' +
+							'<div class="container selectable"> ' +
 								'<table class="schedule ui-mini">' +
 								    '<tbody>' +
 								    '</tbody>' +
@@ -182,7 +183,7 @@
 				var daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 				var counter     = 0;
 				
-				_elements.content = $('<div></div>').appendTo(_elements.container);
+				_elements.content = $('<div></div>').appendTo(_elements.container).addClass('selectable');
 				_elements.table   = $('<table></table>').appendTo(_elements.content);
 				_elements.thead   = $('<thead></thead>').appendTo(_elements.table);
 				_elements.tbody   = $('<tbody></tbody>').appendTo(_elements.table); 
@@ -235,7 +236,7 @@
 
 				});
 
-				_elements.container.selectable({
+				_elements.container.find('.selectable').selectable({
 					showMarquee: true,
 					marqueeOpacity: 0.1,
 					selectionThreshold: 0,

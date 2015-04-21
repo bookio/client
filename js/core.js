@@ -39585,8 +39585,8 @@ sha1 = function(msg) {
 	
 	Gopher = {};
 
-	//Gopher.baseURL = 'http://bookio-node.herokuapp.com';
-	Gopher.baseURL = 'http://localhost:5000';
+	Gopher.baseURL = 'http://bookio-node.herokuapp.com';
+	//Gopher.baseURL = 'http://localhost:5000';
 
 	Gopher.user = null;
 	Gopher.client = null;

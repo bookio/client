@@ -1,4 +1,4 @@
-<div id="schedule-page" data-role="page" class="ui-full-page">
+<div id="schedule-page" data-role="page" class="ui-full-page" data-id="page">
 
     <div data-role="content" data-id="content">
 
@@ -9,7 +9,43 @@
 
                 <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
                     <h1>
-						Prisgrupp
+						Pris och tillgänglighet
+					</h1>
+                </li>
+
+				<li>
+	                <div>
+		                <label class="ui-btn ui-inline" data-i18n="customer-books" style="font-weight:normal">
+		                	Customer books
+		                </label> 
+		
+		                <div data-role="picker" data-id="selection" class="selection ui-inline" style="width:14em">
+		                    <option value="0" data-i18n="one-by-one" selected>one unit at a time</option>
+		                    <option value="1" data-i18n="any-number">any number of units</option>
+		                </div>
+		
+		                <label class="ui-btn ui-inline" data-i18n="of" style="font-weight:normal">
+		                	of
+		                </label>
+		
+						<div class="ui-inline" style="width:3em">
+		                    <input data-id="units" class="units" type="text" value="1"/>
+						</div>
+						
+		                <div data-role="picker" data-id="unit" class="unit ui-inline" style="width:10em">
+							<option value="minute" data-i18n="minute">minutes</option>
+							<option value="hour" data-i18n="hour" selected>hour</option>
+							<option value="day" data-i18n="day">day</option>
+							<option value="week" data-i18n="week">week</option>
+							<option value="month" data-i18n="month">month</option>
+		                </div>
+	                
+	                </div>
+	
+				</li>
+                <li data-role="list-devider" data-theme="b">
+                    <h1>
+						Schema
 					</h1>
                 </li>
 
@@ -22,18 +58,12 @@
 			        </div>
 				</li>
 
-                <li data-role="list-devider" data-id="title" data-i18n="settings-title" data-theme="b">
-                    <h1>
-						Schema
-					</h1>
-                </li>
-
-
-                <li>
-                    <div data-role="scheduleweek" data-style="week" data-id="schedule" data-tag="A" data-mini="true">
-                    </div>
-                </li>
-
+				<li>
+		                    <div data-role="scheduleweek" data-style="week" data-id="schedule.week" data-mini="true" class="schedule week">
+		                    </div>
+		                    <div data-role="scheduleweek" data-style="day" data-id="schedule.day" data-mini="true" class="schedule day">
+		                    </div>
+				</li>
             </ul>
 
 
@@ -41,7 +71,7 @@
 
 
         <div class="ui-center">
-            <button data-id="back" data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Klar</button>
+            <button data-theme="c" data-i18n="back" data-role="button" data-inline="true" data-icon="back" class="back">Klar</button>
         </div>
 
     </div>

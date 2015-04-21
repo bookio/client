@@ -1,6 +1,9 @@
 #option-page [data-id="description"] {
   height: 6em !important;
 }
+#option-page [data-id="schedule"] {
+  width: 90%;
+}
 #option-page option {
   display: none;
 }

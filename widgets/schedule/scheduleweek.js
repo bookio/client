@@ -39,12 +39,16 @@
 				var template = 
 					'<th class="row-header">'+
 						'<div class="label"></div>'+
+						'<div class="icon-plus"></div>'+
+						'<div class="icon-minus"></div>'+
 					'</th>';
 				
 				var hours = time.getHours();
 				
 				row.append($(template));
 				row.find('.label').text(sprintf('%02d:%02d', hours, time.getMinutes()));
+				row.val(hours);
+				
 				
 				var date = _date.clone();
 				
@@ -172,9 +176,48 @@
 				time = time.addHours(0);
 				
                 for (var i = 0; i <= 23; i++, time = time.addHours(1)) {
-					_elements.tbody.append(createRow(time));
+                	var row = createRow(time);
+					_elements.tbody.append(row);
 				}
 
+				_elements.tbody.on('tap', 'tr.first-row div.icon-plus', function(){
+					var row = $(this).closest('tr');
+					
+					if (row.prev().length > 0)
+						row.removeClass('first-row').prev().addClass('first-row').removeClass('hidden');
+				});
+				_elements.tbody.on('tap', 'tr.first-row div.icon-minus', function(){
+					var row = $(this).closest('tr');
+
+					if (row.next().length > 0 && _elements.tbody.find('.hidden').length < 20)
+						row.removeClass('first-row').addClass('hidden').next().addClass('first-row');
+				});
+
+				_elements.tbody.on('tap', 'tr.last-row div.icon-plus', function(){
+					var row = $(this).closest('tr');
+
+					if (row.next().length > 0)
+						row.removeClass('last-row').next().addClass('last-row').removeClass('hidden');
+				});
+				_elements.tbody.on('tap', 'tr.last-row div.icon-minus', function(){
+					var row = $(this).closest('tr');
+
+					if (row.prev().length > 0 && _elements.tbody.find('.hidden').length < 20)
+						row.removeClass('last-row').addClass('hidden').prev().addClass('last-row');
+				});
+
+				_elements.tbody.find('tr').each(function(index) {
+
+					if (index < 8 || index > 18)
+						$(this).addClass('hidden');
+						
+					if (index == 8)
+						$(this).addClass('first-row');
+					if (index == 18)
+						$(this).addClass('last-row');
+				});
+
+				
 			}
 			
 			function buildDays() {

@@ -33,9 +33,9 @@
 			_elements.page.trigger('create');
             
             function fill() {
-				_elements.units.val((_option.units == undefined) ? 1 : _option.units);
-				_elements.selection.picker('select', ((_option.selection == undefined) ? '0' : _option.selection));
-				_elements.unit.picker('select', ((_option.unit == undefined) ? 'hour' : _option.unit));		
+				_elements.units.val(_option.units);
+				_elements.selection.picker('select', _option.selection);
+				_elements.unit.picker('select', _option.unit);
 				
 	            var slots = {};
 	            
@@ -112,6 +112,10 @@
 				if (page.params && page.params.option) {
 					_option = page.params.option;
 				}			
+
+				_option.units     = _option.units     == undefined ?      1 : _option.units;
+				_option.unit      = _option.unit      == undefined ? 'hour' : _option.unit;
+				_option.selection = _option.selection == undefined ?    '0' : _option.selection;
 
 				enableEvents();
 				enableDisable();

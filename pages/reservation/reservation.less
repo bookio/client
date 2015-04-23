@@ -10,10 +10,7 @@
 	   white-space: nowrap;
 	   overflow: auto;       
     }
-     
-    .iconContainer {
-	}
-	
+    
 	.iconwrapper {
 		position: absolute;
 		right: 20px;
@@ -25,14 +22,15 @@
     }
     
     path {
-	    cursor: inherit;	    
+	    cursor: inherit;	
     }
     
     svg {
-	    cursor: inherit;	    	    
+	    cursor: inherit;
+	    vertical-align: top;	    	    
     }
     
-    .softgreen {
+    .softgreen { 
 	    fill: #C0D890;
     }
 
@@ -44,16 +42,32 @@
 
 [data-id="popup.reservation.content"] {
 	text-align: right;
+	
+	.menusymbol {
+		fill: @bookioBlue;
+		margin-top: 1px;
+
+		&:hover {
+			fill: white;
+		}
+		
+	}
 
 	div {
 		padding-left: 20px;
 		padding-right: 20px;
 		font-size: large;
 		color: @bookioBlue;
-		
+
 		&:hover {
 			color: white;
 			background-color: @bookioBlue;
+		}			
+		
+		&:hover .menusymbol {
+			color: white;
+			background-color: @bookioBlue;
+			fill: white;
 		}			
 	}			
 }

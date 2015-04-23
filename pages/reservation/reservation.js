@@ -21,7 +21,7 @@
 			var _customers = [];
 			var _startDate = _reservation.begin_at;
 			var _endDate = _reservation.end_at;
-			var _chosenSymbol = [];
+			var _stickySymbols = [];
 			var _lastLineCount = -1;
 						
 			var lineIsTwitter = 1;
@@ -186,10 +186,14 @@
 				
 			}
 			
-			function replaceSymbolAndCloseMenu(element, symbol) {
+			function replaceSymbolAndCloseMenu(element, symbol, lineID) {
+				var i = element.id.replace( /^\D+/g, '');
+				
+				_stickySymbols[i] = lineID;
+				
 				// Replace svg in clicked DIV
 				$(element).children().remove();
-				$(element).append(symbol).find('path').attr("class", "hardgreen");	
+				$(element).append(symbol).find('path').attr('class', 'hardgreen');	
 				_elements.popup.reservation.content.popup('close');				
 			}
 			
@@ -206,19 +210,19 @@
 				_elements.contact.on('keyup', function(event) {
 					var hasName = false;
 					var lines = _elements.contact.val().split('\n'); 
-					var chosenSymbol = false;
+					var stickySymbol = false;
 					var newLineCount = getLineCount(_elements.contact);
 					
 					if (event.keyCode == 8) {
 						if (lines[0].length == 0) {
 							// Erase first line sticky symbol
-							_chosenSymbol[0] = 0;							
+							_stickySymbols[0] = 0;							
 						}
 							
 						if (_elements.contact.val().length == 0) {
 							// No text, clear all
-							_chosenSymbol.length = 1;
-							_chosenSymbol[0] = 0;
+							_stickySymbols.length = 1;
+							_stickySymbols[0] = 0;
 						}
 					}
 
@@ -228,9 +232,9 @@
 
 						// Line count has changed, fix sticky symbol array
 						if (lastOnLine)
-							(_lastLineCount < newLineCount) ? _chosenSymbol.splice(getLineNumber(_elements.contact) - 1, 0, 0) : _chosenSymbol.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
+							(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 1, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
 						else	
-							(_lastLineCount < newLineCount) ? _chosenSymbol.splice(getLineNumber(_elements.contact) - 2, 0, 0) : _chosenSymbol.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);
+							(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 2, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);
 
 /*						if (_lastLineCount < newLineCount) {
 							// Added line
@@ -255,13 +259,13 @@
 					for(var i in lines) {
 						if (lines[i].length > 0) {
 							
-							if (_chosenSymbol[i] != undefined && _chosenSymbol[i] != 0) {
-								lineID = _chosenSymbol[i];
-								chosenSymbol = true;
+							if (_stickySymbols[i] != undefined && _stickySymbols[i] != 0) {
+								lineID = _stickySymbols[i];
+								stickySymbol = true;
 							}
 							else {
 								lineID = identifyLine(lines[i]);
-								chosenSymbol = false;
+								stickySymbol = false;
 							}
 							
 							switch(lineID) {
@@ -279,7 +283,7 @@
 							        break;
 							        
 							    case lineIsName:
-							    	if (hasName && !chosenSymbol) // If we already have a name, its probably an address
+							    	if (hasName && !stickySymbol) // If we already have a name, its probably an address
 								    	chosenIcon = iconLocation;	
 							    	else {
 							    		chosenIcon = iconName;
@@ -305,7 +309,7 @@
 							tag.appendTo(_elements.iconarray).css('top', i * 22 + 23).attr('id', 'row' + i);
 							
 							// Show 'sticky' symbol with darker color
-							if (chosenSymbol)
+							if (stickySymbol)
 								tag.find('path').attr("class", "hardgreen");
 						
 							tag.on('tap', function(event) {
@@ -313,27 +317,19 @@
 								var tappedElement = this;
 
 								_elements.popupname.one('tap', function(event) {
-									var i = tappedElement.id.replace( /^\D+/g, '');
-									_chosenSymbol[i] = lineIsName;
-									replaceSymbolAndCloseMenu(tappedElement, iconName);
+									replaceSymbolAndCloseMenu(tappedElement, iconName, lineIsName);
 								});	
 
 								_elements.popuplocation.one('tap', function(event) {
-									var i = tappedElement.id.replace( /^\D+/g, '');
-									_chosenSymbol[i] = lineIsLocation;
-									replaceSymbolAndCloseMenu(tappedElement, iconLocation);
+									replaceSymbolAndCloseMenu(tappedElement, iconLocation, lineIsLocation);
 								});	
 
 								_elements.popupmobile.one('tap', function(event) {
-									var i = tappedElement.id.replace( /^\D+/g, '');
-									_chosenSymbol[i] = lineIsMobile;
-									replaceSymbolAndCloseMenu(tappedElement, iconMobile);
+									replaceSymbolAndCloseMenu(tappedElement, iconMobile, lineIsMobile);
 								});	
 
 								_elements.popupinfo.one('tap', function(event) {
-									var i = tappedElement.id.replace( /^\D+/g, '');
-									_chosenSymbol[i] = lineIsInfo;
-									replaceSymbolAndCloseMenu(tappedElement, iconInfo);										
+									replaceSymbolAndCloseMenu(tappedElement, iconInfo, lineIsInfo);										
 								});
 								
 								var options = {
@@ -342,7 +338,7 @@
 									positionTo: $(this)
 								};
 			
-								_elements.popup.reservation.content.popup(options);
+								_elements.popup.reservation.content.popup(options);								
 								_elements.popup.reservation.content.popup('open');
 																
 							});
@@ -544,6 +540,12 @@
 				_element.hookup(_elements, 'data-id');
 				_element.trigger('create');
 				_element.i18n(i18n);
+				
+				// Show symbols in popup menu
+				$(iconName).appendTo(_elements.popupname).css('vertical-align', 'top').attr("class", "menusymbol");
+				$(iconLocation).appendTo(_elements.popuplocation).css('vertical-align', 'top').attr("class", "menusymbol");
+				$(iconMobile).appendTo(_elements.popupmobile).css('vertical-align', 'top').attr("class", "menusymbol");
+				$(iconInfo).appendTo(_elements.popupinfo).css('vertical-align', 'top').attr("class", "menusymbol");
 				
 				_elements.popup.reservation.content.on("popupafterclose", function() {
 					_elements.popupname.off();

@@ -17,6 +17,7 @@
 }
 #reservation-page svg {
   cursor: inherit;
+  vertical-align: top;
 }
 #reservation-page .softgreen {
   fill: #C0D890;
@@ -27,6 +28,13 @@
 [data-id="popup.reservation.content"] {
   text-align: right;
 }
+[data-id="popup.reservation.content"] .menusymbol {
+  fill: #87ace7;
+  margin-top: 1px;
+}
+[data-id="popup.reservation.content"] .menusymbol:hover {
+  fill: white;
+}
 [data-id="popup.reservation.content"] div {
   padding-left: 20px;
   padding-right: 20px;
@@ -36,4 +44,9 @@
 [data-id="popup.reservation.content"] div:hover {
   color: white;
   background-color: #87ace7;
+}
+[data-id="popup.reservation.content"] div:hover .menusymbol {
+  color: white;
+  background-color: #87ace7;
+  fill: white;
 }

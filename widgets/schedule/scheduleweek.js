@@ -98,6 +98,7 @@
 					items.attr('tag', tag);
             }
 			
+			
             function setSelection(selection) {
 
 	            // Clear selection
@@ -112,6 +113,11 @@
 			            	cell.attr('tag', tag);
 	            	}
 	            }
+				if (_elements.container.attr('data-style') == "week") {
+					var range = getMinMaxHours(selection);
+					adjustVisibility(range.min, range.max);
+				}
+	            
             }
             
             
@@ -137,6 +143,48 @@
 				return selection;
             }
 
+			function adjustVisibility(start, stop) {
+
+				var rows = _elements.tbody.find('tr');
+				
+				rows.removeClass('hidden').removeClass('first-row').removeClass('last-row');
+				
+				rows.each(function(index) {
+
+					if (index < start || index > stop)
+						$(this).addClass('hidden');
+						
+					if (index == start)
+						$(this).addClass('first-row');
+					if (index == stop)
+						$(this).addClass('last-row');
+				});
+				
+			}
+			
+			function getMinMaxHours(selection) {
+				
+				var min = 9;
+				var max = 17;
+				
+				for (var tag in selection) {
+					var slots = selection[tag];
+					
+					for (var index in slots) {
+						var value = Math.floor((parseInt(slots[index]) % 96) / 4);
+
+						if (value < min)
+							min = value;
+							
+						if (value > max)
+							max = value;	
+						 
+					}
+
+				}
+				
+				return {min:min, max:max}
+			}
 
 			function buildDOM() {
 				var html = 	'';
@@ -206,14 +254,17 @@
 						row.removeClass('last-row').addClass('hidden').prev().addClass('last-row');
 				});
 
+				var start = 9;
+				var stop  = 17;
+				
 				_elements.tbody.find('tr').each(function(index) {
 
-					if (index < 8 || index > 18)
+					if (index < start || index > stop)
 						$(this).addClass('hidden');
 						
-					if (index == 8)
+					if (index == start)
 						$(this).addClass('first-row');
-					if (index == 18)
+					if (index == stop)
 						$(this).addClass('last-row');
 				});
 

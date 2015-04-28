@@ -28,11 +28,8 @@ Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am
 >3: Badminton 60 min, 8$  
 >  
 >To book reply with: B# date/time, your name  
->Sample: B2 10am, John Doe -> Reserve tennis for John Doe at 10 am  
+>Sample: Replying "B2 10am, john doe" means "Reserve tennis for John Doe at 10am"  
 >(reply ?? for more samples)
-
-Better sample text??  
-_SAMPLE: Replying "B2 10am, john doe" means "Reserve tennis for John Doe at 10 am"_ 
 
 ======
 

@@ -53,6 +53,10 @@
 				// Hide the remove button if a new category
 				if (_category.id == undefined)
 					_elements.remove.hide();
+					
+				_element.on("pageshow", function(event) {
+					_elements.name.focus();
+				});					
 
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();

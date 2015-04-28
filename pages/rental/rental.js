@@ -67,7 +67,7 @@
 					_elements.dropzone.imagepicker('setImage', _rental.image);			
 					
 				_elements.available.prop('checked', _rental.available).checkboxradio('refresh');
-
+				
 			}
 
 			
@@ -393,6 +393,8 @@
 					//_element.find('.tab:visible');
 					var activeTab = _element.find('.tab-container [data-tab]:visible:first').attr('data-tab');
 					_element.find(sprintf('.tab-header [data-tab="%s"]', activeTab)).addClass('ui-btn-active');
+					
+					_elements.name.focus();
 
 				});
 				
@@ -411,8 +413,6 @@
 					});
 
 				});
-
-
 
 				_elements.icon.button.on('tap', function(event) {
 

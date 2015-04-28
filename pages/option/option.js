@@ -85,7 +85,11 @@
 				
 				_elements.name.on('keyup', function(event, ui) {
 					enableDisable();
-				});				
+				});
+				
+				_element.on("pageshow", function(event) {
+					_elements.name.focus();
+				});								
 				
 				_elements.save.on('tap', function(event) {
 

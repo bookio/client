@@ -547,6 +547,10 @@
 				$(iconMobile).appendTo(_elements.popupmobile).css('vertical-align', 'top').attr("class", "menusymbol");
 				$(iconInfo).appendTo(_elements.popupinfo).css('vertical-align', 'top').attr("class", "menusymbol");
 				
+				_element.on("pageshow", function () {
+					_elements.contact.focus();
+				});									
+				
 				_elements.popup.reservation.content.on("popupafterclose", function() {
 					_elements.popupname.off();
 					_elements.popuplocation.off();

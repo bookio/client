@@ -14,7 +14,6 @@
 	        var self         = this;
 			var _elements    = {};
 			var _container   = widget.element;
-			var _weekdays    = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 			var _date        = new Date(); //2000, 0, 1, 0, 0, 0);
 			var _cells       = {};
 			
@@ -30,14 +29,13 @@
 			self.refresh = function() {
 			}
 	
-
 			
             function createRow(time) {
 	            
 				var row = $('<tr></tr>');
 
 				var template = 
-					'<th class="row-header">'+
+					'<th>'+
 						'<div class="label"></div>'+
 						'<div class="icon-plus"></div>'+
 						'<div class="icon-minus"></div>'+
@@ -54,7 +52,7 @@
 				
 				for (var index = 0; index < 7; index++) {
 					var weekday = date.getDay();
-					var weekdayName = _weekdays[weekday];	
+					var weekdayName = moment.weekdaysShort[weekday];
 
 					var cell = $('<td></td>').addClass(weekdayName);
 
@@ -194,13 +192,13 @@
 								'<thead>' +
 							        '<tr>' + 
 							            '<th></th>' +
-							            '<th class="monday">MÅ</th>' +
-							            '<th class="tuesday">TI</th>' +
-							            '<th class="wednesday">ON</th>' +
-							            '<th class="thursday">TO</th>' +
-							            '<th class="friday">FR</th>' +
-							            '<th class="saturday">LÖ</th>' +
-							            '<th class="sunday">SÖ</th>' +
+							            '<th class="monday">Mo</th>' +
+							            '<th class="tuesday">Tu</th>' +
+							            '<th class="wednesday">We</th>' +
+							            '<th class="thursday">Th</th>' +
+							            '<th class="friday">Fr</th>' +
+							            '<th class="saturday">Sa</th>' +
+							            '<th class="sunday">Su</th>' +
 							        '</tr>' +
 								'</thead>' +
 							'</table>' +
@@ -268,12 +266,21 @@
 						$(this).addClass('last-row');
 				});
 
+				// Fill header with weekday names				
+				_elements.thead.find('th').each(function(index) {
+					if (index > 0) {
+						if (index == 7)
+							$(this).text(moment.weekdaysShort()[0]);
+						else
+							$(this).text(moment.weekdaysShort()[index]);						
+					}
+				});				
+
 				
 			}
 			
 			function buildDays() {
 			
-				var months      = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
 				var daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 				var counter     = 0;
 				
@@ -289,7 +296,7 @@
 					$('<td></td>').text(sprintf('%02d', i + 1)).appendTo(tr);						
 				}
 				
-				$.each(months, function(index, month) {
+				$.each(moment.monthsShort(), function(index, month) {
 					var tr = $('<tr></tr>').appendTo(_elements.tbody);
 					var th = $('<th></th>').text(month).appendTo(tr);
 					

@@ -74,6 +74,10 @@
 					event.preventDefault();
 				});
 				
+				_element.on("pageshow", function(event) {
+					_elements.name.focus();
+				});
+				
 				_elements.dropzone.on('imagechanged', function(event, image) {
 				});
 

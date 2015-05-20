@@ -125,6 +125,10 @@
 					
 				});
 				
+				_element.on("pageshow", function(event) {
+					_elements.name.focus();
+				});				
+				
 				_elements.changepassword.on('tap', function(event) {
 					if (_elements.section.pw.change.css('display') == 'block') {
 						_elements.oldpassword.val('');

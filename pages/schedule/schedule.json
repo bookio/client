@@ -1,5 +1,6 @@
 {
 	"sv": {
+		"header": "Pris och tillgänglighet",
 		"customer-books": "Kunden bokar",
 		"one-by-one": "en enhet i taget",
         "any-number": "valfritt antal enheter",
@@ -10,7 +11,7 @@
 		"week": "veckor",
 		"month": "månader",
 		
-		"back": "Tillbaka"
+		"back": "Spara och stäng"
 	},
 	
 	"hu": {

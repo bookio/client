@@ -45,7 +45,7 @@
 				var sDate = moment(startDate);
 				var eDate = moment(endDate);
 
-				_elements.dateinput.val(sDate.format('L') + " - " + eDate.subtract('days', 1).format('L'));
+				_elements.dateinput.val(sDate.format('L') + " - " + eDate.subtract(1, 'days').format('L'));
 				
 				_startDate = startDate;
 				_endDate = endDate;

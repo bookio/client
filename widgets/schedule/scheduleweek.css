@@ -23,11 +23,12 @@
   text-align: center;
 }
 [data-role="scheduleweek"][data-style="day"] > div table tbody th {
-  text-align: left;
+  text-transform: capitalize;
+  text-align: center;
 }
 [data-role="scheduleweek"][data-style="day"] > div table tr th {
   width: 2.5em;
-  text-align: left;
+  text-align: center;
   padding: 0.2em;
 }
 [data-role="scheduleweek"][data-style="day"] > div table tr td {
@@ -41,6 +42,10 @@
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+}
+[data-role="scheduleweek"][data-style="week"] > div table thead {
+  background-color: #dce7f8;
+  text-transform: capitalize;
 }
 [data-role="scheduleweek"][data-style="week"] > div table thead th,
 [data-role="scheduleweek"][data-style="week"] > div table thead td {

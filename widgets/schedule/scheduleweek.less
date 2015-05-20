@@ -45,14 +45,15 @@
 			
 			tbody {
 				th {
-					text-align: left;
+					text-transform: capitalize;
+					text-align: center;
 				}
 				
 			}
 			tr {
 				th {
 					width: 2.5em;
-			        text-align: left;
+			        text-align: center;
 			        padding: 0.2em;
 				}
 				
@@ -82,8 +83,11 @@
 	        width:100%;
 	        table-layout: fixed;
 	        border-collapse:collapse;
-
+ 
 			thead {
+				background-color: @x-lightBookioBlue;
+				text-transform: capitalize;
+
 				th, td {
 					text-align: center;
 				}
@@ -91,6 +95,7 @@
 			
 			tbody {
 			    tr {
+				   
 				    th, td {
 				        text-align: center;
 				        border: 1px solid @xxxx-lightGrayColor;

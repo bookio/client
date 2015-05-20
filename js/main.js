@@ -23,7 +23,7 @@ requirejs.config({
         'jquery'              : 'lib/jquery/jquery-2.1.3',
         'jquery-mobile'       : 'lib/jquery-mobile/jquery.mobile-1.4.5',
         'jquery-mobile-config': 'lib/jquery-mobile/jquery.mobile.config',
-        'moment'              : 'lib/moment/moment',
+        'moment'              : 'lib/moment/moment-with-locales.min',
         'underscore'          : 'lib/underscore/underscore',
         'rrule'               : 'lib/rrule/rrule',
         'mobiscroll'          : 'lib/mobiscroll/mobiscroll.2.9.5.min',
@@ -140,7 +140,7 @@ requirejs.config({
 		
 			var lang = params['lang'] ? params['lang'] : $.i18n.lang;
 			
-			moment().lang(lang);
+			moment.locale(lang);
 			$.mobiscroll.defaults.lang = lang;
 			$.mobiscroll.defaults.display = 'bubble';
 			$.mobiscroll.defaults.theme = 'android-ics';

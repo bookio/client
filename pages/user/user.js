@@ -13,32 +13,17 @@
 			var _element = page.element;
 			var _elements = {};
 			var _user = {};
-			var _passwordexists = false;
 
 			function fill() {
 				_elements.name.val(_user.name);
 				_elements.username.val(_user.username);
 				if (_user.password != undefined && _user.password.length > 0) {
-					_passwordexists = true;
 					_elements.section.pw.missing.hide();
 					_elements.section.pw.exists.removeClass('hidden');					
-					_elements.passworddisplayed.val(_user.password);
+					_elements.passworddisplayed.val('ABCDEFGH');
 				}
 			}
 
-			function chill() {
-				_user.name = _elements.name.val();
-				_user.username = _elements.username.val();
-				if (_passwordexists) {
-					_user.password = _elements.oldpassword.val();
-					_user.newpassword = _elements.newpassword.val();					
-				}
-				else {
-					_user.password = "";
-					_user.newpassword = _elements.password.val();					
-				}
-								
-			}
 
 			function enableDisablePasswordChange() {
 				// empty or equal is OK
@@ -73,7 +58,7 @@
 				fill();
 
 				if (_user.id) {
-					_elements.save.addClass('hidden');
+					//_elements.save.addClass('hidden');
 					
 					// Cannot delete myself!
 					if (_user.id == Gopher.user.id)
@@ -83,24 +68,9 @@
 					_elements.remove.addClass('hidden');
 				}
 
+
 				_elements.back.on('tap', function(event) {
-					if (_user.id) {
-						chill();
-
-						var request = Model.Users.save(_user);
-
-						request.done(function() {
-							$.mobile.pages.pop();
-						});
-						
-						request.fail(function() {
-							_elements.oldpassword.keyframes("shake 0.5s", function() {
-							});	
-						});						
-						
-					}
-					else
-						$.mobile.pages.pop();
+					$.mobile.pages.pop();
 				});
 
 				_elements.remove.on('delete', function(event) {
@@ -112,15 +82,37 @@
 				});
 
 				_elements.save.on('tap', function(event) {
-					chill();
 
-					var request = Model.Users.save(_user);
+					var user = {};
+					var options = {};
+
+					$.extend(user, _user);
+					
+					user.name = _elements.name.val();
+					user.username = _elements.username.val();
+
+					if (_elements.newpassword.is(':visible')) {
+						user.password = _elements.newpassword.val();
+						options.password = _elements.oldpassword.val();
+					}
+					else {
+						user.password = _elements.password.val();
+						
+					}
+
+					console.log(_user, user, options);
+					
+					var request = Model.Users.save(user, options);
 
 					request.done(function() {
 						$.mobile.pages.pop();
 					});
 
 					request.fail(function() {
+						if (_elements.oldpassword.is(':visible')) {
+							_elements.oldpassword.keyframes("shake 0.5s", function() {
+							});	
+						}
 					});
 					
 				});

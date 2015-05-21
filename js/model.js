@@ -99,8 +99,24 @@
 			return request;
 		};
 
-		model.update = function(item) {
-			var request = gopher.request('PUT', sprintf('%s/%d', name, item.id), item);
+		model.update = function(item, options) {
+			var url = sprintf('%s/%d', name, item.id);
+			
+			if (typeof options == 'object') {
+				var args = '';
+				
+				for (var key in options) {	
+					if (args.length > 0)
+						args += '&';
+					
+					args += encodeURIComponent(key) + '=' + encodeURIComponent(options[key]);
+				}
+				
+				if (args.length > 0)
+					url += '?' + args;
+			}
+			
+			var request = gopher.request('PUT', url, item);
 
 			request.done(function(item) {
 
@@ -129,7 +145,7 @@
 		};
 
 		model.save = function(item) {
-			return item.id ? model.update(item) : model.add(item);
+			return item.id ? model.update.apply(undefined, arguments) : model.add.apply(undefined, arguments);
 		}
 
 

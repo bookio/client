@@ -51,18 +51,49 @@
 [data-role="scheduleweek"][data-style="week"] > div table thead td {
   text-align: center;
 }
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr {
+  /*				    &.first-row, &.last-row {
+				    	th {
+						    div.icon-plus, div.icon-minus {
+								visibility: visible;
+								cursor: pointer;
+						    }
+					    	
+				    	}
+					    
+				    }*/
+
+}
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr th,
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr td {
   text-align: center;
   border: 1px solid #f3f3f3;
   padding: 0px 0px 0px 0px;
 }
-[data-role="scheduleweek"][data-style="week"] > div table tbody tr.first-row th div.icon-plus,
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr.first-row th div.icon-plus {
+  visibility: visible;
+  cursor: pointer;
+}
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr.first-row th div.icon-minus {
+  visibility: visible;
+  cursor: pointer;
+}
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr.last-row th div.icon-plus,
-[data-role="scheduleweek"][data-style="week"] > div table tbody tr.first-row th div.icon-minus,
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr.last-row th div.icon-minus {
   visibility: visible;
   cursor: pointer;
+}
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr.last-row th div.icon-plus {
+  bottom: 0px;
+  top: auto;
+  right: 0px;
+  left: auto;
+}
+[data-role="scheduleweek"][data-style="week"] > div table tbody tr.last-row th div.icon-minus {
+  top: 0px;
+  bottom: auto;
+  right: 0px;
+  left: auto;
 }
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr th {
   text-align: center;
@@ -74,8 +105,7 @@
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr th div.icon-plus,
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr th div.icon-minus {
   position: absolute;
-  font-size: 125%;
-  color: #61bc46;
+  font-size: 150%;
   padding: 0.1em;
   visibility: hidden;
 }
@@ -84,12 +114,14 @@
   bottom: auto;
   right: 0px;
   left: auto;
+  color: #61bc46;
 }
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr th div.icon-minus {
   bottom: 0px;
   top: auto;
   right: 0px;
   left: auto;
+  color: #e34a53;
 }
 [data-role="scheduleweek"][data-style="week"] > div table tbody tr td div {
   width: 100%;

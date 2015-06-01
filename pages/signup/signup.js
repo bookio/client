@@ -115,7 +115,7 @@
 					enableDisable();
 				});
 				
-				_elements.signup.what.attr('placeholder', i18n.text('what-placeholder', 'Segway, Squash, Party Tent, Wine Tasting, Massage'));
+				_elements.signup.what.attr('placeholder', i18n.text('what-placeholder', 'Segway, Squash, Party Tent, Bed & Breakfast, Wine Tasting, Massage, Personal Trainer'));
 				_elements.signup.email.attr('placeholder', i18n.text('email-placeholder', 'jane@rentapartytent.com'));
 
 				enableDisable();

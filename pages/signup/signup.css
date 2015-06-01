@@ -326,8 +326,8 @@
 #signup-page section.picture-macbook {
   background-image: url('images/usp-macbook.png');
   background-repeat: no-repeat;
-  background-position: right bottom;
-  overflow: auto;
+  background-position: right;
+  overflow: visible;
 }
 #signup-page section.right {
   max-width: 34em !important;

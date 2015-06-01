@@ -478,9 +478,12 @@
 						_reservation.payed = _elements.payed.is(':checked');
 						_reservation.transferred = _elements.transferred.is(':checked');
 
+						console.log('Adding reservation', _reservation);
+
 						var saveReservation = Model.Reservations.save(_reservation);
 
 						saveReservation.done(function(reservation) {
+							console.log('Reservation added', reservation);
 							$.mobile.pages.pop();
 						});
 

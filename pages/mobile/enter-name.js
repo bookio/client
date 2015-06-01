@@ -30,7 +30,7 @@
  	               var lines = _elements.info.val().split('\n');
                 
                     var email = lines[0];
-                    var url = sprintf('customers/search_email?email=%s', email);
+                    var url = sprintf('customers/search/%s', email);
                     var request = Gopher.request('GET', url);
 
                     request.done(function (customers) {
@@ -53,7 +53,7 @@
                     var email = lines[0]; //_elements.customer.email.val();
                     var name = lines[1]; //_elements.customer.name.val();
 
-                    var url = sprintf('customers/search_email?email=%s', email);
+                    var url = sprintf('customers/search/%s', email);
                     var request = Gopher.request('GET', url);
 
                     $.spin(true);

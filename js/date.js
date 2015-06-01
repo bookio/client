@@ -1,7 +1,7 @@
 
 (function() {
 	
-
+	
 	// Replace the getYear() with getFullYear()
 	Date.prototype.getYear = function() {
 		return this.getFullYear();

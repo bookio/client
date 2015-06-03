@@ -30,7 +30,7 @@ requirejs.config({
         'latlon-picker'		  : 'lib/latlon-picker/jquery-gmaps-latlon-picker', 
         'fullcalendar'        : 'lib/fullcalendar/fullcalendar.min',
         'fullcalendar-lang'   : 'lib/fullcalendar/lang-all',
-        'moment-range'        : 'lib/moment/moment-range'
+        'moment-range'        : 'lib/moment/moment-range' 
     },
     
     // Declare dependencies

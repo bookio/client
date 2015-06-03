@@ -3207,9 +3207,6 @@ ul li .ui-btn * {
 [data-role="page"] [data-role="content"] .floatright {
   float: right;
 }
-[data-role="page"] [data-role="content"] textarea.ui-input-text {
-  height: inherit !important;
-}
 [data-role="page"] [data-role="content"] li p,
 [data-role="page"] [data-role="content"] .ui-body p {
   white-space: normal;

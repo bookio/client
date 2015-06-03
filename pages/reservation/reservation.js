@@ -42,36 +42,6 @@
 			iconInfo =     '<svg class="icontextarea" width="20px" height="20px" viewBox="0 0 512 512"><path class="softgreen" d="M255.998,50.001C142.229,50.001,50,142.229,50,255.999c0,113.771,92.229,206,205.998,206c113.771,0,206.002-92.229,206.002-206C462,142.229,369.77,50.001,255.998,50.001z M289.025,377.242h-64.05V226.944h64.05V377.242zM257,196.884c-19.088,0-34.563-15.476-34.563-34.564c0-19.088,15.475-34.563,34.563-34.563c19.09,0,34.562,15.476,34.562,34.563C291.562,181.409,276.09,196.884,257,196.884z"/></svg>';
 			iconUnknown =  '<svg class="icontextarea" width="20px" height="20px" viewBox="0 0 512 512"><path fill="#c7c7c7"    d="M259.462,462c-24.864,0-45.03-20.166-45.03-45.039c0-24.859,20.166-45.02,45.03-45.02c24.87,0,45.029,20.158,45.029,45.02C304.491,441.834,284.332,462,259.462,462z M294.865,328.9v8.1c0,0-67.513,0-74.229,0v-8.1c0-22.922,3.344-52.326,29.956-77.891c26.613-25.567,59.87-46.687,59.87-78.625c0-35.309-24.503-53.985-55.399-53.985c-51.483,0-54.846,53.393-56.115,65.149H126.75C128.673,127.874,152.206,50,255.494,50c89.513,0,129.756,59.949,129.756,116.166C385.25,255.646,294.865,271.189,294.865,328.9z"/></svg>';
 
-			function search() {
-/*				var query = _elements.contact.val().trim();
-
-				if (_timer != null) {
-					clearTimeout(_timer);
-					_timer = null;
-				}
-
-				if (query.length > 0 && query.split('\n').length == 1) {
-					console.log('searching for ' + query);
-					var request = Model.Customers.search(query);
-
-					request.done(function(customers) {
-
-						_customers = customers;
-
-						if (customers.length > 0) {
-							_elements.selectcustomer.removeClass('ui-disabled');
-						}
-						else
-							_elements.selectcustomer.addClass('ui-disabled');
-
-						$.each(customers, function(index, customer) {
-							console.log(customer.name);
-						});
-
-					});
-
-				}*/
-			}
 			
 			function updateDates() {
 				var sDate = moment(_startDate);
@@ -88,7 +58,7 @@
 				$.each(items, function(index, item) {
 					if (item && item.length > 0) {
 						if (text.length > 0)
-							text += '\n';
+							text += '\r\n';
 
 						text += item.trim();
 					}
@@ -127,21 +97,8 @@
 					notes.push(lines[index++]);
 				}
 
-				customer.notes = notes.join('\n');
+				customer.notes = notes.join('\r\n');
 			}
-
-
-			function enableEnterKey() {
-
-				_elements.html.on('keydown', function(event) {
-					//if (event.keyCode == 13)
-					//  _elements.okButton.trigger('click');
-					if (event.keyCode == 27)
-						_modal.close();
-				});
-
-			};
-
 
 			function updateDOM() {
 
@@ -171,7 +128,7 @@
 					return lineIsTwitter;										
 				else if (str.length < 5)
 					return -1;
-				else if (Parser.wordCountGreaterThan(str, 4))
+				else if (Parser.wordCountGreaterThan(str, 3))
 					return lineIsInfo;
 				else if (Parser.isEmail(str))
 					return lineIsMail;
@@ -204,16 +161,152 @@
 			function getLineNumber(textarea) {
 				return textarea[0].value.substr(0, textarea[0].selectionStart).split("\n").length;
     		}
+    		
+    		function parseRows(lines) {
+				var hasName = false;
+				var stickySymbol = false;
+				var newLineCount = getLineCount(_elements.contact);
+	    		
+				if (_lastLineCount != newLineCount) {
+					var txt = _elements.contact.val();
+					var lastOnLine = (txt.charAt(_elements.contact.prop("selectionStart")) == '\n') || (_elements.contact.prop("selectionStart") == _elements.contact.val().length);
 
+					// Line count has changed, fix sticky symbol array
+					if (lastOnLine)
+						(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 1, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
+					else	
+						(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 2, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);
+				}
+				
+				_lastLineCount = newLineCount;	
+
+				_elements.iconarray.empty();
+				
+				for(var i in lines) {
+					if (lines[i].length > 0) {
+						
+						if (_stickySymbols[i] != undefined && _stickySymbols[i] != 0) {
+							lineID = _stickySymbols[i];
+							stickySymbol = true;
+						}
+						else {
+							lineID = identifyLine(lines[i]);
+							stickySymbol = false;
+						}
+						
+						switch(lineID) {
+							
+						    case lineIsTwitter:
+						    	chosenIcon = iconTwitter;
+						        break;
+						        
+						    case lineIsMobile:
+						    	chosenIcon = iconMobile;
+						        break;
+						        
+						    case lineIsMail:
+						    	chosenIcon = iconMail;
+						        break;
+						        
+						    case lineIsName:
+						    	if (hasName && !stickySymbol) // If we already have a name, its probably an address
+							    	chosenIcon = iconLocation;	
+						    	else {
+						    		chosenIcon = iconName;
+						    		hasName = true;
+						    	}
+						        break;
+						        
+						    case lineIsLocation:
+						    	chosenIcon = iconLocation;
+						        break;
+						        
+						    case lineIsInfo:
+						    	chosenIcon = iconInfo;
+						        break;							    
+						        
+						    default:
+						    	chosenIcon = iconUnknown;
+
+						}
+						
+						var tag = $(intro + chosenIcon + outro);
+						
+						tag.appendTo(_elements.iconarray).css('top', i * 22 + 23).attr('id', 'row' + i);
+						
+						// Show 'sticky' symbol with darker color
+						if (stickySymbol)
+							tag.find('path').attr("class", "hardgreen");
+					
+						tag.on('tap', function(event) {
+							
+							var tappedElement = this;
+
+							_elements.popupname.one('tap', function(event) {
+								replaceSymbolAndCloseMenu(tappedElement, iconName, lineIsName);
+							});	
+
+							_elements.popuplocation.one('tap', function(event) {
+								replaceSymbolAndCloseMenu(tappedElement, iconLocation, lineIsLocation);
+							});	
+
+							_elements.popupmobile.one('tap', function(event) {
+								replaceSymbolAndCloseMenu(tappedElement, iconMobile, lineIsMobile);
+							});	
+
+							_elements.popupinfo.one('tap', function(event) {
+								replaceSymbolAndCloseMenu(tappedElement, iconInfo, lineIsInfo);										
+							});
+							
+							var options = {
+								dismissible: true,
+								transition: "pop",
+								positionTo: $(this)
+							};
+		
+							_elements.popup.reservation.content.popup(options);								
+							_elements.popup.reservation.content.popup('open');
+															
+						});						
+					}
+				}						
+				    		
+    		}
+    		
 			function enableButtonActions() { 
 
+				_elements.contact.on('keyup', function(event) {
+					
+					var lines = _elements.contact.val().split('\n'); 
+					
+					if (event.keyCode == 8) { // Backspace
+						if (lines[0].length == 0) {
+							// Erase first line sticky symbol
+							_stickySymbols[0] = 0;							
+						}
+							
+						if (_elements.contact.val().length == 0) {
+							// No text, clear all
+							_stickySymbols.length = 1;
+							_stickySymbols[0] = 0;
+						}
+					}
+					
+					parseRows(lines);
+						
+					event.preventDefault();
+					event.stopPropagation();
+
+				});
+
+/* OLD FUNC
 				_elements.contact.on('keyup', function(event) {
 					var hasName = false;
 					var lines = _elements.contact.val().split('\n'); 
 					var stickySymbol = false;
 					var newLineCount = getLineCount(_elements.contact);
 					
-					if (event.keyCode == 8) {
+					if (event.keyCode == 8) { // Backspace
 						if (lines[0].length == 0) {
 							// Erase first line sticky symbol
 							_stickySymbols[0] = 0;							
@@ -235,21 +328,6 @@
 							(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 1, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
 						else	
 							(_lastLineCount < newLineCount) ? _stickySymbols.splice(getLineNumber(_elements.contact) - 2, 0, 0) : _stickySymbols.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);
-
-/*						if (_lastLineCount < newLineCount) {
-							// Added line
-							if (lastOnLine)
-								_chosenSymbol.splice(getLineNumber(_elements.contact) - 1, 0, 0);
-							else	
-								_chosenSymbol.splice(getLineNumber(_elements.contact) - 2, 0, 0);
-						}
-						else {
-							// Line is removed
-							if (lastOnLine)
-								_chosenSymbol.splice(getLineNumber(_elements.contact), _lastLineCount - newLineCount);
-							else
-								_chosenSymbol.splice(getLineNumber(_elements.contact) - 1, _lastLineCount - newLineCount);															
-						}*/
 					}
 					
 					_lastLineCount = getLineCount(_elements.contact);	
@@ -352,108 +430,9 @@
 					event.preventDefault();
 					event.stopPropagation();
 
-					if (_timer != null) {
-						clearTimeout(_timer);
-						_timer = null;
-					}
-
-					_timer = setTimeout(search, 500);
-
 				});
 
-				function popupHTML(html, options) {
-
-
-					var popup = $('<div data-role="popup"></div>');
-
-					function close(event) {
-
-						if (options.afterclose && isFunction(options.afterclose)) {
-							options.afterclose.apply(undefined, arguments)
-						}
-
-						$(event.target).remove();
-					}
-
-					var defaults = {
-						afterclose: close
-					};
-
-					popup.append(html);
-					popup.appendTo($.mobile.activePage);
-					popup.trigger('create');
-					popup.popup($.extend({}, options, defaults));
-					popup.popup('open');
-
-					return popup;
-				}
-
-				/*_elements.startdate.button.on('tap', function() {
-
-				});
-
-				_elements.enddate.button.on('tap', function() {
-
-
-				});
-
-				_elements.selectcustomer.on('tap', function(event) {
-
-					event.preventDefault();
-					event.stopPropagation();
-
-
-					if (_customers.length == 0)
-						return;
-
-					var popup;
-					var listview = $('<ul data-role="listview" data-inset="true" data-theme="a"></ul>');
-
-					$.each(_customers, function(index, customer) {
-
-						var li = $('<li data-icon="false"></li>');
-						var a = $('<a href="#"></a>');
-						var p = $('<p></p>')
-						var h3 = $('<h1></h1>')
-
-						h3.text(customer.name);
-						p.text(customer.email);
-						a.data('customer', customer);
-
-						a.on('tap', function() {
-
-							var customer = $(this).data('customer');
-
-							_customer = customer;
-							updateContactFromCustomer(customer);
-
-							popup.popup('close');
-						});
-
-						a.append(h3);
-						a.append(p);
-						li.append(a);
-
-						listview.append(li);
-					});
-
-					var options = {
-						dismissible: true,
-						//theme: "d",
-						//overlyaTheme: "a",
-						transition: "pop",
-						positionTo: _elements.selectcustomer
-					};
-
-					popup = $('<div data-id="MYPOPUP" data-role="popup" data-theme="a"></div>');
-
-					popup.appendTo($.mobile.activePage);
-					popup.append(listview);
-					popup.trigger('create');
-					popup.popup(options);
-					popup.popup('open');
-				});*/
-				
+*/				
 				_elements.back.on('tap', function(event) {
 					$.mobile.pages.pop();
 				});
@@ -473,6 +452,7 @@
 						_reservation.rental_id = _rental.id;
 						_reservation.state = 1;
 						_reservation.price = _elements.price.val();
+						
 						_reservation.arrived = _elements.arrived.is(':checked');
 						_reservation.delivered = _elements.delivered.is(':checked');
 						_reservation.payed = _elements.payed.is(':checked');
@@ -519,25 +499,6 @@
 				_elements.options.picker('refresh');
 			}
 						
-			function growShrinkRows(textArea) {
-			
-				if (navigator.appName.indexOf("Microsoft Internet Explorer") == 0) {
-					textArea.style.overflow = 'visible';
-					return;
-				}
-				
-				while (textArea.rows > 1 && textArea.scrollHeight < textArea.offsetHeight) {
-					textArea.rows--;
-				}
-				
-				while (textArea.scrollHeight > textArea.offsetHeight) {
-					textArea.rows++;
-				}
-				
-				textArea.rows++;
-
-			}			
-
 			this.init = function() {
 
 				_element.hookup(_elements, 'data-id');
@@ -552,8 +513,8 @@
 				
 				_element.on("pageshow", function () {
 					_elements.contact.focus();
-				});									
-				
+				});
+								
 				_elements.popup.reservation.content.on("popupafterclose", function() {
 					_elements.popupname.off();
 					_elements.popuplocation.off();
@@ -620,9 +581,6 @@
 				
 				if (!_reservation.id)
 					_elements.remove.addClass('hidden');
-
-				//if (_reservation.customer_id)
-					//_elements.selectcustomer.addClass('hidden');
 					
 				_elements.divformobiscroll.mobiscroll().date({
 					display: 'bubble',

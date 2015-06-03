@@ -1,8 +1,6 @@
 #reservation-page [data-id="contact"] {
   padding-right: 22px;
   resize: none;
-  white-space: nowrap;
-  overflow: auto;
 }
 #reservation-page .iconwrapper {
   position: absolute;

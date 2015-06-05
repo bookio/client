@@ -80,8 +80,13 @@
 
 				_elements.login.button.on('tap', function() {
 					login();
+				});				
+						
+				$(document).on('keyup', function(event) {
+					if (event.keyCode == 13) {
+						login();
+					}
 				});
-
 
 				_elements.login.email.on('input', function() {
 					enableDisable();

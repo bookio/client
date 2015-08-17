@@ -1,44 +1,72 @@
-<div id="option-page" data-role="page">
+<div id="option-page" data-role="page" data-dom-cache="true">
 
     <div data-role="content" data-id="content">
 
-	    <div class="ui-corner-all custom-corners">
+		<div data-role="navbar" class="tab-header">
+	    	<ul>
+	        	<li><a href="#" data-i18n="booking-option" class="tab style-header" data-tab="tab1">Offering or Service</a></li>
+				<li><a href="#" data-i18n="appliesto"      class="tab style-header" data-tab="tab2">Applies to</a></li>
+			</ul>
+	    </div>
 
-			<div class="ui-bar ui-bar-b">
-                <h1 data-i18n="booking-option" class="style-header style-bold">Offering or Service</h1>
-            </div>
+        <div class="tab-container">
+	        
+            <div class="tab" data-tab="tab1">
+	            
+	            <div class="ui-body ui-body-a">
+	            
+		            <label data-i18n="name">
+		                Name
+		            </label>
+		            
+		            <input data-id="name" type="text" autofocus="autofocus">
+		
+		            <label data-i18n="description">
+		                Description
+		            </label>
+		            <textarea data-id="description" type="text"></textarea>
+		            
+		            <label data-i18n="picture">Picture</label>
+			        <div class="ui-body ui-body-a">
+			            <div style="text-align:center">
+			                <div data-id="dropzone" data-role="imagepicker">
+			                </div>
+			            </div>
+			        </div>
+		
+					<a data-id="schedule" data-theme="e" data-i18n="price" data-role="button" data-icon="edit">Price and availability</a>
+	            
+	            </div>
+	            
+	    	</div>
+	    	
+			<div class="tab" data-tab="tab2">
 
-			<div class="ui-body ui-body-a">
-            
-                <label data-i18n="name">
-                    Name
-                </label>
+				<div class="ui-bar ui-bar-a">
+					<p data-i18n="help-resources" data-id="help"></p>
+				</div>
+
+	            <div class="ui-body ui-body-a">
+
+	                <ul data-role="listview" data-inset="true">
+	                    <li>
+	                        <div data-role="list" data-id="rentals" data-inset="false">
+	                        </div>
+	                    </li>
+	                </ul>
                 
-                <input data-id="name" type="text" autofocus="autofocus">
-
-                <label data-i18n="description">
-                    Description
-                </label>
-                <textarea data-id="description" type="text"></textarea>
-                
-                <label data-i18n="picture">Picture</label>
-		        <div class="ui-body ui-body-a">
-		            <div style="text-align:center">
-		                <div data-id="dropzone" data-role="imagepicker">
-		                </div>
-		            </div>
-		        </div>
-  
-				<a data-id="schedule" data-theme="b" data-i18n="price" data-role="button" data-icon="edit">Price and availability</a>
-                
-		        <div data-role="button-row">
-		            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
-		            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
-					<div data-id="remove" data-role="deletebutton" data-inline="true" class="floatright"></div>
-		        </div>                
-                            
-            </div>
-
+	            </div>
+	            
+	    	</div>
+	    	
         </div>
-
-    </div>
+	
+        <div data-role="button-row">
+            <a data-id="back" data-theme="b" data-i18n="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+            <a data-id="save" data-theme="c" data-i18n="save" data-role="button" data-inline="true" data-icon="check">Save</a>
+			<div data-id="remove" data-role="deletebutton" data-inline="true" class="floatright"></div>
+        </div>
+        
+	</div>
+    	    
+</div>

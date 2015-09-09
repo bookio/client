@@ -1,5 +1,6 @@
 (function() {
 
+
 	var dependencies = [
 		'i18n!./reservation.json',
 		'../../widgets/picker/picker.js',

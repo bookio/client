@@ -54,9 +54,10 @@
 					var icon = widget.options.symbols[i];
 					var symbol = $('<div class="symbol ' + icon.tag + '"></div>').appendTo(isotope);
 					var border = $('<div class="border"/>').appendTo(symbol);
-					var image = $('<div class="image"/>').appendTo(border);
+					var image = $('<img class="image"/>').appendTo(border);
 
-					image.addClass(sprintf('symbol-%04d', icon.id));
+					image.attr('src', sprintf('../../images/symbols/%04d.svg', icon.id));
+					//image.addClass(sprintf('symbol-%04d', icon.id));
 
 					symbol.data('symbol', icon);
 

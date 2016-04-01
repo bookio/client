@@ -61,7 +61,7 @@
 					_rental.style = 'thing';
 				}
 
-				_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental && _rental.icon_id ? _rental.icon_id : 0));
+				_elements.icon.image.attr('src', sprintf('../../images/symbols/%04d.svg', _rental && _rental.icon_id ? _rental.icon_id : 0));
 				
 				if (_rental.image)
 					_elements.dropzone.imagepicker('setImage', _rental.image);			

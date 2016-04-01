@@ -633,7 +633,6 @@
 }
 [data-role="desktop"] .desktop .item .icon img:hover {
   color: red;
-  background: #3c87ff;
 }
 [data-role="desktop"] .desktop .item .icon:hover {
   cursor: pointer;

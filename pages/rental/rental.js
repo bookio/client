@@ -442,7 +442,7 @@
 					symbolpicker.on("symbolselected", function(event, icon) {
 						popup.popup('close');
 						_rental.icon_id = icon.id;
-						_elements.icon.image.attr('class', sprintf('symbol-%04d', _rental.icon_id));
+						_elements.icon.image.attr('src', sprintf('../../images/symbols/%04d.svg', _rental.icon_id));
 					});
 
 					popup.popup('open');

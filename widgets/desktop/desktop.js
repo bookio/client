@@ -488,7 +488,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 			
 			var template =
 				'<div class="item">' +
-				'<div class="icon"><img class="" src=' + src + '/></div>' +
+				'<div class="icon"><img class="" src=' + src + '></div>' +
 				'<br>' +
 				'<div class="title"></div>' +
 				'</div>'

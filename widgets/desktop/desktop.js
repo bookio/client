@@ -463,6 +463,9 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 					var title = item.find('.title');
 					var image = item.find('img');
 
+					var src = sprintf('../../images/symbols/%04d.svg', parseInt(rental.icon_id));
+					image.attr('src', src);
+					/*
 					image.removeClassMatching('symbol-*');
 					
 					if (rental.icon_id && _icons[rental.icon_id])
@@ -470,6 +473,7 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 					else
 						image.addClass(sprintf('symbol-%04d', 0));
 
+					*/
 					title.text(rental.name);
 
 					item.data('rental', rental);
@@ -480,9 +484,11 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 		}
 
 		function addRentalToScene(rental) {
+			var src = sprintf('../../images/symbols/%04d.svg', parseInt(rental.icon_id));
+			
 			var template =
 				'<div class="item">' +
-				'<div class="icon"><img class="tint"/></div>' +
+				'<div class="icon"><img class="" src=' + src + '/></div>' +
 				'<br>' +
 				'<div class="title"></div>' +
 				'</div>'
@@ -490,11 +496,12 @@ define(['module', 'css!./desktop', '../../lib/jquery/plugins/jquery.selectable.j
 			var item = $(template);
 			var image = item.find('img');
 
-			if (rental.icon_id && _icons[rental.icon_id])
+			/*
+				if (rental.icon_id && _icons[rental.icon_id])
 				image.addClass(sprintf('symbol-%04d', rental.icon_id));
 			else
 				image.addClass(sprintf('symbol-%04d', 0));
-
+*/
 			_element.append(item);
 
 			item.data('rental', rental);
